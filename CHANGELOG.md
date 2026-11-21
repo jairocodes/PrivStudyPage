@@ -2,6 +2,24 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones con [SemVer](https://semver.org/lang/es/).
 
+## [1.1.0] - 2026-11-21
+
+### Agregado
+- Seis guías nuevas, con lo que Administración de Sistemas queda completa (14 de 14). Cada guía tiene 7 secciones y 70 ejercicios y preguntas:
+  - Derecho Informático: marco legal guatemalteco, delitos informáticos, propiedad intelectual, firma electrónica, Derecho Laboral y Mercantil.
+  - Autómatas y Lenguajes Formales: AFD, AFN, conversiones, gramáticas, autómatas de pila, máquinas de Turing, notación posfija.
+  - Compiladores: fases, análisis léxico, LL(1), SLR, traducción dirigida por la sintaxis, optimización.
+  - Inteligencia Artificial: búsqueda, juegos, lógica, incertidumbre, aprendizaje, lenguaje natural.
+  - Seguridad y Auditoría de Sistemas: riesgo, normas, controles, criptografía, continuidad, auditoría informática.
+  - Seminario de Tecnologías de Información: IoT, blockchain, nube, big data, frameworks web, gobierno de TI, evaluación de proyectos.
+- Catálogo total: 35 de 50 guías, 2120 ejercicios y preguntas.
+- `npm run validar` acepta rutas de archivos JSON para validar borradores antes de integrarlos.
+- Ícono del sitio.
+
+### Corregido
+- Las tablas escritas dentro de un texto ya no ensanchan la página en móvil.
+- Los bloques de código conservan los espacios y la alineación.
+
 ## [1.0.0] - 2026-11-21
 
 ### Agregado
@@ -22,4 +40,5 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); v
 - Publicación automática en GitHub Pages desde `main` y validación en las demás ramas.
 - Flujo Gitflow documentado en `CONTRIBUTING.md`.
 
+[1.1.0]: https://github.com/jairocodes/PrivStudyPage/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/jairocodes/PrivStudyPage/releases/tag/v1.0.0
