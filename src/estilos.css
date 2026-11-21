@@ -144,7 +144,7 @@ dl.uso dd{margin:0}
 .fb .veredicto{font:700 15px "Archivo",sans-serif;margin:8px 0 0}
 .fb .veredicto.si{color:var(--ok)}.fb .veredicto.no{color:var(--ans)}
 .ops-reiniciar{font:600 13px "Archivo",sans-serif;background:none;border:none;color:var(--accent);cursor:pointer;padding:4px 0}
-code{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:.88em;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+code{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:.88em;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
 pre{overflow-x:auto}
 
 /* Modo examen */
