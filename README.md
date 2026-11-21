@@ -1,5 +1,7 @@
 # PrivStudyPage
 
+**Sitio publicado:** https://jairocodes.github.io/PrivStudyPage/
+
 Aplicación web estática de repaso para el Seminario de Privados de Ingeniería en Sistemas UMG (pensum 2014). Carga las guías de la skill `privados-umg/privados-umg/` y ofrece:
 
 - áreas, bloques y cursos
@@ -36,3 +38,7 @@ npm run preview    # sirve dist/ para probarlo
 1. Escribir el curso en `privados-umg/privados-umg/data/<slug>.json` siguiendo `references/modelo-datos.md`. El `titulo` debe coincidir con la columna `curso` de `cursos.csv`.
 2. Ejecutar `npm run validar <slug>` y corregir lo que reporte.
 3. Ejecutar `npm run build`. El curso deja de aparecer como “En preparación” y entra al modo examen de su bloque.
+
+## Versiones y despliegue
+
+El repositorio sigue Gitflow (`main`, `release/*`, `develop`, `feature/*`, `fix/*`, `chore/*`, `docs/*`, `hotfix/*`); ver [CONTRIBUTING.md](CONTRIBUTING.md). Cada push a `main` valida, compila y publica el sitio en GitHub Pages (`.github/workflows/pages.yml`). Las demás ramas solo se validan y compilan (`ci.yml`). Los cambios por versión están en [CHANGELOG.md](CHANGELOG.md).
