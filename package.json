@@ -1,7 +1,7 @@
 {
   "name": "privstudypage",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Aplicación web estática de repaso para los exámenes privados de Ingeniería en Sistemas UMG (pensum 2014).",
   "type": "module",
   "scripts": {
