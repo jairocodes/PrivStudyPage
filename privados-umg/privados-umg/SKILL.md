@@ -14,7 +14,7 @@ Esta skill documenta cómo se trabajó la preparación de los privados (Seminari
 | `references/cursos.md` y `references/cursos.csv` | Los 50 cursos con ciclo, área, bloque del seminario, enlace al programa oficial en PDF y enlace a la guía publicada si existe |
 | `references/modelo-datos.md` | Esquema JSON de un curso (temas, conceptos, ejercicios) y reglas de validación |
 | `references/lecciones.md` | Errores encontrados durante el trabajo y cómo evitarlos |
-| `data/*.json` | El contenido ya escrito de 29 guías (1700 ejercicios y preguntas), listo para cargar en la aplicación |
+| `data/*.json` | El contenido ya escrito de 35 guías (2120 ejercicios y preguntas), cargado en la aplicación PrivStudyPage |
 | `scripts/descargar_temarios.sh` | Descarga los 50 PDF de programas oficiales en `temarios/<área>/` |
 | `scripts/motor/` | Implementación de referencia en Python que convierte un curso en una página HTML autocontenida (KaTeX, tema claro y oscuro, progreso local) |
 
@@ -99,5 +99,7 @@ Lo que funcionó y conviene conservar en la aplicación:
 ## Estado al cerrar esta etapa
 
 - Ciencias de la Ingeniería: 21 de 21 guías publicadas.
-- Administración de Sistemas: 8 de 14 guías publicadas (faltan Seguridad y Auditoría, Derecho Informático, Seminario de TI, Autómatas, Compiladores e Inteligencia Artificial); temarios investigados para los 14.
-- Análisis, Diseño y Desarrollo: temarios por investigar o descargar (enlaces en `references/cursos.md`).
+- Administración de Sistemas: 14 de 14 guías publicadas.
+- Análisis, Diseño y Desarrollo: 0 de 15 guías; programas oficiales descargados, guías por escribir (enlaces en `references/cursos.md`).
+
+Las guías se publican en https://jairocodes.github.io/PrivStudyPage/. Cada guía nueva entra al repositorio por una rama `feature/guia-<slug>` (ver `CONTRIBUTING.md` en la raíz) y se valida con `npm run validar <ruta-o-slug>` antes de unirse a `develop`.
