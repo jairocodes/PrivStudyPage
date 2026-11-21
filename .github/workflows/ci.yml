@@ -1,0 +1,22 @@
+# Valida y compila en cada push a las ramas de trabajo (develop, release, feature, fix, chore, docs, hotfix).
+name: Validar y compilar
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Validar cursos
+        run: npm run validar
+      - name: Compilar
+        run: npm run build
