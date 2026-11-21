@@ -1,0 +1,1118 @@
+{
+ "slug": "seminario-ti",
+ "titulo": "Seminario de Tecnologías de Información",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 10, código 090047, bloque Sistemas de Información Gerencial del seminario",
+ "firma": "\\text{tecnología emergente}\\to\\text{caso de uso}\\to\\text{valor medible}",
+ "firma_nota": "Una tecnología nueva solo vale cuando resuelve un caso concreto y su beneficio se puede medir.",
+ "lead": "Tecnologías de punta para producir software o administrar tecnología: internet del todo e IoT, blockchain, virtualización, nube, serverless e hiperconvergencia, bases NoSQL, big data y data warehouses, Ionic, Angular y Node.js, seguridad TIC y visión tecnológica y estratégica. El programa los plantea como temas de investigación en grupo con ejemplos (la semana 1 es apoyo a la tesis de Proyecto de Graduación II y no tiene contenido evaluable); esta guía da a cada tema la teoría y los cálculos que un examinador espera. Comparte el bloque de Sistemas de Información Gerencial con Administración de TI, cuyo contenido complementa sin repetir. Los 16 temas del programa están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeminarioTecInfo.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para practicar. En las secciones de cálculo (blockchain, nube, datos y visión estratégica) los de práctica tienen la respuesta oculta; en las conceptuales (IoT, desarrollo web y seguridad) son preguntas de opción múltiple que te dicen al instante si acertaste. Los montos están en quetzales y los precios de nube son de referencia: verifica la tarifa vigente.",
+ "temas": [
+  {
+   "titulo": "Internet del todo e internet de las cosas",
+   "intro": "Temas 2.1 y 2.2 del programa (semana 2): internet del todo e internet de las cosas. Se estudian los cuatro pilares del IoE, la arquitectura en capas de una solución IoT, sus protocolos y los dos cálculos que deciden si un despliegue es viable: la vida de la batería y el volumen de datos.",
+   "conceptos": [
+    {
+     "n": "Internet del todo (IoE)",
+     "e": [
+      "El <b>internet del todo</b> (término popularizado por Cisco) conecta cuatro pilares: <b>personas</b>, <b>procesos</b>, <b>datos</b> y <b>cosas</b>. El internet de las cosas es solo el pilar de las cosas; el IoE agrega a las personas que deciden, los datos que se analizan y los procesos que entregan la información correcta a la persona o máquina correcta en el momento oportuno.",
+      "Las conexiones se clasifican en máquina a máquina (M2M), máquina a persona (M2P) y persona a persona (P2P). El valor no está en el sensor, sino en el proceso que cambia gracias al dato."
+     ],
+     "u": [
+      "Ciudades inteligentes: parqueo, alumbrado y recolección de basura de una municipalidad.",
+      "Conectar cosas sin rediseñar procesos solo genera datos que nadie usa.",
+      "Al plantear un proyecto de transformación digital que involucra sensores y personas.",
+      "Identifica en el caso qué personas, procesos, datos y cosas participan y cómo se conectan."
+     ],
+     "tabla": "<table><thead><tr><th>Pilar</th><th>Qué aporta</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Personas</td><td>Deciden y actúan</td><td>Agente de tránsito que recibe una alerta</td></tr><tr><td>Procesos</td><td>Llevan el dato a quien lo necesita</td><td>Regla: si el parqueo está lleno, desviar</td></tr><tr><td>Datos</td><td>Se convierten en información</td><td>Ocupación por hora y por calle</td></tr><tr><td>Cosas</td><td>Miden o actúan</td><td>Sensor magnético en cada plaza</td></tr></tbody></table>"
+    },
+    {
+     "n": "Arquitectura de una solución IoT",
+     "e": [
+      "Se describe en capas: <b>percepción</b> (sensores y actuadores), <b>red</b> (conectividad y pasarela o <i>gateway</i>), <b>plataforma</b> (broker de mensajes, almacenamiento, reglas) y <b>aplicación</b> (tableros, alertas, integración con el ERP).",
+      "El <b>edge computing</b> procesa cerca del sensor para reducir latencia y ancho de banda; el <b>fog</b> es una capa intermedia (pasarelas o servidores locales); la nube concentra el análisis histórico."
+     ],
+     "u": [
+      "Monitoreo de cadena de frío, riego en fincas, medidores inteligentes de agua o energía.",
+      "Separar capas permite cambiar el sensor o la nube sin rehacer todo el sistema.",
+      "Al diseñar o evaluar una propuesta de IoT.",
+      "Dibuja las cuatro capas y decide qué se procesa en el borde y qué en la nube."
+     ]
+    },
+    {
+     "n": "Protocolos y conectividad",
+     "e": [
+      "<b>MQTT:</b> publicar/suscribir sobre TCP a través de un <i>broker</i> (puerto 1883, o 8883 con TLS); los mensajes se publican en tópicos jerárquicos como <code>finca/cafe/lote3/humedad</code>; el comodín <code>+</code> sustituye un nivel y <code>#</code> todos los niveles siguientes. Niveles de calidad: QoS 0 (a lo sumo una vez), QoS 1 (al menos una vez, puede duplicar) y QoS 2 (exactamente una vez). <b>CoAP:</b> estilo REST sobre UDP para dispositivos muy limitados.",
+      "Conectividad: corto alcance (BLE, Zigbee, Wi-Fi) o redes de área amplia y bajo consumo, <b>LPWAN</b> (LoRaWAN, NB-IoT, Sigfox), que cubren kilómetros con baterías que duran años a cambio de muy poco ancho de banda."
+     ],
+     "u": [
+      "Sensores en fincas de café o cardamomo lejos de la red eléctrica.",
+      "El protocolo y la red definen consumo, alcance, costo y seguridad.",
+      "Al elegir hardware y plataforma.",
+      "Compara alcance, consumo, ancho de banda y costo de cada opción contra el caso."
+     ],
+     "tabla": "<table><thead><tr><th>Tecnología</th><th>Alcance</th><th>Consumo</th><th>Uso típico</th></tr></thead><tbody><tr><td>BLE</td><td>Metros</td><td>Muy bajo</td><td>Wearables, balizas</td></tr><tr><td>Wi-Fi</td><td>Decenas de metros</td><td>Alto</td><td>Cámaras, oficinas</td></tr><tr><td>Zigbee</td><td>Decenas de metros (malla)</td><td>Bajo</td><td>Domótica, alumbrado</td></tr><tr><td>LoRaWAN / NB-IoT</td><td>Kilómetros</td><td>Muy bajo</td><td>Medidores, agricultura</td></tr></tbody></table>"
+    },
+    {
+     "n": "Energía y volumen de datos",
+     "e": [
+      "Un sensor de batería pasa casi todo el tiempo dormido. Su corriente promedio pondera la corriente activa y la de reposo por el tiempo en cada estado; la vida útil es la capacidad entre esa corriente.",
+      "El volumen de datos es dispositivos por mensajes por tamaño; con él se dimensiona la red, el broker y el almacenamiento."
+     ],
+     "u": [
+      "Dimensionar baterías de sensores y el almacenamiento de la plataforma.",
+      "Cambiar baterías en campo es caro; el volumen define el costo mensual de la nube.",
+      "En el diseño, antes de comprar dispositivos.",
+      "Aplica las fórmulas con datos de la hoja técnica del fabricante."
+     ],
+     "f": "\\bar I=\\frac{I_{\\text{activo}}\\,t_{\\text{activo}}+I_{\\text{reposo}}\\,t_{\\text{reposo}}}{T}\\qquad \\text{vida}=\\frac{\\text{capacidad}}{\\bar I}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una municipalidad instala sensores en las plazas de parqueo del centro; una aplicación indica a los conductores dónde hay espacio y el departamento de tránsito recibe reportes. Clasifica los elementos en los cuatro pilares del IoE.",
+     "pasos": [
+      "<b>Cosas.</b> Sensores magnéticos en cada plaza y la pasarela que los conecta.",
+      "<b>Datos.</b> Estado libre u ocupado, hora y ubicación de cada plaza.",
+      "<b>Procesos.</b> Reglas que actualizan el mapa, cobran por tiempo y generan reportes por hora pico.",
+      "<b>Personas.</b> Conductores que usan la aplicación y personal de tránsito que decide cambios de vía."
+     ],
+     "r": "Cosas: sensores y pasarela; datos: ocupación; procesos: reglas y reportes; personas: conductores y tránsito.",
+     "fin": "Ver una solución IoT como IoE, no solo como sensores."
+    },
+    {
+     "nv": "I",
+     "q": "Un sensor de nivel de un tanque de agua tiene batería de 2,400 mAh. Cada 10 minutos despierta 2 s consumiendo 20 mA para medir y transmitir; el resto del tiempo consume 0.01 mA. ¿Cuánto dura la batería?",
+     "pasos": [
+      "<b>Ciclo.</b> \\(T=600\\) s: 2 s activo y 598 s en reposo.",
+      "<b>Corriente promedio.</b> \\(\\bar I=\\frac{20(2)+0.01(598)}{600}=\\frac{45.98}{600}=0.07663\\) mA.",
+      "<b>Vida.</b> \\(\\frac{2\\,400}{0.07663}=31\\,318\\) h \\(\\approx 1\\,305\\) días."
+     ],
+     "r": "Unos 3.6 años (31,318 h), sin contar autodescarga ni temperatura.",
+     "fin": "Dimensionar la energía de un despliegue IoT."
+    },
+    {
+     "nv": "I",
+     "q": "Una distribuidora instala 500 medidores inteligentes que envían una lectura de 200 bytes cada 15 minutos. ¿Cuántos datos genera al día, al mes (30 días) y al año?",
+     "pasos": [
+      "<b>Mensajes al día por medidor.</b> \\(24\\times4=96\\).",
+      "<b>Por día.</b> \\(500\\times96\\times200=9\\,600\\,000\\) B \\(=9.6\\) MB.",
+      "<b>Mes y año.</b> \\(9.6\\times30=288\\) MB; \\(9.6\\times365=3\\,504\\) MB \\(\\approx3.5\\) GB."
+     ],
+     "r": "9.6 MB/día, 288 MB/mes y unos 3.5 GB/año (solo carga útil, sin cabeceras).",
+     "fin": "Dimensionar el almacenamiento y la red de la plataforma."
+    },
+    {
+     "nv": "I",
+     "q": "En un broker MQTT se publican los tópicos <code>finca/cafe/lote1/humedad</code>, <code>finca/cafe/lote3/humedad</code>, <code>finca/cafe/lote3/temperatura</code> y <code>finca/cardamomo/lote1/humedad</code>. ¿Qué recibe quien se suscribe a <code>finca/cafe/+/humedad</code> y quien se suscribe a <code>finca/+/lote1/humedad</code>?",
+     "pasos": [
+      "<b>Comodín +.</b> Sustituye exactamente un nivel del tópico.",
+      "<b>finca/cafe/+/humedad.</b> Coincide con lote1 y lote3 de café, solo humedad.",
+      "<b>finca/+/lote1/humedad.</b> Coincide con el lote1 de café y el de cardamomo."
+     ],
+     "r": "El primero recibe la humedad de los lotes 1 y 3 de café; el segundo, la humedad del lote 1 de café y de cardamomo.",
+     "fin": "Diseñar tópicos y suscripciones en MQTT."
+    },
+    {
+     "nv": "A",
+     "q": "El área de salud de un departamento quiere vigilar la temperatura de los refrigeradores de vacunas en 40 puestos de salud rurales, varios sin internet estable. Propón la arquitectura.",
+     "pasos": [
+      "<b>Percepción.</b> Sensor de temperatura con batería en cada refrigerador, lectura cada 5 minutos.",
+      "<b>Red.</b> LoRaWAN hacia una pasarela con enlace celular, o NB-IoT donde haya cobertura; memoria local en el sensor para reenviar si se pierde el enlace.",
+      "<b>Plataforma.</b> Broker MQTT con TLS y QoS 1 para no perder lecturas; base de series de tiempo.",
+      "<b>Borde y aplicación.</b> Regla local que activa una alarma si la temperatura sale del rango, aunque no haya internet; tablero y mensajes al responsable del puesto."
+     ],
+     "r": "Sensores LPWAN, pasarela celular, MQTT con TLS y QoS 1, alarmas locales y tablero central.",
+     "fin": "Justificar una arquitectura IoT completa ante un comité."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuáles son los cuatro pilares del internet del todo?",
+     "ops": [
+      "Personas, procesos, datos y cosas",
+      "Sensores, redes, nube y aplicaciones",
+      "Hardware, software, datos y redes",
+      "Dispositivos, protocolos, broker y tablero"
+     ],
+     "ok": 0,
+     "r": "El IoE agrega personas, procesos y datos al pilar de las cosas (IoT)."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué protocolo usa el modelo publicar/suscribir con un broker y tópicos jerárquicos?",
+     "ops": [
+      "MQTT",
+      "CoAP",
+      "HTTP",
+      "SNMP"
+     ],
+     "ok": 0,
+     "r": "MQTT funciona sobre TCP con un broker que reenvía cada mensaje publicado a los suscriptores del tópico."
+    },
+    {
+     "nv": "I",
+     "q": "Sensores de humedad repartidos en una finca de varios kilómetros, sin energía eléctrica, que deben durar años con batería. ¿Qué conectividad conviene?",
+     "ops": [
+      "Wi-Fi con repetidores",
+      "Bluetooth clásico",
+      "Fibra óptica a cada sensor",
+      "LoRaWAN u otra LPWAN"
+     ],
+     "ok": 3,
+     "r": "Las LPWAN cubren kilómetros con muy bajo consumo; el costo es un ancho de banda pequeño, suficiente para lecturas cortas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la principal ventaja de procesar datos en el borde (edge)?",
+     "ops": [
+      "Reducir la latencia y el tráfico hacia la nube",
+      "Eliminar la necesidad de seguridad",
+      "Aumentar la capacidad de la batería",
+      "Evitar el uso de protocolos"
+     ],
+     "ok": 0,
+     "r": "Procesar junto al sensor permite reaccionar al instante y enviar solo resúmenes o eventos a la nube."
+    },
+    {
+     "nv": "A",
+     "q": "Un sensor publica con MQTT QoS 1. ¿Qué garantiza ese nivel?",
+     "ops": [
+      "Que el mensaje llega exactamente una vez",
+      "Que el mensaje se envía una sola vez sin confirmación",
+      "Que el mensaje se cifra de extremo a extremo",
+      "Que el mensaje llega al menos una vez y puede duplicarse"
+     ],
+     "ok": 3,
+     "r": "QoS 1 reintenta hasta recibir confirmación (PUBACK), por eso puede haber duplicados; QoS 2 garantiza exactamente una vez y QoS 0 no confirma. El cifrado lo da TLS, no el QoS."
+    }
+   ]
+  },
+  {
+   "titulo": "Blockchain",
+   "intro": "Tema 2.3 del programa (semana 3): block chain. Cubre el encadenamiento por hash, el árbol de Merkle, los mecanismos de consenso y los tipos de cadena con sus contratos inteligentes. Los ejercicios calculan hashes reales con SHA-256, esfuerzo de prueba de trabajo, tolerancia a fallos y crecimiento de la cadena.",
+   "conceptos": [
+    {
+     "n": "Cadena de bloques y función hash",
+     "e": [
+      "Un <b>blockchain</b> es un registro distribuido de solo agregar: cada bloque guarda sus transacciones y el <b>hash del bloque anterior</b>. Una función hash criptográfica (SHA-256 produce 256 bits, 64 caracteres hexadecimales) es determinista, rápida de calcular, imposible de invertir en la práctica, y un cambio mínimo en la entrada cambia por completo la salida.",
+      "Si alguien modifica un bloque, su hash cambia y deja de coincidir con el que guarda el bloque siguiente: hay que recalcular ese bloque y todos los posteriores, y además convencer a la mayoría de la red."
+     ],
+     "u": [
+      "Trazabilidad de exportaciones (café, cardamomo), certificados académicos, registros notariales.",
+      "Da integridad verificable sin depender de una sola entidad.",
+      "Cuando varias partes que no confían plenamente entre sí comparten un registro.",
+      "Cada bloque incluye el hash del anterior; cualquiera puede recalcular y comprobar la cadena."
+     ],
+     "f": "h_i=H(\\text{datos}_i\\,\\|\\,h_{i-1})"
+    },
+    {
+     "n": "Árbol de Merkle",
+     "e": [
+      "Las transacciones de un bloque se resumen en un árbol binario de hashes: las hojas son los hashes de cada transacción y cada nodo es el hash de sus dos hijos. La <b>raíz de Merkle</b> va en la cabecera del bloque.",
+      "Para probar que una transacción está en el bloque basta con los hashes hermanos del camino a la raíz: \\(\\lceil\\log_2 n\\rceil\\) hashes en lugar de las \\(n\\) transacciones."
+     ],
+     "u": [
+      "Billeteras ligeras que verifican pagos sin descargar toda la cadena.",
+      "La prueba crece de forma logarítmica: 1,000 transacciones se verifican con 10 hashes.",
+      "Al verificar la inclusión de un registro en un bloque.",
+      "Recalcula el camino de la hoja a la raíz con los hashes hermanos y compara la raíz."
+     ],
+     "f": "\\text{prueba}=\\lceil\\log_2 n\\rceil\\ \\text{hashes}"
+    },
+    {
+     "n": "Mecanismos de consenso",
+     "e": [
+      "<b>Prueba de trabajo (PoW):</b> el minero busca un <i>nonce</i> que haga que el hash del bloque empiece con \\(k\\) ceros; en hexadecimal se esperan \\(16^k\\) intentos. <b>Prueba de participación (PoS):</b> valida quien bloquea capital como garantía; consume mucho menos energía (Ethereum migró de PoW a PoS en 2022).",
+      "<b>Tolerancia bizantina (PBFT y variantes):</b> se usa en cadenas con nodos conocidos; con \\(n\\ge 3f+1\\) nodos se toleran \\(f\\) nodos maliciosos o caídos y cada decisión necesita \\(2f+1\\) votos."
+     ],
+     "u": [
+      "Redes públicas (PoW o PoS) y consorcios de bancos o aseguradoras (BFT).",
+      "El consenso decide quién agrega el siguiente bloque sin una autoridad central.",
+      "Al elegir plataforma para un caso de negocio.",
+      "Calcula esfuerzo esperado (PoW) o nodos necesarios para tolerar fallos (BFT)."
+     ],
+     "f": "E[\\text{intentos}]=16^{k}\\qquad n\\ge 3f+1",
+     "tabla": "<table><thead><tr><th>Mecanismo</th><th>Quién valida</th><th>Ventaja</th><th>Desventaja</th></tr></thead><tbody><tr><td>PoW</td><td>Mineros con poder de cómputo</td><td>Muy probado y abierto</td><td>Alto consumo de energía, lento</td></tr><tr><td>PoS</td><td>Validadores con capital en garantía</td><td>Eficiente en energía</td><td>Riesgo de concentración</td></tr><tr><td>BFT</td><td>Nodos conocidos y autorizados</td><td>Finalidad rápida</td><td>Pocos nodos, requiere permisos</td></tr></tbody></table>"
+    },
+    {
+     "n": "Tipos de cadena y contratos inteligentes",
+     "e": [
+      "<b>Pública</b> (cualquiera participa: Bitcoin, Ethereum), <b>privada</b> (una organización controla los nodos) y de <b>consorcio</b> o permisionada (varias organizaciones, por ejemplo con Hyperledger Fabric).",
+      "Un <b>contrato inteligente</b> es código almacenado en la cadena que se ejecuta automáticamente cuando se cumplen condiciones: liberar un pago al confirmar la entrega, emitir un certificado al aprobar un curso. Blockchain no es la solución si una sola entidad confiable puede llevar el registro en una base de datos."
+     ],
+     "u": [
+      "Consorcios de exportadores, bancos o universidades que comparten registros.",
+      "Elegir mal el tipo de cadena encarece el proyecto o expone datos.",
+      "Al evaluar si blockchain aporta algo frente a una base de datos.",
+      "Pregunta: ¿varias partes escriben?, ¿desconfían entre sí?, ¿se necesita auditoría inmutable? Si no, usa una base de datos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula el SHA-256 de <code>Q500 de Ana a Luis</code> y de <code>Q900 de Ana a Luis</code> (primeros 16 caracteres). ¿Qué propiedad muestra el resultado?",
+     "pasos": [
+      "<b>Primer texto.</b> SHA-256 = <code>e6f84729ba0a5b1b…</code>",
+      "<b>Segundo texto.</b> Solo cambió un dígito: SHA-256 = <code>ed0c3af8b2bc188f…</code>",
+      "<b>Propiedad.</b> Efecto avalancha: un cambio mínimo produce un hash totalmente distinto, imposible de predecir."
+     ],
+     "r": "Hashes completamente diferentes; cualquier alteración se detecta al recalcular.",
+     "fin": "Entender por qué el hash protege la integridad."
+    },
+    {
+     "nv": "I",
+     "q": "Un bloque tiene 8 transacciones. ¿Cuántos hashes forman el árbol de Merkle y cuántos se necesitan para probar que una transacción está incluida? ¿Y con 1,000 transacciones?",
+     "pasos": [
+      "<b>Árbol de 8 hojas.</b> \\(8+4+2+1=15\\) hashes.",
+      "<b>Prueba.</b> Un hermano por nivel: \\(\\log_2 8=3\\) hashes (96 bytes).",
+      "<b>1,000 transacciones.</b> \\(\\lceil\\log_2 1\\,000\\rceil=10\\) hashes \\(=320\\) bytes en lugar de las 1,000 transacciones."
+     ],
+     "r": "15 hashes y prueba de 3; con 1,000 transacciones la prueba es de 10 hashes.",
+     "fin": "Comprender la verificación ligera de transacciones."
+    },
+    {
+     "nv": "I",
+     "q": "Una red PoW exige que el hash comience con 5 ceros hexadecimales y un equipo calcula 2 millones de hashes por segundo. ¿Tiempo esperado? ¿Y con 8 ceros?",
+     "pasos": [
+      "<b>Intentos con 5 ceros.</b> \\(16^5=1\\,048\\,576\\); tiempo \\(=1\\,048\\,576/2\\times10^6=0.52\\) s.",
+      "<b>Intentos con 8 ceros.</b> \\(16^8=4\\,294\\,967\\,296\\); tiempo \\(=2\\,147\\) s \\(\\approx35.8\\) min.",
+      "<b>Conclusión.</b> Cada cero adicional multiplica el esfuerzo por 16: así la red ajusta la dificultad."
+     ],
+     "r": "0.52 s con 5 ceros y unos 35.8 minutos con 8 ceros.",
+     "fin": "Cuantificar el costo de la prueba de trabajo."
+    },
+    {
+     "nv": "A",
+     "q": "Mina un bloque de juguete: busca el menor nonce entero tal que SHA-256 de <code>bloque 42|d60f7dbd1f6229e9|</code> seguido del nonce comience con <code>000</code>.",
+     "pasos": [
+      "<b>Esfuerzo esperado.</b> \\(16^3=4\\,096\\) intentos en promedio.",
+      "<b>Búsqueda.</b> Se prueba nonce = 0, 1, 2, … calculando cada hash; con nonce 7533 el hash empieza con <code>ede2…</code>, aún no sirve.",
+      "<b>Solución.</b> Con nonce 7534 el hash es <code>000e736be9832a7d…</code>.",
+      "<b>Verificación.</b> Cualquier nodo recalcula un solo hash para comprobarlo: buscar es caro, verificar es barato."
+     ],
+     "r": "Nonce 7534 (7,535 intentos, cerca de lo esperado).",
+     "fin": "Ver en práctica la asimetría de la prueba de trabajo."
+    },
+    {
+     "nv": "I",
+     "q": "Siete bancos forman una cadena de consorcio con consenso BFT. ¿Cuántos nodos fallidos o maliciosos tolera y cuántos votos necesita cada bloque? ¿Cuántos nodos harían falta para tolerar 3?",
+     "pasos": [
+      "<b>Tolerancia.</b> \\(f=\\lfloor (n-1)/3\\rfloor=\\lfloor 6/3\\rfloor=2\\).",
+      "<b>Quórum.</b> \\(2f+1=5\\) votos.",
+      "<b>Para \\(f=3\\).</b> \\(n\\ge3(3)+1=10\\) nodos."
+     ],
+     "r": "Tolera 2, necesita 5 votos; para tolerar 3 se requieren 10 bancos.",
+     "fin": "Dimensionar una red permisionada."
+    },
+    {
+     "nv": "B",
+     "q": "En una cadena de 6 bloques alguien modifica una transacción del bloque 3. ¿Qué bloques hay que recalcular para que la cadena vuelva a ser coherente?",
+     "r": "Los bloques 3, 4, 5 y 6 (4 bloques), porque cada uno guarda el hash del anterior."
+    },
+    {
+     "nv": "I",
+     "q": "Un bloque contiene 16 transacciones. ¿Cuántos hashes tiene su árbol de Merkle y de cuántos hashes es la prueba de inclusión?",
+     "r": "\\(16+8+4+2+1=31\\) hashes; la prueba tiene \\(\\log_2 16=4\\) hashes (128 bytes)."
+    },
+    {
+     "nv": "I",
+     "q": "Con dificultad de 6 ceros hexadecimales, ¿cuántos intentos se esperan y cuánto tarda un equipo de 50 millones de hashes por segundo?",
+     "r": "\\(16^6=16\\,777\\,216\\) intentos; \\(16\\,777\\,216/5\\times10^7\\approx0.34\\) s."
+    },
+    {
+     "nv": "A",
+     "q": "Un consorcio quiere tolerar 4 nodos maliciosos con BFT. ¿Cuántos nodos necesita como mínimo y cuántos votos requiere cada decisión?",
+     "r": "\\(n=3(4)+1=13\\) nodos y \\(2f+1=9\\) votos."
+    },
+    {
+     "nv": "A",
+     "q": "Una cadena privada para registrar trámites genera un bloque cada 5 s de 2 KB en promedio. ¿Cuántos bloques y cuánto almacenamiento suma en un año?",
+     "r": "\\(365\\times86\\,400/5=6\\,307\\,200\\) bloques; \\(\\times2\\) KB \\(\\approx12.6\\) GB por año en cada nodo."
+    }
+   ]
+  },
+  {
+   "titulo": "Virtualización, servicios en la nube, serverless e hiperconvergencia",
+   "intro": "Temas 3.1 a 3.3 del programa (semanas 4 y 5): virtualización de servidores, cloud services, server less e infraestructura hiperconvergente (el programa numera dos temas como 3.3). Los cálculos son consolidación de servidores, disponibilidad de servicio, costo de funciones serverless y capacidad útil de un clúster hiperconvergente.",
+   "conceptos": [
+    {
+     "n": "Virtualización de servidores",
+     "e": [
+      "Un <b>hipervisor</b> reparte el hardware entre máquinas virtuales aisladas. <b>Tipo 1</b> (nativo, sobre el hardware): VMware ESXi, Microsoft Hyper-V, KVM, Proxmox VE. <b>Tipo 2</b> (sobre un sistema operativo): VirtualBox, VMware Workstation. Los <b>contenedores</b> (Docker) comparten el kernel del anfitrión: arrancan en segundos y pesan menos, pero aíslan menos que una VM.",
+      "La <b>consolidación</b> reemplaza muchos servidores subutilizados por pocos anfitriones; se dimensiona por CPU y RAM dejando margen (por ejemplo, 70 % de uso máximo) y un anfitrión de reserva (N+1) para mover las VM si uno falla."
+     ],
+     "u": [
+      "Centros de datos de instituciones públicas y bancos con decenas de servidores físicos.",
+      "Reduce espacio, energía y licencias; facilita respaldos y migraciones en caliente.",
+      "Al renovar hardware o consolidar un centro de datos.",
+      "Suma la demanda real de CPU y RAM, divide entre la capacidad útil por anfitrión y agrega N+1."
+     ],
+     "f": "\\text{hosts}=\\left\\lceil\\max\\left(\\frac{\\sum \\text{CPU}}{\\text{CPU}_{\\text{host}}\\,u},\\frac{\\sum \\text{RAM}}{\\text{RAM}_{\\text{host}}\\,u}\\right)\\right\\rceil+1"
+    },
+    {
+     "n": "Servicios en la nube y disponibilidad",
+     "e": [
+      "Según NIST, la nube tiene cinco características: autoservicio bajo demanda, acceso amplio por red, agrupación de recursos, elasticidad rápida y servicio medido. Modelos de servicio: <b>IaaS</b> (máquinas y redes virtuales), <b>PaaS</b> (plataforma para desplegar código y bases de datos administradas) y <b>SaaS</b> (aplicación lista, como correo o CRM). Despliegue: pública, privada, comunitaria o híbrida.",
+      "El acuerdo de nivel de servicio (SLA) fija la <b>disponibilidad</b>. Componentes en serie multiplican disponibilidades; componentes redundantes en paralelo multiplican indisponibilidades: \\(A_{\\text{par}}=1-\\prod(1-A_i)\\)."
+     ],
+     "u": [
+      "Contratar correo, ERP o servidores en la nube; negociar SLA con un proveedor.",
+      "Un 99.9 % permite casi 9 horas de caída al año; la diferencia importa en servicios críticos.",
+      "Al diseñar arquitectura o revisar un contrato.",
+      "Multiplica disponibilidades en serie, combina redundancias en paralelo y convierte a horas al año."
+     ],
+     "f": "A=\\frac{MTBF}{MTBF+MTTR}\\qquad A_{\\text{serie}}=\\prod A_i\\qquad \\text{caída}=(1-A)\\cdot 8\\,760\\ \\text{h}"
+    },
+    {
+     "n": "Serverless (funciones como servicio)",
+     "e": [
+      "En <b>serverless</b> el desarrollador sube funciones (AWS Lambda, Azure Functions, Google Cloud Functions) que se ejecutan ante eventos (una petición HTTP, un archivo subido, un mensaje). No se administran servidores, escala a cero y se paga por invocación y por memoria por tiempo (GB-segundo).",
+      "Desventajas: <b>arranque en frío</b> (latencia en la primera invocación), límites de tiempo de ejecución, dependencia del proveedor y costo que crece con el tráfico. Conviene para cargas intermitentes; con tráfico alto y constante suele salir más barata una VM o un contenedor."
+     ],
+     "u": [
+      "APIs con tráfico variable, procesamiento de archivos, tareas programadas.",
+      "Paga solo lo usado y elimina la administración de servidores.",
+      "Cuando la carga es irregular o el equipo de operaciones es pequeño.",
+      "Estima invocaciones, duración y memoria; compara contra el costo fijo de una VM."
+     ],
+     "f": "C=N\\,p_{\\text{req}}+N\\,t\\,m\\,p_{\\text{GB-s}}"
+    },
+    {
+     "n": "Infraestructura hiperconvergente (HCI)",
+     "e": [
+      "La <b>HCI</b> integra cómputo, almacenamiento y red en nodos x86 iguales administrados por software; el almacenamiento definido por software replica cada dato en varios nodos (<b>factor de replicación</b> RF2 o RF3). Crece agregando nodos. Ejemplos: Nutanix, VMware vSAN, Azure Stack HCI y Proxmox con Ceph.",
+      "La capacidad útil es la bruta entre el factor de replicación; para seguir protegido cuando falla un nodo se reserva la capacidad de un nodo (N+1)."
+     ],
+     "u": [
+      "Renovar el centro de datos sin SAN dedicada; sucursales; nube privada.",
+      "Simplifica la operación y escala por bloques.",
+      "Al comparar HCI contra arquitectura tradicional de tres capas (servidores, SAN y red de almacenamiento).",
+      "Calcula capacidad útil con RF y con un nodo de reserva antes de cotizar."
+     ],
+     "f": "C_{\\text{útil}}=\\frac{(N-1)\\,c}{RF}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "I",
+     "q": "Una municipalidad tiene 30 servidores físicos; cada uno usa en promedio 2.4 núcleos y 12 GB de RAM. Quiere consolidarlos en anfitriones de 32 núcleos y 384 GB, sin pasar de 70 % de uso, con un anfitrión de reserva. ¿Cuántos anfitriones compra y cuál es la razón de consolidación?",
+     "pasos": [
+      "<b>Demanda.</b> CPU \\(30\\times2.4=72\\) núcleos; RAM \\(30\\times12=360\\) GB.",
+      "<b>Capacidad útil por anfitrión.</b> \\(32\\times0.7=22.4\\) núcleos; \\(384\\times0.7=268.8\\) GB.",
+      "<b>Anfitriones.</b> CPU \\(72/22.4=3.21\\to4\\); RAM \\(360/268.8=1.34\\to2\\). Manda la CPU: 4.",
+      "<b>Reserva N+1.</b> \\(4+1=5\\) anfitriones; razón de consolidación \\(30:4=7.5:1\\)."
+     ],
+     "r": "5 anfitriones (4 + 1 de reserva); consolidación 7.5:1.",
+     "fin": "Dimensionar un proyecto de virtualización."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema de trámites en línea tiene servidor web (99.9 %), servidor de aplicaciones (99.95 %) y base de datos PostgreSQL (99.9 %) en serie. ¿Disponibilidad y horas de caída al año? ¿Qué pasa si se replica la base de datos en dos servidores?",
+     "pasos": [
+      "<b>Serie.</b> \\(0.999\\times0.9995\\times0.999=0.99750\\); caída \\((1-0.99750)\\times8\\,760=21.9\\) h/año.",
+      "<b>Base replicada.</b> \\(1-(0.001)^2=0.999999\\).",
+      "<b>Nueva serie.</b> \\(0.999\\times0.9995\\times0.999999=0.99850\\); caída \\(13.1\\) h/año."
+     ],
+     "r": "99.75 % (21.9 h/año); con la base replicada, 99.85 % (13.1 h/año).",
+     "fin": "Calcular la disponibilidad de un servicio y justificar redundancia."
+    },
+    {
+     "nv": "I",
+     "q": "La app de consulta de saldos de una cooperativa recibe 3 millones de peticiones al mes; cada función dura 200 ms con 512 MB. Con precios de referencia de US$0.20 por millón de peticiones y US$0.0000166667 por GB-s, sin capa gratuita y a Q7.75 por dólar, ¿cuánto cuesta al mes?",
+     "pasos": [
+      "<b>GB-s.</b> \\(3\\times10^6\\times0.2\\times0.5=300\\,000\\) GB-s; costo \\(300\\,000\\times0.0000166667=\\$5.00\\).",
+      "<b>Peticiones.</b> \\(3\\times0.20=\\$0.60\\).",
+      "<b>Total.</b> \\(\\$5.60\\times7.75=Q43.40\\) al mes."
+     ],
+     "r": "US$5.60, unos Q43.40 al mes (precios supuestos; verificar la tarifa vigente del proveedor).",
+     "fin": "Estimar el costo de una arquitectura serverless."
+    },
+    {
+     "nv": "A",
+     "q": "Un clúster hiperconvergente tiene 4 nodos de 20 TB brutos cada uno. ¿Capacidad útil con RF2 y con RF3, con y sin reserva de un nodo?",
+     "pasos": [
+      "<b>RF2.</b> Sin reserva \\(80/2=40\\) TB; con N+1 \\(60/2=30\\) TB.",
+      "<b>RF3.</b> Sin reserva \\(80/3=26.7\\) TB; con N+1 \\(60/3=20\\) TB.",
+      "<b>Decisión.</b> RF3 tolera dos fallas simultáneas pero entrega la mitad de capacidad que RF2 con N+1 (20 contra 30 TB)."
+     ],
+     "r": "RF2: 40 TB (30 con N+1). RF3: 26.7 TB (20 con N+1).",
+     "fin": "Cotizar HCI con la capacidad que realmente se podrá usar."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica como IaaS, PaaS o SaaS e indica quién parcha el sistema operativo: (a) correo institucional en Microsoft 365 o Google Workspace; (b) VM Linux en la nube con un sistema PHP; (c) base de datos PostgreSQL administrada por el proveedor.",
+     "pasos": [
+      "<b>(a)</b> SaaS: el proveedor administra todo; la institución gestiona usuarios y datos.",
+      "<b>(b)</b> IaaS: el cliente parcha el sistema operativo, PHP y la aplicación.",
+      "<b>(c)</b> PaaS: el proveedor parcha el sistema y el motor; el cliente gestiona esquemas, accesos y datos."
+     ],
+     "r": "SaaS, IaaS y PaaS; solo en IaaS el cliente parcha el sistema operativo.",
+     "fin": "Aplicar el modelo de responsabilidad compartida."
+    },
+    {
+     "nv": "B",
+     "q": "Un SLA promete 99.95 %. ¿Cuántos minutos de caída permite en un mes de 30 días y cuántas horas al año?",
+     "r": "\\(0.0005\\times720\\times60=21.6\\) min al mes; \\(0.0005\\times8\\,760=4.38\\) h al año."
+    },
+    {
+     "nv": "I",
+     "q": "Un servidor tiene MTBF de 2,000 h y MTTR de 4 h. ¿Disponibilidad y horas de caída al año?",
+     "r": "\\(A=2\\,000/2\\,004=99.80\\,\\%\\); caída \\(\\approx17.5\\) h/año."
+    },
+    {
+     "nv": "I",
+     "q": "Dos servidores web de 99 % cada uno trabajan en paralelo detrás de un balanceador de 99.9 %. ¿Disponibilidad del conjunto?",
+     "r": "\\([1-(0.01)^2]\\times0.999=0.9999\\times0.999=0.99890\\), es decir 99.89 % (unas 9.6 h de caída al año)."
+    },
+    {
+     "nv": "A",
+     "q": "Con los datos de la cooperativa (200 ms, 512 MB y los mismos precios), ¿con cuántas peticiones al mes el costo serverless iguala a una VM de Q600 mensuales?",
+     "r": "Costo por petición: \\(0.20\\times10^{-6}+0.2\\times0.5\\times0.0000166667=\\$1.867\\times10^{-6}=Q1.447\\times10^{-5}\\). Equilibrio: \\(600/1.447\\times10^{-5}\\approx41.5\\) millones de peticiones al mes."
+    },
+    {
+     "nv": "A",
+     "q": "Un clúster HCI de 6 nodos de 15.36 TB usa RF3 y reserva un nodo. ¿Capacidad útil?",
+     "r": "\\((6-1)\\times15.36/3=25.6\\) TB."
+    }
+   ]
+  },
+  {
+   "titulo": "Bases de datos no relacionales, big data y data warehouses",
+   "intro": "Temas 4.1 a 4.3 del programa: bases de datos no relacionales, big data y data warehouses. Complementa a Administración de TI, que ya presenta ETL, OLAP y minería de datos: aquí se trabaja la elección del tipo de base NoSQL, la consistencia por quórum, el almacenamiento distribuido, MapReduce y el diseño dimensional del almacén.",
+   "conceptos": [
+    {
+     "n": "Bases de datos NoSQL y teorema CAP",
+     "e": [
+      "Cuatro familias: <b>clave-valor</b> (Redis), <b>documentos</b> (MongoDB, documentos JSON con esquema flexible), <b>columnas anchas</b> (Cassandra, HBase: escrituras masivas y series de tiempo) y <b>grafos</b> (Neo4j: relaciones entre entidades). Suelen preferir el modelo <b>BASE</b> (básicamente disponible, estado blando, consistencia eventual) frente a ACID.",
+      "El <b>teorema CAP</b>: ante una partición de red, un sistema distribuido debe elegir entre consistencia y disponibilidad."
+     ],
+     "u": [
+      "Catálogos con atributos variables, sesiones, telemetría IoT, detección de fraude.",
+      "Escalan horizontalmente y se adaptan a datos que no encajan en tablas.",
+      "Cuando el volumen, la velocidad o la forma de los datos supera lo práctico en un modelo relacional.",
+      "Elige la familia según el patrón de acceso, no por moda; mantén lo transaccional en PostgreSQL o MySQL."
+     ],
+     "tabla": "<table><thead><tr><th>Familia</th><th>Ejemplo</th><th>Mejor para</th></tr></thead><tbody><tr><td>Clave-valor</td><td>Redis</td><td>Sesiones, caché, carritos</td></tr><tr><td>Documentos</td><td>MongoDB</td><td>Catálogos, perfiles, contenido</td></tr><tr><td>Columnas anchas</td><td>Cassandra</td><td>Series de tiempo, escrituras masivas</td></tr><tr><td>Grafos</td><td>Neo4j</td><td>Redes de relaciones, fraude, rutas</td></tr></tbody></table>"
+    },
+    {
+     "n": "Replicación y quórum",
+     "e": [
+      "En bases distribuidas como Cassandra cada dato tiene \\(N\\) réplicas. Una escritura se confirma cuando \\(W\\) réplicas responden y una lectura consulta \\(R\\) réplicas. Si \\(R+W>N\\), toda lectura toca al menos una réplica con la última escritura: <b>consistencia fuerte</b>; si no, consistencia eventual.",
+      "Una escritura sigue funcionando con hasta \\(N-W\\) réplicas caídas, y una lectura con hasta \\(N-R\\)."
+     ],
+     "u": [
+      "Configurar niveles de consistencia en Cassandra, DynamoDB o MongoDB.",
+      "Equilibra consistencia, latencia y tolerancia a fallos.",
+      "Al definir requisitos de un sistema distribuido.",
+      "Elige W y R según qué operación debe ser más rápida o más segura."
+     ],
+     "f": "R+W>N\\ \\Rightarrow\\ \\text{consistencia fuerte}"
+    },
+    {
+     "n": "Big data: Hadoop, MapReduce y Spark",
+     "e": [
+      "Big data se describe con las <b>V</b>: volumen, velocidad, variedad, veracidad y valor. <b>HDFS</b> divide archivos en bloques (128 MB por defecto) y replica cada bloque, normalmente 3 veces. <b>MapReduce</b>: la fase <i>map</i> emite pares clave-valor, el <i>shuffle</i> agrupa por clave y la fase <i>reduce</i> agrega cada grupo. <b>Spark</b> procesa en memoria y suele ser mucho más rápido en análisis iterativo."
+     ],
+     "u": [
+      "Análisis de bitácoras, redes sociales, transacciones o telemetría a gran escala.",
+      "Permite procesar datos que no caben en un solo servidor.",
+      "Cuando el volumen o la velocidad superan a una base tradicional.",
+      "Calcula bloques y almacenamiento bruto; expresa el análisis como map y reduce."
+     ],
+     "f": "\\text{bloques}=\\left\\lceil\\frac{\\text{tamaño}}{128\\ \\text{MB}}\\right\\rceil\\qquad \\text{bruto}=\\text{datos}\\times\\text{replicación}"
+    },
+    {
+     "n": "Data warehouse y modelo dimensional",
+     "e": [
+      "Un <b>data warehouse</b> integra datos históricos para análisis. Kimball lo construye de abajo hacia arriba con <b>modelos dimensionales</b> (data marts conformados); Inmon, de arriba hacia abajo con un almacén corporativo normalizado. En el <b>esquema estrella</b> una tabla de <b>hechos</b> (medidas numéricas: cantidad, monto) se rodea de <b>dimensiones</b> (fecha, producto, tienda, cliente); el copo de nieve normaliza las dimensiones.",
+      "Primero se declara la <b>granularidad</b> (qué representa una fila de hechos). Las <b>dimensiones lentamente cambiantes</b> (SCD) conservan historia: tipo 1 sobrescribe, tipo 2 agrega una fila nueva con vigencia."
+     ],
+     "u": [
+      "Reportes gerenciales de ventas, recaudación o atención de pacientes.",
+      "Un buen modelo dimensional hace las consultas simples y rápidas.",
+      "Al diseñar un almacén o un data mart.",
+      "Declara granularidad, dimensiones y medidas; estima el tamaño de la tabla de hechos."
+     ],
+     "f": "\\text{tamaño}_{\\text{hechos}}=\\text{filas}\\times\\text{bytes por fila}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Elige el tipo de base NoSQL: (a) carrito de compras de una tienda en línea; (b) catálogo de ferretería con atributos distintos por producto; (c) red de transferencias para detectar cuentas mula; (d) lecturas de 10,000 medidores cada minuto.",
+     "pasos": [
+      "<b>(a)</b> Clave-valor: acceso por identificador de sesión, muy rápido.",
+      "<b>(b)</b> Documentos: cada producto es un JSON con sus propios atributos.",
+      "<b>(c)</b> Grafos: el fraude aparece en las relaciones entre cuentas.",
+      "<b>(d)</b> Columnas anchas: escrituras masivas ordenadas por tiempo."
+     ],
+     "r": "Clave-valor, documentos, grafos y columnas anchas.",
+     "fin": "Elegir la tecnología por el patrón de acceso."
+    },
+    {
+     "nv": "I",
+     "q": "Cassandra con N = 3. Analiza (W = 2, R = 2) y (W = 1, R = 1). Si N = 5 y R = 2, ¿qué W mínimo da consistencia fuerte?",
+     "pasos": [
+      "<b>W=2, R=2.</b> \\(4>3\\): fuerte; tolera 1 réplica caída en lectura y en escritura.",
+      "<b>W=1, R=1.</b> \\(2\\le3\\): eventual, pero tolera 2 caídas y responde más rápido.",
+      "<b>N=5, R=2.</b> \\(W>3\\Rightarrow W=4\\); la escritura tolera 1 caída y la lectura 3."
+     ],
+     "r": "(2,2) fuerte; (1,1) eventual; con N = 5 y R = 2 se necesita W = 4.",
+     "fin": "Configurar consistencia en una base distribuida."
+    },
+    {
+     "nv": "I",
+     "q": "Se cargan a HDFS 10 GB de bitácoras de un portal de pagos, con bloques de 128 MB y replicación 3. ¿Cuántos bloques y réplicas, y cuánto espacio bruto ocupa?",
+     "pasos": [
+      "<b>Bloques.</b> \\(10\\times1\\,024/128=80\\).",
+      "<b>Réplicas.</b> \\(80\\times3=240\\) bloques almacenados.",
+      "<b>Espacio bruto.</b> \\(10\\times3=30\\) GB."
+     ],
+     "r": "80 bloques, 240 réplicas y 30 GB brutos.",
+     "fin": "Dimensionar un clúster Hadoop."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica MapReduce para contar palabras en tres mensajes: <code>pago iva sat</code>, <code>sat agencia virtual</code>, <code>pago en linea sat</code>.",
+     "pasos": [
+      "<b>Map.</b> Cada palabra emite (palabra, 1): (pago,1) (iva,1) (sat,1) (sat,1) (agencia,1) (virtual,1) (pago,1) (en,1) (linea,1) (sat,1).",
+      "<b>Shuffle.</b> Agrupa por clave: sat → [1,1,1], pago → [1,1], iva → [1], agencia → [1], virtual → [1], en → [1], linea → [1].",
+      "<b>Reduce.</b> Suma cada lista."
+     ],
+     "r": "sat 3, pago 2, iva 1, agencia 1, virtual 1, en 1, linea 1.",
+     "fin": "Expresar un análisis masivo en el modelo MapReduce."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña el esquema estrella de ventas de una cadena de 40 ferreterías que registra en promedio 1,500 líneas de factura por tienda al día. Estima el tamaño anual de la tabla de hechos con filas de 60 bytes. Una línea vale Q112 con IVA: ¿qué medidas guarda?",
+     "pasos": [
+      "<b>Granularidad.</b> Una fila por línea de factura.",
+      "<b>Dimensiones.</b> Fecha, producto, tienda, cliente y vendedor. <b>Medidas.</b> Cantidad, monto sin IVA e IVA.",
+      "<b>IVA.</b> \\(112/1.12=Q100\\) sin IVA y \\(Q12\\) de IVA; se guardan por separado para reportes fiscales.",
+      "<b>Tamaño.</b> \\(40\\times1\\,500\\times365=21\\,900\\,000\\) filas; \\(\\times60\\) B \\(=1.31\\) GB al año."
+     ],
+     "r": "Estrella con hechos por línea de factura y 5 dimensiones; unos 21.9 millones de filas y 1.31 GB por año.",
+     "fin": "Diseñar y dimensionar un data mart."
+    },
+    {
+     "nv": "B",
+     "q": "Con N = 3, W = 3 y R = 1, ¿hay consistencia fuerte? ¿Cuántas réplicas caídas tolera la escritura?",
+     "r": "Sí, \\(1+3=4>3\\). La escritura no tolera ninguna caída (\\(N-W=0\\)); la lectura tolera 2."
+    },
+    {
+     "nv": "I",
+     "q": "Se carga 1 TB (1,048,576 MB) a HDFS con bloques de 128 MB y replicación 3. ¿Cuántos bloques y réplicas?",
+     "r": "\\(1\\,048\\,576/128=8\\,192\\) bloques y \\(8\\,192\\times3=24\\,576\\) réplicas (3 TB brutos)."
+    },
+    {
+     "nv": "I",
+     "q": "Una tabla de hechos registra 2.5 millones de transacciones al mes con filas de 48 bytes. ¿Tamaño en un año?",
+     "r": "\\(2.5\\times10^6\\times12=30\\) millones de filas; \\(\\times48\\) B \\(=1.44\\) GB."
+    },
+    {
+     "nv": "A",
+     "q": "Map emite (tienda, monto) de estas ventas: (Xela, 1200), (Zona 1, 800), (Xela, 300), (Cobán, 450), (Zona 1, 950), (Cobán, 150). ¿Qué produce reduce si suma por tienda?",
+     "r": "Xela Q1,500; Zona 1 Q1,750; Cobán Q600."
+    },
+    {
+     "nv": "A",
+     "q": "Un cliente de la dimensión cliente se muda de municipio dos veces. Con SCD tipo 2, ¿cuántas filas tiene en la dimensión y cómo se distingue la vigente? ¿Y con tipo 1?",
+     "r": "Tipo 2: 3 filas con fechas de vigencia y un indicador de fila actual; los hechos antiguos siguen apuntando a la fila de su época. Tipo 1: 1 fila sobrescrita, sin historia."
+    }
+   ]
+  },
+  {
+   "titulo": "Desarrollo con Ionic, Angular y Node.js",
+   "intro": "Temas 5.1 a 5.3 del programa: Ionic2, Angular Js y Node js. El programa escribe «Angular Js», pero Ionic 2 se construye sobre Angular 2 en adelante; por eso se explican ambas generaciones y se señala la diferencia. Los ejercicios trazan el ciclo de eventos de Node y construyen piezas mínimas de cada tecnología.",
+   "conceptos": [
+    {
+     "n": "Node.js y el ciclo de eventos",
+     "e": [
+      "<b>Node.js</b> ejecuta JavaScript en el servidor sobre el motor V8. Usa un solo hilo principal con un <b>ciclo de eventos</b> y E/S no bloqueante (libuv): mientras espera la base de datos o el disco atiende otras peticiones. Paquetes con <b>npm</b>; el framework web más común es <b>Express</b>.",
+      "Orden de ejecución: primero el código síncrono; luego las microtareas (promesas, <code>process.nextTick</code> antes que ellas); después las tareas como <code>setTimeout</code>. Un cálculo pesado síncrono bloquea a todos los usuarios: se mueve a <code>worker_threads</code> o a otro servicio."
+     ],
+     "u": [
+      "APIs REST, tiempo real (chat, notificaciones), backend de apps móviles.",
+      "Atiende muchas conexiones concurrentes con pocos recursos si la carga es de E/S.",
+      "Para servicios de E/S intensiva; no para cálculo intensivo en el hilo principal.",
+      "Usa funciones asíncronas (<code>async/await</code>) y nunca bloquees el ciclo de eventos."
+     ]
+    },
+    {
+     "n": "AngularJS y Angular",
+     "e": [
+      "<b>AngularJS</b> (versión 1.x, de Google) usa JavaScript, controladores y <code>$scope</code>; su soporte terminó el 31 de diciembre de 2021. <b>Angular</b> (versión 2 en adelante, publicada en 2016) es una reescritura con <b>TypeScript</b>, <b>componentes</b>, <b>servicios</b> con inyección de dependencias, módulos, enrutador, RxJS y la herramienta Angular CLI.",
+      "Enlace de datos en plantillas de Angular: interpolación <code>{{ valor }}</code>, propiedad <code>[src]=\"url\"</code>, evento <code>(click)=\"guardar()\"</code> y doble vía <code>[(ngModel)]=\"precio\"</code>."
+     ],
+     "u": [
+      "Aplicaciones web de una sola página (SPA): portales de autogestión, sistemas internos.",
+      "Estructura el frontend en componentes reutilizables y probables.",
+      "Al construir frontends grandes con equipos de varios desarrolladores.",
+      "Crea componentes con Angular CLI, pon la lógica de datos en servicios y conecta con la API por HttpClient."
+     ]
+    },
+    {
+     "n": "Ionic y aplicaciones híbridas",
+     "e": [
+      "<b>Ionic</b> construye apps móviles y de escritorio con HTML, CSS y JavaScript/TypeScript y una biblioteca de componentes de interfaz con aspecto nativo. Ionic 2 se basó en Angular 2; las versiones recientes funcionan con Angular, React o Vue. La app corre en un <i>WebView</i> y accede a cámara, GPS o notificaciones mediante <b>Capacitor</b> (o el anterior Cordova).",
+      "Frente a lo nativo (Kotlin, Swift): un solo código para Android, iOS y web (PWA), menos costo; a cambio, menor rendimiento en gráficos intensivos."
+     ],
+     "u": [
+      "Apps de cooperativas, comercios o instituciones que necesitan Android e iOS con un equipo web.",
+      "Reduce el costo y el tiempo frente a dos desarrollos nativos.",
+      "Cuando la app es de formularios, consultas y servicios, no un juego 3D.",
+      "Crea el proyecto con Ionic CLI, agrega plataformas con Capacitor y consume la API de Node."
+     ],
+     "tabla": "<table><thead><tr><th>Enfoque</th><th>Código</th><th>Rendimiento</th><th>Costo</th></tr></thead><tbody><tr><td>Nativo</td><td>Uno por plataforma</td><td>Máximo</td><td>Alto</td></tr><tr><td>Híbrido (Ionic + Capacitor)</td><td>Uno compartido</td><td>Bueno para apps de negocio</td><td>Medio</td></tr><tr><td>PWA</td><td>Web instalable</td><td>Limitado por el navegador</td><td>Bajo</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué imprime este código en Node.js?<br><code>console.log('A');<br>setTimeout(() =&gt; console.log('B'), 0);<br>Promise.resolve().then(() =&gt; console.log('C'));<br>console.log('D');</code>",
+     "pasos": [
+      "<b>Síncrono.</b> Se imprimen A y D en orden.",
+      "<b>Microtareas.</b> Al vaciarse la pila corre la promesa: C.",
+      "<b>Tareas.</b> Después el temporizador, aunque sea de 0 ms: B."
+     ],
+     "r": "A, D, C, B.",
+     "fin": "Entender el ciclo de eventos para evitar errores de orden."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe con Express una ruta que devuelva en JSON un contribuyente por NIT desde PostgreSQL, sin bloquear el ciclo de eventos.",
+     "pasos": [
+      "<b>Ruta.</b> <code>app.get('/api/contribuyentes/:nit', async (req, res) =&gt; {</code>",
+      "<b>Consulta parametrizada.</b> <code>const r = await pool.query('SELECT nit, nombre FROM contribuyente WHERE nit = $1', [req.params.nit]);</code>",
+      "<b>Respuesta.</b> <code>if (!r.rows.length) return res.status(404).json({error: 'No existe'});<br>res.json(r.rows[0]); });</code>"
+     ],
+     "r": "Ruta asíncrona con consulta parametrizada (evita inyección SQL) y códigos 200 o 404.",
+     "fin": "Construir una API REST mínima en Node."
+    },
+    {
+     "nv": "I",
+     "q": "En Angular, crea un componente donde el usuario escriba un precio sin IVA y vea el total con IVA de 12 %. ¿Qué muestra para Q250?",
+     "pasos": [
+      "<b>Componente.</b> <code>export class IvaComponent { precio = 0; get total() { return this.precio * 1.12; } }</code>",
+      "<b>Plantilla.</b> <code>&lt;input type='number' [(ngModel)]='precio'&gt;<br>&lt;p&gt;Total: Q{{ total }}&lt;/p&gt;</code>",
+      "<b>Prueba.</b> \\(250\\times1.12=280\\); el IVA es \\(Q30\\)."
+     ],
+     "r": "Enlace de doble vía con ngModel; para Q250 muestra Total: Q280.",
+     "fin": "Aplicar el enlace de datos de Angular."
+    },
+    {
+     "nv": "A",
+     "q": "Un endpoint de Node genera un reporte que ocupa 50 ms de CPU síncrona por petición. ¿Cuántas peticiones por segundo atiende como máximo un proceso y cómo se mejora?",
+     "pasos": [
+      "<b>Límite.</b> El hilo principal queda ocupado 50 ms por petición: \\(1\\,000/50=20\\) peticiones/s, y todas las demás rutas esperan.",
+      "<b>Mejora 1.</b> Varios procesos con el módulo <code>cluster</code> o un gestor como PM2: con 4 núcleos, unas \\(4\\times20=80\\) peticiones/s.",
+      "<b>Mejora 2.</b> Mover el cálculo a <code>worker_threads</code> o a una cola de trabajos para que el ciclo de eventos siga libre."
+     ],
+     "r": "Unas 20 peticiones/s por proceso; se escala con procesos por núcleo y trabajadores en segundo plano.",
+     "fin": "Diagnosticar el bloqueo del ciclo de eventos."
+    },
+    {
+     "nv": "I",
+     "q": "Una cooperativa quiere una app para Android e iOS para consultar saldos y fotografiar documentos, con un equipo que sabe Angular. ¿Nativo, Ionic o PWA?",
+     "pasos": [
+      "<b>Requisitos.</b> Dos plataformas, formularios y consultas, uso de cámara.",
+      "<b>Nativo.</b> Dos códigos y dos equipos: más caro sin beneficio claro.",
+      "<b>PWA.</b> Barata, pero distribución y acceso al hardware más limitados en iOS.",
+      "<b>Ionic con Angular y Capacitor.</b> Un solo código, aprovecha al equipo y accede a la cámara con un plugin."
+     ],
+     "r": "Ionic con Angular y Capacitor, consumiendo una API en Node.",
+     "fin": "Elegir un enfoque de desarrollo móvil con criterios."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué describe mejor a Node.js?",
+     "ops": [
+      "Un framework de interfaz de usuario para el navegador",
+      "Un sistema gestor de bases de datos NoSQL",
+      "Un lenguaje de programación compilado derivado de Java",
+      "Un entorno de ejecución de JavaScript en el servidor, basado en V8 y con E/S no bloqueante"
+     ],
+     "ok": 3,
+     "r": "Node ejecuta JavaScript fuera del navegador con un ciclo de eventos; Express, Angular o MongoDB son otras piezas."
+    },
+    {
+     "nv": "B",
+     "q": "En una plantilla de Angular, ¿qué sintaxis crea un enlace de doble vía con un campo de formulario?",
+     "ops": [
+      "<code>[(ngModel)]=\"precio\"</code>",
+      "<code>{{ precio }}</code>",
+      "<code>(click)=\"precio()\"</code>",
+      "<code>[value]=\"precio\"</code>"
+     ],
+     "ok": 0,
+     "r": "Los corchetes llevan el dato al control y los paréntesis traen el evento de vuelta: la «caja de bananas» une ambos sentidos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué usa una app Ionic reciente para acceder a la cámara o al GPS del teléfono?",
+     "ops": [
+      "Capacitor (o Cordova en versiones anteriores)",
+      "Express",
+      "RxJS",
+      "El ciclo de eventos de Node"
+     ],
+     "ok": 0,
+     "r": "Capacitor expone las funciones nativas al código web mediante plugins; Cordova cumplía ese papel en Ionic 2 y 3."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es una diferencia correcta entre AngularJS y Angular?",
+     "ops": [
+      "AngularJS es la versión más reciente de Angular",
+      "Angular solo sirve para aplicaciones móviles nativas",
+      "Son el mismo framework con distinto nombre comercial",
+      "Angular es una reescritura basada en TypeScript y componentes; AngularJS usa controladores y $scope"
+     ],
+     "ok": 3,
+     "r": "Angular 2+ no es compatible hacia atrás con AngularJS 1.x; migrar implica reescribir."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué tarea conviene sacar del hilo principal de Node.js?",
+     "ops": [
+      "Consultar una base de datos con await",
+      "Leer un archivo con fs.promises.readFile",
+      "Responder una petición HTTP con JSON",
+      "Generar un PDF grande o redimensionar imágenes en el servidor"
+     ],
+     "ok": 3,
+     "r": "El cálculo intensivo síncrono bloquea el ciclo de eventos; la E/S asíncrona no. Se usa worker_threads o una cola de trabajos."
+    }
+   ]
+  },
+  {
+   "titulo": "Seguridad TIC y gobierno de TI",
+   "intro": "Tema 6.1 del programa (seguridad TIC) y la parte de gobierno del tema 6.3 (visión estratégica). No repite lo de Administración de TI (amenazas, controles, pérdida anual esperada, MFA, DRP y BCP): se centra en la seguridad de las tecnologías de este curso (nube, IoT, aplicaciones web), confianza cero, criptografía aplicada, objetivos de recuperación y los marcos que gobiernan la TI: ISO/IEC 38500, COBIT, ITIL e ISO/IEC 27001.",
+   "conceptos": [
+    {
+     "n": "Confianza cero y seguridad en la nube e IoT",
+     "e": [
+      "<b>Confianza cero</b> (NIST SP 800-207): nunca confiar por estar dentro de la red, siempre verificar identidad, dispositivo y contexto en cada acceso; mínimo privilegio y microsegmentación. Reemplaza el modelo de perímetro, que no sirve con nube y teletrabajo.",
+      "En la nube rige la <b>responsabilidad compartida</b>: el proveedor asegura la infraestructura; el cliente, sus datos, identidades y configuraciones (más responsabilidades cuanto más cerca de IaaS). En IoT los riesgos típicos son contraseñas por defecto, firmware sin actualizar y dispositivos en la misma red que los servidores."
+     ],
+     "u": [
+      "Migración a la nube, teletrabajo, redes de sensores.",
+      "La mayoría de incidentes en la nube son errores de configuración del cliente.",
+      "Al diseñar el acceso a sistemas y al conectar dispositivos.",
+      "Identidad fuerte, segmentación, mínimo privilegio, cifrado y monitoreo continuo."
+     ]
+    },
+    {
+     "n": "Criptografía aplicada y contraseñas",
+     "e": [
+      "<b>Simétrica</b> (AES): una clave, rápida, para cifrar datos en reposo. <b>Asimétrica</b> (RSA, curvas elípticas): par de claves, para intercambio de claves y firma digital. <b>TLS</b> combina ambas para proteger datos en tránsito (HTTPS, MQTT sobre 8883).",
+      "Las contraseñas no se cifran ni se guardan con un hash rápido: se guardan con un hash <b>lento y con sal</b> (bcrypt, scrypt, Argon2). La fuerza de una contraseña aleatoria se mide en bits de entropía."
+     ],
+     "u": [
+      "Bases de usuarios de portales, firma de documentos electrónicos, APIs.",
+      "Una base de contraseñas filtrada con hash rápido se descifra en horas.",
+      "Al diseñar autenticación y almacenamiento de datos sensibles.",
+      "TLS en todo, AES para datos en reposo, Argon2 o bcrypt para contraseñas."
+     ],
+     "f": "H=L\\log_2 N\\ \\text{bits}\\qquad t=\\frac{N^{L}}{\\text{intentos por segundo}}"
+    },
+    {
+     "n": "Objetivos de recuperación: RPO y RTO",
+     "e": [
+      "El <b>RPO</b> (punto objetivo de recuperación) es cuántos datos, medidos en tiempo, se pueden perder: lo fija la frecuencia de respaldo o replicación. El <b>RTO</b> (tiempo objetivo de recuperación) es cuánto puede tardar el servicio en volver: lo fijan la velocidad de restauración y los procedimientos.",
+      "Regla 3-2-1 de respaldos: 3 copias, en 2 medios distintos, 1 fuera del sitio (idealmente inmutable o desconectada, contra ransomware)."
+     ],
+     "u": [
+      "Sistemas de cobro, nómina, expedientes clínicos.",
+      "Traduce la tolerancia del negocio a requisitos técnicos medibles.",
+      "Al diseñar respaldos y contratos de nube.",
+      "Compara la frecuencia de respaldo con el RPO y el tiempo de restauración con el RTO."
+     ],
+     "f": "\\text{RTO}\\ge\\frac{\\text{datos}}{\\text{velocidad de restauración}}+t_{\\text{verificación}}"
+    },
+    {
+     "n": "Gobierno y gestión de TI",
+     "e": [
+      "<b>Gobierno</b> (junta directiva): evalúa, dirige y monitorea para que la TI genere valor con riesgo aceptable. <b>Gestión</b> (dirección de TI): planifica, construye, ejecuta y mide. <b>ISO/IEC 38500</b> da principios de gobierno; <b>COBIT 2019</b> separa el dominio de gobierno EDM (evaluar, dirigir y monitorear) de los de gestión APO (alinear, planificar y organizar), BAI (construir, adquirir e implementar), DSS (entregar, dar servicio y soporte) y MEA (monitorear, evaluar y valorar).",
+      "<b>ITIL 4</b> orienta la gestión de servicios (sistema de valor del servicio y prácticas como gestión de incidentes, problemas y cambios). <b>ISO/IEC 27001</b> certifica un sistema de gestión de seguridad de la información (SGSI) basado en riesgos."
+     ],
+     "u": [
+      "Bancos supervisados, instituciones públicas, empresas con auditoría externa.",
+      "Ordena decisiones, responsabilidades y controles de la TI.",
+      "Al estructurar el área de TI o prepararse para una auditoría o certificación.",
+      "Asigna cada actividad a su dominio y mide con indicadores."
+     ],
+     "tabla": "<table><thead><tr><th>Marco</th><th>Pregunta que responde</th></tr></thead><tbody><tr><td>ISO/IEC 38500</td><td>¿Qué principios guían a la junta en decisiones de TI?</td></tr><tr><td>COBIT 2019</td><td>¿Qué objetivos de gobierno y gestión debe cubrir la TI?</td></tr><tr><td>ITIL 4</td><td>¿Cómo se entregan y soportan los servicios de TI?</td></tr><tr><td>ISO/IEC 27001</td><td>¿Cómo se gestiona la seguridad de la información?</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Compara la resistencia a fuerza bruta de una contraseña de 8 letras minúsculas (26 símbolos) y una de 12 caracteres de 94 símbolos, con un atacante de \\(10^{10}\\) intentos por segundo.",
+     "pasos": [
+      "<b>Entropía.</b> \\(8\\log_2 26=37.6\\) bits; \\(12\\log_2 94=78.7\\) bits.",
+      "<b>Combinaciones.</b> \\(26^8=2.09\\times10^{11}\\); \\(94^{12}=4.76\\times10^{23}\\).",
+      "<b>Tiempo máximo.</b> \\(20.9\\) s contra \\(4.76\\times10^{13}\\) s \\(\\approx1.5\\) millones de años."
+     ],
+     "r": "La primera cae en unos 21 s; la segunda resistiría alrededor de 1.5 millones de años.",
+     "fin": "Justificar políticas de contraseñas con números."
+    },
+    {
+     "nv": "I",
+     "q": "Una institución corre su sistema de expedientes en una VM Linux (IaaS) con PostgreSQL y usa correo SaaS. Reparte responsabilidades de seguridad.",
+     "pasos": [
+      "<b>Proveedor (ambos casos).</b> Centro de datos, hardware, red física e hipervisor.",
+      "<b>Cliente en IaaS.</b> Parches del sistema operativo y de PostgreSQL, firewall de la VM, cifrado, respaldos y usuarios.",
+      "<b>Cliente en SaaS.</b> Identidades, MFA, permisos, retención y clasificación de los datos.",
+      "<b>Siempre del cliente.</b> Los datos y quién accede a ellos."
+     ],
+     "r": "El proveedor protege la infraestructura; la institución, sus datos, identidades y todo lo que configura.",
+     "fin": "Aplicar la responsabilidad compartida."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema de cobro se respalda cada 6 horas (00:00, 06:00, 12:00, 18:00). A las 17:00 un ransomware cifra la base. El negocio exige RPO de 4 h y RTO de 2 h. Restaurar 800 GB a 200 MB/s más 1 h de verificación, ¿cumple?",
+     "pasos": [
+      "<b>Datos perdidos.</b> Último respaldo a las 12:00: se pierden 5 h; en el peor caso hasta 6 h. No cumple el RPO de 4 h.",
+      "<b>Restauración.</b> \\(800\\,000/200=4\\,000\\) s \\(=1.11\\) h; con verificación \\(2.11\\) h. No cumple el RTO de 2 h.",
+      "<b>Mejoras.</b> Respaldos cada 4 h o replicación continua de bitácoras (WAL de PostgreSQL); copia inmutable fuera del sitio; medio de restauración más rápido."
+     ],
+     "r": "No cumple: pierde hasta 6 h de datos y tarda 2.11 h en volver.",
+     "fin": "Traducir requisitos de recuperación a diseño técnico."
+    },
+    {
+     "nv": "A",
+     "q": "Una entidad pública migra sistemas a la nube y permite teletrabajo. Propón un esquema de confianza cero.",
+     "pasos": [
+      "<b>Identidad.</b> Directorio central con MFA y acceso condicional por riesgo.",
+      "<b>Dispositivo.</b> Solo equipos administrados, actualizados y con cifrado de disco.",
+      "<b>Red.</b> Microsegmentación: cada sistema accesible solo desde quien lo necesita; sin acceso amplio por VPN.",
+      "<b>Mínimo privilegio y monitoreo.</b> Roles por función, accesos temporales para administradores y bitácoras centralizadas con alertas."
+     ],
+     "r": "Verificar identidad, dispositivo y contexto en cada acceso, con segmentación, mínimo privilegio y monitoreo.",
+     "fin": "Diseñar seguridad para un entorno sin perímetro."
+    },
+    {
+     "nv": "A",
+     "q": "Asigna a su dominio de COBIT 2019: (a) la junta define el apetito de riesgo tecnológico; (b) la dirección de TI arma el portafolio de proyectos; (c) se implementa un cambio en producción; (d) la mesa de servicio atiende incidentes; (e) auditoría interna mide el cumplimiento de controles.",
+     "pasos": [
+      "<b>(a)</b> EDM: es gobierno, no gestión.",
+      "<b>(b)</b> APO: alinear, planificar y organizar.",
+      "<b>(c)</b> BAI: construir, adquirir e implementar (gestión de cambios).",
+      "<b>(d)</b> DSS: entregar, dar servicio y soporte. <b>(e)</b> MEA: monitorear, evaluar y valorar."
+     ],
+     "r": "EDM, APO, BAI, DSS y MEA.",
+     "fin": "Distinguir gobierno de gestión con COBIT."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué principio resume el modelo de confianza cero?",
+     "ops": [
+      "Confiar en todo lo que está dentro del firewall",
+      "Cifrar solo los datos más sensibles",
+      "Bloquear todo el tráfico de internet",
+      "Nunca confiar, siempre verificar"
+     ],
+     "ok": 3,
+     "r": "En confianza cero la ubicación en la red no da confianza; cada acceso se autentica y autoriza."
+    },
+    {
+     "nv": "B",
+     "q": "En un servicio IaaS, ¿quién aplica los parches del sistema operativo de las máquinas virtuales?",
+     "ops": [
+      "El proveedor de nube",
+      "El cliente",
+      "El fabricante del hardware",
+      "Nadie, la nube se parcha sola"
+     ],
+     "ok": 1,
+     "r": "En IaaS el proveedor llega hasta el hipervisor; del sistema operativo hacia arriba responde el cliente."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo deben almacenarse las contraseñas de los usuarios de un portal?",
+     "ops": [
+      "Cifradas con AES para poder recuperarlas",
+      "Con SHA-256 sin sal",
+      "En texto plano en una tabla con acceso restringido",
+      "Con un hash lento y con sal, como Argon2 o bcrypt"
+     ],
+     "ok": 3,
+     "r": "Un hash lento con sal encarece cada intento del atacante y evita tablas precalculadas; cifrar permite revertir y un hash rápido se ataca a gran velocidad."
+    },
+    {
+     "nv": "I",
+     "q": "Según ITIL, ¿qué es un problema?",
+     "ops": [
+      "La causa, real o potencial, de uno o más incidentes",
+      "Cualquier interrupción del servicio reportada por un usuario",
+      "Una solicitud de cambio rechazada",
+      "Un incidente resuelto fuera de tiempo"
+     ],
+     "ok": 0,
+     "r": "El incidente es la interrupción; la gestión de problemas busca y elimina su causa raíz."
+    },
+    {
+     "nv": "A",
+     "q": "Una organización quiere certificar ante un tercero su sistema de gestión de seguridad de la información. ¿Qué norma usa?",
+     "ops": [
+      "COBIT 2019",
+      "ISO/IEC 27001",
+      "ITIL 4",
+      "ISO/IEC 38500"
+     ],
+     "ok": 1,
+     "r": "ISO/IEC 27001 define los requisitos certificables de un SGSI; COBIT e ITIL son marcos de referencia y 38500 da principios de gobierno."
+    }
+   ]
+  },
+  {
+   "titulo": "Visión tecnológica y estratégica: evaluar y ejecutar la innovación",
+   "intro": "Temas 6.2 y 6.3 del programa: visión tecnológica y visión estratégica. Como el programa solo los nombra, se organizan alrededor de las preguntas que un profesional de TI debe responder ante la gerencia: qué tecnologías vigilar, cuál elegir y alinear con la estrategia, si la inversión vale la pena (VAN, TIR y recuperación descontada, que Administración de TI no desarrolla) y cómo ejecutar y controlar el proyecto (ruta crítica y valor ganado).",
+   "conceptos": [
+    {
+     "n": "Visión tecnológica",
+     "e": [
+      "La <b>vigilancia tecnológica</b> sigue las tecnologías emergentes para decidir cuándo adoptarlas. El <b>ciclo de sobreexpectación</b> de Gartner tiene cinco fases: disparador de la innovación, pico de expectativas sobredimensionadas, abismo de desilusión, pendiente de iluminación y meseta de productividad. La curva de adopción de Rogers reparte a los adoptantes en innovadores (2.5 %), adoptadores tempranos (13.5 %), mayoría temprana (34 %), mayoría tardía (34 %) y rezagados (16 %).",
+      "Un <b>radar tecnológico</b> (como el de Thoughtworks) clasifica cada tecnología en adoptar, probar, evaluar o resistir; una <b>hoja de ruta</b> ordena en el tiempo qué se adopta y con qué prerrequisitos."
+     ],
+     "u": [
+      "Planes de TI a 3-5 años, comités de innovación, propuestas de tesis.",
+      "Adoptar en el pico de expectativas suele terminar en proyectos fallidos; llegar tarde, en desventaja.",
+      "Al revisar anualmente el plan tecnológico.",
+      "Ubica cada tecnología en el radar y prueba las prometedoras con pilotos pequeños."
+     ]
+    },
+    {
+     "n": "Visión estratégica y alineación",
+     "e": [
+      "La <b>alineación estratégica</b> asegura que cada inversión de TI apoye un objetivo del negocio. Herramientas: plan estratégico de TI derivado del plan institucional, <b>gestión de portafolio</b> y <b>cuadro de mando integral</b> (balanced scorecard) de TI con perspectivas financiera, de cliente o usuario, de procesos internos y de aprendizaje.",
+      "Para elegir entre alternativas se usa una <b>matriz de decisión ponderada</b>: cada criterio recibe un peso (que suma 1) y cada alternativa una calificación."
+     ],
+     "u": [
+      "Elegir plataforma, proveedor o proyecto entre varias opciones.",
+      "Hace explícitos los criterios y reduce la decisión por preferencia personal.",
+      "Al presentar recomendaciones a la gerencia o a un comité de compras.",
+      "Acuerda criterios y pesos antes de calificar; calcula el puntaje ponderado."
+     ],
+     "f": "S_j=\\sum_i w_i\\,s_{ij}\\qquad \\sum_i w_i=1"
+    },
+    {
+     "n": "Evaluación financiera de proyectos de TI",
+     "e": [
+      "El <b>VAN</b> descuenta los flujos a la tasa mínima de rendimiento \\(i\\): si es positivo, el proyecto crea valor. La <b>TIR</b> es la tasa que hace el VAN igual a cero; se acepta si supera \\(i\\). No tiene fórmula cerrada: se halla por prueba y error, bisección o Newton. El <b>periodo de recuperación descontado</b> mide cuándo el acumulado de flujos descontados se vuelve positivo.",
+      "En Guatemala los precios de compra suelen venir con IVA de 12 %; si la empresa recupera el IVA como crédito fiscal, la inversión que se evalúa es el monto sin IVA."
+     ],
+     "u": [
+      "Justificar IoT, nube, HCI o un sistema nuevo ante la junta o un banco.",
+      "Considera el valor del dinero en el tiempo, a diferencia del ROI simple.",
+      "Antes de aprobar inversiones medianas o grandes.",
+      "Arma la tabla de flujos, descuenta, acumula y calcula VAN, TIR y recuperación."
+     ],
+     "f": "VAN=\\sum_{t=0}^{n}\\frac{F_t}{(1+i)^t}\\qquad \\sum_{t=0}^{n}\\frac{F_t}{(1+TIR)^t}=0"
+    },
+    {
+     "n": "Ejecución: ruta crítica y valor ganado",
+     "e": [
+      "La <b>ruta crítica</b> (CPM) es la cadena de actividades más larga: define la duración del proyecto. Recorrido hacia adelante: inicio temprano ES = máximo de los EF de las predecesoras, EF = ES + d. Hacia atrás: LF = mínimo de los LS de las sucesoras, LS = LF − d. Holgura = LS − ES; las críticas tienen holgura 0.",
+      "El <b>valor ganado</b> compara lo planificado (PV), lo realmente hecho valorado al presupuesto (EV) y lo gastado (AC). CPI &lt; 1 indica sobrecosto; SPI &lt; 1, atraso."
+     ],
+     "u": [
+      "Proyectos de migración a la nube, implantación de ERP o despliegues IoT.",
+      "Muestra a tiempo qué actividades no pueden atrasarse y si el presupuesto alcanzará.",
+      "Al planificar y en cada informe de avance.",
+      "Construye la red de actividades, calcula holguras y reporta CPI, SPI y EAC."
+     ],
+     "f": "CPI=\\frac{EV}{AC}\\qquad SPI=\\frac{EV}{PV}\\qquad EAC=\\frac{BAC}{CPI}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una empresa compara tres opciones para renovar su infraestructura, con pesos costo a 5 años 0.30, seguridad y cumplimiento 0.25, control y latencia 0.25, y facilidad de operación 0.20. Calificaciones (1 a 10): nube pública 9, 7, 6, 6; HCI propia 5, 8, 9, 6; híbrida 7, 8, 8, 6. ¿Cuál recomienda la matriz?",
+     "pasos": [
+      "<b>Nube.</b> \\(0.30(9)+0.25(7)+0.25(6)+0.20(6)=7.15\\).",
+      "<b>HCI.</b> \\(0.30(5)+0.25(8)+0.25(9)+0.20(6)=6.95\\).",
+      "<b>Híbrida.</b> \\(0.30(7)+0.25(8)+0.25(8)+0.20(6)=7.30\\)."
+     ],
+     "r": "La híbrida (7.30), seguida de nube pública (7.15) y HCI (6.95).",
+     "fin": "Sustentar una recomendación tecnológica con criterios explícitos."
+    },
+    {
+     "nv": "I",
+     "q": "Una exportadora cotiza un sistema IoT de cadena de frío en Q504,000 con IVA (recupera el IVA como crédito fiscal). Ahorros netos esperados: Q140,000, Q160,000, Q180,000 y Q180,000 en los años 1 a 4. Con tasa mínima de 12 %, ¿VAN y TIR?",
+     "pasos": [
+      "<b>Inversión sin IVA.</b> \\(504\\,000/1.12=450\\,000\\).",
+      "<b>Flujos descontados.</b> \\(125\\,000;\\ 127\\,551.02;\\ 128\\,120.44;\\ 114\\,393.25\\).",
+      "<b>VAN.</b> \\(-450\\,000+495\\,064.72=Q45\\,064.72>0\\).",
+      "<b>TIR por bisección.</b> En 12 % el VAN es positivo y en 20 % negativo; se parte el intervalo hasta que el VAN es cero: \\(TIR\\approx16.46\\,\\%\\)."
+     ],
+     "r": "VAN Q45,064.72 y TIR 16.46 % (mayor que 12 %): conviene invertir.",
+     "fin": "Evaluar financieramente un proyecto de tecnología emergente."
+    },
+    {
+     "nv": "I",
+     "q": "Con los flujos anteriores, calcula el periodo de recuperación simple y el descontado al 12 %.",
+     "pasos": [
+      "<b>Acumulado simple.</b> −450,000; −310,000; −150,000; +30,000: se recupera en el año 3.",
+      "<b>Simple.</b> \\(2+150\\,000/180\\,000=2.83\\) años.",
+      "<b>Acumulado descontado.</b> −450,000; −325,000; −197,448.98; −69,328.53; +45,064.72: se recupera en el año 4.",
+      "<b>Descontado.</b> \\(3+69\\,328.53/114\\,393.25=3.61\\) años."
+     ],
+     "r": "2.83 años simple y 3.61 años descontado.",
+     "fin": "Medir el riesgo de liquidez del proyecto."
+    },
+    {
+     "nv": "A",
+     "q": "Migración de un sistema a la nube (semanas): A análisis 2; B preparar red, 3 (tras A); C adaptar aplicación, 4 (tras A); D configurar seguridad, 2 (tras B); E migrar datos, 3 (tras C); F pruebas, 2 (tras D y E); G salida a producción, 1 (tras F). Halla la duración, la ruta crítica y las holguras.",
+     "pasos": [
+      "<b>Adelante.</b> A 0-2; B 2-5; C 2-6; D 5-7; E 6-9; F inicia en máx(7, 9) = 9 y termina en 11; G 11-12.",
+      "<b>Atrás.</b> G 11-12; F 9-11; D: LF 9, LS 7; E: LF 9, LS 6; B: LF 7, LS 4; C: LF 6, LS 2; A: LF = mín(4, 2) = 2, LS 0.",
+      "<b>Holguras.</b> B y D tienen 2 semanas; A, C, E, F y G tienen 0."
+     ],
+     "r": "12 semanas; ruta crítica A-C-E-F-G; B y D con 2 semanas de holgura.",
+     "fin": "Planificar un proyecto de TI y saber qué no puede atrasarse."
+    },
+    {
+     "nv": "A",
+     "q": "Un proyecto de implantación tiene presupuesto BAC de Q800,000. Al mes 5: PV Q400,000, EV Q340,000 y AC Q380,000. Analiza su desempeño y pronostica el costo final.",
+     "pasos": [
+      "<b>Variaciones.</b> \\(CV=340\\,000-380\\,000=-40\\,000\\); \\(SV=340\\,000-400\\,000=-60\\,000\\).",
+      "<b>Índices.</b> \\(CPI=340/380=0.895\\) (sobrecosto); \\(SPI=340/400=0.85\\) (atraso).",
+      "<b>Pronóstico.</b> \\(EAC=800\\,000/0.8947=Q894\\,117.65\\); \\(ETC=EAC-AC=Q514\\,117.65\\); \\(VAC=-Q94\\,117.65\\)."
+     ],
+     "r": "Va con sobrecosto y atrasado; terminaría en unos Q894,118 (Q94,118 sobre el presupuesto).",
+     "fin": "Controlar un proyecto con valor ganado."
+    },
+    {
+     "nv": "B",
+     "q": "Un proyecto de Q200,000 genera Q90,000 al año durante 3 años. ¿VAN al 10 %?",
+     "r": "\\(-200\\,000+90\\,000\\left(\\frac{1}{1.1}+\\frac{1}{1.1^2}+\\frac{1}{1.1^3}\\right)=Q23\\,816.68\\). Se acepta."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la TIR de un proyecto que invierte Q300,000 y recibe Q120,000 anuales durante 4 años.",
+     "r": "Por bisección: VAN(20 %) > 0 y VAN(25 %) < 0; converge a \\(TIR\\approx21.86\\,\\%\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Una inversión de Q100,000 rinde Q40,000 al año durante 4 años. ¿Periodo de recuperación descontado al 12 %?",
+     "r": "Acumulado descontado: −64,285.71; −32,397.96; −3,926.75; +21,493.97. Recuperación: \\(3+3\\,926.75/25\\,420.72\\approx3.15\\) años."
+    },
+    {
+     "nv": "A",
+     "q": "Actividades (semanas): A 3; B 5; C 2 (tras A); D 4 (tras A y B); E 3 (tras C y D). Calcula la duración, la ruta crítica y la holgura de A y C.",
+     "r": "Duración 12 semanas; ruta crítica B-D-E. Holgura de A = 2 y de C = 4."
+    },
+    {
+     "nv": "A",
+     "q": "BAC Q600,000; al corte PV Q300,000, EV Q330,000 y AC Q300,000. ¿CPI, SPI, EAC y TCPI?",
+     "r": "\\(CPI=1.10\\), \\(SPI=1.10\\) (adelantado y bajo presupuesto); \\(EAC=600\\,000/1.1=Q545\\,454.55\\); \\(TCPI=\\frac{600\\,000-330\\,000}{600\\,000-300\\,000}=0.90\\)."
+    }
+   ]
+  }
+ ]
+}
