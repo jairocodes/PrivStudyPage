@@ -1,0 +1,1106 @@
+{
+ "slug": "inteligencia-artificial",
+ "titulo": "Inteligencia Artificial",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 9, código 090045, área de Administración de Sistemas (sin semana propia en el seminario)",
+ "firma": "f(n)=g(n)+h(n)",
+ "firma_nota": "La función de A*: lo ya recorrido más lo que se estima que falta. Si la estimación nunca exagera, la ruta encontrada es la óptima.",
+ "lead": "Cómo se construyen agentes que perciben, razonan y actúan: búsqueda de soluciones, juegos, lógica y planificación, razonamiento con incertidumbre (probabilidad y lógica difusa), aprendizaje con árboles y redes neuronales, y lenguaje natural. Combina procedimientos que se resuelven en papel, como trazas de búsqueda, minimax, Bayes o el entrenamiento de un perceptrón, con conceptos de historia y diseño de agentes. Las 7 unidades del programa están organizadas en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9InteligenciaArtificial.pdf",
+ "como": "Cada sección trae conceptos con su uso real, 5 ejercicios resueltos paso a paso y 5 para practicar. En las secciones de procedimiento (búsqueda, juegos, lógica, probabilidad, lógica difusa y aprendizaje) los de práctica tienen la respuesta oculta; en las conceptuales (fundamentos y agentes, lenguaje natural) son preguntas de opción múltiple con retroalimentación inmediata. Las trazas de búsqueda usan un mismo mapa de ciudades de Guatemala con distancias inventadas: respeta el orden de los vecinos, los desempates y el momento de la prueba de meta que indica cada enunciado, porque de ellos depende la respuesta.",
+ "temas": [
+  {
+   "titulo": "Fundamentos de la IA y agentes inteligentes",
+   "intro": "Unidad 1 del programa: introducción a la inteligencia artificial (definiciones, historia y estado actual) y agentes inteligentes.",
+   "conceptos": [
+    {
+     "n": "Qué es la inteligencia artificial",
+     "e": [
+      "La IA estudia cómo construir sistemas que perciben su entorno y actúan para alcanzar objetivos. Las definiciones clásicas se ordenan en dos ejes: <b>pensar o actuar</b>, y hacerlo <b>como un humano o de forma racional</b>.",
+      "La <b>prueba de Turing</b>, propuesta por Alan Turing en 1950, corresponde a actuar como humano: un interrogador conversa por texto y debe distinguir a la máquina de una persona. La IA actual trabaja sobre todo con el enfoque del <b>agente racional</b>: elegir la acción que maximiza el resultado esperado con la información disponible."
+     ],
+     "u": [
+      "Chatbots de atención al ciudadano, recomendadores de tiendas en línea, diagnóstico asistido, detección de fraude bancario.",
+      "Define qué se va a medir: parecerse a un humano o tomar la mejor decisión posible.",
+      "Al plantear un proyecto de IA y fijar su criterio de éxito.",
+      "Escribe la medida de rendimiento antes de elegir la técnica."
+     ],
+     "tabla": "<table><thead><tr><th></th><th>Como humano</th><th>Racionalmente</th></tr></thead><tbody><tr><td><b>Pensar</b></td><td>Modelado cognitivo</td><td>Leyes del pensamiento (lógica)</td></tr><tr><td><b>Actuar</b></td><td>Prueba de Turing</td><td>Agente racional</td></tr></tbody></table>"
+    },
+    {
+     "n": "Historia y estado actual",
+     "e": [
+      "La IA ha alternado épocas de entusiasmo con “inviernos” de poco financiamiento, cuando las promesas superaron los resultados. Pasó de la lógica y las reglas escritas a mano al aprendizaje a partir de datos.",
+      "Hoy dominan las redes neuronales profundas y los <b>modelos de lenguaje</b> que generan texto, código o imágenes (IA generativa). Son útiles, pero pueden producir respuestas plausibles e incorrectas, por lo que sus resultados se verifican."
+     ],
+     "u": [
+      "Entender por qué conviven técnicas simbólicas (reglas, lógica) y estadísticas (aprendizaje).",
+      "Evita repetir errores: prometer más de lo que la técnica puede dar.",
+      "Al justificar ante una gerencia qué técnica usar y qué esperar de ella.",
+      "Ubica cada técnica en su época y en el problema que resolvió."
+     ],
+     "tabla": "<table><thead><tr><th>Época</th><th>Hito</th></tr></thead><tbody><tr><td>1943</td><td>Modelo de neurona artificial de McCulloch y Pitts</td></tr><tr><td>1950</td><td>Turing publica la idea del juego de imitación</td></tr><tr><td>1956</td><td>Conferencia de Dartmouth: nace el término “inteligencia artificial”</td></tr><tr><td>1958</td><td>Perceptrón de Rosenblatt</td></tr><tr><td>1969</td><td>Minsky y Papert muestran los límites del perceptrón de una capa</td></tr><tr><td>Décadas de 1970 y 1980</td><td>Sistemas expertos (como MYCIN) y posteriores inviernos de la IA</td></tr><tr><td>1986</td><td>Se difunde la retropropagación para redes multicapa</td></tr><tr><td>1997</td><td>Deep Blue vence a Kasparov en ajedrez</td></tr><tr><td>2012</td><td>Redes profundas ganan con amplitud en reconocimiento de imágenes (ImageNet)</td></tr><tr><td>2017</td><td>Arquitectura <i>transformer</i>, base de los modelos de lenguaje actuales</td></tr><tr><td>Desde 2022</td><td>Asistentes de IA generativa de uso masivo</td></tr></tbody></table>"
+    },
+    {
+     "n": "Agentes, racionalidad y entorno",
+     "e": [
+      "Un <b>agente</b> percibe su entorno con sensores y actúa sobre él con actuadores. Su comportamiento lo describe la <b>función de agente</b>: de la secuencia de percepciones a una acción. Es <b>racional</b> si elige la acción que maximiza el valor esperado de su medida de rendimiento, dado lo que percibió y lo que sabe.",
+      "Para diseñarlo se especifica <b>PEAS</b>: medida de rendimiento (<i>Performance</i>), entorno (<i>Environment</i>), actuadores y sensores. El entorno se clasifica según la tabla."
+     ],
+     "u": [
+      "Robots de bodega, asistentes virtuales, sistemas de monitoreo de servidores, vehículos autónomos.",
+      "Las propiedades del entorno determinan qué técnica sirve: búsqueda, lógica, probabilidad o aprendizaje.",
+      "Al iniciar el diseño de cualquier sistema inteligente.",
+      "Llena PEAS y clasifica el entorno en sus seis dimensiones."
+     ],
+     "tabla": "<table><thead><tr><th>Dimensión</th><th>Opciones</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Observabilidad</td><td>Total o parcial</td><td>Ajedrez: total; póquer: parcial</td></tr><tr><td>Efecto de las acciones</td><td>Determinista o estocástico</td><td>Rompecabezas: determinista; tráfico: estocástico</td></tr><tr><td>Dependencia</td><td>Episódico o secuencial</td><td>Clasificar facturas: episódico; conducir: secuencial</td></tr><tr><td>Cambio</td><td>Estático o dinámico</td><td>Crucigrama: estático; taxi: dinámico</td></tr><tr><td>Valores</td><td>Discreto o continuo</td><td>Ajedrez: discreto; volante: continuo</td></tr><tr><td>Agentes</td><td>Uno o varios</td><td>Sudoku: uno; subasta: varios</td></tr></tbody></table>"
+    },
+    {
+     "n": "Tipos de agentes",
+     "e": [
+      "Del más simple al más completo: el <b>reflejo simple</b> responde solo a la percepción actual con reglas condición-acción; el <b>reflejo basado en modelo</b> guarda un estado interno de lo que no ve; el <b>basado en metas</b> elige acciones que lo acercan a un objetivo; el <b>basado en utilidad</b> compara qué tan buenos son los estados; el <b>agente que aprende</b> mejora su desempeño con la experiencia."
+     ],
+     "u": [
+      "Termostatos, filtros de correo, planificadores de rutas, sistemas de recomendación.",
+      "Un agente demasiado simple falla en entornos parciales o cambiantes; uno demasiado complejo encarece el sistema.",
+      "Al decidir la arquitectura de un sistema inteligente.",
+      "Sube de tipo solo cuando el entorno lo exige."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Decide con</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Reflejo simple</td><td>Percepción actual</td><td>Encender el aire si la temperatura pasa de 27 °C</td></tr><tr><td>Basado en modelo</td><td>Percepción + estado interno</td><td>Alarma que recuerda la última lectura válida de un sensor</td></tr><tr><td>Basado en metas</td><td>Objetivo a alcanzar</td><td>Navegador que busca la ruta hasta un destino</td></tr><tr><td>Basado en utilidad</td><td>Valor de cada resultado</td><td>Ruta que equilibra tiempo, peaje y riesgo</td></tr><tr><td>Que aprende</td><td>Experiencia acumulada</td><td>Filtro de spam que se ajusta con las marcas del usuario</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica según los cuatro enfoques de la IA: (a) un chatbot cuyo objetivo es que el usuario no note que es una máquina; (b) un programa que simula cómo un estudiante resuelve un problema de álgebra, con sus errores típicos; (c) un demostrador automático de teoremas; (d) un vehículo autónomo que elige la maniobra más segura.",
+     "pasos": [
+      "<b>(a)</b> Busca parecerse a una persona en la conversación: actuar como humano.",
+      "<b>(b)</b> Reproduce el proceso mental humano, errores incluidos: pensar como humano (modelado cognitivo).",
+      "<b>(c)</b> Deriva conclusiones válidas con lógica: pensar racionalmente.",
+      "<b>(d)</b> Elige la acción con mejor resultado esperado: actuar racionalmente."
+     ],
+     "r": "Actuar como humano, pensar como humano, pensar racionalmente y actuar racionalmente.",
+     "fin": "Reconocer el criterio de éxito que hay detrás de cada sistema."
+    },
+    {
+     "nv": "I",
+     "q": "Especifica PEAS para un agente que revisa facturas electrónicas y marca las que parecen fraudulentas para la SAT.",
+     "pasos": [
+      "<b>Medida de rendimiento.</b> Fraudes detectados, pocas falsas alarmas (contribuyentes honestos molestados) y tiempo de respuesta.",
+      "<b>Entorno.</b> Facturas electrónicas, historial de cada NIT, contribuyentes, auditores.",
+      "<b>Actuadores.</b> Marcar la factura, asignar un puntaje de riesgo, enviar el caso a un auditor.",
+      "<b>Sensores.</b> Datos de cada factura recibida (monto, emisor, receptor, fecha), consultas al historial."
+     ],
+     "r": "PEAS completo: rendimiento, entorno, actuadores y sensores.",
+     "fin": "Definir qué hace y cómo se evalúa un agente antes de programarlo."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica el entorno de (a) ajedrez con reloj y (b) un taxi autónomo en la Ciudad de Guatemala.",
+     "pasos": [
+      "<b>Ajedrez con reloj.</b> Totalmente observable, determinista, secuencial, semidinámico (el tablero no cambia mientras se piensa, pero el reloj corre), discreto y multiagente (competitivo).",
+      "<b>Taxi.</b> Parcialmente observable (no ve todo el tráfico), estocástico, secuencial, dinámico, continuo y multiagente.",
+      "<b>Consecuencia.</b> El ajedrez admite búsqueda adversaria; el taxi necesita además percepción, manejo de incertidumbre y aprendizaje."
+     ],
+     "r": "El ajedrez es mucho más sencillo en casi todas las dimensiones; el taxi es el caso más difícil.",
+     "fin": "Elegir técnicas según el tipo de entorno."
+    },
+    {
+     "nv": "A",
+     "q": "Un agente reflejo simple limpia dos casillas, A y B. Percibe [ubicación, estado] y su tabla es: [A, Sucio] → Aspirar; [A, Limpio] → Derecha; [B, Sucio] → Aspirar; [B, Limpio] → Izquierda. Si cada movimiento cuesta energía, ¿es racional cuando ambas casillas quedan limpias? ¿Cómo se corrige?",
+     "pasos": [
+      "<b>Comportamiento.</b> Con A y B limpias, en A percibe [A, Limpio] y va a la derecha; en B percibe [B, Limpio] y vuelve a la izquierda, indefinidamente.",
+      "<b>Evaluación.</b> Si la medida penaliza movimientos, gasta energía sin beneficio: no es racional, porque no recuerda que la otra casilla ya está limpia.",
+      "<b>Corrección.</b> Un agente basado en modelo guarda el estado de ambas casillas y se detiene cuando las dos están limpias."
+     ],
+     "r": "No es racional con esa medida; se corrige con estado interno (agente basado en modelo).",
+     "fin": "Ver por qué la falta de memoria limita a los agentes reflejos."
+    },
+    {
+     "nv": "A",
+     "q": "Una municipalidad quiere un sistema que asigne rutas a sus camiones recolectores considerando distancia, tráfico y horario de los mercados. ¿Qué tipo de agente conviene y por qué no uno más simple?",
+     "pasos": [
+      "<b>Reflejo.</b> No sirve: la decisión depende de un objetivo futuro (cubrir todas las rutas), no solo de lo que percibe ahora.",
+      "<b>Basado en metas.</b> Encontraría alguna ruta que cubra todo, pero no distingue entre una ruta buena y una mala.",
+      "<b>Basado en utilidad.</b> Combina distancia, tiempo y horario en una función de utilidad y elige la ruta que la maximiza.",
+      "<b>Mejora.</b> Si además ajusta tiempos estimados con datos de recorridos anteriores, se vuelve un agente que aprende."
+     ],
+     "r": "Un agente basado en utilidad, idealmente con aprendizaje.",
+     "fin": "Justificar la arquitectura de un sistema según el problema."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué evento de 1956 se acuñó el término “inteligencia artificial”?",
+     "ops": [
+      "La conferencia de Dartmouth",
+      "La publicación del perceptrón",
+      "La partida de Deep Blue contra Kasparov",
+      "La presentación de ELIZA"
+     ],
+     "ok": 0,
+     "r": "La conferencia de verano de Dartmouth (1956) reunió a los fundadores del campo; el perceptrón es de 1958, ELIZA de la década de 1960 y Deep Blue de 1997."
+    },
+    {
+     "nv": "B",
+     "q": "La prueba de Turing evalúa si una máquina puede…",
+     "ops": [
+      "Comportarse en una conversación de modo que no se distinga de una persona",
+      "Demostrar teoremas sin errores",
+      "Aprender sin datos",
+      "Resolver cualquier problema de búsqueda en tiempo polinomial"
+     ],
+     "ok": 0,
+     "r": "Corresponde al enfoque de actuar como humano; no exige razonamiento lógico perfecto."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo se clasifica el entorno de un agente que juega póquer?",
+     "ops": [
+      "Totalmente observable, determinista y de un agente",
+      "Totalmente observable, estocástico y episódico",
+      "Parcialmente observable, estocástico y multiagente",
+      "Parcialmente observable, determinista y estático"
+     ],
+     "ok": 2,
+     "r": "No ve las cartas del rival (parcial), el reparto es aleatorio (estocástico) y compite con otros jugadores (multiagente)."
+    },
+    {
+     "nv": "I",
+     "q": "Un sensor de temperatura del cuarto de servidores a veces no envía lectura. El agente que controla el aire acondicionado usa la última lectura válida. ¿Qué tipo de agente es?",
+     "ops": [
+      "Reflejo simple",
+      "Basado en utilidad",
+      "Agente que aprende",
+      "Reflejo basado en modelo"
+     ],
+     "ok": 3,
+     "r": "Mantiene un estado interno (la última lectura) para suplir lo que no percibe; el reflejo simple solo usa la percepción actual."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué afirmación describe mejor a un modelo de lenguaje de IA generativa actual?",
+     "ops": [
+      "Razona con reglas si-entonces escritas a mano por expertos, como un sistema experto",
+      "Consulta siempre una base de datos verificada, por lo que sus respuestas son exactas",
+      "Genera texto prediciendo la continuación más probable con patrones aprendidos de grandes cantidades de texto, y puede producir respuestas plausibles pero falsas",
+      "Garantiza respuestas correctas si la pregunta está bien redactada"
+     ],
+     "ok": 2,
+     "r": "Son modelos estadísticos entrenados con mucho texto; no garantizan veracidad, por eso sus resultados se verifican. Los sistemas expertos son la aproximación simbólica de los años 70 y 80."
+    }
+   ]
+  },
+  {
+   "titulo": "Solución de problemas: búsqueda no informada",
+   "intro": "Unidad 2 del programa (primera parte): solución de problemas mediante la búsqueda; formulación de problemas y estrategias sin información adicional (anchura, profundidad, profundización iterativa y costo uniforme).",
+   "conceptos": [
+    {
+     "n": "Formulación del problema y mapa de práctica",
+     "e": [
+      "Un problema de búsqueda se define con: <b>estado inicial</b>, <b>acciones</b> posibles en cada estado, <b>modelo de transición</b> (a qué estado lleva cada acción), <b>prueba de meta</b> y <b>costo de camino</b> (suma de los costos de los pasos). La solución es una secuencia de acciones; la óptima es la de menor costo.",
+      "Para las secciones 2 y 3 se usa este mapa de carreteras <b>ilustrativo</b>: las ciudades existen, pero <b>las distancias son inventadas</b> para practicar y no son las reales. Salvo que se diga otra cosa, los vecinos se generan en orden alfabético del nombre completo (Antigua, Chimaltenango, Escuintla, Guatemala, Los Encuentros, Mazatenango, Quetzaltenango, Retalhuleu, Tecpán).",
+      "<table><thead><tr><th>Tramo</th><th>km</th></tr></thead><tbody><tr><td>Guatemala (GUA) – Antigua (ANT)</td><td>45</td></tr><tr><td>Guatemala – Chimaltenango (CHI)</td><td>55</td></tr><tr><td>Guatemala – Escuintla (ESC)</td><td>60</td></tr><tr><td>Antigua – Chimaltenango</td><td>20</td></tr><tr><td>Antigua – Escuintla</td><td>50</td></tr><tr><td>Chimaltenango – Tecpán (TEC)</td><td>35</td></tr><tr><td>Tecpán – Los Encuentros (LEN)</td><td>40</td></tr><tr><td>Los Encuentros – Quetzaltenango (XEL)</td><td>75</td></tr><tr><td>Escuintla – Mazatenango (MAZ)</td><td>110</td></tr><tr><td>Mazatenango – Retalhuleu (REU)</td><td>30</td></tr><tr><td>Mazatenango – Quetzaltenango</td><td>65</td></tr><tr><td>Retalhuleu – Quetzaltenango</td><td>55</td></tr></tbody></table>"
+     ],
+     "u": [
+      "Rutas en mapas, planificación de entregas, rompecabezas, enrutamiento de paquetes en redes.",
+      "Una mala formulación (estados de más o de menos) hace el problema intratable o la solución inútil.",
+      "Antes de programar cualquier búsqueda.",
+      "Escribe los cinco elementos y abstrae lo que no influye en la decisión (clima, música en el carro)."
+     ]
+    },
+    {
+     "n": "Búsqueda en árbol y en grafo",
+     "e": [
+      "La búsqueda construye un árbol de nodos a partir del estado inicial. La <b>frontera</b> guarda los nodos generados que faltan por expandir; <b>expandir</b> un nodo es generar sus sucesores. La búsqueda en <b>grafo</b> además recuerda los estados ya explorados para no repetirlos.",
+      "Las estrategias se comparan por <b>completitud</b> (encuentra solución si existe), <b>optimalidad</b> (encuentra la de menor costo), <b>tiempo</b> y <b>espacio</b>, en función del factor de ramificación \\(b\\), la profundidad de la solución más superficial \\(d\\) y la profundidad máxima \\(m\\)."
+     ],
+     "u": [
+      "Cualquier implementación de búsqueda: rutas, juegos, planificadores.",
+      "Sin conjunto explorado, un mapa con caminos de ida y vuelta genera ciclos infinitos.",
+      "Cuando el espacio de estados tiene ciclos o caminos redundantes.",
+      "Guarda los estados explorados en un conjunto (por ejemplo, un <code>HashSet</code> en Java o un <code>set</code> en Python)."
+     ],
+     "f": "\\text{nodos generados por anchura}=1+b+b^2+\\dots+b^d=O(b^d)"
+    },
+    {
+     "n": "Anchura, profundidad y profundización iterativa",
+     "e": [
+      "<b>Anchura</b> (BFS) expande primero los nodos menos profundos con una cola FIFO. <b>Profundidad</b> (DFS) expande el más profundo con una pila LIFO o recursión. <b>Profundidad limitada</b> corta en un límite \\(\\ell\\). <b>Profundización iterativa</b> (IDS) repite la profundidad limitada con \\(\\ell=0,1,2,\\dots\\) y combina el poco espacio de DFS con la completitud de BFS."
+     ],
+     "u": [
+      "BFS: caminos con menos saltos (redes sociales, enrutamiento por saltos). DFS: recorrer directorios, resolver laberintos. IDS: espacios grandes de profundidad desconocida.",
+      "La memoria suele acabarse antes que el tiempo; por eso IDS es la preferida cuando no hay heurística.",
+      "Cuando todos los pasos cuestan lo mismo o no se tiene información del problema.",
+      "Elige por la tabla: si importa la memoria, IDS; si importa el menor número de pasos y hay memoria, BFS."
+     ],
+     "tabla": "<table><thead><tr><th>Estrategia</th><th>Completa</th><th>Óptima</th><th>Tiempo</th><th>Espacio</th></tr></thead><tbody><tr><td>Anchura</td><td>Sí (b finito)</td><td>Solo si los costos son iguales</td><td>\\(O(b^d)\\)</td><td>\\(O(b^d)\\)</td></tr><tr><td>Profundidad</td><td>No en espacios infinitos</td><td>No</td><td>\\(O(b^m)\\)</td><td>\\(O(bm)\\)</td></tr><tr><td>Profundización iterativa</td><td>Sí</td><td>Solo si los costos son iguales</td><td>\\(O(b^d)\\)</td><td>\\(O(bd)\\)</td></tr><tr><td>Costo uniforme</td><td>Sí (costos positivos)</td><td>Sí</td><td>Depende de \\(C^*\\)</td><td>Depende de \\(C^*\\)</td></tr></tbody></table>"
+    },
+    {
+     "n": "Costo uniforme",
+     "e": [
+      "Expande el nodo de menor costo acumulado \\(g(n)\\) con una cola de prioridad. Es el algoritmo de Dijkstra aplicado a una meta. Para ser óptimo, la prueba de meta se hace <b>al extraer</b> el nodo de la frontera, no al generarlo: puede aparecer después un camino más barato. Si se genera un estado que ya está en la frontera con mayor costo, se reemplaza."
+     ],
+     "u": [
+      "Rutas por distancia o tiempo, enrutamiento con métricas de costo (como OSPF), logística.",
+      "Es la búsqueda óptima cuando los pasos tienen costos distintos y no hay heurística.",
+      "Cuando los costos de las acciones varían.",
+      "Usa un montículo (<code>heapq</code>, <code>PriorityQueue</code>) ordenado por \\(g\\)."
+     ],
+     "f": "f(n)=g(n)=\\sum \\text{costos de los pasos desde el inicio}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Formula el problema de ir de Guatemala a Quetzaltenango con el mapa ilustrativo.",
+     "pasos": [
+      "<b>Estados.</b> La ciudad donde está el vehículo; hay 9 estados.",
+      "<b>Estado inicial.</b> En(Guatemala).",
+      "<b>Acciones.</b> Ir(c) hacia cada ciudad vecina c; por ejemplo, desde Guatemala: Ir(Antigua), Ir(Chimaltenango), Ir(Escuintla).",
+      "<b>Modelo de transición.</b> Resultado(En(x), Ir(y)) = En(y).",
+      "<b>Meta y costo.</b> Meta: En(Quetzaltenango). Costo de camino: suma de los km de los tramos."
+     ],
+     "r": "Problema definido con 9 estados, acciones Ir(c), meta En(Quetzaltenango) y costo en km.",
+     "fin": "Traducir un problema real a la forma que entiende un algoritmo de búsqueda."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica búsqueda en anchura de GUA a XEL. Reglas: búsqueda en grafo; los vecinos se encolan en orden alfabético; no se encola una ciudad ya generada; la prueba de meta se hace al extraer de la cola. Da el orden de expansión, el camino y su costo.",
+     "pasos": [
+      "<b>GUA.</b> Encola ANT, CHI, ESC. Cola: ANT, CHI, ESC.",
+      "<b>ANT.</b> Sus vecinos ya fueron generados. Cola: CHI, ESC.",
+      "<b>CHI.</b> Encola TEC. <b>ESC.</b> Encola MAZ. Cola: TEC, MAZ.",
+      "<b>TEC.</b> Encola LEN. <b>MAZ.</b> Encola XEL y REU (alfabético: Quetzaltenango antes que Retalhuleu). Cola: LEN, XEL, REU.",
+      "<b>LEN.</b> XEL ya estaba generada. Se extrae XEL: es la meta. Camino GUA-ESC-MAZ-XEL = 60 + 110 + 65 = 235 km."
+     ],
+     "r": "Orden GUA, ANT, CHI, ESC, TEC, MAZ, LEN, XEL; camino GUA-ESC-MAZ-XEL de 235 km (3 tramos).",
+     "fin": "Ver que BFS minimiza tramos, no kilómetros."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica búsqueda en profundidad recursiva de GUA a XEL, visitando primero el vecino no visitado que va antes en orden alfabético y sin volver a ciudades ya visitadas.",
+     "pasos": [
+      "<b>GUA → ANT.</b> Antigua es el primer vecino alfabético de Guatemala.",
+      "<b>ANT → CHI.</b> Desde Antigua, Chimaltenango va antes que Escuintla.",
+      "<b>CHI → TEC.</b> Antigua y Guatemala ya están visitadas.",
+      "<b>TEC → LEN → XEL.</b> Llega a la meta.",
+      "<b>Costo.</b> 45 + 20 + 35 + 40 + 75 = 215 km."
+     ],
+     "r": "Orden GUA, ANT, CHI, TEC, LEN, XEL; camino GUA-ANT-CHI-TEC-LEN-XEL de 215 km.",
+     "fin": "Comprobar que DFS devuelve la primera solución que encuentra, no la mejor."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica costo uniforme de GUA a XEL (búsqueda en grafo, empates por orden alfabético, prueba de meta al extraer). Muestra la frontera en cada paso.",
+     "pasos": [
+      "<b>Extrae GUA (0).</b> Frontera: ANT 45, CHI 55, ESC 60.",
+      "<b>Extrae ANT (45).</b> CHI por Antigua costaría 65 y ESC 95: no mejoran. <b>Extrae CHI (55).</b> Agrega TEC 90. Frontera: ESC 60, TEC 90.",
+      "<b>Extrae ESC (60).</b> Agrega MAZ 170. <b>Extrae TEC (90).</b> Agrega LEN 130.",
+      "<b>Extrae LEN (130).</b> Agrega XEL 205. Frontera: MAZ 170, XEL 205. <b>Extrae MAZ (170).</b> XEL por Mazatenango costaría 235: no mejora; agrega REU 200.",
+      "<b>Extrae REU (200)</b> (XEL por Retalhuleu costaría 255). <b>Extrae XEL (205):</b> meta. Camino GUA-CHI-TEC-LEN-XEL."
+     ],
+     "r": "Orden GUA, ANT, CHI, ESC, TEC, LEN, MAZ, REU, XEL; camino GUA-CHI-TEC-LEN-XEL de 205 km, el óptimo.",
+     "fin": "Obtener la ruta de menor costo y ver por qué la meta se prueba al extraer."
+    },
+    {
+     "nv": "B",
+     "q": "Una búsqueda en anchura tiene factor de ramificación \\(b=10\\) y la solución está a profundidad \\(d=5\\). ¿Cuántos nodos genera como máximo y cuánta memoria ocupan si cada nodo usa 1 KB (1000 bytes)?",
+     "pasos": [
+      "<b>Nodos.</b> \\(1+10+10^2+10^3+10^4+10^5=111\\,111\\).",
+      "<b>Memoria.</b> \\(111\\,111\\times1\\text{ KB}\\approx111\\text{ MB}\\).",
+      "<b>Lectura.</b> Con \\(d=8\\) serían más de cien millones de nodos: la memoria crece exponencialmente."
+     ],
+     "r": "111 111 nodos, unos 111 MB.",
+     "fin": "Dimensionar por qué BFS se queda sin memoria en problemas grandes."
+    },
+    {
+     "nv": "B",
+     "q": "Con \\(b=3\\) y \\(d=4\\), ¿cuántos nodos genera como máximo la búsqueda en anchura?",
+     "r": "\\(1+3+9+27+81=121\\) nodos."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica búsqueda en anchura de ESC a TEC con las mismas reglas del ejercicio resuelto (grafo, vecinos en orden alfabético, prueba de meta al extraer). Da el orden de expansión y el camino.",
+     "r": "Orden ESC, ANT, GUA, MAZ, CHI, XEL, REU, TEC. Camino ESC-ANT-CHI-TEC = 50 + 20 + 35 = 105 km."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica búsqueda en profundidad recursiva de TEC a REU (vecino no visitado alfabéticamente primero, sin repetir ciudades). ¿Qué camino devuelve y cuánto cuesta?",
+     "r": "Orden TEC, CHI, ANT, ESC, GUA (sin salida), MAZ, XEL, LEN (sin salida), REU. Camino TEC-CHI-ANT-ESC-MAZ-XEL-REU = 335 km, cuando el óptimo es TEC-LEN-XEL-REU = 170 km. DFS no es óptima."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica costo uniforme de ANT a REU (grafo, empates alfabéticos, meta al extraer). Da el orden de expansión con su \\(g\\) y el camino.",
+     "r": "ANT 0, CHI 20, GUA 45, ESC 50, TEC 55, LEN 95, MAZ 160, XEL 170, REU 190. Camino ANT-ESC-MAZ-REU = 50 + 110 + 30 = 190 km."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica profundización iterativa de GUA a XEL (vecinos en orden alfabético; dentro de cada iteración no se repite una ciudad del camino actual; la meta se prueba al visitar el nodo). ¿Con qué límite encuentra la meta, qué camino devuelve y cuántos nodos visita en total sumando todas las iteraciones?",
+     "r": "Límite 3. Visita 1, 4, 10 y 16 nodos en los límites 0, 1, 2 y 3: 31 en total. Devuelve GUA-ESC-MAZ-XEL (235 km): el de menos tramos, no el de menos km."
+    }
+   ]
+  },
+  {
+   "titulo": "Búsqueda informada y búsqueda en juegos",
+   "intro": "Unidad 2 del programa (segunda parte): solución de problemas con búsqueda informada (heurísticas, búsqueda voraz y A*) y búsqueda en juegos de dos jugadores (minimax y poda alfa-beta).",
+   "conceptos": [
+    {
+     "n": "Heurísticas, búsqueda voraz y A*",
+     "e": [
+      "Una <b>heurística</b> \\(h(n)\\) estima el costo de llegar desde \\(n\\) hasta la meta. La <b>búsqueda voraz</b> expande el nodo con menor \\(h\\): es rápida pero no óptima. <b>A*</b> expande el de menor \\(f(n)=g(n)+h(n)\\), costo ya recorrido más estimación de lo que falta.",
+      "Estimaciones en línea recta (inventadas) hasta Quetzaltenango para el mapa de la sección 2:",
+      "<table><thead><tr><th>Ciudad</th><th>GUA</th><th>ANT</th><th>CHI</th><th>ESC</th><th>TEC</th><th>LEN</th><th>MAZ</th><th>REU</th><th>XEL</th></tr></thead><tbody><tr><td>\\(h\\) (km)</td><td>160</td><td>140</td><td>120</td><td>100</td><td>90</td><td>60</td><td>55</td><td>45</td><td>0</td></tr></tbody></table>"
+     ],
+     "u": [
+      "Navegadores GPS, videojuegos (movimiento de personajes), planificación de robots, logística.",
+      "Con una buena heurística A* expande muchos menos nodos que el costo uniforme y sigue siendo óptima.",
+      "Cuando existe una estimación razonable de la distancia a la meta.",
+      "Usa la cola de prioridad del costo uniforme, pero ordenada por \\(g+h\\)."
+     ],
+     "f": "f(n)=g(n)+h(n)"
+    },
+    {
+     "n": "Heurísticas admisibles y consistentes",
+     "e": [
+      "Es <b>admisible</b> si nunca sobreestima el costo real \\(h^*(n)\\). Es <b>consistente</b> si cumple la desigualdad triangular con cada sucesor. Toda consistente es admisible. Con heurística admisible, A* en árbol es óptima; con consistente, también en grafo.",
+      "En el rompecabezas de 8 piezas: \\(h_1\\) = piezas fuera de lugar y \\(h_2\\) = suma de distancias Manhattan. Ambas son admisibles porque resuelven un problema <b>relajado</b> (con menos restricciones). Como \\(h_2\\ge h_1\\) siempre, \\(h_2\\) <b>domina</b> y expande menos nodos."
+     ],
+     "u": [
+      "Diseño de heurísticas para rutas, rompecabezas, planificación y juegos.",
+      "Una heurística que sobreestima puede hacer que A* devuelva una ruta más cara.",
+      "Al proponer o validar una heurística.",
+      "Compárala con el costo real o derívala de un problema relajado; revisa la desigualdad en cada arista."
+     ],
+     "f": "h(n)\\le h^*(n)\\qquad h(n)\\le c(n,a,n')+h(n')"
+    },
+    {
+     "n": "Minimax",
+     "e": [
+      "En juegos de dos jugadores por turnos, de suma cero e información perfecta, MAX busca el mayor valor y MIN el menor. Minimax recorre el árbol en profundidad y sube los valores de las hojas: cada nodo MAX toma el máximo de sus hijos y cada nodo MIN, el mínimo. En juegos grandes se corta a cierta profundidad y se aplica una <b>función de evaluación</b>."
+     ],
+     "u": [
+      "Ajedrez, damas, tres en raya, juegos de mesa en línea.",
+      "Da la mejor jugada suponiendo que el rival también juega de forma óptima.",
+      "En entornos multiagente competitivos y deterministas.",
+      "Recorre en profundidad y propaga máximos y mínimos alternados hacia la raíz."
+     ],
+     "f": "\\text{MM}(s)=\\begin{cases}\\text{UTILIDAD}(s) & s\\ \\text{terminal}\\\\ \\max_a \\text{MM}(\\text{Res}(s,a)) & \\text{turno de MAX}\\\\ \\min_a \\text{MM}(\\text{Res}(s,a)) & \\text{turno de MIN}\\end{cases}"
+    },
+    {
+     "n": "Poda alfa-beta",
+     "e": [
+      "Obtiene el mismo valor que minimax sin revisar ramas que no pueden cambiar la decisión. \\(\\alpha\\) es el mejor valor asegurado para MAX en el camino actual y \\(\\beta\\), el mejor para MIN. Se poda cuando \\(\\alpha\\ge\\beta\\): en un nodo MIN, si su valor ya es menor o igual que \\(\\alpha\\); en un nodo MAX, si ya es mayor o igual que \\(\\beta\\).",
+      "Con el orden ideal de jugadas revisa unos \\(O(b^{m/2})\\) nodos: puede buscar casi el doble de profundo en el mismo tiempo."
+     ],
+     "u": [
+      "Motores de ajedrez y de juegos de tablero.",
+      "Ahorra tiempo sin cambiar el resultado.",
+      "Siempre que se use minimax en profundidad.",
+      "Pasa \\(\\alpha\\) y \\(\\beta\\) hacia abajo, actualízalas al subir y corta cuando se crucen; ordena primero las jugadas prometedoras."
+     ],
+     "f": "\\text{podar si }\\alpha\\ge\\beta"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula \\(h_1\\) (piezas fuera de lugar, sin contar el hueco) y \\(h_2\\) (Manhattan) para el estado del rompecabezas de 8 piezas <code>7 2 4 / 5 _ 6 / 8 3 1</code> con meta <code>_ 1 2 / 3 4 5 / 6 7 8</code>.",
+     "pasos": [
+      "<b>\\(h_1\\).</b> Compara casilla por casilla: en la meta la primera fila es _ 1 2, y el estado tiene 7 2 4; ninguna ficha coincide con su casilla meta (por ejemplo, el 2 está donde va el 1). Las 8 fichas están fuera de lugar: \\(h_1=8\\).",
+      "<b>\\(h_2\\).</b> Filas más columnas de cada ficha a su casilla meta: ficha 1: 3; 2: 1; 3: 2; 4: 2; 5: 2; 6: 3; 7: 3; 8: 2.",
+      "<b>Suma.</b> \\(3+1+2+2+2+3+3+2=18\\). Como \\(h_2\\ge h_1\\), \\(h_2\\) es más informada."
+     ],
+     "r": "\\(h_1=8\\) y \\(h_2=18\\).",
+     "fin": "Calcular y comparar heurísticas admisibles; \\(h_2\\) es más informada."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica búsqueda voraz de GUA a XEL con las \\(h\\) de la tabla (grafo, empates alfabéticos, meta al extraer). ¿Encuentra la ruta óptima?",
+     "pasos": [
+      "<b>Extrae GUA.</b> Frontera: ESC 100, CHI 120, ANT 140.",
+      "<b>Extrae ESC (100).</b> Agrega MAZ 55. <b>Extrae MAZ (55).</b> Agrega XEL 0 y REU 45.",
+      "<b>Extrae XEL (0):</b> meta. Camino GUA-ESC-MAZ-XEL.",
+      "<b>Costo.</b> 60 + 110 + 65 = 235 km, mayor que los 205 km del óptimo."
+     ],
+     "r": "Orden GUA, ESC, MAZ, XEL; camino de 235 km: no es óptimo.",
+     "fin": "Ver que la voraz se deja llevar por la estimación e ignora lo ya recorrido."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica A* de GUA a XEL con las \\(h\\) de la tabla (grafo, empates alfabéticos, meta al extraer). Muestra \\(f=g+h\\) en cada extracción.",
+     "pasos": [
+      "<b>GUA:</b> \\(f=0+160=160\\). Frontera: ESC \\(60+100=160\\), CHI \\(55+120=175\\), ANT \\(45+140=185\\).",
+      "<b>ESC (160).</b> Agrega MAZ \\(170+55=225\\). <b>CHI (175).</b> Agrega TEC \\(90+90=180\\).",
+      "<b>TEC (180).</b> Agrega LEN \\(130+60=190\\). <b>ANT (185).</b> Sus caminos no mejoran.",
+      "<b>LEN (190).</b> Agrega XEL \\(205+0=205\\). Frontera: XEL 205, MAZ 225.",
+      "<b>XEL (205):</b> meta. Camino GUA-CHI-TEC-LEN-XEL."
+     ],
+     "r": "Orden GUA, ESC, CHI, TEC, ANT, LEN, XEL; camino óptimo de 205 km con 7 expansiones (costo uniforme hizo 9).",
+     "fin": "Encontrar la ruta óptima expandiendo menos nodos que sin heurística."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula el valor minimax de un árbol con MAX en la raíz y tres nodos MIN; las hojas, de izquierda a derecha, son B = [4, 8, 5], C = [3, 9, 7] y D = [6, 2, 10]. ¿Qué jugada elige MAX?",
+     "pasos": [
+      "<b>Nodos MIN.</b> B = min(4, 8, 5) = 4; C = min(3, 9, 7) = 3; D = min(6, 2, 10) = 2.",
+      "<b>Raíz MAX.</b> max(4, 3, 2) = 4."
+     ],
+     "r": "Valor 4: MAX juega hacia B.",
+     "fin": "Decidir la mejor jugada suponiendo un rival óptimo."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica poda alfa-beta al árbol anterior (hijos de izquierda a derecha). ¿Qué hojas se podan?",
+     "pasos": [
+      "<b>B.</b> Se revisan 4, 8 y 5: B = 4. En la raíz, \\(\\alpha=4\\).",
+      "<b>C.</b> La primera hoja es 3: C valdrá como mucho 3, que es \\(\\le\\alpha=4\\). Se podan 9 y 7.",
+      "<b>D.</b> Hojas 6 (D \\(\\le 6\\), sigue) y 2 (D \\(\\le2\\le\\alpha\\)): se poda 10.",
+      "<b>Resultado.</b> Raíz = 4, igual que minimax, revisando 6 de 9 hojas."
+     ],
+     "r": "Se podan 9, 7 y 10; valor 4 con 6 hojas evaluadas.",
+     "fin": "Ahorrar evaluaciones sin cambiar la decisión."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula el valor minimax de un árbol con MAX en la raíz y cuatro nodos MIN con hojas [2, 7], [1, 9], [6, 3] y [5, 8].",
+     "r": "MIN: 2, 1, 3, 5. Raíz = max = 5 (cuarta jugada)."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica alfa-beta al árbol del ejercicio anterior, de izquierda a derecha. ¿Qué hojas se podan y cuántas se evalúan?",
+     "r": "Tras el primer MIN, \\(\\alpha=2\\). En el segundo, la hoja 1 \\(\\le 2\\): se poda el 9. El tercero vale 3 (\\(\\alpha=3\\)) y el cuarto 5. Se poda solo el 9; se evalúan 7 de 8 hojas; valor 5."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica A* de ANT a XEL con las \\(h\\) de la tabla (grafo, empates alfabéticos, meta al extraer). Da el orden de expansión con \\(f\\) y el camino.",
+     "r": "ANT 140, CHI \\(20+120=140\\), TEC \\(55+90=145\\), ESC \\(50+100=150\\), LEN \\(95+60=155\\), XEL 170. Camino ANT-CHI-TEC-LEN-XEL = 170 km."
+    },
+    {
+     "nv": "A",
+     "q": "Árbol de tres niveles: MAX en la raíz con tres nodos MIN; cada MIN tiene dos nodos MAX con dos hojas. Hojas de izquierda a derecha: [[3, 5], [6, 9]], [[1, 2], [0, −1]], [[8, 4], [7, 2]]. Calcula el valor minimax y las podas de alfa-beta.",
+     "r": "Valores MAX del nivel 2: 5, 9 | 2, 0 | 8, 7. MIN: 5, 0, 7. Raíz = 7. Con alfa-beta: en el primer MIN (\\(\\beta=5\\)) el MAX [6, 9] ve 6 \\(\\ge5\\) y poda el 9; en el segundo MIN (\\(\\alpha=5\\)) el primer MAX vale 2 \\(\\le5\\) y se poda todo [0, −1]. Se evalúan 9 de 12 hojas; valor 7."
+    },
+    {
+     "nv": "A",
+     "q": "Si cambias \\(h(\\text{Tecpán})\\) de 90 a 130, ¿la heurística sigue siendo admisible y consistente? ¿Qué devuelve A* de GUA a XEL?",
+     "r": "No es admisible: el costo real desde Tecpán es 40 + 75 = 115 y 130 lo sobreestima. Tampoco es consistente: \\(130 > 40 + h(\\text{LEN}) = 100\\). En este mapa A* todavía devuelve GUA-CHI-TEC-LEN-XEL (205 km), pero expande TEC con \\(f=220\\) después de ANT: se perdió la garantía de optimalidad, aunque esta vez no falle."
+    }
+   ]
+  },
+  {
+   "titulo": "Conocimiento, razonamiento lógico y planificación",
+   "intro": "Unidades 3 y 4 del programa: agentes que razonan de manera lógica, lógica de primer orden, inferencia en la lógica (encadenamiento hacia adelante y hacia atrás, resolución, sistemas expertos) y cómo actuar en forma lógica mediante la planificación.",
+   "conceptos": [
+    {
+     "n": "Agentes basados en conocimiento y lógica proposicional",
+     "e": [
+      "Un agente basado en conocimiento tiene una <b>base de conocimiento</b> (KB) de oraciones y un mecanismo de inferencia: le dice (TELL) lo que percibe y le pregunta (ASK) qué hacer. Una oración \\(\\alpha\\) es <b>consecuencia lógica</b> de la KB (\\(KB\\models\\alpha\\)) si es verdadera en todos los modelos donde la KB lo es.",
+      "Una inferencia es <b>sólida</b> si solo deriva consecuencias lógicas y <b>completa</b> si puede derivarlas todas. Formas válidas: modus ponens (de \\(P\\to Q\\) y \\(P\\), \\(Q\\)) y modus tollens; inválidas: afirmar el consecuente o negar el antecedente."
+     ],
+     "u": [
+      "Sistemas de reglas de negocio, validación de configuraciones, verificación de software.",
+      "Permite explicar por qué el sistema llegó a una conclusión.",
+      "Cuando el conocimiento del dominio se puede escribir como reglas claras.",
+      "Representa hechos y reglas en lógica y deja que el motor derive conclusiones."
+     ],
+     "f": "KB\\models\\alpha\\iff KB\\land\\neg\\alpha\\ \\text{es insatisfacible}"
+    },
+    {
+     "n": "Lógica de primer orden y unificación",
+     "e": [
+      "Añade <b>objetos</b>, <b>predicados</b> (relaciones), <b>funciones</b> y <b>cuantificadores</b>: \\(\\forall\\) suele ir con \\(\\to\\) y \\(\\exists\\) con \\(\\land\\). Ejemplo: \\(\\forall x\\,(\\text{Contribuyente}(x)\\to\\exists n\\,\\text{TieneNIT}(x,n))\\).",
+      "La <b>unificación</b> busca la sustitución que hace idénticas dos expresiones: Conoce(Juan, x) y Conoce(y, Madre(y)) se unifican con {y/Juan, x/Madre(Juan)}. Falla si un símbolo constante choca o si una variable tendría que contenerse a sí misma (prueba de ocurrencia)."
+     ],
+     "u": [
+      "Prolog, motores de reglas, bases de conocimiento, consultas semánticas.",
+      "Expresa reglas generales (“todo empleado…”) que la lógica proposicional obligaría a repetir objeto por objeto.",
+      "Cuando el dominio tiene muchos objetos con relaciones entre ellos.",
+      "Traduce con cuidado los cuantificadores y unifica para aplicar reglas generales a casos concretos."
+     ]
+    },
+    {
+     "n": "Encadenamiento, resolución y sistemas expertos",
+     "e": [
+      "<b>Hacia adelante:</b> parte de los hechos y dispara reglas hasta no obtener nada nuevo (guiado por datos). <b>Hacia atrás:</b> parte de la meta y busca reglas que la concluyan, convirtiendo sus premisas en submetas (guiado por objetivos). Ambos son eficientes con cláusulas de Horn.",
+      "La <b>resolución</b> es completa para refutación: se pasa todo a forma normal conjuntiva, se agrega la negación de la meta y se resuelven cláusulas con literales opuestos hasta obtener la cláusula vacía \\(\\square\\).",
+      "Un <b>sistema experto</b> tiene base de conocimiento (reglas de un experto), base de hechos, motor de inferencia, módulo de explicación e interfaz. MYCIN, de diagnóstico de infecciones, es el ejemplo clásico."
+     ],
+     "u": [
+      "Diagnóstico de fallas, aprobación de créditos con reglas, configuración de productos, Prolog.",
+      "Hacia adelante sirve para monitorear y reaccionar; hacia atrás, para responder una pregunta concreta sin derivar todo.",
+      "Hacia adelante con muchos datos nuevos; hacia atrás con una hipótesis por comprobar.",
+      "Define el orden de disparo de reglas y lleva una traza para explicar la conclusión."
+     ],
+     "f": "\\frac{A\\lor B,\\quad \\neg B\\lor C}{A\\lor C}\\ \\text{(resolución)}"
+    },
+    {
+     "n": "Planificación",
+     "e": [
+      "Planificar es encontrar una secuencia de acciones que lleve del estado inicial a uno que cumpla la meta, describiendo las acciones de forma <b>factorizada</b>. En <b>STRIPS</b> cada acción tiene precondiciones y efectos (hechos que añade y que borra); todo lo no mencionado se mantiene.",
+      "Ejemplo: Mover(b, x, y). Precondición: Sobre(b, x), Libre(b), Libre(y). Efecto: añade Sobre(b, y) y Libre(x); borra Sobre(b, x) y Libre(y). Lograr las metas una por una puede fallar (anomalía de Sussman): hay que considerar cómo interactúan."
+     ],
+     "u": [
+      "Robots, logística, orquestación de despliegues, personajes de videojuegos, planes de recuperación ante desastres.",
+      "La descripción factorizada permite heurísticas generales sin escribir una por problema.",
+      "Cuando hay que encadenar muchas acciones con precondiciones.",
+      "Escribe cada acción con precondiciones y efectos, y busca hacia adelante desde el estado inicial o hacia atrás desde la meta."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Encadenamiento hacia adelante. Reglas: R1: sin_ping ∧ luz_ok → falla_red; R2: falla_red ∧ switch_apagado → reiniciar_switch; R3: cpu_alta ∧ proceso_php → revisar_codigo; R4: luz_ok ∧ web_lenta → cpu_alta; R5: cpu_alta ∧ memoria_llena → ampliar_ram. Hechos: luz_ok, web_lenta, memoria_llena, proceso_php. En cada pasada se revisan R1 a R5 en orden y se dispara toda regla cuyas premisas se cumplan y cuya conclusión sea nueva; se repite hasta que no haya cambios.",
+     "pasos": [
+      "<b>Pasada 1.</b> R1 y R2 no (falta sin_ping). R3 no (aún no hay cpu_alta). R4 sí: cpu_alta. R5 sí: ampliar_ram.",
+      "<b>Pasada 2.</b> R3 ya se cumple: revisar_codigo.",
+      "<b>Pasada 3.</b> Nada nuevo: termina."
+     ],
+     "r": "Se derivan cpu_alta, ampliar_ram y revisar_codigo, en ese orden; falla_red y reiniciar_switch no.",
+     "fin": "Simular el motor de un sistema experto de diagnóstico."
+    },
+    {
+     "nv": "I",
+     "q": "Con las mismas reglas y hechos, usa encadenamiento hacia atrás para responder: ¿hay que ampliar la RAM? ¿Hay que reiniciar el switch?",
+     "pasos": [
+      "<b>ampliar_ram.</b> R5 pide cpu_alta y memoria_llena. cpu_alta: R4 pide luz_ok (hecho) y web_lenta (hecho), se prueba. memoria_llena es hecho. Se prueba la meta.",
+      "<b>reiniciar_switch.</b> R2 pide falla_red y switch_apagado. falla_red: R1 pide luz_ok (hecho) y sin_ping, que no es hecho ni conclusión de ninguna regla. Falla.",
+      "<b>Ventaja.</b> No derivó revisar_codigo: solo exploró lo necesario para cada pregunta."
+     ],
+     "r": "Sí hay que ampliar la RAM; no se puede concluir que haya que reiniciar el switch.",
+     "fin": "Responder consultas concretas sin derivar toda la base."
+    },
+    {
+     "nv": "I",
+     "q": "Demuestra por resolución. P: el banco confirmó el pago; Q: se emite la factura; R: la factura se reporta a la SAT. KB: \\(P\\to Q\\), \\(Q\\to R\\), \\(P\\). Meta: R.",
+     "pasos": [
+      "<b>Forma clausal.</b> \\(\\neg P\\lor Q\\), \\(\\neg Q\\lor R\\), \\(P\\) y la negación de la meta \\(\\neg R\\).",
+      "<b>Resolver \\(\\neg R\\) con \\(\\neg Q\\lor R\\).</b> Queda \\(\\neg Q\\).",
+      "<b>Resolver \\(\\neg Q\\) con \\(\\neg P\\lor Q\\).</b> Queda \\(\\neg P\\).",
+      "<b>Resolver \\(\\neg P\\) con \\(P\\).</b> Cláusula vacía \\(\\square\\): contradicción."
+     ],
+     "r": "\\(KB\\models R\\): la factura se reporta a la SAT.",
+     "fin": "Probar conclusiones de forma mecánica, como lo hace un demostrador automático."
+    },
+    {
+     "nv": "A",
+     "q": "Unifica, si es posible: (a) Conoce(Juan, x) con Conoce(y, Madre(y)); (b) Conoce(Juan, x) con Conoce(x, Ana); (c) P(x) con P(F(x)).",
+     "pasos": [
+      "<b>(a)</b> y/Juan; luego x/Madre(y) = Madre(Juan). Unificador: {y/Juan, x/Madre(Juan)}.",
+      "<b>(b)</b> x/Juan por el primer argumento y luego Juan tendría que ser Ana: falla. Si se renombran las variables de la segunda oración (Conoce(z, Ana)), unifica con {z/Juan, x/Ana}.",
+      "<b>(c)</b> x tendría que ser F(x), que contiene a x: la prueba de ocurrencia lo impide. Falla."
+     ],
+     "r": "(a) {y/Juan, x/Madre(Juan)}; (b) falla sin renombrar variables; (c) falla por ocurrencia.",
+     "fin": "Aplicar reglas generales de primer orden a casos concretos."
+    },
+    {
+     "nv": "A",
+     "q": "Bloques: C está sobre A; A y B sobre la mesa. Meta: A sobre B y B sobre C. Con la acción Mover(b, x, y) de STRIPS (en la mesa siempre hay lugar), encuentra un plan de longitud mínima.",
+     "pasos": [
+      "<b>Por qué no metas una a una.</b> Si primero se logra A sobre B (quitando C), luego hay que deshacerlo para poner B sobre C; si primero B sobre C, A queda tapada. Es la anomalía de Sussman.",
+      "<b>Paso 1.</b> Mover(C, A, Mesa): libera A.",
+      "<b>Paso 2.</b> Mover(B, Mesa, C): logra B sobre C.",
+      "<b>Paso 3.</b> Mover(A, Mesa, B): logra A sobre B sin romper lo anterior."
+     ],
+     "r": "Mover(C, A, Mesa), Mover(B, Mesa, C), Mover(A, Mesa, B): 3 acciones.",
+     "fin": "Ver que las metas interactúan y que un planificador debe considerarlas juntas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es válido? “Si el servidor está caído, no responde al ping. No responde al ping. Por lo tanto, el servidor está caído.”",
+     "r": "No. Es la falacia de afirmar el consecuente: \\(((P\\to Q)\\land Q)\\to P\\) no es tautología (falla con P falsa y Q verdadera). El ping puede fallar por un firewall o por la red."
+    },
+    {
+     "nv": "I",
+     "q": "Pasa a forma normal conjuntiva: \\(P\\to(Q\\land R)\\).",
+     "r": "\\(\\neg P\\lor(Q\\land R)\\equiv(\\neg P\\lor Q)\\land(\\neg P\\lor R)\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Encadenamiento hacia adelante con pasadas en orden. Reglas: R1: A ∧ B → C; R2: C → D; R3: D ∧ E → F; R4: A ∧ F → G; R5: B → E. Hechos: A, B. ¿En qué orden se derivan los hechos nuevos?",
+     "r": "Pasada 1: C (R1), D (R2) y E (R5). Pasada 2: F (R3) y G (R4). Orden: C, D, E, F, G."
+    },
+    {
+     "nv": "A",
+     "q": "Demuestra por resolución que se activa la alarma (A). C: corte de energía; F: falla de la fuente. KB: \\(C\\to A\\), \\(F\\to A\\), \\(C\\lor F\\).",
+     "r": "Cláusulas: \\(\\neg C\\lor A\\), \\(\\neg F\\lor A\\), \\(C\\lor F\\), \\(\\neg A\\). De \\(\\neg A\\) y \\(\\neg C\\lor A\\): \\(\\neg C\\). Con \\(C\\lor F\\): \\(F\\). Con \\(\\neg F\\lor A\\): \\(A\\). Con \\(\\neg A\\): \\(\\square\\). Se activa la alarma."
+    },
+    {
+     "nv": "A",
+     "q": "Traduce a lógica de primer orden: (a) “Todo contribuyente inscrito tiene un NIT”; (b) “Algún contribuyente es agente retenedor”. ¿Qué error se comete al escribir (b) como \\(\\exists x\\,(\\text{Contribuyente}(x)\\to\\text{Retenedor}(x))\\)?",
+     "r": "(a) \\(\\forall x\\,(\\text{Inscrito}(x)\\to\\exists n\\,\\text{NIT}(x,n))\\). (b) \\(\\exists x\\,(\\text{Contribuyente}(x)\\land\\text{Retenedor}(x))\\). Con \\(\\to\\) la fórmula se cumple con cualquier objeto que no sea contribuyente, así que no afirma nada útil."
+    }
+   ]
+  },
+  {
+   "titulo": "Conocimiento incierto: probabilidad, redes bayesianas y lógica difusa",
+   "intro": "Unidad 5 del programa: incertidumbre, sistemas de razonamiento probabilístico (regla de Bayes y redes de creencia) y lógica incierta o difusa.",
+   "conceptos": [
+    {
+     "n": "Probabilidad condicional y regla de Bayes",
+     "e": [
+      "Ante incertidumbre, el agente asigna grados de creencia. La <b>regla de Bayes</b> actualiza la probabilidad de una hipótesis \\(H\\) al observar la evidencia \\(E\\). El denominador se obtiene por probabilidad total. Si las evidencias son condicionalmente independientes dada la hipótesis, se multiplican sus verosimilitudes (<b>Bayes ingenuo</b>).",
+      "Error común: confundir \\(P(E\\mid H)\\) (sensibilidad de una prueba) con \\(P(H\\mid E)\\). Con una hipótesis rara, aun una prueba buena produce muchos falsos positivos."
+     ],
+     "u": [
+      "Filtros de spam, detección de fraude, diagnóstico médico, clasificación de documentos.",
+      "Evita sobrerreaccionar a alertas cuando el evento es poco frecuente.",
+      "Cuando se conoce la frecuencia base y el comportamiento de la prueba.",
+      "Calcula \\(P(E)\\) por probabilidad total y divide."
+     ],
+     "f": "P(H\\mid E)=\\frac{P(E\\mid H)\\,P(H)}{P(E\\mid H)\\,P(H)+P(E\\mid\\neg H)\\,P(\\neg H)}"
+    },
+    {
+     "n": "Redes bayesianas (redes de creencia)",
+     "e": [
+      "Grafo dirigido sin ciclos: cada nodo es una variable y cada arco una influencia directa. Cada nodo tiene una tabla de probabilidad condicional (CPT) dados sus padres. La distribución conjunta es el producto de las CPT, lo que reduce mucho los parámetros.",
+      "Ejemplo usado en los ejercicios (probabilidades inventadas): corte de energía Co con \\(P=0.10\\); ataque de denegación de servicio At con \\(P=0.05\\); servidor caído S, hijo de ambos; alerta del monitoreo Al, hija de S.",
+      "<table><thead><tr><th>Co</th><th>At</th><th>\\(P(S\\mid Co,At)\\)</th></tr></thead><tbody><tr><td>V</td><td>V</td><td>0.95</td></tr><tr><td>V</td><td>F</td><td>0.80</td></tr><tr><td>F</td><td>V</td><td>0.60</td></tr><tr><td>F</td><td>F</td><td>0.01</td></tr></tbody></table><br>\\(P(Al\\mid S)=0.90\\), \\(P(Al\\mid\\neg S)=0.05\\)."
+     ],
+     "u": [
+      "Diagnóstico de fallas, evaluación de riesgos, sistemas de soporte a decisiones médicas.",
+      "Con 4 variables binarias la conjunta completa necesita 15 números; esta red, 8.",
+      "Cuando hay varias causas y efectos con relaciones conocidas.",
+      "Dibuja causas hacia efectos, llena las CPT e infiere sumando la conjunta sobre las variables ocultas."
+     ],
+     "f": "P(x_1,\\dots,x_n)=\\prod_{i=1}^{n}P\\big(x_i\\mid \\text{padres}(X_i)\\big)"
+    },
+    {
+     "n": "Conjuntos difusos y funciones de pertenencia",
+     "e": [
+      "En la <b>lógica difusa</b> (Zadeh, 1965) un elemento pertenece a un conjunto en un grado \\(\\mu\\in[0,1]\\). Sirve para conceptos vagos como “temperatura alta”. Operaciones habituales: intersección (Y) = mínimo, unión (O) = máximo, complemento = \\(1-\\mu\\). Un <b>corte alfa</b> es el conjunto de valores con \\(\\mu\\ge\\alpha\\).",
+      "Ejemplo de los ejercicios, temperatura del cuarto de servidores en °C: <b>Fresca</b> vale 1 hasta 18 y baja a 0 en 24; <b>Templada</b> es triangular (18, 24, 30); <b>Caliente</b> vale 0 hasta 24 y sube a 1 en 30."
+     ],
+     "u": [
+      "Control de aire acondicionado, lavadoras, frenos ABS, evaluación de riesgo crediticio.",
+      "Modela el conocimiento expresado en palabras sin forzar fronteras abruptas.",
+      "Cuando las reglas de un experto usan términos vagos.",
+      "Define funciones triangulares o trapezoidales y evalúalas por tramos."
+     ],
+     "f": "\\mu_{\\text{tri}}(x)=\\max\\!\\left(\\min\\!\\left(\\frac{x-a}{b-a},\\frac{c-x}{c-b}\\right),0\\right)"
+    },
+    {
+     "n": "Inferencia difusa y desdifusificación",
+     "e": [
+      "<b>Mamdani:</b> (1) difusificar la entrada; (2) evaluar cada regla con el grado de su antecedente; (3) recortar el conjunto de salida a ese grado; (4) unir con el máximo; (5) desdifusificar, por ejemplo con el <b>centroide</b>. <b>Sugeno</b> de orden cero usa salidas numéricas y un promedio ponderado.",
+      "Ejemplo: ventilador en %: <b>Bajo</b> 1 en 0 y baja a 0 en 50; <b>Medio</b> triangular (25, 50, 75); <b>Alto</b> 0 en 50 y sube a 1 en 100. Reglas: fresca → bajo; templada → medio; caliente → alto."
+     ],
+     "u": [
+      "Controladores industriales y domésticos, climatización de centros de datos.",
+      "Convierte reglas en palabras en una salida numérica suave.",
+      "Cuando el control depende de reglas expertas y no de un modelo matemático exacto.",
+      "Evalúa reglas con mínimo, une con máximo y calcula el centroide sobre una malla de puntos."
+     ],
+     "f": "z^*=\\frac{\\sum_i z_i\\,\\mu(z_i)}{\\sum_i \\mu(z_i)}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un sistema bancario genera una alerta de fraude. El 1 % de las transacciones son fraude; la alerta detecta el 95 % de los fraudes y marca por error el 5 % de las legítimas. Si salta una alerta, ¿cuál es la probabilidad de fraude?",
+     "pasos": [
+      "<b>Probabilidad total.</b> \\(P(A)=0.95(0.01)+0.05(0.99)=0.0095+0.0495=0.059\\).",
+      "<b>Bayes.</b> \\(P(F\\mid A)=\\dfrac{0.0095}{0.059}\\approx0.161\\).",
+      "<b>Lectura.</b> Solo 16 de cada 100 alertas son fraude: la mayoría son falsos positivos porque el fraude es raro."
+     ],
+     "r": "\\(P(\\text{fraude}\\mid\\text{alerta})\\approx0.161\\).",
+     "fin": "Interpretar alertas y diseñar la revisión humana de casos."
+    },
+    {
+     "nv": "I",
+     "q": "Filtro de spam con Bayes ingenuo. \\(P(S)=0.4\\). La palabra “gratis” aparece en el 30 % del spam y en el 2 % del correo legítimo; “premio”, en el 20 % y el 1 %. Si un correo contiene ambas, ¿cuál es \\(P(S\\mid\\text{ambas})\\)?",
+     "pasos": [
+      "<b>Spam.</b> \\(0.4\\times0.30\\times0.20=0.024\\).",
+      "<b>Legítimo.</b> \\(0.6\\times0.02\\times0.01=0.00012\\).",
+      "<b>Normaliza.</b> \\(\\dfrac{0.024}{0.024+0.00012}\\approx0.995\\)."
+     ],
+     "r": "\\(P(S\\mid\\text{ambas})\\approx0.995\\).",
+     "fin": "Clasificar textos combinando evidencias independientes."
+    },
+    {
+     "nv": "A",
+     "q": "Con la red bayesiana del concepto, calcula \\(P(S)\\), \\(P(Co\\mid S)\\) y \\(P(At\\mid S)\\).",
+     "pasos": [
+      "<b>\\(P(S)\\).</b> \\(0.1(0.05)(0.95)+0.1(0.95)(0.80)+0.9(0.05)(0.60)+0.9(0.95)(0.01)\\) \\(=0.00475+0.076+0.027+0.00855=0.1163\\).",
+      "<b>\\(P(Co\\mid S)\\).</b> \\(\\dfrac{0.00475+0.076}{0.1163}=\\dfrac{0.08075}{0.1163}\\approx0.694\\).",
+      "<b>\\(P(At\\mid S)\\).</b> \\(\\dfrac{0.00475+0.027}{0.1163}=\\dfrac{0.03175}{0.1163}\\approx0.273\\)."
+     ],
+     "r": "\\(P(S)=0.1163\\); \\(P(Co\\mid S)\\approx0.694\\); \\(P(At\\mid S)\\approx0.273\\).",
+     "fin": "Diagnosticar la causa más probable de una falla."
+    },
+    {
+     "nv": "B",
+     "q": "Con las funciones de temperatura del concepto, calcula los grados de pertenencia para 26 °C y los valores de “templada Y caliente”, “templada O caliente” y “NO templada”.",
+     "pasos": [
+      "<b>Templada.</b> En el tramo de bajada: \\((30-26)/6\\approx0.667\\). <b>Caliente:</b> \\((26-24)/6\\approx0.333\\). <b>Fresca:</b> 0.",
+      "<b>Operaciones.</b> Y = min(0.667, 0.333) = 0.333; O = max = 0.667; NO templada = 1 − 0.667 = 0.333."
+     ],
+     "r": "Templada 0.667, caliente 0.333; Y 0.333, O 0.667, NO templada 0.333.",
+     "fin": "Difusificar una lectura de sensor."
+    },
+    {
+     "nv": "A",
+     "q": "Sistema Mamdani del concepto con T = 27 °C. Desdifusifica con el centroide sobre los puntos 0, 10, …, 100 del ventilador.",
+     "pasos": [
+      "<b>Difusificar.</b> Fresca 0, templada 0.5, caliente 0.5.",
+      "<b>Recortar.</b> Medio se recorta a 0.5 y alto a 0.5; bajo queda en 0.",
+      "<b>Unir (máximo) en la malla.</b> 0 en 0, 10 y 20; 0.2 en 30; 0.5 en 40, 50 y 60; 0.4 en 70; 0.5 en 80, 90 y 100.",
+      "<b>Centroide.</b> Numerador \\(30(0.2)+(40+50+60)(0.5)+70(0.4)+(80+90+100)(0.5)=244\\); denominador \\(3.6\\); \\(z^*=244/3.6\\approx67.8\\)."
+     ],
+     "r": "Ventilador al 67.8 % aproximadamente.",
+     "fin": "Obtener una salida de control a partir de reglas en palabras."
+    },
+    {
+     "nv": "B",
+     "q": "Repite el caso del fraude con 2 % de fraudes, detección del 90 % y 3 % de falsas alarmas.",
+     "r": "\\(P(A)=0.018+0.0294=0.0474\\); \\(P(F\\mid A)=0.018/0.0474\\approx0.380\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula los grados de pertenencia a fresca y templada para 22.5 °C y el corte alfa 0.5 de templada.",
+     "r": "Fresca \\((24-22.5)/6=0.25\\); templada \\((22.5-18)/6=0.75\\). Corte alfa 0.5 de templada: [21, 27] °C."
+    },
+    {
+     "nv": "I",
+     "q": "En el caso del fraude (1 %, 95 %, 5 %), una segunda alerta independiente dada la clase confirma la primera. ¿Cuál es la probabilidad de fraude tras las dos?",
+     "r": "Se usa 0.161 como nueva probabilidad previa: \\(\\dfrac{0.95(0.161)}{0.95(0.161)+0.05(0.839)}\\approx0.785\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Con el mismo sistema difuso pero en versión Sugeno de orden cero (bajo = 20 %, medio = 50 %, alto = 90 %), calcula la salida para 27 °C y para 20 °C.",
+     "r": "27 °C: \\((0.5\\cdot50+0.5\\cdot90)/1=70\\) %. 20 °C: fresca 0.667 y templada 0.333: \\((0.667\\cdot20+0.333\\cdot50)/1=30\\) %."
+    },
+    {
+     "nv": "A",
+     "q": "En la red bayesiana, calcula \\(P(At\\mid S, Co)\\) y compárala con \\(P(At\\mid S)\\approx0.273\\). ¿Qué fenómeno muestra?",
+     "r": "\\(P(At\\mid S,Co)=\\dfrac{0.1(0.05)(0.95)}{0.1(0.05)(0.95)+0.1(0.95)(0.80)}=\\dfrac{0.00475}{0.08075}\\approx0.059\\). Saber que hubo corte “explica” la caída y baja la sospecha de ataque: es el efecto de descarte de explicaciones (<i>explaining away</i>)."
+    }
+   ]
+  },
+  {
+   "titulo": "Aprendizaje: árboles de decisión, vecinos y redes neuronales",
+   "intro": "Unidad 6 del programa: aprendizaje a partir de la observación (aprendizaje supervisado, árboles de decisión, k vecinos más cercanos, evaluación) y el aprendizaje en las redes neuronales y de creencia.",
+   "conceptos": [
+    {
+     "n": "Aprender de la observación",
+     "e": [
+      "Un agente aprende cuando mejora su desempeño con datos o experiencia. <b>Supervisado:</b> ejemplos con su respuesta (clasificación o regresión). <b>No supervisado:</b> sin respuesta, busca grupos o estructura. <b>Por refuerzo:</b> aprende de recompensas.",
+      "Los datos se dividen en entrenamiento y prueba. El <b>sobreajuste</b> ocurre cuando el modelo memoriza el entrenamiento y falla con datos nuevos. Con clases desbalanceadas la exactitud engaña: se usan precisión \\(=VP/(VP+FP)\\), exhaustividad \\(=VP/(VP+FN)\\) y F1. En una red de creencia con datos completos, aprender las CPT es contar frecuencias."
+     ],
+     "u": [
+      "Detección de fraude, scoring de crédito, recomendaciones, reconocimiento de voz e imágenes.",
+      "Muchos problemas no se pueden programar con reglas, pero sí aprender de ejemplos.",
+      "Cuando hay datos históricos con la respuesta conocida.",
+      "Separa entrenamiento y prueba, entrena, mide con la métrica adecuada y vigila el sobreajuste."
+     ],
+     "f": "F_1=\\frac{2\\,\\text{Prec}\\cdot\\text{Exh}}{\\text{Prec}+\\text{Exh}}"
+    },
+    {
+     "n": "Árboles de decisión: entropía y ganancia",
+     "e": [
+      "Un árbol pregunta por un atributo en cada nodo y clasifica en las hojas. ID3 elige el atributo con mayor <b>ganancia de información</b>: cuánto reduce la entropía (desorden) de las clases. Se repite en cada rama hasta que sea pura o no queden atributos. Son fáciles de explicar.",
+      "Datos de los ejercicios (solicitudes de crédito inventadas de una cooperativa):",
+      "<table><thead><tr><th>#</th><th>Ingreso</th><th>Historial</th><th>Empleo</th><th>Aprobado</th></tr></thead><tbody><tr><td>1</td><td>Alto</td><td>Bueno</td><td>Fijo</td><td>Sí</td></tr><tr><td>2</td><td>Alto</td><td>Malo</td><td>Fijo</td><td>Sí</td></tr><tr><td>3</td><td>Medio</td><td>Bueno</td><td>Fijo</td><td>Sí</td></tr><tr><td>4</td><td>Bajo</td><td>Bueno</td><td>Temporal</td><td>No</td></tr><tr><td>5</td><td>Bajo</td><td>Malo</td><td>Temporal</td><td>No</td></tr><tr><td>6</td><td>Medio</td><td>Malo</td><td>Temporal</td><td>No</td></tr><tr><td>7</td><td>Alto</td><td>Bueno</td><td>Temporal</td><td>Sí</td></tr><tr><td>8</td><td>Medio</td><td>Bueno</td><td>Temporal</td><td>Sí</td></tr><tr><td>9</td><td>Bajo</td><td>Bueno</td><td>Fijo</td><td>Sí</td></tr><tr><td>10</td><td>Medio</td><td>Malo</td><td>Fijo</td><td>No</td></tr></tbody></table>"
+     ],
+     "u": [
+      "Aprobación de créditos, triaje, diagnóstico de fallas, reglas de negocio explicables.",
+      "Producen reglas legibles: útil cuando hay que justificar la decisión ante el cliente o un auditor.",
+      "Con atributos categóricos y necesidad de explicación.",
+      "Calcula la entropía del conjunto, la de cada partición y elige la mayor ganancia."
+     ],
+     "f": "H(S)=-\\sum_i p_i\\log_2 p_i\\qquad \\text{Gan}(S,A)=H(S)-\\sum_v\\frac{|S_v|}{|S|}H(S_v)"
+    },
+    {
+     "n": "k vecinos más cercanos",
+     "e": [
+      "k-NN clasifica un caso nuevo por votación de los \\(k\\) ejemplos más cercanos, normalmente con distancia euclidiana. No construye modelo: guarda los datos (aprendizaje perezoso). Conviene normalizar los atributos para que uno con valores grandes no domine. Un \\(k\\) pequeño es sensible al ruido; uno grande suaviza las fronteras. Se usa \\(k\\) impar en dos clases para evitar empates.",
+      "Clientes de una tienda en línea (meses de antigüedad, compras mensuales en cientos de quetzales): Ocasional (2, 1), (3, 2), (4, 1); Frecuente (8, 7), (9, 6), (7, 8), (5, 5)."
+     ],
+     "u": [
+      "Recomendadores, clasificación de clientes, detección de anomalías.",
+      "Es simple y no requiere entrenamiento.",
+      "Con pocos atributos y datos que caben en memoria.",
+      "Normaliza, calcula distancias, ordena y vota."
+     ],
+     "f": "d(p,q)=\\sqrt{\\sum_i (p_i-q_i)^2}"
+    },
+    {
+     "n": "Redes neuronales",
+     "e": [
+      "El <b>perceptrón</b> calcula \\(\\text{net}=\\sum w_ix_i+b\\) y produce 1 si \\(\\text{net}\\ge0\\) (escalón). Aprende con la regla del perceptrón y converge si las clases son linealmente separables; no puede aprender XOR. Las <b>redes multicapa</b> con activaciones no lineales (sigmoide, ReLU) sí, y se entrenan con <b>retropropagación</b>: se propaga el error hacia atrás y se ajusta cada peso con descenso de gradiente.",
+      "El <b>aprendizaje profundo</b> usa muchas capas; es la base de la visión por computadora y de los modelos de lenguaje actuales."
+     ],
+     "u": [
+      "Reconocimiento de imágenes y voz, traducción, predicción de demanda, IA generativa.",
+      "Aprenden representaciones complejas que serían imposibles de programar a mano.",
+      "Con muchos datos y problemas no lineales.",
+      "Define la arquitectura, inicializa pesos, propaga, mide el error y ajusta con gradiente."
+     ],
+     "f": "w_i\\leftarrow w_i+\\eta\\,(y-\\hat y)\\,x_i\\qquad b\\leftarrow b+\\eta\\,(y-\\hat y)"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con los clientes del concepto, clasifica el punto (4, 4) con k-NN euclidiano para \\(k=1\\) y \\(k=3\\).",
+     "pasos": [
+      "<b>Distancias más cercanas.</b> (5, 5): \\(\\sqrt2\\approx1.414\\) Frecuente; (3, 2): \\(\\sqrt5\\approx2.236\\) Ocasional; (4, 1): 3 Ocasional.",
+      "<b>k = 1.</b> El más cercano es Frecuente.",
+      "<b>k = 3.</b> Dos Ocasional contra un Frecuente: Ocasional."
+     ],
+     "r": "\\(k=1\\): Frecuente; \\(k=3\\): Ocasional.",
+     "fin": "Ver cómo el valor de \\(k\\) cambia la decisión."
+    },
+    {
+     "nv": "I",
+     "q": "Con la tabla de créditos, calcula la entropía inicial y la ganancia de cada atributo. ¿Cuál va en la raíz?",
+     "pasos": [
+      "<b>Entropía inicial.</b> 6 Sí y 4 No: \\(H=-0.6\\log_2 0.6-0.4\\log_2 0.4\\approx0.971\\).",
+      "<b>Ingreso.</b> Alto (3 Sí) \\(H=0\\); Bajo (1 Sí, 2 No) \\(H\\approx0.918\\); Medio (2 Sí, 2 No) \\(H=1\\). Resto \\(0.3(0)+0.3(0.918)+0.4(1)\\approx0.675\\); ganancia \\(\\approx0.295\\).",
+      "<b>Historial.</b> Bueno (5 Sí, 1 No) \\(H\\approx0.650\\); Malo (1 Sí, 3 No) \\(H\\approx0.811\\). Resto \\(\\approx0.715\\); ganancia \\(\\approx0.256\\).",
+      "<b>Empleo.</b> Fijo (4 Sí, 1 No) \\(H\\approx0.722\\); Temporal (2 Sí, 3 No) \\(H\\approx0.971\\). Resto \\(\\approx0.846\\); ganancia \\(\\approx0.125\\)."
+     ],
+     "r": "Raíz: Ingreso (ganancia 0.295).",
+     "fin": "Elegir con criterio cuantitativo la pregunta más informativa."
+    },
+    {
+     "nv": "A",
+     "q": "Completa el árbol de decisión de los créditos a partir de la raíz Ingreso.",
+     "pasos": [
+      "<b>Alto.</b> Los 3 casos son Sí: hoja Sí.",
+      "<b>Medio</b> (casos 3, 6, 8, 10; \\(H=1\\)). Historial separa perfecto (Bueno: Sí, Sí; Malo: No, No): ganancia 1. Empleo no separa (ganancia 0). Se elige Historial.",
+      "<b>Bajo</b> (casos 4, 5, 9; \\(H\\approx0.918\\)). Empleo separa perfecto (Fijo: Sí; Temporal: No, No): ganancia 0.918; Historial solo 0.252. Se elige Empleo.",
+      "<b>Reglas.</b> Si Ingreso = Alto → Sí. Si Medio: Historial Bueno → Sí, Malo → No. Si Bajo: Empleo Fijo → Sí, Temporal → No."
+     ],
+     "r": "Árbol de profundidad 2 que clasifica bien los 10 casos.",
+     "fin": "Obtener reglas explicables a partir de datos."
+    },
+    {
+     "nv": "I",
+     "q": "Entrena un perceptrón para la función OR. Pesos iniciales \\(w=(0,0)\\), \\(b=0\\), \\(\\eta=1\\), escalón \\(\\hat y=1\\) si \\(\\text{net}\\ge0\\); ejemplos en el orden (0,0), (0,1), (1,0), (1,1).",
+     "pasos": [
+      "<b>Época 1.</b> (0,0): net 0, \\(\\hat y=1\\), error −1 → \\(b=-1\\). (0,1): net −1, \\(\\hat y=0\\), error 1 → \\(w=(0,1)\\), \\(b=0\\). (1,0) y (1,1): correctos.",
+      "<b>Época 2.</b> (0,0): net 0, error −1 → \\(b=-1\\). (0,1): correcto. (1,0): net −1, error 1 → \\(w=(1,1)\\), \\(b=0\\). (1,1): correcto.",
+      "<b>Época 3.</b> (0,0): net 0, error −1 → \\(b=-1\\). Los demás, correctos con \\(w=(1,1)\\), \\(b=-1\\).",
+      "<b>Época 4.</b> Sin errores: converge."
+     ],
+     "r": "\\(w=(1,1)\\), \\(b=-1\\) tras 4 épocas.",
+     "fin": "Ver paso a paso cómo aprende una neurona."
+    },
+    {
+     "nv": "A",
+     "q": "Red 2-2-1 con sigmoide. Entrada \\(x=(1,\\,0.5)\\); pesos de la capa oculta \\(h_1:(0.2,-0.4)\\), \\(h_2:(0.6,\\,0.1)\\), sesgos 0; salida con \\(w=(0.5,-0.3)\\), \\(b=0.1\\). Objetivo \\(t=1\\), \\(\\eta=0.5\\), error \\(E=\\tfrac12(t-y)^2\\). Calcula la salida y actualiza los pesos de la capa de salida.",
+     "pasos": [
+      "<b>Capa oculta.</b> \\(z_1=0.2-0.2=0\\), \\(a_1=\\sigma(0)=0.5\\); \\(z_2=0.6+0.05=0.65\\), \\(a_2=\\sigma(0.65)\\approx0.6570\\).",
+      "<b>Salida.</b> \\(z=0.5(0.5)-0.3(0.6570)+0.1\\approx0.1529\\); \\(y=\\sigma(z)\\approx0.5381\\); \\(E\\approx0.1067\\).",
+      "<b>Delta de salida.</b> \\(\\delta=(y-t)\\,y(1-y)\\approx-0.4619(0.5381)(0.4619)\\approx-0.1148\\).",
+      "<b>Actualización.</b> \\(w_j\\leftarrow w_j-\\eta\\,\\delta\\,a_j\\): \\(w_1\\approx0.5+0.5(0.1148)(0.5)\\approx0.5287\\); \\(w_2\\approx-0.3+0.5(0.1148)(0.6570)\\approx-0.2623\\); \\(b\\approx0.1+0.5(0.1148)\\approx0.1574\\)."
+     ],
+     "r": "\\(y\\approx0.538\\); nuevos pesos de salida \\(\\approx(0.5287,\\,-0.2623)\\) y sesgo \\(\\approx0.1574\\).",
+     "fin": "Entender qué hace la retropropagación en un paso."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula la entropía de un nodo con 2 ejemplos positivos y 6 negativos.",
+     "r": "\\(H=-0.25\\log_2 0.25-0.75\\log_2 0.75\\approx0.811\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Un perceptrón tiene \\(w=(0.3,-0.1)\\), \\(b=0.2\\), \\(\\eta=0.2\\). Recibe \\(x=(1,1)\\) con clase \\(y=0\\). Aplica un paso de la regla del perceptrón (escalón con \\(\\ge0\\)).",
+     "r": "net \\(=0.3-0.1+0.2=0.4\\), \\(\\hat y=1\\), error \\(-1\\). Nuevos: \\(w=(0.1,-0.3)\\), \\(b=0.0\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica el punto (4, 3) con k-NN euclidiano y \\(k=3\\) usando los clientes del concepto.",
+     "r": "Vecinos: (3, 2) a 1.414, (4, 1) a 2 y (5, 5) a 2.236. Dos Ocasional y un Frecuente: Ocasional."
+    },
+    {
+     "nv": "I",
+     "q": "Un modelo de detección de fraude obtiene VP = 40, FP = 10, FN = 20, VN = 930. Calcula exactitud, precisión, exhaustividad y F1. ¿Es buena métrica la exactitud?",
+     "r": "Exactitud 970/1000 = 0.97; precisión 40/50 = 0.80; exhaustividad 40/60 ≈ 0.667; F1 ≈ 0.727. La exactitud engaña: un modelo que diga siempre “no fraude” tendría 0.94. Importan precisión y exhaustividad."
+    },
+    {
+     "nv": "A",
+     "q": "Entrena un perceptrón para XOR con la regla del perceptrón. ¿Converge? ¿Cómo se resuelve?",
+     "r": "No converge: XOR no es linealmente separable (ninguna recta separa (0,1) y (1,0) de (0,0) y (1,1)); tras 50 épocas sigue cometiendo errores. Se resuelve con una capa oculta (por ejemplo, dos neuronas que calculen OR y NAND y una de salida que haga AND) entrenada con retropropagación."
+    }
+   ]
+  },
+  {
+   "titulo": "Comunicación y lenguaje natural",
+   "intro": "Unidad 7 del programa: agentes que se comunican, lenguaje natural, aproximaciones, restricciones y el analizador de PLN.",
+   "conceptos": [
+    {
+     "n": "Agentes que se comunican",
+     "e": [
+      "La comunicación es un tipo de acción: los <b>actos de habla</b> (informar, preguntar, solicitar, prometer, confirmar) cambian lo que saben o hacen los demás agentes. El hablante pasa por intención, generación y síntesis; el oyente, por percepción, análisis, desambiguación e incorporación a su conocimiento.",
+      "Entre programas se usan lenguajes de comunicación entre agentes con mensajes estructurados (tipo de acto, emisor, receptor, contenido); entre personas y programas, lenguaje natural."
+     ],
+     "u": [
+      "Chatbots, asistentes de voz, sistemas multiagente que negocian o coordinan tareas.",
+      "Sin entender el tipo de acto, un sistema confunde una pregunta con una orden.",
+      "Al diseñar asistentes conversacionales o agentes que cooperan.",
+      "Identifica la intención del mensaje antes de procesar su contenido."
+     ]
+    },
+    {
+     "n": "El analizador de PLN",
+     "e": [
+      "Un analizador de lenguaje natural procesa por etapas: <b>tokenización</b> (separar palabras), análisis <b>morfológico y léxico</b> (raíz, género, número, categoría), <b>sintáctico</b> (estructura con una gramática, árbol), <b>semántico</b> (significado) y <b>pragmático</b> (intención según el contexto).",
+      "Gramática libre de contexto de ejemplo: O → SN SV; SN → Det N; SV → V SN; Det → el | la; N → analista | base; V → consulta. La <b>ambigüedad</b> léxica, sintáctica o semántica es el principal problema."
+     ],
+     "u": [
+      "Correctores ortográficos y gramaticales, extracción de datos de documentos, motores de búsqueda.",
+      "Cada etapa reduce la ambigüedad para la siguiente.",
+      "Al construir un sistema que entienda texto en español.",
+      "Encadena las etapas; usa una gramática o un modelo estadístico para el análisis sintáctico."
+     ]
+    },
+    {
+     "n": "Aproximaciones al lenguaje",
+     "e": [
+      "<b>Simbólica:</b> gramáticas y reglas escritas por lingüistas; precisa pero frágil. <b>Estadística:</b> probabilidades estimadas de un corpus, como los n-gramas; con <b>suavizado de Laplace</b> se evita la probabilidad cero de secuencias no vistas. <b>Neuronal:</b> representaciones vectoriales de palabras y modelos <i>transformer</i> con atención, entrenados para predecir la siguiente palabra; son la base de los modelos de lenguaje actuales."
+     ],
+     "u": [
+      "Autocompletar, traducción automática, reconocimiento de voz, asistentes de IA generativa.",
+      "Cada aproximación cambia precisión, datos necesarios y capacidad de explicar.",
+      "Al elegir cómo resolver una tarea de lenguaje con los datos disponibles.",
+      "Para tareas acotadas, reglas; con corpus, modelos estadísticos o neuronales."
+     ],
+     "f": "P(w_i\\mid w_{i-1})=\\frac{C(w_{i-1}w_i)}{C(w_{i-1})}\\qquad P_{\\text{Lap}}=\\frac{C(w_{i-1}w_i)+1}{C(w_{i-1})+V}"
+    },
+    {
+     "n": "Restricciones",
+     "e": [
+      "Un <b>problema de satisfacción de restricciones</b> (CSP) tiene variables, dominios y restricciones; una solución asigna a cada variable un valor que cumple todas. Se resuelve con <b>vuelta atrás</b> (<i>backtracking</i>) mejorada con heurísticas: <b>MRV</b> (variable con menos valores posibles), grado, valor menos restrictivo y <b>verificación hacia adelante</b>.",
+      "En el lenguaje, las restricciones de <b>concordancia</b> (género y número entre determinante y sustantivo) y de selección semántica filtran análisis que la gramática sola aceptaría."
+     ],
+     "u": [
+      "Horarios de clases y exámenes, asignación de turnos, configuración de productos, análisis gramatical.",
+      "Recorta enormemente la búsqueda frente a probar todas las combinaciones.",
+      "Cuando la solución es una asignación que debe respetar reglas.",
+      "Modela variables, dominios y restricciones; aplica vuelta atrás con MRV y verificación hacia adelante."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con la gramática del concepto, deriva “el analista consulta la base” y di qué oraciones incorrectas acepta también.",
+     "pasos": [
+      "<b>Derivación por la izquierda.</b> O ⇒ SN SV ⇒ Det N SV ⇒ el N SV ⇒ el analista SV ⇒ el analista V SN ⇒ el analista consulta SN ⇒ el analista consulta Det N ⇒ el analista consulta la N ⇒ el analista consulta la base.",
+      "<b>Árbol.</b> O tiene dos hijos: SN (Det “el”, N “analista”) y SV (V “consulta”, SN con Det “la” y N “base”).",
+      "<b>Sobregeneración.</b> La gramática genera 16 oraciones, entre ellas “la analista consulta el base”: no controla la concordancia de género."
+     ],
+     "r": "La oración es válida; la gramática también acepta frases sin concordancia como “el base”.",
+     "fin": "Ver qué hace el análisis sintáctico y por qué hacen falta restricciones."
+    },
+    {
+     "nv": "I",
+     "q": "Corpus: “&lt;s&gt; el sistema registra el pago &lt;/s&gt;”, “&lt;s&gt; el usuario registra la queja &lt;/s&gt;”, “&lt;s&gt; el sistema valida el pago &lt;/s&gt;”. Con bigramas sin suavizar, calcula la probabilidad de “&lt;s&gt; el sistema registra el pago &lt;/s&gt;”.",
+     "pasos": [
+      "<b>Conteos.</b> el aparece 5 veces (seguido de sistema 2, pago 2, usuario 1); sistema 2 (registra 1, valida 1); registra 2 (el 1, la 1); pago 2 (fin 2); inicio 3 (el 3).",
+      "<b>Bigramas.</b> P(el | inicio) = 1; P(sistema | el) = 2/5; P(registra | sistema) = 1/2; P(el | registra) = 1/2; P(pago | el) = 2/5; P(fin | pago) = 1.",
+      "<b>Producto.</b> \\(1\\times0.4\\times0.5\\times0.5\\times0.4\\times1=0.04\\)."
+     ],
+     "r": "\\(P=0.04\\).",
+     "fin": "Entender cómo un modelo de lenguaje estadístico puntúa frases (autocompletar, reconocimiento de voz)."
+    },
+    {
+     "nv": "I",
+     "q": "“El técnico revisó el servidor con el monitor.” Explica la ambigüedad y cómo la resolvería un analizador.",
+     "pasos": [
+      "<b>Lectura 1.</b> El sintagma “con el monitor” modifica al verbo: el técnico usó el monitor para revisar (instrumento).",
+      "<b>Lectura 2.</b> Modifica a “el servidor”: revisó el servidor que tiene monitor.",
+      "<b>Resolución.</b> La sintaxis da dos árboles válidos; se elige con conocimiento semántico o pragmático (qué es plausible en el contexto) o con un modelo estadístico entrenado en un corpus."
+     ],
+     "r": "Ambigüedad sintáctica de adjunción; se resuelve con semántica, contexto o probabilidades.",
+     "fin": "Reconocer por qué el lenguaje natural es difícil para una máquina."
+    },
+    {
+     "nv": "A",
+     "q": "Con el corpus anterior, la frase “&lt;s&gt; el usuario valida el pago &lt;/s&gt;” tiene probabilidad 0 porque “usuario valida” nunca aparece. Calcúlala con suavizado de Laplace (vocabulario \\(V=9\\): las 8 palabras distintas más el fin de frase).",
+     "pasos": [
+      "<b>Fórmula.</b> \\((C(w_{i-1}w_i)+1)/(C(w_{i-1})+9)\\).",
+      "<b>Factores.</b> inicio→el: 4/12; el→usuario: 2/14; usuario→valida: 1/10; valida→el: 2/10; el→pago: 3/14; pago→fin: 3/11.",
+      "<b>Producto.</b> \\(\\approx0.333\\times0.143\\times0.1\\times0.2\\times0.214\\times0.273\\approx5.57\\times10^{-5}\\)."
+     ],
+     "r": "\\(P_{\\text{Lap}}\\approx5.57\\times10^{-5}\\), pequeña pero ya no cero.",
+     "fin": "Evitar que una sola combinación no vista anule la probabilidad de toda la frase."
+    },
+    {
+     "nv": "A",
+     "q": "Horario de exámenes como CSP. Variables: IA, Compiladores, Redes, Bases, Ética; dominio {lunes, martes, miércoles}. No pueden coincidir (comparten estudiantes): IA–Compiladores, IA–Redes, Compiladores–Redes, Redes–Bases, Bases–Ética, IA–Ética. Resuelve con vuelta atrás asignando variables en ese orden y probando los días en orden. ¿Bastan dos días?",
+     "pasos": [
+      "<b>IA</b> = lunes. <b>Compiladores:</b> lunes choca con IA; martes.",
+      "<b>Redes:</b> lunes choca con IA, martes con Compiladores; miércoles.",
+      "<b>Bases:</b> lunes (solo choca con Redes, que es miércoles). <b>Ética:</b> lunes choca con Bases e IA; martes.",
+      "<b>Dos días.</b> Imposible: IA, Compiladores y Redes chocan entre sí (triángulo) y necesitan tres días distintos."
+     ],
+     "r": "IA lunes, Compiladores martes, Redes miércoles, Bases lunes, Ética martes (9 intentos, sin retroceso). Con dos días no hay solución.",
+     "fin": "Modelar y resolver problemas de asignación con restricciones."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué etapa del analizador de PLN construye el árbol con la estructura gramatical de la oración?",
+     "ops": [
+      "Tokenización",
+      "Análisis sintáctico",
+      "Análisis pragmático",
+      "Síntesis de voz"
+     ],
+     "ok": 1,
+     "r": "La tokenización separa palabras; la pragmática interpreta la intención en contexto; la síntesis de voz pertenece al hablante."
+    },
+    {
+     "nv": "B",
+     "q": "Un asistente bancario responde “Su transferencia fue realizada con éxito”. ¿Qué acto de habla realiza?",
+     "ops": [
+      "Preguntar",
+      "Prometer",
+      "Informar",
+      "Solicitar"
+     ],
+     "ok": 2,
+     "r": "Comunica un hecho al usuario; no le pide nada ni se compromete a una acción futura."
+    },
+    {
+     "nv": "I",
+     "q": "¿Para qué se usa el suavizado de Laplace en un modelo de bigramas?",
+     "ops": [
+      "Para eliminar las palabras vacías del corpus",
+      "Para aumentar la probabilidad de las frases más frecuentes",
+      "Para que las secuencias no vistas en el corpus no tengan probabilidad cero",
+      "Para reducir el tamaño del vocabulario"
+     ],
+     "ok": 2,
+     "r": "Suma 1 a cada conteo y \\(V\\) al denominador; reparte algo de probabilidad a lo no observado."
+    },
+    {
+     "nv": "I",
+     "q": "En un CSP resuelto con vuelta atrás, la heurística MRV elige…",
+     "ops": [
+      "La variable con más valores disponibles",
+      "El valor que menos restringe a las demás variables",
+      "La variable con menos valores legales restantes",
+      "La variable que aparece primero en la lista"
+     ],
+     "ok": 2,
+     "r": "MRV (mínimos valores restantes) falla pronto donde va a fallar y poda la búsqueda; el valor menos restrictivo es otra heurística, para ordenar valores."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué distingue a los modelos de lenguaje basados en <i>transformer</i> de un modelo de bigramas?",
+     "ops": [
+      "Usan gramáticas libres de contexto escritas a mano",
+      "Solo consideran la palabra anterior, pero con un vocabulario mayor",
+      "No necesitan datos de entrenamiento",
+      "Usan atención para ponderar todo el contexto disponible y aprenden representaciones vectoriales de las palabras"
+     ],
+     "ok": 3,
+     "r": "El bigrama solo ve la palabra anterior; el <i>transformer</i> relaciona cada palabra con todas las del contexto y se entrena con grandes corpus."
+    }
+   ]
+  }
+ ]
+}
