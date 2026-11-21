@@ -1,0 +1,1116 @@
+{
+ "slug": "seguridad-auditoria-sistemas",
+ "titulo": "Seguridad y Auditoría de Sistemas",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 10, código 050, bloque Auditoría y Seguridad de Sistemas del seminario",
+ "firma": "RA=RI\\times RC\\times RD",
+ "firma_nota": "El riesgo de auditoría: la entidad gestiona el inherente y el de control con seguridad informática; el auditor controla el de detección con sus pruebas.",
+ "lead": "Seguridad informática y auditoría de sistemas para administrar el riesgo tecnológico en bancos y entidades públicas de Guatemala: fundamentos y análisis de riesgos, cibercrimen y marco legal, gobierno de TI y normas (ISO/IEC 27001, COBIT 2019, ITIL, PCI DSS, NIST CSF), controles físicos y lógicos, criptografía y firma digital, continuidad del negocio y la auditoría informática desde la planeación hasta el informe y los papeles de trabajo. Es el contenido del bloque Auditoría y Seguridad de Sistemas. Los 16 temas semanales del programa están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeguridadAuditoriaSistemas.pdf",
+ "como": "Cada sección trae conceptos con su uso real, 5 casos resueltos paso a paso y 5 ejercicios más: con respuesta oculta en las secciones de cálculo y procedimiento (riesgo, controles, criptografía, continuidad y muestreo) y como cuestionario de opción múltiple con retroalimentación inmediata en las de normas e informe. Los ejemplos usan quetzales, bancos y entidades públicas de Guatemala, servidores Linux y bases de datos PostgreSQL o MySQL; las leyes se citan por su nombre y número de decreto, sin artículos.",
+ "temas": [
+  {
+   "titulo": "Fundamentos de la seguridad y riesgo tecnológico",
+   "intro": "Semanas 1 y 2 del programa: conceptos básicos, finalidades, fundamentos y objetivos de la seguridad informática; metodologías de desarrollo e implementación; etapas de madurez; procesos y campos de acción; relación con otras ciencias de la administración; riesgo operativo, financiero y tecnológico. Incluye la toma de decisiones y el manejo de presupuestos de la semana 9.",
+   "conceptos": [
+    {
+     "n": "Pilares, finalidades y vocabulario del riesgo",
+     "e": [
+      "La seguridad informática protege la <b>confidencialidad</b> (solo quien está autorizado ve la información), la <b>integridad</b> (la información no se altera sin autorización y, si ocurre, se detecta) y la <b>disponibilidad</b> (el servicio funciona cuando se necesita). Se agregan la <b>autenticidad</b> (saber quién es quién), el <b>no repudio</b> (nadie puede negar una acción que firmó o que quedó registrada) y la <b>trazabilidad</b> (cada acción deja rastro).",
+      "Vocabulario mínimo: un <b>activo</b> tiene valor (base de datos de clientes, servidor, reputación); una <b>amenaza</b> puede dañarlo (atacante, sismo, error humano); una <b>vulnerabilidad</b> es la debilidad que la amenaza aprovecha (PHP sin parches, contraseña débil); el <b>impacto</b> es el daño si ocurre; el <b>riesgo</b> combina probabilidad e impacto, y un <b>control</b> reduce uno de los dos."
+     ],
+     "u": [
+      "En toda institución que procesa información: bancos, SAT, RENAP, hospitales del IGSS, municipalidades.",
+      "Cada pilar se protege con controles distintos; confundirlos lleva a invertir en el control equivocado.",
+      "Al clasificar activos y al redactar los requisitos de seguridad de un sistema nuevo.",
+      "Para cada activo pregunta qué pasa si se divulga, si se altera y si no está disponible; la respuesta más grave marca su prioridad."
+     ],
+     "tabla": "<table><thead><tr><th>Pilar</th><th>Ataque o falla típica</th><th>Control típico</th></tr></thead><tbody><tr><td>Confidencialidad</td><td>Fuga de la base de clientes, captura de tráfico</td><td>Cifrado, control de accesos, clasificación de la información</td></tr><tr><td>Integridad</td><td>Alteración de saldos, desfiguración del sitio web</td><td>Hash, firma digital, control de cambios, bitácoras</td></tr><tr><td>Disponibilidad</td><td>Ransomware, denegación de servicio, corte eléctrico</td><td>Respaldos, redundancia, UPS, plan de continuidad</td></tr><tr><td>No repudio</td><td>«Yo no autoricé esa transferencia»</td><td>Firma digital, MFA, bitácoras protegidas</td></tr></tbody></table>"
+    },
+    {
+     "n": "Procesos, metodologías y etapas de madurez",
+     "e": [
+      "La seguridad no es un producto sino un <b>proceso</b> continuo. Las metodologías de implementación siguen el ciclo <b>PDCA</b> (planificar, hacer, verificar, actuar) que usa ISO/IEC 27001 para un sistema de gestión de seguridad de la información (SGSI): definir alcance y política, inventariar activos, evaluar riesgos, elegir controles, implementarlos, medirlos, auditarlos y mejorar.",
+      "La <b>madurez</b> se mide con una escala de 0 a 5 como la del modelo de madurez de COBIT 4.1 (los marcos actuales, como COBIT 2019, hablan de niveles de capacidad). Los <b>campos de acción</b> de la seguridad son el físico, el lógico, las redes, las aplicaciones, las personas y el legal; por eso se relaciona con otras ciencias de la administración: gestión de riesgos, finanzas, auditoría, derecho y recursos humanos."
+     ],
+     "u": [
+      "Al iniciar o reorganizar el programa de seguridad de un banco o de una entidad pública.",
+      "Sin método se compran herramientas sin cerrar los riesgos reales.",
+      "En el diagnóstico inicial y en cada revisión anual.",
+      "Mide el nivel actual, fija el nivel objetivo con la dirección y planifica las brechas como proyectos con responsable y presupuesto."
+     ],
+     "tabla": "<table><thead><tr><th>Nivel</th><th>Nombre</th><th>Señal en la institución</th></tr></thead><tbody><tr><td>0</td><td>Inexistente</td><td>Nadie es responsable de la seguridad</td></tr><tr><td>1</td><td>Inicial</td><td>Se actúa solo después de un incidente</td></tr><tr><td>2</td><td>Repetible</td><td>Hay prácticas, pero dependen de personas</td></tr><tr><td>3</td><td>Definido</td><td>Políticas y procedimientos aprobados y comunicados</td></tr><tr><td>4</td><td>Gestionado</td><td>Se mide con indicadores: parches aplicados, incidentes, tiempos de respuesta</td></tr><tr><td>5</td><td>Optimizado</td><td>Mejora continua basada en mediciones y auditorías</td></tr></tbody></table>"
+    },
+    {
+     "n": "Riesgo operativo, financiero y tecnológico",
+     "e": [
+      "El <b>riesgo financiero</b> agrupa pérdidas por crédito (el deudor no paga), mercado (tasas, tipo de cambio) y liquidez. El <b>riesgo operativo</b>, según el Comité de Basilea, es la posibilidad de pérdidas por fallas o insuficiencias de procesos, personas y sistemas, o por eventos externos. El <b>riesgo tecnológico</b> es la parte del operativo que nace del uso de la tecnología: caídas, fallas de software, ataques, pérdida de datos. En Guatemala la Superintendencia de Bancos supervisa que bancos y grupos financieros lo gestionen conforme a la normativa de la Junta Monetaria.",
+      "El análisis <b>cualitativo</b> califica probabilidad (P) e impacto (I) de 1 a 5 y ubica cada riesgo en una matriz; en esta guía se usa la escala de la tabla. El riesgo <b>inherente</b> existe sin controles; el <b>residual</b> queda después de ellos. Las respuestas son mitigar (controles), transferir (seguro, tercero), evitar (abandonar la actividad) o aceptar (dentro del apetito de riesgo aprobado por la dirección)."
+     ],
+     "u": [
+      "En el comité de riesgos de un banco o una aseguradora y en la gestión de riesgos de entidades públicas.",
+      "Lo que no se identifica no se trata, y el regulador y los auditores piden evidencia de la gestión.",
+      "Al menos una vez al año y ante cambios grandes: sistema nuevo, migración a la nube, fusión.",
+      "Lista riesgos por activo, califica P e I, ordénalos y asigna a cada uno una respuesta y un responsable."
+     ],
+     "f": "R=P\\times I",
+     "tabla": "<table><thead><tr><th>Puntaje P × I</th><th>Nivel</th><th>Respuesta típica</th></tr></thead><tbody><tr><td>1 a 4</td><td>Bajo</td><td>Aceptar y monitorear</td></tr><tr><td>5 a 9</td><td>Medio</td><td>Controles dentro del plan anual</td></tr><tr><td>10 a 14</td><td>Alto</td><td>Tratamiento prioritario con responsable y fecha</td></tr><tr><td>15 a 25</td><td>Crítico</td><td>Acción inmediata e informe a la dirección</td></tr></tbody></table>"
+    },
+    {
+     "n": "Análisis cuantitativo y costo-beneficio de controles",
+     "e": [
+      "El análisis cuantitativo expresa el riesgo en quetzales. <b>AV</b> es el valor del activo; <b>EF</b>, el factor de exposición (fracción del valor que se pierde en un evento); <b>SLE</b>, la pérdida por evento; <b>ARO</b>, la tasa anual de ocurrencia (una vez cada 4 años es 0.25), y <b>ALE</b>, la pérdida anual esperada.",
+      "Un control puede bajar el ARO (evita eventos: EDR, parches) o el EF (reduce el daño: respaldos, segmentación). Su valor neto anual es la reducción del ALE menos su costo anual; el <b>ROSI</b> (retorno de la inversión en seguridad) divide ese valor neto entre el costo. El mejor control no siempre es el que deja menos riesgo, sino el que da más valor neto sin salirse del apetito de riesgo."
+     ],
+     "u": [
+      "En la justificación de presupuestos de seguridad ante la gerencia o la junta directiva.",
+      "Convierte la conversación técnica en dinero, que es como decide la dirección.",
+      "Al comparar alternativas de control o al defender el presupuesto anual.",
+      "Estima AV, EF y ARO con datos históricos o de la industria, calcula el ALE antes y después de cada control y elige el de mayor valor neto."
+     ],
+     "f": "ALE=\\underbrace{AV\\times EF}_{SLE}\\times ARO\\qquad ROSI=\\frac{ALE_{\\text{antes}}-ALE_{\\text{después}}-\\text{costo}}{\\text{costo}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "En un banco se detectan tres situaciones: (a) un cajero consulta saldos de clientes que no atiende; (b) el portal en PHP usa una versión sin soporte con fallas publicadas; (c) un corte eléctrico deja sin servicio los cajeros automáticos de una agencia durante 3 horas. Identifica en cada caso el pilar afectado y si se trata de amenaza, vulnerabilidad o incidente.",
+     "pasos": [
+      "<b>(a)</b> Un acceso indebido que ya ocurrió es un <b>incidente</b> contra la <b>confidencialidad</b>; la vulnerabilidad de fondo es un permiso más amplio de lo necesario.",
+      "<b>(b)</b> La versión sin soporte es una <b>vulnerabilidad</b>; la amenaza es el atacante que la explote, y puede afectar los tres pilares.",
+      "<b>(c)</b> El corte es una amenaza materializada (<b>incidente</b>) contra la <b>disponibilidad</b>; la vulnerabilidad es no tener UPS o planta eléctrica suficiente."
+     ],
+     "r": "(a) Confidencialidad, incidente; (b) vulnerabilidad que expone los tres pilares; (c) disponibilidad, incidente por falta de respaldo eléctrico.",
+     "fin": "Usar el vocabulario exacto del riesgo, base de cualquier análisis y de cualquier hallazgo de auditoría."
+    },
+    {
+     "nv": "B",
+     "q": "Con la escala 1 a 5 de la sección, califica y ordena estos riesgos de una municipalidad: ransomware en el servidor de catastro (P = 3, I = 5), caída del enlace de Internet (P = 4, I = 3) y robo de una laptop sin datos sensibles (P = 2, I = 2).",
+     "pasos": [
+      "<b>Puntajes.</b> Ransomware \\(3\\times5=15\\); enlace \\(4\\times3=12\\); laptop \\(2\\times2=4\\).",
+      "<b>Niveles.</b> 15 es crítico, 12 es alto y 4 es bajo.",
+      "<b>Orden de atención.</b> Ransomware, enlace, laptop."
+     ],
+     "r": "Ransomware 15 (crítico), enlace 12 (alto), laptop 4 (bajo).",
+     "fin": "Priorizar con un criterio explícito cuando no hay datos para cuantificar en quetzales."
+    },
+    {
+     "nv": "I",
+     "q": "Una cooperativa estima que su base de datos de asociados vale Q2,400,000. Una fuga expondría el 25 % de ese valor (multas, demandas, reputación) y se espera una vez cada 5 años. Un control de cifrado y prevención de fuga de datos (DLP) cuesta Q45,000 al año y baja la ocurrencia a una vez cada 20 años. ¿Conviene?",
+     "pasos": [
+      "<b>SLE.</b> \\(2\\,400\\,000\\times0.25=600\\,000\\).",
+      "<b>ALE antes.</b> ARO = 1/5 = 0.2; \\(600\\,000\\times0.2=120\\,000\\).",
+      "<b>ALE después.</b> ARO = 1/20 = 0.05; \\(600\\,000\\times0.05=30\\,000\\).",
+      "<b>Valor neto.</b> \\(120\\,000-30\\,000-45\\,000=45\\,000\\) al año.",
+      "<b>ROSI.</b> \\(45\\,000/45\\,000=1\\), es decir, 100 %."
+     ],
+     "r": "El ALE baja de Q120,000 a Q30,000; el control deja Q45,000 netos al año (ROSI 100 %): conviene.",
+     "fin": "Justificar una inversión de seguridad con el lenguaje financiero que entiende la gerencia."
+    },
+    {
+     "nv": "A",
+     "q": "Los servidores de un banco valen Q900,000 (equipo, datos y operación). Un ransomware destruiría el 60 % de ese valor y se espera una vez cada 2 años. Opción A: EDR por Q60,000 al año, baja el ARO a 0.1. Opción B: respaldos inmutables por Q35,000 al año, bajan el EF a 10 %. Opción C: ambas. ¿Cuál deja más valor neto y cuál menos riesgo residual?",
+     "pasos": [
+      "<b>Sin control.</b> SLE \\(=900\\,000\\times0.6=540\\,000\\); ALE \\(=540\\,000\\times0.5=270\\,000\\).",
+      "<b>A (baja el ARO).</b> ALE \\(=540\\,000\\times0.1=54\\,000\\); neto \\(270\\,000-54\\,000-60\\,000=156\\,000\\).",
+      "<b>B (baja el EF).</b> SLE \\(=900\\,000\\times0.1=90\\,000\\); ALE \\(=90\\,000\\times0.5=45\\,000\\); neto \\(270\\,000-45\\,000-35\\,000=190\\,000\\).",
+      "<b>C (ambas).</b> ALE \\(=90\\,000\\times0.1=9\\,000\\); neto \\(270\\,000-9\\,000-95\\,000=166\\,000\\).",
+      "<b>Lectura.</b> B da más valor neto; C deja el menor riesgo residual. Si el apetito de riesgo aprobado es menor que Q45,000 anuales, se elige C aunque rinda menos."
+     ],
+     "r": "B maximiza el valor neto (Q190,000); C minimiza el riesgo residual (ALE de Q9,000). La decisión depende del apetito de riesgo.",
+     "fin": "Distinguir controles que reducen la probabilidad de los que reducen el impacto y combinarlos con criterio económico."
+    },
+    {
+     "nv": "A",
+     "q": "El riesgo inherente de fraude en la banca en línea de una financiera es un ALE de Q200,000. Los controles actuales tienen una eficacia estimada de 70 %. La junta aprobó un apetito de riesgo de Q50,000 anuales. Un seguro de Q12,000 al año cubriría el 80 % de la pérdida residual. ¿Se acepta el riesgo residual o se transfiere?",
+     "pasos": [
+      "<b>Residual con controles.</b> \\(200\\,000\\times(1-0.70)=60\\,000\\), mayor que el apetito de Q50,000: no puede aceptarse tal cual.",
+      "<b>Con seguro.</b> Pérdida retenida \\(60\\,000\\times0.20=12\\,000\\), dentro del apetito.",
+      "<b>Costo total esperado.</b> \\(12\\,000+12\\,000=24\\,000\\) al año, contra Q60,000 sin seguro.",
+      "<b>Decisión.</b> Transferir con el seguro y dejar documentada la aceptación del riesgo retenido por la dirección."
+     ],
+     "r": "El residual (Q60,000) supera el apetito; con el seguro se retienen Q12,000 y el costo total esperado es Q24,000: se transfiere.",
+     "fin": "Aplicar las respuestas al riesgo y distinguir riesgo inherente, residual y retenido."
+    },
+    {
+     "nv": "B",
+     "q": "Un servidor de expedientes de un hospital vale Q350,000; una inundación destruiría el 40 % y se espera una vez cada 4 años. Calcula SLE y ALE.",
+     "r": "SLE = Q140,000; ARO = 0.25; ALE = Q35,000."
+    },
+    {
+     "nv": "B",
+     "q": "Un riesgo de suplantación de correo tiene probabilidad 2 e impacto 4. ¿Cuál es su puntaje y su nivel con la escala de la sección?",
+     "r": "\\(2\\times4=8\\): nivel medio."
+    },
+    {
+     "nv": "I",
+     "q": "Un robo de equipo con pérdida de Q80,000 ocurre una vez cada 4 años. Un servicio de vigilancia que lo eliminaría cuesta Q25,000 al año. ¿Se justifica?",
+     "r": "ALE = Q20,000. El control cuesta más de lo que evita (neto −Q5,000): no se justifica solo por este riesgo; conviene buscar un control más barato o aceptar el riesgo."
+    },
+    {
+     "nv": "I",
+     "q": "Un control cuesta Q40,000 al año y reduce el ALE de Q150,000 a Q30,000. Calcula su valor neto y su ROSI.",
+     "r": "Neto = 150,000 − 30,000 − 40,000 = Q80,000; ROSI = 80,000/40,000 = 2 (200 %)."
+    },
+    {
+     "nv": "A",
+     "q": "La caída del sistema central de un banco tiene un SLE de Q200,000 y ocurre una vez cada 2 años. Un clúster de alta disponibilidad bajaría el ARO a 0.1. ¿Cuánto es lo máximo que el banco debería pagar al año por ese clúster?",
+     "r": "ALE antes = Q100,000; después = Q20,000. Lo máximo razonable es Q80,000 anuales, el punto en que el valor neto es cero."
+    }
+   ]
+  },
+  {
+   "titulo": "Cibercrimen, marco legal, gobierno de TI y normas",
+   "intro": "Semanas 3, 4 y 10 del programa: estrategias y definición del cibercrimen, con análisis retrospectivo y a futuro; leyes y reglamentos de Guatemala relacionados con la seguridad informática; gobierno de TI y sus estrategias de implementación; metodologías y normativas aceptadas (ISO, ITIL, COBIT, PCI); organizaciones internacionales (IOCE, CERT); mejores prácticas y hacking ético; herramientas administrativas para proyectos; retos, marco normativo y especializaciones (CISM, CISA, CISSP, CCNA, ITIL).",
+   "conceptos": [
+    {
+     "n": "Cibercrimen: definición, estrategias y organizaciones",
+     "e": [
+      "El <b>cibercrimen</b> es toda conducta delictiva en la que un sistema informático es el medio o el objetivo. Sus estrategias pasaron de virus hechos por curiosidad (disquetes, años ochenta) a gusanos masivos por Internet y hoy a un negocio organizado: <b>ransomware como servicio</b> con doble extorsión (cifrar y amenazar con publicar), <b>phishing</b>, smishing y vishing contra clientes de bancos, <b>fraude del CEO</b> o BEC (correos que suplantan a un directivo para ordenar transferencias), robo de credenciales, duplicación fraudulenta de SIM, ataques a la cadena de suministro y denegación de servicio. Hacia adelante: suplantación con voz o video generados por inteligencia artificial y ataques a servicios en la nube.",
+      "Organizaciones: el <b>CERT/CC</b> de la Universidad Carnegie Mellon nació en 1988 tras el gusano Morris y originó el modelo de equipos de respuesta a incidentes (CERT o CSIRT) nacionales y sectoriales, que se agrupan en <b>FIRST</b>; la <b>IOCE</b> (International Organization on Computer Evidence) impulsó principios para obtener y manejar evidencia digital; INTERPOL coordina investigaciones entre países, y el <b>Convenio de Budapest</b> (Consejo de Europa, 2001) es el tratado internacional de referencia sobre ciberdelincuencia."
+     ],
+     "u": [
+      "En la banca, el comercio electrónico y cualquier entidad que atienda trámites en línea.",
+      "Saber cómo opera el atacante permite poner los controles donde realmente ataca.",
+      "Al diseñar campañas de concientización y al actualizar la matriz de riesgos cada año.",
+      "Sigue las alertas de los CSIRT y del sector, ajusta los controles y entrena a usuarios y clientes con casos reales."
+     ]
+    },
+    {
+     "n": "Marco legal y regulatorio en Guatemala",
+     "e": [
+      "Guatemala no tiene una sola ley de seguridad informática: el marco se arma con varias normas. Conviene saber qué regula cada una, sin memorizar artículos.",
+      "En el sector financiero, la Superintendencia de Bancos (SIB) supervisa que las entidades gestionen el riesgo tecnológico: gobierno, políticas, análisis de riesgos, seguridad de la información y continuidad del negocio. Las entidades públicas rinden cuentas, además, a la Contraloría General de Cuentas."
+     ],
+     "u": [
+      "En bancos, financieras, entidades públicas y empresas que firman documentos electrónicos.",
+      "Un control sin respaldo legal no sirve para sancionar ni para defenderse en un proceso judicial.",
+      "Al redactar políticas, contratos con proveedores y procedimientos de manejo de incidentes.",
+      "Identifica qué normas aplican a la institución y conviértelas en requisitos de control verificables."
+     ],
+     "tabla": "<table><thead><tr><th>Norma</th><th>Qué regula</th><th>Relación con la seguridad</th></tr></thead><tbody><tr><td>Código Penal</td><td>Delitos informáticos: destrucción de registros informáticos, alteración de programas, reproducción de programas, registros prohibidos, manipulación y uso indebido de información, programas destructivos</td><td>Base para denunciar ataques y fraudes ante el Ministerio Público</td></tr><tr><td>Decreto 47-2008, Ley para el Reconocimiento de las Comunicaciones y Firmas Electrónicas</td><td>Validez jurídica de comunicaciones y firmas electrónicas; prestadores de servicios de certificación</td><td>Firma electrónica avanzada, certificados digitales, no repudio</td></tr><tr><td>Decreto 57-2008, Ley de Acceso a la Información Pública</td><td>Acceso a la información en poder del Estado; protección de datos personales (hábeas data)</td><td>Clasificación de la información en entidades públicas</td></tr><tr><td>Decreto 33-98, Ley de Derecho de Autor y Derechos Conexos</td><td>Protección de obras, incluidos los programas de computación</td><td>Licenciamiento de software</td></tr><tr><td>Decreto 19-2002, Ley de Bancos y Grupos Financieros</td><td>Funcionamiento y supervisión de bancos; confidencialidad de las operaciones de los clientes</td><td>Secreto bancario; base de la supervisión del riesgo tecnológico</td></tr></tbody></table>"
+    },
+    {
+     "n": "Gobierno de TI y marcos de referencia",
+     "e": [
+      "El <b>gobierno de TI</b> es responsabilidad de la junta directiva: evalúa, dirige y monitorea para que la TI genere valor con un riesgo aceptable. La <b>gestión</b> planifica, construye, opera y monitorea. Se implementa con un marco reconocido, roles claros (comité de TI, oficial de seguridad, dueño de cada proceso) e indicadores que se reportan a la dirección.",
+      "En ISO/IEC 27001:2022 las cláusulas 4 a 10 (contexto, liderazgo, planificación, apoyo, operación, evaluación del desempeño y mejora) son requisitos obligatorios para certificarse; el Anexo A es la lista de referencia de controles, y la organización justifica cuáles aplica en la Declaración de Aplicabilidad."
+     ],
+     "u": [
+      "En bancos supervisados, entidades públicas, procesadores de tarjetas y proveedores de servicios de TI.",
+      "Un marco reconocido ordena el trabajo, evita omisiones y sirve como criterio de auditoría.",
+      "Al diseñar el programa de seguridad, al prepararse para una certificación o para una auditoría.",
+      "Elige el marco según el objetivo (gobierno, certificación, servicios, tarjetas), haz un análisis de brechas y planifica su cierre."
+     ],
+     "tabla": "<table><thead><tr><th>Marco</th><th>Enfoque</th><th>Datos clave</th></tr></thead><tbody><tr><td>COBIT 2019 (ISACA)</td><td>Gobierno y gestión de TI</td><td>40 objetivos en 5 dominios: EDM (gobierno); APO, BAI, DSS y MEA (gestión)</td></tr><tr><td>ISO/IEC 27001:2022</td><td>Sistema de gestión de seguridad certificable</td><td>Anexo A con 93 controles en 4 temas: organizacionales (37), de personas (8), físicos (14) y tecnológicos (34)</td></tr><tr><td>ISO/IEC 27002:2022</td><td>Guía de implementación</td><td>Explica el propósito y la aplicación de cada control del Anexo A</td></tr><tr><td>ITIL 4</td><td>Gestión de servicios de TI</td><td>34 prácticas, entre ellas incidentes, problemas, cambios y niveles de servicio</td></tr><tr><td>PCI DSS v4.0</td><td>Datos de tarjetas de pago</td><td>12 requisitos agrupados en 6 objetivos</td></tr><tr><td>NIST CSF 2.0</td><td>Gestión de riesgos de ciberseguridad</td><td>6 funciones: Gobernar, Identificar, Proteger, Detectar, Responder y Recuperar</td></tr></tbody></table>"
+    },
+    {
+     "n": "Hacking ético, especializaciones y gestión de proyectos de seguridad",
+     "e": [
+      "El <b>hacking ético</b> o prueba de penetración usa las técnicas del atacante <b>con autorización escrita</b>, alcance y reglas de compromiso pactadas. Fases: planificación y autorización, reconocimiento, escaneo (Nmap, OpenVAS), explotación controlada (Metasploit; Burp Suite para aplicaciones web), post-explotación limitada e informe con evidencia, nivel de riesgo y recomendación. Según la información que recibe el evaluador, la prueba es de caja negra (ninguna), gris (parcial) o blanca (total).",
+      "Especializaciones: <b>CISA</b> (ISACA, auditoría de sistemas), <b>CISM</b> (ISACA, gestión de la seguridad), <b>CISSP</b> (ISC2, visión amplia de la seguridad), <b>CCNA</b> (Cisco, redes) e <b>ITIL</b> (gestión de servicios). Los proyectos de seguridad se administran con cronograma (diagrama de Gantt), ruta crítica, matriz de responsabilidades (RACI) y presupuesto, como cualquier otro proyecto."
+     ],
+     "u": [
+      "En bancos que prueban su banca en línea, en sistemas antes de salir a producción y en la selección de personal.",
+      "Encuentra lo que encontraría el atacante, pero antes y con permiso; las certificaciones acreditan competencia ante empleadores y reguladores.",
+      "Antes de lanzar un sistema, después de cambios grandes y de forma periódica.",
+      "Firma el alcance, ejecuta por fases, informa por nivel de riesgo y vuelve a probar después de las correcciones."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Indica qué norma guatemalteca se relaciona con cada caso: (a) un exempleado borra los registros del sistema de catastro de una municipalidad; (b) una empresa firma contratos con un certificado digital emitido por un prestador de servicios de certificación; (c) un ciudadano pide a una entidad pública conocer y corregir sus datos personales.",
+     "pasos": [
+      "<b>(a)</b> Destrucción de registros informáticos: delito informático del <b>Código Penal</b>; se denuncia ante el Ministerio Público.",
+      "<b>(b)</b> Firma electrónica avanzada: <b>Decreto 47-2008</b>, Ley para el Reconocimiento de las Comunicaciones y Firmas Electrónicas.",
+      "<b>(c)</b> Acceso y corrección de datos personales en poder del Estado (hábeas data): <b>Decreto 57-2008</b>, Ley de Acceso a la Información Pública."
+     ],
+     "r": "(a) Código Penal, delitos informáticos; (b) Decreto 47-2008; (c) Decreto 57-2008.",
+     "fin": "Saber a qué norma acudir ante un caso real, que es lo que pregunta un examinador y lo que necesita un oficial de seguridad."
+    },
+    {
+     "nv": "I",
+     "q": "Ubica cada actividad en un dominio de COBIT 2019: (a) la junta aprueba el apetito de riesgo de TI; (b) se implementa un sistema nuevo con su gestión de cambios; (c) la mesa de servicio atiende incidentes; (d) auditoría interna evalúa los controles. Luego ubica estos controles en un tema del Anexo A de ISO/IEC 27001:2022: cámaras en el centro de datos, capacitación de concientización, autenticación multifactor y política de seguridad de la información.",
+     "pasos": [
+      "<b>COBIT 2019.</b> (a) EDM, evaluar, dirigir y monitorear (gobierno); (b) BAI, construir, adquirir e implementar; (c) DSS, entregar, dar servicio y soporte; (d) MEA, monitorear, evaluar y valorar.",
+      "<b>ISO/IEC 27001:2022.</b> Cámaras: tema físico; concientización: de personas; MFA: tecnológico; política: organizacional."
+     ],
+     "r": "EDM, BAI, DSS y MEA; físico, de personas, tecnológico y organizacional.",
+     "fin": "Moverse entre marcos con soltura, que es como se redactan criterios de auditoría y planes de implementación."
+    },
+    {
+     "nv": "I",
+     "q": "Un banco planifica un proyecto de seguridad (duraciones en semanas): A diagnóstico (2); B política de seguridad (3, después de A); C compra del firewall (4, después de A); D instalación del firewall (2, después de C); E capacitación (2, después de B); F prueba de penetración (1, después de D y E). Calcula la duración y la ruta crítica para el diagrama de Gantt.",
+     "pasos": [
+      "<b>Rutas.</b> A-B-E-F: \\(2+3+2+1=8\\); A-C-D-F: \\(2+4+2+1=9\\).",
+      "<b>Duración.</b> Manda la ruta más larga: 9 semanas.",
+      "<b>Holguras.</b> B y E pueden atrasarse 1 semana sin mover el final; A, C, D y F tienen holgura cero.",
+      "<b>Gantt.</b> A en semanas 0 a 2, C de 2 a 6, D de 6 a 8 y F de 8 a 9; B de 2 a 5 y E de 5 a 7, con 1 semana de holgura."
+     ],
+     "r": "Duración de 9 semanas; ruta crítica A-C-D-F; B y E tienen 1 semana de holgura.",
+     "fin": "Usar herramientas administrativas (Gantt y ruta crítica) para comprometer fechas realistas en un proyecto de seguridad."
+    },
+    {
+     "nv": "A",
+     "q": "Un banco contrata una prueba de penetración de su banca en línea (Java) y de su red perimetral. Describe el procedimiento correcto desde la contratación hasta el cierre.",
+     "pasos": [
+      "<b>Autorización y alcance.</b> Carta firmada por un directivo con facultades: direcciones IP y URL incluidas, sistemas excluidos (por ejemplo, el sistema central en producción), fechas, horarios y contactos de emergencia.",
+      "<b>Reglas de compromiso.</b> Sin denegación de servicio, sin modificar datos reales, cuentas de prueba y manejo confidencial de los hallazgos.",
+      "<b>Ejecución.</b> Reconocimiento, escaneo de puertos y vulnerabilidades, pruebas a la aplicación (autenticación, sesiones, inyección, control de acceso) y explotación controlada solo para demostrar el riesgo.",
+      "<b>Informe.</b> Resumen ejecutivo para la gerencia y detalle técnico con evidencia, severidad y recomendación por hallazgo.",
+      "<b>Cierre.</b> Plan de remediación con responsables y fechas, nueva prueba de lo corregido y destrucción segura de los datos obtenidos."
+     ],
+     "r": "Autorización escrita y alcance, reglas de compromiso, pruebas por fases, informe ejecutivo y técnico, remediación y nueva prueba.",
+     "fin": "Distinguir una evaluación profesional y legal de un ataque, y entregar resultados que la gerencia pueda usar."
+    },
+    {
+     "nv": "A",
+     "q": "Una campaña de phishing suplanta el sitio de un banco guatemalteco. Clasifica estas acciones en las funciones de NIST CSF 2.0: (a) la junta designa un responsable de ciberseguridad y aprueba la política; (b) inventario de dominios y marcas del banco; (c) MFA y educación a clientes; (d) monitoreo de dominios parecidos y de reportes de clientes; (e) dar de baja el sitio falso, bloquear las cuentas receptoras y avisar a los clientes; (f) devolver fondos y restablecer la confianza.",
+     "pasos": [
+      "<b>Gobernar.</b> (a): roles, responsabilidades y política.",
+      "<b>Identificar.</b> (b): conocer los activos que se deben proteger.",
+      "<b>Proteger.</b> (c): reduce la probabilidad de que las credenciales robadas sirvan.",
+      "<b>Detectar.</b> (d): descubrir la campaña lo antes posible.",
+      "<b>Responder.</b> (e): contener y comunicar, preservando la evidencia (cabeceras de correo, capturas, registros con su hash) para la denuncia ante el Ministerio Público.",
+      "<b>Recuperar.</b> (f): restablecer la operación y la confianza, e incorporar las lecciones aprendidas."
+     ],
+     "r": "(a) Gobernar, (b) Identificar, (c) Proteger, (d) Detectar, (e) Responder, (f) Recuperar.",
+     "fin": "Organizar la respuesta a un ataque real con un marco reconocido, sin dejar funciones sin cubrir."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué certificación de ISACA está orientada a la auditoría de sistemas de información?",
+     "ops": [
+      "CISSP",
+      "CISA",
+      "CCNA",
+      "ITIL Foundation"
+     ],
+     "ok": 1,
+     "r": "CISA (Certified Information Systems Auditor) es de ISACA y se centra en auditoría; CISM, también de ISACA, en gestión de la seguridad; CISSP es de ISC2 y CCNA de Cisco."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos controles trae el Anexo A de ISO/IEC 27001:2022 y en cuántos temas se agrupan?",
+     "ops": [
+      "93 controles en 4 temas",
+      "114 controles en 14 dominios",
+      "133 controles en 11 dominios",
+      "40 objetivos en 5 dominios"
+     ],
+     "ok": 0,
+     "r": "La versión 2022 reorganizó los controles: 93 en temas organizacionales, de personas, físicos y tecnológicos. 114 en 14 dominios corresponde a la versión 2013; 40 objetivos en 5 dominios es COBIT 2019."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué norma da validez jurídica en Guatemala a la firma electrónica avanzada?",
+     "ops": [
+      "Decreto 57-2008",
+      "Decreto 33-98",
+      "Decreto 47-2008",
+      "Decreto 19-2002"
+     ],
+     "ok": 2,
+     "r": "El Decreto 47-2008 es la Ley para el Reconocimiento de las Comunicaciones y Firmas Electrónicas; el 57-2008 es la Ley de Acceso a la Información Pública, el 33-98 la Ley de Derecho de Autor y el 19-2002 la Ley de Bancos y Grupos Financieros."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué distingue una prueba de penetración de un ataque informático?",
+     "ops": [
+      "Las herramientas que usa",
+      "Que se hace solo de noche",
+      "La autorización escrita y el alcance pactado con el dueño del sistema",
+      "Que siempre es de caja blanca"
+     ],
+     "ok": 2,
+     "r": "Las herramientas y técnicas pueden ser las mismas; lo que la vuelve legal y ética es la autorización con reglas de compromiso. Puede ser de caja negra, gris o blanca."
+    },
+    {
+     "nv": "A",
+     "q": "En COBIT 2019, ¿qué dominio agrupa los objetivos de <b>gobierno</b>, que son responsabilidad de la junta directiva?",
+     "ops": [
+      "EDM: Evaluar, Dirigir y Monitorear",
+      "APO: Alinear, Planificar y Organizar",
+      "MEA: Monitorear, Evaluar y Valorar",
+      "DSS: Entregar, Dar Servicio y Soporte"
+     ],
+     "ok": 0,
+     "r": "EDM es el único dominio de gobierno; APO, BAI, DSS y MEA son de gestión. MEA confunde porque también «monitorea», pero lo que monitorea es el desempeño y la conformidad de la gestión."
+    }
+   ]
+  },
+  {
+   "titulo": "Controles físicos y lógicos, centro de datos y operación segura",
+   "intro": "Semanas 5 y 7 del programa: ámbitos de control físico y lógico, controles de seguridad física y lógica, aseguramiento del centro de datos; aseguramiento de la calidad de los servicios de TI, productos de hardware y software, control de cambios, control de accesos, virtualización de servidores, globalización de servicios, ambientes homogéneos, hardening y patching.",
+   "conceptos": [
+    {
+     "n": "Clasificación de los controles",
+     "e": [
+      "Por su <b>naturaleza</b>, los controles son físicos (cerraduras, cámaras), lógicos o técnicos (contraseñas, firewalls, cifrado) y administrativos (políticas, capacitación, segregación de funciones). Por su <b>función</b> son preventivos (evitan el evento), detectivos (lo descubren), correctivos (limitan el daño y restablecen), disuasivos (desaniman al atacante), de recuperación y compensatorios (sustituyen un control que no se puede aplicar)."
+     ],
+     "u": [
+      "En el diseño del sistema de control interno de cualquier entidad.",
+      "Un buen esquema combina funciones: prevenir no basta si no se detecta lo que falla.",
+      "Al evaluar brechas y al documentar controles para la auditoría.",
+      "Para cada riesgo importante verifica que exista al menos un control preventivo y uno detectivo."
+     ],
+     "tabla": "<table><thead><tr><th>Función</th><th>Físico</th><th>Lógico</th><th>Administrativo</th></tr></thead><tbody><tr><td>Preventivo</td><td>Puerta con tarjeta y biometría</td><td>MFA, firewall</td><td>Segregación de funciones</td></tr><tr><td>Detectivo</td><td>CCTV monitoreado</td><td>IDS, revisión de bitácoras</td><td>Conciliaciones, auditoría</td></tr><tr><td>Correctivo</td><td>Extinción automática de incendios</td><td>Restaurar un respaldo, aplicar un parche</td><td>Procedimiento de respuesta a incidentes</td></tr><tr><td>Disuasivo</td><td>Rótulo de área vigilada</td><td>Aviso legal al iniciar sesión</td><td>Sanciones en el reglamento interno</td></tr><tr><td>Compensatorio</td><td>Vigilante mientras falla el lector</td><td>Revisión diaria de bitácoras si no se puede segregar</td><td>Doble firma en pagos</td></tr></tbody></table>"
+    },
+    {
+     "n": "Seguridad física y aseguramiento del centro de datos",
+     "e": [
+      "Se protege por <b>capas</b>: perímetro (muro, garita), edificio (recepción, bitácora de visitantes), sala (tarjeta más biometría y una esclusa que deja pasar a una persona a la vez) y rack (llave). La ubicación evita sótanos, zonas inundables y ventanas al exterior; en Guatemala se consideran además los sismos y la ceniza volcánica (filtros de aire).",
+      "Ambiente: temperatura de entrada a los equipos dentro del rango recomendado por ASHRAE (18 a 27 °C), pasillos fríos y calientes, detección temprana de humo y supresión con agente limpio que no daña los equipos. Energía: UPS, planta eléctrica con combustible para varias horas y redundancia (N+1: un equipo de reserva; 2N: todo duplicado). La UPS se dimensiona en voltamperios a partir de la potencia en vatios, el factor de potencia y un margen de crecimiento."
+     ],
+     "u": [
+      "En el centro de datos de un banco, la sala de servidores de una municipalidad o un sitio alterno.",
+      "Un control lógico impecable no sirve si alguien puede llevarse un disco o si el servidor se apaga por calor.",
+      "Al construir o remodelar la sala, al comprar UPS y al auditar el área.",
+      "Revisa capas de acceso, bitácoras, ambiente, energía y extinción con una lista de verificación, y prueba la UPS y la planta periódicamente."
+     ],
+     "f": "S_{\\text{VA}}=\\frac{P_{\\text{W}}}{FP}\\times(1+\\text{margen})"
+    },
+    {
+     "n": "Control de accesos lógicos y contraseñas",
+     "e": [
+      "El control de accesos tiene cuatro pasos: <b>identificación</b> (usuario), <b>autenticación</b> (algo que sabes, que tienes o que eres), <b>autorización</b> (roles con mínimo privilegio, RBAC) y <b>registro</b> (bitácora de quién hizo qué). Su ciclo de vida: alta con solicitud aprobada por el jefe del área, modificación al cambiar de puesto, baja inmediata al retiro (coordinada con Recursos Humanos) y <b>revisión periódica</b> de accesos. La <b>segregación de funciones</b> impide que una misma persona inicie y apruebe una operación.",
+      "La fuerza de una contraseña aleatoria se mide en bits de <b>entropía</b>: con un alfabeto de \\(N\\) símbolos y longitud \\(L\\), \\(H=L\\log_2 N\\). Un ataque de fuerza bruta prueba, en promedio, la mitad de las combinaciones. Las contraseñas se guardan con hash lento y sal (bcrypt, Argon2), nunca en texto plano ni con MD5 o SHA-1 solos."
+     ],
+     "u": [
+      "En aplicaciones PHP o Java, bases de datos, Active Directory y servidores Linux.",
+      "La mayoría de incidentes aprovecha credenciales robadas o permisos de más.",
+      "Al diseñar el módulo de usuarios de un sistema, en cada alta y baja y en la revisión periódica de accesos.",
+      "Define roles, exige MFA en accesos remotos y privilegiados, guarda hashes lentos y revisa los accesos con cada jefe de área."
+     ],
+     "f": "H=L\\log_2 N\\qquad t_{\\text{promedio}}=\\frac{N^{L}}{2\\,v}"
+    },
+    {
+     "n": "Cambios, calidad, virtualización, hardening y parches",
+     "e": [
+      "El <b>control de cambios</b> evita que una modificación rompa producción: solicitud, evaluación de impacto y riesgo, aprobación (comité de cambios), prueba en un ambiente separado, implementación en una ventana acordada, plan de reversión y revisión posterior. Los ambientes de desarrollo, pruebas y producción se separan, y el programador no despliega en producción. La <b>calidad</b> de los servicios se asegura con acuerdos de nivel de servicio (SLA) y con productos de hardware y software homologados.",
+      "La <b>virtualización</b> concentra muchos servidores en pocos equipos: facilita respaldos (snapshots) y recuperación, pero convierte al hipervisor en un punto crítico y favorece la proliferación de máquinas olvidadas. Los <b>ambientes homogéneos</b> (mismas versiones y configuraciones) simplifican parches y auditoría. El <b>hardening</b> reduce la superficie de ataque (servicios mínimos, SSH sin root, firewall, guías CIS Benchmarks) y el <b>patching</b> aplica parches con inventario, priorización por severidad (CVSS) y exposición, prueba, despliegue y verificación."
+     ],
+     "u": [
+      "En servidores Linux con aplicaciones PHP o Java, granjas de virtualización y servicios en la nube.",
+      "Muchos incidentes graves vienen de cambios sin probar o de vulnerabilidades con parche disponible que nunca se aplicó.",
+      "En cada cambio, en el ciclo mensual de parches y al poner en producción un servidor nuevo.",
+      "Usa una plantilla endurecida para cada servidor, un calendario de parches y un registro de cambios aprobados."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica por naturaleza y función: (a) lector biométrico en la puerta del centro de datos; (b) revisión semanal de las bitácoras de acceso a la base de datos; (c) restaurar un servidor desde el respaldo; (d) aviso legal al iniciar sesión; (e) dos firmas para autorizar pagos mayores de Q50,000.",
+     "pasos": [
+      "<b>(a)</b> Físico, preventivo.",
+      "<b>(b)</b> Lógico y administrativo, detectivo.",
+      "<b>(c)</b> Lógico, correctivo o de recuperación.",
+      "<b>(d)</b> Lógico, disuasivo.",
+      "<b>(e)</b> Administrativo, preventivo (segregación de funciones)."
+     ],
+     "r": "(a) físico preventivo; (b) detectivo; (c) correctivo; (d) disuasivo; (e) administrativo preventivo.",
+     "fin": "Evaluar si un esquema de control está balanceado entre prevenir, detectar y corregir."
+    },
+    {
+     "nv": "I",
+     "q": "Compara una contraseña aleatoria de 8 caracteres alfanuméricos (62 símbolos) con una de 12 caracteres de los 94 imprimibles, si el atacante prueba \\(10^{10}\\) hashes por segundo con GPU contra un hash rápido.",
+     "pasos": [
+      "<b>Entropía.</b> \\(8\\log_2 62\\approx47.6\\) bits; \\(12\\log_2 94\\approx78.7\\) bits.",
+      "<b>Combinaciones.</b> \\(62^{8}\\approx2.18\\times10^{14}\\); \\(94^{12}\\approx4.76\\times10^{23}\\).",
+      "<b>Tiempo promedio.</b> \\(2.18\\times10^{14}/(2\\times10^{10})\\approx10\\,917\\) s, unas 3 horas; \\(4.76\\times10^{23}/(2\\times10^{10})\\approx2.38\\times10^{13}\\) s, unos 754,567 años.",
+      "<b>Lectura.</b> Cuatro caracteres más y un alfabeto mayor multiplican el tiempo por unos \\(2\\times10^{9}\\). Aun así, el hash lento (bcrypt) y el bloqueo por intentos fallidos son los que hacen inviable el ataque."
+     ],
+     "r": "8 alfanuméricos: ≈47.6 bits y unas 3 horas en promedio; 12 imprimibles: ≈78.7 bits y unos 754,567 años.",
+     "fin": "Fundamentar con números una política de contraseñas."
+    },
+    {
+     "nv": "I",
+     "q": "Un rack tiene 6 servidores de 450 W, un switch de 150 W y un almacenamiento de 600 W. Con factor de potencia 0.9 y 25 % de margen, ¿qué UPS se compra?",
+     "pasos": [
+      "<b>Potencia.</b> \\(6\\times450+150+600=3\\,450\\) W.",
+      "<b>Potencia aparente.</b> \\(3\\,450/0.9\\approx3\\,833\\) VA.",
+      "<b>Margen.</b> \\(3\\,833\\times1.25\\approx4\\,792\\) VA.",
+      "<b>Selección.</b> El modelo comercial inmediato superior, 5 kVA, comprobando que sus vatios nominales cubran \\(3\\,450\\times1.25\\approx4\\,313\\) W (una UPS de 5 kVA con FP 0.9 entrega 4,500 W)."
+     ],
+     "r": "UPS de 5 kVA (4,500 W), con autonomía suficiente para que arranque la planta eléctrica.",
+     "fin": "Dimensionar la protección eléctrica del centro de datos."
+    },
+    {
+     "nv": "A",
+     "q": "Describe el endurecimiento básico de un servidor Ubuntu nuevo que publicará una aplicación PHP de un banco.",
+     "pasos": [
+      "<b>Actualizar.</b> <code>apt update &amp;&amp; apt upgrade</code> y un calendario de parches o actualizaciones de seguridad automáticas.",
+      "<b>Servicios mínimos.</b> Listar los puertos abiertos con <code>ss -tulpn</code> y deshabilitar lo que no se usa, por ejemplo <code>systemctl disable --now cups</code>.",
+      "<b>SSH.</b> En <code>/etc/ssh/sshd_config</code>: <code>PermitRootLogin no</code> y <code>PasswordAuthentication no</code> (solo llaves), con acceso únicamente desde la red de administración.",
+      "<b>Firewall.</b> <code>ufw default deny incoming</code>, <code>ufw allow 443/tcp</code>, <code>ufw allow from 10.10.0.0/24 to any port 22</code> y <code>ufw enable</code>.",
+      "<b>PHP y web.</b> En <code>php.ini</code>: <code>expose_php = Off</code> y <code>display_errors = Off</code>; servicio con usuario sin privilegios, TLS en el servidor web y bitácoras enviadas a un servidor central."
+     ],
+     "r": "Parches, servicios mínimos, SSH solo con llaves y sin root, firewall que niega por defecto y PHP sin exponer versión ni errores, con bitácoras centralizadas.",
+     "fin": "Reducir la superficie de ataque antes de pasar a producción, que es lo que un auditor compara contra una guía como CIS Benchmarks."
+    },
+    {
+     "nv": "A",
+     "q": "Un banco tiene cuatro vulnerabilidades pendientes: (a) CVSS 9.8 en el servidor web expuesto a Internet; (b) CVSS 9.1 en un servidor interno de pruebas sin datos reales; (c) CVSS 7.5 en la VPN, con explotación activa reportada por los CSIRT; (d) CVSS 5.3 en la intranet. Ordena la aplicación de parches y describe el cambio de emergencia.",
+     "pasos": [
+      "<b>Criterio.</b> No basta el puntaje CVSS: se combina con la exposición (Internet o interna), la explotación activa y el valor del activo.",
+      "<b>Orden.</b> 1) (c) VPN: expuesta y ya explotada; 2) (a) web 9.8 expuesto; 3) (b) servidor interno de pruebas; 4) (d) intranet, en el ciclo normal.",
+      "<b>Cambio de emergencia.</b> Aprobación rápida del comité o de su delegado, respaldo o snapshot, prueba mínima, aplicación, verificación del servicio y de que la vulnerabilidad desapareció, y registro formal posterior.",
+      "<b>Mitigación temporal.</b> Si el parche no puede aplicarse de inmediato, restringir el acceso o agregar reglas en el firewall de aplicaciones mientras tanto."
+     ],
+     "r": "Orden c, a, b, d; cambio de emergencia con respaldo, prueba, verificación y registro posterior.",
+     "fin": "Priorizar parches por riesgo real y no solo por puntaje, sin saltarse el control de cambios."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántas combinaciones tiene un PIN de 4 dígitos y cuál es su entropía?",
+     "r": "10,000 combinaciones; \\(\\log_2 10\\,000\\approx13.3\\) bits. Por eso un PIN depende del bloqueo tras pocos intentos."
+    },
+    {
+     "nv": "I",
+     "q": "Compara la entropía de una frase de 4 palabras elegidas al azar de una lista de 7,776 palabras con la de 8 caracteres alfanuméricos aleatorios.",
+     "r": "Frase: \\(4\\log_2 7\\,776\\approx51.7\\) bits; 8 alfanuméricos: \\(8\\log_2 62\\approx47.6\\) bits. La frase es más fuerte y más fácil de recordar."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto tarda en promedio un ataque de fuerza bruta contra una contraseña de 10 letras minúsculas si se prueban \\(10^{9}\\) claves por segundo?",
+     "r": "\\(26^{10}\\approx1.41\\times10^{14}\\); en promedio \\(1.41\\times10^{14}/(2\\times10^{9})\\approx70\\,584\\) s, unas 19.6 horas."
+    },
+    {
+     "nv": "I",
+     "q": "Una carga de 2,700 W con factor de potencia 0.9 necesita una UPS con 20 % de margen. ¿De cuántos VA?",
+     "r": "\\(2\\,700/0.9=3\\,000\\) VA; con margen, \\(3\\,000\\times1.2=3\\,600\\) VA."
+    },
+    {
+     "nv": "A",
+     "q": "En la revisión de accesos del sistema de planillas de una entidad pública aparece un usuario con los roles «crear empleado» y «aprobar pago». ¿Qué riesgo hay y cómo se corrige?",
+     "r": "Viola la segregación de funciones: podría crear un empleado ficticio y pagarle. Se separan los roles en personas distintas; si no hay personal suficiente, se agrega un control compensatorio (revisión independiente de altas y pagos) y se revisa lo que el usuario hizo con ambos roles."
+    }
+   ]
+  },
+  {
+   "titulo": "Criptografía, firma digital y estrategias tecnológicas",
+   "intro": "Semana 8 del programa: estrategias tecnológicas que requieren seguridad (comercio electrónico, banca electrónica, firma digital y TI móvil) y la toma de decisiones críticas en esos proyectos. Se desarrolla la criptografía que los sostiene: cifrado clásico y simétrico, RSA, hash y firma digital.",
+   "conceptos": [
+    {
+     "n": "Cifrado clásico y simétrico",
+     "e": [
+      "El cifrado transforma texto claro en texto cifrado con una clave. En el <b>César</b> cada letra se desplaza \\(k\\) posiciones; en <b>Vigenère</b> el desplazamiento cambia con cada letra de una palabra clave, lo que oculta la frecuencia de las letras. Ambos se rompen con facilidad, pero muestran los elementos de todo cifrado: algoritmo público, clave secreta y espacio de claves.",
+      "Los algoritmos <b>simétricos</b> modernos (AES con claves de 128, 192 o 256 bits) usan la misma clave para cifrar y descifrar: son rápidos y cifran discos, bases de datos y el tráfico de una sesión TLS. Su problema es distribuir la clave de forma segura. DES, con clave de 56 bits, ya es vulnerable a la fuerza bruta."
+     ],
+     "u": [
+      "En el cifrado de discos de laptops, columnas sensibles en PostgreSQL o MySQL y túneles VPN.",
+      "Protege la confidencialidad aunque el atacante obtenga el archivo o capture el tráfico.",
+      "Siempre que los datos viajen por redes no confiables o se guarden en medios que pueden perderse.",
+      "Usa AES con claves bien administradas (almacén de claves o HSM) y nunca un algoritmo propio."
+     ],
+     "f": "C_i=(P_i+K_{i \\bmod m}) \\bmod 26\\qquad P_i=(C_i-K_{i \\bmod m}) \\bmod 26"
+    },
+    {
+     "n": "Criptografía asimétrica y RSA",
+     "e": [
+      "Cada parte tiene una <b>clave pública</b>, que se comparte, y una <b>clave privada</b>, que es secreta. Lo cifrado con la pública solo se descifra con la privada, lo que resuelve la distribución de claves. En la práctica la criptografía asimétrica intercambia una clave simétrica y esta cifra los datos (cifrado híbrido, como en TLS).",
+      "<b>RSA:</b> se eligen primos \\(p\\) y \\(q\\); \\(n=pq\\); \\(\\varphi(n)=(p-1)(q-1)\\); un \\(e\\) coprimo con \\(\\varphi(n)\\), y \\(d\\), inverso de \\(e\\) módulo \\(\\varphi(n)\\), con el algoritmo extendido de Euclides. Clave pública \\((e,n)\\); privada \\((d,n)\\). Su seguridad depende de que factorizar \\(n\\) sea inviable; hoy se usan módulos de 2048 bits o más."
+     ],
+     "u": [
+      "En certificados de sitios HTTPS, firma de documentos, llaves SSH y correo cifrado.",
+      "Permite comunicarse con seguridad con alguien a quien nunca se le entregó una clave en persona.",
+      "Al establecer sesiones seguras y al firmar o verificar documentos.",
+      "Genera pares de claves con herramientas estándar (OpenSSL, ssh-keygen) y protege la clave privada con frase de paso o en un HSM."
+     ],
+     "f": "ed\\equiv1 \\pmod{\\varphi(n)}\\qquad c=m^{e}\\bmod n\\qquad m=c^{d}\\bmod n"
+    },
+    {
+     "n": "Hash, firma digital e infraestructura de clave pública",
+     "e": [
+      "Una función <b>hash</b> como SHA-256 produce un resumen de tamaño fijo; cualquier cambio en el documento cambia el resumen, por eso sirve para verificar integridad. La <b>firma digital</b> es el hash del documento transformado con la clave privada del firmante; quien la recibe aplica la clave pública y compara con el hash que él mismo calcula. Da integridad, autenticidad y no repudio, pero no confidencialidad.",
+      "La <b>infraestructura de clave pública</b> (PKI) vincula una clave pública con una identidad mediante un <b>certificado digital</b> X.509 emitido por una autoridad certificadora. En Guatemala el Decreto 47-2008 da validez jurídica a las comunicaciones y firmas electrónicas, incluida la firma electrónica avanzada basada en certificados de prestadores de servicios de certificación."
+     ],
+     "u": [
+      "En contratos electrónicos, documentos tributarios electrónicos, documentos oficiales y actualizaciones de software firmadas.",
+      "Da no repudio: el firmante no puede negar el documento porque solo él tiene la clave privada.",
+      "Al firmar o recibir documentos con efectos legales y al distribuir software.",
+      "Firma con un certificado de un prestador reconocido y, al verificar, revisa la cadena de certificación, la vigencia y la revocación."
+     ],
+     "f": "s=h(M)^{d}\\bmod n\\qquad \\text{válida si } s^{e}\\bmod n=h(M)"
+    },
+    {
+     "n": "Seguridad en comercio electrónico, banca electrónica y TI móvil",
+     "e": [
+      "Comercio y banca electrónica: canal cifrado con TLS 1.2 o 1.3 y HSTS; autenticación multifactor, con un factor adicional para operaciones de riesgo (registrar cuentas destino, transferir montos altos); límites, notificaciones en tiempo real y monitoreo de fraude por comportamiento; protección de datos de tarjetas según PCI DSS, con tokenización y autenticación 3-D Secure; aplicaciones web probadas contra el OWASP Top 10.",
+      "<b>TI móvil:</b> aplicaciones oficiales firmadas, detección de dispositivos con root o jailbreak, fijación de certificados en la app (pinning), cifrado del dispositivo y administración de dispositivos móviles (MDM) para los equipos de la institución. La <b>toma de decisiones críticas</b> en estos proyectos equilibra seguridad, experiencia del usuario y costo, con el análisis de riesgo como criterio."
+     ],
+     "u": [
+      "En la banca en línea y la app móvil de un banco, tiendas en línea y pagos de servicios públicos.",
+      "Son los canales más atacados porque mueven dinero y están expuestos a Internet.",
+      "Al diseñar el canal y en cada cambio relevante: nueva funcionalidad, nuevo proveedor de pagos.",
+      "Aplica defensa en profundidad: canal cifrado, identidad fuerte, límites, monitoreo y pruebas de penetración periódicas."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Cifra la palabra SEGURIDAD con el cifrado César de clave \\(k=3\\).",
+     "pasos": [
+      "<b>Regla.</b> Cada letra avanza 3 posiciones en el alfabeto de 26 letras (A = 0, …, Z = 25) y después de Z se vuelve a A.",
+      "<b>Letra por letra.</b> S→V, E→H, G→J, U→X, R→U, I→L, D→G, A→D, D→G."
+     ],
+     "r": "VHJXULGDG",
+     "fin": "Entender sustitución y espacio de claves: con solo 25 claves útiles, se rompe probándolas todas."
+    },
+    {
+     "nv": "I",
+     "q": "Cifra AUDITORIA con Vigenère y clave LLAVE.",
+     "pasos": [
+      "<b>Valores.</b> AUDITORIA = 0, 20, 3, 8, 19, 14, 17, 8, 0; la clave repetida LLAVELLAV = 11, 11, 0, 21, 4, 11, 11, 0, 21.",
+      "<b>Suma módulo 26.</b> 11, 31→5, 3, 29→3, 23, 25, 28→2, 8, 21.",
+      "<b>Letras.</b> L, F, D, D, X, Z, C, I, V."
+     ],
+     "r": "LFDDXZCIV",
+     "fin": "Ver cómo una clave variable oculta frecuencias: las dos I del texto claro salieron como D e I, y las dos A como L y V."
+    },
+    {
+     "nv": "I",
+     "q": "Genera claves RSA con \\(p=11\\), \\(q=13\\) y \\(e=7\\); cifra \\(m=9\\) y descifra el resultado.",
+     "pasos": [
+      "<b>Módulo.</b> \\(n=11\\times13=143\\); \\(\\varphi(n)=10\\times12=120\\); \\(\\gcd(7,120)=1\\).",
+      "<b>Clave privada.</b> \\(120=17\\times7+1\\), así que \\(7\\times(-17)\\equiv1\\pmod{120}\\) y \\(d=-17+120=103\\). Comprobación: \\(7\\times103=721=6\\times120+1\\).",
+      "<b>Cifrar.</b> \\(9^{2}\\equiv81\\); \\(9^{4}\\equiv81^{2}=6\\,561\\equiv126\\); \\(9^{7}=9^{4}\\cdot9^{2}\\cdot9\\equiv126\\cdot81\\cdot9\\equiv48 \\pmod{143}\\).",
+      "<b>Descifrar.</b> \\(48^{103}\\bmod 143\\) por residuos: módulo 11, \\(48\\equiv4\\) y \\(4^{103 \\bmod 10}=4^{3}=64\\equiv9\\); módulo 13, \\(48\\equiv9\\) y \\(9^{103 \\bmod 12}=9^{7}\\equiv9\\). El único número menor que 143 con residuo 9 en ambos casos es 9."
+     ],
+     "r": "Clave pública \\((7,143)\\), privada \\((103,143)\\); \\(c=48\\), y al descifrar se recupera \\(m=9\\).",
+     "fin": "Dominar el procedimiento completo de RSA, pregunta clásica de examen."
+    },
+    {
+     "nv": "A",
+     "q": "Con las claves del ejercicio anterior, firma un documento cuyo hash (reducido para el ejemplo) es \\(h=42\\) y muestra la verificación. ¿Qué pasa si un atacante modifica el documento?",
+     "pasos": [
+      "<b>Firmar con la clave privada.</b> \\(s=42^{103}\\bmod 143=3\\).",
+      "<b>Verificar con la clave pública.</b> \\(3^{7}=2\\,187=15\\times143+42\\), así que \\(s^{e}\\bmod n=42=h\\): la firma es válida.",
+      "<b>Documento alterado.</b> El receptor calcula otro hash \\(h'\\neq42\\); como \\(s^{e}\\bmod n\\) sigue dando 42, la comparación falla y el cambio se detecta.",
+      "<b>Por qué la privada.</b> Solo el firmante la tiene: eso da autenticidad y no repudio. Cifrar con la clave pública del receptor daría confidencialidad, que es otro servicio."
+     ],
+     "r": "Firma \\(s=3\\); verificación \\(3^{7}\\bmod 143=42\\): válida. Cualquier cambio en el documento invalida la firma.",
+     "fin": "Explicar con números por qué la firma digital garantiza integridad y no repudio."
+    },
+    {
+     "nv": "A",
+     "q": "Un banco guatemalteco habilitará transferencias a terceros en su app móvil. Propón los controles de seguridad mínimos y justifica cada uno.",
+     "pasos": [
+      "<b>Canal.</b> TLS 1.2 o superior con certificado válido y fijado en la app; la app rechaza o limita dispositivos con root o jailbreak.",
+      "<b>Identidad.</b> Usuario, contraseña y segundo factor (token o notificación al dispositivo registrado), más un factor adicional para registrar una cuenta destino nueva.",
+      "<b>Límites y tiempos.</b> Monto máximo diario, período de espera tras agregar un beneficiario y notificación inmediata de cada operación.",
+      "<b>Detección.</b> Motor de fraude que compare cada operación con el comportamiento habitual (monto, hora, dispositivo, ubicación) y bloqueo preventivo con verificación al cliente.",
+      "<b>Aseguramiento.</b> Prueba de penetración antes del lanzamiento, revisión contra el OWASP Top 10, bitácoras protegidas y procedimiento de atención de fraudes con el área de servicio al cliente."
+     ],
+     "r": "Canal cifrado, MFA reforzado para beneficiarios nuevos, límites y notificaciones, monitoreo de fraude y pruebas antes de salir.",
+     "fin": "Tomar decisiones críticas de seguridad en un canal electrónico real, equilibrando riesgo y experiencia del cliente."
+    },
+    {
+     "nv": "B",
+     "q": "Descifra el mensaje César FLIUDGR con \\(k=3\\).",
+     "r": "CIFRADO (cada letra retrocede 3 posiciones)."
+    },
+    {
+     "nv": "I",
+     "q": "Descifra WATNDUF, cifrado con Vigenère y clave UMG.",
+     "r": "CONTROL. Se resta la clave repetida UMGUMGU (20, 12, 6, 20, 12, 6, 20) módulo 26."
+    },
+    {
+     "nv": "I",
+     "q": "Con \\(p=7\\), \\(q=11\\) y \\(e=7\\), calcula \\(n\\), \\(\\varphi(n)\\) y \\(d\\), y cifra \\(m=8\\).",
+     "r": "\\(n=77\\), \\(\\varphi(n)=60\\), \\(d=43\\) (porque \\(7\\times43=301=5\\times60+1\\)); \\(c=8^{7}\\bmod 77=57\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(p=13\\), \\(q=17\\) y \\(e=5\\), halla \\(d\\) y descifra \\(c=108\\).",
+     "r": "\\(n=221\\), \\(\\varphi(n)=192\\), \\(d=77\\) (\\(5\\times77=385=2\\times192+1\\)); \\(m=108^{77}\\bmod 221=10\\). Comprobación: \\(10^{5}\\bmod 221=108\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Un atacante prueba \\(10^{12}\\) claves por segundo. ¿Cuánto tarda en recorrer todo el espacio de claves de DES (56 bits) y de AES-128?",
+     "r": "DES: \\(2^{56}/10^{12}\\approx72\\,058\\) s, unas 20 horas. AES-128: \\(2^{128}/10^{12}\\approx3.4\\times10^{26}\\) s, unos \\(1.1\\times10^{19}\\) años. Por eso DES se retiró y AES-128 sigue siendo seguro frente a la fuerza bruta."
+    }
+   ]
+  },
+  {
+   "titulo": "Continuidad del negocio, recuperación ante desastres y respaldos",
+   "intro": "Semana 7 (continuidad) y semana 9 del programa: reseña de Business Continuity Planning y Disaster Recovery Planning y su relación con la seguridad informática, dificultades de la seguridad y manejo de presupuestos en estos proyectos.",
+   "conceptos": [
+    {
+     "n": "Análisis de impacto y métricas de recuperación",
+     "e": [
+      "El <b>BCP</b> mantiene operando los procesos críticos de la organización ante una interrupción; el <b>DRP</b> es la parte que recupera la tecnología. Ambos parten del <b>análisis de impacto al negocio</b> (BIA): qué procesos son críticos, cuánto cuesta cada hora sin ellos y qué recursos necesitan. ISO 22301 es la norma de sistemas de gestión de la continuidad del negocio.",
+      "Métricas: <b>MTD</b>, tiempo máximo tolerable de interrupción del proceso; <b>RTO</b>, tiempo objetivo para recuperar el sistema; <b>WRT</b>, tiempo para verificar datos y reanudar el trabajo después de recuperar el sistema; <b>RPO</b>, cuántos datos, medidos en tiempo, se pueden perder, lo que fija la frecuencia de respaldo o replicación. El RTO más el WRT no debe exceder el MTD."
+     ],
+     "u": [
+      "En bancos, el IGSS, la SAT, RENAP y cualquier entidad cuyo servicio no puede detenerse.",
+      "Sin BIA se protege todo igual: se gasta de más en lo trivial y de menos en lo crítico.",
+      "Al diseñar el plan, cada año y ante cambios en procesos o sistemas.",
+      "Entrevista a los dueños de procesos, cuantifica el impacto por hora, fija MTD, RTO y RPO y elige estrategias que los cumplan."
+     ],
+     "f": "RTO+WRT\\le MTD\\qquad \\text{intervalo entre copias}\\le RPO"
+    },
+    {
+     "n": "Estrategias de recuperación y sitios alternos",
+     "e": [
+      "La estrategia se elige para cumplir RTO y RPO al menor costo. La replicación <b>síncrona</b> no pierde datos, pero exige baja latencia entre sitios; la <b>asíncrona</b> tolera distancia a cambio de un RPO de segundos o minutos. El plan documenta equipos de respuesta, árbol de llamadas, procedimientos paso a paso y criterios para declarar el desastre, y se prueba: revisión documental, simulacro de escritorio, prueba paralela y prueba de interrupción total."
+     ],
+     "u": [
+      "En la sede alterna de un banco o el centro de datos secundario de una entidad pública, de preferencia en una zona con riesgos sísmicos y volcánicos distintos.",
+      "El sitio alterno convierte un desastre en una interrupción controlada.",
+      "Al definir la estrategia después del BIA y en cada prueba anual del plan.",
+      "Compara el costo anual de cada opción con la pérdida que evita y verifica en las pruebas que el RTO real se cumple."
+     ],
+     "tabla": "<table><thead><tr><th>Estrategia</th><th>Recuperación típica</th><th>Costo</th><th>Uso</th></tr></thead><tbody><tr><td>Sitio espejo (activo-activo)</td><td>Minutos</td><td>Muy alto</td><td>Banca en línea, pagos</td></tr><tr><td>Sitio caliente</td><td>Horas</td><td>Alto</td><td>Sistema central bancario, sistemas tributarios</td></tr><tr><td>Sitio tibio</td><td>Uno o pocos días</td><td>Medio</td><td>Sistemas administrativos importantes</td></tr><tr><td>Sitio frío</td><td>Semanas</td><td>Bajo</td><td>Procesos que toleran una interrupción larga</td></tr><tr><td>Recuperación en la nube (DRaaS)</td><td>Horas</td><td>Variable, por uso</td><td>Servidores virtualizados</td></tr></tbody></table>"
+    },
+    {
+     "n": "Respaldos completos, incrementales y diferenciales",
+     "e": [
+      "El respaldo <b>completo</b> copia todo. El <b>incremental</b> copia lo cambiado desde el último respaldo de cualquier tipo: es rápido de hacer y lento de restaurar, porque se necesitan el completo y todos los incrementales en orden. El <b>diferencial</b> copia lo cambiado desde el último completo: crece cada día, pero para restaurar bastan el completo y el último diferencial.",
+      "La regla <b>3-2-1</b> pide tres copias, en dos medios distintos y una fuera del sitio; contra el ransomware se agrega una copia inmutable o desconectada y la verificación de que se restaura sin errores (3-2-1-1-0). Un respaldo que nunca se ha restaurado en una prueba no es un control confiable."
+     ],
+     "u": [
+      "En servidores de bases de datos PostgreSQL o MySQL, archivos de expedientes y máquinas virtuales.",
+      "Es el último control contra el ransomware, los errores humanos y los desastres.",
+      "Todos los días según el RPO, con completos semanales y pruebas de restauración periódicas.",
+      "Define el esquema según el RPO y la ventana de respaldo, cifra las copias, guarda una fuera de línea y prueba la restauración."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Qué copia</th><th>Para restaurar</th></tr></thead><tbody><tr><td>Completo</td><td>Todo</td><td>Solo ese respaldo</td></tr><tr><td>Incremental</td><td>Cambios desde el último respaldo</td><td>Último completo + todos los incrementales posteriores, en orden</td></tr><tr><td>Diferencial</td><td>Cambios desde el último completo</td><td>Último completo + último diferencial</td></tr></tbody></table>"
+    },
+    {
+     "n": "Disponibilidad y presupuesto de continuidad",
+     "e": [
+      "La disponibilidad es la fracción del tiempo en que el servicio funciona; se calcula con el tiempo medio entre fallas (MTBF) y el tiempo medio de reparación (MTTR). Los componentes en <b>serie</b> (todos necesarios) multiplican sus disponibilidades; los <b>redundantes en paralelo</b> fallan solo si fallan todos.",
+      "Cada nueve adicional divide entre diez la caída permitida y suele encarecer mucho la solución; por eso el presupuesto se justifica comparando el costo anual con la pérdida esperada por caídas (costo por hora × horas de caída × probabilidad). Entre las dificultades de estos proyectos están que su beneficio no se ve mientras no hay desastre y que los planes se desactualizan si no se prueban."
+     ],
+     "u": [
+      "En acuerdos de nivel de servicio con proveedores de nube, enlaces y centros de datos.",
+      "Traduce un porcentaje abstracto en minutos de caída que la gerencia entiende.",
+      "Al negociar un SLA, diseñar redundancia o defender el presupuesto de continuidad.",
+      "Convierte el SLA a minutos, calcula la disponibilidad de la cadena completa y agrega redundancia en el eslabón más débil."
+     ],
+     "f": "A=\\frac{MTBF}{MTBF+MTTR}\\qquad A_{\\text{serie}}=\\prod_i A_i\\qquad A_{\\text{paralelo}}=1-\\prod_i(1-A_i)",
+     "tabla": "<table><thead><tr><th>Disponibilidad</th><th>Caída al año</th><th>Caída al mes (30 días)</th></tr></thead><tbody><tr><td>99 %</td><td>87.6 h</td><td>7.2 h</td></tr><tr><td>99.9 %</td><td>8.76 h</td><td>43.2 min</td></tr><tr><td>99.99 %</td><td>52.6 min</td><td>4.32 min</td></tr><tr><td>99.999 %</td><td>5.26 min</td><td>25.9 s</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un proveedor de nube ofrece un SLA de 99.9 % para el servidor de la banca en línea. ¿Cuántos minutos de caída al año y al mes (30 días) permite?",
+     "pasos": [
+      "<b>Minutos del año.</b> \\(365\\times24\\times60=525\\,600\\).",
+      "<b>Al año.</b> \\(525\\,600\\times(1-0.999)=525.6\\) min, unas 8.76 h.",
+      "<b>Al mes.</b> \\(30\\times24\\times60\\times0.001=43.2\\) min."
+     ],
+     "r": "525.6 minutos al año (8.76 h) y 43.2 minutos al mes.",
+     "fin": "Leer un SLA en términos operativos antes de firmarlo."
+    },
+    {
+     "nv": "I",
+     "q": "Un servidor PostgreSQL tiene respaldo completo el domingo a las 23:00 e incrementales de lunes a sábado a las 23:00. Falla el jueves a las 14:00. ¿Qué respaldos se restauran y cuántos datos se pierden? ¿Y si el esquema usara diferenciales?",
+     "pasos": [
+      "<b>Con incrementales.</b> Completo del domingo + incrementales de lunes, martes y miércoles, en ese orden (4 respaldos).",
+      "<b>Con diferenciales.</b> Completo del domingo + diferencial del miércoles (2 respaldos).",
+      "<b>Pérdida.</b> En ambos casos se pierde lo ocurrido desde el miércoles a las 23:00 hasta la falla: 15 horas. Si el RPO es menor, hay que archivar además el registro de transacciones (WAL) de PostgreSQL."
+     ],
+     "r": "Incremental: domingo + lunes, martes y miércoles; diferencial: domingo + miércoles. Se pierden 15 horas de datos.",
+     "fin": "Saber qué copias pedir en una restauración real y relacionar el esquema con el RPO."
+    },
+    {
+     "nv": "I",
+     "q": "La banca en línea depende en serie de un servidor web (99 %), una base de datos (99.5 %) y un enlace de Internet (98 %). Calcula la disponibilidad y las horas de caída al año; repite con dos enlaces redundantes de 98 % cada uno.",
+     "pasos": [
+      "<b>Serie.</b> \\(0.99\\times0.995\\times0.98\\approx0.96535\\); caída \\(8\\,760\\times0.03465\\approx303.5\\) h al año.",
+      "<b>Enlaces en paralelo.</b> \\(1-(0.02)^{2}=0.9996\\).",
+      "<b>Nueva cadena.</b> \\(0.99\\times0.995\\times0.9996\\approx0.98466\\); caída de unas 134.4 h al año.",
+      "<b>Lectura.</b> Redundar el eslabón más débil reduce la caída a menos de la mitad; el siguiente candidato es el servidor web (99 %)."
+     ],
+     "r": "96.53 % (≈303.5 h al año) sin redundancia; 98.47 % (≈134.4 h al año) con dos enlaces.",
+     "fin": "Decidir dónde invertir en redundancia con un cálculo sencillo."
+    },
+    {
+     "nv": "A",
+     "q": "En el BIA de un banco, el proceso de transferencias en línea tiene un MTD de 4 horas y, después de recuperar el sistema, se necesita 1 hora para cuadrar operaciones (WRT). Hay transacciones cada minuto y el negocio tolera perder a lo sumo 15 minutos de datos. Hoy existe respaldo nocturno y un sitio tibio que tarda 24 horas en activarse. Evalúa y propone.",
+     "pasos": [
+      "<b>RTO máximo.</b> \\(RTO\\le MTD-WRT=4-1=3\\) h.",
+      "<b>RPO.</b> 15 minutos; el respaldo nocturno permite perder hasta 24 horas: no cumple.",
+      "<b>Sitio.</b> El sitio tibio (24 h) no cumple el RTO de 3 h; se necesita un sitio caliente con conmutación probada.",
+      "<b>Datos.</b> Replicación asíncrona de la base de datos al sitio alterno, o envío de los registros de transacciones cada pocos minutos, para un RPO de minutos."
+     ],
+     "r": "RTO ≤ 3 h y RPO de 15 min; el esquema actual no cumple ninguno. Se propone sitio caliente con replicación asíncrona y pruebas periódicas de conmutación.",
+     "fin": "Traducir los resultados del BIA en requisitos técnicos verificables."
+    },
+    {
+     "nv": "A",
+     "q": "Una hora sin el sistema de pagos de una financiera cuesta Q150,000. Se estima un desastre mayor cada 10 años (ARO 0.1). Sin sitio alterno la recuperación tomaría 72 h; con un sitio tibio (Q400,000 al año), 12 h; con uno caliente (Q900,000 al año), 2 h. ¿Qué opción tiene el menor costo total anual esperado?",
+     "pasos": [
+      "<b>Sin sitio.</b> Pérdida por evento \\(150\\,000\\times72=10\\,800\\,000\\); ALE \\(=1\\,080\\,000\\).",
+      "<b>Tibio.</b> \\(150\\,000\\times12\\times0.1=180\\,000\\); total \\(180\\,000+400\\,000=580\\,000\\).",
+      "<b>Caliente.</b> \\(150\\,000\\times2\\times0.1=30\\,000\\); total \\(30\\,000+900\\,000=930\\,000\\).",
+      "<b>Decisión.</b> El tibio minimiza el costo esperado; el caliente solo se justifica si el MTD del proceso es menor de 12 horas o si el regulador exige un RTO menor."
+     ],
+     "r": "Sin sitio Q1,080,000; tibio Q580,000; caliente Q930,000 al año. Conviene el tibio, salvo que el MTD o la regulación exijan menos de 12 horas.",
+     "fin": "Manejar el presupuesto de continuidad con números y no por intuición."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos minutos de caída al año permite una disponibilidad de 99.99 %?",
+     "r": "\\(525\\,600\\times0.0001\\approx52.6\\) minutos."
+    },
+    {
+     "nv": "I",
+     "q": "Un servidor tiene un MTBF de 2,000 horas y un MTTR de 4 horas. ¿Cuál es su disponibilidad y cuántas horas de caída se esperan al año?",
+     "r": "\\(A=2\\,000/2\\,004\\approx0.998\\) (99.80 %); \\(8\\,760\\times(1-A)\\approx17.5\\) horas al año."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema tiene respaldo completo el viernes en la noche y diferenciales cada noche. Falla el martes a mediodía. ¿Qué respaldos restauras?",
+     "r": "El completo del viernes y el diferencial del lunes en la noche, que es el último antes de la falla."
+    },
+    {
+     "nv": "I",
+     "q": "El MTD de un sistema de citas es de 8 horas y su WRT, de 2 horas. Restaurar desde cinta en un sitio frío tarda 10 horas. ¿Cumple?",
+     "r": "No. El RTO máximo es \\(8-2=6\\) horas y la estrategia actual tarda 10. Se necesita un sitio tibio o caliente, o respaldos en disco listos para restaurar en otro servidor."
+    },
+    {
+     "nv": "A",
+     "q": "Hay respaldo completo el domingo e incrementales de lunes a viernes. El servidor falla el sábado en la mañana y se descubre que el incremental del miércoles está dañado. ¿Hasta qué punto puedes recuperar y qué lección deja?",
+     "r": "Solo hasta el martes en la noche: completo + lunes + martes. Los incrementales del jueves y del viernes dependen del miércoles y no pueden aplicarse. Lección: verificar los respaldos, probar restauraciones y combinar con diferenciales o completos más frecuentes."
+    }
+   ]
+  },
+  {
+   "titulo": "Auditoría informática: concepto, planeación, metodología y técnicas",
+   "intro": "Semanas 11, 14 y 17 del programa: conceptos básicos de la auditoría de sistemas; riesgos, controles y evaluación; organización y planeación de la auditoría informática; metodología para su desarrollo e implantación y sus etapas; técnicas, herramientas y controles de la auditoría informática.",
+   "conceptos": [
+    {
+     "n": "Concepto, objetivos y normas de la auditoría informática",
+     "e": [
+      "La <b>auditoría informática</b> es el examen independiente y objetivo de los sistemas de información, su organización y sus controles, para opinar si protegen los activos, mantienen la integridad de los datos, cumplen la normativa y logran sus objetivos con eficacia y eficiencia. Puede ser <b>interna</b> (unidad de la entidad que reporta al comité de auditoría) o <b>externa</b> (firma independiente) y, según su propósito, de cumplimiento, operativa o de gestión, de apoyo a la auditoría financiera o forense.",
+      "Normas y criterios: el marco ITAF de ISACA (normas generales, de desempeño y de reporte, junto con su código de ética profesional), ISO 19011 para auditar sistemas de gestión como un SGSI y, como criterios de evaluación, COBIT, ISO/IEC 27001 y 27002, NIST y la normativa del regulador. Principios: independencia, objetividad, debido cuidado profesional, competencia y confidencialidad."
+     ],
+     "u": [
+      "En bancos (con auditoría interna y externa), en la Contraloría General de Cuentas y en empresas certificadas.",
+      "La dirección necesita una opinión independiente de que los controles funcionan, no solo la palabra de TI.",
+      "En el plan anual de auditoría, en certificaciones y cuando hay sospecha de fraude.",
+      "Define objetivo y criterios, evalúa con evidencia y emite conclusiones y recomendaciones."
+     ]
+    },
+    {
+     "n": "Riesgo de auditoría y evaluación de controles",
+     "e": [
+      "El <b>riesgo de auditoría</b> (RA) es emitir una conclusión equivocada. Se descompone en riesgo <b>inherente</b> (RI, propio de la actividad), de <b>control</b> (RC, que los controles no prevengan ni detecten el error) y de <b>detección</b> (RD, que las pruebas del auditor no lo encuentren). El auditor solo controla el RD: si RI y RC son altos, debe bajarlo con más pruebas sustantivas y muestras mayores.",
+      "Los controles se evalúan en dos momentos: el <b>diseño</b> (¿el control, tal como está definido, cubre el riesgo?; se verifica con un recorrido) y la <b>eficacia operativa</b> (¿funcionó todo el período?; se verifica con pruebas de cumplimiento sobre una muestra). Se distinguen los <b>controles generales de TI</b> (accesos, cambios, operaciones, desarrollo) de los <b>controles de aplicación</b> (entrada, procesamiento, salida); si los generales fallan, no se puede confiar en los de aplicación."
+     ],
+     "u": [
+      "En la planeación de toda auditoría, financiera o de sistemas.",
+      "Define cuánto trabajo hace falta: ni pruebas de más ni conclusiones sin sustento.",
+      "Al planificar y al ajustar el plan si aparecen controles débiles.",
+      "Califica RI y RC por área, fija el RA aceptable y despeja el RD para dimensionar las pruebas sustantivas."
+     ],
+     "f": "RA=RI\\times RC\\times RD\\quad\\Rightarrow\\quad RD=\\frac{RA}{RI\\times RC}"
+    },
+    {
+     "n": "Planeación, etapas y evidencia",
+     "e": [
+      "Etapas de la metodología: 1) <b>planeación</b>: conocimiento de la entidad y sus sistemas, evaluación de riesgos, objetivos, alcance, criterios, programa de auditoría, equipo, cronograma y carta de encargo; 2) <b>ejecución</b> o trabajo de campo: pruebas, obtención de evidencia y papeles de trabajo; 3) <b>informe</b>: borrador, discusión con los auditados y emisión; 4) <b>seguimiento</b> de las recomendaciones.",
+      "La <b>evidencia</b> debe ser suficiente (cantidad), confiable, relevante y útil. Tipos: física (observación), documental, testimonial (entrevistas), analítica (comparaciones y razonabilidad) y electrónica (bitácoras, consultas). Es más confiable la que obtiene directamente el auditor que la que entrega el auditado, la externa que la interna y la documentada que la verbal."
+     ],
+     "u": [
+      "En cualquier encargo de auditoría de sistemas, interno o externo.",
+      "Una auditoría sin planeación se pierde en detalles, y una sin evidencia no se sostiene ante el auditado.",
+      "Desde la aceptación del encargo hasta el cierre del seguimiento.",
+      "Sigue las etapas, registra cada prueba en papeles de trabajo y vincula cada hallazgo con su evidencia."
+     ],
+     "tabla": "<table><thead><tr><th>Etapa</th><th>Producto principal</th></tr></thead><tbody><tr><td>Planeación</td><td>Memorando de planeación y programa de auditoría</td></tr><tr><td>Ejecución</td><td>Papeles de trabajo con evidencia y hallazgos</td></tr><tr><td>Informe</td><td>Informe con hallazgos, conclusiones y recomendaciones</td></tr><tr><td>Seguimiento</td><td>Matriz de avance del plan de acción</td></tr></tbody></table>"
+    },
+    {
+     "n": "Técnicas asistidas por computadora y muestreo",
+     "e": [
+      "Técnicas: entrevista, cuestionario, observación, inspección de documentos y configuraciones, reejecución (el auditor repite un cálculo, como los intereses) y técnicas de auditoría asistidas por computadora (<b>CAAT</b>): análisis de datos con SQL, Python, ACL o IDEA sobre el 100 % de la población, datos de prueba, simulación paralela, instalación de prueba integrada (ITF) y módulos de auditoría embebidos, además de escáneres de vulnerabilidades y revisores de configuración.",
+      "Cuando no se analiza toda la población se usa <b>muestreo</b>. Para atributos (¿se cumplió el control?) el tamaño depende de la confianza (\\(Z\\)), la tasa esperada de desviación (\\(p\\)) y el error tolerable (\\(E\\)), con corrección para población finita. La selección puede ser aleatoria o sistemática, con intervalo \\(N/n\\) y un arranque aleatorio. El tamaño siempre se redondea hacia arriba."
+     ],
+     "u": [
+      "En pruebas de controles y sustantivas sobre transacciones bancarias, planillas, compras o accesos.",
+      "Analizar la población completa con CAAT, o una muestra bien calculada, da conclusiones defendibles.",
+      "En la ejecución, después de evaluar el diseño de los controles.",
+      "Trabaja con una copia de los datos (no sobre producción), valida su integridad con totales de control y documenta las consultas o el muestreo."
+     ],
+     "f": "n_0=\\frac{Z^{2}\\,p(1-p)}{E^{2}}\\qquad n=\\frac{n_0}{1+\\frac{n_0-1}{N}}\\qquad \\text{intervalo}=\\frac{N}{n}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Debes seleccionar 60 de 2,400 solicitudes de acceso para verificar que tengan aprobación. Usa selección sistemática con arranque aleatorio 17.",
+     "pasos": [
+      "<b>Intervalo.</b> \\(2\\,400/60=40\\).",
+      "<b>Elementos.</b> 17, 57, 97, 137, …, sumando 40 cada vez.",
+      "<b>Último.</b> \\(17+59\\times40=2\\,377\\), dentro de la población."
+     ],
+     "r": "Intervalo de 40; se revisan las solicitudes 17, 57, 97, …, 2,377.",
+     "fin": "Seleccionar una muestra reproducible y defendible ante el auditado."
+    },
+    {
+     "nv": "I",
+     "q": "Para probar el control de aprobación de cambios de un año con 1,500 cambios, el auditor quiere 95 % de confianza (\\(Z=1.96\\)), espera 5 % de desviaciones y acepta un error de 3 %. ¿Qué tamaño de muestra usa?",
+     "pasos": [
+      "<b>Muestra base.</b> \\(n_0=1.96^{2}\\times0.05\\times0.95/0.03^{2}\\approx202.75\\).",
+      "<b>Corrección finita.</b> \\(n=202.75/(1+201.75/1\\,500)\\approx178.7\\).",
+      "<b>Redondeo.</b> Hacia arriba: 179 cambios."
+     ],
+     "r": "179 cambios (203 si la población fuera muy grande).",
+     "fin": "Dimensionar una prueba de cumplimiento con criterio estadístico."
+    },
+    {
+     "nv": "I",
+     "q": "En la auditoría del sistema de cartera de un banco el auditor fija un riesgo de auditoría de 5 %. Califica el riesgo inherente en 80 % y el de control en 50 %. ¿Qué riesgo de detección puede aceptar y qué cambia si el riesgo de control baja a 25 %?",
+     "pasos": [
+      "<b>Despeje.</b> \\(RD=0.05/(0.80\\times0.50)=0.125\\): 12.5 %.",
+      "<b>Con mejor control.</b> \\(RD=0.05/(0.80\\times0.25)=0.25\\): 25 %.",
+      "<b>Lectura.</b> Con un RD de 12.5 % el auditor necesita más pruebas sustantivas (muestras mayores o análisis del 100 % con CAAT); con controles fuertes acepta un RD mayor y reduce el trabajo."
+     ],
+     "r": "RD de 12.5 %; con mejor control, 25 %.",
+     "fin": "Conectar la evaluación de controles con la cantidad de pruebas necesarias."
+    },
+    {
+     "nv": "A",
+     "q": "Con una copia de la base de datos de pagos y de planilla (MySQL), detecta pagos duplicados a proveedores y usuarios del sistema que pertenecen a empleados dados de baja.",
+     "pasos": [
+      "<b>Integridad de la copia.</b> Comparar el número de registros y la suma de montos con los reportes oficiales del período.",
+      "<b>Duplicados.</b> <code>SELECT proveedor_id, factura, monto, COUNT(*) AS veces FROM pagos GROUP BY proveedor_id, factura, monto HAVING COUNT(*) &gt; 1;</code>",
+      "<b>Usuarios de bajas.</b> <code>SELECT u.usuario, e.fecha_baja FROM usuarios u JOIN empleados e ON e.id = u.empleado_id WHERE e.fecha_baja IS NOT NULL AND u.activo = 1;</code>",
+      "<b>Seguimiento.</b> Cada resultado es una excepción que se investiga con documentos (¿pago anulado?, ¿baja registrada tarde?) antes de convertirla en hallazgo."
+     ],
+     "r": "Dos consultas sobre el 100 % de la población; las excepciones se investigan antes de reportarlas.",
+     "fin": "Usar CAAT para probar poblaciones completas en lugar de muestras pequeñas."
+    },
+    {
+     "nv": "A",
+     "q": "Elabora el esquema del programa de auditoría del sistema de cartera de créditos (Java y PostgreSQL) de un banco supervisado por la Superintendencia de Bancos.",
+     "pasos": [
+      "<b>Objetivo.</b> Opinar si los controles del sistema aseguran la integridad, la confidencialidad y la disponibilidad de la información de cartera.",
+      "<b>Alcance y criterios.</b> Período de enero a diciembre; módulos de originación, desembolso y cobro; criterios: políticas del banco, normativa de riesgo tecnológico aplicable, COBIT 2019 e ISO/IEC 27002.",
+      "<b>Riesgos clave.</b> Accesos indebidos, cambios no autorizados al cálculo de intereses, interfaces incompletas con contabilidad y pérdida de datos.",
+      "<b>Pruebas.</b> Controles generales (revisión de accesos y de cambios, respaldos), controles de aplicación (validaciones de entrada, reejecución del cálculo de intereses en una muestra, conciliación de la interfaz con el mayor general) y análisis de datos con CAAT.",
+      "<b>Recursos y tiempo.</b> Equipo, horas por actividad, cronograma, requerimientos de información y fecha del informe."
+     ],
+     "r": "Programa con objetivo, alcance, criterios, riesgos clave, pruebas por tipo de control, recursos y cronograma.",
+     "fin": "Planificar una auditoría real, la etapa que más pesa en su calidad."
+    },
+    {
+     "nv": "B",
+     "q": "Población de 900 órdenes de compra, muestra de 45 y arranque aleatorio 7. ¿Cuál es el intervalo, cuáles los tres primeros elementos y cuál el último?",
+     "r": "Intervalo 20; 7, 27 y 47; último \\(7+44\\times20=887\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula el tamaño de muestra con \\(Z=1.96\\), \\(p=0.10\\), \\(E=0.05\\) y una población de 600 cuentas de usuario.",
+     "r": "\\(n_0=1.96^{2}\\times0.1\\times0.9/0.05^{2}\\approx138.3\\); corregido, \\(138.3/(1+137.3/600)\\approx112.5\\): 113 cuentas."
+    },
+    {
+     "nv": "I",
+     "q": "RA = 5 %, RI = 100 % y RC = 70 %. ¿Qué riesgo de detección se acepta?",
+     "r": "\\(RD=0.05/(1\\times0.7)\\approx7.1\\,\\%\\): bajo, por lo que se requieren pruebas sustantivas extensas."
+    },
+    {
+     "nv": "I",
+     "q": "En una muestra de 120 accesos, 6 no tienen aprobación. El auditor toleraba como máximo 4 % de desviación. ¿Puede confiar en el control?",
+     "r": "Tasa observada \\(6/120=5\\,\\%\\), mayor que el 4 % tolerable: el control no es confiable; se reporta y se amplían las pruebas sustantivas."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe una consulta en PostgreSQL que liste las cuentas activas de una aplicación sin inicio de sesión en más de 90 días (tabla <code>usuarios</code> con <code>usuario</code>, <code>activo</code> y <code>ultimo_acceso</code>).",
+     "r": "<code>SELECT usuario, ultimo_acceso FROM usuarios WHERE activo AND (ultimo_acceso IS NULL OR ultimo_acceso &lt; now() - interval '90 days');</code> Cada cuenta se confirma con el dueño del proceso para bloquearla o justificarla."
+    }
+   ]
+  },
+  {
+   "titulo": "Auditorías por área, informe y papeles de trabajo",
+   "intro": "Semanas 15 a 19 del programa: auditorías sobre cada área de la empresa, bases de datos, sistemas aplicativos, seguridad de las redes y departamentos de informática; auditorías integrales, por procesos y de Internet; tipos de informe (parcial y final; técnico y administrativo), informe por áreas evaluadas, contenido mínimo y estructura; cédulas de trabajo y formularios de entrevista: definición por área, interpretación y uso en el informe.",
+   "conceptos": [
+    {
+     "n": "Auditorías por área",
+     "e": [
+      "Cada área tiene su propio programa, pero todas se evalúan con el mismo esquema: riesgo, control esperado (criterio), prueba y evidencia. El plan anual rota las áreas según su riesgo y su último resultado."
+     ],
+     "u": [
+      "En el plan anual de auditoría de un banco o de una entidad pública.",
+      "Cada área tiene riesgos y evidencias distintas; un programa genérico pasa por alto lo importante.",
+      "Según el plan anual basado en riesgos o después de un incidente en el área.",
+      "Usa un programa por área con pruebas específicas y evidencia obtenida directamente."
+     ],
+     "tabla": "<table><thead><tr><th>Área</th><th>Qué se revisa</th><th>Evidencia típica</th></tr></thead><tbody><tr><td>Departamento de informática</td><td>Organización, segregación entre desarrollo y operación, planes, presupuesto, personal, contratos con proveedores</td><td>Organigrama, manuales de puestos, plan estratégico de TI, SLA</td></tr><tr><td>Bases de datos</td><td>Cuentas privilegiadas, accesos directos, cifrado, respaldos, bitácoras, cambios de esquema</td><td>Consultas al catálogo, configuración, registros de respaldo</td></tr><tr><td>Sistemas aplicativos</td><td>Controles de entrada, procesamiento y salida, interfaces, pistas de auditoría, cambios</td><td>Reejecución, datos de prueba, conciliaciones</td></tr><tr><td>Redes</td><td>Segmentación, reglas de firewall, acceso remoto y VPN, Wi-Fi, vulnerabilidades</td><td>Configuraciones, escaneos, diagramas</td></tr><tr><td>Seguridad física</td><td>Accesos, ambiente, energía, extinción de incendios</td><td>Observación, bitácoras, pruebas de UPS y planta</td></tr></tbody></table>"
+    },
+    {
+     "n": "Auditorías integrales, por procesos y en Internet",
+     "e": [
+      "La <b>auditoría integral</b> combina en un solo encargo los enfoques financiero, de gestión, de cumplimiento y de sistemas. La <b>auditoría por procesos</b> sigue una transacción de extremo a extremo (por ejemplo, compra-pago o solicitud-desembolso de un crédito) y revisa los controles manuales y automáticos de cada paso y de cada interfaz entre sistemas.",
+      "La auditoría de <b>servicios en Internet y en la nube</b> revisa la exposición de sitios y API (configuración de TLS, vulnerabilidades del OWASP Top 10, manejo de sesiones), el comercio electrónico y los contratos con proveedores. En la nube rige el modelo de <b>responsabilidad compartida</b>: el proveedor responde por la infraestructura y el cliente por sus configuraciones, identidades y datos. Como evidencia de los controles del proveedor se usan informes independientes (por ejemplo, SOC 2) y certificaciones como ISO/IEC 27001."
+     ],
+     "u": [
+      "En procesos críticos de bancos y entidades públicas que cruzan varios sistemas y áreas, y en servicios publicados en Internet.",
+      "Los fraudes y errores suelen aparecer en las interfaces entre sistemas y en servicios mal configurados.",
+      "Cuando se audita un proceso de negocio completo o un servicio contratado en la nube.",
+      "Dibuja el flujo del proceso, ubica riesgos y controles en cada paso y prueba los puntos de traspaso."
+     ]
+    },
+    {
+     "n": "Papeles de trabajo, cédulas y formularios",
+     "e": [
+      "Los <b>papeles de trabajo</b> documentan la planeación, las pruebas, la evidencia y las conclusiones; son propiedad del auditor y se conservan con confidencialidad. Se organizan en <b>cédulas</b>: <b>sumarias</b> (resumen de un área con su conclusión), <b>analíticas o de detalle</b> (la prueba concreta) y de <b>hallazgos</b>. Cada cédula lleva encabezado (entidad, área, período), índice, referencias cruzadas, marcas de auditoría con su significado, fuente, conclusión y nombre de quien la preparó y de quien la revisó, con fechas.",
+      "Los <b>formularios de entrevista</b> y cuestionarios se diseñan por área (centro de datos, desarrollo, bases de datos, usuarios). Combinan preguntas cerradas (sí, no, no aplica) para cubrir los controles esperados y abiertas para entender el proceso. Al <b>interpretarlos</b>, un «no» señala una posible debilidad y un «sí» es solo una afirmación: ambos se confirman con evidencia. El formulario ayuda en el informe porque ordena por área los hallazgos y su evidencia."
+     ],
+     "u": [
+      "En toda auditoría interna, externa o de la Contraloría General de Cuentas.",
+      "Sin papeles de trabajo no hay forma de demostrar qué se probó ni de defender un hallazgo.",
+      "Durante la ejecución y en la revisión del trabajo antes de emitir el informe.",
+      "Usa índices y referencias cruzadas de la sumaria a las analíticas y de cada hallazgo a su evidencia."
+     ]
+    },
+    {
+     "n": "El informe de auditoría",
+     "e": [
+      "El informe puede ser <b>parcial</b> (comunica hallazgos durante la auditoría, sobre todo los de riesgo alto que requieren acción inmediata) o <b>final</b>; según su destinatario es <b>técnico</b> (para TI, con el detalle de configuraciones y pruebas) o <b>administrativo o ejecutivo</b> (para la dirección, en lenguaje de riesgo e impacto). Puede organizarse por áreas evaluadas.",
+      "Contenido mínimo: título e identificación, destinatario, objetivo, alcance y período, criterios o normas aplicadas, metodología, limitaciones, resumen ejecutivo, hallazgos, comentarios de la administración, conclusión u opinión, firma y fecha. Cada <b>hallazgo</b> se redacta con cinco atributos (condición, criterio, causa, efecto y recomendación) y se califica por nivel de riesgo."
+     ],
+     "u": [
+      "Al cierre de toda auditoría y en cada informe parcial.",
+      "Es el producto que ve la dirección; un hallazgo mal redactado no se corrige.",
+      "Al terminar el trabajo de campo, después de discutir el borrador con los auditados.",
+      "Redacta cada hallazgo con sus cinco atributos, califícalo por riesgo y separa el resumen ejecutivo del detalle técnico."
+     ],
+     "tabla": "<table><thead><tr><th>Atributo</th><th>Pregunta que responde</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Condición</td><td>¿Qué encontramos?</td><td>7 cuentas de exempleados activas en la base de datos</td></tr><tr><td>Criterio</td><td>¿Qué debería ocurrir?</td><td>La política exige desactivar accesos el día de la baja</td></tr><tr><td>Causa</td><td>¿Por qué ocurre?</td><td>Recursos Humanos no notifica las bajas a TI</td></tr><tr><td>Efecto</td><td>¿Qué puede pasar?</td><td>Acceso no autorizado y alteración de registros</td></tr><tr><td>Recomendación</td><td>¿Qué hacer?</td><td>Notificación automática de bajas y revisión mensual de cuentas</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "En la auditoría a la base de datos MySQL de una municipalidad se encontraron 7 cuentas activas de exempleados, dos con privilegios de escritura. Redacta el hallazgo.",
+     "pasos": [
+      "<b>Condición.</b> Siete cuentas de personas retiradas siguen activas; dos pueden modificar datos de catastro.",
+      "<b>Criterio.</b> La política de control de accesos de la municipalidad exige desactivar las cuentas el día de la baja; ISO/IEC 27002 recomienda lo mismo en la gestión de derechos de acceso.",
+      "<b>Causa.</b> No existe un procedimiento para que Recursos Humanos notifique las bajas a TI ni una revisión periódica de cuentas.",
+      "<b>Efecto.</b> Riesgo de acceso no autorizado y de alteración de registros sin un responsable identificable.",
+      "<b>Recomendación.</b> Desactivar de inmediato las 7 cuentas, revisar su actividad posterior a la baja, implementar la notificación de bajas y una revisión mensual de cuentas."
+     ],
+     "r": "Hallazgo con condición, criterio, causa, efecto y recomendación; riesgo alto por las cuentas con escritura.",
+     "fin": "Redactar hallazgos completos, la habilidad que más pesa en el informe."
+    },
+    {
+     "nv": "I",
+     "q": "En el formulario de entrevista del área de cómputo de una entidad pública se obtuvo: plan de contingencia documentado, sí; probado en el último año, no; respaldos fuera del sitio, sí; pruebas de restauración, no; bitácora de acceso a la sala, sí. ¿Cómo se interpreta y qué haces después?",
+     "pasos": [
+      "<b>Lectura.</b> Hay controles diseñados (plan, respaldos externos, bitácora), pero no hay evidencia de que funcionen: el plan no se prueba y los respaldos nunca se han restaurado.",
+      "<b>Confirmación.</b> Pedir el plan con su fecha de aprobación, el registro de respaldos, el inventario de la custodia externa y la bitácora de la sala; los «sí» se verifican con documentos.",
+      "<b>Prueba propia.</b> Solicitar la restauración de un respaldo elegido por el auditor.",
+      "<b>Hallazgos posibles.</b> Plan de contingencia no probado y respaldos sin verificación de restauración, con efecto en la capacidad de recuperación."
+     ],
+     "r": "Los controles existen en diseño, pero sin evidencia de eficacia; se confirman las respuestas con documentos y una restauración de prueba antes de redactar hallazgos.",
+     "fin": "Usar el formulario como guía para buscar evidencia, no como evidencia en sí."
+    },
+    {
+     "nv": "I",
+     "q": "Organiza los papeles de trabajo de la revisión de accesos de un sistema de nómina: una cédula sumaria y dos analíticas (usuarios activos contra planilla y cuentas privilegiadas).",
+     "pasos": [
+      "<b>Sumaria A.</b> Encabezado (entidad, área de accesos, período), objetivo, resumen de los resultados de A-1 y A-2, conclusión del área y referencia a los hallazgos.",
+      "<b>Analítica A-1.</b> Cruce de los usuarios activos contra la planilla vigente, con fuente de los datos, procedimiento, marcas explicadas (por ejemplo, ✓ = verificado contra planilla) y excepciones.",
+      "<b>Analítica A-2.</b> Lista de cuentas con perfil de administrador, su justificación y su aprobación vigente.",
+      "<b>Referencias cruzadas.</b> Cada cifra de la sumaria remite a A-1 o A-2 y cada excepción a la cédula de hallazgos H-1; todas con nombre y fecha de quien preparó y de quien revisó."
+     ],
+     "r": "Sumaria A con analíticas A-1 y A-2, marcas explicadas y referencias cruzadas a la cédula de hallazgos.",
+     "fin": "Documentar el trabajo de modo que un revisor lo siga sin tener que preguntar."
+    },
+    {
+     "nv": "A",
+     "q": "Describe las pruebas de una auditoría de seguridad a un servidor PostgreSQL que guarda datos de contribuyentes.",
+     "pasos": [
+      "<b>Cuentas privilegiadas.</b> <code>SELECT rolname FROM pg_roles WHERE rolsuper;</code> y comparar con la lista autorizada; buscar cuentas genéricas compartidas.",
+      "<b>Autenticación.</b> Revisar <code>pg_hba.conf</code>: sin método <code>trust</code>, conexiones remotas con <code>scram-sha-256</code> y TLS, y solo desde los servidores de aplicación.",
+      "<b>Bitácoras.</b> Verificar <code>log_connections</code> y una extensión de auditoría como <code>pgaudit</code> para operaciones sobre tablas sensibles, con envío a un servidor que el DBA no controle.",
+      "<b>Respaldos y cifrado.</b> Evidencia de respaldos, de pruebas de restauración y de cifrado de las copias y del almacenamiento.",
+      "<b>Cambios.</b> Comparar los cambios de esquema del período con las solicitudes aprobadas en el control de cambios."
+     ],
+     "r": "Pruebas de cuentas privilegiadas, autenticación, bitácoras independientes, respaldos y cambios, con consultas ejecutadas por el auditor.",
+     "fin": "Aplicar un programa de auditoría específico para bases de datos, con evidencia técnica directa."
+    },
+    {
+     "nv": "A",
+     "q": "Vas a emitir el informe final de la auditoría de seguridad de la banca en línea de un banco. ¿Qué documentos entregas, a quién y con qué estructura?",
+     "pasos": [
+      "<b>Informe ejecutivo.</b> Para el consejo, la gerencia general y el comité de auditoría: objetivo, alcance, conclusión general, mapa de hallazgos por nivel de riesgo y principales recomendaciones, en lenguaje de negocio.",
+      "<b>Informe técnico.</b> Para TI y seguridad: cada hallazgo con condición, criterio, causa, efecto y recomendación, evidencia técnica y referencia a los papeles de trabajo.",
+      "<b>Contenido mínimo común.</b> Identificación, destinatario, período, criterios (políticas, normativa aplicable, ISO/IEC 27002, COBIT), metodología, limitaciones, comentarios de la administración con responsables y fechas, firma y fecha.",
+      "<b>Antes y después de emitir.</b> Discutir el borrador con los auditados, ajustar lo que la evidencia respalde, registrar la respuesta de la administración y programar el seguimiento."
+     ],
+     "r": "Informe ejecutivo para la dirección e informe técnico para TI, ambos con el contenido mínimo, hallazgos de cinco atributos y plan de acción comentado por la administración.",
+     "fin": "Comunicar resultados a públicos distintos sin perder la trazabilidad con la evidencia."
+    },
+    {
+     "nv": "B",
+     "q": "En un hallazgo de auditoría, ¿qué atributo describe lo que <b>debería</b> ocurrir según la norma o la política?",
+     "ops": [
+      "Criterio",
+      "Condición",
+      "Causa",
+      "Efecto"
+     ],
+     "ok": 0,
+     "r": "El criterio es la referencia (política, norma, buena práctica); la condición es lo encontrado, la causa explica por qué ocurre y el efecto es la consecuencia."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué cédula resume los resultados de un área y remite a las cédulas de detalle?",
+     "ops": [
+      "Cédula analítica",
+      "Cédula de hallazgos",
+      "Cédula sumaria",
+      "Cuestionario de control interno"
+     ],
+     "ok": 2,
+     "r": "La sumaria consolida el área; las analíticas contienen cada prueba y la de hallazgos documenta las deficiencias."
+    },
+    {
+     "nv": "I",
+     "q": "Al auditar un servicio contratado en la nube, ¿qué evidencia permite evaluar los controles del proveedor sin auditarlo directamente?",
+     "ops": [
+      "Un informe independiente como SOC 2 o una certificación ISO/IEC 27001 vigente",
+      "La factura mensual del servicio",
+      "La política de privacidad publicada en su sitio",
+      "Una carta del vendedor que asegura que el servicio es seguro"
+     ],
+     "ok": 0,
+     "r": "El informe de un auditor independiente sobre los controles del proveedor es evidencia confiable; las afirmaciones del propio proveedor no lo son. Aun así, el cliente debe auditar lo que le corresponde según la responsabilidad compartida."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la evidencia más confiable de que una base de datos no tiene cuentas de superusuario no autorizadas?",
+     "ops": [
+      "La declaración verbal del DBA",
+      "Una consulta al catálogo ejecutada por el auditor, comparada con la lista autorizada",
+      "Una captura de pantalla enviada por correo por TI",
+      "La política que prohíbe esas cuentas"
+     ],
+     "ok": 1,
+     "r": "La evidencia obtenida directamente por el auditor es más confiable que la proporcionada por el auditado; la política es el criterio, no la evidencia de cumplimiento."
+    },
+    {
+     "nv": "A",
+     "q": "Durante el trabajo de campo descubres que el servidor de la banca en línea acepta la contraseña por defecto del fabricante. ¿Qué corresponde?",
+     "ops": [
+      "Esperar al informe final para incluirlo con los demás hallazgos",
+      "Cambiar tú mismo la contraseña para eliminar el riesgo",
+      "Comunicarlo de inmediato a la administración con un informe parcial o comunicación formal, y documentarlo",
+      "Omitirlo porque no estaba en la muestra"
+     ],
+     "ok": 2,
+     "r": "Un hallazgo de riesgo alto que requiere acción inmediata se comunica sin esperar el cierre. El auditor no corrige (perdería independencia) ni omite riesgos importantes que conoce."
+    }
+   ]
+  }
+ ]
+}
