@@ -1,0 +1,988 @@
+{
+ "slug": "compiladores",
+ "titulo": "Compiladores",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 7, código 090035, área de Administración de Sistemas (sin semana propia en el seminario)",
+ "firma": "\\text{caracteres}\\xrightarrow{\\text{léxico}}\\text{tokens}\\xrightarrow{\\text{sintáctico}}\\text{árbol}\\xrightarrow{\\text{síntesis}}\\text{código objeto}",
+ "firma_nota": "El recorrido de un programa por el compilador: el análisis (léxico, sintáctico y semántico) construye y verifica el árbol, y la síntesis (código intermedio, optimización y generación) lo convierte en código objeto.",
+ "lead": "Cómo un programa pasa de texto a código ejecutable: fases del compilador, traducción de expresiones y máquinas de pila, análisis léxico con expresiones regulares y autómatas, análisis sintáctico descendente y ascendente, y traducción dirigida por la sintaxis con árboles, código de tres direcciones y optimización. Es la aplicación directa de Autómatas y Lenguajes Formales y explica lo que hacen por dentro javac, gcc, PHP, Flex y Bison. Las 5 unidades del programa están organizadas en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7Compiladores.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta; en la sección de fases y herramientas, los 5 últimos son preguntas de opción múltiple que te dicen al instante si acertaste. Resuelve las trazas (autómatas, tablas LL(1) y SLR) en papel antes de ver la respuesta: así se evalúan en el privado.",
+ "temas": [
+  {
+   "titulo": "El compilador y sus fases",
+   "intro": "Unidad 1 del programa: compiladores, análisis de programas fuente, fases de un compilador y agrupamiento de fases; incluye las herramientas para la construcción de compiladores con que abre la unidad 2.",
+   "conceptos": [
+    {
+     "n": "Compilador, intérprete y traductor",
+     "e": [
+      "Un <b>compilador</b> lee un programa en un lenguaje fuente y lo traduce a un programa equivalente en un lenguaje objeto, informando los errores que encuentre. Un <b>intérprete</b> no produce un programa objeto: analiza y ejecuta las instrucciones directamente. Muchos lenguajes son <b>híbridos</b>: <code>javac</code> traduce Java a bytecode que luego ejecuta la máquina virtual de Java (JVM), interpretándolo o compilándolo a código nativo en tiempo de ejecución (JIT); PHP compila cada script a códigos de operación que ejecuta su motor.",
+      "El análisis de un programa fuente tiene dos partes: <b>análisis</b>, que divide el programa en piezas y construye una representación intermedia, y <b>síntesis</b>, que genera el programa objeto a partir de esa representación."
+     ],
+     "u": [
+      "En gcc, javac, el motor de PHP, los navegadores que ejecutan JavaScript y los gestores de bases de datos que traducen SQL a planes de ejecución.",
+      "Explica por qué un error de sintaxis en Java aparece antes de ejecutar y en PHP puede aparecer hasta que se carga el script.",
+      "Al elegir un lenguaje o al diagnosticar un error que sale en compilación o en ejecución.",
+      "Identifica qué produce cada herramienta: código objeto, bytecode o ejecución directa."
+     ]
+    },
+    {
+     "n": "Fases de un compilador",
+     "e": [
+      "Cada fase transforma el programa de una representación a otra. Todas consultan la <b>tabla de símbolos</b> (identificadores con su tipo, ámbito y dirección) y reportan errores al <b>manejador de errores</b>."
+     ],
+     "u": [
+      "En cualquier compilador real; los mensajes de error de un IDE indican qué fase falló.",
+      "Separar el trabajo en fases permite construir, probar y reutilizar cada parte por separado.",
+      "Al leer un mensaje de error o al diseñar el proyecto de compilador del curso.",
+      "Sigue una sentencia por cada fase y anota qué entra y qué sale."
+     ],
+     "tabla": "<table><thead><tr><th>Fase</th><th>Entrada</th><th>Salida</th></tr></thead><tbody><tr><td>Análisis léxico</td><td>Caracteres</td><td>Tokens</td></tr><tr><td>Análisis sintáctico</td><td>Tokens</td><td>Árbol sintáctico</td></tr><tr><td>Análisis semántico</td><td>Árbol</td><td>Árbol con tipos verificados y conversiones</td></tr><tr><td>Código intermedio</td><td>Árbol anotado</td><td>Código de tres direcciones</td></tr><tr><td>Optimización</td><td>Código intermedio</td><td>Código intermedio mejorado</td></tr><tr><td>Generación de código</td><td>Código intermedio</td><td>Código objeto (ensamblador o máquina)</td></tr></tbody></table>"
+    },
+    {
+     "n": "Agrupamiento de fases y pasadas",
+     "e": [
+      "Las fases se agrupan en una <b>etapa inicial</b> (front end: léxico, sintáctico, semántico y código intermedio), que depende del lenguaje fuente, y una <b>etapa final</b> (back end: optimización y generación de código), que depende de la máquina objeto. Una <b>pasada</b> lee una representación completa del programa y escribe otra; varias fases pueden ir en una sola pasada (el analizador sintáctico pide tokens al léxico conforme los necesita).",
+      "Con \\(m\\) lenguajes y \\(n\\) máquinas, en lugar de escribir \\(m\\times n\\) compiladores completos se escriben \\(m\\) etapas iniciales y \\(n\\) etapas finales que comparten la misma representación intermedia."
+     ],
+     "u": [
+      "En GCC y LLVM: muchos lenguajes comparten optimizador y generadores para x86, ARM y otras arquitecturas.",
+      "Reduce el trabajo de llevar un lenguaje a una nueva máquina (reorientación).",
+      "Al planificar un compilador que deba generar código para varias plataformas.",
+      "Define una representación intermedia común y separa lo que depende del lenguaje de lo que depende de la máquina."
+     ],
+     "f": "\\text{compiladores completos}=m\\times n\\qquad\\text{con etapas separadas}=m+n"
+    },
+    {
+     "n": "Herramientas para construir compiladores",
+     "e": [
+      "<b>Generadores de analizadores léxicos</b> (Lex, Flex): reciben expresiones regulares con acciones y producen un autómata en C. <b>Generadores de analizadores sintácticos</b>: Yacc y Bison producen analizadores ascendentes LALR(1) a partir de una gramática con acciones; ANTLR produce analizadores descendentes LL(*) para Java, C#, Python y otros. También hay dispositivos de traducción dirigida por la sintaxis, generadores automáticos de código y herramientas de análisis de flujo de datos."
+     ],
+     "u": [
+      "En intérpretes de SQL, lenguajes de configuración, calculadoras, validadores de formatos y lenguajes de reglas de negocio.",
+      "Escribir a mano un autómata o una tabla LR es largo y propenso a errores.",
+      "Cuando la gramática es estable y se quiere un analizador correcto y fácil de mantener.",
+      "Escribe el archivo <code>.l</code> con los tokens y el <code>.y</code> (o <code>.g4</code> en ANTLR) con la gramática, genera el código y compílalo con el resto del programa."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Indica qué fase detecta cada error en Java: (a) <code>int edad = 25 # 2;</code> (b) <code>if (x &gt; 0 { y = 1; }</code> (c) <code>int n = \"hola\";</code> (d) <code>z = x / y;</code> con <code>y</code> igual a 0 en tiempo de ejecución.",
+     "pasos": [
+      "<b>(a)</b> <code>#</code> no pertenece a ningún patrón de token de Java: error <b>léxico</b>.",
+      "<b>(b)</b> Los tokens son válidos, pero falta el <code>)</code> que exige la regla del <code>if</code>: error <b>sintáctico</b>.",
+      "<b>(c)</b> La sentencia está bien formada, pero asigna una cadena a un entero: error <b>semántico</b> (tipos incompatibles).",
+      "<b>(d)</b> El compilador no conoce el valor de <code>y</code>: es un error de <b>ejecución</b> (excepción aritmética)."
+     ],
+     "r": "Léxico, sintáctico, semántico y de ejecución.",
+     "fin": "Leer un mensaje de error y saber en qué parte del compilador buscar."
+    },
+    {
+     "nv": "I",
+     "q": "Sigue la sentencia <code>sueldo = base + horas * 50;</code> por las fases del compilador, si <code>sueldo</code>, <code>base</code> y <code>horas</code> son de tipo <code>float</code>.",
+     "pasos": [
+      "<b>Léxico.</b> 8 tokens: <code>id1 = id2 + id3 * 50 ;</code>; los tres identificadores se guardan en la tabla de símbolos.",
+      "<b>Sintáctico.</b> Árbol: la raíz es <code>=</code> con hijos <code>id1</code> y <code>+</code>; el <code>+</code> tiene hijos <code>id2</code> y <code>*</code>; el <code>*</code>, <code>id3</code> y <code>50</code>. La multiplicación queda más abajo porque tiene mayor precedencia.",
+      "<b>Semántico.</b> <code>id3</code> es real y <code>50</code> es entero: se inserta la conversión <code>inttofloat(50)</code>.",
+      "<b>Código intermedio.</b> <code>t1 = inttofloat(50)<br>t2 = id3 * t1<br>t3 = id2 + t2<br>id1 = t3</code>",
+      "<b>Optimización.</b> La conversión se hace al compilar y se elimina la copia: <code>t1 = id3 * 50.0<br>id1 = id2 + t1</code>",
+      "<b>Código objeto.</b> <code>MOVF id3, R2<br>MULF #50.0, R2<br>MOVF id2, R1<br>ADDF R2, R1<br>MOVF R1, id1</code>"
+     ],
+     "r": "De 8 tokens a 5 instrucciones de máquina, pasando por árbol, conversión de tipo y código de tres direcciones.",
+     "fin": "Ver el trabajo de cada fase sobre un mismo ejemplo, la pregunta más común sobre el tema."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica cómo se traduce y ejecuta un programa en C con gcc, en Java con javac y en PHP.",
+     "pasos": [
+      "<b>C con gcc.</b> Compilador: produce un ejecutable en código de máquina que corre sin el compilador.",
+      "<b>Java.</b> Híbrido: <code>javac</code> genera bytecode (<code>.class</code>) y la JVM lo interpreta y compila con JIT las partes que más se ejecutan.",
+      "<b>PHP.</b> Interpretado con compilación interna: el motor traduce el script a códigos de operación y los ejecuta en cada petición (la extensión OPcache los guarda en memoria para no repetir la traducción)."
+     ],
+     "r": "C compilado, Java híbrido (bytecode y JVM) y PHP interpretado sobre códigos de operación.",
+     "fin": "Entender qué hace cada herramienta que usas a diario."
+    },
+    {
+     "nv": "A",
+     "q": "Una empresa necesita compiladores para 5 lenguajes y 3 arquitecturas. ¿Cuántos programas debe escribir sin separar etapas y cuántos con etapa inicial y final separadas?",
+     "pasos": [
+      "<b>Sin separar.</b> Un compilador completo por pareja: \\(5\\times3=15\\).",
+      "<b>Separando.</b> 5 etapas iniciales (una por lenguaje) y 3 finales (una por máquina), unidas por la misma representación intermedia: \\(5+3=8\\).",
+      "<b>Agregar una arquitectura.</b> Sin separar costaría 5 compiladores nuevos; separando, solo 1 etapa final."
+     ],
+     "r": "15 contra 8; cada máquina nueva cuesta 1 etapa final en lugar de 5 compiladores.",
+     "fin": "Justificar el agrupamiento de fases en front end y back end."
+    },
+    {
+     "nv": "A",
+     "q": "Describe cómo construir con Flex y Bison una calculadora que lea montos y sume el IVA de 12 %.",
+     "pasos": [
+      "<b>Léxico.</b> En <code>calc.l</code> se definen los tokens: números con <code>[0-9]+(\\.[0-9]+)?</code>, operadores y la palabra <code>iva</code>; <code>flex calc.l</code> genera <code>lex.yy.c</code> con la función <code>yylex()</code>.",
+      "<b>Sintáctico.</b> En <code>calc.y</code> se escribe la gramática de expresiones con acciones, por ejemplo <code>E: E '+' T { $$ = $1 + $3; }</code>; <code>bison -d calc.y</code> genera <code>calc.tab.c</code> y <code>calc.tab.h</code> con <code>yyparse()</code>.",
+      "<b>Unión.</b> <code>yyparse()</code> llama a <code>yylex()</code> cada vez que necesita un token; el encabezado <code>calc.tab.h</code> comparte los códigos de token.",
+      "<b>Compilación.</b> <code>gcc calc.tab.c lex.yy.c -o calc</code> produce el ejecutable."
+     ],
+     "r": "Flex genera el analizador léxico, Bison el sintáctico con sus acciones y gcc une ambos en la calculadora.",
+     "fin": "Conocer el flujo de trabajo de las herramientas clásicas para el proyecto del curso."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué fase agrupa los caracteres del programa fuente en tokens?",
+     "ops": [
+      "Análisis léxico",
+      "Análisis sintáctico",
+      "Análisis semántico",
+      "Generación de código"
+     ],
+     "ok": 0,
+     "r": "El analizador léxico lee caracteres y entrega tokens al sintáctico."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué estructura usan todas las fases para guardar los identificadores y sus atributos (tipo, ámbito, dirección)?",
+     "ops": [
+      "La tabla de símbolos",
+      "La pila de ejecución",
+      "El búfer de entrada",
+      "El árbol de sintaxis abstracta"
+     ],
+     "ok": 0,
+     "r": "La tabla de símbolos se llena en las primeras fases y la consultan todas las demás."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tipo de analizador sintáctico generan Yacc y Bison?",
+     "ops": [
+      "Descendente LL(1)",
+      "Descendente recursivo con retroceso",
+      "Autómata finito determinista",
+      "Ascendente LALR(1)"
+     ],
+     "ok": 3,
+     "r": "Construyen tablas LALR(1); el autómata finito es lo que generan Lex y Flex para los tokens."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué se diferencia ANTLR de Yacc o Bison?",
+     "ops": [
+      "Solo genera analizadores léxicos",
+      "Genera analizadores ascendentes LR canónicos solo para C",
+      "Genera analizadores descendentes LL(*) y puede producir código en Java, C# o Python",
+      "No acepta gramáticas, solo expresiones regulares"
+     ],
+     "ok": 2,
+     "r": "ANTLR trabaja de arriba hacia abajo; Yacc y Bison, de abajo hacia arriba."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la principal ventaja de separar el compilador en etapa inicial y etapa final?",
+     "ops": [
+      "Eliminar la necesidad de la fase de optimización",
+      "Reutilizar la etapa inicial para varias máquinas y la final para varios lenguajes",
+      "Obligar a que el compilador sea de una sola pasada",
+      "Evitar el uso de la tabla de símbolos"
+     ],
+     "ok": 1,
+     "r": "La representación intermedia común convierte \\(m\\times n\\) compiladores en \\(m+n\\) piezas."
+    }
+   ]
+  },
+  {
+   "titulo": "Traductor de expresiones y máquinas de pila",
+   "intro": "Unidad 2 del programa: conociendo los distintos pasos de un compilador con un traductor de expresiones, definición de la sintaxis y máquinas de pila abstractas.",
+   "conceptos": [
+    {
+     "n": "Definición de la sintaxis con gramáticas",
+     "e": [
+      "Una gramática libre de contexto tiene terminales (tokens), no terminales, producciones y un símbolo inicial. Una <b>derivación</b> reemplaza un no terminal por el cuerpo de una de sus producciones; el <b>árbol de análisis</b> muestra esa derivación. Una gramática es <b>ambigua</b> si alguna cadena tiene dos árboles distintos.",
+      "La precedencia y la asociatividad se fijan con niveles: <code>expr</code> para <code>+ -</code>, <code>term</code> para <code>* /</code> y <code>factor</code> para números y paréntesis. La recursión por la izquierda (<code>expr → expr + term</code>) da asociatividad por la izquierda."
+     ],
+     "u": [
+      "En la especificación de Java, PHP o SQL, que se publica como gramática.",
+      "Una gramática ambigua permite dos significados para el mismo programa.",
+      "Al diseñar el lenguaje del proyecto o leer la especificación de uno existente.",
+      "Escribe un no terminal por nivel de precedencia y revisa que cada cadena tenga un solo árbol."
+     ],
+     "f": "\\begin{aligned}expr&\\to expr+term\\mid expr-term\\mid term\\\\term&\\to term*factor\\mid term/factor\\mid factor\\\\factor&\\to \\mathbf{digito}\\mid (\\,expr\\,)\\end{aligned}"
+    },
+    {
+     "n": "Traducción a notación posfija",
+     "e": [
+      "En notación posfija el operador va después de sus operandos y no hacen falta paréntesis: <code>9-(5+2)</code> se escribe <code>9 5 2 + -</code>. Un <b>esquema de traducción</b> inserta acciones en las producciones; al recorrer el árbol en profundidad se imprimen los operandos y luego el operador:",
+      "<code>expr → expr + term   { print('+') }<br>expr → term<br>term → term * factor { print('*') }<br>term → factor<br>factor → digito      { print(digito) }<br>factor → ( expr )</code>"
+     ],
+     "u": [
+      "En calculadoras, intérpretes de fórmulas de hojas de cálculo y en la fase de generación de código de máquinas de pila.",
+      "La posfija se evalúa con una sola pasada y una pila, sin preocuparse por la precedencia.",
+      "Al construir el primer traductor del proyecto o evaluar fórmulas que escribe el usuario.",
+      "Recorre el árbol en postorden o usa el algoritmo de la pila de operadores."
+     ]
+    },
+    {
+     "n": "Máquinas de pila abstractas",
+     "e": [
+      "Una máquina de pila tiene memoria de datos, memoria de instrucciones y una pila de evaluación. Instrucciones: <code>push v</code> (apila una constante), <code>rvalue x</code> (apila el contenido de <code>x</code>), <code>lvalue x</code> (apila la dirección de <code>x</code>), <code>:=</code> (guarda el valor de la cima en la dirección que está debajo y saca ambos) y los operadores aritméticos, que sacan dos valores y apilan el resultado."
+     ],
+     "u": [
+      "La JVM, la máquina virtual de .NET y la de Python ejecutan código de pila.",
+      "El código de pila es fácil de generar desde la posfija y portable entre máquinas.",
+      "Al generar código para una máquina virtual o al depurar bytecode.",
+      "Genera <code>lvalue</code> del destino, luego la expresión en posfija con <code>rvalue</code>/<code>push</code>, y al final <code>:=</code>."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Traduce a notación posfija <code>9-5+2</code> y <code>9-(5+2)</code>.",
+     "pasos": [
+      "<b>9-5+2.</b> La resta y la suma son asociativas por la izquierda: primero <code>9-5</code> (<code>9 5 -</code>) y luego <code>+2</code>.",
+      "<b>9-(5+2).</b> El paréntesis obliga a calcular <code>5+2</code> primero (<code>5 2 +</code>) y luego restarlo de 9."
+     ],
+     "r": "<code>9 5 - 2 +</code> (vale 6) y <code>9 5 2 + -</code> (vale 2).",
+     "fin": "Ver cómo la posfija conserva la asociatividad sin paréntesis."
+    },
+    {
+     "nv": "I",
+     "q": "Traduce a posfija <code>a + b * c - d / e</code>.",
+     "pasos": [
+      "<b>Precedencia.</b> Primero <code>b*c</code> y <code>d/e</code>: <code>b c *</code> y <code>d e /</code>.",
+      "<b>Asociatividad.</b> Luego <code>a + (b*c)</code>: <code>a b c * +</code>; al final se resta <code>d/e</code>."
+     ],
+     "r": "<code>a b c * + d e / -</code>",
+     "fin": "Aplicar precedencia y asociatividad a la vez."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa con una pila la expresión posfija <code>5 3 2 * + 4 -</code>.",
+     "pasos": [
+      "<b>Apilar.</b> 5, 3, 2: pila [5, 3, 2].",
+      "<b>*</b> saca 3 y 2, apila 6: [5, 6]. <b>+</b> saca 5 y 6, apila 11: [11].",
+      "<b>Apilar 4:</b> [11, 4]. <b>-</b> saca 11 y 4, apila 7: [7]."
+     ],
+     "r": "7",
+     "fin": "Evaluar posfija como lo hace una máquina de pila."
+    },
+    {
+     "nv": "A",
+     "q": "Con la gramática <code>E → E + E | E * E | num</code>, muestra que <code>2 + 3 * 4</code> es ambigua y corrígela.",
+     "pasos": [
+      "<b>Derivación 1 (izquierda).</b> <code>E ⇒ E + E ⇒ 2 + E ⇒ 2 + E * E ⇒ 2 + 3 * E ⇒ 2 + 3 * 4</code>: el <code>*</code> queda abajo y vale 14.",
+      "<b>Derivación 2 (izquierda).</b> <code>E ⇒ E * E ⇒ E + E * E ⇒ 2 + E * E ⇒ 2 + 3 * E ⇒ 2 + 3 * 4</code>: el <code>+</code> queda abajo y vale 20.",
+      "<b>Conclusión.</b> Dos árboles distintos para la misma cadena: la gramática es ambigua.",
+      "<b>Corrección.</b> Un nivel por precedencia: <code>E → E + T | T</code>, <code>T → T * F | F</code>, <code>F → num | ( E )</code>."
+     ],
+     "r": "Es ambigua (14 o 20); con E, T y F solo queda el árbol que da 14.",
+     "fin": "Detectar y eliminar ambigüedad, base de toda gramática de expresiones."
+    },
+    {
+     "nv": "A",
+     "q": "Genera el código de máquina de pila para <code>total = subtotal + subtotal * 12 / 100</code> y ejecútalo con <code>subtotal</code> = 250.",
+     "pasos": [
+      "<b>Código.</b> <code>lvalue total<br>rvalue subtotal<br>rvalue subtotal<br>push 12<br>*<br>push 100<br>/<br>+<br>:=</code>",
+      "<b>Ejecución.</b> Tras los dos <code>rvalue</code> y el <code>push</code>: [total, 250, 250, 12]; <code>*</code> → [total, 250, 3000]; <code>push 100</code> y <code>/</code> → [total, 250, 30].",
+      "<b>Cierre.</b> <code>+</code> → [total, 280]; <code>:=</code> guarda 280 en <code>total</code> y vacía la pila."
+     ],
+     "r": "<code>total</code> = Q 280.00 (Q 250 más Q 30 de IVA).",
+     "fin": "Generar y ejecutar código de pila, como hace la JVM con el bytecode."
+    },
+    {
+     "nv": "B",
+     "q": "Traduce a posfija <code>(a + b) * (c - d)</code>.",
+     "r": "<code>a b + c d - *</code>"
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa con una pila <code>8 2 / 3 4 * +</code>. Muestra la pila después de cada operador.",
+     "r": "<code>/</code> → [4]; <code>*</code> → [4, 12]; <code>+</code> → [16]. Resultado: 16."
+    },
+    {
+     "nv": "I",
+     "q": "Con la gramática <code>lista → lista + digito | lista - digito | digito</code>, escribe la derivación por la izquierda de <code>9-5+2</code>.",
+     "r": "<code>lista ⇒ lista + digito ⇒ lista - digito + digito ⇒ digito - digito + digito ⇒ 9 - digito + digito ⇒ 9 - 5 + digito ⇒ 9 - 5 + 2</code>."
+    },
+    {
+     "nv": "I",
+     "q": "Genera el código de máquina de pila para <code>iva = precio * 12 / 100</code> y calcula el resultado con <code>precio</code> = 75.",
+     "r": "<code>lvalue iva<br>rvalue precio<br>push 12<br>*<br>push 100<br>/<br>:=</code><br>La pila llega a [iva, 900] y luego a [iva, 9]: <code>iva</code> = Q 9.00."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe el esquema de traducción de infijo a posfijo para <code>+</code> y <code>*</code> con precedencia, y da la salida para <code>2+3*4</code>.",
+     "r": "<code>expr → expr + term { print('+') } | term<br>term → term * factor { print('*') } | factor<br>factor → digito { print(digito) } | ( expr )</code><br>Salida: <code>2 3 4 * +</code>."
+    }
+   ]
+  },
+  {
+   "titulo": "Análisis léxico: tokens, buffers y autómatas",
+   "intro": "Unidad 3 del programa (primera parte): función del analizador léxico, manejo de buffers de entrada, especificación y reconocimiento de tokens y autómatas finitos.",
+   "conceptos": [
+    {
+     "n": "Función del analizador léxico",
+     "e": [
+      "Lee caracteres y entrega <b>tokens</b> al analizador sintáctico cuando este los pide. Elimina espacios y comentarios, cuenta líneas para los mensajes de error y registra los identificadores en la tabla de símbolos. Un <b>token</b> es la categoría (identificador, número, operador relacional), el <b>lexema</b> es el texto concreto y el <b>patrón</b> es la regla que describe los lexemas del token."
+     ],
+     "u": [
+      "En el resaltado de sintaxis de los editores, en los compiladores y en <code>token_get_all()</code> de PHP, que devuelve tokens como <code>T_VARIABLE</code> o <code>T_DNUMBER</code>.",
+      "Separar lo léxico simplifica la gramática y acelera el compilador.",
+      "Cada vez que el analizador sintáctico necesita el siguiente símbolo.",
+      "Recorre la línea, aplica la coincidencia más larga y descarta espacios y comentarios."
+     ],
+     "tabla": "<table><thead><tr><th>Token</th><th>Patrón</th><th>Lexemas</th></tr></thead><tbody><tr><td>id</td><td>letra seguida de letras, dígitos o _</td><td><code>saldo</code>, <code>total_iva</code></td></tr><tr><td>num</td><td>dígitos con parte decimal opcional</td><td><code>1000</code>, <code>1.12</code></td></tr><tr><td>relop</td><td><code>&lt; &lt;= == != &gt; &gt;=</code></td><td><code>&gt;=</code></td></tr><tr><td>if</td><td>la palabra if</td><td><code>if</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Buffers de entrada",
+     "e": [
+      "Leer carácter por carácter del disco es lento, así que se usa un <b>par de buffers</b> de N caracteres (por ejemplo, un bloque de 4096) que se recargan por turnos. Dos apuntadores marcan el <b>inicio del lexema</b> y el carácter <b>adelantado</b>; cuando se reconoce un token, el texto entre ambos es el lexema. Un <b>centinela</b> (un carácter <code>eof</code> al final de cada mitad) permite hacer una sola prueba por carácter en lugar de dos (¿fin de buffer? y ¿qué carácter es?)."
+     ],
+     "u": [
+      "En Flex y en los lectores de archivos grandes de cualquier compilador.",
+      "El análisis léxico es la fase que toca cada carácter; cualquier ahorro se multiplica.",
+      "Cuando el reconocedor necesita mirar uno o más caracteres adelante (<code>&gt;</code> contra <code>&gt;=</code>).",
+      "Avanza el apuntador adelantado; al llegar a un centinela, recarga la otra mitad o termina si es el fin real."
+     ]
+    },
+    {
+     "n": "Especificación con expresiones regulares",
+     "e": [
+      "Una expresión regular describe el patrón de un token con tres operaciones: unión <code>r|s</code>, concatenación <code>rs</code> y cerradura <code>r*</code> (cero o más). Abreviaturas: <code>r+</code> (una o más), <code>r?</code> (cero o una) y clases <code>[0-9]</code>. Una <b>definición regular</b> da nombre a expresiones para reutilizarlas."
+     ],
+     "u": [
+      "En Flex, en las expresiones regulares de Java, PHP (<code>preg_match</code>) y en la validación de formularios.",
+      "Describe con precisión qué lexemas acepta cada token.",
+      "Al especificar los tokens del lenguaje o validar formatos como NIT, correos o montos.",
+      "Define primero los bloques pequeños (letra, dígito) y combínalos."
+     ],
+     "f": "\\begin{aligned}\\mathit{digitos}&\\to[0\\text{-}9]^{+}\\\\ \\mathit{numero}&\\to \\mathit{digitos}\\,(.\\,\\mathit{digitos})?\\,(E\\,[+-]?\\,\\mathit{digitos})?\\\\ \\mathit{id}&\\to \\mathit{letra}\\,(\\mathit{letra}\\mid \\mathit{digito})^{*}\\end{aligned}"
+    },
+    {
+     "n": "Reconocimiento con autómatas finitos",
+     "e": [
+      "Un <b>autómata finito determinista</b> (AFD) tiene, para cada estado y cada símbolo, a lo sumo una transición; uno <b>no determinista</b> (AFN) puede tener varias y transiciones con ε. Ambos reconocen exactamente los lenguajes regulares. Un <b>diagrama de transición</b> es un AFD con acciones: al llegar a un estado de aceptación devuelve el token y, si leyó un carácter de más (marcado con *), retrocede el apuntador."
+     ],
+     "u": [
+      "Dentro de todo analizador léxico generado y en los motores de expresiones regulares.",
+      "Un AFD reconoce un lexema en tiempo proporcional a su longitud.",
+      "Al implementar a mano el reconocedor de un token o al revisar lo que genera Flex.",
+      "Parte del estado inicial, sigue una transición por carácter y acepta si terminas en un estado final."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Identifica los tokens y lexemas de la línea Java <code>if (saldo &gt;= 1000) saldo = saldo * 1.12;</code>",
+     "pasos": [
+      "<b>Recorrido.</b> Se aplica la coincidencia más larga: <code>&gt;=</code> es un solo token, no <code>&gt;</code> seguido de <code>=</code>; <code>1.12</code> es un solo número.",
+      "<b>Lista.</b> if, (, id(saldo), relop(&gt;=), num(1000), ), id(saldo), =, id(saldo), *, num(1.12), ;"
+     ],
+     "r": "12 tokens; <code>saldo</code> aparece 3 veces pero tiene una sola entrada en la tabla de símbolos.",
+     "fin": "Distinguir token, lexema y patrón, la primera pregunta del tema."
+    },
+    {
+     "nv": "I",
+     "q": "Separa en tokens la línea PHP <code>$total = $precio * 1.12; // con IVA</code>",
+     "pasos": [
+      "<b>Variables.</b> En PHP el patrón de variable incluye el <code>$</code>: <code>$total</code> y <code>$precio</code> son <code>T_VARIABLE</code>.",
+      "<b>Resto.</b> <code>=</code>, <code>*</code>, <code>1.12</code> (<code>T_DNUMBER</code>) y <code>;</code>.",
+      "<b>Comentario.</b> <code>// con IVA</code> se reconoce y se descarta, igual que los espacios."
+     ],
+     "r": "6 tokens: $total, =, $precio, *, 1.12, ;",
+     "fin": "Ver que el patrón de cada token depende del lenguaje."
+    },
+    {
+     "nv": "I",
+     "q": "Con la definición regular <code>numero → digitos (. digitos)? (E [+-]? digitos)?</code>, decide si aceptan: <code>12</code>, <code>3.14</code>, <code>6.02E23</code>, <code>1.5E-3</code>, <code>.5</code> y <code>12.</code>",
+     "pasos": [
+      "<b>Aceptadas.</b> <code>12</code> (solo dígitos), <code>3.14</code> (con fracción), <code>6.02E23</code> y <code>1.5E-3</code> (con exponente y signo opcional).",
+      "<b>Rechazadas.</b> <code>.5</code> no empieza con dígitos; <code>12.</code> tiene el punto sin dígitos después."
+     ],
+     "r": "Aceptan 12, 3.14, 6.02E23 y 1.5E-3; rechazan .5 y 12.",
+     "fin": "Leer una definición regular con partes opcionales."
+    },
+    {
+     "nv": "A",
+     "q": "AFD de números: estados 0 (inicio), 1 (dígitos), 2 (tras el punto), 3 (fracción), 4 (tras E), 5 (tras el signo) y 6 (exponente); aceptan 1, 3 y 6. Transiciones: 0–d→1, 1–d→1, 1–.→2, 1–E→4, 2–d→3, 3–d→3, 3–E→4, 4–signo→5, 4–d→6, 5–d→6, 6–d→6. Simula <code>12.5E-3</code> y <code>12.E5</code>.",
+     "pasos": [
+      "<b>12.5E-3.</b> 0 →1 →1 →2 →3 →4 →5 →6. Termina en 6, de aceptación.",
+      "<b>12.E5.</b> 0 →1 →1 →2 y desde 2 no hay transición con <code>E</code>: se rechaza."
+     ],
+     "r": "<code>12.5E-3</code> se acepta (estado 6); <code>12.E5</code> se rechaza en el estado 2.",
+     "fin": "Simular un AFD, que es exactamente lo que hace el código de un analizador léxico."
+    },
+    {
+     "nv": "A",
+     "q": "Con el diagrama de transición de <code>relop</code> (estado inicial: <code>&lt;</code>, <code>=</code> o <code>&gt;</code>; luego mira un carácter más), indica el token y si se retrocede el apuntador para las entradas <code>&lt;=</code>, <code>&lt;&gt;</code>, <code>&lt;y</code> y <code>&gt;x</code>.",
+     "pasos": [
+      "<b>&lt;=</b> Lee <code>&lt;</code> y <code>=</code>: devuelve LE; consumió 2 caracteres, no retrocede.",
+      "<b>&lt;&gt;</b> Lee <code>&lt;</code> y <code>&gt;</code>: devuelve NE, sin retroceso.",
+      "<b>&lt;y</b> Lee <code>&lt;</code> y <code>y</code>, que no forma parte del operador: devuelve LT y retrocede 1 carácter para que <code>y</code> inicie el siguiente token.",
+      "<b>&gt;x</b> Igual: devuelve GT y retrocede 1."
+     ],
+     "r": "LE y NE sin retroceso; LT y GT retrocediendo un carácter.",
+     "fin": "Entender por qué el analizador léxico necesita leer por adelantado."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos tokens tiene <code>while (i &lt; 10) i++;</code>? Enuméralos.",
+     "r": "9: while, (, i, &lt;, 10, ), i, ++, ;"
+    },
+    {
+     "nv": "B",
+     "q": "En <code>precio = 3.1416;</code>, indica token, lexema y patrón de <code>3.1416</code>.",
+     "r": "Token: num. Lexema: <code>3.1416</code>. Patrón: dígitos seguidos de punto y dígitos (<code>digitos . digitos</code>)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuáles cadenas acepta <code>[a-zA-Z_][a-zA-Z0-9_]*</code>? <code>_tmp</code>, <code>2do</code>, <code>total_iva</code>, <code>x-1</code>.",
+     "r": "Acepta <code>_tmp</code> y <code>total_iva</code>; rechaza <code>2do</code> (empieza con dígito) y <code>x-1</code> (el guion no está en la clase)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué un centinela al final de cada mitad del buffer acelera el analizador léxico?",
+     "r": "Sin centinela, por cada carácter se prueba si se llegó al final del buffer y luego qué carácter es (dos pruebas). Con el centinela <code>eof</code> solo se prueba el carácter; la prueba de fin de buffer se hace únicamente cuando aparece el centinela."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe una expresión regular para un NIT guatemalteco: dígitos, guion opcional y un dígito verificador del 0 al 9 o K. Prueba <code>1234567-8</code>, <code>576937K</code>, <code>12-34</code> y <code>8945-K</code>.",
+     "r": "<code>[0-9]+-?[0-9K]</code>. Acepta <code>1234567-8</code>, <code>576937K</code> y <code>8945-K</code>; rechaza <code>12-34</code> (después del guion solo puede venir un carácter)."
+    }
+   ]
+  },
+  {
+   "titulo": "De expresión regular a autómata y generadores léxicos",
+   "intro": "Unidad 3 del programa (segunda parte): paso de una expresión regular a un AFN, del AFN al AFD y generador de analizadores léxicos.",
+   "conceptos": [
+    {
+     "n": "Construcción de Thompson (ER → AFN)",
+     "e": [
+      "Se arma el AFN por partes siguiendo la estructura de la expresión. Para un símbolo <code>a</code>: dos estados unidos por <code>a</code>. Para <code>s|t</code>: un estado inicial nuevo con ε hacia los inicios de N(s) y N(t), y ε desde sus finales a un estado final nuevo. Para <code>st</code>: el final de N(s) se funde con el inicio de N(t). Para <code>s*</code>: inicial y final nuevos, ε para entrar, para repetir y para saltarse N(s).",
+      "El AFN resultante tiene un solo estado inicial y uno final, y cada estado tiene a lo sumo dos transiciones ε de salida."
+     ],
+     "u": [
+      "Dentro de Flex y de los motores de expresiones regulares.",
+      "Es un método mecánico que siempre funciona, sin ingenio.",
+      "Como primer paso para convertir los patrones de los tokens en un reconocedor.",
+      "Descompón la ER en su árbol y construye de las hojas hacia la raíz."
+     ],
+     "f": "|N(a)|=2\\qquad |N(st)|=|N(s)|+|N(t)|-1\\qquad |N(s|t)|=|N(s)|+|N(t)|+2\\qquad |N(s^{*})|=|N(s)|+2"
+    },
+    {
+     "n": "Construcción de subconjuntos (AFN → AFD)",
+     "e": [
+      "Cada estado del AFD es un conjunto de estados del AFN. <b>ε-cerradura(T)</b> son los estados alcanzables desde T solo con ε; <b>mover(T, a)</b> son los alcanzables con una transición <code>a</code>. El estado inicial es ε-cerradura del inicio del AFN, y un estado del AFD acepta si contiene el estado final del AFN. Después, el AFD puede minimizarse juntando estados equivalentes."
+     ],
+     "u": [
+      "En Flex, que genera tablas de AFD a partir de las ER, y en <code>grep</code>.",
+      "Un AFD no necesita retroceder ni explorar varias opciones: es rápido.",
+      "Después de Thompson, cuando se necesita un reconocedor eficiente.",
+      "Calcula la cerradura inicial y aplica la fórmula a cada conjunto nuevo hasta que no aparezcan más."
+     ],
+     "f": "D_{tran}[T,a]=\\varepsilon\\text{-cerradura}\\big(\\mathit{mover}(T,a)\\big)"
+    },
+    {
+     "n": "Generadores de analizadores léxicos: Lex y Flex",
+     "e": [
+      "Un archivo Lex tiene tres partes separadas por <code>%%</code>: definiciones, reglas (patrón y acción en C) y código auxiliar. Si varias reglas coinciden, gana la <b>coincidencia más larga</b>; si empatan en longitud, gana la regla escrita <b>primero</b>. Por eso las palabras reservadas se escriben antes que la regla de identificadores. El texto reconocido queda en <code>yytext</code> y la función generada es <code>yylex()</code>.",
+      "<code>%%<br>\"if\"                 { return IF; }<br>[a-z][a-z0-9]*       { return ID; }<br>[0-9]+(\\.[0-9]+)?    { return NUM; }<br>\"&gt;=\"                 { return GE; }<br>[ \\t\\n]+             ;<br>%%</code>"
+     ],
+     "u": [
+      "En compiladores académicos, intérpretes de configuración y herramientas de procesamiento de texto.",
+      "Convierte la especificación en un AFD sin programarlo a mano.",
+      "Cuando hay muchos tokens o se espera que cambien.",
+      "Ordena las reglas de lo específico a lo general y prueba con entradas que se parezcan entre sí."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuántos estados genera Thompson para <code>a|b</code>, <code>ab</code> y <code>a*</code>?",
+     "pasos": [
+      "<b>a|b.</b> 2 + 2 de los símbolos más un inicial y un final nuevos: 6.",
+      "<b>ab.</b> 2 + 2 − 1, porque el final de <code>a</code> se funde con el inicio de <code>b</code>: 3.",
+      "<b>a*.</b> 2 del símbolo más inicial y final nuevos: 4."
+     ],
+     "r": "6, 3 y 4 estados.",
+     "fin": "Dominar los casos base de la construcción."
+    },
+    {
+     "nv": "I",
+     "q": "Construye con Thompson el AFN de <code>(a|b)*abb</code> y cuenta sus estados.",
+     "pasos": [
+      "<b>a|b.</b> Estado 1 con ε a 2 y a 4; 2–a→3, 4–b→5; 3 y 5 con ε a 6: 6 estados (1 a 6).",
+      "<b>(a|b)*.</b> Se agregan 0 y 7: ε de 0 a 1 y a 7, ε de 6 a 1 (repetir) y de 6 a 7: 8 estados.",
+      "<b>Concatenar abb.</b> 7–a→8, 8–b→9, 9–b→10: cada símbolo agrega un estado porque se funde con el anterior.",
+      "<b>Total.</b> Estados 0 a 10, inicial 0 y final 10."
+     ],
+     "r": "11 estados (0 a 10).",
+     "fin": "Construir el AFN del ejemplo clásico del libro de Aho, Sethi y Ullman."
+    },
+    {
+     "nv": "A",
+     "q": "Convierte en AFD el AFN de <code>(a|b)*abb</code> del ejercicio anterior.",
+     "pasos": [
+      "<b>Inicio.</b> A = ε-cerradura({0}) = {0, 1, 2, 4, 7}.",
+      "<b>Desde A.</b> mover(A, a) = {3, 8} → B = {1, 2, 3, 4, 6, 7, 8}; mover(A, b) = {5} → C = {1, 2, 4, 5, 6, 7}.",
+      "<b>Desde B y C.</b> Con <code>a</code> siempre se llega a B. B con <code>b</code> da D = {1, 2, 4, 5, 6, 7, 9}; C con <code>b</code> vuelve a C.",
+      "<b>Desde D.</b> Con <code>b</code> da E = {1, 2, 4, 5, 6, 7, 10}, que contiene el 10: es de aceptación. E con <code>b</code> vuelve a C.",
+      "<b>Tabla.</b> <table><thead><tr><th>Estado AFD</th><th>Estados del AFN</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>A (inicio)</td><td>{0, 1, 2, 4, 7}</td><td>B</td><td>C</td></tr><tr><td>B</td><td>{1, 2, 3, 4, 6, 7, 8}</td><td>B</td><td>D</td></tr><tr><td>C</td><td>{1, 2, 4, 5, 6, 7}</td><td>B</td><td>C</td></tr><tr><td>D</td><td>{1, 2, 4, 5, 6, 7, 9}</td><td>B</td><td>E</td></tr><tr><td>E (acepta)</td><td>{1, 2, 4, 5, 6, 7, 10}</td><td>B</td><td>C</td></tr></tbody></table>"
+     ],
+     "r": "AFD de 5 estados (A a E), inicial A y de aceptación E. Al minimizar, A y C son equivalentes y quedan 4.",
+     "fin": "Aplicar el algoritmo que usa un generador léxico por dentro."
+    },
+    {
+     "nv": "I",
+     "q": "Simula el AFD anterior con <code>babb</code> y <code>abab</code>.",
+     "pasos": [
+      "<b>babb.</b> A –b→ C –a→ B –b→ D –b→ E. Termina en E: se acepta.",
+      "<b>abab.</b> A –a→ B –b→ D –a→ B –b→ D. Termina en D: se rechaza."
+     ],
+     "r": "Acepta <code>babb</code> (termina en abb) y rechaza <code>abab</code>.",
+     "fin": "Comprobar que el autómata reconoce el lenguaje de la ER."
+    },
+    {
+     "nv": "A",
+     "q": "Con las reglas Flex del concepto (if, ID, NUM, GE y espacios, en ese orden), separa en tokens <code>if iva12 &gt;= 1.12</code> y <code>ifx &gt;= 3</code>.",
+     "pasos": [
+      "<b>if.</b> Coinciden <code>\"if\"</code> e ID, ambas de longitud 2: gana la escrita primero, IF.",
+      "<b>iva12.</b> Solo ID coincide: ID. <b>&gt;=</b>: GE. <b>1.12</b>: NUM, la coincidencia más larga incluye la parte decimal.",
+      "<b>ifx.</b> <code>\"if\"</code> coincide con 2 caracteres, pero ID coincide con 3: gana la más larga, ID(ifx). Luego GE y NUM(3)."
+     ],
+     "r": "IF, ID(iva12), GE, NUM(1.12) y luego ID(ifx), GE, NUM(3).",
+     "fin": "Predecir el comportamiento de Flex y evitar errores con las palabras reservadas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos estados genera Thompson para <code>ab*|c</code>?",
+     "r": "9: <code>b*</code> tiene 4; <code>ab*</code>, 2 + 4 − 1 = 5; <code>c</code>, 2; la unión agrega 2: 5 + 2 + 2 = 9."
+    },
+    {
+     "nv": "I",
+     "q": "En el AFN de <code>(a|b)*abb</code>, calcula ε-cerradura({3}) y ε-cerradura(mover(A, b)).",
+     "r": "ε-cerradura({3}) = {1, 2, 3, 4, 6, 7}. mover(A, b) = {5} y su ε-cerradura = {1, 2, 4, 5, 6, 7}, el estado C."
+    },
+    {
+     "nv": "I",
+     "q": "En el AFD de <code>(a|b)*abb</code>, ¿en qué estado termina <code>aabb</code>? ¿Se acepta?",
+     "r": "A –a→ B –a→ B –b→ D –b→ E. Termina en E: se acepta."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica Thompson y subconjuntos a <code>(a|b)*ab</code>. ¿Cuántos estados tienen el AFN, el AFD y el AFD mínimo?",
+     "r": "AFN: 10 estados. AFD: 4 (A inicio, B tras una a, C tras una b, D acepta tras ab). Mínimo: 3, porque A y C son equivalentes (ambos significan «no termina en a ni en ab»)."
+    },
+    {
+     "nv": "A",
+     "q": "Con las reglas <code>\"if\"</code> y luego <code>[a-z]+</code>, la entrada <code>if ifa</code> da IF e ID(ifa). ¿Qué tokens salen si se invierte el orden de las reglas?",
+     "r": "ID(if) e ID(ifa): <code>if</code> empata en longitud con ambas reglas y gana la primera, que ahora es la de identificadores. La palabra reservada nunca se reconocería."
+    }
+   ]
+  },
+  {
+   "titulo": "Gramáticas y análisis sintáctico descendente",
+   "intro": "Unidad 4 del programa (primera parte): función del analizador sintáctico, gramáticas libres (independientes) del contexto, escritura de una gramática y análisis sintáctico descendente.",
+   "conceptos": [
+    {
+     "n": "Función del analizador sintáctico y gramáticas libres de contexto",
+     "e": [
+      "El analizador sintáctico recibe los tokens, comprueba que formen una cadena del lenguaje y construye el árbol sintáctico (explícito o implícito). Si hay errores, debe informarlos con claridad y recuperarse para seguir, por ejemplo en <b>modo pánico</b>: descarta tokens hasta uno de sincronización como <code>;</code> o <code>}</code>.",
+      "Una gramática libre de contexto es \\(G=(N,T,P,S)\\). Los métodos <b>descendentes</b> construyen el árbol desde la raíz (derivación por la izquierda); los <b>ascendentes</b>, desde las hojas (derivación por la derecha en orden inverso)."
+     ],
+     "u": [
+      "En todo compilador e intérprete, y en validadores de JSON, XML o SQL.",
+      "La gramática es el contrato entre el lenguaje y su analizador.",
+      "Al definir el lenguaje del proyecto y elegir el método de análisis.",
+      "Escribe la gramática, revísala (ambigüedad, recursión) y elige descendente o ascendente."
+     ]
+    },
+    {
+     "n": "Escritura de la gramática: recursión izquierda y factorización",
+     "e": [
+      "Un analizador descendente entra en ciclo infinito con <b>recursión por la izquierda</b> y no sabe qué producción elegir si dos empiezan igual. Se corrigen así:"
+     ],
+     "u": [
+      "En analizadores descendentes recursivos escritos a mano y en gramáticas para ANTLR antiguas o LL(1).",
+      "Sin estas transformaciones no se puede construir la tabla LL(1).",
+      "Antes de calcular FIRST y FOLLOW.",
+      "Aplica la regla a cada no terminal recursivo y factoriza los prefijos comunes."
+     ],
+     "f": "\\begin{aligned}A\\to A\\alpha\\mid\\beta\\;&\\Longrightarrow\\;A\\to\\beta A',\\;\\;A'\\to\\alpha A'\\mid\\varepsilon\\\\A\\to\\alpha\\beta_1\\mid\\alpha\\beta_2\\;&\\Longrightarrow\\;A\\to\\alpha A',\\;\\;A'\\to\\beta_1\\mid\\beta_2\\end{aligned}"
+    },
+    {
+     "n": "Conjuntos FIRST y FOLLOW",
+     "e": [
+      "<b>FIRST(α)</b>: terminales con que puede empezar una cadena derivada de α (incluye ε si α puede desaparecer). <b>FOLLOW(A)</b>: terminales que pueden aparecer justo a la derecha de A; FOLLOW del símbolo inicial incluye <code>$</code>. Reglas de FOLLOW: si \\(A\\to\\alpha B\\beta\\), todo FIRST(β) sin ε va a FOLLOW(B); si β puede ser ε (o no existe), FOLLOW(A) va a FOLLOW(B)."
+     ],
+     "u": [
+      "En la construcción de tablas LL(1) y SLR, y en la recuperación de errores.",
+      "Dicen qué producción usar mirando un solo token.",
+      "Siempre que se construye un analizador predictivo o SLR.",
+      "Calcula FIRST de abajo hacia arriba y FOLLOW repitiendo las reglas hasta que nada cambie."
+     ]
+    },
+    {
+     "n": "Tabla LL(1) y analizador predictivo",
+     "e": [
+      "Para cada producción \\(A\\to\\alpha\\): se coloca en M[A, a] para cada a de FIRST(α); si ε está en FIRST(α), también en M[A, b] para cada b de FOLLOW(A). La gramática es <b>LL(1)</b> si ninguna celda tiene dos producciones. El analizador usa una pila: si la cima es terminal, la empareja con la entrada; si es no terminal, la reemplaza por el cuerpo de M[cima, entrada] en orden inverso. Abajo, la tabla de la gramática de expresiones sin recursión izquierda."
+     ],
+     "u": [
+      "En analizadores generados por ANTLR (LL(*)) y en los descendentes recursivos de muchos compiladores escritos a mano.",
+      "Analiza en tiempo lineal sin retroceso y da mensajes de error claros.",
+      "Cuando la gramática es LL(1) o puede llevarse a esa forma.",
+      "Construye la tabla, inicia la pila con <code>$ S</code> y aplica las reglas hasta aceptar o encontrar una celda vacía."
+     ],
+     "tabla": "<table><thead><tr><th>M</th><th>id</th><th>+</th><th>*</th><th>(</th><th>)</th><th>$</th></tr></thead><tbody><tr><td><b>E</b></td><td>E → T E'</td><td></td><td></td><td>E → T E'</td><td></td><td></td></tr><tr><td><b>E'</b></td><td></td><td>E' → + T E'</td><td></td><td></td><td>E' → ε</td><td>E' → ε</td></tr><tr><td><b>T</b></td><td>T → F T'</td><td></td><td></td><td>T → F T'</td><td></td><td></td></tr><tr><td><b>T'</b></td><td></td><td>T' → ε</td><td>T' → * F T'</td><td></td><td>T' → ε</td><td>T' → ε</td></tr><tr><td><b>F</b></td><td>F → id</td><td></td><td></td><td>F → ( E )</td><td></td><td></td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Elimina la recursión por la izquierda de <code>E → E + T | T<br>T → T * F | F<br>F → ( E ) | id</code>",
+     "pasos": [
+      "<b>E.</b> α = <code>+ T</code>, β = <code>T</code>: <code>E → T E'</code>, <code>E' → + T E' | ε</code>.",
+      "<b>T.</b> α = <code>* F</code>, β = <code>F</code>: <code>T → F T'</code>, <code>T' → * F T' | ε</code>.",
+      "<b>F.</b> No es recursiva: queda igual."
+     ],
+     "r": "<code>E → T E'<br>E' → + T E' | ε<br>T → F T'<br>T' → * F T' | ε<br>F → ( E ) | id</code>",
+     "fin": "Preparar la gramática de expresiones para un analizador descendente."
+    },
+    {
+     "nv": "I",
+     "q": "Factoriza por la izquierda <code>S → if E then S | if E then S else S | a<br>E → b</code>",
+     "pasos": [
+      "<b>Prefijo común.</b> Las dos primeras producciones empiezan con <code>if E then S</code>.",
+      "<b>Factorizar.</b> <code>S → if E then S S' | a</code>, con <code>S' → else S | ε</code>; <code>E → b</code> queda igual."
+     ],
+     "r": "<code>S → if E then S S' | a<br>S' → else S | ε<br>E → b</code>",
+     "fin": "Eliminar la duda entre dos producciones con el mismo inicio."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula FIRST y FOLLOW de la gramática de expresiones sin recursión izquierda.",
+     "pasos": [
+      "<b>FIRST.</b> F empieza con <code>(</code> o <code>id</code>, y T y E empiezan como F. E' empieza con <code>+</code> o desaparece; T', con <code>*</code> o desaparece.",
+      "<b>FOLLOW(E) y FOLLOW(E').</b> E es inicial (<code>$</code>) y aparece antes de <code>)</code> en F; E' está al final de E, así que hereda FOLLOW(E).",
+      "<b>FOLLOW(T) y FOLLOW(T').</b> T va antes de E', que puede ser ε: recibe FIRST(E') − ε = {+} y FOLLOW(E). T' hereda FOLLOW(T).",
+      "<b>FOLLOW(F).</b> F va antes de T': recibe {*} y FOLLOW(T).",
+      "<b>Resultado.</b> <table><thead><tr><th>No terminal</th><th>FIRST</th><th>FOLLOW</th></tr></thead><tbody><tr><td><b>E</b></td><td>{ (, id }</td><td>{ ), $ }</td></tr><tr><td><b>E'</b></td><td>{ +, ε }</td><td>{ ), $ }</td></tr><tr><td><b>T</b></td><td>{ (, id }</td><td>{ ), +, $ }</td></tr><tr><td><b>T'</b></td><td>{ *, ε }</td><td>{ ), +, $ }</td></tr><tr><td><b>F</b></td><td>{ (, id }</td><td>{ ), *, +, $ }</td></tr></tbody></table>"
+     ],
+     "r": "FIRST(E) = FIRST(T) = FIRST(F) = {(, id}; FOLLOW(E) = FOLLOW(E') = {), $}; FOLLOW(T) = FOLLOW(T') = {+, ), $}; FOLLOW(F) = {+, *, ), $}.",
+     "fin": "Calcular los conjuntos que sostienen las tablas LL(1) y SLR."
+    },
+    {
+     "nv": "A",
+     "q": "Construye la tabla LL(1) de la gramática de expresiones y decide si es LL(1).",
+     "pasos": [
+      "<b>Producciones con FIRST.</b> <code>E → T E'</code> y <code>T → F T'</code> van en las columnas <code>(</code> e <code>id</code>; <code>E' → + T E'</code> en <code>+</code>; <code>T' → * F T'</code> en <code>*</code>; <code>F → ( E )</code> en <code>(</code> y <code>F → id</code> en <code>id</code>.",
+      "<b>Producciones ε.</b> <code>E' → ε</code> va en FOLLOW(E') = {), $}; <code>T' → ε</code> en FOLLOW(T') = {+, ), $}.",
+      "<b>Revisión.</b> Ninguna celda tiene dos producciones."
+     ],
+     "r": "Es LL(1); la tabla es la que aparece en el concepto «Tabla LL(1) y analizador predictivo».",
+     "fin": "Construir el analizador predictivo sin ambigüedades."
+    },
+    {
+     "nv": "A",
+     "q": "Traza el analizador predictivo para <code>id + id * id</code>.",
+     "pasos": [
+      "<b>Regla.</b> Si la cima es terminal igual a la entrada, se empareja; si es no terminal, se sustituye por M[cima, entrada] al revés.",
+      "<b>Traza.</b> <table><thead><tr><th>Pila</th><th>Entrada</th><th>Acción</th></tr></thead><tbody><tr><td>$ E</td><td>id + id * id $</td><td>E → T E'</td></tr><tr><td>$ E' T</td><td>id + id * id $</td><td>T → F T'</td></tr><tr><td>$ E' T' F</td><td>id + id * id $</td><td>F → id</td></tr><tr><td>$ E' T' id</td><td>id + id * id $</td><td>emparejar id</td></tr><tr><td>$ E' T'</td><td>+ id * id $</td><td>T' → ε</td></tr><tr><td>$ E'</td><td>+ id * id $</td><td>E' → + T E'</td></tr><tr><td>$ E' T +</td><td>+ id * id $</td><td>emparejar +</td></tr><tr><td>$ E' T</td><td>id * id $</td><td>T → F T'</td></tr><tr><td>$ E' T' F</td><td>id * id $</td><td>F → id</td></tr><tr><td>$ E' T' id</td><td>id * id $</td><td>emparejar id</td></tr><tr><td>$ E' T'</td><td>* id $</td><td>T' → * F T'</td></tr><tr><td>$ E' T' F *</td><td>* id $</td><td>emparejar *</td></tr><tr><td>$ E' T' F</td><td>id $</td><td>F → id</td></tr><tr><td>$ E' T' id</td><td>id $</td><td>emparejar id</td></tr><tr><td>$ E' T'</td><td>$</td><td>T' → ε</td></tr><tr><td>$ E'</td><td>$</td><td>E' → ε</td></tr><tr><td>$</td><td>$</td><td>aceptar</td></tr></tbody></table>"
+     ],
+     "r": "Se acepta en 17 pasos; las producciones aplicadas forman la derivación por la izquierda.",
+     "fin": "Ejecutar a mano el analizador descendente, ejercicio típico de examen."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es ambigua <code>E → E + E | E * E | id</code>? Justifica con <code>id + id * id</code>.",
+     "r": "Sí: hay un árbol con <code>+</code> en la raíz (<code>id + (id * id)</code>) y otro con <code>*</code> en la raíz (<code>(id + id) * id</code>)."
+    },
+    {
+     "nv": "I",
+     "q": "Elimina la recursión por la izquierda de <code>L → L , id | id</code> (lista de variables en una declaración Java).",
+     "r": "<code>L → id L'</code> y <code>L' → , id L' | ε</code>."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula FIRST y FOLLOW de <code>D → T L ;<br>T → int | float<br>L → id L'<br>L' → , id L' | ε</code>",
+     "r": "<table><thead><tr><th>No terminal</th><th>FIRST</th><th>FOLLOW</th></tr></thead><tbody><tr><td><b>D</b></td><td>{ float, int }</td><td>{ $ }</td></tr><tr><td><b>T</b></td><td>{ float, int }</td><td>{ id }</td></tr><tr><td><b>L</b></td><td>{ id }</td><td>{ ; }</td></tr><tr><td><b>L'</b></td><td>{ ,, ε }</td><td>{ ; }</td></tr></tbody></table>"
+    },
+    {
+     "nv": "A",
+     "q": "Construye la tabla LL(1) de la gramática de declaraciones y traza <code>int id , id ;</code>.",
+     "r": "Tabla:<table><thead><tr><th>M</th><th>int</th><th>float</th><th>id</th><th>,</th><th>;</th><th>$</th></tr></thead><tbody><tr><td><b>D</b></td><td>D → T L ;</td><td>D → T L ;</td><td></td><td></td><td></td><td></td></tr><tr><td><b>T</b></td><td>T → int</td><td>T → float</td><td></td><td></td><td></td><td></td></tr><tr><td><b>L</b></td><td></td><td></td><td>L → id L'</td><td></td><td></td><td></td></tr><tr><td><b>L'</b></td><td></td><td></td><td></td><td>L' → , id L'</td><td>L' → ε</td><td></td></tr></tbody></table>Traza:<table><thead><tr><th>Pila</th><th>Entrada</th><th>Acción</th></tr></thead><tbody><tr><td>$ D</td><td>int id , id ; $</td><td>D → T L ;</td></tr><tr><td>$ ; L T</td><td>int id , id ; $</td><td>T → int</td></tr><tr><td>$ ; L int</td><td>int id , id ; $</td><td>emparejar int</td></tr><tr><td>$ ; L</td><td>id , id ; $</td><td>L → id L'</td></tr><tr><td>$ ; L' id</td><td>id , id ; $</td><td>emparejar id</td></tr><tr><td>$ ; L'</td><td>, id ; $</td><td>L' → , id L'</td></tr><tr><td>$ ; L' id ,</td><td>, id ; $</td><td>emparejar ,</td></tr><tr><td>$ ; L' id</td><td>id ; $</td><td>emparejar id</td></tr><tr><td>$ ; L'</td><td>; $</td><td>L' → ε</td></tr><tr><td>$ ;</td><td>; $</td><td>emparejar ;</td></tr><tr><td>$</td><td>$</td><td>aceptar</td></tr></tbody></table>Se acepta en 11 pasos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Es LL(1) la gramática factorizada <code>S → if E then S S' | a</code>, <code>S' → else S | ε</code>, <code>E → b</code>? Justifica con FIRST y FOLLOW.",
+     "r": "No. FIRST(S') = {else, ε} y FOLLOW(S') = {else, $}: la celda M[S', else] recibe <code>S' → else S</code> y <code>S' → ε</code>. Es el problema del else colgante; en la práctica se resuelve eligiendo <code>S' → else S</code> (el else se asocia con el if más cercano)."
+    }
+   ]
+  },
+  {
+   "titulo": "Análisis sintáctico ascendente",
+   "intro": "Unidad 4 del programa (segunda parte): análisis sintáctico ascendente por desplazamiento y reducción, elementos LR(0) y tablas SLR, con el enlace a Yacc y Bison.",
+   "conceptos": [
+    {
+     "n": "Desplazamiento y reducción",
+     "e": [
+      "El analizador ascendente usa una pila y cuatro acciones: <b>desplazar</b> (pasar el siguiente token a la pila), <b>reducir</b> (sustituir en la cima el cuerpo de una producción por su cabeza), <b>aceptar</b> y <b>error</b>. La subcadena que se reduce es el <b>mango</b> (handle): la que corresponde a un paso de la derivación por la derecha, recorrida al revés. Los conflictos posibles son <b>desplazar/reducir</b> y <b>reducir/reducir</b>."
+     ],
+     "u": [
+      "En Yacc, Bison y los analizadores de muchos gestores de bases de datos (PostgreSQL usa Bison para su gramática SQL).",
+      "Acepta más gramáticas que el análisis LL(1), incluidas las recursivas por la izquierda.",
+      "Cuando la gramática natural del lenguaje tiene recursión izquierda o es grande.",
+      "En cada paso decide con la tabla si desplazar o reducir mirando el estado de la cima y el token actual."
+     ]
+    },
+    {
+     "n": "Elementos LR(0), cerradura e ir_a",
+     "e": [
+      "Un <b>elemento</b> es una producción con un punto que marca cuánto se ha visto: <code>E → E + ·T</code> indica que ya se reconoció <code>E +</code> y falta un T. <b>cerradura(I)</b> agrega <code>B → ·γ</code> para cada B que esté después de un punto. <b>ir_a(I, X)</b> mueve el punto sobre X y aplica la cerradura. La colección canónica son todos los conjuntos alcanzables desde <code>cerradura({S' → ·S})</code>: son los estados del autómata LR."
+     ],
+     "u": [
+      "Es lo que Bison calcula al leer el archivo <code>.y</code>.",
+      "Los estados recuerdan qué parte de cada producción ya se reconoció.",
+      "Al construir una tabla SLR, LALR o LR canónica.",
+      "Aumenta la gramática con S' → S, calcula I0 y aplica ir_a con cada símbolo hasta que no salgan estados nuevos."
+     ]
+    },
+    {
+     "n": "Tabla SLR",
+     "e": [
+      "ACCIÓN[i, a] = desplazar j si <code>A → α·aβ</code> está en Ii e ir_a(Ii, a) = Ij; reducir <code>A → α</code> para cada a de FOLLOW(A) si <code>A → α·</code> está en Ii; aceptar si está <code>S' → S·</code> con <code>$</code>. IR_A guarda las transiciones con no terminales. Si una celda recibe dos acciones, la gramática no es SLR; LALR(1), usado por Yacc y Bison, usa símbolos de anticipación más precisos y resuelve más casos.",
+      "Abajo, la tabla SLR de <code>E → E + T | T</code>, <code>T → T * F | F</code>, <code>F → ( E ) | id</code>, con las producciones numeradas de 1 a 6 en ese orden (s = desplazar al estado, r = reducir con la producción, acc = aceptar)."
+     ],
+     "u": [
+      "En la salida de <code>bison -v</code>, que muestra los estados y los conflictos.",
+      "Permite leer los mensajes «shift/reduce conflict» que reporta Bison.",
+      "Al depurar una gramática o al resolver un análisis ascendente a mano.",
+      "Coloca desplazamientos según ir_a y reducciones según FOLLOW, y revisa que no haya celdas dobles."
+     ],
+     "tabla": "<table><thead><tr><th>Estado</th><th>id</th><th>+</th><th>*</th><th>(</th><th>)</th><th>$</th><th>E</th><th>T</th><th>F</th></tr></thead><tbody><tr><td>0</td><td>s5</td><td></td><td></td><td>s4</td><td></td><td></td><td>1</td><td>2</td><td>3</td></tr><tr><td>1</td><td></td><td>s6</td><td></td><td></td><td></td><td>acc</td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td>r2</td><td>s7</td><td></td><td>r2</td><td>r2</td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td>r4</td><td>r4</td><td></td><td>r4</td><td>r4</td><td></td><td></td><td></td></tr><tr><td>4</td><td>s5</td><td></td><td></td><td>s4</td><td></td><td></td><td>8</td><td>2</td><td>3</td></tr><tr><td>5</td><td></td><td>r6</td><td>r6</td><td></td><td>r6</td><td>r6</td><td></td><td></td><td></td></tr><tr><td>6</td><td>s5</td><td></td><td></td><td>s4</td><td></td><td></td><td></td><td>9</td><td>3</td></tr><tr><td>7</td><td>s5</td><td></td><td></td><td>s4</td><td></td><td></td><td></td><td></td><td>10</td></tr><tr><td>8</td><td></td><td>s6</td><td></td><td></td><td>s11</td><td></td><td></td><td></td><td></td></tr><tr><td>9</td><td></td><td>r1</td><td>s7</td><td></td><td>r1</td><td>r1</td><td></td><td></td><td></td></tr><tr><td>10</td><td></td><td>r3</td><td>r3</td><td></td><td>r3</td><td>r3</td><td></td><td></td><td></td></tr><tr><td>11</td><td></td><td>r5</td><td>r5</td><td></td><td>r5</td><td>r5</td><td></td><td></td><td></td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con <code>E → E + T | T</code> y <code>T → num</code>, haz el análisis por desplazamiento y reducción de <code>num + num</code>.",
+     "pasos": [
+      "<b>Inicio.</b> Pila <code>$</code>: desplazar num; reducir <code>T → num</code>; reducir <code>E → T</code>.",
+      "<b>Suma.</b> Desplazar <code>+</code> y num; reducir <code>T → num</code>; la cima es <code>E + T</code>, mango de <code>E → E + T</code>: reducir.",
+      "<b>Fin.</b> La pila tiene <code>$ E</code> y la entrada <code>$</code>: aceptar."
+     ],
+     "r": "Se acepta; las reducciones T → num, E → T, T → num y E → E + T son la derivación por la derecha al revés.",
+     "fin": "Entender el mango y las acciones básicas."
+    },
+    {
+     "nv": "I",
+     "q": "Construye la colección LR(0) de <code>E → E + T | T</code>, <code>T → num</code>.",
+     "pasos": [
+      "<b>I0.</b> cerradura({E' → ·E}): agrega las producciones de E y luego la de T.",
+      "<b>Desde I0.</b> ir_a con E da I1, con T da I2, con num da I3. <b>Desde I1</b> con <code>+</code>: I4. <b>Desde I4</b> con T: I5; con num se vuelve a I3.",
+      "<b>Estados.</b> <table><thead><tr><th>Estado</th><th>Elementos</th></tr></thead><tbody><tr><td>I0</td><td>E' → ·E, E → ·E + T, E → ·T, T → ·num</td></tr><tr><td>I1</td><td>E' → E·, E → E· + T</td></tr><tr><td>I2</td><td>E → T·</td></tr><tr><td>I3</td><td>T → num·</td></tr><tr><td>I4</td><td>E → E + ·T, T → ·num</td></tr><tr><td>I5</td><td>E → E + T·</td></tr></tbody></table>"
+     ],
+     "r": "6 estados, I0 a I5.",
+     "fin": "Construir el autómata de elementos, base de las tablas LR."
+    },
+    {
+     "nv": "I",
+     "q": "Construye la tabla SLR de la misma gramática (1: E → E + T, 2: E → T, 3: T → num).",
+     "pasos": [
+      "<b>FOLLOW.</b> FOLLOW(E) = {+, $} y FOLLOW(T) = {+, $}.",
+      "<b>Desplazamientos.</b> I0 y I4 con num → s3; I1 con <code>+</code> → s4. I1 con <code>$</code> → aceptar.",
+      "<b>Reducciones.</b> I2: r2; I3: r3; I5: r1, en las columnas <code>+</code> y <code>$</code>.",
+      "<b>Tabla.</b> <table><thead><tr><th>Estado</th><th>num</th><th>+</th><th>$</th><th>E</th><th>T</th></tr></thead><tbody><tr><td>0</td><td>s3</td><td></td><td></td><td>1</td><td>2</td></tr><tr><td>1</td><td></td><td>s4</td><td>acc</td><td></td><td></td></tr><tr><td>2</td><td></td><td>r2</td><td>r2</td><td></td><td></td></tr><tr><td>3</td><td></td><td>r3</td><td>r3</td><td></td><td></td></tr><tr><td>4</td><td>s3</td><td></td><td></td><td></td><td>5</td></tr><tr><td>5</td><td></td><td>r1</td><td>r1</td><td></td><td></td></tr></tbody></table>"
+     ],
+     "r": "Tabla sin conflictos: la gramática es SLR.",
+     "fin": "Pasar de los estados a la tabla que usa el analizador."
+    },
+    {
+     "nv": "A",
+     "q": "Traza el analizador SLR anterior con <code>num + num + num</code>.",
+     "pasos": [
+      "<b>Regla.</b> Desplazar apila el estado; reducir saca tantos estados como símbolos tenga el cuerpo y apila IR_A[cima, cabeza].",
+      "<b>Traza.</b> <table><thead><tr><th>Pila</th><th>Símbolos</th><th>Entrada</th><th>Acción</th></tr></thead><tbody><tr><td>0</td><td></td><td>num + num + num $</td><td>desplazar 3</td></tr><tr><td>0 3</td><td>num</td><td>+ num + num $</td><td>reducir T → num</td></tr><tr><td>0 2</td><td>T</td><td>+ num + num $</td><td>reducir E → T</td></tr><tr><td>0 1</td><td>E</td><td>+ num + num $</td><td>desplazar 4</td></tr><tr><td>0 1 4</td><td>E +</td><td>num + num $</td><td>desplazar 3</td></tr><tr><td>0 1 4 3</td><td>E + num</td><td>+ num $</td><td>reducir T → num</td></tr><tr><td>0 1 4 5</td><td>E + T</td><td>+ num $</td><td>reducir E → E + T</td></tr><tr><td>0 1</td><td>E</td><td>+ num $</td><td>desplazar 4</td></tr><tr><td>0 1 4</td><td>E +</td><td>num $</td><td>desplazar 3</td></tr><tr><td>0 1 4 3</td><td>E + num</td><td>$</td><td>reducir T → num</td></tr><tr><td>0 1 4 5</td><td>E + T</td><td>$</td><td>reducir E → E + T</td></tr><tr><td>0 1</td><td>E</td><td>$</td><td>aceptar</td></tr></tbody></table>"
+     ],
+     "r": "Se acepta en 12 pasos; la suma se agrupa por la izquierda: <code>(num + num) + num</code>.",
+     "fin": "Ejecutar un analizador LR con tabla."
+    },
+    {
+     "nv": "A",
+     "q": "Con la tabla SLR de expresiones del concepto, traza <code>id * id + id</code>.",
+     "pasos": [
+      "<b>Precedencia.</b> En el estado 2 con <code>*</code> se desplaza (s7), y con <code>+</code> se reduce E → T: así el <code>*</code> se agrupa antes que el <code>+</code>.",
+      "<b>Traza.</b> <table><thead><tr><th>Pila</th><th>Símbolos</th><th>Entrada</th><th>Acción</th></tr></thead><tbody><tr><td>0</td><td></td><td>id * id + id $</td><td>desplazar 5</td></tr><tr><td>0 5</td><td>id</td><td>* id + id $</td><td>reducir F → id</td></tr><tr><td>0 3</td><td>F</td><td>* id + id $</td><td>reducir T → F</td></tr><tr><td>0 2</td><td>T</td><td>* id + id $</td><td>desplazar 7</td></tr><tr><td>0 2 7</td><td>T *</td><td>id + id $</td><td>desplazar 5</td></tr><tr><td>0 2 7 5</td><td>T * id</td><td>+ id $</td><td>reducir F → id</td></tr><tr><td>0 2 7 10</td><td>T * F</td><td>+ id $</td><td>reducir T → T * F</td></tr><tr><td>0 2</td><td>T</td><td>+ id $</td><td>reducir E → T</td></tr><tr><td>0 1</td><td>E</td><td>+ id $</td><td>desplazar 6</td></tr><tr><td>0 1 6</td><td>E +</td><td>id $</td><td>desplazar 5</td></tr><tr><td>0 1 6 5</td><td>E + id</td><td>$</td><td>reducir F → id</td></tr><tr><td>0 1 6 3</td><td>E + F</td><td>$</td><td>reducir T → F</td></tr><tr><td>0 1 6 9</td><td>E + T</td><td>$</td><td>reducir E → E + T</td></tr><tr><td>0 1</td><td>E</td><td>$</td><td>aceptar</td></tr></tbody></table>"
+     ],
+     "r": "Se acepta en 14 pasos: se reduce primero <code>T * F</code> y después <code>E + T</code>.",
+     "fin": "Ver cómo la tabla aplica la precedencia sin reglas adicionales."
+    },
+    {
+     "nv": "B",
+     "q": "Con <code>E → E + T | T</code>, <code>T → T * F | F</code>, <code>F → id</code>, ¿cuál es el mango de la forma <code>E + T * id</code>?",
+     "r": "<code>id</code>, que se reduce con <code>F → id</code>. La derivación por la derecha es E ⇒ E + T ⇒ E + T * F ⇒ E + T * id."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula cerradura({E → E + ·T}) en la gramática de expresiones de la tabla SLR.",
+     "r": "{E → E + ·T, T → ·T * F, T → ·F, F → ·( E ), F → ·id}: es el estado 6."
+    },
+    {
+     "nv": "I",
+     "q": "La gramática ambigua <code>E → E + E | num</code> da un conflicto en el estado que contiene <code>E → E + E·</code> y <code>E → E· + E</code>. ¿De qué tipo es y cómo lo resuelve Bison con <code>%left '+'</code>?",
+     "r": "Conflicto desplazar/reducir con <code>+</code>. <code>%left</code> declara la suma asociativa por la izquierda, así que Bison elige reducir. Sin declaración, Bison avisa del conflicto y elige desplazar."
+    },
+    {
+     "nv": "A",
+     "q": "Con la tabla SLR de expresiones, traza <code>( id ) * id</code>.",
+     "r": "<table><thead><tr><th>Pila</th><th>Símbolos</th><th>Entrada</th><th>Acción</th></tr></thead><tbody><tr><td>0</td><td></td><td>( id ) * id $</td><td>desplazar 4</td></tr><tr><td>0 4</td><td>(</td><td>id ) * id $</td><td>desplazar 5</td></tr><tr><td>0 4 5</td><td>( id</td><td>) * id $</td><td>reducir F → id</td></tr><tr><td>0 4 3</td><td>( F</td><td>) * id $</td><td>reducir T → F</td></tr><tr><td>0 4 2</td><td>( T</td><td>) * id $</td><td>reducir E → T</td></tr><tr><td>0 4 8</td><td>( E</td><td>) * id $</td><td>desplazar 11</td></tr><tr><td>0 4 8 11</td><td>( E )</td><td>* id $</td><td>reducir F → ( E )</td></tr><tr><td>0 3</td><td>F</td><td>* id $</td><td>reducir T → F</td></tr><tr><td>0 2</td><td>T</td><td>* id $</td><td>desplazar 7</td></tr><tr><td>0 2 7</td><td>T *</td><td>id $</td><td>desplazar 5</td></tr><tr><td>0 2 7 5</td><td>T * id</td><td>$</td><td>reducir F → id</td></tr><tr><td>0 2 7 10</td><td>T * F</td><td>$</td><td>reducir T → T * F</td></tr><tr><td>0 2</td><td>T</td><td>$</td><td>reducir E → T</td></tr><tr><td>0 1</td><td>E</td><td>$</td><td>aceptar</td></tr></tbody></table>Se acepta en 14 pasos."
+    },
+    {
+     "nv": "A",
+     "q": "Demuestra que <code>S → L = R | R</code>, <code>L → * R | id</code>, <code>R → L</code> no es SLR.",
+     "r": "El estado ir_a(I0, L) contiene <code>S → L· = R</code> y <code>R → L·</code>. Como <code>=</code> está en FOLLOW(R) = {=, $}, la celda de <code>=</code> recibe desplazar y reducir R → L: conflicto desplazar/reducir. La gramática no es ambigua; es LALR(1), por eso Bison sí la acepta."
+    }
+   ]
+  },
+  {
+   "titulo": "Traducción dirigida por la sintaxis, semántica y optimización",
+   "intro": "Unidad 4 del programa (análisis semántico y optimización de código, conceptos) y unidad 5: traducción dirigida por la sintaxis, generación de código objeto (conceptos) y construcción de árboles.",
+   "conceptos": [
+    {
+     "n": "Definiciones dirigidas por la sintaxis",
+     "e": [
+      "Asocian <b>atributos</b> a los símbolos y <b>reglas semánticas</b> a las producciones. Un atributo <b>sintetizado</b> se calcula con los atributos de los hijos (sube por el árbol); uno <b>heredado</b>, con los del padre o los hermanos (baja o va de lado). Si solo hay sintetizados, la definición es <b>S-atribuida</b> y se evalúa en postorden, justo cuando un analizador ascendente reduce. El árbol con los valores escritos es el <b>árbol anotado</b>. Abajo, la definición de una calculadora de escritorio, que se usa en los ejercicios."
+     ],
+     "u": [
+      "En las acciones de Bison (<code>$$ = $1 + $3;</code>), en calculadoras y en la verificación de tipos.",
+      "Une el significado al análisis sintáctico sin una fase aparte.",
+      "Al dar semántica al lenguaje del proyecto: evaluar, verificar tipos o generar código.",
+      "Escribe una regla por producción y evalúa los atributos desde las hojas."
+     ],
+     "tabla": "<table><thead><tr><th>Producción</th><th>Regla semántica</th></tr></thead><tbody><tr><td>L → E <b>n</b></td><td>print(E.val)</td></tr><tr><td>E → E<sub>1</sub> + T</td><td>E.val = E<sub>1</sub>.val + T.val</td></tr><tr><td>E → T</td><td>E.val = T.val</td></tr><tr><td>T → T<sub>1</sub> * F</td><td>T.val = T<sub>1</sub>.val × F.val</td></tr><tr><td>T → F</td><td>T.val = F.val</td></tr><tr><td>F → ( E )</td><td>F.val = E.val</td></tr><tr><td>F → <b>num</b></td><td>F.val = num.lexval</td></tr></tbody></table>"
+    },
+    {
+     "n": "Construcción de árboles: árbol sintáctico y DAG",
+     "e": [
+      "El <b>árbol de análisis</b> tiene un nodo por cada símbolo de la gramática; el <b>árbol de sintaxis abstracta</b> (AST) solo guarda operadores y operandos: cada operador es un nodo interior y los paréntesis y no terminales de paso desaparecen. Se construye con funciones como <code>nuevoNodo(op, izq, der)</code> y <code>nuevaHoja(id, entrada)</code> desde las reglas semánticas. Un <b>DAG</b> reutiliza el nodo de una subexpresión repetida, lo que señala subexpresiones comunes."
+     ],
+     "u": [
+      "Los compiladores de Java y los intérpretes de PHP trabajan sobre un AST; las herramientas de análisis de código y los formateadores también.",
+      "El AST es la representación que recorren el análisis semántico y la generación de código.",
+      "Después del análisis sintáctico y antes de generar código intermedio.",
+      "Crea una hoja por operando y un nodo por operador; en el DAG, busca si el nodo ya existe antes de crearlo."
+     ]
+    },
+    {
+     "n": "Análisis semántico",
+     "e": [
+      "Verifica lo que la gramática no puede expresar: que las variables estén declaradas, que los tipos sean compatibles, que las funciones reciban el número correcto de argumentos y que <code>break</code> esté dentro de un ciclo. Inserta <b>conversiones implícitas</b> (coerciones), como <code>inttofloat</code>, y llena la tabla de símbolos con tipo y ámbito."
+     ],
+     "u": [
+      "En los errores «cannot find symbol» o «incompatible types» de javac y en los avisos de tipos de los IDE.",
+      "Detecta errores antes de ejecutar el programa.",
+      "Después de construir el árbol, recorriéndolo con la tabla de símbolos.",
+      "Calcula el tipo de cada nodo desde las hojas y compara con lo que espera el operador."
+     ]
+    },
+    {
+     "n": "Código de tres direcciones y optimización",
+     "e": [
+      "El código de tres direcciones tiene a lo sumo un operador por instrucción: <code>x = y op z</code>, copias, saltos <code>goto L</code> e <code>if x relop y goto L</code>; cada subexpresión recibe un temporal. Optimizaciones locales: <b>plegado de constantes</b> (<code>4 * 3</code> → <code>12</code>), <b>propagación de copias</b>, <b>eliminación de subexpresiones comunes</b>, <b>simplificación algebraica</b> (<code>x * 1</code> → <code>x</code>, <code>x - 0</code> → <code>x</code>) y <b>eliminación de código muerto</b> (asignaciones cuyo valor nadie usa). Toda optimización debe conservar el resultado del programa.",
+      "La generación de código objeto asigna registros, elige instrucciones de la máquina y decide el orden de evaluación."
+     ],
+     "u": [
+      "En las opciones <code>-O2</code> de gcc, en el compilador JIT de la JVM y en OPcache de PHP.",
+      "Programas más rápidos y pequeños sin cambiar el código fuente.",
+      "Entre la generación de código intermedio y la de código objeto.",
+      "Recorre el bloque aplicando plegado, propagación y subexpresiones comunes; al final, elimina de abajo hacia arriba lo que no se usa."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con la definición de la calculadora, construye el árbol anotado de <code>3 * 5 + 4 n</code>.",
+     "pasos": [
+      "<b>Hojas.</b> F.val = 3, F.val = 5 y F.val = 4 (por <code>F → num</code>).",
+      "<b>Producto.</b> T.val = 3 × 5 = 15 en el nodo <code>T → T * F</code>; luego E.val = 15 por <code>E → T</code>.",
+      "<b>Suma.</b> T.val = 4 en el lado derecho; E.val = 15 + 4 = 19 en <code>E → E + T</code>.",
+      "<b>Raíz.</b> <code>L → E n</code> imprime 19."
+     ],
+     "r": "19",
+     "fin": "Evaluar atributos sintetizados en postorden."
+    },
+    {
+     "nv": "I",
+     "q": "Se agrega a la calculadora <code>S → total ( E )</code> con la regla <code>S.val = E.val × 1.12</code>. Evalúa <code>total(250 + 2 * 75)</code>.",
+     "pasos": [
+      "<b>Expresión.</b> T.val = 2 × 75 = 150; E.val = 250 + 150 = 400.",
+      "<b>IVA.</b> S.val = 400 × 1.12 = 448."
+     ],
+     "r": "Q 448.00 (Q 400 más Q 48 de IVA).",
+     "fin": "Agregar una regla semántica propia a una gramática existente."
+    },
+    {
+     "nv": "I",
+     "q": "Construye el AST y el DAG de <code>a + a * (b - c) + (b - c) * d</code> y genera código de tres direcciones desde el DAG.",
+     "pasos": [
+      "<b>AST.</b> 13 nodos: 7 hojas (a, a, b, c, b, c, d) y 6 operadores; <code>b - c</code> aparece dos veces.",
+      "<b>DAG.</b> Se reutilizan la hoja <code>a</code>, las hojas <code>b</code> y <code>c</code> y el nodo <code>b - c</code>: 9 nodos (4 hojas y 5 operadores).",
+      "<b>Código.</b> <code>t1 = b - c<br>t2 = a * t1<br>t3 = a + t2<br>t4 = t1 * d<br>t5 = t3 + t4</code>"
+     ],
+     "r": "AST de 13 nodos, DAG de 9 y 5 instrucciones (6 sin el DAG).",
+     "fin": "Detectar subexpresiones comunes con un DAG."
+    },
+    {
+     "nv": "A",
+     "q": "Genera código de tres direcciones para <code>total = (precio * cant) + (precio * cant) * 12 / 100</code>, elimina la subexpresión común y calcula <code>total</code> con precio = 50 y cant = 4.",
+     "pasos": [
+      "<b>Sin optimizar.</b> <code>t1 = precio * cant<br>t2 = precio * cant<br>t3 = t2 * 12<br>t4 = t3 / 100<br>t5 = t1 + t4<br>total = t5</code>",
+      "<b>Subexpresión común.</b> <code>t2</code> repite <code>precio * cant</code>: se usa <code>t1</code> y el último resultado se asigna directo a <code>total</code>. <code>t1 = precio * cant<br>t2 = t1 * 12<br>t3 = t2 / 100<br>total = t1 + t3</code>",
+      "<b>Valores.</b> t1 = 200, t2 = 2400, t3 = 24, total = 224."
+     ],
+     "r": "4 instrucciones en lugar de 6; <code>total</code> = Q 224.00.",
+     "fin": "Traducir una sentencia y aplicar la optimización más común."
+    },
+    {
+     "nv": "A",
+     "q": "Optimiza el bloque <code>t1 = 4 * 3<br>t2 = t1 + x<br>t3 = 4 * 3<br>t4 = t3 + x<br>y = t4 * 1<br>w = t2 - 0<br>print(y)</code> si después del bloque no se usan <code>y</code> ni <code>w</code>.",
+     "pasos": [
+      "<b>Plegado.</b> t1 = 12 y t3 = 12; entonces <code>t2 = 12 + x</code> y <code>t4 = 12 + x</code>.",
+      "<b>Subexpresión común.</b> t4 calcula lo mismo que t2: t4 se sustituye por t2.",
+      "<b>Simplificación algebraica.</b> <code>y = t2 * 1</code> → <code>y = t2</code>; <code>w = t2 - 0</code> → <code>w = t2</code>; al propagar, <code>print(y)</code> pasa a <code>print(t2)</code>.",
+      "<b>Código muerto.</b> w, y, t4, t3 y t1 ya no se usan: se eliminan."
+     ],
+     "r": "<code>t2 = 12 + x<br>print(t2)</code>",
+     "fin": "Aplicar en orden las optimizaciones locales que pide el programa."
+    },
+    {
+     "nv": "B",
+     "q": "Con la definición de la calculadora, ¿qué valor tiene E.val en la raíz para <code>(2 + 3) * 4</code>?",
+     "r": "20: el paréntesis da F.val = 5 y T.val = 5 × 4 = 20."
+    },
+    {
+     "nv": "I",
+     "q": "Dibuja (describe) el AST de <code>x = a * (b + c)</code>. ¿Cuántos nodos tiene?",
+     "r": "7 nodos: <code>=</code> con hijos <code>x</code> y <code>*</code>; <code>*</code> con hijos <code>a</code> y <code>+</code>; <code>+</code> con hijos <code>b</code> y <code>c</code>. Los paréntesis no aparecen."
+    },
+    {
+     "nv": "I",
+     "q": "Genera código de tres direcciones para <code>if (monto &gt; 1000) desc = monto * 5 / 100; else desc = 0;</code> y calcula <code>desc</code> con monto = 1500 y con monto = 800.",
+     "r": "<code>if monto &gt; 1000 goto L1<br>desc = 0<br>goto L2<br>L1: t1 = monto * 5<br>t2 = t1 / 100<br>desc = t2<br>L2:</code><br>Con 1500, desc = 75; con 800, desc = 0."
+    },
+    {
+     "nv": "A",
+     "q": "En Java, con <code>int n; float p;</code>, ¿qué hace el análisis semántico con <code>p = n * 2.5f;</code> y con <code>n = p;</code>?",
+     "r": "En <code>p = n * 2.5f</code> inserta <code>inttofloat(n)</code> antes de multiplicar y el resultado float se asigna sin problema. En <code>n = p</code> reporta error (posible pérdida de precisión al pasar de float a int); se necesita una conversión explícita <code>(int) p</code>."
+    },
+    {
+     "nv": "A",
+     "q": "Optimiza el bloque <code>t1 = 2 * 6<br>t2 = t1 + c<br>t3 = 2 * 6<br>t4 = t3 + c<br>t5 = t4 * 1<br>t6 = t2 - 0<br>print(t5)</code> si los temporales no se usan fuera del bloque.",
+     "r": "<code>t2 = 12 + c<br>print(t2)</code><br>Plegado (t1 = t3 = 12), subexpresión común (t4 = t2), simplificación (t5 = t2, t6 = t2) y eliminación de t1, t3, t4, t5 y t6."
+    }
+   ]
+  }
+ ]
+}

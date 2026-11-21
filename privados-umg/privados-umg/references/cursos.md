@@ -32,19 +32,19 @@ Fuente: portal de contenidos de la carrera (http://umgcontenidos.50webs.com/). L
 
 | Ciclo | Curso | Bloque del seminario | Programa (PDF) | Guía publicada |
 | --- | --- | --- | --- | --- |
-| 3 | Derecho Informático | Auditoría y Seguridad de Sistemas | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3DerechoInformatico.pdf) | pendiente |
-| 6 | Autómatas y Lenguajes Formales | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6Automatas.pdf) | pendiente |
+| 3 | Derecho Informático | Auditoría y Seguridad de Sistemas | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3DerechoInformatico.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/derecho-informatico) |
+| 6 | Autómatas y Lenguajes Formales | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6Automatas.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/automatas-lenguajes-formales) |
 | 6 | Sistemas Operativos I | Sistemas operativos | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6SOI.pdf) | [guía](https://claude.ai/artifact/M4Qp1QcxxQGfwfAXPsh4fu) |
 | 7 | Arquitectura de Computadoras I | Arquitectura de computadoras | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7ArquitecturaComputadorasI.pdf) | [guía](https://claude.ai/artifact/CeAnBfZgbQeRC6iwGmZdCT) |
-| 7 | Compiladores | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7Compiladores.pdf) | pendiente |
+| 7 | Compiladores | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7Compiladores.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/compiladores) |
 | 7 | Sistemas Operativos II | Sistemas operativos | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7SOII.pdf) | [guía](https://claude.ai/artifact/GE1N8u29V8UDj7o1vA2b4U) |
 | 8 | Arquitectura de Computadoras II | Arquitectura de computadoras | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8ArquitecturaComputadorasII.pdf) | [guía](https://claude.ai/artifact/HgLTw6smwrYJy2aF2gH5KD) |
 | 8 | Redes de Computadoras I | Redes | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8RedesI.pdf) | [guía](https://claude.ai/artifact/NyC1a4yygS8Uvu7pgGzAYN) |
 | 9 | Administración de Tecnologías de Información | Sistemas de Información Gerencial | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9AdmoTecInformacion.pdf) | [guía](https://claude.ai/artifact/HN6WjGPjK3QagsMspyMUPw) |
-| 9 | Inteligencia Artificial | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9InteligenciaArtificial.pdf) | pendiente |
+| 9 | Inteligencia Artificial | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9InteligenciaArtificial.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/inteligencia-artificial) |
 | 9 | Redes de Computadoras II | Redes | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9RedesII.pdf) | [guía](https://claude.ai/artifact/XWBZvdVmiEReA8e2LKbVHw) |
-| 10 | Seguridad y Auditoría de Sistemas | Auditoría y Seguridad de Sistemas | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeguridadAuditoriaSistemas.pdf) | pendiente |
-| 10 | Seminario de Tecnologías de Información | Sistemas de Información Gerencial | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeminarioTecInfo.pdf) | pendiente |
+| 10 | Seguridad y Auditoría de Sistemas | Auditoría y Seguridad de Sistemas | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeguridadAuditoriaSistemas.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/seguridad-auditoria-sistemas) |
+| 10 | Seminario de Tecnologías de Información | Sistemas de Información Gerencial | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeminarioTecInfo.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/seminario-ti) |
 | 10 | Telecomunicaciones | Comunicaciones | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10TeleComunicaciones.pdf) | [guía](https://claude.ai/artifact/1rfnp6BFG7f7eeLWLMwrYS) |
 
 ## Análisis, Diseño y Desarrollo

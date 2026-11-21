@@ -2,6 +2,9 @@
 // (port de motor.validar() y chk.js). Sale con código 1 si hay errores.
 //   node scripts/validar.mjs              todos los cursos
 //   node scripts/validar.mjs redes-1      solo los slugs indicados
+//   node scripts/validar.mjs ruta/a.json  un borrador fuera de data/ (cualquier ruta que termine en .json)
+import fs from 'node:fs';
+import path from 'node:path';
 import katex from 'katex';
 import { leerCursos, tipoEjercicio } from './comun.mjs';
 
@@ -91,9 +94,14 @@ function validarCurso(c) {
   return { errores, formulas: formulas.length };
 }
 
-const filtro = process.argv.slice(2);
+const args = process.argv.slice(2);
+const archivos = args.filter((a) => a.endsWith('.json'));
+const filtro = args.filter((a) => !a.endsWith('.json'));
+const cursos = archivos.length
+  ? archivos.map((a) => ({ archivo: path.basename(a), curso: JSON.parse(fs.readFileSync(a, 'utf8')) }))
+  : leerCursos();
 let conErrores = 0, totalEj = 0, totalF = 0;
-for (const { archivo, curso } of leerCursos()) {
+for (const { archivo, curso } of cursos) {
   if (filtro.length && !filtro.includes(curso.slug)) continue;
   const { errores, formulas } = validarCurso(curso);
   const n = (curso.temas || []).reduce((s, t) => s + (t.ejercicios || []).length, 0);

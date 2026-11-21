@@ -1,0 +1,1035 @@
+{
+ "slug": "automatas-lenguajes-formales",
+ "titulo": "Autómatas y Lenguajes Formales",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 6, código 090028, área de Administración de Sistemas (sin semana propia en el seminario)",
+ "firma": "L(M)=\\{\\,w\\in\\Sigma^*\\mid\\hat{\\delta}(q_0,w)\\in F\\,\\}",
+ "firma_nota": "El lenguaje de un autómata: las cadenas que lo llevan del estado inicial a un estado de aceptación.",
+ "lead": "La teoría detrás de los analizadores léxicos y sintácticos: lenguajes y expresiones regulares, autómatas finitos deterministas y no deterministas, gramáticas, autómatas de pila, máquinas de Turing y la conversión y evaluación de expresiones en notación posfija. Es la base de Compiladores y de cualquier validación con patrones (teléfonos, placas, identificadores, correos). Las 6 unidades del programa están organizadas en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6Automatas.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta; en la sección de máquinas de Turing y jerarquía de Chomsky los 5 de práctica son preguntas de opción múltiple que te dicen al instante si acertaste. Los autómatas se dan con tablas de transición (\\(\\to\\) marca el estado inicial y \\(*\\) los de aceptación) y con la notación \\(\\delta(q_0,a)=q_1\\): haz cada traza con lápiz antes de abrir la respuesta.",
+ "temas": [
+  {
+   "titulo": "Lenguajes formales y expresiones regulares",
+   "intro": "Semanas 1 y 2 del programa (unidad Lenguaje): definición de lenguaje orientada a la formalidad, terminología y simbología, operaciones con lenguajes, lenguajes formales y regulares, operadores * y +, expresiones regulares, su precedencia, su álgebra y su diseño.",
+   "conceptos": [
+    {
+     "n": "Alfabeto, cadena y lenguaje",
+     "e": [
+      "Un <b>alfabeto</b> \\(\\Sigma\\) es un conjunto finito y no vacío de símbolos; una <b>cadena</b> es una secuencia finita de símbolos de \\(\\Sigma\\); la cadena vacía es \\(\\varepsilon\\), con \\(|\\varepsilon|=0\\). \\(\\Sigma^*\\) es el conjunto de todas las cadenas (incluida \\(\\varepsilon\\)) y \\(\\Sigma^+=\\Sigma^*-\\{\\varepsilon\\}\\). Un <b>lenguaje</b> es cualquier subconjunto \\(L\\subseteq\\Sigma^*\\).",
+      "Terminología: prefijo, sufijo y subcadena; concatenación \\(uv\\) (no conmutativa) y potencia \\(w^n\\). Un lenguaje <b>formal</b> se define con reglas precisas (por comprensión, con una expresión regular, un autómata o una gramática); el lenguaje natural, en cambio, es ambiguo."
+     ],
+     "u": [
+      "Al definir qué entradas acepta un sistema; el alfabeto de un DPI son los dígitos y el de un identificador de Java, letras, dígitos, _ y $.",
+      "Sin alfabeto y lenguaje bien definidos no se puede decidir si una entrada es válida.",
+      "Al especificar un formato de archivo, un protocolo o los tokens de un lenguaje de programación.",
+      "Fija \\(\\Sigma\\), describe \\(L=\\{w\\mid\\ldots\\}\\) y prueba con cadenas que deben entrar y otras que no."
+     ],
+     "f": "|uv|=|u|+|v|\\qquad |\\Sigma^n|=|\\Sigma|^n\\qquad \\Sigma^*=\\bigcup_{n\\ge 0}\\Sigma^n"
+    },
+    {
+     "n": "Operaciones con lenguajes",
+     "e": [
+      "Como los lenguajes son conjuntos, admiten unión, intersección y complemento \\(\\overline{L}=\\Sigma^*-L\\). Además: <b>concatenación</b> \\(L_1L_2=\\{xy\\mid x\\in L_1,\\ y\\in L_2\\}\\), <b>potencia</b> \\(L^0=\\{\\varepsilon\\}\\), \\(L^n=LL^{n-1}\\), <b>cerradura de Kleene</b> \\(L^*\\) (cero o más concatenaciones) y <b>cerradura positiva</b> \\(L^+\\) (una o más)."
+     ],
+     "u": [
+      "Al componer formatos; un NIT es un número, un guion y un dígito verificador; una ruta de API es una concatenación de segmentos.",
+      "Permiten construir lenguajes grandes a partir de piezas pequeñas ya probadas.",
+      "Al diseñar expresiones regulares o gramáticas por partes.",
+      "Define cada pieza como lenguaje y combínalas con unión (alternativas), concatenación (secuencia) y cerradura (repetición)."
+     ],
+     "f": "L^*=\\bigcup_{i\\ge 0}L^i\\qquad L^+=LL^*\\qquad \\varnothing^*=\\{\\varepsilon\\}"
+    },
+    {
+     "n": "Expresiones regulares y precedencia",
+     "e": [
+      "Una expresión regular (ER) sobre \\(\\Sigma\\) se define así: \\(\\varnothing\\), \\(\\varepsilon\\) y cada \\(a\\in\\Sigma\\) son ER; si \\(r\\) y \\(s\\) son ER, también lo son \\(r\\mid s\\) (unión; en varios textos \\(r+s\\)), \\(rs\\) (concatenación) y \\(r^*\\) (cerradura). Se abrevia \\(r^+=rr^*\\) y \\(r?=r\\mid\\varepsilon\\). Los lenguajes que describen se llaman <b>regulares</b>.",
+      "Precedencia, de mayor a menor: cerradura, concatenación, unión. Así, \\(ab^*\\mid c\\) se lee \\((a(b^*))\\mid c\\). Las herramientas (grep, <code>preg_match</code> de PHP, <code>matches</code> de Java, el operador <code>~</code> de PostgreSQL) agregan clases como <code>[0-9]</code> y contadores como <code>{8}</code>, que son solo abreviaturas."
+     ],
+     "u": [
+      "Validación de formularios (teléfono, correo, placa), búsquedas con grep y reglas de analizadores léxicos (Flex, JFlex).",
+      "Describen un lenguaje regular en una línea y se convierten automáticamente en autómatas eficientes.",
+      "Siempre que el patrón no necesite contar ni emparejar sin límite (los paréntesis anidados ya no son regulares).",
+      "Escribe la ER, aplica la precedencia o pon paréntesis explícitos y prueba casos válidos e inválidos."
+     ],
+     "tabla": "<table><thead><tr><th>Operador</th><th>Notación</th><th>Precedencia</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Cerradura</td><td>\\(r^*\\), \\(r^+\\)</td><td>1 (mayor)</td><td>\\(ab^*=a(b^*)\\)</td></tr><tr><td>Concatenación</td><td>\\(rs\\)</td><td>2</td><td>\\(ab\\mid c=(ab)\\mid c\\)</td></tr><tr><td>Unión</td><td>\\(r\\mid s\\)</td><td>3 (menor)</td><td>\\(a\\mid bc^*=a\\mid(b(c^*))\\)</td></tr></tbody></table>"
+    },
+    {
+     "n": "Álgebra de expresiones regulares",
+     "e": [
+      "Dos ER son equivalentes si describen el mismo lenguaje. Las identidades permiten simplificarlas y comprobar equivalencias sin construir autómatas. La unión es conmutativa, asociativa e idempotente; la concatenación es asociativa pero <b>no</b> conmutativa. Para refutar una equivalencia basta un contraejemplo."
+     ],
+     "u": [
+      "Al simplificar reglas de validación antes de llevarlas a código PHP o Java.",
+      "Una ER más corta es más fácil de mantener y de revisar.",
+      "Cuando dos personas escriben ER distintas para el mismo campo y hay que decidir si son equivalentes.",
+      "Aplica identidades paso a paso; si sospechas que no son iguales, busca la cadena más corta que las distinga."
+     ],
+     "tabla": "<table><thead><tr><th>Identidad</th><th>Nombre</th></tr></thead><tbody><tr><td>\\(r\\mid\\varnothing=r\\)</td><td>neutro de la unión</td></tr><tr><td>\\(r\\varepsilon=\\varepsilon r=r\\)</td><td>neutro de la concatenación</td></tr><tr><td>\\(r\\varnothing=\\varnothing r=\\varnothing\\)</td><td>absorbente</td></tr><tr><td>\\(r\\mid r=r\\)</td><td>idempotencia</td></tr><tr><td>\\(r(s\\mid t)=rs\\mid rt\\)</td><td>distributiva</td></tr><tr><td>\\((r^*)^*=r^*\\), \\(\\ \\varepsilon\\mid rr^*=r^*\\)</td><td>cerradura</td></tr><tr><td>\\((r\\mid s)^*=(r^*s^*)^*\\)</td><td>cerradura de una unión</td></tr><tr><td>\\(r(sr)^*=(rs)^*r\\)</td><td>desplazamiento</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Sea \\(\\Sigma=\\{a,b\\}\\). ¿Cuántas cadenas hay de longitud 3? Lista las cadenas de longitud menor o igual que 2.",
+     "pasos": [
+      "<b>Longitud 3.</b> \\(|\\Sigma^3|=2^3=8\\).",
+      "<b>Longitud ≤ 2.</b> \\(\\Sigma^0=\\{\\varepsilon\\}\\), \\(\\Sigma^1=\\{a,b\\}\\), \\(\\Sigma^2=\\{aa,ab,ba,bb\\}\\): 1 + 2 + 4 = 7 cadenas."
+     ],
+     "r": "8 cadenas de longitud 3; 7 de longitud ≤ 2: \\(\\varepsilon\\), a, b, aa, ab, ba, bb.",
+     "fin": "Calcular el tamaño de \\(\\Sigma^n\\), la base para dimensionar códigos y espacios de claves."
+    },
+    {
+     "nv": "B",
+     "q": "Con \\(L_1=\\{a,ab\\}\\) y \\(L_2=\\{b,ba\\}\\), calcula \\(L_1L_2\\) y \\(L_2L_1\\).",
+     "pasos": [
+      "<b>\\(L_1L_2\\).</b> a·b = ab, a·ba = aba, ab·b = abb, ab·ba = abba.",
+      "<b>\\(L_2L_1\\).</b> b·a = ba, b·ab = bab, ba·a = baa, ba·ab = baab.",
+      "<b>Comparación.</b> No comparten ninguna cadena: la concatenación de lenguajes no es conmutativa."
+     ],
+     "r": "\\(L_1L_2=\\{ab,aba,abb,abba\\}\\) y \\(L_2L_1=\\{ba,bab,baa,baab\\}\\).",
+     "fin": "Operar lenguajes como conjuntos y ver que el orden importa."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué cadenas de longitud ≤ 3 sobre \\(\\{a,b,c\\}\\) describe la ER \\(ab^*\\mid c\\)?",
+     "pasos": [
+      "<b>Precedencia.</b> Primero la cerradura, luego la concatenación y al final la unión: \\((a(b^*))\\mid c\\).",
+      "<b>Rama izquierda.</b> Una a seguida de cero o más b: a, ab, abb (hasta longitud 3).",
+      "<b>Rama derecha.</b> Solo la cadena c."
+     ],
+     "r": "{a, ab, abb, c}. Leerla como \\(a(b^*\\mid c)\\) es un error frecuente: esa ER aceptaría también ac y rechazaría c.",
+     "fin": "Aplicar la precedencia de operadores sin paréntesis."
+    },
+    {
+     "nv": "I",
+     "q": "Supón que un teléfono de Guatemala válido tiene 8 dígitos y que el primero está entre 2 y 7; puede ir precedido de <code>+502</code> y un espacio opcional. Escribe la ER y prueba <code>55123456</code>, <code>+502 22345678</code>, <code>12345678</code> y <code>5512345</code>.",
+     "pasos": [
+      "<b>Partes.</b> Prefijo opcional <code>(\\+502 ?)?</code>, primer dígito <code>[2-7]</code> y siete dígitos más <code>[0-9]{7}</code>.",
+      "<b>ER completa.</b> <code>^(\\+502 ?)?[2-7][0-9]{7}$</code>; los anclajes ^ y $ obligan a que coincida toda la cadena, no un pedazo.",
+      "<b>Pruebas.</b> 55123456 sí; +502 22345678 sí; 12345678 no (empieza con 1); 5512345 no (solo 7 dígitos)."
+     ],
+     "r": "<code>^(\\+502 ?)?[2-7][0-9]{7}$</code>: acepta las dos primeras cadenas y rechaza las dos últimas.",
+     "fin": "Llevar una regla de negocio a una ER que se usa tal cual en <code>preg_match</code> de PHP o en <code>matches</code> de Java."
+    },
+    {
+     "nv": "A",
+     "q": "Simplifica \\(a^*\\mid a^*b(a\\mid b)^*\\) sobre \\(\\Sigma=\\{a,b\\}\\).",
+     "pasos": [
+      "<b>Primera rama.</b> \\(a^*\\) son las cadenas que no tienen ninguna b.",
+      "<b>Segunda rama.</b> \\(a^*b(a\\mid b)^*\\) parte la cadena en la primera b: antes solo hay a, después cualquier cosa. Son las cadenas con al menos una b.",
+      "<b>Unión.</b> Toda cadena de \\(\\Sigma^*\\) tiene o no tiene b, así que la unión es \\(\\Sigma^*\\). Al comparar ambas ER con todas las cadenas de longitud ≤ 10 coinciden."
+     ],
+     "r": "\\((a\\mid b)^*\\).",
+     "fin": "Simplificar razonando por casos (la primera aparición de un símbolo), una técnica que se repite en las demostraciones."
+    },
+    {
+     "nv": "B",
+     "q": "Sea \\(\\Sigma=\\{0,1\\}\\). ¿Cuántas cadenas de longitud menor o igual que 3 hay, contando \\(\\varepsilon\\)?",
+     "r": "1 + 2 + 4 + 8 = 15."
+    },
+    {
+     "nv": "B",
+     "q": "Si \\(L=\\{a,bb\\}\\), calcula \\(L^2\\).",
+     "r": "\\(L^2=LL=\\{aa,abb,bba,bbbb\\}\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Con la ER de identificadores <code>[A-Za-z][A-Za-z0-9_]*</code>, ¿cuáles son válidos: <code>x1</code>, <code>_a</code>, <code>9x</code>, <code>total_2</code>?",
+     "r": "x1 y total_2. _a empieza con guion bajo y 9x empieza con dígito; la ER exige una letra al inicio."
+    },
+    {
+     "nv": "I",
+     "q": "Supón un formato simplificado de placa particular: la letra P, un guion opcional, 3 dígitos y 3 letras mayúsculas. Escribe la ER y decide si <code>P-123ABC</code>, <code>P123ABC</code>, <code>P-12ABC</code> y <code>P-123abc</code> la cumplen.",
+     "r": "<code>P-?[0-9]{3}[A-Z]{3}</code>. Cumplen P-123ABC y P123ABC; P-12ABC tiene solo 2 dígitos y P-123abc usa minúsculas."
+    },
+    {
+     "nv": "A",
+     "q": "¿Son equivalentes \\((ab)^*\\) y \\(a^*b^*\\)? ¿Y \\((a\\mid b)^*\\) y \\((a^*b^*)^*\\)?",
+     "r": "La primera pareja no: aab está en \\(a^*b^*\\) pero no en \\((ab)^*\\), y abab está en \\((ab)^*\\) pero no en \\(a^*b^*\\). La segunda sí: es la identidad \\((r\\mid s)^*=(r^*s^*)^*\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Autómatas finitos deterministas",
+   "intro": "Semanas 3 y 4 del programa (unidad Autómatas finitos): conceptos básicos, definición formal, representación gráfica, análisis de la entrada, lenguaje aceptado, autómatas para la etapa léxica de un lenguaje de programación, tipos de autómatas y autómata finito determinista. Se agrega la minimización, que el programa no nombra pero que se usa en Compiladores.",
+   "conceptos": [
+    {
+     "n": "Definición formal de un AFD",
+     "e": [
+      "Un autómata finito determinista es una quíntupla \\(M=(Q,\\Sigma,\\delta,q_0,F)\\): \\(Q\\) conjunto finito de estados, \\(\\Sigma\\) alfabeto, \\(\\delta:Q\\times\\Sigma\\to Q\\) función de transición, \\(q_0\\) estado inicial y \\(F\\subseteq Q\\) estados de aceptación. Determinista significa que para cada estado y símbolo hay <b>exactamente una</b> transición; si falta alguna se agrega un estado sumidero (de error).",
+      "Se representa con un grafo (círculos, flechas etiquetadas, doble círculo para aceptación) o con una tabla de transición: una fila por estado (\\(\\to\\) marca el inicial y \\(*\\) los de aceptación) y una columna por símbolo. La tabla de ejemplo acepta las cadenas binarias con un número par de unos: \\(\\delta(p,1)=i\\), \\(\\delta(i,1)=p\\)."
+     ],
+     "u": [
+      "Validadores de entrada, máquinas expendedoras, semáforos, protocolos de comunicación y controladores de juegos.",
+      "Se ejecuta en tiempo lineal y con memoria constante, un paso por símbolo.",
+      "Cuando el sistema solo necesita recordar una cantidad finita de información (un residuo, el último símbolo, si ya vio un patrón).",
+      "Define qué recuerda cada estado, completa la tabla para todo par (estado, símbolo) y marca los estados de aceptación."
+     ],
+     "tabla": "<table><thead><tr><th>\\(\\delta\\)</th><th>0</th><th>1</th></tr></thead><tbody><tr><td>\\(\\to *\\,p\\) (par)</td><td>\\(p\\)</td><td>\\(i\\)</td></tr><tr><td>\\(i\\) (impar)</td><td>\\(i\\)</td><td>\\(p\\)</td></tr></tbody></table>"
+    },
+    {
+     "n": "Análisis de la entrada y lenguaje aceptado",
+     "e": [
+      "Para analizar una cadena se parte de \\(q_0\\) y se aplica \\(\\delta\\) símbolo por símbolo; la función extendida \\(\\hat\\delta\\) resume ese recorrido. La cadena se acepta si al terminar el autómata está en un estado de \\(F\\). El lenguaje aceptado \\(L(M)\\) es el conjunto de cadenas aceptadas; los lenguajes que aceptan los AFD son exactamente los regulares.",
+      "La traza se escribe como secuencia de estados, por ejemplo \\(p\\xrightarrow{1}i\\xrightarrow{0}i\\xrightarrow{1}p\\)."
+     ],
+     "u": [
+      "Pruebas de un validador mediante corridas de escritorio con casos válidos e inválidos.",
+      "Demuestra por qué una entrada se aceptó o se rechazó.",
+      "En exámenes y al depurar un analizador léxico.",
+      "Anota el estado actual, lee un símbolo, consulta la tabla y avanza; al final revisa si el estado es de aceptación."
+     ],
+     "f": "\\hat{\\delta}(q,\\varepsilon)=q\\qquad \\hat{\\delta}(q,wa)=\\delta\\big(\\hat{\\delta}(q,w),a\\big)"
+    },
+    {
+     "n": "Autómatas en el análisis léxico",
+     "e": [
+      "El analizador léxico de un compilador agrupa caracteres en <b>tokens</b> (identificadores, números, operadores, palabras reservadas). Cada token se describe con una ER, se construye un AFD que los reconoce todos y cada estado de aceptación indica qué token encontró. Se aplica la regla de la <b>coincidencia más larga</b>: se sigue leyendo mientras haya transición y se devuelve el último estado de aceptación visitado; ante un empate gana el token declarado primero (por eso las palabras reservadas se declaran antes que los identificadores)."
+     ],
+     "u": [
+      "Compiladores e intérpretes (javac, PHP), resaltado de sintaxis en editores, lectores de JSON y CSV.",
+      "Separa el texto en unidades con significado antes del análisis sintáctico.",
+      "En la primera fase de todo compilador o al procesar archivos con formato.",
+      "Escribe la ER de cada token, únelas en un AFD (con Flex o JFlex, o a mano) y aplica la coincidencia más larga."
+     ],
+     "tabla": "<table><thead><tr><th>Token</th><th>ER</th><th>Ejemplos</th></tr></thead><tbody><tr><td>ID</td><td><code>[A-Za-z_][A-Za-z0-9_]*</code></td><td>total, iva2</td></tr><tr><td>NUM</td><td><code>[0-9]+</code></td><td>12, 0</td></tr><tr><td>ASIG</td><td><code>=</code></td><td>=</td></tr><tr><td>IGUAL</td><td><code>==</code></td><td>==</td></tr><tr><td>MAS</td><td><code>+</code></td><td>+</td></tr></tbody></table>"
+    },
+    {
+     "n": "Minimización de AFD",
+     "e": [
+      "Dos estados son <b>equivalentes</b> si, para toda cadena, ambos llevan a aceptación o ambos a rechazo. Algoritmo de particiones: (1) elimina los estados inalcanzables; (2) separa los de aceptación de los demás; (3) divide un grupo si alguno de sus estados va, con algún símbolo, a un grupo distinto que los otros; (4) repite hasta que nada cambie. Cada grupo final es un estado del AFD mínimo, que es único salvo por el nombre de los estados."
+     ],
+     "u": [
+      "Generadores de analizadores léxicos y máquinas de estados de circuitos secuenciales.",
+      "Menos estados significa tablas más pequeñas y una forma directa de comparar si dos AFD son equivalentes.",
+      "Después de construir un AFD por subconjuntos o al revisar un autómata diseñado a mano.",
+      "Particiona, refina usando la tabla de transición y fusiona los estados de cada grupo."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con el AFD de paridad de unos (\\(\\delta(p,0)=p\\), \\(\\delta(p,1)=i\\), \\(\\delta(i,0)=i\\), \\(\\delta(i,1)=p\\); inicial y de aceptación \\(p\\)), analiza 1011 y 1001.",
+     "pasos": [
+      "<b>1011.</b> \\(p\\xrightarrow{1}i\\xrightarrow{0}i\\xrightarrow{1}p\\xrightarrow{1}i\\): termina en \\(i\\), que no es de aceptación.",
+      "<b>1001.</b> \\(p\\xrightarrow{1}i\\xrightarrow{0}i\\xrightarrow{0}i\\xrightarrow{1}p\\): termina en \\(p\\), de aceptación."
+     ],
+     "r": "1011 se rechaza (tiene tres unos); 1001 se acepta (tiene dos).",
+     "fin": "Hacer una corrida de escritorio de un AFD."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña un AFD que acepte los números binarios múltiplos de 3 (leídos del bit más significativo al menos significativo) y analiza 1001.",
+     "pasos": [
+      "<b>Qué recordar.</b> El residuo módulo 3 de lo leído: estados 0, 1 y 2. Leer un bit \\(b\\) convierte el valor \\(v\\) en \\(2v+b\\), así que \\(\\delta(r,b)=(2r+b)\\bmod 3\\).",
+      "<b>Tabla.</b> <table><thead><tr><th>\\(\\delta\\)</th><th>0</th><th>1</th></tr></thead><tbody><tr><td>\\(\\to *\\,0\\)</td><td>0</td><td>1</td></tr><tr><td>1</td><td>2</td><td>0</td></tr><tr><td>2</td><td>1</td><td>2</td></tr></tbody></table>",
+      "<b>Traza de 1001 (nueve).</b> \\(0\\xrightarrow{1}1\\xrightarrow{0}2\\xrightarrow{0}1\\xrightarrow{1}0\\): termina en 0."
+     ],
+     "r": "AFD de 3 estados con inicial y aceptación en 0; 1001 se acepta porque 9 = 3 · 3.",
+     "fin": "Diseñar los estados a partir de lo que hay que recordar (aquí, el residuo)."
+    },
+    {
+     "nv": "I",
+     "q": "Construye un AFD para teléfonos de 8 dígitos cuyo primer dígito esté entre 2 y 7 (sin prefijo) y analiza 5512345.",
+     "pasos": [
+      "<b>Estados.</b> \\(q_i\\) significa «ya leyó \\(i\\) dígitos válidos», con \\(i=0,\\ldots,8\\), más un sumidero \\(q_e\\).",
+      "<b>Transiciones.</b> \\(\\delta(q_0,d)=q_1\\) si \\(d\\in\\{2,\\ldots,7\\}\\) y \\(\\delta(q_0,d)=q_e\\) si \\(d\\in\\{0,1,8,9\\}\\); \\(\\delta(q_i,d)=q_{i+1}\\) para \\(1\\le i\\le 7\\); \\(\\delta(q_8,d)=q_e\\) y \\(\\delta(q_e,d)=q_e\\). \\(F=\\{q_8\\}\\).",
+      "<b>Traza.</b> 5512345 recorre \\(q_0,q_1,\\ldots,q_7\\) y la entrada se acaba en \\(q_7\\), que no es de aceptación."
+     ],
+     "r": "10 estados (\\(q_0\\) a \\(q_8\\) y \\(q_e\\)). 5512345 se rechaza por tener 7 dígitos; 55123456 termina en \\(q_8\\) y se acepta; 551234567 cae en \\(q_e\\).",
+     "fin": "Ver que una ER como <code>[2-7][0-9]{7}</code> es, por dentro, un AFD que cuenta dígitos."
+    },
+    {
+     "nv": "A",
+     "q": "Minimiza el AFD siguiente (inicial A, aceptación C, D y E). <table><thead><tr><th>\\(\\delta\\)</th><th>0</th><th>1</th></tr></thead><tbody><tr><td>\\(\\to A\\)</td><td>B</td><td>C</td></tr><tr><td>B</td><td>A</td><td>D</td></tr><tr><td>\\(*\\,C\\)</td><td>E</td><td>F</td></tr><tr><td>\\(*\\,D\\)</td><td>E</td><td>F</td></tr><tr><td>\\(*\\,E\\)</td><td>E</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td></tr></tbody></table>",
+     "pasos": [
+      "<b>Inalcanzables.</b> Desde A se llega a todos los estados; no se elimina ninguno.",
+      "<b>Partición inicial.</b> \\(P_0=\\{\\{C,D,E\\},\\{A,B,F\\}\\}\\).",
+      "<b>Refinar.</b> En \\(\\{A,B,F\\}\\), con 1: A→C y B→D (grupo de aceptación) pero F→F: se separa F. En \\(\\{C,D,E\\}\\), con 0 todos van a E y con 1 todos a F: no se dividen. \\(P_1=\\{\\{A,B\\},\\{C,D,E\\},\\{F\\}\\}\\).",
+      "<b>Estabilidad.</b> En \\(\\{A,B\\}\\), con 0 van a B y A (mismo grupo) y con 1 a C y D (mismo grupo). No hay más cambios."
+     ],
+     "r": "AFD mínimo de 3 estados: [AB] inicial, [CDE] de aceptación y [F] sumidero. Acepta \\(0^*10^*\\): las cadenas con exactamente un 1.",
+     "fin": "Reducir un AFD y reconocer qué lenguaje acepta."
+    },
+    {
+     "nv": "A",
+     "q": "Con los tokens de la tabla del concepto (ID, NUM, ASIG, IGUAL, MAS) y la regla de la coincidencia más larga, separa en tokens <code>total==precio+12</code>.",
+     "pasos": [
+      "<b>Primer token.</b> t abre el camino de ID; se leen letras hasta el primer =, que no tiene transición desde ID: ID(total).",
+      "<b>Coincidencia más larga.</b> Con el primer = el AFD está en un estado de aceptación de ASIG, pero hay transición con el segundo = hacia IGUAL: se consumen los dos y se devuelve IGUAL(==).",
+      "<b>Resto.</b> ID(precio), MAS(+) y NUM(12)."
+     ],
+     "r": "ID(total) IGUAL(==) ID(precio) MAS(+) NUM(12): 5 tokens.",
+     "fin": "Entender por qué el analizador léxico no parte == en dos tokens =."
+    },
+    {
+     "nv": "B",
+     "q": "Con el AFD que acepta las cadenas que terminan en ab, ¿se aceptan aab y aba? <table><thead><tr><th>\\(\\delta\\)</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>\\(\\to q_0\\)</td><td>\\(q_1\\)</td><td>\\(q_0\\)</td></tr><tr><td>\\(q_1\\)</td><td>\\(q_1\\)</td><td>\\(q_2\\)</td></tr><tr><td>\\(*\\,q_2\\)</td><td>\\(q_1\\)</td><td>\\(q_0\\)</td></tr></tbody></table>",
+     "r": "aab: \\(q_0\\to q_1\\to q_1\\to q_2\\), se acepta. aba: \\(q_0\\to q_1\\to q_2\\to q_1\\), se rechaza."
+    },
+    {
+     "nv": "I",
+     "q": "Con el AFD de múltiplos de 3 del segundo resuelto, analiza 10010.",
+     "r": "\\(0\\to1\\to2\\to1\\to0\\to0\\): termina en 0 y se acepta; 10010 = 18 = 3 · 6."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña un AFD sobre {0, 1} que acepte las cadenas que contienen la subcadena 101 y analiza 1001101.",
+     "r": "Estados: \\(s_0\\) (nada útil), \\(s_1\\) (vio 1), \\(s_2\\) (vio 10), \\(s_3\\) (vio 101, absorbente). <table><thead><tr><th>\\(\\delta\\)</th><th>0</th><th>1</th></tr></thead><tbody><tr><td>\\(\\to s_0\\)</td><td>\\(s_0\\)</td><td>\\(s_1\\)</td></tr><tr><td>\\(s_1\\)</td><td>\\(s_2\\)</td><td>\\(s_1\\)</td></tr><tr><td>\\(s_2\\)</td><td>\\(s_0\\)</td><td>\\(s_3\\)</td></tr><tr><td>\\(*\\,s_3\\)</td><td>\\(s_3\\)</td><td>\\(s_3\\)</td></tr></tbody></table> Traza: \\(s_0,s_1,s_2,s_0,s_1,s_1,s_2,s_3\\): se acepta. Este AFD ya es mínimo (4 estados)."
+    },
+    {
+     "nv": "A",
+     "q": "A partir del AFD que acepta las cadenas que terminan en ab, ¿cómo obtienes uno que acepte las que no terminan en ab? ¿Acepta bba?",
+     "r": "Se intercambian aceptación y no aceptación: \\(F'=\\{q_0,q_1\\}\\). Funciona porque el AFD es completo (toda transición está definida). bba recorre \\(q_0,q_0,q_0,q_1\\) y termina en \\(q_1\\in F'\\): se acepta."
+    },
+    {
+     "nv": "A",
+     "q": "Minimiza este AFD (inicial A, aceptación E). <table><thead><tr><th>\\(\\delta\\)</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>\\(\\to A\\)</td><td>B</td><td>C</td></tr><tr><td>B</td><td>B</td><td>D</td></tr><tr><td>C</td><td>B</td><td>C</td></tr><tr><td>D</td><td>B</td><td>E</td></tr><tr><td>\\(*\\,E\\)</td><td>B</td><td>C</td></tr></tbody></table>",
+     "r": "\\(P_0=\\{\\{E\\},\\{A,B,C,D\\}\\}\\). D se separa porque con b va a E; luego B se separa porque con b va a D. A y C van a los mismos grupos con a y con b: son equivalentes. AFD mínimo de 4 estados: [AC], B, D y E."
+    }
+   ]
+  },
+  {
+   "titulo": "Autómatas no deterministas y conversiones",
+   "intro": "Semana 5 del programa: análisis de la entrada en un autómata finito no determinista (AFN), autómatas con transiciones ε y su análisis, conversión de AFN y de AFN-ε a AFD, y conversión de expresión regular a AFN y a AFD. Se incluye el paso inverso, de autómata a expresión regular, por eliminación de estados.",
+   "conceptos": [
+    {
+     "n": "Autómata finito no determinista",
+     "e": [
+      "En un AFN la función de transición es \\(\\delta:Q\\times\\Sigma\\to\\mathcal{P}(Q)\\): desde un estado y un símbolo puede haber cero, uno o varios estados siguientes. Acepta si <b>al menos un</b> camino termina en un estado de aceptación. Para simularlo se lleva el <b>conjunto</b> de estados activos.",
+      "AFN y AFD reconocen la misma clase de lenguajes, los regulares; el AFN suele ser más fácil de diseñar y el AFD, de ejecutar."
+     ],
+     "u": [
+      "Diseño rápido de patrones como «termina en 01» o «contiene aa» y motores de ER.",
+      "Es más compacto y se construye directamente a partir de una ER.",
+      "En la etapa de diseño, antes de convertirlo a AFD para ejecutarlo.",
+      "Dibuja solo los caminos que importan, sin completar transiciones, y simula con conjuntos de estados."
+     ],
+     "f": "\\hat{\\delta}(S,a)=\\bigcup_{q\\in S}\\delta(q,a)"
+    },
+    {
+     "n": "Transiciones ε y ε-cerradura",
+     "e": [
+      "Un AFN-ε puede cambiar de estado sin leer ningún símbolo. La ε-cerradura de un conjunto \\(T\\) es \\(T\\) más todos los estados alcanzables solo con transiciones ε. Para procesar un símbolo se mueve con ese símbolo y luego se aplica la ε-cerradura; el conjunto inicial es la ε-cerradura de \\(\\{q_0\\}\\)."
+     ],
+     "u": [
+      "Construcción de Thompson y generadores de analizadores léxicos.",
+      "Permite unir autómatas (unión, concatenación, cerradura) sin rediseñarlos.",
+      "Al pasar de una ER a un autómata.",
+      "Calcula la ε-cerradura con una búsqueda en profundidad que sigue solo las aristas ε."
+     ],
+     "f": "\\hat{\\delta}(S,a)=\\varepsilon\\text{-}cl\\Big(\\bigcup_{q\\in S}\\delta(q,a)\\Big)"
+    },
+    {
+     "n": "Construcción de subconjuntos (AFN a AFD)",
+     "e": [
+      "Cada estado del AFD es un conjunto de estados del AFN. El inicial es \\(\\varepsilon\\text{-}cl(\\{q_0\\})\\); para cada conjunto \\(T\\) sin procesar y cada símbolo \\(a\\) se calcula \\(U=\\varepsilon\\text{-}cl(\\text{mover}(T,a))\\) y, si es nuevo, se agrega. Un conjunto es de aceptación si contiene algún estado de aceptación del AFN. En el peor caso aparecen \\(2^n\\) conjuntos, pero en la práctica suelen ser pocos."
+     ],
+     "u": [
+      "Lex, Flex y los motores de ER que garantizan tiempo lineal.",
+      "Convierte un modelo cómodo de diseñar en uno rápido de ejecutar, sin retroceso.",
+      "Después de Thompson y antes de minimizar.",
+      "Llena una tabla con una fila por conjunto descubierto hasta que no aparezcan conjuntos nuevos."
+     ],
+     "f": "D_{tran}[T,a]=\\varepsilon\\text{-}cl\\big(\\text{mover}(T,a)\\big)"
+    },
+    {
+     "n": "De ER a autómata y de autómata a ER",
+     "e": [
+      "<b>Thompson:</b> cada símbolo es un AFN de dos estados; la unión agrega un inicio y un final nuevos unidos con ε a las dos ramas; la concatenación une el final del primero con el inicio del segundo; la cerradura agrega aristas ε para saltar y para repetir. El resultado es un AFN-ε con un solo estado final.",
+      "<b>Eliminación de estados:</b> para ir de autómata a ER se quitan los estados intermedios; un camino \\(p\\xrightarrow{x}q\\xrightarrow{y}r\\) con un lazo \\(s\\) en \\(q\\) se reemplaza por la arista \\(p\\xrightarrow{xs^*y}r\\). El lema de Arden (sección 4) da el mismo resultado de forma algebraica."
+     ],
+     "u": [
+      "Generadores de analizadores léxicos y bibliotecas de expresiones regulares.",
+      "Muestra que ER, AFN y AFD describen exactamente los mismos lenguajes.",
+      "Al implementar un validador desde cero o al documentar qué acepta un autómata ya hecho.",
+      "ER, luego Thompson, luego subconjuntos y al final minimización; en sentido inverso, elimina estados uno por uno."
+     ],
+     "tabla": "<table><thead><tr><th>ER</th><th>Fragmento de Thompson</th></tr></thead><tbody><tr><td>\\(a\\)</td><td>\\(i\\xrightarrow{a}f\\)</td></tr><tr><td>\\(s\\mid t\\)</td><td>\\(i\\xrightarrow{\\varepsilon}\\) inicios de \\(s\\) y \\(t\\); finales de \\(s\\) y \\(t\\xrightarrow{\\varepsilon}f\\)</td></tr><tr><td>\\(st\\)</td><td>el final de \\(s\\) se une con el inicio de \\(t\\)</td></tr><tr><td>\\(s^*\\)</td><td>\\(i\\xrightarrow{\\varepsilon}\\) inicio de \\(s\\) y \\(f\\); final de \\(s\\xrightarrow{\\varepsilon}\\) inicio de \\(s\\) y \\(f\\)</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "El AFN con \\(\\delta(q_0,0)=\\{q_0,q_1\\}\\), \\(\\delta(q_0,1)=\\{q_0\\}\\), \\(\\delta(q_1,1)=\\{q_2\\}\\) y \\(F=\\{q_2\\}\\) acepta las cadenas que terminan en 01. Simúlalo con 1001.",
+     "pasos": [
+      "<b>Inicio.</b> \\(\\{q_0\\}\\).",
+      "<b>Lectura.</b> 1: \\(\\{q_0\\}\\); 0: \\(\\{q_0,q_1\\}\\); 0: \\(\\{q_0,q_1\\}\\); 1: \\(\\{q_0,q_2\\}\\).",
+      "<b>Decisión.</b> El conjunto final contiene \\(q_2\\)."
+     ],
+     "r": "Se acepta: 1001 termina en 01.",
+     "fin": "Simular un AFN llevando el conjunto de estados activos."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte a AFD el AFN del ejercicio anterior con la construcción de subconjuntos.",
+     "pasos": [
+      "<b>Inicial.</b> \\(A=\\{q_0\\}\\): con 0 va a \\(\\{q_0,q_1\\}=B\\); con 1 a \\(\\{q_0\\}=A\\).",
+      "<b>Desde B.</b> Con 0: \\(\\{q_0,q_1\\}=B\\); con 1: \\(\\{q_0\\}\\cup\\{q_2\\}=\\{q_0,q_2\\}=C\\).",
+      "<b>Desde C.</b> Con 0: B; con 1: A. No aparecen conjuntos nuevos; C es de aceptación porque contiene \\(q_2\\)."
+     ],
+     "r": "AFD de 3 estados (de 8 subconjuntos posibles): <table><thead><tr><th>Conjunto</th><th>0</th><th>1</th></tr></thead><tbody><tr><td>\\(\\to A=\\{q_0\\}\\)</td><td>B</td><td>A</td></tr><tr><td>\\(B=\\{q_0,q_1\\}\\)</td><td>B</td><td>C</td></tr><tr><td>\\(*\\,C=\\{q_0,q_2\\}\\)</td><td>B</td><td>A</td></tr></tbody></table>",
+     "fin": "Determinizar un AFN pequeño a mano."
+    },
+    {
+     "nv": "I",
+     "q": "AFN-ε de Thompson para \\((a\\mid b)^*abb\\) (estados 0 a 10, final 10): transiciones ε \\(0\\to1,\\ 0\\to7,\\ 1\\to2,\\ 1\\to4,\\ 3\\to6,\\ 5\\to6,\\ 6\\to1,\\ 6\\to7\\); con símbolo \\(\\delta(2,a)=3,\\ \\delta(4,b)=5,\\ \\delta(7,a)=8,\\ \\delta(8,b)=9,\\ \\delta(9,b)=10\\). Calcula el estado inicial \\(A\\) del AFD y el estado \\(B=\\varepsilon\\text{-}cl(\\text{mover}(A,a))\\).",
+     "pasos": [
+      "<b>ε-cl({0}).</b> De 0 se llega por ε a 1 y 7; de 1 a 2 y 4. \\(A=\\{0,1,2,4,7\\}\\).",
+      "<b>mover(A, a).</b> Solo 2 y 7 tienen transición con a: \\(\\{3,8\\}\\).",
+      "<b>ε-cl({3, 8}).</b> 3 va a 6; 6 va a 1 y 7; 1 va a 2 y 4. \\(B=\\{1,2,3,4,6,7,8\\}\\)."
+     ],
+     "r": "\\(A=\\{0,1,2,4,7\\}\\) y \\(B=\\{1,2,3,4,6,7,8\\}\\).",
+     "fin": "Calcular ε-cerraduras sin olvidar estados."
+    },
+    {
+     "nv": "A",
+     "q": "Completa la construcción de subconjuntos del AFN de Thompson de \\((a\\mid b)^*abb\\) del ejercicio anterior.",
+     "pasos": [
+      "<b>Desde A.</b> Con a: B. Con b: \\(\\text{mover}(A,b)=\\{5\\}\\), cerradura \\(C=\\{1,2,4,5,6,7\\}\\).",
+      "<b>Desde B.</b> Con a: B. Con b: \\(\\text{mover}(B,b)=\\{5,9\\}\\), cerradura \\(D=\\{1,2,4,5,6,7,9\\}\\).",
+      "<b>Desde C y D.</b> C: con a B, con b C. D: con a B; con b \\(\\{5,10\\}\\), cerradura \\(E=\\{1,2,4,5,6,7,10\\}\\).",
+      "<b>Desde E.</b> Con a B, con b C. No hay conjuntos nuevos; E es de aceptación porque contiene el estado 10."
+     ],
+     "r": "AFD de 5 estados: <table><thead><tr><th>Estado</th><th>Conjunto del AFN</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>\\(\\to A\\)</td><td>\\(\\{0,1,2,4,7\\}\\)</td><td>B</td><td>C</td></tr><tr><td>B</td><td>\\(\\{1,2,3,4,6,7,8\\}\\)</td><td>B</td><td>D</td></tr><tr><td>C</td><td>\\(\\{1,2,4,5,6,7\\}\\)</td><td>B</td><td>C</td></tr><tr><td>D</td><td>\\(\\{1,2,4,5,6,7,9\\}\\)</td><td>B</td><td>E</td></tr><tr><td>\\(*\\,E\\)</td><td>\\(\\{1,2,4,5,6,7,10\\}\\)</td><td>B</td><td>C</td></tr></tbody></table> Al minimizarlo, A y C se fusionan y quedan 4 estados.",
+     "fin": "Recorrer la cadena completa ER → AFN-ε → AFD que usan los generadores de analizadores léxicos."
+    },
+    {
+     "nv": "A",
+     "q": "El AFN de 4 estados \\(\\delta(q_0,0)=\\{q_0\\}\\), \\(\\delta(q_0,1)=\\{q_0,q_1\\}\\), \\(\\delta(q_1,x)=\\{q_2\\}\\), \\(\\delta(q_2,x)=\\{q_3\\}\\) (\\(x\\in\\{0,1\\}\\)), \\(F=\\{q_3\\}\\), acepta las cadenas cuyo tercer símbolo desde el final es 1. ¿Cuántos estados tiene el AFD equivalente?",
+     "pasos": [
+      "<b>Qué recuerda el AFD.</b> \\(q_0\\) siempre está activo; \\(q_1\\), \\(q_2\\) y \\(q_3\\) están activos según si el último, el penúltimo y el antepenúltimo símbolo fueron 1.",
+      "<b>Subconjuntos.</b> Cada combinación de los últimos 3 bits da un conjunto distinto: \\(2^3=8\\) conjuntos alcanzables, 4 de ellos con \\(q_3\\).",
+      "<b>Minimización.</b> Ningún par es equivalente: dos estados que difieren en un bit reciente se distinguen agregando ceros hasta que ese bit quede en la tercera posición desde el final."
+     ],
+     "r": "8 estados, y el AFD mínimo también tiene 8. En general, para «el n-ésimo símbolo desde el final es 1» el AFN tiene \\(n+1\\) estados y el AFD mínimo \\(2^n\\).",
+     "fin": "Ver el crecimiento exponencial que puede causar la determinización."
+    },
+    {
+     "nv": "B",
+     "q": "El AFN-ε tiene \\(\\delta(q_0,a)=q_0\\), \\(\\delta(q_1,b)=q_1\\), \\(\\delta(q_2,c)=q_2\\), transiciones ε \\(q_0\\to q_1\\) y \\(q_1\\to q_2\\), y \\(F=\\{q_2\\}\\). Calcula \\(\\varepsilon\\text{-}cl(q_0)\\) y \\(\\varepsilon\\text{-}cl(q_1)\\). ¿Acepta abc? ¿Y ba?",
+     "r": "\\(\\varepsilon\\text{-}cl(q_0)=\\{q_0,q_1,q_2\\}\\), \\(\\varepsilon\\text{-}cl(q_1)=\\{q_1,q_2\\}\\). abc: \\(\\{q_0,q_1,q_2\\}\\to\\{q_0,q_1,q_2\\}\\to\\{q_1,q_2\\}\\to\\{q_2\\}\\), se acepta. ba: \\(\\{q_0,q_1,q_2\\}\\to\\{q_1,q_2\\}\\to\\varnothing\\), se rechaza. El lenguaje es \\(a^*b^*c^*\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Simula con 0110 el AFN que acepta las cadenas que terminan en 01.",
+     "r": "\\(\\{q_0\\}\\to\\{q_0,q_1\\}\\to\\{q_0,q_2\\}\\to\\{q_0\\}\\to\\{q_0,q_1\\}\\): no contiene \\(q_2\\), se rechaza."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte a AFD el AFN que acepta las cadenas que contienen aa: \\(\\delta(q_0,a)=\\{q_0,q_1\\}\\), \\(\\delta(q_0,b)=\\{q_0\\}\\), \\(\\delta(q_1,a)=\\{q_2\\}\\), \\(\\delta(q_2,a)=\\delta(q_2,b)=\\{q_2\\}\\), \\(F=\\{q_2\\}\\).",
+     "r": "4 estados alcanzables: <table><thead><tr><th>Conjunto</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>\\(\\to\\{q_0\\}\\)</td><td>\\(\\{q_0,q_1\\}\\)</td><td>\\(\\{q_0\\}\\)</td></tr><tr><td>\\(\\{q_0,q_1\\}\\)</td><td>\\(\\{q_0,q_1,q_2\\}\\)</td><td>\\(\\{q_0\\}\\)</td></tr><tr><td>\\(*\\,\\{q_0,q_1,q_2\\}\\)</td><td>\\(\\{q_0,q_1,q_2\\}\\)</td><td>\\(\\{q_0,q_2\\}\\)</td></tr><tr><td>\\(*\\,\\{q_0,q_2\\}\\)</td><td>\\(\\{q_0,q_1,q_2\\}\\)</td><td>\\(\\{q_0,q_2\\}\\)</td></tr></tbody></table> Los dos de aceptación son equivalentes, así que el AFD mínimo tiene 3 estados."
+    },
+    {
+     "nv": "A",
+     "q": "Con el AFD de 5 estados (A a E) obtenido para \\((a\\mid b)^*abb\\), analiza babb y abab.",
+     "r": "babb: A → C → B → D → E, se acepta. abab: A → B → D → B → D, se rechaza."
+    },
+    {
+     "nv": "A",
+     "q": "El AFD con estados \\(p\\) (inicial y de aceptación) y \\(q\\), \\(\\delta(p,a)=q\\), \\(\\delta(p,b)=p\\), \\(\\delta(q,a)=p\\), \\(\\delta(q,b)=q\\), acepta las cadenas con un número par de a. Obtén su ER por eliminación de estados.",
+     "r": "Al eliminar \\(q\\) (entrada a, lazo b, salida a) aparece en \\(p\\) un lazo \\(ab^*a\\) junto al lazo b. Resultado: \\((b\\mid ab^*a)^*\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Gramáticas",
+   "intro": "Semanas 6 y 7 del programa (unidad Gramáticas): conceptos básicos, definición formal, convenciones de notación y notación simplificada, lema de Arden, derivaciones, árboles de derivación, lenguaje generado, diseño de gramáticas y sus técnicas, modularidad y gramática regular implementada en un AFN. La jerarquía de Chomsky y los límites de las gramáticas están en la sección 6.",
+   "conceptos": [
+    {
+     "n": "Definición formal y notación",
+     "e": [
+      "Una gramática es \\(G=(N,T,P,S)\\): \\(N\\) no terminales (variables), \\(T\\) terminales, \\(P\\) producciones \\(\\alpha\\to\\beta\\) y \\(S\\in N\\) símbolo inicial. Convenciones: mayúsculas para no terminales, minúsculas y signos para terminales y \\(\\varepsilon\\) para la cadena vacía. La notación simplificada agrupa alternativas con \\(\\mid\\): \\(S\\to aSb\\mid\\varepsilon\\). En BNF los no terminales se escriben <code>&lt;expr&gt;</code>.",
+      "Una gramática es <b>libre de contexto</b> (GLC) si el lado izquierdo de cada producción es un solo no terminal, y <b>regular</b> (lineal por la derecha) si además cada lado derecho tiene la forma \\(aB\\), \\(a\\) o \\(\\varepsilon\\)."
+     ],
+     "u": [
+      "Especificación de lenguajes de programación (las gramáticas de Java o de SQL), formatos como JSON y generadores de parsers (ANTLR, Yacc, Bison).",
+      "Describen estructuras anidadas que una ER no puede describir: paréntesis, bloques, expresiones.",
+      "Al diseñar un lenguaje, un lenguaje de dominio específico o un formato de configuración.",
+      "Identifica las categorías (no terminales), escribe sus reglas de lo general a lo particular y pruébalas derivando cadenas."
+     ],
+     "f": "L(G)=\\{\\,w\\in T^*\\mid S\\overset{*}{\\Rightarrow}w\\,\\}"
+    },
+    {
+     "n": "Derivaciones, árboles y ambigüedad",
+     "e": [
+      "Una derivación reemplaza en cada paso un no terminal por el lado derecho de una de sus producciones (\\(\\Rightarrow\\)). En la derivación <b>por la izquierda</b> siempre se reemplaza el no terminal de más a la izquierda. El <b>árbol de derivación</b> tiene \\(S\\) en la raíz, no terminales en los nodos internos y terminales en las hojas; leídas de izquierda a derecha, las hojas forman la cadena.",
+      "Una gramática es <b>ambigua</b> si alguna cadena tiene dos árboles distintos. \\(E\\to E+E\\mid E*E\\mid \\text{id}\\) es ambigua; la versión por niveles \\(E\\to E+T\\mid T,\\ T\\to T*F\\mid F,\\ F\\to(E)\\mid \\text{id}\\) no lo es y además da a \\(*\\) más precedencia que a \\(+\\)."
+     ],
+     "u": [
+      "Analizadores sintácticos; el árbol es la salida del parser y la entrada de la generación de código.",
+      "La forma del árbol fija el significado; en id + id * id decide qué operación se hace primero.",
+      "Al probar una gramática o al buscar ambigüedades antes de implementarla.",
+      "Deriva paso a paso anotando qué producción usaste y dibuja el árbol al mismo tiempo."
+     ]
+    },
+    {
+     "n": "Lema de Arden",
+     "e": [
+      "Si \\(A\\) y \\(B\\) son expresiones regulares y \\(\\varepsilon\\notin L(A)\\), la ecuación \\(X=AX\\mid B\\) tiene como única solución \\(X=A^*B\\). Sirve para obtener la ER de una gramática regular o de un autómata: se escribe una ecuación por no terminal (o por estado) y se resuelve por sustitución, como un sistema de ecuaciones lineales."
+     ],
+     "u": [
+      "Al documentar qué acepta un autómata o qué genera una gramática ya construidos.",
+      "Da un método algebraico, sin dibujar, para pasar de gramática regular o autómata a ER.",
+      "En ejercicios de conversión y al verificar que una gramática regular hace lo que se pretende.",
+      "Escribe \\(S=aS\\mid bA\\) y similares, resuelve primero las ecuaciones que no dependen de otras variables y sustituye hacia arriba."
+     ],
+     "f": "X=AX\\mid B,\\ \\ \\varepsilon\\notin L(A)\\ \\Longrightarrow\\ X=A^*B"
+    },
+    {
+     "n": "Gramática regular a AFN y técnicas de diseño",
+     "e": [
+      "Una gramática lineal por la derecha se implementa como AFN: cada no terminal es un estado, \\(A\\to aB\\) da \\(B\\in\\delta(A,a)\\), \\(A\\to a\\) da una transición hacia un estado final nuevo \\(q_f\\) y \\(A\\to\\varepsilon\\) hace de \\(A\\) un estado de aceptación.",
+      "<b>Técnicas de diseño:</b> recursión para repetir (\\(L\\to L\\,,\\,x\\mid x\\)), anidamiento para emparejar (\\(S\\to(S)S\\mid\\varepsilon\\)), un nivel de no terminal por cada nivel de precedencia y <b>modularidad</b>: un no terminal por concepto (declaración, sentencia, expresión) que se prueba por separado."
+     ],
+     "u": [
+      "Validadores escritos a mano y tablas de analizadores léxicos.",
+      "Muestra que gramáticas regulares, ER y autómatas finitos son tres formas de los lenguajes regulares.",
+      "Cuando el formato no necesita anidamiento (NIT, placa, teléfono) o al modularizar una gramática grande.",
+      "Una transición por cada producción; cada no terminal recuerda en qué parte del formato vas."
+     ],
+     "tabla": "<table><thead><tr><th>Producción</th><th>En el AFN</th></tr></thead><tbody><tr><td>\\(A\\to aB\\)</td><td>\\(B\\in\\delta(A,a)\\)</td></tr><tr><td>\\(A\\to a\\)</td><td>\\(q_f\\in\\delta(A,a)\\)</td></tr><tr><td>\\(A\\to\\varepsilon\\)</td><td>\\(A\\) es de aceptación</td></tr><tr><td>símbolo inicial \\(S\\)</td><td>estado inicial \\(S\\)</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con \\(S\\to aSb\\mid\\varepsilon\\), deriva aaabbb y describe el lenguaje generado.",
+     "pasos": [
+      "<b>Derivación.</b> \\(S\\Rightarrow aSb\\Rightarrow aaSbb\\Rightarrow aaaSbbb\\Rightarrow aaabbb\\).",
+      "<b>Lenguaje.</b> Cada uso de \\(S\\to aSb\\) agrega una a a la izquierda y una b a la derecha; \\(S\\to\\varepsilon\\) termina."
+     ],
+     "r": "4 pasos; \\(L(G)=\\{a^nb^n\\mid n\\ge 0\\}\\).",
+     "fin": "Leer qué genera una gramática recursiva."
+    },
+    {
+     "nv": "I",
+     "q": "Con \\(E\\to E+T\\mid T,\\ T\\to T*F\\mid F,\\ F\\to(E)\\mid \\text{id}\\), haz la derivación por la izquierda de \\(\\text{id}+\\text{id}*\\text{id}\\).",
+     "pasos": [
+      "<b>Suma.</b> \\(E\\Rightarrow E+T\\Rightarrow T+T\\Rightarrow F+T\\Rightarrow \\text{id}+T\\).",
+      "<b>Producto.</b> \\(\\Rightarrow \\text{id}+T*F\\Rightarrow \\text{id}+F*F\\Rightarrow \\text{id}+\\text{id}*F\\Rightarrow \\text{id}+\\text{id}*\\text{id}\\).",
+      "<b>Árbol.</b> La raíz usa \\(E\\to E+T\\) y el \\(*\\) queda en el subárbol derecho, más abajo que el \\(+\\)."
+     ],
+     "r": "8 pasos. Como \\(*\\) queda más abajo en el árbol, id * id se evalúa antes que la suma.",
+     "fin": "Ver cómo la gramática por niveles impone la precedencia."
+    },
+    {
+     "nv": "I",
+     "q": "Muestra que \\(E\\to E+E\\mid E*E\\mid \\text{id}\\) es ambigua con la cadena \\(\\text{id}+\\text{id}*\\text{id}\\).",
+     "pasos": [
+      "<b>Árbol 1.</b> \\(E\\Rightarrow E+E\\Rightarrow \\text{id}+E\\Rightarrow \\text{id}+E*E\\Rightarrow\\cdots\\): la suma en la raíz, id + (id * id).",
+      "<b>Árbol 2.</b> \\(E\\Rightarrow E*E\\Rightarrow E+E*E\\Rightarrow \\text{id}+E*E\\Rightarrow\\cdots\\): el producto en la raíz, (id + id) * id.",
+      "<b>Conclusión.</b> Hay dos derivaciones por la izquierda distintas para la misma cadena."
+     ],
+     "r": "Es ambigua: la cadena tiene exactamente 2 árboles. Con 2, 3 y 4 en lugar de los id, el primero da 14 y el segundo 20.",
+     "fin": "Detectar ambigüedad y entender por qué los compiladores la evitan."
+    },
+    {
+     "nv": "A",
+     "q": "Obtén la ER de la gramática regular \\(S\\to aS\\mid bA,\\ A\\to aA\\mid b\\) con el lema de Arden.",
+     "pasos": [
+      "<b>Ecuaciones.</b> \\(S=aS\\mid bA\\) y \\(A=aA\\mid b\\).",
+      "<b>Resolver A.</b> Arden con coeficiente a y término b: \\(A=a^*b\\).",
+      "<b>Sustituir.</b> \\(S=aS\\mid ba^*b\\); otra vez Arden: \\(S=a^*ba^*b\\)."
+     ],
+     "r": "\\(L(G)=a^*ba^*b\\): cadenas con exactamente dos b que terminan en b.",
+     "fin": "Pasar de gramática regular a ER de forma algebraica."
+    },
+    {
+     "nv": "A",
+     "q": "Con l = letra y d = dígito, implementa como AFN la gramática de identificadores \\(S\\to lA\\mid l,\\ A\\to lA\\mid dA\\mid l\\mid d\\) y analiza x9 y 9x.",
+     "pasos": [
+      "<b>Estados.</b> S (inicial), A y un final \\(q_f\\).",
+      "<b>Transiciones.</b> \\(\\delta(S,l)=\\{A,q_f\\}\\), \\(\\delta(A,l)=\\{A,q_f\\}\\), \\(\\delta(A,d)=\\{A,q_f\\}\\).",
+      "<b>Trazas.</b> x9 (l d): \\(\\{S\\}\\to\\{A,q_f\\}\\to\\{A,q_f\\}\\), contiene \\(q_f\\): se acepta. 9x (d l): desde S no hay transición con d y el conjunto queda vacío."
+     ],
+     "r": "AFN de 3 estados equivalente a \\(l(l\\mid d)^*\\); acepta x9 y rechaza 9x.",
+     "fin": "Pasar de gramática regular a autómata, como pide el programa."
+    },
+    {
+     "nv": "B",
+     "q": "¿Genera \\(S\\to aSb\\mid\\varepsilon\\) la cadena aabbb?",
+     "r": "No. Toda cadena generada tiene tantas a como b, y aabbb tiene 2 a y 3 b."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe una gramática para los palíndromos sobre {a, b} y deriva abbba.",
+     "r": "\\(S\\to aSa\\mid bSb\\mid a\\mid b\\mid\\varepsilon\\). \\(S\\Rightarrow aSa\\Rightarrow abSba\\Rightarrow abbba\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Con la gramática por niveles \\(E\\to E+T\\mid T,\\ T\\to T*F\\mid F,\\ F\\to(E)\\mid \\text{id}\\), haz la derivación por la izquierda de \\((\\text{id})*\\text{id}\\).",
+     "r": "\\(E\\Rightarrow T\\Rightarrow T*F\\Rightarrow F*F\\Rightarrow(E)*F\\Rightarrow(T)*F\\Rightarrow(F)*F\\Rightarrow(\\text{id})*F\\Rightarrow(\\text{id})*\\text{id}\\): 8 pasos."
+    },
+    {
+     "nv": "A",
+     "q": "Obtén la ER de \\(S\\to aS\\mid bT\\mid\\varepsilon,\\ T\\to bT\\mid a\\) con el lema de Arden.",
+     "r": "\\(T=bT\\mid a\\Rightarrow T=b^*a\\). \\(S=aS\\mid bb^*a\\mid\\varepsilon\\Rightarrow S=a^*(bb^*a\\mid\\varepsilon)=a^*(b^+a\\mid\\varepsilon)\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(S\\to(S)S\\mid\\varepsilon\\), deriva por la izquierda (())() y lista todas las cadenas de longitud 6 que genera.",
+     "r": "\\(S\\Rightarrow(S)S\\Rightarrow((S)S)S\\Rightarrow(()S)S\\Rightarrow(())S\\Rightarrow(())(S)S\\Rightarrow(())()S\\Rightarrow(())()\\): 7 pasos. De longitud 6 hay 5: ((())), (()()), (())(), ()(()) y ()()()."
+    }
+   ]
+  },
+  {
+   "titulo": "Autómatas de pila",
+   "intro": "Semana 8 del programa: conceptos básicos y definición formal del autómata de pila, jerarquía de lenguajes, reconocimiento de una cadena con seguimiento en formato de corrida de escritorio y gramáticas independientes del contexto implementadas en autómatas de pila.",
+   "conceptos": [
+    {
+     "n": "Definición formal del autómata de pila",
+     "e": [
+      "Un autómata de pila (AP) es un autómata finito con una pila de capacidad ilimitada: \\(M=(Q,\\Sigma,\\Gamma,\\delta,q_0,Z_0,F)\\), con \\(\\Gamma\\) alfabeto de pila y \\(Z_0\\) símbolo inicial de la pila. Cada transición lee un símbolo de entrada (o \\(\\varepsilon\\)) y el tope de la pila, cambia de estado y reemplaza el tope por una cadena: \\(\\delta(q,a,X)\\ni(p,\\gamma)\\). Con \\(\\gamma=\\varepsilon\\) desapila, con \\(\\gamma=X\\) deja la pila igual y con \\(\\gamma=YX\\) apila Y.",
+      "Acepta por estado final (entrada consumida y estado en F) o por pila vacía; las dos formas son equivalentes. Los AP no deterministas reconocen exactamente los lenguajes libres de contexto."
+     ],
+     "u": [
+      "Analizadores sintácticos, validación de paréntesis y de etiquetas HTML o XML, evaluación de expresiones.",
+      "La pila aporta la memoria que le falta al autómata finito para contar y emparejar.",
+      "Cuando el lenguaje tiene anidamiento: bloques { }, llamadas a funciones, etiquetas que abren y cierran.",
+      "Apila al abrir, desapila al cerrar y acepta si al final la pila vuelve a \\(Z_0\\)."
+     ],
+     "f": "\\delta:Q\\times(\\Sigma\\cup\\{\\varepsilon\\})\\times\\Gamma\\to\\mathcal{P}(Q\\times\\Gamma^*)"
+    },
+    {
+     "n": "Configuraciones y corrida de escritorio",
+     "e": [
+      "Una configuración (descripción instantánea) es la terna \\((q,w,\\gamma)\\): estado, entrada que falta y contenido de la pila con el tope a la izquierda. Un movimiento se escribe \\((q,aw,X\\beta)\\vdash(p,w,\\gamma\\beta)\\). La corrida de escritorio es la lista de configuraciones desde \\((q_0,w,Z_0)\\); si ninguna secuencia llega a aceptación, la cadena se rechaza. La tabla muestra un AP determinista para \\(\\{a^nb^n\\mid n\\ge 1\\}\\) con \\(F=\\{q_2\\}\\)."
+     ],
+     "u": [
+      "Depuración de parsers y preguntas de examen.",
+      "Hace visible por qué una cadena se acepta o en qué punto se atasca.",
+      "Al probar un AP diseñado a mano o al explicar un error de sintaxis.",
+      "Una línea por movimiento con estado, entrada restante, pila y la transición aplicada."
+     ],
+     "tabla": "<table><thead><tr><th>Transición</th><th>Efecto</th></tr></thead><tbody><tr><td>\\(\\delta(q_0,a,Z_0)=(q_0,AZ_0)\\)</td><td>apila la primera A</td></tr><tr><td>\\(\\delta(q_0,a,A)=(q_0,AA)\\)</td><td>apila una A por cada a</td></tr><tr><td>\\(\\delta(q_0,b,A)=(q_1,\\varepsilon)\\)</td><td>primera b: desapila y cambia de fase</td></tr><tr><td>\\(\\delta(q_1,b,A)=(q_1,\\varepsilon)\\)</td><td>desapila una A por cada b</td></tr><tr><td>\\(\\delta(q_1,\\varepsilon,Z_0)=(q_2,Z_0)\\)</td><td>pila en el fondo: pasa a \\(q_2\\), de aceptación</td></tr></tbody></table>"
+    },
+    {
+     "n": "De gramática libre de contexto a autómata de pila",
+     "e": [
+      "Toda GLC se implementa en un AP de un solo estado que acepta por pila vacía: (1) empieza con \\(S\\) en la pila; (2) si el tope es un no terminal \\(A\\), lo reemplaza por el lado derecho de una producción \\(A\\to\\alpha\\) sin leer entrada; (3) si el tope es un terminal igual al símbolo de entrada, lo desapila y avanza. La secuencia de expansiones es una derivación por la izquierda; un parser descendente LL(1) hace lo mismo pero elige la producción sin adivinar, mirando el siguiente símbolo."
+     ],
+     "u": [
+      "Parsers descendentes recursivos y LL(1) de compiladores e intérpretes.",
+      "Demuestra que GLC y AP describen los mismos lenguajes.",
+      "Al pasar de la especificación (gramática) a la implementación (parser).",
+      "Una transición de expansión por cada producción y una de emparejamiento por cada terminal."
+     ],
+     "f": "\\delta(q,\\varepsilon,A)\\ni(q,\\alpha)\\ \\text{si } A\\to\\alpha\\qquad \\delta(q,a,a)=(q,\\varepsilon)"
+    },
+    {
+     "n": "Jerarquía de lenguajes y determinismo",
+     "e": [
+      "Regulares ⊂ libres de contexto deterministas ⊂ libres de contexto. \\(\\{a^nb^n\\}\\) no es regular, pero la reconoce un AP determinista; \\(\\{wcw^R\\}\\) también, porque la c marca la mitad. Los palíndromos pares \\(\\{ww^R\\}\\) necesitan no determinismo: el AP debe <b>adivinar</b> dónde está la mitad. Por eso los lenguajes de programación se diseñan con gramáticas deterministas (LL o LR)."
+     ],
+     "u": [
+      "Elección de la técnica de parsing (LL, LR) en un compilador.",
+      "Un AP determinista se ejecuta en tiempo lineal y sin retroceso.",
+      "Al decidir si un formato se valida con una ER, con un parser o con algo más potente.",
+      "Pregunta si el lenguaje exige contar o emparejar (pila) y si se puede saber sin adivinar cuándo cambiar de fase (determinismo)."
+     ],
+     "tabla": "<table><thead><tr><th>Lenguaje</th><th>¿Regular?</th><th>¿AP determinista?</th><th>¿AP no determinista?</th></tr></thead><tbody><tr><td>\\(a^*b^*\\)</td><td>Sí</td><td>Sí</td><td>Sí</td></tr><tr><td>\\(\\{a^nb^n\\}\\)</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>\\(\\{wcw^R\\}\\)</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>\\(\\{ww^R\\}\\)</td><td>No</td><td>No</td><td>Sí</td></tr><tr><td>\\(\\{a^nb^nc^n\\}\\)</td><td>No</td><td>No</td><td>No</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con el AP de \\(\\{a^nb^n\\mid n\\ge1\\}\\) de la tabla, haz la corrida de escritorio de aabb.",
+     "pasos": [
+      "<b>Fase de a.</b> \\((q_0,aabb,Z_0)\\vdash(q_0,abb,AZ_0)\\vdash(q_0,bb,AAZ_0)\\).",
+      "<b>Fase de b.</b> \\(\\vdash(q_1,b,AZ_0)\\vdash(q_1,\\varepsilon,Z_0)\\).",
+      "<b>Cierre.</b> \\(\\vdash(q_2,\\varepsilon,Z_0)\\): entrada consumida y estado de aceptación."
+     ],
+     "r": "Se acepta en 5 movimientos.",
+     "fin": "Escribir una corrida de escritorio de un AP."
+    },
+    {
+     "nv": "I",
+     "q": "Con el mismo AP, analiza aab.",
+     "pasos": [
+      "<b>Corrida.</b> \\((q_0,aab,Z_0)\\vdash(q_0,ab,AZ_0)\\vdash(q_0,b,AAZ_0)\\vdash(q_1,\\varepsilon,AZ_0)\\).",
+      "<b>Atasco.</b> No existe \\(\\delta(q_1,\\varepsilon,A)\\): queda una A sin pareja y \\(q_1\\notin F\\)."
+     ],
+     "r": "Se rechaza: sobra una a.",
+     "fin": "Reconocer en qué configuración y por qué falla una cadena."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña un AP que acepte paréntesis y llaves bien balanceados y analiza {()} y {(}).",
+     "pasos": [
+      "<b>Transiciones.</b> Con ( apila P y con { apila L, sobre cualquier tope: \\(\\delta(q,(,X)=(q,PX)\\), \\(\\delta(q,\\{,X)=(q,LX)\\). Cierres: \\(\\delta(q,),P)=(q,\\varepsilon)\\), \\(\\delta(q,\\},L)=(q,\\varepsilon)\\). Fin: \\(\\delta(q,\\varepsilon,Z_0)=(f,Z_0)\\), \\(F=\\{f\\}\\).",
+      "<b>{()}.</b> \\((q,\\{()\\},Z_0)\\vdash(q,()\\},LZ_0)\\vdash(q,)\\},PLZ_0)\\vdash(q,\\},LZ_0)\\vdash(q,\\varepsilon,Z_0)\\vdash(f,\\varepsilon,Z_0)\\): se acepta.",
+      "<b>{(}).</b> \\((q,\\{(\\}),Z_0)\\vdash(q,(\\}),LZ_0)\\vdash(q,\\}),PLZ_0)\\): el tope es P y llega }, no hay transición: se rechaza."
+     ],
+     "r": "{()} se acepta y {(}) se rechaza porque la llave cierra antes que el paréntesis.",
+     "fin": "Validar anidamiento, como hacen los lectores de JSON o los editores de código PHP y Java."
+    },
+    {
+     "nv": "A",
+     "q": "Convierte \\(S\\to aSb\\mid ab\\) en un AP de un estado y analiza aabb.",
+     "pasos": [
+      "<b>Transiciones.</b> \\(\\delta(q,\\varepsilon,S)=\\{(q,aSb),(q,ab)\\}\\), \\(\\delta(q,a,a)=(q,\\varepsilon)\\), \\(\\delta(q,b,b)=(q,\\varepsilon)\\); acepta por pila vacía.",
+      "<b>Corrida.</b> \\((q,aabb,S)\\vdash(q,aabb,aSb)\\vdash(q,abb,Sb)\\vdash(q,abb,abb)\\vdash(q,bb,bb)\\vdash(q,b,b)\\vdash(q,\\varepsilon,\\varepsilon)\\).",
+      "<b>Elección.</b> En la segunda expansión se usó \\(S\\to ab\\); con \\(S\\to aSb\\) la pila tendría más terminales que la entrada restante y ese camino fracasa."
+     ],
+     "r": "Se acepta por pila vacía en 6 movimientos; las expansiones forman la derivación \\(S\\Rightarrow aSb\\Rightarrow aabb\\).",
+     "fin": "Implementar una gramática en un autómata de pila, como pide el programa."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña un AP para los palíndromos de longitud par \\(\\{ww^R\\}\\) sobre {a, b} y analiza abba.",
+     "pasos": [
+      "<b>Transiciones.</b> En \\(q_0\\) apila A por cada a y B por cada b; \\(\\delta(q_0,\\varepsilon,X)=(q_1,X)\\) «adivina» la mitad; en \\(q_1\\) desapila si coincide: \\(\\delta(q_1,a,A)=\\delta(q_1,b,B)=(q_1,\\varepsilon)\\); \\(\\delta(q_1,\\varepsilon,Z_0)=(q_2,Z_0)\\).",
+      "<b>Camino exitoso.</b> \\((q_0,abba,Z_0)\\vdash(q_0,bba,AZ_0)\\vdash(q_0,ba,BAZ_0)\\vdash(q_1,ba,BAZ_0)\\vdash(q_1,a,AZ_0)\\vdash(q_1,\\varepsilon,Z_0)\\vdash(q_2,\\varepsilon,Z_0)\\).",
+      "<b>No determinismo.</b> En cada paso de \\(q_0\\) el AP puede seguir apilando o saltar a \\(q_1\\); solo el camino que salta justo en la mitad acepta."
+     ],
+     "r": "abba se acepta en 6 movimientos; el lenguaje necesita no determinismo.",
+     "fin": "Distinguir AP deterministas de no deterministas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Acepta el AP de \\(\\{a^nb^n\\}\\) la cadena abab?",
+     "r": "No. \\((q_0,abab,Z_0)\\vdash(q_0,bab,AZ_0)\\vdash(q_1,ab,Z_0)\\vdash(q_2,ab,Z_0)\\): llega a \\(q_2\\) pero queda ab sin leer y no hay transiciones con a desde \\(q_1\\) ni \\(q_2\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Con el AP de paréntesis y llaves, analiza (().",
+     "r": "\\((q,((),Z_0)\\vdash(q,(),PZ_0)\\vdash(q,),PPZ_0)\\vdash(q,\\varepsilon,PZ_0)\\): la entrada se acabó con P en el tope y no se llega a f. Se rechaza: falta un cierre."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña un AP para \\(\\{a^nb^{2n}\\mid n\\ge1\\}\\) y analiza aabbbb y aabbb.",
+     "r": "Por cada a apila dos A: \\(\\delta(q_0,a,Z_0)=(q_0,AAZ_0)\\), \\(\\delta(q_0,a,A)=(q_0,AAA)\\); cada b desapila una: \\(\\delta(q_0,b,A)=(q_1,\\varepsilon)\\), \\(\\delta(q_1,b,A)=(q_1,\\varepsilon)\\); \\(\\delta(q_1,\\varepsilon,Z_0)=(q_2,Z_0)\\). aabbbb se acepta; aabbb no (queda una A)."
+    },
+    {
+     "nv": "A",
+     "q": "Convierte \\(S\\to(S)S\\mid\\varepsilon\\) en un AP de un estado y analiza ().",
+     "r": "\\(\\delta(q,\\varepsilon,S)=\\{(q,(S)S),(q,\\varepsilon)\\}\\), \\(\\delta(q,(,()=(q,\\varepsilon)\\), \\(\\delta(q,),))=(q,\\varepsilon)\\). Corrida: \\((q,(),S)\\vdash(q,(),(S)S)\\vdash(q,),S)S)\\vdash(q,),)S)\\vdash(q,\\varepsilon,S)\\vdash(q,\\varepsilon,\\varepsilon)\\): se acepta por pila vacía."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña un AP determinista para \\(\\{wcw^R\\mid w\\in\\{a,b\\}^*\\}\\) y analiza abcba y abcab.",
+     "r": "En \\(q_0\\) apila A o B; con c pasa a \\(q_1\\) sin tocar la pila; en \\(q_1\\) desapila si coincide; \\(\\delta(q_1,\\varepsilon,Z_0)=(q_2,Z_0)\\). abcba: \\((q_0,abcba,Z_0)\\vdash(q_0,bcba,AZ_0)\\vdash(q_0,cba,BAZ_0)\\vdash(q_1,ba,BAZ_0)\\vdash(q_1,a,AZ_0)\\vdash(q_1,\\varepsilon,Z_0)\\vdash(q_2,\\varepsilon,Z_0)\\): se acepta. abcab se rechaza: tras la c llega a con B en el tope."
+    }
+   ]
+  },
+  {
+   "titulo": "Máquinas de Turing, jerarquía de Chomsky y límites",
+   "intro": "Semana 9 del programa (unidad Máquina de Turing): conceptos básicos, la MT como realizadora de cálculos y como reconocedora de lenguajes, reconocimiento de una cadena de entrada, diseño y técnicas de construcción. Incluye el primer acercamiento a la jerarquía de Chomsky y los límites de las gramáticas de la semana 7, con el lema de bombeo y la indecidibilidad como complemento de la bibliografía.",
+   "conceptos": [
+    {
+     "n": "Máquina de Turing",
+     "e": [
+      "Una MT es \\(M=(Q,\\Sigma,\\Gamma,\\delta,q_0,B,F)\\): una cinta infinita de celdas (con el blanco \\(B\\)), una cabeza que lee y escribe, y la función \\(\\delta(q,X)=(p,Y,D)\\): en el estado \\(q\\) leyendo \\(X\\), escribe \\(Y\\), pasa a \\(p\\) y mueve la cabeza \\(D\\in\\{L,R\\}\\). La configuración se escribe con el estado delante del símbolo leído, por ejemplo <code>XX[q1]Yb</code>. La máquina para cuando no hay transición y acepta si para en un estado de \\(F\\).",
+      "Como <b>calculadora</b> deja el resultado en la cinta (sumar, incrementar, copiar); como <b>reconocedora</b> responde sí o no sobre una cadena. A diferencia de los AF y los AP, puede no parar nunca."
+     ],
+     "u": [
+      "Es el modelo teórico de cualquier computadora; con memoria suficiente, Java, PHP o Python calculan exactamente lo mismo que una MT.",
+      "Define qué es computable: si ninguna MT lo resuelve, ningún programa puede hacerlo.",
+      "Al razonar sobre lo que un sistema puede verificar o calcular, y en los ejercicios de diseño del privado.",
+      "Escribe la idea en una frase (marcar, recorrer, regresar), luego la tabla de transiciones y pruébala con una corrida."
+     ],
+     "f": "\\delta:Q\\times\\Gamma\\to Q\\times\\Gamma\\times\\{L,R\\}"
+    },
+    {
+     "n": "Técnicas de diseño de máquinas de Turing",
+     "e": [
+      "<b>Marcar símbolos</b> (cambiar a por X y b por Y para emparejarlos), <b>recorridos</b> de ida y vuelta, <b>memoria en el estado</b> (el estado recuerda un símbolo leído), <b>subrutinas</b>, <b>varias pistas</b> y <b>varias cintas</b>. Ninguna variante reconoce más lenguajes que la MT básica; solo facilitan el diseño. La tesis de Church-Turing afirma que todo procedimiento efectivo se puede realizar con una MT. La tabla es la MT que reconoce \\(\\{a^nb^n\\mid n\\ge1\\}\\) tachando una a y una b por vuelta."
+     ],
+     "u": [
+      "Algoritmos sobre cadenas: emparejar, copiar, comparar.",
+      "Organizan el diseño para que la tabla no crezca sin control.",
+      "Al diseñar una MT en un examen o al convertir un algoritmo en una máquina.",
+      "Una fase por estado (buscar, marcar, regresar, verificar) y símbolos auxiliares para lo ya procesado."
+     ],
+     "tabla": "<table><thead><tr><th>Estado</th><th>a</th><th>b</th><th>X</th><th>Y</th><th>B</th></tr></thead><tbody><tr><td>\\(q_0\\)</td><td>\\((q_1,X,R)\\)</td><td>—</td><td>—</td><td>\\((q_3,Y,R)\\)</td><td>—</td></tr><tr><td>\\(q_1\\)</td><td>\\((q_1,a,R)\\)</td><td>\\((q_2,Y,L)\\)</td><td>—</td><td>\\((q_1,Y,R)\\)</td><td>—</td></tr><tr><td>\\(q_2\\)</td><td>\\((q_2,a,L)\\)</td><td>—</td><td>\\((q_0,X,R)\\)</td><td>\\((q_2,Y,L)\\)</td><td>—</td></tr><tr><td>\\(q_3\\)</td><td>—</td><td>—</td><td>—</td><td>\\((q_3,Y,R)\\)</td><td>\\((q_4,B,R)\\)</td></tr><tr><td>\\(*\\,q_4\\)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody></table>"
+    },
+    {
+     "n": "Jerarquía de Chomsky",
+     "e": [
+      "Cada tipo contiene al siguiente: tipo 3 ⊂ tipo 2 ⊂ tipo 1 ⊂ tipo 0. Clasificar un lenguaje es encontrar el tipo más restrictivo que lo genera; para descartar un tipo se usan resultados de límites como el lema de bombeo."
+     ],
+     "u": [
+      "Diseño de compiladores: el léxico se resuelve con tipo 3, la sintaxis con tipo 2 y las reglas semánticas (tipos, variables declaradas) con código aparte.",
+      "Indica qué herramienta usar: una ER, un parser o un programa general.",
+      "Antes de implementar un validador o un lenguaje.",
+      "Pregunta si necesita contar o emparejar (al menos tipo 2), comparar tres cantidades o copias (tipo 1) o si es una propiedad general de programas (tipo 0 o indecidible)."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Gramática</th><th>Producciones</th><th>Autómata</th><th>Ejemplo</th></tr></thead><tbody><tr><td>3</td><td>Regular</td><td>\\(A\\to aB\\mid a\\mid\\varepsilon\\)</td><td>Autómata finito</td><td>identificadores, teléfonos</td></tr><tr><td>2</td><td>Libre de contexto</td><td>\\(A\\to\\alpha\\)</td><td>Autómata de pila</td><td>\\(a^nb^n\\), paréntesis</td></tr><tr><td>1</td><td>Sensible al contexto</td><td>\\(\\alpha A\\beta\\to\\alpha\\gamma\\beta,\\ \\gamma\\ne\\varepsilon\\)</td><td>MT linealmente acotada</td><td>\\(a^nb^nc^n\\)</td></tr><tr><td>0</td><td>Sin restricciones</td><td>\\(\\alpha\\to\\beta\\)</td><td>Máquina de Turing</td><td>recursivamente enumerables</td></tr></tbody></table>"
+    },
+    {
+     "n": "Límites: lema de bombeo y problema de la parada",
+     "e": [
+      "<b>Lema de bombeo para regulares:</b> si \\(L\\) es regular, existe \\(p\\) tal que toda \\(w\\in L\\) con \\(|w|\\ge p\\) se puede escribir \\(w=xyz\\) con \\(|xy|\\le p\\), \\(|y|\\ge1\\) y \\(xy^iz\\in L\\) para todo \\(i\\ge0\\). Se usa por contradicción para probar que un lenguaje <b>no</b> es regular; cumplirlo no prueba que lo sea. Hay una versión para libres de contexto.",
+      "<b>Problema de la parada:</b> no existe una MT que, dada cualquier MT y cualquier entrada, decida si esa MT para. Un lenguaje es <b>decidible</b> (recursivo) si una MT siempre para y responde; es <b>recursivamente enumerable</b> si una MT para y acepta en los casos sí, aunque pueda no parar en los casos no."
+     ],
+     "u": [
+      "Saber que no se puede validar HTML con anidamiento arbitrario usando solo ER, ni construir un analizador que detecte todos los programas que se cuelgan.",
+      "Evita invertir tiempo en soluciones imposibles.",
+      "Cuando una ER se vuelve monstruosa o alguien pide «detectar todos los programas que no terminan».",
+      "Para no regularidad, elige una cadena en el límite, bombea y muestra que sale del lenguaje; para indecidibilidad, reduce desde el problema de la parada."
+     ],
+     "f": "w=xyz,\\ \\ |xy|\\le p,\\ \\ |y|\\ge1,\\ \\ xy^iz\\in L\\ \\ \\forall i\\ge0"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "La MT con \\(\\delta(q_0,1)=(q_0,1,R)\\), \\(\\delta(q_0,+)=(q_1,1,R)\\), \\(\\delta(q_1,1)=(q_1,1,R)\\), \\(\\delta(q_1,B)=(q_2,B,L)\\), \\(\\delta(q_2,1)=(q_3,B,L)\\), \\(F=\\{q_3\\}\\), suma en unario. Haz la corrida con 111+11.",
+     "pasos": [
+      "<b>Idea.</b> Cambia el + por 1 (queda un 1 de más) y borra el último 1.",
+      "<b>Corrida.</b> <code>[q0]111+11 ⊢ 1[q0]11+11 ⊢ 11[q0]1+11 ⊢ 111[q0]+11 ⊢ 1111[q1]11 ⊢ 11111[q1]1 ⊢ 111111[q1]B ⊢ 11111[q2]1 ⊢ 1111[q3]1</code>",
+      "<b>Resultado.</b> Para en \\(q_3\\) y la cinta contiene 11111."
+     ],
+     "r": "3 + 2 = 5 en unario (11111), en 8 movimientos.",
+     "fin": "Usar una MT como realizadora de cálculos."
+    },
+    {
+     "nv": "I",
+     "q": "Con la MT de la tabla para \\(\\{a^nb^n\\mid n\\ge1\\}\\), haz la corrida con aabb.",
+     "pasos": [
+      "<b>Primera vuelta.</b> <code>[q0]aabb ⊢ X[q1]abb ⊢ Xa[q1]bb ⊢ X[q2]aYb ⊢ [q2]XaYb ⊢ X[q0]aYb</code>: tacha la primera a y la primera b.",
+      "<b>Segunda vuelta.</b> <code>⊢ XX[q1]Yb ⊢ XXY[q1]b ⊢ XX[q2]YY ⊢ X[q2]XYY ⊢ XX[q0]YY</code>.",
+      "<b>Verificación.</b> <code>⊢ XXY[q3]Y ⊢ XXYY[q3]B ⊢ XXYYB[q4]B</code>: solo quedan Y y llega al blanco; \\(q_4\\) es de aceptación."
+     ],
+     "r": "Se acepta en 13 movimientos; la cinta queda XXYY. Con aab la máquina para en <code>XXY[q1]B</code> sin aceptar.",
+     "fin": "Seguir una MT reconocedora con la técnica de marcar símbolos."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica en la jerarquía de Chomsky: (a) los identificadores de Java, (b) las expresiones con paréntesis balanceados, (c) \\(\\{a^nb^nc^n\\mid n\\ge1\\}\\), (d) el conjunto de pares (programa, entrada) en que el programa termina.",
+     "pasos": [
+      "<b>(a)</b> Letra o guion bajo seguida de letras, dígitos o guion bajo: lo describe una ER. Tipo 3.",
+      "<b>(b)</b> Necesita emparejar aperturas y cierres sin límite: no es regular, pero sí lo genera <code>S → (S)S | ε</code>. Tipo 2.",
+      "<b>(c)</b> Debe comparar tres cantidades; no es libre de contexto, pero sí sensible al contexto. Tipo 1.",
+      "<b>(d)</b> Una MT puede simular el programa y aceptar si termina, pero no puede responder siempre que no: recursivamente enumerable, no decidible. Tipo 0."
+     ],
+     "r": "(a) tipo 3, (b) tipo 2, (c) tipo 1, (d) tipo 0 y no decidible.",
+     "fin": "Ubicar un lenguaje en la jerarquía para elegir la herramienta correcta."
+    },
+    {
+     "nv": "A",
+     "q": "Demuestra con el lema de bombeo que \\(L=\\{a^nb^n\\mid n\\ge0\\}\\) no es regular.",
+     "pasos": [
+      "<b>Supuesto.</b> \\(L\\) es regular con constante de bombeo \\(p\\).",
+      "<b>Cadena.</b> \\(w=a^pb^p\\in L\\), con \\(|w|=2p\\ge p\\).",
+      "<b>División.</b> Como \\(|xy|\\le p\\), \\(x\\) e \\(y\\) están dentro de las a: \\(y=a^k\\) con \\(k\\ge1\\).",
+      "<b>Bombeo.</b> \\(xy^2z=a^{p+k}b^p\\) tiene más a que b, así que no está en \\(L\\): contradicción."
+     ],
+     "r": "\\(L\\) no es regular; por eso ninguna ER valida paréntesis balanceados de profundidad arbitraria.",
+     "fin": "Demostrar que un lenguaje no es regular."
+    },
+    {
+     "nv": "A",
+     "q": "Explica por qué el problema de la parada es indecidible.",
+     "pasos": [
+      "<b>Supuesto.</b> Existe una MT \\(H(M,w)\\) que siempre para y responde sí cuando \\(M\\) para con la entrada \\(w\\), y no en caso contrario.",
+      "<b>Construcción.</b> Se define \\(D(M)\\): ejecuta \\(H(M,M)\\); si responde sí, \\(D\\) entra en un ciclo infinito; si responde no, \\(D\\) para.",
+      "<b>Contradicción.</b> \\(D(D)\\) para si y solo si \\(H(D,D)\\) responde no, es decir, si y solo si \\(D(D)\\) no para."
+     ],
+     "r": "\\(H\\) no puede existir: el problema de la parada es indecidible, aunque es recursivamente enumerable.",
+     "fin": "Reconocer problemas que no tienen solución algorítmica general."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué autómata reconoce exactamente los lenguajes libres de contexto (tipo 2)?",
+     "ops": [
+      "Autómata de pila no determinista",
+      "Autómata finito determinista",
+      "Máquina de Turing linealmente acotada",
+      "Autómata finito no determinista"
+     ],
+     "ok": 0,
+     "r": "Los autómatas finitos, deterministas o no, reconocen el tipo 3; la MT linealmente acotada, el tipo 1."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál de estos lenguajes NO es regular?",
+     "ops": [
+      "Cadenas binarias con un número par de unos",
+      "Números binarios múltiplos de 3",
+      "\\(\\{a^nb^n\\mid n\\ge0\\}\\)",
+      "\\(a^*b^*\\)"
+     ],
+     "ok": 2,
+     "r": "\\(\\{a^nb^n\\}\\) exige contar sin límite (lema de bombeo). Los otros tres tienen AFD de pocos estados."
+    },
+    {
+     "nv": "I",
+     "q": "Una MT de incremento binario va al final de la cadena y, de derecha a izquierda, cambia cada 1 por 0 hasta encontrar un 0 o un blanco, que cambia por 1. ¿Qué deja en la cinta con la entrada 1011?",
+     "ops": [
+      "1010",
+      "1101",
+      "10000",
+      "1100"
+     ],
+     "ok": 3,
+     "r": "1011 es 11. Los dos últimos 1 pasan a 0 y el 0 siguiente pasa a 1: 1100, que es 12."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál de estos problemas es indecidible?",
+     "ops": [
+      "Saber si un AFD acepta una cadena dada",
+      "Saber si dos AFD aceptan el mismo lenguaje",
+      "Saber si una gramática libre de contexto genera una cadena dada",
+      "Saber si un programa arbitrario termina con una entrada dada"
+     ],
+     "ok": 3,
+     "r": "Los otros tres tienen algoritmos que siempre terminan: simular el AFD, minimizar ambos AFD y compararlos, y el algoritmo CYK."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué afirmación sobre el lema de bombeo para lenguajes regulares es correcta?",
+     "ops": [
+      "Si un lenguaje cumple sus condiciones, entonces es regular",
+      "Sirve para construir el AFD mínimo de un lenguaje",
+      "Sirve para demostrar que un lenguaje no es regular",
+      "Solo se aplica a lenguajes finitos"
+     ],
+     "ok": 2,
+     "r": "Es una condición necesaria, no suficiente: hay lenguajes no regulares que la cumplen. Los lenguajes finitos son regulares y la cumplen trivialmente."
+    }
+   ]
+  },
+  {
+   "titulo": "Expresiones y notación posfija",
+   "intro": "Semanas 10 y 11 del programa (unidad Expresiones): consideraciones para generar expresiones en lenguajes de programación, términos, tipos de operadores, prioridad o precedencia, notaciones, generación de notaciones con árboles binarios y su recorrido, importancia de la notación posfija, algoritmos para convertir de infija a posfija y para evaluar posfijas, y su aplicación en un programa.",
+   "conceptos": [
+    {
+     "n": "Términos, operadores y precedencia",
+     "e": [
+      "Una expresión combina <b>operandos</b> (constantes, variables, llamadas a funciones) con <b>operadores</b> unarios (−x, !x) o binarios (a + b). La <b>precedencia</b> dice qué operador se aplica primero y la <b>asociatividad</b>, cómo se agrupan operadores del mismo nivel: \\(a-b-c=(a-b)-c\\) (izquierda), pero \\(a^{b^c}=a^{(b^c)}\\) (derecha)."
+     ],
+     "u": [
+      "Fórmulas de hojas de cálculo, condiciones WHERE de SQL (AND antes que OR), expresiones en Java y PHP.",
+      "Una precedencia mal entendida da resultados incorrectos sin ningún error: 100 + 100 * 0.12 es 112, no 24.",
+      "Al programar cálculos de IVA, descuentos o intereses.",
+      "Consulta la tabla de precedencia del lenguaje y usa paréntesis cuando haya duda."
+     ],
+     "tabla": "<table><thead><tr><th>Nivel</th><th>Operadores</th><th>Asociatividad</th></tr></thead><tbody><tr><td>1 (mayor)</td><td>( )</td><td>—</td></tr><tr><td>2</td><td>^ (potencia)</td><td>derecha</td></tr><tr><td>3</td><td>* /</td><td>izquierda</td></tr><tr><td>4 (menor)</td><td>+ −</td><td>izquierda</td></tr></tbody></table>"
+    },
+    {
+     "n": "Notaciones y árboles binarios de expresión",
+     "e": [
+      "En el árbol de una expresión las hojas son operandos y los nodos internos, operadores; la forma del árbol ya incluye precedencia y paréntesis. Sus recorridos dan las tres notaciones: <b>inorden</b> (izquierda, raíz, derecha) da la infija; <b>preorden</b> (raíz, izquierda, derecha), la prefija o polaca; <b>postorden</b> (izquierda, derecha, raíz), la posfija o polaca inversa. La prefija y la posfija no necesitan paréntesis."
+     ],
+     "u": [
+      "Árboles de sintaxis abstracta de los compiladores, calculadoras de notación polaca inversa y el bytecode de la JVM, que es una máquina de pila.",
+      "La posfija se evalúa de izquierda a derecha con una pila, sin mirar precedencias.",
+      "Al generar código o al evaluar fórmulas que escribe el usuario.",
+      "Construye el árbol respetando la precedencia y recórrelo en el orden que pida la notación."
+     ],
+     "tabla": "<table><thead><tr><th>Notación</th><th>Recorrido</th><th>(a + b) * c</th></tr></thead><tbody><tr><td>Infija</td><td>inorden</td><td>(a + b) * c</td></tr><tr><td>Prefija</td><td>preorden</td><td>* + a b c</td></tr><tr><td>Posfija</td><td>postorden</td><td>a b + c *</td></tr></tbody></table>"
+    },
+    {
+     "n": "Algoritmo de infija a posfija",
+     "e": [
+      "El algoritmo de Dijkstra (patio de maniobras) usa una pila de operadores y recorre la expresión de izquierda a derecha: (1) un operando pasa directo a la salida; (2) un paréntesis de apertura se apila; (3) uno de cierre desapila hacia la salida hasta encontrar la apertura, que se descarta; (4) un operador desapila hacia la salida los operadores de mayor precedencia, o de igual precedencia si es asociativo por la izquierda, y luego se apila; (5) al terminar se vacía la pila."
+     ],
+     "u": [
+      "Calculadoras, evaluadores de fórmulas en sistemas de planillas o facturación y compiladores.",
+      "Traduce la notación humana a una que la máquina evalúa sin ambigüedad.",
+      "Cuando un programa recibe expresiones como texto.",
+      "Haz una tabla con columnas símbolo, pila y salida, una fila por símbolo."
+     ]
+    },
+    {
+     "n": "Evaluación de expresiones posfijas",
+     "e": [
+      "Se recorre la posfija de izquierda a derecha con una pila de valores: un operando se apila; un operador desapila el segundo operando (el tope) y luego el primero, opera y apila el resultado. Al final la pila tiene un solo valor. Si falta un operando o sobran valores, la expresión está mal formada.",
+      "Implementación en Python: <code>def evaluar(posfija):<br>&nbsp;&nbsp;pila = []<br>&nbsp;&nbsp;for t in posfija.split():<br>&nbsp;&nbsp;&nbsp;&nbsp;if t in ('+', '-', '*', '/'):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = pila.pop(); a = pila.pop()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pila.append({'+': a + b, '-': a - b, '*': a * b, '/': a / b}[t])<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pila.append(float(t))<br>&nbsp;&nbsp;return pila.pop()</code>"
+     ],
+     "u": [
+      "Máquinas virtuales de pila (JVM), calculadoras y motores de reglas de negocio.",
+      "Evalúa en tiempo lineal, en una sola pasada y sin paréntesis.",
+      "Después de convertir a posfija o al ejecutar código intermedio.",
+      "Tabla con columnas símbolo y pila; cuidado con el orden de los operandos en la resta y la división."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Escribe a + b * c en notación posfija y prefija.",
+     "pasos": [
+      "<b>Árbol.</b> * tiene más precedencia: a + (b * c). La raíz es +, con a a la izquierda y el subárbol b * c a la derecha.",
+      "<b>Recorridos.</b> Postorden: a b c * +. Preorden: + a * b c."
+     ],
+     "r": "Posfija <code>a b c * +</code>; prefija <code>+ a * b c</code>.",
+     "fin": "Pasar entre notaciones usando el árbol."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte (a + b) * c − d / e a posfija con el algoritmo de la pila y muestra la tabla.",
+     "pasos": [
+      "<b>Paréntesis.</b> Se apila (, pasan a y b, + espera en la pila y al cerrar sale: a b +.",
+      "<b>Precedencias.</b> El − llega con * en la pila (mayor precedencia): sale *. El / llega con − en la pila (menor): / se apila encima.",
+      "<b>Tabla.</b> <table><thead><tr><th>Símbolo</th><th>Pila</th><th>Salida</th></tr></thead><tbody><tr><td>(</td><td>(</td><td></td></tr><tr><td>a</td><td>(</td><td>a</td></tr><tr><td>+</td><td>( +</td><td>a</td></tr><tr><td>b</td><td>( +</td><td>a b</td></tr><tr><td>)</td><td></td><td>a b +</td></tr><tr><td>*</td><td>*</td><td>a b +</td></tr><tr><td>c</td><td>*</td><td>a b + c</td></tr><tr><td>-</td><td>-</td><td>a b + c *</td></tr><tr><td>d</td><td>-</td><td>a b + c * d</td></tr><tr><td>/</td><td>- /</td><td>a b + c * d</td></tr><tr><td>e</td><td>- /</td><td>a b + c * d e</td></tr><tr><td>fin</td><td></td><td>a b + c * d e / -</td></tr></tbody></table>"
+     ],
+     "r": "<code>a b + c * d e / -</code>",
+     "fin": "Aplicar el algoritmo de conversión como lo haría un programa."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa la posfija 5 3 + 2 * 8 4 / −.",
+     "pasos": [
+      "<b>Regla.</b> Cada operador toma los dos valores del tope: el de abajo es el primer operando.",
+      "<b>Tabla.</b> <table><thead><tr><th>Símbolo</th><th>Pila</th></tr></thead><tbody><tr><td>5</td><td>5</td></tr><tr><td>3</td><td>5 3</td></tr><tr><td>+</td><td>8</td></tr><tr><td>2</td><td>8 2</td></tr><tr><td>*</td><td>16</td></tr><tr><td>8</td><td>16 8</td></tr><tr><td>4</td><td>16 8 4</td></tr><tr><td>/</td><td>16 2</td></tr><tr><td>-</td><td>14</td></tr></tbody></table>"
+     ],
+     "r": "14, que corresponde a (5 + 3) * 2 − 8 / 4.",
+     "fin": "Evaluar posfijas con una pila."
+    },
+    {
+     "nv": "A",
+     "q": "Convierte a posfija a + b * (c ^ d − e) ^ (f + g * h) − i.",
+     "pasos": [
+      "<b>Paréntesis.</b> (c ^ d − e) da c d ^ e −, porque ^ va antes que −. (f + g * h) da f g h * +.",
+      "<b>Potencia.</b> Las dos partes se unen con ^: c d ^ e − f g h * + ^. Ese resultado se multiplica por b: b … *.",
+      "<b>Suma y resta.</b> a + (…) se evalúa primero y luego se resta i, por asociatividad izquierda: a … + i −."
+     ],
+     "r": "<code>a b c d ^ e - f g h * + ^ * + i -</code>",
+     "fin": "Manejar varios niveles de precedencia y paréntesis anidados."
+    },
+    {
+     "nv": "A",
+     "q": "Un sistema de facturación recibe la fórmula p * c * (1 + 0.12) para el total con IVA. Conviértela a posfija y evalúala con p = Q125 y c = 4 unidades.",
+     "pasos": [
+      "<b>Posfija.</b> p c * 1 0.12 + * (el segundo * es asociativo por la izquierda y el paréntesis se agrupa antes).",
+      "<b>Evaluación.</b> <table><thead><tr><th>Símbolo</th><th>Pila</th></tr></thead><tbody><tr><td>125</td><td>125</td></tr><tr><td>4</td><td>125 4</td></tr><tr><td>*</td><td>500</td></tr><tr><td>1</td><td>500 1</td></tr><tr><td>0.12</td><td>500 1 0.12</td></tr><tr><td>+</td><td>500 1.12</td></tr><tr><td>*</td><td>560</td></tr></tbody></table>",
+      "<b>En código.</b> La función <code>evaluar</code> del concepto recibe <code>'125 4 * 1 0.12 + *'</code> y devuelve 560.0."
+     ],
+     "r": "<code>p c * 1 0.12 + *</code>; total Q560.00 (Q500 de base y Q60 de IVA).",
+     "fin": "Aplicar los algoritmos de conversión y evaluación en un programa, como pide el programa del curso."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe a * b + c en posfija y prefija.",
+     "r": "Posfija <code>a b * c +</code>; prefija <code>+ * a b c</code>."
+    },
+    {
+     "nv": "I",
+     "q": "Dibuja el árbol de ((a − b) / (c + d)) * e y escribe sus recorridos en preorden y postorden.",
+     "r": "Raíz *, con el subárbol / a la izquierda y e a la derecha. Preorden: <code>* / - a b + c d e</code>. Postorden: <code>a b - c d + / e *</code>."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa la posfija 2 3 4 * + 5 −.",
+     "r": "Pila: 2; 2 3; 2 3 4; 2 12; 14; 14 5; 9. Resultado 9."
+    },
+    {
+     "nv": "A",
+     "q": "Convierte a − (b + c * d) / e a posfija con el algoritmo de la pila.",
+     "r": "<code>a b c d * + e / -</code>. Al cerrar el paréntesis salen * y +; el / se apila sobre el − y ambos salen al final."
+    },
+    {
+     "nv": "A",
+     "q": "Evalúa la posfija 6 2 3 + − 3 8 2 / + * 2 ^ 3 +.",
+     "r": "6 − 5 = 1; 3 + 8 / 2 = 7; 1 * 7 = 7; 7 ^ 2 = 49; 49 + 3 = 52. Resultado 52."
+    }
+   ]
+  }
+ ]
+}
