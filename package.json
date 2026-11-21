@@ -1,0 +1,22 @@
+{
+  "name": "privstudypage",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Aplicación web estática de repaso para los exámenes privados de Ingeniería en Sistemas UMG (pensum 2014).",
+  "type": "module",
+  "scripts": {
+    "datos": "node scripts/generar-datos.mjs",
+    "validar": "node scripts/validar.mjs",
+    "predev": "npm run datos",
+    "dev": "vite",
+    "prebuild": "npm run datos",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "katex": "^0.16.22"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
