@@ -1,0 +1,927 @@
+{
+ "slug": "redes-1",
+ "titulo": "Redes de Computadoras I",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 8, código 038, bloque Redes del seminario",
+ "firma": "C=B\\log_2\\!\\left(1+\\frac{S}{N}\\right)",
+ "firma_nota": "Teorema de Shannon: el límite máximo de cualquier canal con ruido.",
+ "lead": "Transmisión de datos, códigos y detección de errores, señales y modulación, medios, dispositivos y servicios, más el modelo OSI, el cableado estructurado y el subneteo que el programa pide dominar al terminar. Los 6 temas del programa y sus resultados esperados están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8RedesI.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y preguntas de opción múltiple que te dicen al instante si acertaste.",
+ "temas": [
+  {
+   "titulo": "Modos de transmisión, ruido y Shannon",
+   "intro": "Tema 1 del programa: modos de transmisión, transmisión y recepción de datos, ruido y teorema de Shannon.",
+   "conceptos": [
+    {
+     "n": "Modos de transmisión",
+     "e": [
+      "<b>Simplex:</b> un solo sentido (radio, TV). <b>Half-duplex:</b> ambos sentidos, uno a la vez (radio de dos vías, Wi-Fi en un canal). <b>Full-duplex:</b> ambos a la vez (teléfono, Ethernet conmutado). Además, la transmisión puede ser serie o paralela y síncrona o asíncrona."
+     ],
+     "u": [
+      "Configurar puertos de switches (dúplex), elegir enlaces.",
+      "Un desajuste de dúplex causa colisiones y lentitud.",
+      "Al configurar o diagnosticar enlaces.",
+      "Verifica que ambos extremos negocien el mismo modo."
+     ]
+    },
+    {
+     "n": "Ruido y capacidad del canal",
+     "e": [
+      "El ruido (térmico, de intermodulación, diafonía, impulsivo) degrada la señal; la relación señal-ruido se expresa en decibeles. <b>Nyquist</b> da la capacidad sin ruido según los niveles de señal M; <b>Shannon</b> da el límite teórico con ruido."
+     ],
+     "u": [
+      "Estimar la velocidad máxima de un enlace telefónico, de radio o DSL.",
+      "Ningún módem supera el límite de Shannon.",
+      "Al dimensionar o evaluar un canal.",
+      "Convierte los dB a razón y aplica la fórmula."
+     ],
+     "f": "C_{Nyquist}=2B\\log_2M\\qquad \\frac{S}{N}=10^{dB/10}"
+    },
+    {
+     "n": "Tiempos de transmisión y propagación",
+     "e": [
+      "El tiempo de <b>transmisión</b> es lo que tarda en ponerse un paquete en la línea (L/R); el de <b>propagación</b>, lo que tarda la señal en recorrer la distancia (d/v, con v ≈ 2×10⁸ m/s en cobre o fibra). La latencia total incluye además colas y procesamiento."
+     ],
+     "u": [
+      "Explicar por qué un enlace satelital se siente lento aunque sea rápido.",
+      "Ancho de banda y latencia son cosas distintas.",
+      "Al analizar rendimiento de aplicaciones remotas.",
+      "Calcula ambos tiempos por separado."
+     ],
+     "f": "t_{tx}=\\frac{L}{R}\\qquad t_{prop}=\\frac{d}{v}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Convierte una relación señal-ruido de 30 dB a razón.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(10^{30/10}=10^3\\).",
+      "<b>Resultado.</b> La señal es 1000 veces más potente que el ruido."
+     ],
+     "r": "S/N = 1000",
+     "fin": "Manejar decibeles."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula la capacidad de Shannon de un canal de 3000 Hz con 30 dB.",
+     "pasos": [
+      "<b>Razón.</b> S/N = 1000.",
+      "<b>Fórmula.</b> \\(3000\\log_2(1001)\\approx3000\\times9.97\\).",
+      "<b>Resultado.</b> ≈ 29.9 kbps."
+     ],
+     "r": "≈ 29.9 kbps",
+     "fin": "Aplicar el límite de Shannon."
+    },
+    {
+     "nv": "I",
+     "q": "Un canal de 3000 Hz sin ruido usa 4 niveles de señal. ¿Capacidad de Nyquist?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(2(3000)\\log_24\\).",
+      "<b>Resultado.</b> 12 kbps."
+     ],
+     "r": "12 kbps",
+     "fin": "Aplicar Nyquist."
+    },
+    {
+     "nv": "A",
+     "q": "Un paquete de 1500 bytes viaja por un enlace de 100 Mbps de 2000 km. Calcula los tiempos de transmisión y propagación.",
+     "pasos": [
+      "<b>Transmisión.</b> \\(\\tfrac{1500\\times8}{100\\times10^6}=120\\) μs.",
+      "<b>Propagación.</b> \\(\\tfrac{2\\times10^6}{2\\times10^8}=10\\) ms.",
+      "<b>Conclusión.</b> En distancias largas domina la propagación."
+     ],
+     "r": "120 μs de transmisión y 10 ms de propagación.",
+     "fin": "Distinguir ancho de banda y latencia."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica: transmisión de radio FM, walkie-talkie y llamada telefónica.",
+     "pasos": [
+      "<b>Radio FM.</b> Simplex.",
+      "<b>Walkie-talkie.</b> Half-duplex.",
+      "<b>Teléfono.</b> Full-duplex."
+     ],
+     "r": "Simplex, half-duplex y full-duplex.",
+     "fin": "Reconocer modos de transmisión."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué modo permite transmitir en ambos sentidos al mismo tiempo?",
+     "ops": [
+      "Simplex",
+      "Half-duplex",
+      "Paralelo",
+      "Full-duplex"
+     ],
+     "ok": 3,
+     "r": "Como una llamada telefónica."
+    },
+    {
+     "nv": "B",
+     "q": "¿A cuántos dB equivale una relación S/N de 100?",
+     "ops": [
+      "10 dB",
+      "100 dB",
+      "2 dB",
+      "20 dB"
+     ],
+     "ok": 3,
+     "r": "10 log₁₀(100) = 20 dB."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué teorema da el límite de capacidad de un canal con ruido?",
+     "ops": [
+      "Nyquist",
+      "Shannon",
+      "Ohm",
+      "Fourier"
+     ],
+     "ok": 1,
+     "r": "Nyquist aplica al canal sin ruido."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ruido proviene de señales de pares vecinos en un cable?",
+     "ops": [
+      "Térmico",
+      "Impulsivo",
+      "Diafonía",
+      "Cuántico"
+     ],
+     "ok": 2,
+     "r": "Por eso los pares van trenzados."
+    },
+    {
+     "nv": "A",
+     "q": "Un enlace satelital de 100 Mbps tiene alta latencia. ¿Qué tiempo la causa principalmente?",
+     "ops": [
+      "El de transmisión",
+      "El de codificación",
+      "Ninguno",
+      "El de propagación"
+     ],
+     "ok": 3,
+     "r": "La señal recorre decenas de miles de kilómetros."
+    }
+   ]
+  },
+  {
+   "titulo": "Códigos y detección y corrección de errores",
+   "intro": "Tema 2 del programa: código de datos, BCD, ASCII y EBCDIC, detección y corrección de errores.",
+   "conceptos": [
+    {
+     "n": "Códigos de datos",
+     "e": [
+      "<b>BCD:</b> cada dígito decimal en 4 bits (59 = 0101 1001). <b>ASCII:</b> 7 bits, 128 caracteres ('A' = 65 = 41h). <b>EBCDIC:</b> 8 bits, usado en mainframes IBM. <b>Unicode</b> (UTF-8) es el estándar actual para todos los idiomas."
+     ],
+     "u": [
+      "Intercambio de archivos entre sistemas, migración de datos de mainframes.",
+      "Un código equivocado produce caracteres ilegibles.",
+      "Al integrar sistemas distintos.",
+      "Identifica la codificación de origen y de destino."
+     ]
+    },
+    {
+     "n": "Detección de errores",
+     "e": [
+      "<b>Paridad:</b> un bit para que el total de unos sea par (o impar); detecta errores de un bit. <b>Suma de verificación:</b> suma de bloques (usada en IP, TCP, UDP). <b>CRC:</b> se divide (módulo 2) el mensaje por un polinomio generador y se envía el residuo; detecta ráfagas de errores (Ethernet, Wi-Fi)."
+     ],
+     "u": [
+      "Integridad de tramas de red, archivos descargados.",
+      "Evita usar datos corruptos.",
+      "En toda comunicación digital.",
+      "Calcula el código en el emisor y verifícalo en el receptor."
+     ]
+    },
+    {
+     "n": "Corrección: código de Hamming",
+     "e": [
+      "Agrega r bits de paridad en las posiciones potencia de 2 (1, 2, 4, 8…) con \\(2^r\\ge m+r+1\\). Cada bit de paridad cubre las posiciones cuyo número binario lo incluye. En el receptor, el síndrome (suma de las posiciones de paridad que fallan) indica qué bit está mal."
+     ],
+     "u": [
+      "Memorias ECC de servidores, comunicaciones espaciales.",
+      "Corrige sin retransmitir.",
+      "Cuando retransmitir es costoso o imposible.",
+      "Calcula los bits de paridad y el síndrome."
+     ],
+     "f": "2^r\\ge m+r+1"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula el bit de paridad par de 1010110.",
+     "pasos": [
+      "<b>Cuenta unos.</b> 4.",
+      "<b>Paridad par.</b> Ya es par: el bit es 0."
+     ],
+     "r": "0",
+     "fin": "Aplicar paridad."
+    },
+    {
+     "nv": "I",
+     "q": "Codifica los datos 1011 con Hamming (7,4).",
+     "pasos": [
+      "<b>Posiciones de datos.</b> 3, 5, 6, 7 = 1, 0, 1, 1.",
+      "<b>p1</b> (1, 3, 5, 7): 1⊕0⊕1 = 0. <b>p2</b> (2, 3, 6, 7): 1⊕1⊕1 = 1. <b>p4</b> (4, 5, 6, 7): 0⊕1⊕1 = 0.",
+      "<b>Palabra.</b> p1 p2 d1 p4 d2 d3 d4."
+     ],
+     "r": "0110011",
+     "fin": "Construir un código corrector."
+    },
+    {
+     "nv": "A",
+     "q": "Se recibe 0110111. Detecta y corrige el error.",
+     "pasos": [
+      "<b>Revisa p1</b> (1, 3, 5, 7): 0⊕1⊕1⊕1 = 1: falla.",
+      "<b>Revisa p2</b> (2, 3, 6, 7): 1⊕1⊕1⊕1 = 0: correcto.",
+      "<b>Revisa p4</b> (4, 5, 6, 7): 0⊕1⊕1⊕1 = 1: falla.",
+      "<b>Síndrome.</b> 1 + 4 = 5: el bit 5 está mal; se invierte."
+     ],
+     "r": "Palabra correcta 0110011.",
+     "fin": "Corregir errores con Hamming."
+    },
+    {
+     "nv": "A",
+     "q": "Calcula el CRC de 1101011011 con el generador 10011.",
+     "pasos": [
+      "<b>Agrega ceros.</b> Tantos como el grado del generador (4): 11010110110000.",
+      "<b>Divide módulo 2</b> (XOR) entre 10011.",
+      "<b>Residuo.</b> 1110: se envía 11010110111110."
+     ],
+     "r": "CRC = 1110",
+     "fin": "Calcular un CRC."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántos bits de paridad de Hamming necesitan 8 bits de datos?",
+     "pasos": [
+      "<b>Prueba r = 3.</b> \\(8\\ge8+3+1=12\\): no.",
+      "<b>Prueba r = 4.</b> \\(16\\ge13\\): sí."
+     ],
+     "r": "4 bits",
+     "fin": "Dimensionar un código de Hamming."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe 59 en BCD.",
+     "r": "0101 1001"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué valor ASCII decimal tiene 'a'?",
+     "r": "97 (61h)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué detecta el CRC que la paridad simple no?",
+     "r": "Ráfagas de varios errores y la mayoría de errores múltiples."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace una memoria ECC de servidor?",
+     "r": "Detecta y corrige errores de un bit con códigos tipo Hamming."
+    },
+    {
+     "nv": "A",
+     "q": "Con Hamming (7,4), ¿qué indica un síndrome 0?",
+     "r": "Que no se detectó error."
+    }
+   ]
+  },
+  {
+   "titulo": "Señales y modulación",
+   "intro": "Tema 3 del programa: señales analógicas y digitales, procesamiento, modulación analógica, FSK y PSK, módems.",
+   "conceptos": [
+    {
+     "n": "Señales analógicas y digitales",
+     "e": [
+      "Una señal analógica varía de forma continua (amplitud, frecuencia, fase); una digital toma valores discretos. Para digitalizar se muestrea a más del doble de la frecuencia máxima (Nyquist) y se cuantifica; la codificación de línea (NRZ, Manchester) representa los bits en el medio."
+     ],
+     "u": [
+      "Telefonía digital, audio, transmisión de datos por cobre.",
+      "Lo digital resiste mejor el ruido y se regenera.",
+      "Al convertir o transmitir información.",
+      "Muestrea al doble de la frecuencia máxima como mínimo."
+     ],
+     "f": "f_{muestreo}\\ge2f_{max}"
+    },
+    {
+     "n": "Modulación",
+     "e": [
+      "Analógica: <b>AM</b> (amplitud), <b>FM</b> (frecuencia) y <b>PM</b> (fase). Digital: ASK, <b>FSK</b> (frecuencias distintas para 0 y 1), <b>PSK</b> (cambios de fase; BPSK 1 bit, QPSK 2 bits por símbolo) y <b>QAM</b> (amplitud y fase; 16-QAM 4 bits, 256-QAM 8 bits por símbolo). Más bits por símbolo exigen mejor relación señal-ruido."
+     ],
+     "u": [
+      "Wi-Fi, módems de cable y DSL, telefonía celular.",
+      "Permite enviar datos digitales por canales analógicos.",
+      "Al entender velocidades de enlaces inalámbricos.",
+      "Bits por símbolo = log₂(niveles)."
+     ],
+     "f": "\\text{bits/s}=\\text{baudios}\\times\\log_2M"
+    },
+    {
+     "n": "Módems",
+     "e": [
+      "El módem modula y demodula: convierte datos digitales en una señal apta para el medio y viceversa. Ejemplos: módems telefónicos (hasta 56 kbps), DSL, de cable (DOCSIS) y ópticos (ONT de fibra)."
+     ],
+     "u": [
+      "Conexión de oficinas y hogares a internet.",
+      "Es el puente entre la red digital y el medio físico.",
+      "Al instalar un enlace de internet.",
+      "Identifica el tipo de medio del proveedor."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿A qué frecuencia mínima se debe muestrear la voz telefónica (hasta 4 kHz)?",
+     "pasos": [
+      "<b>Nyquist.</b> \\(2\\times4000\\).",
+      "<b>Resultado.</b> 8000 muestras por segundo."
+     ],
+     "r": "8 kHz",
+     "fin": "Aplicar el teorema de muestreo."
+    },
+    {
+     "nv": "I",
+     "q": "Un enlace transmite 2400 baudios con 16-QAM. ¿Velocidad en bits?",
+     "pasos": [
+      "<b>Bits por símbolo.</b> \\(\\log_216=4\\).",
+      "<b>Velocidad.</b> \\(2400\\times4=9600\\) bps."
+     ],
+     "r": "9600 bps",
+     "fin": "Relacionar baudios y bits."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la velocidad de la telefonía digital básica (8 kHz, 8 bits por muestra)?",
+     "pasos": [
+      "<b>Cálculo.</b> \\(8000\\times8\\).",
+      "<b>Resultado.</b> 64 kbps (un canal DS0)."
+     ],
+     "r": "64 kbps",
+     "fin": "Entender el canal digital de voz."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué el Wi-Fi baja de 256-QAM a QPSK cuando te alejas del punto de acceso?",
+     "pasos": [
+      "<b>Señal más débil.</b> Baja la relación señal-ruido.",
+      "<b>Efecto.</b> Los símbolos de 256-QAM están muy juntos y se confunden con el ruido.",
+      "<b>Adaptación.</b> Se usa una modulación más robusta con menos bits por símbolo: menos velocidad, menos errores."
+     ],
+     "r": "Por la relación señal-ruido: menos bits por símbolo, más robustez.",
+     "fin": "Entender la velocidad variable del Wi-Fi."
+    },
+    {
+     "nv": "B",
+     "q": "Diferencia FSK y PSK.",
+     "pasos": [
+      "<b>FSK.</b> Cambia la frecuencia para representar 0 y 1.",
+      "<b>PSK.</b> Cambia la fase de la portadora."
+     ],
+     "r": "FSK usa frecuencia; PSK, fase.",
+     "fin": "Distinguir modulaciones digitales."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué varía la modulación AM?",
+     "r": "La amplitud de la portadora."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántos bits por símbolo lleva 64-QAM?",
+     "r": "6"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué velocidad tiene un enlace de 1000 baudios con QPSK?",
+     "r": "2000 bps"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace un módem?",
+     "r": "Modula y demodula: convierte datos digitales en señal para el medio y viceversa."
+    },
+    {
+     "nv": "A",
+     "q": "Un audio de hasta 20 kHz se muestrea a 44.1 kHz con 16 bits en estéreo. ¿Velocidad?",
+     "r": "44 100 × 16 × 2 ≈ 1.41 Mbps."
+    }
+   ]
+  },
+  {
+   "titulo": "Medios de transmisión",
+   "intro": "Tema 4 del programa: espectro de frecuencia, ancho de banda, medios guiados (coaxial, cobre), no guiados (radio, satélite) y fibra óptica.",
+   "conceptos": [
+    {
+     "n": "Espectro y ancho de banda",
+     "e": [
+      "El espectro electromagnético se divide en bandas (HF, VHF, UHF, microondas). El ancho de banda es el rango de frecuencias que un medio transmite bien; a más ancho de banda, más capacidad. La atenuación (pérdida de potencia) crece con la distancia y la frecuencia."
+     ],
+     "u": [
+      "Elegir frecuencias y medios para enlaces.",
+      "Define cuánta información y a qué distancia.",
+      "Al planificar un enlace.",
+      "Compara ancho de banda y atenuación por distancia."
+     ]
+    },
+    {
+     "n": "Medios guiados",
+     "e": [
+      "<b>Par trenzado</b> (UTP, STP): Cat 5e (1 Gbps), Cat 6 (10 Gbps hasta 55 m), Cat 6A (10 Gbps a 100 m); 100 m máximo por segmento. <b>Coaxial:</b> blindado, para TV e internet por cable. <b>Fibra óptica:</b> luz guiada por reflexión interna total; multimodo (cientos de metros) y monomodo (decenas de kilómetros), inmune a interferencia electromagnética."
+     ],
+     "u": [
+      "Cableado de oficinas, enlaces entre edificios, troncales de proveedores.",
+      "Cada medio tiene su alcance y costo.",
+      "Al diseñar el cableado.",
+      "Usa UTP en el escritorio y fibra entre edificios."
+     ]
+    },
+    {
+     "n": "Medios no guiados",
+     "e": [
+      "<b>Radio y microondas</b> terrestres (enlaces punto a punto con línea de vista), <b>satélite</b> (GEO a 35 786 km con alta latencia; LEO con baja latencia) e infrarrojo. Sufren interferencia, obstáculos y condiciones climáticas."
+     ],
+     "u": [
+      "Enlaces rurales, Wi-Fi, internet satelital.",
+      "Llegan donde el cable no.",
+      "Cuando no se puede cablear.",
+      "Verifica línea de vista y alcance."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué medio usarías para unir dos edificios a 800 m y por qué?",
+     "pasos": [
+      "<b>UTP.</b> No sirve: máximo 100 m.",
+      "<b>Fibra monomodo o multimodo según el equipo.</b> Alcanza la distancia y es inmune a interferencias y descargas."
+     ],
+     "r": "Fibra óptica.",
+     "fin": "Elegir el medio adecuado."
+    },
+    {
+     "nv": "I",
+     "q": "Un enlace de fibra de 10 km tiene 0.35 dB/km, 2 conectores de 0.5 dB y 3 empalmes de 0.1 dB. ¿Pérdida total?",
+     "pasos": [
+      "<b>Fibra.</b> \\(10\\times0.35=3.5\\) dB.",
+      "<b>Conectores y empalmes.</b> \\(1+0.3=1.3\\) dB.",
+      "<b>Total.</b> 4.8 dB."
+     ],
+     "r": "4.8 dB",
+     "fin": "Calcular un presupuesto de pérdidas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto tarda una señal en ir y volver de un satélite GEO (35 786 km)?",
+     "pasos": [
+      "<b>Ida (Tierra-satélite-Tierra).</b> \\(\\tfrac{2\\times35786}{300000}\\approx0.24\\) s.",
+      "<b>Ida y vuelta de una petición.</b> ≈ 0.48 s más procesamiento."
+     ],
+     "r": "≈ 0.24 s en un sentido; ≈ 0.5 s ida y vuelta.",
+     "fin": "Entender la latencia satelital."
+    },
+    {
+     "nv": "A",
+     "q": "Compara Cat 6 y Cat 6A para 10 Gbps a 90 m.",
+     "pasos": [
+      "<b>Cat 6.</b> 10 Gbps solo hasta unos 55 m.",
+      "<b>Cat 6A.</b> 10 Gbps hasta 100 m.",
+      "<b>Elección.</b> Cat 6A."
+     ],
+     "r": "Cat 6A.",
+     "fin": "Elegir cableado según distancia y velocidad."
+    },
+    {
+     "nv": "B",
+     "q": "¿Por qué la fibra es inmune a la interferencia electromagnética?",
+     "pasos": [
+      "<b>Transporta luz.</b> No conduce corriente eléctrica.",
+      "<b>Consecuencia.</b> No le afectan motores, rayos ni cables de energía cercanos."
+     ],
+     "r": "Porque usa luz, no electricidad.",
+     "fin": "Justificar el uso de fibra."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es la distancia máxima de un segmento UTP Ethernet?",
+     "r": "100 m"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia hay entre fibra multimodo y monomodo?",
+     "r": "La multimodo tiene núcleo grande y alcanza cientos de metros; la monomodo, núcleo pequeño y decenas de kilómetros."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué medio usa la TV por cable?",
+     "r": "Coaxial (con troncales de fibra: HFC)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ventaja tienen los satélites LEO sobre los GEO?",
+     "r": "Menor latencia por su menor altura."
+    },
+    {
+     "nv": "A",
+     "q": "Un enlace de microondas pierde señal en tormentas fuertes. ¿Por qué?",
+     "r": "La lluvia atenúa las frecuencias altas de microondas (desvanecimiento por lluvia)."
+    }
+   ]
+  },
+  {
+   "titulo": "Dispositivos de networking",
+   "intro": "Tema 5 del programa: hub, bridge, switch y router.",
+   "conceptos": [
+    {
+     "n": "Hub, bridge y switch",
+     "e": [
+      "El <b>hub</b> repite todo a todos los puertos (capa 1): un solo dominio de colisión. El <b>bridge</b> separa segmentos filtrando por MAC (capa 2). El <b>switch</b> es un bridge multipuerto: aprende las MAC de cada puerto (tabla CAM) y reenvía solo al destino; cada puerto es su propio dominio de colisión, pero todo el switch es un dominio de difusión (salvo con VLAN)."
+     ],
+     "u": [
+      "Redes LAN de oficinas y centros de datos.",
+      "El switch reduce colisiones y mejora la seguridad.",
+      "Al diseñar o ampliar una LAN.",
+      "Usa switches; el hub está obsoleto."
+     ]
+    },
+    {
+     "n": "Router",
+     "e": [
+      "El <b>router</b> (capa 3) conecta redes distintas y decide el camino por la dirección IP con su tabla de rutas; separa dominios de difusión. Otros: punto de acceso inalámbrico, firewall, switch de capa 3 (enruta entre VLAN)."
+     ],
+     "u": [
+      "Conexión a internet, enlaces entre sedes, separación de redes.",
+      "Sin router no hay comunicación entre redes distintas.",
+      "Al conectar redes.",
+      "Configura interfaces, rutas y seguridad."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ubica en el modelo OSI: hub, switch y router.",
+     "pasos": [
+      "<b>Hub.</b> Capa 1 (física).",
+      "<b>Switch.</b> Capa 2 (enlace).",
+      "<b>Router.</b> Capa 3 (red)."
+     ],
+     "r": "Capas 1, 2 y 3.",
+     "fin": "Relacionar dispositivos y capas."
+    },
+    {
+     "nv": "I",
+     "q": "Una red tiene un router con dos interfaces; en cada una hay un switch de 24 puertos con 20 equipos. ¿Cuántos dominios de colisión y de difusión hay?",
+     "pasos": [
+      "<b>Colisión.</b> Uno por puerto usado de switch (40) más los 2 enlaces router-switch: 42.",
+      "<b>Difusión.</b> Uno por interfaz del router: 2."
+     ],
+     "r": "42 de colisión y 2 de difusión.",
+     "fin": "Contar dominios, pregunta clásica."
+    },
+    {
+     "nv": "I",
+     "q": "Explica cómo aprende un switch las direcciones MAC.",
+     "pasos": [
+      "<b>Al recibir una trama.</b> Anota la MAC de origen y el puerto en su tabla.",
+      "<b>Al reenviar.</b> Si conoce la MAC de destino, envía solo por ese puerto; si no, inunda todos los puertos menos el de origen."
+     ],
+     "r": "Aprende por origen y reenvía por destino.",
+     "fin": "Entender el funcionamiento del switch."
+    },
+    {
+     "nv": "A",
+     "q": "Una red con hubs se vuelve muy lenta al crecer. ¿Qué pasa y qué propones?",
+     "pasos": [
+      "<b>Causa.</b> Un solo dominio de colisión: todos compiten y chocan; además todos ven todo el tráfico.",
+      "<b>Propuesta.</b> Cambiar a switches y segmentar con VLAN o routers si hay mucho broadcast."
+     ],
+     "r": "Colisiones; reemplazar por switches y segmentar.",
+     "fin": "Diagnosticar una red heredada."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué dispositivo necesitas para que la red de la oficina salga a internet?",
+     "pasos": [
+      "<b>Router.</b> Conecta la red local con la del proveedor y enruta entre ellas.",
+      "<b>NAT.</b> Traduce las direcciones privadas de la oficina a la dirección pública asignada."
+     ],
+     "r": "Un router.",
+     "fin": "Identificar la función del router."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué dispositivo reenvía tramas solo al puerto del destino según la MAC?",
+     "ops": [
+      "Hub",
+      "Repetidor",
+      "Switch",
+      "Módem"
+     ],
+     "ok": 2,
+     "r": "Usa su tabla de direcciones MAC."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué capa trabaja el router?",
+     "ops": [
+      "1",
+      "2",
+      "3",
+      "7"
+     ],
+     "ok": 2,
+     "r": "Capa de red, con direcciones IP."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué separa dominios de difusión?",
+     "ops": [
+      "Un hub",
+      "Un router",
+      "Un switch sin VLAN",
+      "Un repetidor"
+     ],
+     "ok": 1,
+     "r": "Los broadcasts no cruzan el router."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace un switch con una trama cuyo destino no conoce?",
+     "ops": [
+      "La descarta",
+      "La envía al router",
+      "La inunda por todos los puertos menos el de origen",
+      "La guarda"
+     ],
+     "ok": 2,
+     "r": "Luego aprende la MAC con la respuesta."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué dispositivo enruta entre VLAN sin un router externo?",
+     "ops": [
+      "Hub",
+      "Bridge",
+      "Repetidor",
+      "Switch de capa 3"
+     ],
+     "ok": 3,
+     "r": "Combina conmutación y enrutamiento."
+    }
+   ]
+  },
+  {
+   "titulo": "Modelo OSI, cableado estructurado y subneteo",
+   "intro": "Resultados esperados del programa: modelo OSI, cableado estructurado, diagramación de redes y subneteo.",
+   "conceptos": [
+    {
+     "n": "Modelo OSI",
+     "e": [
+      "Siete capas: 7 aplicación, 6 presentación, 5 sesión, 4 transporte, 3 red, 2 enlace de datos, 1 física. Cada capa ofrece servicios a la superior; los datos se encapsulan al bajar (segmento, paquete, trama, bits) y se desencapsulan al subir."
+     ],
+     "u": [
+      "Diagnosticar problemas de red capa por capa.",
+      "Da un lenguaje común para describir redes.",
+      "Al analizar fallas o protocolos.",
+      "Revisa desde la capa física hacia arriba."
+     ]
+    },
+    {
+     "n": "Cableado estructurado",
+     "e": [
+      "Normas TIA/EIA-568: esquemas de conexión T568A y T568B; cable directo (mismo esquema en ambos extremos) y cruzado (uno A y otro B). Subsistemas: área de trabajo, cableado horizontal (90 m + 10 m de cordones), backbone, cuarto de telecomunicaciones y sala de equipos. Todo se etiqueta y se documenta en un diagrama."
+     ],
+     "u": [
+      "Instalación de redes en oficinas y laboratorios.",
+      "Un cableado ordenado facilita crecer y diagnosticar.",
+      "Al diseñar la infraestructura física.",
+      "Sigue la norma, respeta distancias y documenta."
+     ]
+    },
+    {
+     "n": "Direccionamiento y subneteo IPv4",
+     "e": [
+      "Una dirección IPv4 tiene 32 bits; la máscara separa red y hosts. Con h bits de host hay \\(2^h-2\\) hosts útiles (se restan red y broadcast); al tomar s bits para subredes se obtienen \\(2^s\\) subredes. El salto entre subredes es 256 menos el valor del octeto de la máscara."
+     ],
+     "u": [
+      "Planear direcciones de una institución, separar departamentos.",
+      "Ordena la red y limita el broadcast.",
+      "Al diseñar o ampliar una red.",
+      "Calcula prefijo, máscara, salto, rango y broadcast."
+     ],
+     "f": "\\text{hosts}=2^{h}-2\\qquad \\text{subredes}=2^{s}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ordena las capas del modelo OSI de abajo hacia arriba.",
+     "pasos": [
+      "<b>1–4.</b> Física, enlace de datos, red, transporte.",
+      "<b>5–7.</b> Sesión, presentación, aplicación."
+     ],
+     "r": "Física, enlace, red, transporte, sesión, presentación, aplicación.",
+     "fin": "Memorizar el modelo."
+    },
+    {
+     "nv": "I",
+     "q": "Divide 192.168.10.0/24 en 4 subredes.",
+     "pasos": [
+      "<b>Bits prestados.</b> 2 (\\(2^2=4\\)): prefijo /26, máscara 255.255.255.192.",
+      "<b>Salto.</b> 256 − 192 = 64.",
+      "<b>Subredes.</b> .0, .64, .128 y .192, cada una con 62 hosts."
+     ],
+     "r": "Cuatro /26 de 62 hosts: .0, .64, .128, .192.",
+     "fin": "Subnetear una red clase C."
+    },
+    {
+     "nv": "A",
+     "q": "Divide 172.16.0.0/16 en 8 subredes y da rango y broadcast de la tercera.",
+     "pasos": [
+      "<b>Bits.</b> 3: prefijo /19, máscara 255.255.224.0, salto 32 en el tercer octeto.",
+      "<b>Subredes.</b> 172.16.0.0, .32.0, .64.0, …",
+      "<b>Tercera.</b> 172.16.64.0/19: hosts .64.1 a .95.254, broadcast 172.16.95.255."
+     ],
+     "r": "172.16.64.0/19, broadcast 172.16.95.255.",
+     "fin": "Subnetear redes más grandes."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué cable usas para conectar una PC a un switch y qué esquema?",
+     "pasos": [
+      "<b>Tipo.</b> Directo: el mismo esquema en ambos extremos.",
+      "<b>Esquema.</b> T568B en ambos lados (o T568A en ambos)."
+     ],
+     "r": "Cable directo con T568B en ambos extremos.",
+     "fin": "Armar cables correctamente."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué unidad de datos maneja cada capa: transporte, red y enlace?",
+     "pasos": [
+      "<b>Transporte.</b> Segmento.",
+      "<b>Red.</b> Paquete.",
+      "<b>Enlace.</b> Trama."
+     ],
+     "r": "Segmento, paquete y trama.",
+     "fin": "Entender el encapsulamiento."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos hosts útiles tiene una red /27?",
+     "r": "30"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué máscara corresponde a /20?",
+     "r": "255.255.240.0"
+    },
+    {
+     "nv": "I",
+     "q": "¿A qué subred pertenece 192.168.1.130/26?",
+     "r": "192.168.1.128/26"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué longitud máxima tiene el cableado horizontal permanente según TIA-568?",
+     "r": "90 m (más 10 m de cordones)."
+    },
+    {
+     "nv": "A",
+     "q": "Necesitas 6 subredes de al menos 25 hosts a partir de 192.168.5.0/24. ¿Qué prefijo usas?",
+     "r": "/27: 8 subredes de 30 hosts."
+    }
+   ]
+  },
+  {
+   "titulo": "Servicios y redes de alta velocidad",
+   "intro": "Tema 6 del programa: videoconferencia, redes de alta velocidad, ATM, RDSI y xDSL.",
+   "conceptos": [
+    {
+     "n": "Videoconferencia y calidad de servicio",
+     "e": [
+      "La videoconferencia transmite audio y video en tiempo real; es sensible a la latencia (idealmente menos de 150 ms en un sentido), al jitter (variación de la latencia) y a la pérdida de paquetes. Se usan códecs (H.264, H.265, Opus), protocolos como SIP o WebRTC y calidad de servicio (QoS) para priorizar ese tráfico."
+     ],
+     "u": [
+      "Clases virtuales, reuniones remotas, telemedicina.",
+      "Sin QoS el video se corta aunque haya ancho de banda.",
+      "Al preparar la red para tiempo real.",
+      "Mide latencia, jitter y pérdida, y prioriza voz y video."
+     ]
+    },
+    {
+     "n": "RDSI y ATM",
+     "e": [
+      "<b>RDSI</b> (ISDN) digitalizó la red telefónica: canales B de 64 kbps para datos o voz y un canal D de señalización; el acceso básico es 2B + D (144 kbps). <b>ATM</b> conmuta celdas fijas de 53 bytes (5 de encabezado y 48 de datos) con circuitos virtuales y calidad de servicio; fue base de redes de proveedores y de ADSL."
+     ],
+     "u": [
+      "Entender la evolución de las redes de proveedores.",
+      "Introdujeron la conmutación digital y la QoS.",
+      "Al estudiar redes WAN heredadas.",
+      "Calcula capacidad por número de canales."
+     ]
+    },
+    {
+     "n": "xDSL",
+     "e": [
+      "Usa el par telefónico existente con frecuencias por encima de la voz. <b>ADSL</b> es asimétrico (más bajada que subida); <b>VDSL</b> alcanza más velocidad a menor distancia de la central. La velocidad cae con la distancia al equipo del proveedor (DSLAM). Hoy la fibra hasta el hogar (FTTH) lo está reemplazando."
+     ],
+     "u": [
+      "Internet en hogares y pequeñas oficinas.",
+      "Aprovecha la infraestructura telefónica.",
+      "Donde no hay fibra.",
+      "Verifica la distancia a la central y el perfil contratado."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué capacidad tiene un acceso básico RDSI 2B + D?",
+     "pasos": [
+      "<b>Canales B.</b> \\(2\\times64=128\\) kbps.",
+      "<b>Canal D.</b> 16 kbps.",
+      "<b>Total.</b> 144 kbps."
+     ],
+     "r": "144 kbps (128 para datos o voz).",
+     "fin": "Calcular capacidad RDSI."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué porcentaje de una celda ATM es encabezado?",
+     "pasos": [
+      "<b>Encabezado.</b> 5 bytes de 53.",
+      "<b>Porcentaje.</b> \\(\\tfrac{5}{53}\\approx9.4\\%\\)."
+     ],
+     "r": "≈ 9.4 %",
+     "fin": "Entender la sobrecarga de ATM."
+    },
+    {
+     "nv": "I",
+     "q": "Una videollamada se ve entrecortada aunque el enlace tiene ancho de banda de sobra. ¿Qué revisas?",
+     "pasos": [
+      "<b>Jitter y pérdida.</b> Con herramientas de monitoreo o pruebas.",
+      "<b>Congestión.</b> Descargas compitiendo con el video.",
+      "<b>Solución.</b> QoS que priorice voz y video."
+     ],
+     "r": "Jitter, pérdida y falta de QoS.",
+     "fin": "Diagnosticar calidad de tiempo real."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué ADSL ofrece más bajada que subida y por qué funciona a la vez que el teléfono?",
+     "pasos": [
+      "<b>Asimetría.</b> La mayoría de usuarios descarga más de lo que sube; se asignan más frecuencias a la bajada.",
+      "<b>Convivencia.</b> La voz usa hasta 4 kHz y ADSL frecuencias mucho más altas; un filtro (splitter) las separa."
+     ],
+     "r": "Asimetría por uso típico; frecuencias separadas de la voz.",
+     "fin": "Entender xDSL."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona tres parámetros que afectan una videoconferencia.",
+     "pasos": [
+      "<b>Latencia.</b> Retardo de extremo a extremo.",
+      "<b>Jitter.</b> Variación del retardo.",
+      "<b>Pérdida de paquetes.</b> Datos que no llegan."
+     ],
+     "r": "Latencia, jitter y pérdida.",
+     "fin": "Conocer las métricas de tiempo real."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos bytes tiene una celda ATM?",
+     "r": "53 (5 de encabezado y 48 de datos)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué significa la A de ADSL?",
+     "r": "Asimétrico."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué pasa con la velocidad DSL al alejarse de la central?",
+     "r": "Disminuye por la atenuación del par de cobre."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué mecanismo de red prioriza el tráfico de voz y video?",
+     "r": "Calidad de servicio (QoS)."
+    },
+    {
+     "nv": "A",
+     "q": "Cuántos canales B de RDSI se necesitan para una videoconferencia de 384 kbps?",
+     "r": "6 canales B (6 × 64 = 384 kbps)."
+    }
+   ]
+  }
+ ]
+}

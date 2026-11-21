@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Guías de repaso para el Seminario de Privados de Ingeniería en Sistemas UMG, pensum 2014: temas, conceptos, ejercicios resueltos, ejercicios para resolver, cuestionarios y modo examen.">
+  <title>Privados UMG</title>
+  <script>try{var t=localStorage.getItem('guia-tema');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="saltar ui" href="#app">Saltar al contenido</a>
+  <header class="top">
+    <div class="top-in">
+      <button class="btn btn-indice" type="button" aria-expanded="false" aria-controls="toc" hidden>Índice</button>
+      <a class="marca ui" href="#/">Privados UMG</a>
+      <span class="curso ui" id="barra-titulo"></span>
+      <span class="barra" id="barra-avance" aria-hidden="true" hidden><i></i></span>
+      <span class="prog ui" id="barra-prog"></span>
+      <nav class="nav-top ui" aria-label="Principal">
+        <a href="#/" data-nav="inicio">Áreas</a>
+        <a href="#/examen" data-nav="examen"><span class="solo-ancho">Modo examen</span><span class="solo-movil">Examen</span></a>
+      </nav>
+      <button class="btn btn-tema" type="button">Modo claro</button>
+    </div>
+  </header>
+  <div id="app" tabindex="-1"><p class="cargando ui">Cargando…</p></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

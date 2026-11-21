@@ -1,0 +1,851 @@
+{
+ "slug": "sistemas-operativos-2",
+ "titulo": "Sistemas Operativos II",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 7, código 090033, bloque Sistemas operativos del seminario",
+ "firma": "T_{acceso}=T_{\\text{búsqueda}}+T_{\\text{latencia}}+T_{\\text{transferencia}}",
+ "firma_nota": "El tiempo de acceso a disco, que explica por qué importan la planificación y la caché.",
+ "lead": "Memoria virtual, entrada y salida, planificación de procesos y de disco, RAID, programación en Bash y administración de un servidor Linux con DHCP, FTP, Samba, SSH, correo y LAMP. Es el curso más cercano al trabajo diario de un administrador de sistemas. Los 8 temas del programa están organizados en 6 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7SOII.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y preguntas de opción múltiple que te dicen al instante si acertaste. Los comandos son de Linux (Debian, Ubuntu o derivados de Red Hat).",
+ "temas": [
+  {
+   "titulo": "Software libre y memoria virtual",
+   "intro": "Temas 1 y 2 del programa: software libre, administración de memoria, memoria virtual e interbloqueos.",
+   "conceptos": [
+    {
+     "n": "Software libre y licencias",
+     "e": [
+      "El software libre garantiza cuatro libertades: usar, estudiar, modificar y distribuir. Licencias: <b>GPL</b> (copyleft: las obras derivadas que se distribuyan deben mantener la misma licencia), LGPL, <b>MIT</b> y <b>BSD</b> (permisivas) y <b>Apache 2.0</b> (permisiva con concesión de patentes). Código abierto no siempre significa gratuito, ni gratuito significa libre."
+     ],
+     "u": [
+      "Elegir componentes para un sistema institucional, cumplir licencias al distribuir software.",
+      "Una licencia mal entendida puede obligar a liberar código propio.",
+      "Al incorporar bibliotecas o distribuciones.",
+      "Revisa la licencia de cada dependencia antes de usarla."
+     ]
+    },
+    {
+     "n": "Memoria virtual y reemplazo de páginas",
+     "e": [
+      "Con paginación por demanda solo se cargan las páginas usadas; acceder a una ausente provoca un <b>fallo de página</b> y el sistema la trae del disco. Reemplazo: <b>FIFO</b> (la más antigua; sufre la anomalía de Belady: más marcos pueden dar más fallos), <b>óptimo</b> (la que más tardará en usarse; referencia teórica), <b>LRU</b> (la menos usada recientemente) y <b>reloj</b> (aproxima LRU). La <b>hiperpaginación</b> ocurre cuando se pagina más de lo que se ejecuta."
+     ],
+     "u": [
+      "Servidores con poca RAM y mucho swap, bases de datos lentas.",
+      "Explica caídas de rendimiento por falta de memoria.",
+      "Al diagnosticar lentitud o dimensionar RAM.",
+      "Simula la cadena de referencias marco por marco."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una empresa modifica una biblioteca GPL y distribuye su programa a clientes. ¿Qué obligación tiene? ¿Y si la biblioteca fuera MIT?",
+     "pasos": [
+      "<b>GPL.</b> Debe entregar el código fuente de la obra derivada bajo GPL.",
+      "<b>MIT.</b> Solo debe conservar el aviso de copyright y la licencia; puede cerrar su código."
+     ],
+     "r": "GPL exige liberar la obra derivada; MIT no.",
+     "fin": "Evitar problemas legales al usar software libre."
+    },
+    {
+     "nv": "I",
+     "q": "Cadena 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2 con 3 marcos. Fallos con FIFO.",
+     "pasos": [
+      "<b>Carga inicial.</b> 7, 0, 1: 3 fallos.",
+      "<b>Siguientes.</b> Se reemplaza siempre la más antigua.",
+      "<b>Total.</b> 10 fallos."
+     ],
+     "r": "10 fallos",
+     "fin": "Simular FIFO."
+    },
+    {
+     "nv": "I",
+     "q": "Misma cadena con LRU y con el óptimo.",
+     "pasos": [
+      "<b>LRU.</b> Se reemplaza la menos usada recientemente: 9 fallos.",
+      "<b>Óptimo.</b> Se reemplaza la que más tardará en usarse: 7 fallos.",
+      "<b>Lectura.</b> El óptimo es el mínimo posible; LRU se le acerca."
+     ],
+     "r": "LRU 9; óptimo 7.",
+     "fin": "Comparar algoritmos de reemplazo."
+    },
+    {
+     "nv": "A",
+     "q": "Muestra la anomalía de Belady con la cadena 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5 y FIFO.",
+     "pasos": [
+      "<b>3 marcos.</b> 9 fallos.",
+      "<b>4 marcos.</b> 10 fallos.",
+      "<b>Conclusión.</b> Con FIFO, más memoria produjo más fallos."
+     ],
+     "r": "9 fallos con 3 marcos y 10 con 4.",
+     "fin": "Entender por qué FIFO es poco fiable."
+    },
+    {
+     "nv": "I",
+     "q": "Un servidor tiene el CPU casi inactivo, el disco al 100 % y mucho uso de swap. ¿Qué ocurre y qué haces?",
+     "pasos": [
+      "<b>Diagnóstico.</b> Hiperpaginación: los procesos no caben en RAM.",
+      "<b>Acciones.</b> Agregar RAM, reducir procesos o servicios, o limitar la memoria de cada uno."
+     ],
+     "r": "Hiperpaginación; hay que reducir la presión de memoria.",
+     "fin": "Diagnosticar un problema real de servidores."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué licencia obliga a distribuir las obras derivadas con la misma licencia?",
+     "ops": [
+      "GPL",
+      "MIT",
+      "BSD",
+      "Apache 2.0"
+     ],
+     "ok": 0,
+     "r": "Es la característica del copyleft."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué ocurre cuando un proceso accede a una página que no está en RAM?",
+     "ops": [
+      "Se reinicia",
+      "Un interbloqueo",
+      "Un error de sintaxis",
+      "Un fallo de página"
+     ],
+     "ok": 3,
+     "r": "El sistema la trae del disco y reanuda el proceso."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué algoritmo es imposible de implementar en la práctica pero sirve de referencia?",
+     "ops": [
+      "FIFO",
+      "Óptimo",
+      "LRU",
+      "Reloj"
+     ],
+     "ok": 1,
+     "r": "Requiere conocer las referencias futuras."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué algoritmo aproxima LRU con un bit de referencia y un puntero circular?",
+     "ops": [
+      "FIFO",
+      "Óptimo",
+      "Aleatorio",
+      "Reloj (segunda oportunidad)"
+     ],
+     "ok": 3,
+     "r": "Da una segunda oportunidad a las páginas usadas recientemente."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la causa típica de la hiperpaginación?",
+     "ops": [
+      "Demasiados núcleos",
+      "Discos muy rápidos",
+      "Muy poca memoria para el conjunto de trabajo de los procesos activos",
+      "Exceso de caché"
+     ],
+     "ok": 2,
+     "r": "Las páginas necesarias no caben y se expulsan unas a otras."
+    }
+   ]
+  },
+  {
+   "titulo": "Gestión de entrada y salida",
+   "intro": "Temas 3 a 5 del programa: rutinas y control de periféricos, buffering, ficheros y spooling.",
+   "conceptos": [
+    {
+     "n": "Técnicas de E/S",
+     "e": [
+      "<b>Sondeo:</b> el CPU pregunta repetidamente al dispositivo. <b>Interrupciones:</b> el dispositivo avisa cuando termina. <b>DMA:</b> un controlador transfiere bloques a memoria sin el CPU. Los <b>controladores</b> (drivers) traducen órdenes genéricas a las del dispositivo; en Linux se manejan como módulos del núcleo (<code>lsmod</code>, <code>modprobe</code>)."
+     ],
+     "u": [
+      "Instalar y diagnosticar hardware en servidores, rendimiento de discos y red.",
+      "Determina cuánto CPU consume la E/S.",
+      "Al agregar dispositivos o investigar lentitud.",
+      "Revisa el controlador cargado y las interrupciones del dispositivo."
+     ]
+    },
+    {
+     "n": "Buffering, caching y spooling",
+     "e": [
+      "<b>Buffering:</b> almacenamiento temporal para compensar velocidades distintas entre productor y consumidor. <b>Caching:</b> copia rápida de datos que se usarán de nuevo. <b>Spooling:</b> cola de trabajos completos para un dispositivo compartido que no admite acceso simultáneo, como la impresora."
+     ],
+     "u": [
+      "Colas de impresión, caché de disco, streaming de video.",
+      "Suavizan diferencias de velocidad y permiten compartir dispositivos.",
+      "Al diseñar o ajustar el rendimiento de E/S.",
+      "Identifica si el problema es de velocidad, de reutilización o de acceso compartido."
+     ]
+    },
+    {
+     "n": "Sistema de archivos",
+     "e": [
+      "Un sistema de archivos organiza datos en archivos y directorios con metadatos (dueño, permisos, fechas). En Linux todo es un archivo, incluidos los dispositivos (<code>/dev</code>); los sistemas comunes son ext4 y XFS. Asignación de bloques: contigua, enlazada e indexada (i-nodos)."
+     ],
+     "u": [
+      "Montaje de discos y particiones, cuotas, respaldos.",
+      "Define cómo se almacenan y protegen los datos.",
+      "Al preparar discos de servidores.",
+      "Usa <code>lsblk</code>, <code>mkfs</code>, <code>mount</code> y <code>/etc/fstab</code>."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Diferencia buffering, caching y spooling con un ejemplo de cada uno.",
+     "pasos": [
+      "<b>Buffering.</b> Un reproductor carga segundos de video antes de mostrarlos.",
+      "<b>Caching.</b> El sistema guarda en RAM bloques de disco leídos recientemente.",
+      "<b>Spooling.</b> Varios usuarios envían documentos a la cola de impresión."
+     ],
+     "r": "Compensar velocidad, reutilizar datos y compartir un dispositivo.",
+     "fin": "No confundir tres técnicas parecidas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué el DMA mejora el rendimiento al copiar un archivo grande?",
+     "pasos": [
+      "<b>Sin DMA.</b> El CPU copia cada palabra y queda ocupado.",
+      "<b>Con DMA.</b> El CPU programa la transferencia y sigue con otras tareas; recibe una interrupción al final."
+     ],
+     "r": "Libera al CPU durante la transferencia.",
+     "fin": "Entender la E/S eficiente."
+    },
+    {
+     "nv": "I",
+     "q": "Monta un disco nuevo <code>/dev/sdb1</code> en <code>/datos</code> de forma permanente.",
+     "pasos": [
+      "<b>Formato.</b> <code>sudo mkfs.ext4 /dev/sdb1</code>.",
+      "<b>Punto de montaje.</b> <code>sudo mkdir /datos</code>.",
+      "<b>Prueba.</b> <code>sudo mount /dev/sdb1 /datos</code>.",
+      "<b>Permanente.</b> Agregar a <code>/etc/fstab</code> la línea con el UUID (obtenido con <code>blkid</code>), <code>/datos ext4 defaults 0 2</code>."
+     ],
+     "r": "Formatear, montar y registrar en fstab.",
+     "fin": "Tarea frecuente de administración."
+    },
+    {
+     "nv": "A",
+     "q": "Un servidor tarda en reconocer una tarjeta de red nueva. ¿Cómo lo diagnosticas en Linux?",
+     "pasos": [
+      "<b>Hardware detectado.</b> <code>lspci</code> o <code>lsusb</code>.",
+      "<b>Controlador.</b> <code>lsmod</code> y <code>dmesg</code> para mensajes del núcleo.",
+      "<b>Cargar módulo.</b> <code>sudo modprobe nombre_modulo</code> si falta.",
+      "<b>Interfaz.</b> <code>ip link</code> para ver si aparece."
+     ],
+     "r": "Detectar hardware, revisar el controlador y la interfaz.",
+     "fin": "Resolver un problema real de E/S."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué técnica de E/S desperdicia más CPU y por qué?",
+     "pasos": [
+      "<b>Sondeo.</b> El CPU pregunta una y otra vez aunque el dispositivo no esté listo (espera activa).",
+      "<b>Alternativas.</b> Con interrupciones el CPU trabaja en otra cosa hasta el aviso; con DMA ni siquiera copia los datos."
+     ],
+     "r": "El sondeo, por la espera activa.",
+     "fin": "Comparar técnicas de E/S."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué técnica usa la cola de impresión?",
+     "ops": [
+      "Spooling",
+      "Caching",
+      "DMA",
+      "Paginación"
+     ],
+     "ok": 0,
+     "r": "Encola trabajos completos para un dispositivo compartido."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué comando muestra los módulos del núcleo cargados?",
+     "ops": [
+      "<code>ls</code>",
+      "<code>lsmod</code>",
+      "<code>ps</code>",
+      "<code>df</code>"
+     ],
+     "ok": 1,
+     "r": "Lista los módulos (controladores) cargados."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué archivo se configuran los montajes permanentes en Linux?",
+     "ops": [
+      "<code>/etc/passwd</code>",
+      "<code>/etc/hosts</code>",
+      "<code>/etc/crontab</code>",
+      "<code>/etc/fstab</code>"
+     ],
+     "ok": 3,
+     "r": "Se leen al arrancar el sistema."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué dispositivo avisa al CPU cuando termina una operación?",
+     "ops": [
+      "Uno por sondeo",
+      "Uno con E/S por interrupciones",
+      "Ninguno",
+      "Solo la memoria"
+     ],
+     "ok": 1,
+     "r": "La interrupción evita la espera activa."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué estructura de Linux guarda los metadatos de un archivo (permisos, dueño, bloques)?",
+     "ops": [
+      "El i-nodo",
+      "La tabla de páginas",
+      "El PCB",
+      "El MBR"
+     ],
+     "ok": 0,
+     "r": "El nombre está en el directorio; el resto, en el i-nodo."
+    }
+   ]
+  },
+  {
+   "titulo": "Programación en Bash y administración de usuarios",
+   "intro": "Temas 2 a 5 del programa: comandos del shell, scripts, sentencias repetitivas, funciones y creación de usuarios desde consola.",
+   "conceptos": [
+    {
+     "n": "Comandos y permisos",
+     "e": [
+      "Navegación y archivos: <code>ls</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>find</code>, <code>grep</code>. Permisos: lectura (4), escritura (2) y ejecución (1) para dueño, grupo y otros; <code>chmod 750</code> da rwx al dueño, rx al grupo y nada a otros; <code>chown</code> cambia el dueño. Servicios: <code>systemctl start|stop|enable|status</code>. Paquetes: <code>apt</code> (Debian/Ubuntu) o <code>dnf</code> (Red Hat)."
+     ],
+     "u": [
+      "Administración diaria de servidores.",
+      "El shell permite automatizar y trabajar en servidores sin interfaz gráfica.",
+      "En toda administración de Linux.",
+      "Combina comandos con tuberías (<code>|</code>) y redirecciones."
+     ]
+    },
+    {
+     "n": "Scripts en Bash",
+     "e": [
+      "Un script empieza con <code>#!/bin/bash</code>. Variables (<code>nombre=valor</code>, se leen con <code>$nombre</code>), parámetros (<code>$1</code>, <code>$#</code>), condicionales (<code>if [ -f archivo ]; then … fi</code>), ciclos (<code>for</code>, <code>while</code>) y funciones (<code>respaldar() { … }</code>). <code>$?</code> guarda el código de salida del último comando (0 es éxito)."
+     ],
+     "u": [
+      "Respaldos automáticos, creación masiva de usuarios, monitoreo.",
+      "Ahorra tiempo y evita errores manuales.",
+      "Con tareas repetitivas.",
+      "Escribe, da permiso de ejecución y prográmalo con cron."
+     ]
+    },
+    {
+     "n": "Usuarios y grupos",
+     "e": [
+      "<code>useradd -m -s /bin/bash usuario</code> crea un usuario con su directorio; <code>passwd</code> asigna la contraseña; <code>usermod -aG grupo usuario</code> lo agrega a un grupo; <code>userdel</code> lo elimina. Los datos están en <code>/etc/passwd</code>, las contraseñas cifradas en <code>/etc/shadow</code> y los grupos en <code>/etc/group</code>. <code>sudo</code> da privilegios controlados."
+     ],
+     "u": [
+      "Altas y bajas de personal, control de accesos.",
+      "Cada persona necesita su cuenta y solo los permisos necesarios.",
+      "Al incorporar o retirar usuarios.",
+      "Aplica el mínimo privilegio y revisa grupos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Da permisos para que el dueño lea, escriba y ejecute un script, el grupo solo lo lea y ejecute, y otros nada.",
+     "pasos": [
+      "<b>Dueño.</b> rwx = 4 + 2 + 1 = 7.",
+      "<b>Grupo.</b> r-x = 4 + 1 = 5.",
+      "<b>Otros.</b> --- = 0.",
+      "<b>Comando.</b> <code>chmod 750 script.sh</code>."
+     ],
+     "r": "<code>chmod 750 script.sh</code>",
+     "fin": "Dominar la notación octal de permisos."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe un script que respalde <code>/var/www</code> en un archivo comprimido con la fecha.",
+     "pasos": [
+      "<code>#!/bin/bash</code>",
+      "<code>fecha=$(date +%F)</code>",
+      "<code>tar -czf /respaldos/www-$fecha.tar.gz /var/www</code>",
+      "<code>if [ $? -eq 0 ]; then echo &quot;Respaldo correcto&quot;; else echo &quot;Error&quot;; fi</code>"
+     ],
+     "r": "Un respaldo fechado con verificación del resultado.",
+     "fin": "Automatizar una tarea real."
+    },
+    {
+     "nv": "I",
+     "q": "Crea usuarios a partir de un archivo <code>usuarios.txt</code> con un nombre por línea.",
+     "pasos": [
+      "<code>#!/bin/bash</code>",
+      "<code>while read u; do</code>",
+      "<code>  useradd -m -s /bin/bash &quot;$u&quot; &amp;&amp; echo &quot;$u:Temporal123&quot; | chpasswd</code>",
+      "<code>  chage -d 0 &quot;$u&quot;  # obliga a cambiar la contraseña</code>",
+      "<code>done &lt; usuarios.txt</code>"
+     ],
+     "r": "Altas masivas con cambio obligatorio de contraseña.",
+     "fin": "Administrar cuentas a escala."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe una función que avise si el uso de un disco supera un umbral y prográmala cada hora.",
+     "pasos": [
+      "<code>revisar() { uso=$(df --output=pcent &quot;$1&quot; | tail -1 | tr -dc '0-9'); if [ &quot;$uso&quot; -gt &quot;$2&quot; ]; then echo &quot;Disco $1 al $uso%&quot; | mail -s Alerta admin@ejemplo.com; fi; }</code>",
+      "<code>revisar / 85</code>",
+      "<b>Cron.</b> <code>crontab -e</code> y la línea <code>0 * * * * /usr/local/bin/revisar.sh</code>."
+     ],
+     "r": "Función con parámetros y ejecución programada.",
+     "fin": "Monitoreo básico automatizado."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo das a un usuario permiso de administrar servicios sin darle la contraseña de root?",
+     "pasos": [
+      "<b>Grupo.</b> <code>usermod -aG sudo usuario</code> (o <code>wheel</code> en Red Hat).",
+      "<b>Más fino.</b> Una regla en <code>/etc/sudoers.d/</code> que solo permita <code>systemctl</code>."
+     ],
+     "r": "Con sudo, idealmente limitado a los comandos necesarios.",
+     "fin": "Aplicar el mínimo privilegio."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hace <code>grep -r &quot;error&quot; /var/log</code>?",
+     "r": "Busca recursivamente la palabra error en los archivos de /var/log."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué permisos da <code>chmod 644 archivo</code>?",
+     "r": "Lectura y escritura al dueño; solo lectura al grupo y a otros."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué valor tiene <code>$?</code> después de un comando exitoso?",
+     "r": "0"
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué archivo están las contraseñas cifradas de los usuarios?",
+     "r": "/etc/shadow"
+    },
+    {
+     "nv": "A",
+     "q": "Escribe un ciclo que muestre los números del 1 al 5 en Bash.",
+     "r": "<code>for i in {1..5}; do echo $i; done</code>"
+    }
+   ]
+  },
+  {
+   "titulo": "Planificación de procesos",
+   "intro": "Temas 6 a 8 del programa: niveles de planificación, estados, planificación apropiativa y no apropiativa y algoritmos.",
+   "conceptos": [
+    {
+     "n": "Niveles de planificación",
+     "e": [
+      "<b>Largo plazo:</b> decide qué trabajos entran al sistema (grado de multiprogramación). <b>Mediano plazo:</b> suspende y reanuda procesos, llevándolos a disco (swapping). <b>Corto plazo:</b> elige cuál proceso listo usa el CPU, muchas veces por segundo."
+     ],
+     "u": [
+      "Configuración de colas de trabajos por lotes y de servidores con mucha carga.",
+      "Cada nivel controla una parte distinta del rendimiento.",
+      "Al ajustar el comportamiento de un sistema cargado.",
+      "Ubica qué nivel causa el problema: admisión, memoria o CPU."
+     ]
+    },
+    {
+     "n": "Apropiativa y no apropiativa",
+     "e": [
+      "En la <b>no apropiativa</b> el proceso conserva el CPU hasta terminar o bloquearse (FCFS, SJF). En la <b>apropiativa</b> el sistema puede quitárselo por quantum o por llegada de uno más prioritario (Round Robin, SRTF, prioridades apropiativas). Los sistemas interactivos y de servidor usan planificación apropiativa."
+     ],
+     "u": [
+      "Respuesta interactiva de escritorios y servidores.",
+      "Evita que un proceso monopolice el CPU.",
+      "Al comparar algoritmos.",
+      "Revisa si un proceso puede perder el CPU antes de terminar."
+     ]
+    },
+    {
+     "n": "Algoritmos con prioridades y colas multinivel",
+     "e": [
+      "Con <b>prioridades</b>, se atiende primero la más alta; el riesgo es la inanición, que se corrige con <b>envejecimiento</b>. Las <b>colas multinivel</b> separan procesos por tipo (interactivos, por lotes) con algoritmos distintos; con <b>retroalimentación</b>, un proceso baja de cola si consume mucho CPU. Linux usa un planificador justo (CFS, y desde 2023 EEVDF) y permite ajustar prioridad con <code>nice</code>."
+     ],
+     "u": [
+      "Priorizar servicios críticos sobre tareas de mantenimiento.",
+      "Refleja la importancia real de cada proceso.",
+      "Al convivir procesos interactivos y por lotes.",
+      "Asigna prioridades y aplica envejecimiento para evitar inanición."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica FCFS, SJF, Round Robin y SRTF en apropiativos o no.",
+     "pasos": [
+      "<b>No apropiativos.</b> FCFS y SJF.",
+      "<b>Apropiativos.</b> Round Robin (por quantum) y SRTF (por llegada de uno más corto)."
+     ],
+     "r": "FCFS y SJF no; RR y SRTF sí.",
+     "fin": "Clasificar algoritmos."
+    },
+    {
+     "nv": "I",
+     "q": "Procesos que llegan en 0: P1 ráfaga 10 prioridad 3, P2 1 / 1, P3 2 / 4, P4 1 / 5, P5 5 / 2 (1 es la más alta). Calcula la espera promedio con prioridades no apropiativas.",
+     "pasos": [
+      "<b>Orden.</b> P2, P5, P1, P3, P4.",
+      "<b>Gantt.</b> P2 0–1, P5 1–6, P1 6–16, P3 16–18, P4 18–19.",
+      "<b>Espera.</b> P1 6, P2 0, P3 16, P4 18, P5 1: promedio 8.2."
+     ],
+     "r": "Espera promedio 8.2.",
+     "fin": "Aplicar planificación por prioridades."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué nivel de planificación actúa cuando un servidor sin memoria suspende procesos a disco?",
+     "pasos": [
+      "<b>Mediano plazo.</b> Decide qué procesos suspender y reanudar (swapping).",
+      "<b>Diferencia.</b> El de corto plazo solo elige quién usa el CPU entre los que ya están en memoria."
+     ],
+     "r": "Mediano plazo.",
+     "fin": "Ubicar cada nivel en la práctica."
+    },
+    {
+     "nv": "A",
+     "q": "Explica una cola multinivel con retroalimentación de tres niveles (quantum 8, quantum 16 y FCFS).",
+     "pasos": [
+      "<b>Entrada.</b> Todo proceso nuevo entra a la cola 0 (quantum 8).",
+      "<b>Si no termina.</b> Baja a la cola 1 (quantum 16) y luego a la 2 (FCFS).",
+      "<b>Efecto.</b> Los interactivos (ráfagas cortas) quedan arriba y responden rápido; los largos bajan."
+     ],
+     "r": "Favorece procesos cortos e interactivos sin conocer sus ráfagas.",
+     "fin": "Entender un planificador realista."
+    },
+    {
+     "nv": "I",
+     "q": "Un respaldo nocturno hace lento el servidor. ¿Cómo bajas su prioridad en Linux?",
+     "pasos": [
+      "<b>Al iniciarlo.</b> <code>nice -n 19 ./respaldo.sh</code>.",
+      "<b>Ya en ejecución.</b> <code>renice 19 -p PID</code>.",
+      "<b>Disco.</b> <code>ionice -c3</code> para la prioridad de E/S."
+     ],
+     "r": "Con nice, renice e ionice.",
+     "fin": "Priorizar servicios en producción."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué decide el planificador de largo plazo?",
+     "r": "Qué trabajos entran al sistema (grado de multiprogramación)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es el envejecimiento?",
+     "r": "Aumentar la prioridad de un proceso según el tiempo que lleva esperando, para evitar la inanición."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué los servidores usan planificación apropiativa?",
+     "r": "Para que ningún proceso monopolice el CPU y todos los servicios respondan."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué rango tienen los valores de nice en Linux y cuál es la prioridad más alta?",
+     "r": "De −20 (más alta) a 19 (más baja)."
+    },
+    {
+     "nv": "A",
+     "q": "En el ejercicio de prioridades, ¿cuál sería la espera promedio con SJF?",
+     "r": "Orden P2, P4, P3, P5, P1 → esperas 0, 1, 2, 4, 9: promedio 3.2."
+    }
+   ]
+  },
+  {
+   "titulo": "Planificación de disco y RAID",
+   "intro": "Temas 9 a 12 del programa: planificación de disco, parámetros, políticas, caché de disco y arreglos de discos.",
+   "conceptos": [
+    {
+     "n": "Parámetros de disco",
+     "e": [
+      "En un disco duro el tiempo de acceso es búsqueda (mover el brazo) + latencia rotacional (esperar el sector; en promedio media vuelta) + transferencia. En un SSD no hay partes móviles, por eso la planificación de disco importa mucho menos."
+     ],
+     "u": [
+      "Elegir discos para bases de datos, explicar lentitud de servidores.",
+      "La búsqueda y la rotación dominan el tiempo en discos mecánicos.",
+      "Al comparar discos o ajustar rendimiento.",
+      "Calcula la latencia media con las RPM."
+     ],
+     "f": "T_{\\text{latencia media}}=\\frac{1}{2}\\cdot\\frac{60}{RPM}"
+    },
+    {
+     "n": "Políticas de planificación",
+     "e": [
+      "<b>FCFS:</b> orden de llegada. <b>SSTF:</b> la pista más cercana (rápida, con riesgo de inanición). <b>SCAN:</b> barre hacia un extremo y regresa (ascensor). <b>C-SCAN:</b> barre en un sentido y vuelve al inicio. <b>LOOK y C-LOOK:</b> como los anteriores, pero solo hasta la última petición."
+     ],
+     "u": [
+      "Planificadores de E/S de Linux (mq-deadline, bfq, none), discos de servidores.",
+      "Reducen el movimiento del brazo.",
+      "Con discos mecánicos y mucha E/S aleatoria.",
+      "Ordena las peticiones según la política y suma los desplazamientos."
+     ]
+    },
+    {
+     "n": "Caché de disco y RAID",
+     "e": [
+      "La <b>caché de disco</b> guarda bloques en RAM; escritura inmediata (write-through) o diferida (write-back, más rápida pero riesgosa sin batería o UPS). <b>RAID</b> combina discos: 0 (striping, sin redundancia), 1 (espejo), 5 (paridad distribuida, tolera 1 falla), 6 (doble paridad, tolera 2) y 10 (espejos en striping). En Linux se crea con <code>mdadm</code>. RAID no reemplaza a los respaldos."
+     ],
+     "u": [
+      "Servidores de archivos, bases de datos, NAS.",
+      "Combina rendimiento y tolerancia a fallas.",
+      "Al diseñar almacenamiento de servidores.",
+      "Elige el nivel según capacidad, rendimiento y fallas toleradas."
+     ],
+     "tabla": "<table><thead><tr><th>RAID</th><th>Capacidad útil (n discos de S)</th><th>Tolera</th></tr></thead><tbody><tr><td>0</td><td>n·S</td><td>Ninguna falla</td></tr><tr><td>1</td><td>S (2 discos)</td><td>1 disco</td></tr><tr><td>5</td><td>(n − 1)·S</td><td>1 disco</td></tr><tr><td>6</td><td>(n − 2)·S</td><td>2 discos</td></tr><tr><td>10</td><td>n·S / 2</td><td>1 por espejo</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula la latencia rotacional media de un disco de 7200 RPM.",
+     "pasos": [
+      "<b>Una vuelta.</b> \\(\\tfrac{60}{7200}=8.33\\) ms.",
+      "<b>Media vuelta.</b> 4.17 ms."
+     ],
+     "r": "≈ 4.17 ms",
+     "fin": "Estimar el tiempo de acceso."
+    },
+    {
+     "nv": "I",
+     "q": "Cabezal en 53; cola 98, 183, 37, 122, 14, 124, 65, 67 (pistas 0 a 199). Movimiento total con FCFS y SSTF.",
+     "pasos": [
+      "<b>FCFS.</b> Se sigue el orden: 640 pistas.",
+      "<b>SSTF.</b> 65, 67, 37, 14, 98, 122, 124, 183: 236 pistas."
+     ],
+     "r": "FCFS 640; SSTF 236.",
+     "fin": "Comparar políticas."
+    },
+    {
+     "nv": "I",
+     "q": "Con la misma cola, aplica SCAN hacia 0 y LOOK hacia abajo.",
+     "pasos": [
+      "<b>SCAN.</b> Baja a 37, 14 y hasta 0; luego sube a 65 … 183: 53 + 183 = 236.",
+      "<b>LOOK.</b> Baja solo hasta 14 y sube hasta 183: (53 − 14) + (183 − 14) = 208."
+     ],
+     "r": "SCAN 236; LOOK 208.",
+     "fin": "Ver el ahorro de no ir al extremo."
+    },
+    {
+     "nv": "A",
+     "q": "Con 4 discos de 2 TB, compara RAID 5, RAID 6 y RAID 10.",
+     "pasos": [
+      "<b>RAID 5.</b> 6 TB útiles, tolera 1 falla.",
+      "<b>RAID 6.</b> 4 TB, tolera 2 fallas.",
+      "<b>RAID 10.</b> 4 TB, tolera 1 falla por espejo y escribe más rápido que RAID 5 y 6."
+     ],
+     "r": "RAID 5: 6 TB; RAID 6 y 10: 4 TB cada uno.",
+     "fin": "Diseñar almacenamiento para un servidor."
+    },
+    {
+     "nv": "I",
+     "q": "Crea un RAID 1 con <code>/dev/sdb</code> y <code>/dev/sdc</code> en Linux.",
+     "pasos": [
+      "<code>sudo mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc</code>",
+      "<code>sudo mkfs.ext4 /dev/md0</code> y montarlo.",
+      "<b>Estado.</b> <code>cat /proc/mdstat</code>."
+     ],
+     "r": "Un espejo de dos discos administrado por mdadm.",
+     "fin": "Configurar redundancia por software."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué RAID no tiene redundancia?",
+     "r": "RAID 0."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la latencia media de un disco de 15 000 RPM?",
+     "r": "2 ms"
+    },
+    {
+     "nv": "I",
+     "q": "Con la misma cola, ¿movimiento total de C-LOOK subiendo primero (contando el salto)?",
+     "r": "322 pistas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué RAID no reemplaza a los respaldos?",
+     "r": "Porque replica también los borrados accidentales, el ransomware y la corrupción; no protege contra desastres en el sitio."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué riesgo tiene la caché write-back y cómo se mitiga?",
+     "r": "Perder datos ante un corte de energía; se mitiga con controladoras con batería o flash y con UPS."
+    }
+   ]
+  },
+  {
+   "titulo": "Sistemas abiertos y servicios de servidor",
+   "intro": "Temas 13 y 14 y proyecto del programa: tipos de sistemas abiertos, distribuciones existentes y servicios DHCP, FTP, Samba, SSH, internet, correo y LAMP.",
+   "conceptos": [
+    {
+     "n": "Distribuciones",
+     "e": [
+      "Familias: <b>Debian</b> (Debian, Ubuntu; paquetes .deb con <code>apt</code>), <b>Red Hat</b> (RHEL, Rocky, AlmaLinux, Oracle Linux, Fedora; .rpm con <code>dnf</code>), <b>SUSE</b> (SLES, openSUSE; <code>zypper</code>) y otras como Arch y Slackware. Para servidores se prefieren versiones con soporte de largo plazo (LTS)."
+     ],
+     "u": [
+      "Elegir el sistema de un servidor institucional.",
+      "El soporte y el ecosistema importan más que la distribución en sí.",
+      "Al instalar un servidor nuevo.",
+      "Elige por soporte, compatibilidad y experiencia del equipo."
+     ]
+    },
+    {
+     "n": "Servicios de red",
+     "e": [
+      "<b>DHCP</b> asigna IP automáticamente (UDP 67/68). <b>FTP</b> transfiere archivos (21; sin cifrado, mejor SFTP). <b>SSH</b> da acceso remoto cifrado (22). <b>Samba</b> comparte archivos e impresoras con Windows (SMB, 445). Correo: <b>SMTP</b> envía (25, 587), <b>IMAP</b> (143/993) y <b>POP3</b> (110/995) leen; Postfix y Dovecot son comunes. <b>DNS</b> resuelve nombres (53)."
+     ],
+     "u": [
+      "Servidores de oficina, intranets, correo institucional.",
+      "Son la base de los servicios de una red.",
+      "Al montar o diagnosticar un servidor.",
+      "Instala, configura, habilita con systemctl y abre el puerto en el firewall."
+     ]
+    },
+    {
+     "n": "LAMP y seguridad básica",
+     "e": [
+      "<b>LAMP</b> = Linux + Apache + MySQL o MariaDB + PHP: la base de muchos sistemas web. Buenas prácticas: actualizar (<code>apt update &amp;&amp; apt upgrade</code>), firewall (<code>ufw</code> o <code>firewalld</code>), SSH con llaves y sin acceso de root, usuarios con mínimo privilegio, respaldos y registros revisados."
+     ],
+     "u": [
+      "Aplicaciones web en PHP (Laravel, Yii), sistemas institucionales.",
+      "Es una pila madura, libre y muy documentada.",
+      "Al publicar una aplicación web.",
+      "Instala los componentes, crea el virtual host y asegura el servidor."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Instala y habilita Apache en Ubuntu Server.",
+     "pasos": [
+      "<code>sudo apt update</code>",
+      "<code>sudo apt install apache2</code>",
+      "<code>sudo systemctl enable --now apache2</code>",
+      "<code>sudo ufw allow 'Apache Full'</code>"
+     ],
+     "r": "Apache instalado, activo al arrancar y con el firewall abierto.",
+     "fin": "Primer paso de un servidor web."
+    },
+    {
+     "nv": "I",
+     "q": "Asegura el acceso SSH de un servidor.",
+     "pasos": [
+      "<b>Llaves.</b> <code>ssh-keygen</code> en tu equipo y <code>ssh-copy-id usuario@servidor</code>.",
+      "<b>Configuración.</b> En <code>/etc/ssh/sshd_config</code>: <code>PermitRootLogin no</code> y <code>PasswordAuthentication no</code>.",
+      "<b>Aplicar.</b> <code>sudo systemctl restart ssh</code> (comprobando antes que la llave funciona)."
+     ],
+     "r": "SSH solo con llaves y sin root.",
+     "fin": "Reducir el riesgo del servicio más atacado."
+    },
+    {
+     "nv": "I",
+     "q": "Configura un rango DHCP básico para 192.168.1.100–200 con ISC DHCP.",
+     "pasos": [
+      "<b>Archivo.</b> <code>/etc/dhcp/dhcpd.conf</code>.",
+      "<code>subnet 192.168.1.0 netmask 255.255.255.0 { range 192.168.1.100 192.168.1.200; option routers 192.168.1.1; option domain-name-servers 192.168.1.10; }</code>",
+      "<b>Reinicia.</b> El servicio DHCP."
+     ],
+     "r": "Un rango con puerta de enlace y DNS.",
+     "fin": "Configurar el servicio base de toda LAN."
+    },
+    {
+     "nv": "A",
+     "q": "Un usuario de Windows no ve la carpeta compartida por Samba. ¿Qué revisas?",
+     "pasos": [
+      "<b>Servicio.</b> <code>systemctl status smbd</code>.",
+      "<b>Configuración.</b> <code>testparm</code> para validar <code>smb.conf</code>.",
+      "<b>Usuario Samba.</b> <code>smbpasswd -a usuario</code>.",
+      "<b>Firewall y permisos.</b> Puerto 445 abierto y permisos de Linux en la carpeta."
+     ],
+     "r": "Servicio, configuración, usuario, firewall y permisos.",
+     "fin": "Diagnosticar un problema típico de oficina."
+    },
+    {
+     "nv": "I",
+     "q": "Explica el recorrido de un correo de usuario@a.com a amigo@b.com.",
+     "pasos": [
+      "<b>Envío.</b> El cliente lo entrega por SMTP (587) al servidor de a.com.",
+      "<b>DNS.</b> El servidor busca el registro MX de b.com.",
+      "<b>Entrega.</b> Lo envía por SMTP (25) al servidor de b.com.",
+      "<b>Lectura.</b> El destinatario lo descarga con IMAP o POP3."
+     ],
+     "r": "SMTP para enviar, MX para ubicar, IMAP o POP3 para leer.",
+     "fin": "Entender los protocolos de correo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué puerto usa SSH por defecto?",
+     "ops": [
+      "21",
+      "80",
+      "22",
+      "443"
+     ],
+     "ok": 2,
+     "r": "21 es FTP, 80 HTTP y 443 HTTPS."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué servicio comparte carpetas de Linux con equipos Windows?",
+     "ops": [
+      "Apache",
+      "Samba",
+      "Postfix",
+      "BIND"
+     ],
+     "ok": 1,
+     "r": "Implementa el protocolo SMB."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué protocolo deja los correos en el servidor y sincroniza carpetas entre dispositivos?",
+     "ops": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "FTP"
+     ],
+     "ok": 1,
+     "r": "POP3 normalmente los descarga y borra del servidor."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué gestor de paquetes usa Rocky Linux?",
+     "ops": [
+      "apt",
+      "pacman",
+      "dnf",
+      "zypper"
+     ],
+     "ok": 2,
+     "r": "Pertenece a la familia Red Hat."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué se recomienda SFTP en lugar de FTP?",
+     "ops": [
+      "Porque es más rápido siempre",
+      "Porque FTP ya no existe",
+      "Porque SFTP no necesita servidor",
+      "Porque FTP envía usuario y contraseña sin cifrar"
+     ],
+     "ok": 3,
+     "r": "SFTP funciona sobre SSH, con todo cifrado."
+    }
+   ]
+  }
+ ]
+}

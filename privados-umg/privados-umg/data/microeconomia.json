@@ -1,0 +1,766 @@
+{
+ "slug": "microeconomia",
+ "titulo": "Microeconomía",
+ "meta": "Ciclo 4, código 016, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "IMg=CMg",
+ "firma_nota": "La regla de oro de cualquier empresa: producir hasta que la última unidad cueste lo que aporta.",
+ "lead": "Cómo deciden consumidores y empresas y cómo se forman los precios: utilidad, oferta y demanda, elasticidades, producción, costos y estructuras de mercado. Ayuda a entender precios de servicios tecnológicos, licencias, nube y telecomunicaciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Cuarto%20Ciclo/2014-4Microeconomia.pdf",
+ "como": "Cada tema trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta. El primer tema, más conceptual, usa un cuestionario de opción múltiple.",
+ "temas": [
+  {
+   "titulo": "Conceptos fundamentales",
+   "intro": "Tema 1 del programa: la economía como ciencia, su división y la diferencia entre micro y macroeconomía.",
+   "conceptos": [
+    {
+     "n": "Economía y escasez",
+     "e": [
+      "La economía estudia cómo se asignan recursos escasos (tierra, trabajo, capital, capacidad empresarial) a necesidades ilimitadas. Toda elección tiene un <b>costo de oportunidad</b>: el valor de la mejor alternativa sacrificada. La frontera de posibilidades de producción muestra las combinaciones máximas posibles."
+     ],
+     "u": [
+      "Decidir en qué proyectos invertir el presupuesto de TI, asignar horas de un equipo.",
+      "Toda decisión implica renunciar a algo.",
+      "Al elegir entre alternativas.",
+      "Identifica la mejor alternativa descartada y su valor."
+     ]
+    },
+    {
+     "n": "Micro y macroeconomía",
+     "e": [
+      "La <b>microeconomía</b> estudia agentes individuales: consumidores, empresas y mercados específicos. La <b>macroeconomía</b> estudia agregados: PIB, inflación, desempleo, tipo de cambio. La economía positiva describe lo que es; la normativa opina lo que debería ser."
+     ],
+     "u": [
+      "Fijar el precio de un servicio (micro), entender el efecto de la inflación en costos (macro).",
+      "Cada nivel responde preguntas distintas.",
+      "Al ubicar un problema económico.",
+      "Pregúntate si hablas de un mercado o de la economía completa."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica como micro o macro: precio de las laptops, inflación de Guatemala, decisión de una empresa de contratar programadores, desempleo nacional.",
+     "pasos": [
+      "<b>Laptops.</b> Mercado específico: micro.",
+      "<b>Inflación.</b> Agregado: macro.",
+      "<b>Contratación.</b> Decisión de una empresa: micro.",
+      "<b>Desempleo nacional.</b> Agregado: macro."
+     ],
+     "r": "Micro, macro, micro, macro.",
+     "fin": "Distinguir los dos niveles de análisis."
+    },
+    {
+     "nv": "B",
+     "q": "Dejas un trabajo de Q8,000 mensuales para estudiar una maestría de 2 años que cuesta Q40,000. ¿Costo de oportunidad?",
+     "pasos": [
+      "<b>Salario sacrificado.</b> \\(8000\\times24=192000\\).",
+      "<b>Costo directo.</b> 40,000.",
+      "<b>Total.</b> 232,000."
+     ],
+     "r": "Q232,000",
+     "fin": "Incluir lo que se deja de ganar."
+    },
+    {
+     "nv": "I",
+     "q": "Un equipo puede desarrollar 10 apps o 20 sitios web al año. Si pasa de 0 a 4 apps, ¿cuántos sitios sacrifica y cuál es el costo de oportunidad de una app?",
+     "pasos": [
+      "<b>Relación.</b> Cada app equivale a 2 sitios.",
+      "<b>Sacrificio.</b> 4 apps cuestan 8 sitios.",
+      "<b>Por unidad.</b> 2 sitios por app."
+     ],
+     "r": "8 sitios; 2 sitios por app.",
+     "fin": "Leer una frontera de posibilidades de producción."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica como positiva o normativa: (a) “si sube el precio, baja la cantidad demandada”; (b) “el gobierno debería subsidiar internet”.",
+     "pasos": [
+      "<b>(a)</b> Describe una relación verificable: positiva.",
+      "<b>(b)</b> Expresa un juicio de valor: normativa."
+     ],
+     "r": "Positiva y normativa.",
+     "fin": "Separar hechos de opiniones."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué la frontera de posibilidades de producción suele ser curva (cóncava) y no recta?",
+     "pasos": [
+      "<b>Recursos no idénticos.</b> Algunos recursos son mejores para un bien que para otro.",
+      "<b>Consecuencia.</b> Al especializarse más, se usan recursos menos aptos.",
+      "<b>Resultado.</b> El costo de oportunidad crece."
+     ],
+     "r": "Porque el costo de oportunidad es creciente.",
+     "fin": "Interpretar la forma de la frontera."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué estudia la microeconomía?",
+     "ops": [
+      "El PIB del país",
+      "La política monetaria",
+      "El comercio internacional agregado",
+      "Agentes individuales como consumidores y empresas"
+     ],
+     "ok": 3,
+     "r": "Se enfoca en decisiones y mercados específicos."
+    },
+    {
+     "nv": "B",
+     "q": "El costo de oportunidad es…",
+     "ops": [
+      "El precio pagado",
+      "El valor de la mejor alternativa sacrificada",
+      "El costo fijo",
+      "La suma de todos los costos"
+     ],
+     "ok": 1,
+     "r": "Mide lo que se deja de obtener al elegir."
+    },
+    {
+     "nv": "I",
+     "q": "Un punto dentro de la frontera de posibilidades de producción indica…",
+     "ops": [
+      "Producción imposible",
+      "Crecimiento económico",
+      "Uso ineficiente de recursos",
+      "Pleno empleo"
+     ],
+     "ok": 2,
+     "r": "Se podría producir más de ambos bienes."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es un factor de producción?",
+     "ops": [
+      "El trabajo",
+      "El dinero en el banco",
+      "La inflación",
+      "El impuesto"
+     ],
+     "ok": 0,
+     "r": "Tierra, trabajo, capital y capacidad empresarial."
+    },
+    {
+     "nv": "A",
+     "q": "Una mejora tecnológica en la producción de software desplaza la frontera…",
+     "ops": [
+      "Hacia adentro",
+      "No la mueve",
+      "Hacia afuera en el eje del software",
+      "Solo cambia su pendiente a cero"
+     ],
+     "ok": 2,
+     "r": "Con los mismos recursos se puede producir más software."
+    }
+   ]
+  },
+  {
+   "titulo": "Teoría del consumidor",
+   "intro": "Tema 2 del programa: utilidad marginal, curvas de indiferencia, tasa marginal de sustitución, línea de presupuesto, equilibrio del consumidor, curvas de Engel, demanda individual y efectos ingreso y sustitución.",
+   "conceptos": [
+    {
+     "n": "Utilidad total y marginal",
+     "e": [
+      "La utilidad marginal es la satisfacción adicional de una unidad más: \\(UMg=\\Delta UT\\). Es decreciente: cada unidad extra satisface menos que la anterior."
+     ],
+     "u": [
+      "Planes de datos por volumen, precios escalonados de servicios.",
+      "Explica por qué la gente paga menos por unidades adicionales.",
+      "Al analizar consumo.",
+      "Resta la utilidad total de unidades consecutivas."
+     ]
+    },
+    {
+     "n": "Curvas de indiferencia y presupuesto",
+     "e": [
+      "Una curva de indiferencia une combinaciones con la misma utilidad; su pendiente es la tasa marginal de sustitución \\(TMS=\\tfrac{UMg_X}{UMg_Y}\\). La línea de presupuesto \\(P_XX+P_YY=I\\) muestra lo alcanzable; su pendiente es \\(-\\tfrac{P_X}{P_Y}\\)."
+     ],
+     "u": [
+      "Modelar elecciones entre planes o productos.",
+      "Separa lo deseado de lo posible.",
+      "Al analizar decisiones de compra.",
+      "Grafica la recta de presupuesto con sus intersecciones en los ejes."
+     ],
+     "f": "P_XX+P_YY=I"
+    },
+    {
+     "n": "Equilibrio del consumidor",
+     "e": [
+      "El consumidor maximiza su utilidad cuando gasta todo su ingreso y la utilidad marginal por quetzal es igual en todos los bienes (la curva de indiferencia toca la línea de presupuesto)."
+     ],
+     "u": [
+      "Diseño de paquetes de servicios, sistemas de recomendación.",
+      "Explica cómo reparte la gente su dinero.",
+      "Al predecir el efecto de un cambio de precio.",
+      "Iguala UMg/P entre bienes con la restricción de presupuesto."
+     ],
+     "f": "\\frac{UMg_X}{P_X}=\\frac{UMg_Y}{P_Y}"
+    },
+    {
+     "n": "Efectos ingreso y sustitución; curva de Engel",
+     "e": [
+      "Si baja un precio, el bien es relativamente más barato (efecto <b>sustitución</b>) y el consumidor es más rico en términos reales (efecto <b>ingreso</b>). La curva de Engel relaciona ingreso y cantidad: si la cantidad sube con el ingreso, el bien es <b>normal</b>; si baja, <b>inferior</b>."
+     ],
+     "u": [
+      "Prever cómo cambia la demanda de equipos o servicios con el ingreso.",
+      "Separa por qué cambia la cantidad demandada.",
+      "Ante cambios de precio o ingreso.",
+      "Identifica si el bien es normal o inferior."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "La utilidad total de 1 a 4 tazas de café es 10, 18, 24 y 28. Halla la utilidad marginal.",
+     "pasos": [
+      "<b>Diferencias.</b> 10, 8, 6, 4.",
+      "<b>Observación.</b> Decrece con cada taza."
+     ],
+     "r": "10, 8, 6, 4",
+     "fin": "Ver la utilidad marginal decreciente."
+    },
+    {
+     "nv": "I",
+     "q": "Ingreso Q100, Pₓ = Q10 y Pᵧ = Q5. Describe la línea de presupuesto.",
+     "pasos": [
+      "<b>Ecuación.</b> \\(10X+5Y=100\\).",
+      "<b>Intersecciones.</b> \\(X=10\\) (sin Y) y \\(Y=20\\) (sin X).",
+      "<b>Pendiente.</b> \\(-\\tfrac{10}{5}=-2\\)."
+     ],
+     "r": "Une (10, 0) con (0, 20); pendiente −2.",
+     "fin": "Graficar lo alcanzable."
+    },
+    {
+     "nv": "I",
+     "q": "UMgₓ de 1 a 5 unidades: 20, 16, 12, 8, 4; UMgᵧ: 10, 8, 6, 4, 2. Con Pₓ = 2, Pᵧ = 1 e I = 9, halla el equilibrio.",
+     "pasos": [
+      "<b>UMg por quetzal en X.</b> 10, 8, 6, 4, 2.",
+      "<b>En Y.</b> 10, 8, 6, 4, 2.",
+      "<b>Iguala y gasta todo.</b> Con X = 3 e Y = 3 ambos valen 6 y el gasto es \\(2(3)+1(3)=9\\)."
+     ],
+     "r": "3 de X y 3 de Y.",
+     "fin": "Aplicar la regla del equilibrio."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(U=XY\\), I = 100, Pₓ = 10 y Pᵧ = 5, halla la canasta óptima.",
+     "pasos": [
+      "<b>TMS.</b> \\(\\tfrac{UMg_X}{UMg_Y}=\\tfrac YX\\).",
+      "<b>Condición.</b> \\(\\tfrac YX=\\tfrac{10}5=2\\Rightarrow Y=2X\\).",
+      "<b>Presupuesto.</b> \\(10X+5(2X)=100\\Rightarrow X=5\\), \\(Y=10\\)."
+     ],
+     "r": "X = 5, Y = 10",
+     "fin": "Resolver el equilibrio analíticamente."
+    },
+    {
+     "nv": "I",
+     "q": "Al subir el ingreso de una familia baja su consumo de transporte público y sube el de auto. ¿Qué tipo de bienes son?",
+     "pasos": [
+      "<b>Transporte público.</b> Baja con el ingreso: inferior.",
+      "<b>Auto.</b> Sube con el ingreso: normal."
+     ],
+     "r": "Transporte público inferior; auto normal.",
+     "fin": "Clasificar bienes con la curva de Engel."
+    },
+    {
+     "nv": "B",
+     "q": "Si la UT pasa de 28 a 27 con una unidad más, ¿cuánto vale la UMg?",
+     "r": "−1 (saturación)."
+    },
+    {
+     "nv": "I",
+     "q": "Si UMgₓ = 12 y UMgᵧ = 4, ¿cuál es la TMS?",
+     "r": "3"
+    },
+    {
+     "nv": "I",
+     "q": "Con I = 100 y Pᵧ = 5, si Pₓ baja de 10 a 5, ¿qué pasa con la línea de presupuesto?",
+     "r": "Gira hacia afuera: el máximo de X pasa de 10 a 20."
+    },
+    {
+     "nv": "I",
+     "q": "Da un ejemplo de bien inferior.",
+     "r": "Por ejemplo, productos de marca genérica o transporte público para muchos consumidores."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(U=XY\\), I = 120, Pₓ = 4 y Pᵧ = 6, halla la canasta óptima.",
+     "r": "X = 15, Y = 10"
+    }
+   ]
+  },
+  {
+   "titulo": "Oferta, demanda y elasticidades",
+   "intro": "Tema 3 del programa: determinantes de la oferta y la demanda, equilibrio geométrico y algebraico, elasticidad precio, ingreso y cruzada de la demanda, y elasticidad de la oferta.",
+   "conceptos": [
+    {
+     "n": "Oferta y demanda",
+     "e": [
+      "Ley de la demanda: si sube el precio, baja la cantidad demandada. Un cambio del propio precio mueve el punto sobre la curva; ingreso, gustos, precios de bienes relacionados o expectativas desplazan la curva. La oferta sube con el precio y se desplaza con costos, tecnología o número de vendedores."
+     ],
+     "u": [
+      "Precios de memorias RAM, GPU, servicios en la nube.",
+      "Explican por qué suben o bajan los precios.",
+      "Ante cualquier cambio en un mercado.",
+      "Distingue movimiento sobre la curva de desplazamiento de la curva."
+     ]
+    },
+    {
+     "n": "Equilibrio",
+     "e": [
+      "Ocurre donde \\(Q_d=Q_o\\). Si el precio está arriba hay excedente; abajo, escasez. Un precio máximo por debajo del equilibrio genera escasez; uno mínimo por encima, excedente."
+     ],
+     "u": [
+      "Escasez de tarjetas gráficas, controles de precios.",
+      "Predice precio y cantidad de mercado.",
+      "Al analizar cambios o políticas.",
+      "Iguala las ecuaciones y despeja P."
+     ],
+     "f": "Q_d=a-bP,\\ \\ Q_o=c+dP\\ \\Rightarrow\\ P^*=\\frac{a-c}{b+d}"
+    },
+    {
+     "n": "Elasticidades",
+     "e": [
+      "Precio: \\(E_p=\\tfrac{\\%\\Delta Q_d}{\\%\\Delta P}\\); elástica si \\(|E_p|\\gt1\\) (subir el precio baja el ingreso total), inelástica si \\(|E_p|\\lt1\\). Ingreso: positiva en bienes normales, mayor que 1 en bienes de lujo. Cruzada: positiva entre sustitutos, negativa entre complementarios. Con el método del punto medio (arco) se usan promedios."
+     ],
+     "u": [
+      "Decidir si subir el precio de una suscripción aumenta los ingresos.",
+      "Mide qué tan sensibles son los compradores.",
+      "Antes de cambiar precios.",
+      "Calcula cambios porcentuales y compara con 1."
+     ],
+     "f": "E_p=\\frac{\\Delta Q/\\bar Q}{\\Delta P/\\bar P}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con Qd = 100 − 2P y Qo = 20 + 2P, halla el equilibrio.",
+     "pasos": [
+      "<b>Iguala.</b> \\(100-2P=20+2P\\Rightarrow4P=80\\).",
+      "<b>Precio.</b> \\(P=20\\).",
+      "<b>Cantidad.</b> \\(100-40=60\\)."
+     ],
+     "r": "P = 20, Q = 60",
+     "fin": "Resolver el equilibrio algebraico."
+    },
+    {
+     "nv": "I",
+     "q": "La demanda sube a Qd = 120 − 2P. ¿Nuevo equilibrio?",
+     "pasos": [
+      "<b>Iguala.</b> \\(120-2P=20+2P\\Rightarrow P=25\\).",
+      "<b>Cantidad.</b> 70."
+     ],
+     "r": "P = 25, Q = 70",
+     "fin": "Analizar un desplazamiento de la demanda."
+    },
+    {
+     "nv": "I",
+     "q": "Con las curvas originales se fija un precio máximo de 15. ¿Qué ocurre?",
+     "pasos": [
+      "<b>Demanda.</b> \\(100-30=70\\).",
+      "<b>Oferta.</b> \\(20+30=50\\).",
+      "<b>Resultado.</b> Escasez de 20 unidades."
+     ],
+     "r": "Escasez de 20 unidades.",
+     "fin": "Ver el efecto de un control de precios."
+    },
+    {
+     "nv": "I",
+     "q": "El precio sube de Q10 a Q12 y la cantidad baja de 100 a 80. Halla la elasticidad arco.",
+     "pasos": [
+      "<b>Cambio de cantidad.</b> \\(\\tfrac{-20}{90}\\approx-0.222\\).",
+      "<b>Cambio de precio.</b> \\(\\tfrac{2}{11}\\approx0.182\\).",
+      "<b>Elasticidad.</b> \\(\\approx-1.22\\)."
+     ],
+     "r": "≈ −1.22: elástica.",
+     "fin": "Calcular elasticidades sin sesgo de dirección."
+    },
+    {
+     "nv": "A",
+     "q": "Con esos datos, ¿qué pasó con el ingreso total y es coherente con la elasticidad?",
+     "pasos": [
+      "<b>Antes.</b> \\(10(100)=1000\\).",
+      "<b>Después.</b> \\(12(80)=960\\).",
+      "<b>Coherencia.</b> Demanda elástica: subir el precio reduce el ingreso total."
+     ],
+     "r": "El ingreso bajó de Q1,000 a Q960.",
+     "fin": "Usar la elasticidad para decidir precios."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona tres factores que desplazan la curva de demanda.",
+     "r": "Ingreso, gustos, precios de sustitutos o complementarios, expectativas, número de compradores."
+    },
+    {
+     "nv": "I",
+     "q": "Si Pᵧ sube 20 % y la demanda de X sube 10 %, ¿elasticidad cruzada y relación?",
+     "r": "0.5: sustitutos."
+    },
+    {
+     "nv": "I",
+     "q": "Si el ingreso sube 10 % y la cantidad 15 %, ¿qué bien es?",
+     "r": "Elasticidad 1.5: normal de lujo."
+    },
+    {
+     "nv": "I",
+     "q": "Si el precio sube 10 % y la cantidad ofrecida 5 %, ¿cómo es la oferta?",
+     "r": "Elasticidad 0.5: inelástica."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la elasticidad puntual de Qd = 100 − 2P en el equilibrio (P = 20).",
+     "r": "\\(-2\\cdot\\tfrac{20}{60}\\approx-0.67\\): inelástica."
+    }
+   ]
+  },
+  {
+   "titulo": "Producción a corto plazo",
+   "intro": "Tema 4 del programa: función de producción, producto total, medio y marginal, etapas de la producción y ley de rendimientos decrecientes.",
+   "conceptos": [
+    {
+     "n": "Función de producción y productos",
+     "e": [
+      "Relaciona insumos y producto. A corto plazo hay al menos un factor fijo. Producto medio \\(PMe=\\tfrac{PT}{L}\\); producto marginal \\(PMg=\\tfrac{\\Delta PT}{\\Delta L}\\). Si PMg > PMe, el PMe sube; si es menor, baja."
+     ],
+     "u": [
+      "Dimensionar equipos de desarrollo o soporte, capacidad de un centro de datos.",
+      "Indica cuánto aporta cada trabajador adicional.",
+      "Al decidir contrataciones.",
+      "Calcula PMg y PMe para cada nivel."
+     ],
+     "f": "PMe=\\frac{PT}{L}\\qquad PMg=\\frac{\\Delta PT}{\\Delta L}"
+    },
+    {
+     "n": "Ley de rendimientos decrecientes y etapas",
+     "e": [
+      "Al agregar unidades de un factor variable a uno fijo, el PMg termina por disminuir. Etapa I: el PMe crece. Etapa II (racional): desde el máximo del PMe hasta que el PMg es cero. Etapa III: PMg negativo."
+     ],
+     "u": [
+      "Agregar programadores a un proyecto atrasado puede retrasarlo más (ley de Brooks).",
+      "Evita contratar de más.",
+      "Al ampliar un equipo con recursos fijos.",
+      "Ubica dónde empieza a caer el PMg y dónde llega a cero."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con L = 1 a 6 trabajadores, PT = 10, 25, 45, 60, 70, 72. Halla el PMg.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(PMg=PT_L-PT_{L-1}\\), partiendo de PT = 0 con L = 0.",
+      "<b>Diferencias.</b> 10, 15, 20, 15, 10, 2."
+     ],
+     "r": "10, 15, 20, 15, 10, 2",
+     "fin": "Calcular el producto marginal."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el PMe y ubica su máximo.",
+     "pasos": [
+      "<b>PMe.</b> 10, 12.5, 15, 15, 14, 12.",
+      "<b>Máximo.</b> 15, con 3 y 4 trabajadores."
+     ],
+     "r": "Máximo PMe = 15 con 3 o 4 trabajadores.",
+     "fin": "Calcular el producto medio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Desde qué trabajador aparecen rendimientos decrecientes?",
+     "pasos": [
+      "<b>PMg.</b> Sube hasta el tercero (20) y baja desde el cuarto (15).",
+      "<b>Conclusión.</b> A partir del cuarto trabajador."
+     ],
+     "r": "Desde el cuarto trabajador.",
+     "fin": "Identificar la ley de rendimientos decrecientes."
+    },
+    {
+     "nv": "A",
+     "q": "El salario es Q100 y el producto se vende a Q10. ¿Cuántos trabajadores contratar?",
+     "pasos": [
+      "<b>Valor del PMg.</b> \\(10\\times\\)PMg: 100, 150, 200, 150, 100, 20.",
+      "<b>Regla.</b> Contratar mientras el valor del PMg sea al menos el salario.",
+      "<b>Decisión.</b> Hasta el quinto (100 = 100); el sexto aporta solo 20."
+     ],
+     "r": "5 trabajadores",
+     "fin": "Decidir contrataciones con criterio económico."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué etapa están 2, 5 y 8 trabajadores si con 8 el PT baja a 70?",
+     "pasos": [
+      "<b>2.</b> PMe creciendo: etapa I.",
+      "<b>5.</b> PMe bajando y PMg positivo: etapa II.",
+      "<b>8.</b> PMg negativo: etapa III."
+     ],
+     "r": "I, II y III.",
+     "fin": "Ubicar las etapas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es el producto total máximo cuando el PMg es cero?",
+     "r": "Es el máximo de la curva de producto total."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el PMe con 5 trabajadores.",
+     "r": "14"
+    },
+    {
+     "nv": "I",
+     "q": "Si el PMg es mayor que el PMe, ¿qué pasa con el PMe?",
+     "r": "Aumenta."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué etapa es racional producir?",
+     "r": "Etapa II."
+    },
+    {
+     "nv": "A",
+     "q": "Con 7 trabajadores el PT es 70. ¿PMg y etapa?",
+     "r": "PMg = −2: etapa III."
+    }
+   ]
+  },
+  {
+   "titulo": "Costos de producción a corto plazo",
+   "intro": "Tema 5 del programa: costos totales y unitarios.",
+   "conceptos": [
+    {
+     "n": "Costos totales",
+     "e": [
+      "\\(CT=CF+CV\\). El costo fijo no cambia con la producción; el variable sí. A corto plazo existen costos fijos; a largo plazo todos son variables."
+     ],
+     "u": [
+      "Costos de servidores reservados (fijos) y por uso (variables).",
+      "Base para fijar precios y decidir cuánto producir.",
+      "Al analizar la estructura de costos.",
+      "Separa lo que existe aunque no produzcas."
+     ],
+     "f": "CT=CF+CV"
+    },
+    {
+     "n": "Costos unitarios y marginal",
+     "e": [
+      "\\(CMe=\\tfrac{CT}{Q}\\), \\(CVMe=\\tfrac{CV}{Q}\\), \\(CFMe=\\tfrac{CF}{Q}\\), \\(CMg=\\tfrac{\\Delta CT}{\\Delta Q}\\). El CMg corta al CMe y al CVMe en sus mínimos. Una empresa en competencia produce donde \\(P=CMg\\) y cierra si el precio no cubre el mínimo del CVMe."
+     ],
+     "u": [
+      "Decidir cuánto producir, precio mínimo de un servicio.",
+      "El costo marginal guía la decisión de producir una unidad más.",
+      "Al decidir volumen o precio.",
+      "Calcula la tabla completa y compara con el precio."
+     ],
+     "f": "CMe=\\frac{CT}{Q}\\qquad CMg=\\frac{\\Delta CT}{\\Delta Q}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con Q = 0 a 5, CT = 100, 150, 180, 200, 240, 300. Halla CF y CV.",
+     "pasos": [
+      "<b>CF.</b> El costo con Q = 0: 100.",
+      "<b>CV.</b> \\(CT-CF\\): 0, 50, 80, 100, 140, 200."
+     ],
+     "r": "CF = 100; CV = 0, 50, 80, 100, 140, 200.",
+     "fin": "Separar costos fijos y variables."
+    },
+    {
+     "nv": "I",
+     "q": "Halla CMe y CVMe para Q = 1 a 5.",
+     "pasos": [
+      "<b>CMe.</b> 150, 90, 66.7, 60, 60.",
+      "<b>CVMe.</b> 50, 40, 33.3, 35, 40."
+     ],
+     "r": "Mínimo del CVMe en Q = 3 (33.3).",
+     "fin": "Calcular costos unitarios."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el CMg y verifica su relación con el CMe.",
+     "pasos": [
+      "<b>CMg.</b> 50, 30, 20, 40, 60.",
+      "<b>Relación.</b> De Q = 4 a 5 el CMg es 60, igual al CMe mínimo (60).",
+      "<b>Regla.</b> El CMg corta al CMe en su mínimo."
+     ],
+     "r": "CMg = 50, 30, 20, 40, 60.",
+     "fin": "Comprobar la relación entre costos."
+    },
+    {
+     "nv": "A",
+     "q": "En competencia perfecta el precio es Q60. ¿Cuánto producir y cuál es la utilidad? ¿Por debajo de qué precio cerraría?",
+     "pasos": [
+      "<b>Regla.</b> \\(P=CMg\\): Q = 5 (CMg 60).",
+      "<b>Utilidad.</b> \\(5(60)-300=0\\): utilidad económica normal.",
+      "<b>Cierre.</b> Si el precio baja del mínimo del CVMe (≈ 33.3)."
+     ],
+     "r": "Q = 5, utilidad 0; cierra si P < 33.3.",
+     "fin": "Aplicar la regla de producción y de cierre."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué una empresa sigue operando con pérdidas a corto plazo?",
+     "pasos": [
+      "<b>Costo fijo.</b> Lo paga aunque cierre.",
+      "<b>Condición.</b> Si el ingreso cubre el costo variable, operar reduce la pérdida."
+     ],
+     "r": "Si el precio cubre el CVMe, perder menos que el CF conviene.",
+     "fin": "Entender la decisión de corto plazo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuánto vale el costo total con Q = 0?",
+     "r": "100 (el costo fijo)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el CMe con Q = 3.",
+     "r": "66.67"
+    },
+    {
+     "nv": "I",
+     "q": "Halla el CMg de pasar de 2 a 3 unidades.",
+     "r": "20"
+    },
+    {
+     "nv": "I",
+     "q": "Con P = 40, ¿cuánto producir y sigue operando?",
+     "r": "Q = 4: ingresa 160 y gasta 240 (pierde 80), pero cubre el CV de 140, así que sigue operando."
+    },
+    {
+     "nv": "A",
+     "q": "Con P = 70, ¿utilidad máxima?",
+     "r": "Q = 5: ingreso 350 − costo 300 = 50."
+    }
+   ]
+  },
+  {
+   "titulo": "Estructuras de mercado y formación de precios",
+   "intro": "Tema 6 del programa: competencia perfecta e imperfecta y formación de precios.",
+   "conceptos": [
+    {
+     "n": "Competencia perfecta",
+     "e": [
+      "Muchos vendedores, producto homogéneo, libre entrada y salida e información completa. Cada empresa es tomadora de precios: \\(P=IMg\\), y produce donde \\(P=CMg\\). A largo plazo la utilidad económica es cero."
+     ],
+     "u": [
+      "Mercados de productos básicos (granos, metales), componentes estándar.",
+      "Es el referente de eficiencia.",
+      "Para comparar otros mercados.",
+      "Aplica P = CMg."
+     ]
+    },
+    {
+     "n": "Monopolio",
+     "e": [
+      "Un solo vendedor sin sustitutos cercanos y con barreras de entrada. Enfrenta la demanda de mercado, así que \\(IMg\\lt P\\). Produce donde \\(IMg=CMg\\) y cobra el precio que indica la demanda: produce menos y cobra más que en competencia, con una pérdida de eficiencia."
+     ],
+     "u": [
+      "Servicios públicos, patentes de software, plataformas dominantes.",
+      "Explica precios altos y la necesidad de regulación.",
+      "Con un solo proveedor.",
+      "Halla IMg, iguala a CMg y lee el precio en la demanda."
+     ],
+     "f": "P=a-bQ\\ \\Rightarrow\\ IMg=a-2bQ"
+    },
+    {
+     "n": "Competencia monopolística y oligopolio",
+     "e": [
+      "<b>Competencia monopolística:</b> muchos vendedores con productos diferenciados (marca, ubicación); algo de control del precio. <b>Oligopolio:</b> pocos vendedores con decisiones interdependientes y barreras altas (telefonía, sistemas operativos)."
+     ],
+     "u": [
+      "Restaurantes y tiendas (monopolística), telefonía móvil y nube (oligopolio).",
+      "La mayoría de mercados reales están entre los extremos.",
+      "Al analizar competidores.",
+      "Cuenta vendedores, revisa diferenciación y barreras."
+     ],
+     "tabla": "<table><thead><tr><th>Estructura</th><th>Vendedores</th><th>Producto</th><th>Control del precio</th></tr></thead><tbody><tr><td>Competencia perfecta</td><td>Muchos</td><td>Homogéneo</td><td>Ninguno</td></tr><tr><td>Competencia monopolística</td><td>Muchos</td><td>Diferenciado</td><td>Algo</td></tr><tr><td>Oligopolio</td><td>Pocos</td><td>Homogéneo o diferenciado</td><td>Considerable</td></tr><tr><td>Monopolio</td><td>Uno</td><td>Sin sustitutos</td><td>Alto</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: agua potable municipal, telefonía móvil en Guatemala, restaurantes de comida rápida, mercado de maíz.",
+     "pasos": [
+      "<b>Agua municipal.</b> Monopolio.",
+      "<b>Telefonía.</b> Oligopolio (pocas empresas).",
+      "<b>Restaurantes.</b> Competencia monopolística.",
+      "<b>Maíz.</b> Cercano a competencia perfecta."
+     ],
+     "r": "Monopolio, oligopolio, competencia monopolística y competencia perfecta.",
+     "fin": "Identificar estructuras reales."
+    },
+    {
+     "nv": "I",
+     "q": "Un monopolio enfrenta P = 100 − Q con CMg = 20. Halla cantidad y precio.",
+     "pasos": [
+      "<b>Ingreso marginal.</b> \\(IMg=100-2Q\\).",
+      "<b>Iguala.</b> \\(100-2Q=20\\Rightarrow Q=40\\).",
+      "<b>Precio.</b> \\(100-40=60\\)."
+     ],
+     "r": "Q = 40, P = 60",
+     "fin": "Aplicar la regla del monopolio."
+    },
+    {
+     "nv": "I",
+     "q": "Con la misma demanda y CMg, ¿qué pasaría en competencia perfecta?",
+     "pasos": [
+      "<b>Regla.</b> \\(P=CMg=20\\).",
+      "<b>Cantidad.</b> \\(100-Q=20\\Rightarrow Q=80\\)."
+     ],
+     "r": "Q = 80, P = 20",
+     "fin": "Comparar con el resultado competitivo."
+    },
+    {
+     "nv": "A",
+     "q": "Con costo fijo de 500, halla la utilidad del monopolio y la pérdida de eficiencia social.",
+     "pasos": [
+      "<b>Utilidad.</b> \\((60-20)(40)-500=1100\\).",
+      "<b>Pérdida de eficiencia.</b> Triángulo entre Q = 40 y Q = 80: \\(\\tfrac12(60-20)(80-40)=800\\)."
+     ],
+     "r": "Utilidad Q1,100; pérdida de eficiencia Q800.",
+     "fin": "Medir el costo social del monopolio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué en el monopolio el IMg es menor que el precio?",
+     "pasos": [
+      "<b>Demanda con pendiente negativa.</b> Para vender una unidad más debe bajar el precio.",
+      "<b>Efecto.</b> Esa rebaja se aplica también a las unidades anteriores."
+     ],
+     "r": "Porque bajar el precio para vender más reduce el ingreso de todas las unidades.",
+     "fin": "Entender la lógica del monopolista."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué significa que una empresa sea tomadora de precios?",
+     "r": "Que no puede influir en el precio de mercado."
+    },
+    {
+     "nv": "I",
+     "q": "Menciona dos barreras de entrada.",
+     "r": "Patentes, economías de escala, licencias gubernamentales, control de insumos, efectos de red."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace una empresa en competencia monopolística para ganar clientes?",
+     "r": "Diferenciar su producto (marca, calidad, ubicación, servicio)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué caracteriza las decisiones en un oligopolio?",
+     "r": "Son interdependientes: cada empresa considera la reacción de las demás."
+    },
+    {
+     "nv": "A",
+     "q": "Si el CMg del monopolio sube a 40, ¿nuevo precio y cantidad?",
+     "r": "Q = 30, P = 70"
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

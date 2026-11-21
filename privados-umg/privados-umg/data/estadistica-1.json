@@ -1,0 +1,810 @@
+{
+ "slug": "estadistica-1",
+ "titulo": "Estadística I",
+ "meta": "Ciclo 4, código 019, bloque Probabilidad y estadística del seminario",
+ "firma": "P(B_r\\mid A)=\\frac{P(B_r)\\,P(A\\mid B_r)}{\\sum_i P(B_i)\\,P(A\\mid B_i)}",
+ "firma_nota": "Teorema de Bayes: actualizar una probabilidad con nueva evidencia, base de los filtros de spam.",
+ "lead": "Describir datos, medir la incertidumbre y modelar fenómenos aleatorios con distribuciones. Es la base del análisis de datos, el control de calidad, la confiabilidad de sistemas y el aprendizaje automático.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Cuarto%20Ciclo/2014-4EstadisticaI.pdf",
+ "temas": [
+  {
+   "titulo": "Estadística descriptiva",
+   "intro": "Tema 1 del programa: agrupación de datos, distribuciones de frecuencia, tendencia central, dispersión, asimetría y curtosis, regresión y correlación.",
+   "conceptos": [
+    {
+     "n": "Tendencia central",
+     "e": [
+      "Media \\(\\bar x=\\tfrac{\\sum x_i}{n}\\) (sensible a extremos), mediana (valor central de los datos ordenados) y moda (el más frecuente). En datos agrupados se usa la marca de clase \\(x_i\\) con su frecuencia \\(f_i\\)."
+     ],
+     "u": [
+      "Tiempo promedio de respuesta, salario típico, consumo medio de ancho de banda.",
+      "Resume un conjunto de datos en un valor representativo.",
+      "Al reportar resultados; si hay valores extremos, prefiere la mediana.",
+      "Ordena los datos, calcula las tres medidas y compáralas."
+     ],
+     "f": "\\bar x=\\frac{\\sum f_ix_i}{n}\\qquad Me=L+\\frac{\\tfrac n2-F_{a}}{f_{m}}\\,c\\qquad Mo=L+\\frac{d_1}{d_1+d_2}\\,c"
+    },
+    {
+     "n": "Dispersión",
+     "e": [
+      "El rango es máximo menos mínimo. La varianza muestral promedia los cuadrados de las desviaciones (dividiendo entre \\(n-1\\)) y la desviación estándar es su raíz, en las mismas unidades que los datos. El coeficiente de variación compara dispersión entre conjuntos de distinta escala."
+     ],
+     "u": [
+      "Estabilidad de un servicio (variación de latencia), control de calidad, riesgo financiero.",
+      "Dos conjuntos con la misma media pueden comportarse muy distinto.",
+      "Al comparar consistencia o riesgo.",
+      "Calcula s y el CV; menor CV es más homogéneo."
+     ],
+     "f": "s^2=\\frac{\\sum(x_i-\\bar x)^2}{n-1}\\qquad CV=\\frac{s}{\\bar x}\\times100\\%"
+    },
+    {
+     "n": "Asimetría y curtosis",
+     "e": [
+      "Asimetría positiva (cola a la derecha): media > mediana > moda. El coeficiente de Pearson \\(S_k=\\tfrac{3(\\bar x-Me)}{s}\\) mide el sesgo. La curtosis mide qué tan apuntada es la distribución: leptocúrtica (más apuntada que la normal), mesocúrtica (normal) y platicúrtica (achatada)."
+     ],
+     "u": [
+      "Distribuciones de ingresos, tiempos de espera, detección de anomalías.",
+      "Indica si la media representa bien a los datos.",
+      "Al decidir qué medida central reportar.",
+      "Compara media y mediana y calcula Sₖ."
+     ]
+    },
+    {
+     "n": "Regresión lineal y correlación",
+     "e": [
+      "La recta de mínimos cuadrados \\(\\hat y=a+bx\\) minimiza la suma de errores al cuadrado. El coeficiente \\(r\\in[-1,1]\\) mide la fuerza de la relación lineal; \\(r^2\\) es la fracción de la variación de \\(y\\) explicada por \\(x\\). Correlación no implica causalidad."
+     ],
+     "u": [
+      "Predecir carga de servidores según usuarios, ventas según publicidad, estimación de tiempos de desarrollo.",
+      "Cuantifica y aprovecha relaciones entre variables.",
+      "Cuando una variable parece depender linealmente de otra.",
+      "Calcula las sumas, b, a, r y verifica con un diagrama de dispersión."
+     ],
+     "f": "b=\\frac{n\\sum xy-\\sum x\\sum y}{n\\sum x^2-(\\sum x)^2}\\qquad a=\\bar y-b\\bar x\\qquad r=\\frac{n\\sum xy-\\sum x\\sum y}{\\sqrt{[n\\sum x^2-(\\sum x)^2][n\\sum y^2-(\\sum y)^2]}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Para los datos 4, 8, 6, 5, 3, 8, 9 halla media, mediana, moda y rango.",
+     "pasos": [
+      "<b>Media.</b> \\(\\tfrac{43}{7}\\approx6.14\\).",
+      "<b>Mediana.</b> Ordenados: 3, 4, 5, <b>6</b>, 8, 8, 9.",
+      "<b>Moda.</b> 8 (aparece dos veces).",
+      "<b>Rango.</b> \\(9-3=6\\)."
+     ],
+     "r": "Media 6.14, mediana 6, moda 8, rango 6.",
+     "fin": "Resumir datos con las medidas básicas."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la varianza muestral, la desviación estándar y el CV de 2, 4, 4, 4, 5, 5, 7, 9.",
+     "pasos": [
+      "<b>Media.</b> \\(\\tfrac{40}8=5\\).",
+      "<b>Desviaciones al cuadrado.</b> 9, 1, 1, 1, 0, 0, 4, 16: suma 32.",
+      "<b>Varianza.</b> \\(\\tfrac{32}{7}\\approx4.571\\); \\(s\\approx2.138\\).",
+      "<b>CV.</b> \\(\\tfrac{2.138}{5}\\approx42.8\\%\\)."
+     ],
+     "r": "\\(s^2\\approx4.571\\), \\(s\\approx2.138\\), CV ≈ 42.8 %.",
+     "fin": "Medir dispersión correctamente con n − 1."
+    },
+    {
+     "nv": "I",
+     "q": "Clases 10–20, 20–30, 30–40, 40–50 con frecuencias 3, 5, 8, 4. Halla media, mediana y moda.",
+     "pasos": [
+      "<b>Media.</b> Marcas 15, 25, 35, 45: \\(\\tfrac{45+125+280+180}{20}=31.5\\).",
+      "<b>Mediana.</b> \\(n/2=10\\); acumuladas 3, 8, 16: clase 30–40. \\(30+\\tfrac{10-8}{8}(10)=32.5\\).",
+      "<b>Moda.</b> Clase 30–40, \\(d_1=8-5=3\\), \\(d_2=8-4=4\\): \\(30+\\tfrac37(10)\\approx34.29\\)."
+     ],
+     "r": "Media 31.5, mediana 32.5, moda ≈ 34.29.",
+     "fin": "Trabajar con datos agrupados, formato típico de los reportes."
+    },
+    {
+     "nv": "I",
+     "q": "Una muestra tiene media 50, mediana 46 y s = 8. Mide su asimetría e interpreta.",
+     "pasos": [
+      "<b>Pearson.</b> \\(S_k=\\tfrac{3(50-46)}{8}=1.5\\).",
+      "<b>Signo.</b> Positivo: cola a la derecha.",
+      "<b>Consecuencia.</b> Unos pocos valores altos jalan la media; la mediana representa mejor el valor típico."
+     ],
+     "r": "Sₖ = 1.5: asimetría positiva marcada.",
+     "fin": "Decidir qué medida central reportar."
+    },
+    {
+     "nv": "A",
+     "q": "Ajusta la recta de regresión para x = 1, 2, 3, 4, 5 y y = 2, 4, 5, 4, 5; calcula r y predice y para x = 6.",
+     "pasos": [
+      "<b>Sumas.</b> \\(\\sum x=15,\\ \\sum y=20,\\ \\sum xy=66,\\ \\sum x^2=55,\\ \\sum y^2=86\\).",
+      "<b>Pendiente.</b> \\(b=\\tfrac{5(66)-15(20)}{5(55)-15^2}=\\tfrac{30}{50}=0.6\\).",
+      "<b>Intercepto.</b> \\(a=4-0.6(3)=2.2\\).",
+      "<b>Correlación.</b> \\(r=\\tfrac{30}{\\sqrt{50\\cdot30}}\\approx0.775\\); \\(r^2=0.6\\).",
+      "<b>Predicción.</b> \\(\\hat y(6)=2.2+3.6=5.8\\)."
+     ],
+     "r": "\\(\\hat y=2.2+0.6x\\), \\(r\\approx0.775\\), \\(\\hat y(6)=5.8\\).",
+     "fin": "Construir y evaluar un modelo predictivo simple."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula la nota final con 80 (30 %), 70 (30 %) y 90 (40 %).",
+     "r": "81"
+    },
+    {
+     "nv": "B",
+     "q": "Para 12, 15, 12, 18, 20 halla media, moda y rango.",
+     "r": "Media 15.4, moda 12, rango 8."
+    },
+    {
+     "nv": "I",
+     "q": "El servicio A tiene media 50 ms y s = 5; el B, media 200 ms y s = 15. ¿Cuál es relativamente más estable?",
+     "r": "B: CV 7.5 % contra 10 % de A."
+    },
+    {
+     "nv": "I",
+     "q": "Interpreta r = −0.9 entre el porcentaje de aciertos de caché y el tiempo de respuesta.",
+     "r": "Relación lineal negativa fuerte; r² = 0.81, el 81 % de la variación se explica linealmente."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(\\hat y=2.2+0.6x\\), ¿qué porcentaje de la variación explica x y cuál es el residuo en (3, 5)?",
+     "r": "60 %; \\(\\hat y(3)=4\\), residuo \\(5-4=1\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Probabilidad",
+   "intro": "Tema 2 del programa: espacio muestral, eventos, conteo, reglas aditivas, probabilidad condicional, reglas multiplicativas y teorema de Bayes.",
+   "conceptos": [
+    {
+     "n": "Espacio muestral y eventos",
+     "e": [
+      "El espacio muestral \\(S\\) contiene todos los resultados posibles; un evento es un subconjunto. Con resultados igualmente probables, \\(P(A)=\\tfrac{|A|}{|S|}\\). Siempre \\(0\\le P(A)\\le1\\) y \\(P(A')=1-P(A)\\)."
+     ],
+     "u": [
+      "Probabilidad de fallas, juegos, pruebas A/B.",
+      "Cuantifica la incertidumbre.",
+      "Al analizar experimentos aleatorios.",
+      "Define S, cuenta casos favorables y totales."
+     ]
+    },
+    {
+     "n": "Reglas aditiva y multiplicativa",
+     "e": [
+      "\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\). Excluyentes: \\(P(A\\cap B)=0\\). Multiplicativa: \\(P(A\\cap B)=P(A)P(B\\mid A)\\). Independientes: \\(P(A\\cap B)=P(A)P(B)\\)."
+     ],
+     "u": [
+      "Confiabilidad de sistemas en serie (todos deben funcionar) y en paralelo (basta uno).",
+      "Combina probabilidades de eventos simples.",
+      "Con “y” (multiplicativa) u “o” (aditiva).",
+      "Identifica si los eventos son excluyentes o independientes antes de operar."
+     ],
+     "f": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\qquad P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)}"
+    },
+    {
+     "n": "Probabilidad condicional y Bayes",
+     "e": [
+      "\\(P(A\\mid B)\\) es la probabilidad de \\(A\\) sabiendo que ocurrió \\(B\\). Probabilidad total: \\(P(A)=\\sum P(B_i)P(A\\mid B_i)\\). Bayes invierte la condición: de \\(P(A\\mid B)\\) a \\(P(B\\mid A)\\)."
+     ],
+     "u": [
+      "Filtros de spam, diagnóstico de fallas, pruebas médicas, clasificadores de ML.",
+      "Actualiza creencias con evidencia nueva.",
+      "Cuando conoces la probabilidad del efecto dada la causa y quieres la de la causa dado el efecto.",
+      "Arma un árbol de probabilidades y aplica la fórmula."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Se lanzan dos dados. ¿Cuál es la probabilidad de que sumen 7?",
+     "pasos": [
+      "<b>Espacio muestral.</b> \\(6\\times6=36\\) resultados.",
+      "<b>Favorables.</b> (1,6), (2,5), (3,4), (4,3), (5,2), (6,1): 6.",
+      "<b>Probabilidad.</b> \\(\\tfrac6{36}\\)."
+     ],
+     "r": "\\(\\tfrac16\\)",
+     "fin": "Contar casos con un espacio muestral bien definido."
+    },
+    {
+     "nv": "I",
+     "q": "Si P(A) = 0.5, P(B) = 0.4 y P(A ∩ B) = 0.2, halla P(A ∪ B), P(A | B) y decide si son independientes.",
+     "pasos": [
+      "<b>Unión.</b> \\(0.5+0.4-0.2=0.7\\).",
+      "<b>Condicional.</b> \\(\\tfrac{0.2}{0.4}=0.5\\).",
+      "<b>Independencia.</b> \\(0.5\\cdot0.4=0.2=P(A\\cap B)\\): sí."
+     ],
+     "r": "0.7; 0.5; son independientes.",
+     "fin": "Aplicar las reglas básicas y la prueba de independencia."
+    },
+    {
+     "nv": "I",
+     "q": "De 100 empleados, 60 son hombres y 40 mujeres; 30 hombres y 20 mujeres usan Linux. Halla P(Linux | mujer) y P(mujer | Linux).",
+     "pasos": [
+      "<b>P(Linux | mujer).</b> \\(\\tfrac{20}{40}=0.5\\).",
+      "<b>Total Linux.</b> 50.",
+      "<b>P(mujer | Linux).</b> \\(\\tfrac{20}{50}=0.4\\)."
+     ],
+     "r": "0.5 y 0.4.",
+     "fin": "Ver que P(A | B) ≠ P(B | A)."
+    },
+    {
+     "nv": "A",
+     "q": "Tres máquinas producen 50 %, 30 % y 20 % de las piezas con 2 %, 3 % y 4 % de defectos. Si una pieza es defectuosa, ¿cuál es la probabilidad de que venga de la máquina 1?",
+     "pasos": [
+      "<b>Probabilidad total.</b> \\(0.5(0.02)+0.3(0.03)+0.2(0.04)=0.027\\).",
+      "<b>Bayes.</b> \\(\\tfrac{0.5(0.02)}{0.027}=\\tfrac{0.010}{0.027}\\)."
+     ],
+     "r": "\\(\\approx0.370\\)",
+     "fin": "Rastrear el origen probable de una falla."
+    },
+    {
+     "nv": "A",
+     "q": "De 10 servidores, 3 tienen una vulnerabilidad. Se auditan 4 al azar. ¿Cuál es la probabilidad de encontrar exactamente uno vulnerable?",
+     "pasos": [
+      "<b>Casos totales.</b> \\(\\binom{10}{4}=210\\).",
+      "<b>Favorables.</b> \\(\\binom31\\binom73=3\\cdot35=105\\).",
+      "<b>Probabilidad.</b> \\(\\tfrac{105}{210}\\)."
+     ],
+     "r": "0.5",
+     "fin": "Combinar conteo y probabilidad en auditorías por muestreo."
+    },
+    {
+     "nv": "B",
+     "q": "Se lanza una moneda 3 veces. ¿Probabilidad de al menos una cara?",
+     "r": "\\(1-\\tfrac18=\\tfrac78\\)"
+    },
+    {
+     "nv": "B",
+     "q": "Si P(A) = 0.35, ¿cuánto vale P(A′)?",
+     "r": "0.65"
+    },
+    {
+     "nv": "I",
+     "q": "A y B son independientes con P(A) = 0.3 y P(B) = 0.5. Halla P(A ∩ B) y P(A ∪ B).",
+     "r": "0.15 y 0.65."
+    },
+    {
+     "nv": "I",
+     "q": "De 12 piezas, 4 son defectuosas. Se sacan 2 sin reemplazo. ¿Probabilidad de que ambas sean defectuosas?",
+     "r": "\\(\\tfrac4{12}\\cdot\\tfrac3{11}=\\tfrac1{11}\\approx0.091\\)"
+    },
+    {
+     "nv": "A",
+     "q": "El 20 % del correo es spam. El filtro detecta el 95 % del spam y marca por error el 2 % del correo normal. Si un correo fue marcado, ¿probabilidad de que sea spam?",
+     "r": "\\(\\tfrac{0.19}{0.19+0.016}\\approx0.922\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Variables aleatorias",
+   "intro": "Tema 3 del programa: variables discretas, continuas, distribuciones empíricas y conjuntas.",
+   "conceptos": [
+    {
+     "n": "Variables discretas",
+     "e": [
+      "Toman valores contables. Su función de probabilidad \\(f(x)=P(X=x)\\) cumple \\(f(x)\\ge0\\) y \\(\\sum f(x)=1\\). La acumulada es \\(F(x)=P(X\\le x)\\)."
+     ],
+     "u": [
+      "Número de solicitudes por minuto, defectos por lote, errores por línea de código.",
+      "Modela conteos.",
+      "Cuando la variable se cuenta.",
+      "Verifica que las probabilidades sumen 1 y acumula."
+     ]
+    },
+    {
+     "n": "Variables continuas",
+     "e": [
+      "Toman cualquier valor de un intervalo. Se describen con una densidad \\(f(x)\\ge0\\) con \\(\\int f=1\\); las probabilidades son áreas: \\(P(a\\lt X\\lt b)=\\int_a^bf\\). Un valor puntual tiene probabilidad 0."
+     ],
+     "u": [
+      "Tiempos de respuesta, voltajes, vida útil de discos duros.",
+      "Modela mediciones.",
+      "Cuando la variable se mide.",
+      "Integra la densidad en el intervalo pedido."
+     ],
+     "f": "F(x)=\\int_{-\\infty}^{x}f(t)\\,dt"
+    },
+    {
+     "n": "Distribuciones empíricas y conjuntas",
+     "e": [
+      "Una distribución empírica se construye con las frecuencias relativas observadas. Una distribución conjunta \\(f(x,y)\\) describe dos variables a la vez; las marginales suman sobre la otra variable. \\(X\\) e \\(Y\\) son independientes si \\(f(x,y)=g(x)h(y)\\) para todo par."
+     ],
+     "u": [
+      "Análisis de datos reales de logs, relación entre carga de CPU y memoria.",
+      "Estudia variables que ocurren juntas.",
+      "Con datos de dos variables simultáneas.",
+      "Calcula marginales y prueba el producto en cada celda."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "X es el número de caras al lanzar dos monedas. Da su distribución y F(1).",
+     "pasos": [
+      "<b>Valores.</b> 0, 1, 2.",
+      "<b>Probabilidades.</b> \\(\\tfrac14,\\ \\tfrac12,\\ \\tfrac14\\).",
+      "<b>Acumulada.</b> \\(F(1)=\\tfrac14+\\tfrac12\\)."
+     ],
+     "r": "\\(F(1)=\\tfrac34\\)",
+     "fin": "Construir una distribución discreta desde el experimento."
+    },
+    {
+     "nv": "I",
+     "q": "Halla \\(c\\) para que \\(f(x)=cx\\), \\(x=1,2,3,4\\), sea distribución, y \\(P(X\\ge3)\\).",
+     "pasos": [
+      "<b>Suma.</b> \\(c(1+2+3+4)=10c=1\\Rightarrow c=0.1\\).",
+      "<b>Probabilidad.</b> \\(0.3+0.4=0.7\\)."
+     ],
+     "r": "\\(c=0.1\\); \\(P(X\\ge3)=0.7\\).",
+     "fin": "Normalizar una función de probabilidad."
+    },
+    {
+     "nv": "I",
+     "q": "Con \\(f(x)=2x\\) en \\([0,1]\\), verifica que es densidad, halla \\(F(x)\\) y \\(P(X\\le0.5)\\).",
+     "pasos": [
+      "<b>Área total.</b> \\(\\int_0^12x\\,dx=1\\).",
+      "<b>Acumulada.</b> \\(F(x)=x^2\\).",
+      "<b>Probabilidad.</b> \\(F(0.5)=0.25\\)."
+     ],
+     "r": "\\(F(x)=x^2\\); \\(P=0.25\\).",
+     "fin": "Usar integrales para probabilidades continuas."
+    },
+    {
+     "nv": "A",
+     "q": "Halla \\(k\\) para \\(f(x)=kx^2\\) en \\([0,3]\\) y \\(P(1\\lt X\\lt2)\\).",
+     "pasos": [
+      "<b>Normaliza.</b> \\(k\\cdot\\tfrac{27}3=9k=1\\Rightarrow k=\\tfrac19\\).",
+      "<b>Integra.</b> \\(\\tfrac19\\cdot\\tfrac{8-1}{3}=\\tfrac7{27}\\)."
+     ],
+     "r": "\\(k=\\tfrac19\\); \\(P\\approx0.259\\).",
+     "fin": "Combinar normalización e integración."
+    },
+    {
+     "nv": "A",
+     "q": "Con f(0,0) = 0.1, f(0,1) = 0.2, f(1,0) = 0.3, f(1,1) = 0.4, halla las marginales y decide si X e Y son independientes.",
+     "pasos": [
+      "<b>Marginal de X.</b> \\(g(0)=0.3\\), \\(g(1)=0.7\\).",
+      "<b>Marginal de Y.</b> \\(h(0)=0.4\\), \\(h(1)=0.6\\).",
+      "<b>Prueba.</b> \\(g(0)h(0)=0.12\\neq0.1\\)."
+     ],
+     "r": "No son independientes.",
+     "fin": "Detectar dependencia entre dos variables."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es distribución de probabilidad 0.2, 0.3, 0.6?",
+     "r": "No: suma 1.1."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica: número de peticiones por segundo y tiempo de respuesta.",
+     "r": "Discreta y continua."
+    },
+    {
+     "nv": "I",
+     "q": "Con \\(f(x)=3x^2\\) en \\([0,1]\\), halla \\(P(X\\gt0.5)\\).",
+     "r": "0.875"
+    },
+    {
+     "nv": "I",
+     "q": "Si \\(F(x)=1-e^{-x}\\), halla \\(P(1\\lt X\\lt2)\\).",
+     "r": "\\(e^{-1}-e^{-2}\\approx0.2325\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Con la tabla conjunta del ejercicio 5, halla P(Y = 1 | X = 1).",
+     "r": "\\(\\tfrac{0.4}{0.7}\\approx0.571\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Esperanza matemática",
+   "intro": "Tema 4 del programa: media, varianza y covarianza, combinaciones lineales y teorema de Chebyshev.",
+   "conceptos": [
+    {
+     "n": "Media o valor esperado",
+     "e": [
+      "\\(E(X)=\\sum xf(x)\\) en el caso discreto y \\(\\int xf(x)dx\\) en el continuo. Es el promedio a largo plazo y se usa para decidir con incertidumbre."
+     ],
+     "u": [
+      "Ganancia esperada de un proyecto, costo esperado de fallas, juegos.",
+      "Resume el resultado típico a largo plazo.",
+      "Al comparar decisiones con riesgo.",
+      "Multiplica cada valor por su probabilidad y suma."
+     ],
+     "f": "\\mu=E(X)=\\sum x\\,f(x)"
+    },
+    {
+     "n": "Varianza y covarianza",
+     "e": [
+      "\\(\\sigma^2=E(X^2)-\\mu^2\\). La covarianza \\(\\sigma_{XY}=E(XY)-\\mu_X\\mu_Y\\) mide si dos variables varían juntas; si son independientes es 0 (lo contrario no siempre se cumple)."
+     ],
+     "u": [
+      "Riesgo de inversiones, diversificación, variabilidad de procesos.",
+      "Cuantifica la incertidumbre y la relación entre variables.",
+      "Al evaluar riesgo o combinar variables.",
+      "Calcula E(X²) o E(XY) y resta."
+     ],
+     "f": "\\sigma^2=E(X^2)-\\mu^2\\qquad \\sigma_{XY}=E(XY)-\\mu_X\\mu_Y"
+    },
+    {
+     "n": "Combinaciones lineales",
+     "e": [
+      "\\(E(aX+bY+c)=aE(X)+bE(Y)+c\\). \\(\\operatorname{Var}(aX+bY)=a^2\\sigma_X^2+b^2\\sigma_Y^2+2ab\\,\\sigma_{XY}\\). Sumar una constante no cambia la varianza."
+     ],
+     "u": [
+      "Costo total como suma de componentes, portafolios, tiempos de procesos en serie.",
+      "Permite combinar variables sin rehacer distribuciones.",
+      "Con sumas o escalamientos de variables.",
+      "Aplica las propiedades; no olvides la covarianza si no son independientes."
+     ]
+    },
+    {
+     "n": "Teorema de Chebyshev",
+     "e": [
+      "Para <b>cualquier</b> distribución, al menos \\(1-\\tfrac1{k^2}\\) de los datos está a menos de \\(k\\) desviaciones de la media: 75 % con \\(k=2\\), 88.9 % con \\(k=3\\)."
+     ],
+     "u": [
+      "Garantías de servicio sin conocer la distribución, detección conservadora de anomalías.",
+      "Da cotas seguras con muy poca información.",
+      "Cuando no sabes si los datos son normales.",
+      "Calcula k = distancia/σ y aplica 1 − 1/k²."
+     ],
+     "f": "P(|X-\\mu|\\lt k\\sigma)\\ge1-\\frac1{k^2}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla el valor esperado de un dado justo.",
+     "pasos": [
+      "<b>Probabilidades.</b> Cada cara \\(\\tfrac16\\).",
+      "<b>Suma.</b> \\(\\tfrac{1+2+3+4+5+6}{6}=\\tfrac{21}6\\)."
+     ],
+     "r": "3.5",
+     "fin": "Ver que el valor esperado puede no ser un resultado posible."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la varianza y la desviación estándar del dado.",
+     "pasos": [
+      "<b>E(X²).</b> \\(\\tfrac{1+4+9+16+25+36}{6}=\\tfrac{91}6\\approx15.167\\).",
+      "<b>Varianza.</b> \\(15.167-3.5^2=2.917\\).",
+      "<b>σ.</b> \\(\\approx1.708\\)."
+     ],
+     "r": "\\(\\sigma^2\\approx2.917\\), \\(\\sigma\\approx1.708\\).",
+     "fin": "Usar el atajo E(X²) − μ²."
+    },
+    {
+     "nv": "I",
+     "q": "Si X es el dado, halla E(2X + 3) y Var(2X + 3).",
+     "pasos": [
+      "<b>Media.</b> \\(2(3.5)+3=10\\).",
+      "<b>Varianza.</b> \\(4(2.917)=11.667\\); el 3 no la cambia."
+     ],
+     "r": "10 y 11.667.",
+     "fin": "Aplicar propiedades de combinaciones lineales."
+    },
+    {
+     "nv": "I",
+     "q": "Un proceso tiene μ = 100 ms y σ = 10 ms sin distribución conocida. ¿Qué porcentaje mínimo está entre 80 y 120 ms?",
+     "pasos": [
+      "<b>k.</b> \\(\\tfrac{20}{10}=2\\).",
+      "<b>Chebyshev.</b> \\(1-\\tfrac14=0.75\\)."
+     ],
+     "r": "Al menos 75 %.",
+     "fin": "Dar garantías sin suponer normalidad."
+    },
+    {
+     "nv": "A",
+     "q": "Con la tabla conjunta f(0,0) = 0.1, f(0,1) = 0.2, f(1,0) = 0.3, f(1,1) = 0.4, halla Cov(X, Y) y Var(X + Y).",
+     "pasos": [
+      "<b>Medias.</b> \\(E(X)=0.7\\), \\(E(Y)=0.6\\), \\(E(XY)=0.4\\).",
+      "<b>Covarianza.</b> \\(0.4-0.42=-0.02\\).",
+      "<b>Varianzas.</b> \\(\\sigma_X^2=0.21\\), \\(\\sigma_Y^2=0.24\\).",
+      "<b>Suma.</b> \\(0.21+0.24+2(-0.02)=0.41\\)."
+     ],
+     "r": "\\(\\sigma_{XY}=-0.02\\); \\(\\operatorname{Var}(X+Y)=0.41\\).",
+     "fin": "Incluir la covarianza al sumar variables dependientes."
+    },
+    {
+     "nv": "B",
+     "q": "X vale 0, 1, 2 con probabilidades 0.5, 0.3, 0.2. Halla E(X).",
+     "r": "0.7"
+    },
+    {
+     "nv": "I",
+     "q": "Con la misma X, halla Var(X).",
+     "r": "\\(1.1-0.49=0.61\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Un juego cuesta Q15 y paga Q100 con probabilidad 0.1. ¿Ganancia esperada?",
+     "r": "−Q5 por juego."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué porcentaje mínimo cae a menos de 3σ de la media por Chebyshev?",
+     "r": "88.9 %"
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(f(x)=2x\\) en \\([0,1]\\), halla \\(E(X)\\) y \\(\\operatorname{Var}(X)\\).",
+     "r": "\\(\\tfrac23\\) y \\(\\tfrac1{18}\\approx0.056\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Distribuciones discretas",
+   "intro": "Tema 5 del programa: uniforme, binomial, multinomial, hipergeométrica, binomial negativa, geométrica y Poisson.",
+   "conceptos": [
+    {
+     "n": "Uniforme, binomial y multinomial",
+     "e": [
+      "<b>Uniforme:</b> \\(k\\) valores igualmente probables. <b>Binomial:</b> número de éxitos en \\(n\\) ensayos independientes con probabilidad \\(p\\). <b>Multinomial:</b> generaliza a más de dos resultados por ensayo."
+     ],
+     "u": [
+      "Defectos en una muestra, paquetes perdidos, respuestas correctas en un examen.",
+      "Modelan conteos de éxitos en ensayos repetidos.",
+      "Con ensayos independientes de probabilidad constante.",
+      "Identifica n y p y aplica la fórmula."
+     ],
+     "f": "P(X=x)=\\binom nx p^x q^{n-x}\\qquad \\mu=np,\\ \\sigma^2=npq"
+    },
+    {
+     "n": "Hipergeométrica",
+     "e": [
+      "Éxitos al extraer \\(n\\) elementos <b>sin reemplazo</b> de una población de \\(N\\) con \\(k\\) éxitos. Si \\(n\\) es pequeño frente a \\(N\\), se aproxima con la binomial."
+     ],
+     "u": [
+      "Auditorías por muestreo, control de lotes, cartas.",
+      "Considera que cada extracción cambia la población.",
+      "Muestreo sin reemplazo de poblaciones pequeñas.",
+      "Cuenta combinaciones de éxitos y fracasos sobre el total."
+     ],
+     "f": "P(X=x)=\\frac{\\binom kx\\binom{N-k}{n-x}}{\\binom Nn}"
+    },
+    {
+     "n": "Geométrica y binomial negativa",
+     "e": [
+      "<b>Geométrica:</b> número de ensayos hasta el primer éxito, \\(pq^{x-1}\\), con media \\(\\tfrac1p\\). <b>Binomial negativa:</b> ensayos hasta el \\(k\\)-ésimo éxito, \\(\\binom{x-1}{k-1}p^kq^{x-k}\\), con media \\(\\tfrac kp\\)."
+     ],
+     "u": [
+      "Reintentos de conexión, intentos hasta encontrar un error, ventas hasta cerrar k contratos.",
+      "Modelan esperas en ensayos repetidos.",
+      "Cuando la pregunta es “¿cuántos intentos hasta…?”.",
+      "Identifica si buscas el primer éxito o el k-ésimo."
+     ]
+    },
+    {
+     "n": "Poisson",
+     "e": [
+      "Cuenta eventos en un intervalo de tiempo o espacio con tasa promedio \\(\\lambda\\); media y varianza son iguales a \\(\\lambda\\). Aproxima la binomial cuando \\(n\\) es grande y \\(p\\) pequeño (\\(\\lambda=np\\))."
+     ],
+     "u": [
+      "Solicitudes a un servidor por minuto, errores por hora, llamadas a un call center.",
+      "Modela eventos raros e independientes.",
+      "Con conteos por unidad de tiempo o espacio.",
+      "Ajusta λ al intervalo pedido y aplica la fórmula."
+     ],
+     "f": "P(X=x)=\\frac{e^{-\\lambda}\\lambda^x}{x!}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con n = 5 y p = 0.3, halla P(X = 2).",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\binom52(0.3)^2(0.7)^3\\).",
+      "<b>Calcula.</b> \\(10\\cdot0.09\\cdot0.343\\)."
+     ],
+     "r": "\\(\\approx0.3087\\)",
+     "fin": "Aplicar la binomial."
+    },
+    {
+     "nv": "I",
+     "q": "Un proceso tiene 5 % de defectos. En 10 piezas, ¿probabilidad de al menos 2 defectuosas? Compara con Poisson.",
+     "pasos": [
+      "<b>Complemento.</b> \\(1-P(0)-P(1)\\).",
+      "<b>Binomial.</b> \\(1-0.95^{10}-10(0.05)(0.95)^9\\approx0.0861\\).",
+      "<b>Poisson.</b> \\(\\lambda=0.5\\): \\(1-e^{-0.5}(1+0.5)\\approx0.0902\\)."
+     ],
+     "r": "0.0861 (binomial) y 0.0902 (Poisson).",
+     "fin": "Usar el complemento y la aproximación de Poisson."
+    },
+    {
+     "nv": "I",
+     "q": "Un lote de 20 discos tiene 3 defectuosos. Se revisan 5 sin reemplazo. ¿Probabilidad de hallar exactamente 1?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\tfrac{\\binom31\\binom{17}4}{\\binom{20}5}\\).",
+      "<b>Calcula.</b> \\(\\tfrac{3\\cdot2380}{15504}\\)."
+     ],
+     "r": "\\(\\approx0.4605\\)",
+     "fin": "Muestreo sin reemplazo en control de calidad."
+    },
+    {
+     "nv": "I",
+     "q": "Un servidor registra en promedio 2 errores por hora. Halla P(3 errores) y P(ninguno).",
+     "pasos": [
+      "<b>λ = 2.</b>",
+      "<b>Tres.</b> \\(\\tfrac{e^{-2}2^3}{3!}\\approx0.1804\\).",
+      "<b>Ninguno.</b> \\(e^{-2}\\approx0.1353\\)."
+     ],
+     "r": "0.1804 y 0.1353.",
+     "fin": "Modelar eventos por unidad de tiempo."
+    },
+    {
+     "nv": "A",
+     "q": "Una conexión tiene éxito con p = 0.2 por intento. Halla P(primer éxito en el 4.º intento). Con p = 0.4, halla P(tercer éxito en el 5.º intento).",
+     "pasos": [
+      "<b>Geométrica.</b> \\(0.8^3(0.2)=0.1024\\).",
+      "<b>Binomial negativa.</b> \\(\\binom42(0.4)^3(0.6)^2=6\\cdot0.064\\cdot0.36\\approx0.1382\\)."
+     ],
+     "r": "0.1024 y 0.1382.",
+     "fin": "Modelar reintentos."
+    },
+    {
+     "nv": "B",
+     "q": "Halla media y varianza de una binomial con n = 20 y p = 0.25.",
+     "r": "5 y 3.75."
+    },
+    {
+     "nv": "B",
+     "q": "Con un dado justo, ¿cuánto vale P(X ≤ 2)?",
+     "r": "\\(\\tfrac13\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Con Poisson λ = 4, halla media, varianza y P(X = 0).",
+     "r": "4, 4 y \\(e^{-4}\\approx0.0183\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Tres resultados con probabilidades 0.5, 0.3 y 0.2 en 5 ensayos. Halla P(2, 2, 1).",
+     "r": "\\(\\tfrac{5!}{2!2!1!}(0.25)(0.09)(0.2)=0.135\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Con p = 0.2, ¿cuántos intentos se esperan hasta el primer éxito y con qué varianza?",
+     "r": "5 intentos; varianza 20."
+    }
+   ]
+  },
+  {
+   "titulo": "Distribuciones continuas",
+   "intro": "Tema 6 del programa: normal y áreas bajo la curva, aproximación normal a la binomial, gamma, exponencial, ji cuadrada, lognormal y Weibull.",
+   "conceptos": [
+    {
+     "n": "Distribución normal",
+     "e": [
+      "Simétrica en forma de campana, definida por \\(\\mu\\) y \\(\\sigma\\). Se estandariza con \\(Z=\\tfrac{X-\\mu}{\\sigma}\\) y se usa la tabla de \\(Z\\). Regla empírica: 68 %, 95 % y 99.7 % a 1, 2 y 3 desviaciones."
+     ],
+     "u": [
+      "Errores de medición, tiempos de respuesta agregados, calificaciones, control estadístico de procesos.",
+      "Aparece en casi todo fenómeno que suma muchos efectos pequeños.",
+      "Con datos simétricos o promedios.",
+      "Estandariza y busca el área en la tabla."
+     ],
+     "f": "Z=\\frac{X-\\mu}{\\sigma}"
+    },
+    {
+     "n": "Aproximación normal a la binomial",
+     "e": [
+      "Si \\(np\\ge5\\) y \\(nq\\ge5\\), una binomial se aproxima con una normal de \\(\\mu=np\\) y \\(\\sigma=\\sqrt{npq}\\), con corrección de continuidad de ±0.5."
+     ],
+     "u": [
+      "Encuestas grandes, tasas de error en millones de paquetes.",
+      "Evita sumar cientos de términos binomiales.",
+      "Con n grande.",
+      "Ajusta ±0.5 según la desigualdad y estandariza."
+     ]
+    },
+    {
+     "n": "Exponencial y gamma",
+     "e": [
+      "La <b>exponencial</b> modela el tiempo entre eventos de Poisson: \\(f(x)=\\lambda e^{-\\lambda x}\\), media \\(\\tfrac1\\lambda\\), \\(P(X\\gt x)=e^{-\\lambda x}\\). No tiene memoria. La <b>gamma</b> generaliza (tiempo hasta el α-ésimo evento); con α = 1 es exponencial."
+     ],
+     "u": [
+      "Tiempo entre llegadas a un servidor, vida de componentes electrónicos.",
+      "Modela esperas aleatorias.",
+      "Con tiempos hasta un evento.",
+      "Usa P(X > x) = e^(−λx) con λ = 1/media."
+     ]
+    },
+    {
+     "n": "Ji cuadrada, lognormal y Weibull",
+     "e": [
+      "<b>Ji cuadrada:</b> caso especial de la gamma; se usa en pruebas de varianza y bondad de ajuste. <b>Lognormal:</b> \\(\\ln X\\) es normal; modela variables positivas sesgadas (ingresos, tamaños de archivos). <b>Weibull:</b> modela tiempos de falla; confiabilidad \\(R(t)=e^{-(t/\\eta)^\\beta}\\)."
+     ],
+     "u": [
+      "Confiabilidad de discos y servidores, pruebas estadísticas, tamaños de archivos en redes.",
+      "Cada una modela una forma específica de datos reales.",
+      "Con tiempos de falla, datos sesgados o pruebas de varianza.",
+      "Identifica la forma de los datos y aplica la distribución correspondiente."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla P(Z < 1.25) y P(Z > 1.25).",
+     "pasos": [
+      "<b>Tabla.</b> \\(P(Z\\lt1.25)=0.8944\\).",
+      "<b>Complemento.</b> \\(1-0.8944=0.1056\\)."
+     ],
+     "r": "0.8944 y 0.1056.",
+     "fin": "Leer la tabla normal estándar."
+    },
+    {
+     "nv": "I",
+     "q": "Los tiempos de un proceso son N(70, 8). ¿Qué porcentaje está entre 60 y 80?",
+     "pasos": [
+      "<b>Estandariza.</b> \\(z=\\tfrac{60-70}{8}=-1.25\\) y \\(z=1.25\\).",
+      "<b>Área.</b> \\(0.8944-0.1056=0.7888\\)."
+     ],
+     "r": "≈ 78.9 %",
+     "fin": "Calcular porcentajes dentro de especificaciones."
+    },
+    {
+     "nv": "I",
+     "q": "La vida de un disco es exponencial con media 4 años. ¿Probabilidad de que dure más de 5? Si ya duró 3, ¿probabilidad de que dure 5 más?",
+     "pasos": [
+      "<b>Tasa.</b> \\(\\lambda=\\tfrac14\\).",
+      "<b>Más de 5.</b> \\(e^{-5/4}\\approx0.2865\\).",
+      "<b>Sin memoria.</b> La respuesta es la misma: 0.2865."
+     ],
+     "r": "0.2865 en ambos casos.",
+     "fin": "Entender la falta de memoria de la exponencial."
+    },
+    {
+     "nv": "A",
+     "q": "Con n = 100 y p = 0.5, aproxima P(X ≤ 45) con la normal.",
+     "pasos": [
+      "<b>Parámetros.</b> \\(\\mu=50\\), \\(\\sigma=5\\).",
+      "<b>Corrección.</b> \\(P(X\\le45)\\approx P(Y\\lt45.5)\\).",
+      "<b>Estandariza.</b> \\(z=-0.9\\Rightarrow0.1841\\).",
+      "<b>Exacto binomial.</b> 0.1841."
+     ],
+     "r": "≈ 0.1841",
+     "fin": "Aplicar la aproximación con corrección de continuidad."
+    },
+    {
+     "nv": "A",
+     "q": "Las latencias siguen N(200 ms, 30 ms). ¿Qué valor deja al 5 % más lento por encima?",
+     "pasos": [
+      "<b>z del percentil 95.</b> 1.645.",
+      "<b>Despeja.</b> \\(x=200+1.645(30)\\)."
+     ],
+     "r": "≈ 249.4 ms",
+     "fin": "Definir umbrales de alerta con percentiles."
+    },
+    {
+     "nv": "B",
+     "q": "Halla P(−1.96 < Z < 1.96).",
+     "r": "0.95"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué porcentaje de una normal cae fuera de ±2σ?",
+     "r": "4.55 %"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué distribución modela el tiempo entre llegadas de un proceso de Poisson y cuál generaliza a esta?",
+     "r": "La exponencial; la gamma la generaliza."
+    },
+    {
+     "nv": "I",
+     "q": "Si ln X es normal con μ = 3, ¿cuál es la mediana de X?",
+     "r": "\\(e^3\\approx20.09\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Un componente tiene vida Weibull con η = 1000 h y β = 2. ¿Confiabilidad a las 500 h?",
+     "r": "\\(e^{-(0.5)^2}\\approx0.7788\\)"
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

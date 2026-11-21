@@ -1,0 +1,695 @@
+{
+ "slug": "calculo-1",
+ "titulo": "Cálculo I",
+ "meta": "Ciclo 3, código 090013, bloque Cálculo del seminario",
+ "firma": "f'(x)=\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}",
+ "firma_nota": "La derivada como límite: la idea que une los cinco temas del curso.",
+ "lead": "Límites, derivadas e integrales de una variable: cómo medir el cambio instantáneo y acumularlo. Es la herramienta con la que se optimizan recursos, se modela el crecimiento y se analizan algoritmos.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3CalculoI.pdf",
+ "temas": [
+  {
+   "titulo": "Límites y continuidad",
+   "intro": "Tema 1 del programa: concepto intuitivo, métodos numérico y gráfico, cálculo analítico, continuidad, límites laterales e infinitos.",
+   "conceptos": [
+    {
+     "n": "Concepto de límite",
+     "e": [
+      "\\(\\lim_{x\\to c}f(x)=L\\) significa que \\(f(x)\\) se acerca a \\(L\\) cuando \\(x\\) se acerca a \\(c\\), sin importar lo que pase exactamente en \\(c\\). Se estima con tablas de valores (método numérico) o con la gráfica.",
+      "Un límite no existe cuando hay salto (laterales distintos), crecimiento sin cota u oscilación."
+     ],
+     "u": [
+      "Análisis de tendencias de rendimiento cuando la carga se acerca a un umbral, tasas instantáneas.",
+      "Es la base de la derivada y la integral.",
+      "Cuando la función no se puede evaluar directamente en el punto.",
+      "Evalúa valores cercanos por ambos lados o revisa la gráfica."
+     ]
+    },
+    {
+     "n": "Cálculo analítico de límites",
+     "e": [
+      "Si sustituir da un número, ese es el límite. Si da \\(\\tfrac00\\) (indeterminación), se simplifica: factorizar, racionalizar o usar límites notables, y luego se sustituye."
+     ],
+     "u": [
+      "Simplificación de modelos y fórmulas antes de programarlos.",
+      "Las indeterminaciones esconden un valor real que se recupera algebraicamente.",
+      "Al obtener 0/0 al sustituir.",
+      "Factoriza y cancela el factor común, o multiplica por el conjugado."
+     ],
+     "f": "\\lim_{x\\to0}\\frac{\\sin x}{x}=1\\qquad \\lim_{x\\to0}\\frac{1-\\cos x}{x}=0"
+    },
+    {
+     "n": "Continuidad y límites laterales",
+     "e": [
+      "\\(f\\) es continua en \\(c\\) si \\(f(c)\\) existe, el límite existe y ambos son iguales. El límite existe solo si los laterales \\(\\lim_{x\\to c^-}\\) y \\(\\lim_{x\\to c^+}\\) coinciden. Polinomios, senos y cosenos son continuos en todo \\(\\mathbb R\\)."
+     ],
+     "u": [
+      "Funciones por tramos en tarifas o impuestos sin saltos, señales sin cortes.",
+      "Garantiza que pequeños cambios en la entrada no provoquen saltos en la salida.",
+      "En los puntos de unión de una función por partes.",
+      "Calcula ambos laterales y compáralos con f(c)."
+     ]
+    },
+    {
+     "n": "Límites infinitos y asíntotas verticales",
+     "e": [
+      "Si \\(f(x)\\) crece sin cota al acercarse a \\(c\\), \\(\\lim_{x\\to c}f(x)=\\pm\\infty\\) y \\(x=c\\) es asíntota vertical. En cocientes suele ocurrir donde el denominador se anula y el numerador no."
+     ],
+     "u": [
+      "Tiempos de respuesta que se disparan al saturarse un servidor, resonancia.",
+      "Señala valores prohibidos o críticos de un sistema.",
+      "Cuando el denominador vale 0 en un punto.",
+      "Revisa el signo del cociente a cada lado del punto."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\lim_{x\\to3}\\dfrac{x^2-9}{x-3}\\).",
+     "pasos": [
+      "<b>Sustituye.</b> Da \\(\\tfrac00\\): indeterminado.",
+      "<b>Factoriza.</b> \\(\\tfrac{(x-3)(x+3)}{x-3}=x+3\\) para \\(x\\neq3\\).",
+      "<b>Sustituye de nuevo.</b> \\(3+3=6\\)."
+     ],
+     "r": "6",
+     "fin": "Recuperar el valor oculto en una indeterminación 0/0."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\lim_{x\\to0}\\dfrac{\\sin3x}{x}\\).",
+     "pasos": [
+      "<b>Ajusta al límite notable.</b> \\(\\tfrac{\\sin3x}{x}=3\\cdot\\tfrac{\\sin3x}{3x}\\).",
+      "<b>Aplica.</b> Con \\(u=3x\\to0\\), \\(\\tfrac{\\sin u}{u}\\to1\\)."
+     ],
+     "r": "3",
+     "fin": "Usar límites notables multiplicando y dividiendo por la misma cantidad."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\lim_{x\\to4}\\dfrac{\\sqrt x-2}{x-4}\\).",
+     "pasos": [
+      "<b>Indeterminación.</b> Da \\(\\tfrac00\\).",
+      "<b>Racionaliza.</b> Multiplica por \\(\\sqrt x+2\\): \\(\\tfrac{x-4}{(x-4)(\\sqrt x+2)}=\\tfrac{1}{\\sqrt x+2}\\).",
+      "<b>Sustituye.</b> \\(\\tfrac{1}{2+2}\\)."
+     ],
+     "r": "\\(\\tfrac14\\)",
+     "fin": "Eliminar raíces que causan la indeterminación."
+    },
+    {
+     "nv": "I",
+     "q": "Halla las asíntotas verticales de \\(f(x)=\\dfrac{x+1}{x^2-4}\\) y el comportamiento cerca de \\(x=2\\).",
+     "pasos": [
+      "<b>Ceros del denominador.</b> \\(x=\\pm2\\); el numerador no se anula ahí.",
+      "<b>Por la derecha de 2.</b> Numerador \\(\\to3\\), denominador \\(\\to0^+\\): \\(+\\infty\\).",
+      "<b>Por la izquierda.</b> Denominador \\(\\to0^-\\): \\(-\\infty\\)."
+     ],
+     "r": "Asíntotas \\(x=2\\) y \\(x=-2\\); en 2, \\(-\\infty\\) por la izquierda y \\(+\\infty\\) por la derecha.",
+     "fin": "Ubicar valores críticos y el sentido en que la función se dispara."
+    },
+    {
+     "nv": "A",
+     "q": "Halla \\(k\\) para que \\(f(x)=\\begin{cases}kx+1&x\\lt2\\\\x^2-k&x\\ge2\\end{cases}\\) sea continua.",
+     "pasos": [
+      "<b>Lateral izquierdo.</b> \\(2k+1\\).",
+      "<b>Lateral derecho y valor.</b> \\(4-k\\).",
+      "<b>Iguala.</b> \\(2k+1=4-k\\Rightarrow k=1\\).",
+      "<b>Verifica.</b> Ambos dan 3."
+     ],
+     "r": "\\(k=1\\)",
+     "fin": "Ajustar una regla por tramos para que no tenga saltos."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\lim_{x\\to2}(3x^2-x+1)\\).",
+     "r": "11"
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\lim_{x\\to-1}\\dfrac{x^2+3x+2}{x+1}\\).",
+     "r": "1"
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\lim_{x\\to0}\\dfrac{1-\\cos x}{x^2}\\).",
+     "r": "\\(\\tfrac12\\) (multiplica por \\(1+\\cos x\\))."
+    },
+    {
+     "nv": "I",
+     "q": "¿Existe \\(\\lim_{x\\to1}\\dfrac{|x-1|}{x-1}\\)?",
+     "r": "No: por la izquierda vale −1 y por la derecha 1."
+    },
+    {
+     "nv": "A",
+     "q": "Calcula \\(\\lim_{x\\to0}\\dfrac{\\sqrt{1+x}-\\sqrt{1-x}}{x}\\).",
+     "r": "1"
+    }
+   ]
+  },
+  {
+   "titulo": "La derivada",
+   "intro": "Tema 2 del programa: definición, diferenciabilidad, reglas, orden superior, regla de la cadena, derivación implícita y recta tangente.",
+   "conceptos": [
+    {
+     "n": "Definición e interpretación",
+     "e": [
+      "La derivada \\(f'(x)\\) es la pendiente de la recta tangente y la razón de cambio instantánea. Si \\(f\\) es derivable en un punto, es continua ahí; lo contrario no siempre se cumple (\\(|x|\\) en 0)."
+     ],
+     "u": [
+      "Velocidad instantánea, tasa de crecimiento de usuarios, costo marginal.",
+      "Mide qué tan rápido cambia algo en un instante.",
+      "Cuando preguntan por una tasa o una pendiente en un punto.",
+      "Aplica la definición por límite o las reglas."
+     ],
+     "f": "f'(x)=\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}"
+    },
+    {
+     "n": "Reglas de derivación",
+     "e": [
+      "Potencia \\((x^n)'=nx^{n-1}\\); constante por función; suma; producto \\((uv)'=u'v+uv'\\); cociente \\(\\left(\\tfrac uv\\right)'=\\tfrac{u'v-uv'}{v^2}\\); trigonométricas \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((\\tan x)'=\\sec^2x\\)."
+     ],
+     "u": [
+      "Cálculo rápido de tasas en cualquier modelo.",
+      "Evitan usar el límite en cada derivada.",
+      "Siempre que derives.",
+      "Reescribe raíces y fracciones como potencias antes de derivar."
+     ],
+     "tabla": "<table><thead><tr><th>Función</th><th>Derivada</th><th>Función</th><th>Derivada</th></tr></thead><tbody><tr><td>xⁿ</td><td>n xⁿ⁻¹</td><td>sen x</td><td>cos x</td></tr><tr><td>c f(x)</td><td>c f′(x)</td><td>cos x</td><td>−sen x</td></tr><tr><td>u v</td><td>u′v + u v′</td><td>tan x</td><td>sec² x</td></tr><tr><td>u / v</td><td>(u′v − u v′)/v²</td><td>sec x</td><td>sec x tan x</td></tr></tbody></table>"
+    },
+    {
+     "n": "Regla de la cadena y orden superior",
+     "e": [
+      "Para una composición: \\(\\tfrac{d}{dx}f(g(x))=f'(g(x))\\,g'(x)\\), la derivada de afuera evaluada en la de adentro, por la derivada de adentro. La segunda derivada \\(f''\\) es la derivada de \\(f'\\): en física es la aceleración."
+     ],
+     "u": [
+      "Modelos encadenados (temperatura que depende del tiempo y consumo que depende de la temperatura), aceleración.",
+      "Casi todas las funciones reales son composiciones.",
+      "Cuando hay una función dentro de otra.",
+      "Identifica la función externa y la interna; multiplica sus derivadas."
+     ],
+     "f": "\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}"
+    },
+    {
+     "n": "Derivación implícita y recta tangente",
+     "e": [
+      "Si \\(y\\) no está despejada, se deriva toda la ecuación respecto a \\(x\\) tratando \\(y\\) como función (cada derivada de \\(y\\) lleva \\(y'\\)) y luego se despeja \\(y'\\). La tangente en \\((x_0,y_0)\\) es \\(y-y_0=m(x-x_0)\\) con \\(m=f'(x_0)\\)."
+     ],
+     "u": [
+      "Curvas como circunferencias y elipses en gráficos, tasas relacionadas.",
+      "Permite derivar sin despejar.",
+      "Cuando la relación entre x e y es una ecuación mezclada.",
+      "Deriva ambos lados, agrupa y′ y despeja."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Deriva por definición \\(f(x)=x^2+3x\\).",
+     "pasos": [
+      "<b>Cociente.</b> \\(\\tfrac{(x+h)^2+3(x+h)-x^2-3x}{h}\\).",
+      "<b>Simplifica.</b> \\(\\tfrac{2xh+h^2+3h}{h}=2x+h+3\\).",
+      "<b>Límite.</b> \\(h\\to0\\): \\(2x+3\\)."
+     ],
+     "r": "\\(f'(x)=2x+3\\)",
+     "fin": "Entender de dónde salen las reglas."
+    },
+    {
+     "nv": "B",
+     "q": "Deriva \\(y=3x^4-2\\sqrt x+\\dfrac5x\\).",
+     "pasos": [
+      "<b>Reescribe.</b> \\(3x^4-2x^{1/2}+5x^{-1}\\).",
+      "<b>Regla de la potencia.</b> \\(12x^3-x^{-1/2}-5x^{-2}\\)."
+     ],
+     "r": "\\(12x^3-\\dfrac{1}{\\sqrt x}-\\dfrac{5}{x^2}\\)",
+     "fin": "Reescribir como potencias evita errores."
+    },
+    {
+     "nv": "I",
+     "q": "Deriva \\(f(x)=\\dfrac{2x+1}{x^2+1}\\).",
+     "pasos": [
+      "<b>Cociente.</b> \\(\\tfrac{2(x^2+1)-(2x+1)(2x)}{(x^2+1)^2}\\).",
+      "<b>Desarrolla el numerador.</b> \\(2x^2+2-4x^2-2x\\)."
+     ],
+     "r": "\\(\\dfrac{-2x^2-2x+2}{(x^2+1)^2}\\)",
+     "fin": "Aplicar la regla del cociente sin perder signos."
+    },
+    {
+     "nv": "I",
+     "q": "Deriva \\(y=(3x^2-5)^4\\) y \\(y=\\sin(x^3)\\).",
+     "pasos": [
+      "<b>Primera.</b> Externa \\(u^4\\), interna \\(3x^2-5\\): \\(4(3x^2-5)^3\\cdot6x\\).",
+      "<b>Segunda.</b> Externa \\(\\sin u\\), interna \\(x^3\\): \\(\\cos(x^3)\\cdot3x^2\\)."
+     ],
+     "r": "\\(24x(3x^2-5)^3\\) y \\(3x^2\\cos(x^3)\\).",
+     "fin": "Dominar la regla de la cadena, la más usada."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la recta tangente a \\(x^2+y^2=25\\) en \\((3,4)\\).",
+     "pasos": [
+      "<b>Deriva implícitamente.</b> \\(2x+2yy'=0\\Rightarrow y'=-\\tfrac xy\\).",
+      "<b>Pendiente en el punto.</b> \\(-\\tfrac34\\).",
+      "<b>Recta.</b> \\(y-4=-\\tfrac34(x-3)\\)."
+     ],
+     "r": "\\(y=-\\tfrac34x+\\tfrac{25}4\\)",
+     "fin": "Obtener tangentes de curvas que no son funciones."
+    },
+    {
+     "nv": "B",
+     "q": "Halla \\(f''\\) si \\(f(x)=x^5-4x^3\\).",
+     "r": "\\(20x^3-24x\\)"
+    },
+    {
+     "nv": "B",
+     "q": "Deriva \\(x^2\\sin x\\).",
+     "r": "\\(2x\\sin x+x^2\\cos x\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Deriva \\(y=\\sqrt{1+x^2}\\).",
+     "r": "\\(\\dfrac{x}{\\sqrt{1+x^2}}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Halla la tangente a \\(y=x^3\\) en \\(x=1\\).",
+     "r": "\\(y=3x-2\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(x^3+y^3=6xy\\), halla \\(y'\\) en \\((3,3)\\).",
+     "r": "\\(y'=\\tfrac{2y-x^2}{y^2-2x}=-1\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Aplicaciones de la derivada",
+   "intro": "Tema 3 del programa: extremos, Rolle y valor medio, crecimiento, concavidad, límites al infinito, trazo de gráficas y optimización.",
+   "conceptos": [
+    {
+     "n": "Extremos y puntos críticos",
+     "e": [
+      "Teorema del valor extremo: una función continua en \\([a,b]\\) alcanza máximo y mínimo absolutos. Estos ocurren en puntos críticos (\\(f'=0\\) o no existe) o en los extremos del intervalo."
+     ],
+     "u": [
+      "Máxima ganancia, mínimo costo, mayor rendimiento de un sistema.",
+      "Reduce la búsqueda del óptimo a pocos candidatos.",
+      "Al optimizar en un intervalo cerrado.",
+      "Halla críticos, evalúa f en ellos y en los bordes, compara."
+     ]
+    },
+    {
+     "n": "Rolle y valor medio",
+     "e": [
+      "Valor medio: si \\(f\\) es continua en \\([a,b]\\) y derivable en \\((a,b)\\), existe \\(c\\) donde la pendiente instantánea es igual a la promedio. Rolle es el caso \\(f(a)=f(b)\\), con \\(f'(c)=0\\)."
+     ],
+     "u": [
+      "Si un vehículo recorrió 120 km en 1 h, en algún instante iba a 120 km/h (multas por tramo).",
+      "Conecta el cambio promedio con el instantáneo.",
+      "Al justificar que existe un punto con cierta tasa.",
+      "Calcula la pendiente promedio e iguálala a f′(c)."
+     ],
+     "f": "f'(c)=\\frac{f(b)-f(a)}{b-a}"
+    },
+    {
+     "n": "Crecimiento y concavidad",
+     "e": [
+      "\\(f'\\gt0\\): crece; \\(f'\\lt0\\): decrece. Si \\(f'\\) cambia de + a −, hay máximo relativo; de − a +, mínimo. \\(f''\\gt0\\): cóncava hacia arriba; \\(f''\\lt0\\): hacia abajo; donde \\(f''\\) cambia de signo hay inflexión. Criterio de la segunda derivada: \\(f''(c)\\lt0\\) máximo, \\(f''(c)\\gt0\\) mínimo."
+     ],
+     "u": [
+      "Detectar cuándo una métrica deja de crecer o empieza a acelerarse.",
+      "Describe la forma completa de una gráfica.",
+      "Al trazar gráficas o clasificar extremos.",
+      "Tabla de signos de f′ y f″."
+     ]
+    },
+    {
+     "n": "Límites al infinito y asíntotas horizontales",
+     "e": [
+      "En cocientes de polinomios: si el grado de arriba es menor, \\(y=0\\); si son iguales, \\(y\\) = cociente de coeficientes principales; si es mayor, no hay asíntota horizontal. Se divide todo entre la mayor potencia del denominador."
+     ],
+     "u": [
+      "Comportamiento a largo plazo: costo promedio cuando la producción crece, saturación de usuarios.",
+      "Indica el valor al que tiende un sistema.",
+      "Al analizar tendencias de largo plazo.",
+      "Compara grados o divide entre la mayor potencia."
+     ]
+    },
+    {
+     "n": "Optimización",
+     "e": [
+      "Pasos: (1) dibuja y nombra variables; (2) escribe la cantidad a optimizar; (3) usa la restricción para dejarla en una variable; (4) deriva, iguala a cero y resuelve; (5) verifica que sea máximo o mínimo y responde en contexto."
+     ],
+     "u": [
+      "Diseño de envases con mínimo material, rutas, precio que maximiza ingresos.",
+      "Es la aplicación con mayor impacto económico del cálculo.",
+      "Cuando piden lo mejor posible con recursos limitados.",
+      "Sigue los cinco pasos y revisa el dominio físico de la variable."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla extremos relativos e inflexión de \\(f(x)=x^3-3x^2\\).",
+     "pasos": [
+      "<b>Críticos.</b> \\(f'=3x^2-6x=3x(x-2)=0\\Rightarrow x=0,2\\).",
+      "<b>Segunda derivada.</b> \\(f''=6x-6\\): \\(f''(0)=-6\\) (máximo), \\(f''(2)=6\\) (mínimo).",
+      "<b>Valores.</b> \\(f(0)=0\\), \\(f(2)=-4\\).",
+      "<b>Inflexión.</b> \\(f''=0\\) en \\(x=1\\) y cambia de signo: punto \\((1,-2)\\)."
+     ],
+     "r": "Máximo \\((0,0)\\), mínimo \\((2,-4)\\), inflexión \\((1,-2)\\).",
+     "fin": "Describir la forma de una curva con sus derivadas."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el \\(c\\) del teorema del valor medio para \\(f(x)=x^2\\) en \\([1,3]\\).",
+     "pasos": [
+      "<b>Pendiente promedio.</b> \\(\\tfrac{9-1}{3-1}=4\\).",
+      "<b>Iguala.</b> \\(f'(c)=2c=4\\Rightarrow c=2\\)."
+     ],
+     "r": "\\(c=2\\)",
+     "fin": "Encontrar el instante con la tasa promedio."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\lim_{x\\to\\infty}\\dfrac{3x^2-x}{2x^2+5}\\).",
+     "pasos": [
+      "<b>Divide entre \\(x^2\\).</b> \\(\\tfrac{3-1/x}{2+5/x^2}\\).",
+      "<b>Límite.</b> Los términos con \\(x\\) en el denominador tienden a 0."
+     ],
+     "r": "\\(\\tfrac32\\): asíntota horizontal \\(y=\\tfrac32\\).",
+     "fin": "Predecir el valor de largo plazo de un modelo."
+    },
+    {
+     "nv": "A",
+     "q": "De una lámina de 12 × 12 cm se cortan cuadrados de lado x en las esquinas para formar una caja sin tapa. ¿Qué x da el volumen máximo?",
+     "pasos": [
+      "<b>Función.</b> \\(V=x(12-2x)^2\\), con \\(0\\lt x\\lt6\\).",
+      "<b>Deriva.</b> \\(V'=(12-2x)^2-4x(12-2x)=(12-2x)(12-6x)\\).",
+      "<b>Críticos.</b> \\(x=6\\) (volumen 0) o \\(x=2\\).",
+      "<b>Volumen.</b> \\(V(2)=2\\cdot8^2=128\\)."
+     ],
+     "r": "\\(x=2\\) cm, \\(V=128\\) cm³.",
+     "fin": "Resolver un problema de optimización completo."
+    },
+    {
+     "nv": "A",
+     "q": "Una lata cilíndrica debe tener 1000 cm³. ¿Qué radio minimiza el material?",
+     "pasos": [
+      "<b>Área.</b> \\(A=2\\pi r^2+2\\pi rh\\); con \\(h=\\tfrac{1000}{\\pi r^2}\\): \\(A=2\\pi r^2+\\tfrac{2000}{r}\\).",
+      "<b>Deriva.</b> \\(A'=4\\pi r-\\tfrac{2000}{r^2}=0\\Rightarrow r^3=\\tfrac{500}{\\pi}\\).",
+      "<b>Calcula.</b> \\(r\\approx5.42\\) cm y \\(h\\approx10.84\\) cm.",
+      "<b>Verifica.</b> \\(A''=4\\pi+\\tfrac{4000}{r^3}\\gt0\\): mínimo."
+     ],
+     "r": "\\(r\\approx5.42\\) cm, \\(h=2r\\approx10.84\\) cm.",
+     "fin": "Ver por qué los envases óptimos tienen altura igual al diámetro."
+    },
+    {
+     "nv": "B",
+     "q": "¿Dónde crece y dónde decrece \\(f(x)=x^2-4x\\)?",
+     "r": "Decrece en \\((-\\infty,2)\\), crece en \\((2,\\infty)\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Verifica Rolle para \\(f(x)=x^2-4x\\) en \\([0,4]\\) y halla \\(c\\).",
+     "r": "\\(f(0)=f(4)=0\\); \\(c=2\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla los extremos absolutos de \\(f(x)=x^3-12x\\) en \\([-3,5]\\).",
+     "r": "Máximo 65 en \\(x=5\\); mínimo −16 en \\(x=2\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Estudia la concavidad de \\(f(x)=x^4-6x^2\\).",
+     "r": "\\(f''=12x^2-12\\): hacia arriba si \\(|x|\\gt1\\), hacia abajo si \\(|x|\\lt1\\); inflexión en \\(x=\\pm1\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Halla el rectángulo de área máxima inscrito en un semicírculo de radio 10.",
+     "r": "Base \\(10\\sqrt2\\), altura \\(5\\sqrt2\\), área 100."
+    }
+   ]
+  },
+  {
+   "titulo": "La integral",
+   "intro": "Tema 4 del programa: antiderivadas, ecuaciones diferenciales simples, área, sumas de Riemann, integral definida, teorema fundamental y sustitución.",
+   "conceptos": [
+    {
+     "n": "Antiderivadas e integral indefinida",
+     "e": [
+      "\\(F\\) es antiderivada de \\(f\\) si \\(F'=f\\). La integral indefinida \\(\\int f\\,dx=F(x)+C\\) incluye la constante \\(C\\). Con una condición inicial se resuelven ecuaciones diferenciales simples \\(y'=f(x)\\)."
+     ],
+     "u": [
+      "Recuperar posición a partir de velocidad, costo total a partir del marginal.",
+      "Deshace la derivada para reconstruir la cantidad original.",
+      "Cuando conoces la tasa y quieres la cantidad.",
+      "Usa la tabla de integrales y una condición para hallar C."
+     ],
+     "f": "\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\quad(n\\neq-1)"
+    },
+    {
+     "n": "Sumas de Riemann e integral definida",
+     "e": [
+      "El área bajo \\(f\\) en \\([a,b]\\) se aproxima con \\(n\\) rectángulos de ancho \\(\\Delta x=\\tfrac{b-a}{n}\\): \\(\\sum f(x_i)\\Delta x\\). La integral definida es el límite cuando \\(n\\to\\infty\\). Si \\(f\\) es negativa, cuenta como área con signo."
+     ],
+     "u": [
+      "Integración numérica en software, cálculo de consumo total a partir de mediciones.",
+      "Convierte una acumulación continua en una suma.",
+      "Cuando solo tienes datos o no hay antiderivada simple.",
+      "Divide el intervalo, evalúa en cada punto y suma."
+     ],
+     "f": "\\int_a^bf(x)\\,dx=\\lim_{n\\to\\infty}\\sum_{i=1}^{n}f(x_i)\\,\\Delta x"
+    },
+    {
+     "n": "Teorema fundamental del cálculo",
+     "e": [
+      "Une derivada e integral: la integral definida se calcula con cualquier antiderivada, y derivar una integral con límite superior variable devuelve el integrando."
+     ],
+     "u": [
+      "Calcular totales acumulados: energía consumida, datos transferidos, distancia recorrida.",
+      "Evita sumar infinitos rectángulos.",
+      "En toda integral definida.",
+      "Antideriva, evalúa en b y en a, resta."
+     ],
+     "f": "\\int_a^bf(x)\\,dx=F(b)-F(a)\\qquad \\frac{d}{dx}\\int_a^xf(t)\\,dt=f(x)"
+    },
+    {
+     "n": "Integración por sustitución",
+     "e": [
+      "Si el integrando tiene una función y (casi) su derivada, se hace \\(u=g(x)\\), \\(du=g'(x)dx\\). En una integral definida se cambian también los límites a valores de \\(u\\)."
+     ],
+     "u": [
+      "Integrales que aparecen en física y probabilidad.",
+      "Convierte una integral complicada en una de tabla.",
+      "Cuando ves una composición y la derivada de su parte interna.",
+      "Elige u, calcula du, reescribe todo en u e integra."
+     ],
+     "f": "\\int f(g(x))\\,g'(x)\\,dx=\\int f(u)\\,du"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\int(3x^2-4x+5)\\,dx\\).",
+     "pasos": [
+      "<b>Término a término.</b> \\(3\\tfrac{x^3}{3}-4\\tfrac{x^2}{2}+5x\\).",
+      "<b>Agrega la constante.</b> \\(+C\\)."
+     ],
+     "r": "\\(x^3-2x^2+5x+C\\)",
+     "fin": "Practicar la regla de la potencia al revés."
+    },
+    {
+     "nv": "I",
+     "q": "Halla \\(f\\) si \\(f'(x)=6x-2\\) y \\(f(1)=4\\).",
+     "pasos": [
+      "<b>Integra.</b> \\(f(x)=3x^2-2x+C\\).",
+      "<b>Condición.</b> \\(3-2+C=4\\Rightarrow C=3\\)."
+     ],
+     "r": "\\(f(x)=3x^2-2x+3\\)",
+     "fin": "Resolver una ecuación diferencial con condición inicial."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\int_0^2(x^2+1)\\,dx\\).",
+     "pasos": [
+      "<b>Antiderivada.</b> \\(\\tfrac{x^3}{3}+x\\).",
+      "<b>Evalúa.</b> \\(\\left(\\tfrac83+2\\right)-0\\)."
+     ],
+     "r": "\\(\\tfrac{14}{3}\\)",
+     "fin": "Aplicar el teorema fundamental."
+    },
+    {
+     "nv": "I",
+     "q": "Aproxima \\(\\int_0^2x^2\\,dx\\) con 4 rectángulos de extremo derecho y compara con el valor exacto.",
+     "pasos": [
+      "<b>Ancho.</b> \\(\\Delta x=0.5\\); puntos 0.5, 1, 1.5, 2.",
+      "<b>Suma.</b> \\((0.25+1+2.25+4)(0.5)=3.75\\).",
+      "<b>Exacto.</b> \\(\\tfrac83\\approx2.67\\). La aproximación sobreestima porque la función crece."
+     ],
+     "r": "3.75 aproximado contra 2.67 exacto.",
+     "fin": "Entender la integral como suma, base de la integración numérica."
+    },
+    {
+     "nv": "A",
+     "q": "Calcula \\(\\int_0^{\\pi/2}\\sin x\\cos^2x\\,dx\\).",
+     "pasos": [
+      "<b>Sustitución.</b> \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\).",
+      "<b>Límites.</b> \\(x=0\\to u=1\\); \\(x=\\tfrac\\pi2\\to u=0\\).",
+      "<b>Integra.</b> \\(-\\int_1^0u^2du=\\int_0^1u^2du=\\tfrac13\\)."
+     ],
+     "r": "\\(\\tfrac13\\)",
+     "fin": "Cambiar límites al sustituir y no regresar a x."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\int\\left(\\dfrac1{x^2}+\\sqrt x\\right)dx\\).",
+     "r": "\\(-\\dfrac1x+\\dfrac23x^{3/2}+C\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Área bajo \\(y=x^2\\) entre 0 y 3.",
+     "r": "9"
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\int x(x^2+1)^5\\,dx\\).",
+     "r": "\\(\\dfrac{(x^2+1)^6}{12}+C\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\dfrac{d}{dx}\\int_1^xt^3\\,dt\\).",
+     "r": "\\(x^3\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Calcula \\(\\int_0^3|x-1|\\,dx\\).",
+     "r": "\\(\\tfrac12+2=\\tfrac52\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Funciones trascendentes",
+   "intro": "Tema 5 del programa: exponenciales y logaritmos, el número e, leyes de logaritmos, cambio de base, ecuaciones exponenciales y derivadas e integrales de exponenciales, logaritmos y trigonométricas inversas.",
+   "conceptos": [
+    {
+     "n": "Exponenciales y logaritmos",
+     "e": [
+      "\\(a^x\\) crece (si \\(a\\gt1\\)) o decrece (si \\(0\\lt a\\lt1\\)). El logaritmo es su inversa: \\(\\log_ax=y\\iff a^y=x\\). Leyes: \\(\\ln(ab)=\\ln a+\\ln b\\), \\(\\ln\\tfrac ab=\\ln a-\\ln b\\), \\(\\ln a^n=n\\ln a\\), y \\(\\log_ax=\\tfrac{\\ln x}{\\ln a}\\)."
+     ],
+     "u": [
+      "Crecimiento de usuarios, interés compuesto, decaimiento radiactivo, complejidad O(log n), decibeles.",
+      "Modelan cambios proporcionales a la cantidad presente.",
+      "Cuando algo se duplica o se reduce a la mitad en tiempos fijos.",
+      "Para despejar un exponente, toma logaritmos en ambos lados."
+     ],
+     "f": "P(t)=P_0e^{kt}"
+    },
+    {
+     "n": "Derivadas de exponenciales y logaritmos",
+     "e": [
+      "\\((e^x)'=e^x\\); \\((a^x)'=a^x\\ln a\\); \\((\\ln x)'=\\tfrac1x\\); \\((\\log_ax)'=\\tfrac{1}{x\\ln a}\\). Con la cadena: \\((e^{u})'=e^{u}u'\\) y \\((\\ln u)'=\\tfrac{u'}{u}\\)."
+     ],
+     "u": [
+      "Tasas de crecimiento en modelos económicos y poblacionales.",
+      "La exponencial es la única función que es su propia derivada.",
+      "Al derivar modelos de crecimiento.",
+      "Aplica la regla y luego la cadena."
+     ],
+     "f": "\\frac{d}{dx}e^{u}=e^{u}u'\\qquad \\frac{d}{dx}\\ln u=\\frac{u'}{u}"
+    },
+    {
+     "n": "Integrales y trigonométricas inversas",
+     "e": [
+      "\\(\\int e^xdx=e^x+C\\), \\(\\int\\tfrac{dx}{x}=\\ln|x|+C\\). Derivadas inversas: \\((\\arcsin x)'=\\tfrac{1}{\\sqrt{1-x^2}}\\), \\((\\arctan x)'=\\tfrac{1}{1+x^2}\\). Por eso \\(\\int\\tfrac{dx}{1+x^2}=\\arctan x+C\\) y \\(\\int\\tfrac{dx}{\\sqrt{1-x^2}}=\\arcsin x+C\\)."
+     ],
+     "u": [
+      "Probabilidad (distribución exponencial), cálculo de ángulos en robótica, circuitos RC.",
+      "Completan la tabla de integrales básicas.",
+      "Cuando el integrando es 1/x, eˣ o tiene 1 + x² o √(1 − x²).",
+      "Reconoce la forma y aplica la fórmula, con sustitución si hace falta."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Resuelve \\(2^{x+1}=32\\) y \\(e^{2x}=7\\).",
+     "pasos": [
+      "<b>Misma base.</b> \\(32=2^5\\Rightarrow x+1=5\\Rightarrow x=4\\).",
+      "<b>Logaritmo natural.</b> \\(2x=\\ln7\\Rightarrow x=\\tfrac{\\ln7}{2}\\approx0.973\\)."
+     ],
+     "r": "\\(x=4\\); \\(x\\approx0.973\\).",
+     "fin": "Despejar exponentes, base de los modelos de crecimiento."
+    },
+    {
+     "nv": "I",
+     "q": "Deriva \\(y=x^2e^{3x}\\).",
+     "pasos": [
+      "<b>Producto.</b> \\((x^2)'e^{3x}+x^2(e^{3x})'\\).",
+      "<b>Cadena en la exponencial.</b> \\((e^{3x})'=3e^{3x}\\)."
+     ],
+     "r": "\\(e^{3x}(2x+3x^2)\\)",
+     "fin": "Combinar producto y cadena con exponenciales."
+    },
+    {
+     "nv": "I",
+     "q": "Deriva \\(\\ln(x^2+1)\\) y \\(\\log_2x\\).",
+     "pasos": [
+      "<b>Primera.</b> \\(\\tfrac{u'}{u}=\\tfrac{2x}{x^2+1}\\).",
+      "<b>Segunda.</b> Cambio de base: \\(\\log_2x=\\tfrac{\\ln x}{\\ln2}\\Rightarrow\\tfrac{1}{x\\ln2}\\)."
+     ],
+     "r": "\\(\\dfrac{2x}{x^2+1}\\) y \\(\\dfrac{1}{x\\ln2}\\).",
+     "fin": "Derivar logaritmos de cualquier base."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\int_1^e\\dfrac{\\ln x}{x}\\,dx\\).",
+     "pasos": [
+      "<b>Sustitución.</b> \\(u=\\ln x\\), \\(du=\\tfrac{dx}{x}\\); límites \\(0\\) a \\(1\\).",
+      "<b>Integra.</b> \\(\\int_0^1u\\,du=\\tfrac12\\)."
+     ],
+     "r": "\\(\\tfrac12\\)",
+     "fin": "Reconocer la derivada del logaritmo dentro del integrando."
+    },
+    {
+     "nv": "A",
+     "q": "Una app pasa de 1000 a 1500 usuarios en 3 meses con crecimiento exponencial continuo. ¿Cuándo llegará a 5000?",
+     "pasos": [
+      "<b>Modelo.</b> \\(P=1000e^{kt}\\).",
+      "<b>Halla k.</b> \\(1.5=e^{3k}\\Rightarrow k=\\tfrac{\\ln1.5}{3}\\approx0.1352\\).",
+      "<b>Despeja t.</b> \\(5=e^{kt}\\Rightarrow t=\\tfrac{\\ln5}{k}\\approx11.9\\) meses."
+     ],
+     "r": "Aproximadamente 11.9 meses.",
+     "fin": "Proyectar crecimiento, como al planificar capacidad de servidores."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\log_381\\) y \\(\\ln e^5\\).",
+     "r": "4 y 5."
+    },
+    {
+     "nv": "B",
+     "q": "Deriva \\(\\arctan(2x)\\).",
+     "r": "\\(\\dfrac{2}{1+4x^2}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Deriva \\(\\arcsin(x^2)\\).",
+     "r": "\\(\\dfrac{2x}{\\sqrt{1-x^4}}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\int_0^1\\dfrac{dx}{1+x^2}\\).",
+     "r": "\\(\\tfrac\\pi4\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Un volumen de logs de 400 GB se reduce a la mitad cada 8 días por rotación. ¿Cuánto queda a los 20 días?",
+     "r": "\\(400\\cdot2^{-20/8}\\approx70.7\\) GB."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

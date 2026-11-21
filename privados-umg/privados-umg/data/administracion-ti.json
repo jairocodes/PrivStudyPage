@@ -1,0 +1,749 @@
+{
+ "slug": "administracion-ti",
+ "titulo": "Administración de Tecnologías de Información",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 9, código 090041, bloque Sistemas de Información Gerencial del seminario",
+ "firma": "ROI=\\frac{\\text{beneficio}-\\text{costo}}{\\text{costo}}",
+ "firma_nota": "La pregunta que toda propuesta de TI debe responder ante la gerencia.",
+ "lead": "Los sistemas de información en la empresa digital según Laudon y Laudon: estrategia, tipos de sistemas, conocimiento y decisiones, construcción de sistemas con rediseño de procesos y su valor de negocio, y seguridad y control. Es el contenido del bloque de Sistemas de Información Gerencial. Las 4 unidades del programa están organizadas en 5 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9AdmoTecInformacion.pdf",
+ "como": "Cada sección trae conceptos con su uso real, 5 casos resueltos paso a paso y 5 preguntas: cuestionario de opción múltiple con retroalimentación inmediata, o ejercicios con respuesta oculta en los temas de cálculo.",
+ "temas": [
+  {
+   "titulo": "Sistemas de información, organización y estrategia",
+   "intro": "Unidad I del programa: organizaciones, administración y la empresa conectada en red; sistemas de información, organización, administración y estrategia; la empresa digital.",
+   "conceptos": [
+    {
+     "n": "Sistema de información",
+     "e": [
+      "Conjunto de componentes que recolectan, procesan, almacenan y distribuyen información para apoyar decisiones y control. Tres dimensiones: <b>organización</b> (personas, procesos, cultura), <b>administración</b> (decisiones, estrategia) y <b>tecnología</b> (hardware, software, datos, redes). Datos son hechos en bruto; información, datos con significado; conocimiento, información aplicada."
+     ],
+     "u": [
+      "Analizar cualquier sistema institucional, no solo su software.",
+      "Un sistema falla si se ignora alguna de sus tres dimensiones.",
+      "Al diagnosticar o proponer sistemas.",
+      "Revisa personas, procesos y tecnología a la vez."
+     ]
+    },
+    {
+     "n": "Empresa digital y estrategia",
+     "e": [
+      "En la empresa digital los procesos clave y las relaciones con clientes, proveedores y empleados se gestionan digitalmente. Las <b>cinco fuerzas de Porter</b> (rivalidad, nuevos entrantes, sustitutos, poder de clientes y de proveedores) y la <b>cadena de valor</b> (actividades primarias y de apoyo) muestran dónde la TI genera ventaja. Estrategias: liderazgo en costos, diferenciación, enfoque en un nicho e intimidad con clientes y proveedores."
+     ],
+     "u": [
+      "Justificar inversiones de TI con impacto en el negocio.",
+      "La TI debe responder a la estrategia, no al revés.",
+      "Al planear proyectos tecnológicos.",
+      "Ubica la actividad de la cadena de valor que mejora el sistema."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Analiza un sistema de citas de un hospital en sus tres dimensiones.",
+     "pasos": [
+      "<b>Organización.</b> Personal de recepción y médicos, procesos de agenda.",
+      "<b>Administración.</b> Decisiones sobre horarios y capacidad.",
+      "<b>Tecnología.</b> Aplicación web, base de datos, servidores y red."
+     ],
+     "r": "Organización, administración y tecnología.",
+     "fin": "Ver los sistemas más allá del software."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica las cinco fuerzas de Porter a una empresa de servicios en la nube en Guatemala.",
+     "pasos": [
+      "<b>Rivalidad.</b> Alta: proveedores globales y locales.",
+      "<b>Nuevos entrantes.</b> Media: barreras de inversión en centros de datos.",
+      "<b>Sustitutos.</b> Servidores propios de los clientes.",
+      "<b>Clientes.</b> Poder alto: cambian de proveedor con facilidad.",
+      "<b>Proveedores.</b> Fabricantes de hardware y energía con poder medio."
+     ],
+     "r": "Mercado competido; ventaja en cercanía, soporte local y cumplimiento.",
+     "fin": "Usar Porter para decidir estrategia."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué actividades de la cadena de valor ayuda un sistema de inventario con códigos de barras?",
+     "pasos": [
+      "<b>Primarias.</b> Logística de entrada (recepción) y de salida (despacho).",
+      "<b>Apoyo.</b> Abastecimiento (compras) con datos de existencias."
+     ],
+     "r": "Logística de entrada y salida, y abastecimiento.",
+     "fin": "Relacionar sistemas y valor."
+    },
+    {
+     "nv": "A",
+     "q": "Una cooperativa quiere competir con bancos grandes. ¿Qué estrategia apoyada en TI le recomiendas?",
+     "pasos": [
+      "<b>Costos.</b> No puede competir con escala.",
+      "<b>Intimidad con el cliente.</b> CRM, atención personalizada y canales digitales para sus asociados.",
+      "<b>Nicho.</b> Productos para su comunidad (agricultores, maestros)."
+     ],
+     "r": "Intimidad con el cliente y enfoque en su nicho.",
+     "fin": "Alinear TI con estrategia."
+    },
+    {
+     "nv": "B",
+     "q": "Diferencia datos, información y conocimiento con un ejemplo de ventas.",
+     "pasos": [
+      "<b>Datos.</b> Registros de cada venta.",
+      "<b>Información.</b> Ventas por región del mes.",
+      "<b>Conocimiento.</b> Saber que la región sur vende más en temporada de cosecha y planificar inventario."
+     ],
+     "r": "Hechos, hechos con significado y comprensión aplicada.",
+     "fin": "Distinguir conceptos básicos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuáles son las tres dimensiones de un sistema de información según Laudon?",
+     "ops": [
+      "Organización, administración y tecnología",
+      "Hardware, software y redes",
+      "Entrada, proceso y salida",
+      "Datos, información y conocimiento"
+     ],
+     "ok": 0,
+     "r": "Un sistema es más que tecnología."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué fuerza de Porter describe la amenaza de productos que cumplen la misma necesidad?",
+     "ops": [
+      "Rivalidad",
+      "Proveedores",
+      "Sustitutos",
+      "Nuevos entrantes"
+     ],
+     "ok": 2,
+     "r": "Por ejemplo, videollamadas frente a viajes."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué estrategia busca ofrecer el menor precio del mercado?",
+     "ops": [
+      "Diferenciación",
+      "Enfoque",
+      "Liderazgo en costos",
+      "Intimidad con clientes"
+     ],
+     "ok": 2,
+     "r": "La TI reduce costos de operación."
+    },
+    {
+     "nv": "I",
+     "q": "En la cadena de valor, ¿qué tipo de actividad es la gestión de recursos humanos?",
+     "ops": [
+      "De apoyo",
+      "Primaria",
+      "Externa",
+      "Financiera"
+     ],
+     "ok": 0,
+     "r": "Apoya a las actividades primarias."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué caracteriza a una empresa digital?",
+     "ops": [
+      "Tener página web",
+      "Usar correo electrónico",
+      "Gestionar digitalmente sus procesos clave y relaciones",
+      "Tener computadoras"
+     ],
+     "ok": 2,
+     "r": "Lo digital está en el núcleo del negocio."
+    }
+   ]
+  },
+  {
+   "titulo": "Tipos de sistemas y aplicaciones empresariales",
+   "intro": "Unidades I y II del programa: sistemas de información de la empresa y sistemas de apoyo administrativo y organizacional.",
+   "conceptos": [
+    {
+     "n": "Sistemas por nivel",
+     "e": [
+      "<b>TPS</b> (procesamiento de transacciones): operaciones diarias (facturación, nómina). <b>MIS</b> (información gerencial): reportes periódicos para gerencia media. <b>DSS</b> (apoyo a decisiones): análisis y simulación para problemas semiestructurados. <b>ESS</b> (apoyo a ejecutivos): tableros con indicadores para la dirección."
+     ],
+     "u": [
+      "Clasificar sistemas de una institución, proponer nuevos.",
+      "Cada nivel necesita información distinta.",
+      "Al levantar requerimientos.",
+      "Identifica quién decide y qué tipo de decisión toma."
+     ],
+     "tabla": "<table><thead><tr><th>Sistema</th><th>Nivel</th><th>Decisión</th><th>Ejemplo</th></tr></thead><tbody><tr><td>TPS</td><td>Operativo</td><td>Estructurada</td><td>Facturación electrónica</td></tr><tr><td>MIS</td><td>Gerencia media</td><td>Estructurada</td><td>Reporte de ventas mensual</td></tr><tr><td>DSS</td><td>Gerencia media</td><td>Semiestructurada</td><td>Simulador de precios</td></tr><tr><td>ESS</td><td>Dirección</td><td>No estructurada</td><td>Tablero de indicadores</td></tr></tbody></table>"
+    },
+    {
+     "n": "Aplicaciones empresariales",
+     "e": [
+      "<b>ERP:</b> integra procesos (finanzas, inventario, recursos humanos) en una base común. <b>SCM:</b> gestiona la cadena de suministro con proveedores. <b>CRM:</b> gestiona la relación con clientes (ventas, servicio, marketing). <b>KMS:</b> gestiona el conocimiento. Su implementación es costosa y exige cambiar procesos."
+     ],
+     "u": [
+      "Implementar SAP, Odoo, Salesforce o soluciones locales.",
+      "Eliminan islas de información y duplicidad.",
+      "Al integrar áreas de la organización.",
+      "Mapea procesos antes de configurar el sistema."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: sistema de nómina, reporte trimestral de gastos, simulador de escenarios de presupuesto, tablero de indicadores del ministro.",
+     "pasos": [
+      "<b>Nómina.</b> TPS.",
+      "<b>Reporte trimestral.</b> MIS.",
+      "<b>Simulador.</b> DSS.",
+      "<b>Tablero.</b> ESS."
+     ],
+     "r": "TPS, MIS, DSS y ESS.",
+     "fin": "Clasificar sistemas por nivel."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué problema resuelve un ERP en una empresa con sistemas separados de ventas, inventario y contabilidad?",
+     "pasos": [
+      "<b>Problema.</b> Datos duplicados e inconsistentes, conciliaciones manuales.",
+      "<b>ERP.</b> Una venta actualiza inventario y contabilidad automáticamente en una base común."
+     ],
+     "r": "Integra procesos y datos.",
+     "fin": "Justificar un ERP."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué aplicación empresarial ayuda a reducir inventarios coordinando con proveedores?",
+     "pasos": [
+      "<b>SCM.</b> Comparte pronósticos y pedidos con proveedores.",
+      "<b>Efecto.</b> Menos inventario de seguridad y menos faltantes."
+     ],
+     "r": "SCM",
+     "fin": "Elegir la aplicación correcta."
+    },
+    {
+     "nv": "A",
+     "q": "Una implementación de ERP fracasó aunque el software funcionaba. ¿Qué pudo fallar?",
+     "pasos": [
+      "<b>Organización.</b> No se rediseñaron procesos; se forzó el sistema a los procesos viejos.",
+      "<b>Personas.</b> Poca capacitación y resistencia al cambio.",
+      "<b>Administración.</b> Falta de patrocinio de la dirección.",
+      "<b>Datos.</b> Migración de datos de mala calidad."
+     ],
+     "r": "Procesos, personas, patrocinio y datos.",
+     "fin": "Entender por qué fallan los proyectos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Para qué sirve un CRM?",
+     "pasos": [
+      "<b>Función.</b> Centraliza la información de clientes: contactos, compras, casos de servicio.",
+      "<b>Beneficio.</b> Mejor atención, ventas cruzadas y retención."
+     ],
+     "r": "Gestionar la relación con los clientes.",
+     "fin": "Conocer aplicaciones empresariales."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué sistema registra las operaciones diarias de la empresa?",
+     "ops": [
+      "ESS",
+      "DSS",
+      "MIS",
+      "TPS"
+     ],
+     "ok": 3,
+     "r": "Transaction Processing System."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué aplicación integra finanzas, inventario y recursos humanos?",
+     "ops": [
+      "CRM",
+      "SCM",
+      "KMS",
+      "ERP"
+     ],
+     "ok": 3,
+     "r": "Enterprise Resource Planning."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué sistema apoya decisiones semiestructuradas con modelos y simulación?",
+     "ops": [
+      "TPS",
+      "ERP",
+      "Correo",
+      "DSS"
+     ],
+     "ok": 3,
+     "r": "Decision Support System."
+    },
+    {
+     "nv": "I",
+     "q": "¿A qué nivel sirve principalmente un ESS?",
+     "ops": [
+      "Operativo",
+      "Gerencia media",
+      "Alta dirección",
+      "Clientes"
+     ],
+     "ok": 2,
+     "r": "Presenta indicadores resumidos para la dirección."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es el principal riesgo al implementar un ERP?",
+     "ops": [
+      "Que sea muy barato",
+      "Tener demasiados reportes",
+      "No adaptar procesos ni gestionar el cambio organizacional",
+      "Que use una base de datos"
+     ],
+     "ok": 2,
+     "r": "El reto es organizacional más que técnico."
+    }
+   ]
+  },
+  {
+   "titulo": "Conocimiento, decisiones e inteligencia de negocios",
+   "intro": "Unidad II del programa: administración del conocimiento y mejora en la toma de decisiones administrativas.",
+   "conceptos": [
+    {
+     "n": "Administración del conocimiento",
+     "e": [
+      "El conocimiento <b>explícito</b> está documentado (manuales, procedimientos); el <b>tácito</b> está en la experiencia de las personas. La gestión del conocimiento lo adquiere, almacena, distribuye y aplica: bases de conocimiento, wikis, comunidades de práctica, sistemas expertos y repositorios de lecciones aprendidas."
+     ],
+     "u": [
+      "Retener el conocimiento de técnicos que se retiran, bases de soporte.",
+      "Evita depender de una sola persona.",
+      "Al documentar procesos y soluciones.",
+      "Convierte lo tácito en explícito con documentación y mentoría."
+     ]
+    },
+    {
+     "n": "Toma de decisiones",
+     "e": [
+      "Decisiones <b>estructuradas</b> (rutinarias, con procedimiento), <b>semiestructuradas</b> y <b>no estructuradas</b> (únicas, con juicio). Proceso de Simon: inteligencia (detectar el problema), diseño (alternativas), elección e implementación."
+     ],
+     "u": [
+      "Diseñar sistemas que apoyen decisiones reales.",
+      "Cada tipo de decisión requiere distinto apoyo.",
+      "Al definir requerimientos de reportes y tableros.",
+      "Identifica la etapa y el tipo de decisión."
+     ]
+    },
+    {
+     "n": "Inteligencia de negocios",
+     "e": [
+      "La BI convierte datos en información para decidir: almacén de datos (data warehouse) con procesos ETL, data marts por área, OLAP (análisis multidimensional por cubos: ventas por producto, región y tiempo), minería de datos (patrones, clasificación, asociación) y tableros con indicadores clave (KPI)."
+     ],
+     "u": [
+      "Tableros gerenciales, análisis de ventas, indicadores institucionales.",
+      "Decidir con datos en lugar de intuición.",
+      "Cuando hay muchos datos históricos.",
+      "Define KPI, integra fuentes y presenta en tableros."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Da un ejemplo de conocimiento tácito y uno explícito en un departamento de TI.",
+     "pasos": [
+      "<b>Tácito.</b> Saber por experiencia qué servidor falla cuando hay mucha carga en cierre de mes.",
+      "<b>Explícito.</b> El procedimiento documentado de respaldo."
+     ],
+     "r": "Experiencia no escrita y procedimiento documentado.",
+     "fin": "Distinguir tipos de conocimiento."
+    },
+    {
+     "nv": "I",
+     "q": "Un técnico experto se jubila en 6 meses. ¿Cómo capturas su conocimiento?",
+     "pasos": [
+      "<b>Documentar.</b> Procedimientos y soluciones a problemas frecuentes en una base de conocimiento.",
+      "<b>Mentoría.</b> Trabajar en pareja con otros técnicos.",
+      "<b>Grabar.</b> Sesiones explicando sistemas críticos."
+     ],
+     "r": "Documentación, mentoría y grabaciones.",
+     "fin": "Gestionar el conocimiento en la práctica."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica el proceso de Simon a decidir si migrar el correo a la nube.",
+     "pasos": [
+      "<b>Inteligencia.</b> Problema: el servidor de correo es caro de mantener y falla.",
+      "<b>Diseño.</b> Alternativas: renovar el servidor, nube A o nube B.",
+      "<b>Elección.</b> Comparar costo, seguridad y legislación.",
+      "<b>Implementación.</b> Migrar por fases y capacitar."
+     ],
+     "r": "Inteligencia, diseño, elección e implementación.",
+     "fin": "Estructurar una decisión."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña un cubo OLAP para analizar ventas de una cadena de farmacias.",
+     "pasos": [
+      "<b>Hechos.</b> Cantidad vendida e importe.",
+      "<b>Dimensiones.</b> Producto, sucursal, tiempo (día, mes, año) y cliente.",
+      "<b>Operaciones.</b> Profundizar (de año a mes), consolidar y rebanar (una sucursal)."
+     ],
+     "r": "Hechos de venta con dimensiones producto, sucursal, tiempo y cliente.",
+     "fin": "Modelar para análisis."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hace un proceso ETL?",
+     "pasos": [
+      "<b>Extraer</b> datos de las fuentes.",
+      "<b>Transformar</b> (limpiar, unificar formatos).",
+      "<b>Cargar</b> en el almacén de datos."
+     ],
+     "r": "Extraer, transformar y cargar.",
+     "fin": "Entender cómo se alimenta la BI."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de conocimiento está en la experiencia de las personas?",
+     "ops": [
+      "Explícito",
+      "Tácito",
+      "Estructurado",
+      "Digital"
+     ],
+     "ok": 1,
+     "r": "Es difícil de documentar."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué almacena datos históricos integrados para análisis?",
+     "ops": [
+      "TPS",
+      "Data warehouse",
+      "Correo",
+      "Hoja de cálculo personal"
+     ],
+     "ok": 1,
+     "r": "Base de la inteligencia de negocios."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tipo de decisión es elegir la ubicación de una nueva sede?",
+     "ops": [
+      "Estructurada",
+      "Rutinaria",
+      "Automática",
+      "No estructurada"
+     ],
+     "ok": 3,
+     "r": "Única, con mucho juicio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué técnica descubre que quienes compran A suelen comprar B?",
+     "ops": [
+      "Minería de datos por reglas de asociación",
+      "OLAP",
+      "ETL",
+      "Respaldo"
+     ],
+     "ok": 0,
+     "r": "Análisis de canasta de mercado."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la primera etapa del proceso de decisión de Simon?",
+     "ops": [
+      "Elección",
+      "Inteligencia",
+      "Diseño",
+      "Implementación"
+     ],
+     "ok": 1,
+     "r": "Detectar y entender el problema."
+    }
+   ]
+  },
+  {
+   "titulo": "Construcción de sistemas, rediseño y valor de negocio",
+   "intro": "Unidad III del programa: construcción de sistemas, rediseño de la organización, valor de negocio y administración del cambio.",
+   "conceptos": [
+    {
+     "n": "Cambio organizacional y rediseño",
+     "e": [
+      "De menor a mayor riesgo y beneficio: <b>automatización</b> (hacer más rápido lo mismo), <b>racionalización de procedimientos</b> (simplificar), <b>rediseño de procesos de negocio</b> (BPR, repensar el proceso completo) y <b>cambio de paradigma</b> (cambiar el modelo de negocio)."
+     ],
+     "u": [
+      "Transformación digital de trámites públicos o procesos internos.",
+      "Automatizar un mal proceso solo lo hace mal más rápido.",
+      "Al proponer un sistema nuevo.",
+      "Analiza y simplifica el proceso antes de automatizarlo."
+     ]
+    },
+    {
+     "n": "Métodos de construcción",
+     "e": [
+      "Ciclo de vida tradicional (fases secuenciales), prototipos (versiones rápidas para validar), paquetes de software (comprar y configurar), desarrollo por usuarios finales, subcontratación (outsourcing) y métodos ágiles. La elección depende de la claridad de requerimientos, el presupuesto y la capacidad interna."
+     ],
+     "u": [
+      "Decidir comprar, desarrollar o contratar un sistema.",
+      "Cada método equilibra costo, tiempo y control.",
+      "Al iniciar un proyecto.",
+      "Compara requerimientos, costos y riesgos de cada opción."
+     ]
+    },
+    {
+     "n": "Valor de negocio y administración del cambio",
+     "e": [
+      "El valor se evalúa con costo total de propiedad (<b>TCO</b>: compra, operación, soporte, energía, personal), ROI y VAN. La <b>administración del cambio</b> gestiona la resistencia de los usuarios con patrocinio de la dirección, comunicación, participación y capacitación."
+     ],
+     "u": [
+      "Presentar proyectos al comité o a la gerencia.",
+      "Sin valor demostrado y sin adopción, el sistema fracasa.",
+      "Al justificar e implementar proyectos.",
+      "Calcula TCO y ROI y planifica la gestión del cambio."
+     ],
+     "f": "TCO=\\text{inversión}+\\sum\\text{costos anuales}\\qquad ROI=\\frac{B-C}{C}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "I",
+     "q": "Un sistema cuesta Q200,000 y ahorra Q80,000 al año durante 4 años. ¿ROI simple?",
+     "pasos": [
+      "<b>Beneficio total.</b> \\(4\\times80\\,000=320\\,000\\).",
+      "<b>ROI.</b> \\(\\tfrac{320\\,000-200\\,000}{200\\,000}=0.6\\)."
+     ],
+     "r": "60 %",
+     "fin": "Justificar una inversión."
+    },
+    {
+     "nv": "I",
+     "q": "Compara a 5 años: servidor propio (Q30,000 de compra más Q12,000 al año de mantenimiento, energía y personal) o nube a Q1,300 al mes.",
+     "pasos": [
+      "<b>Servidor.</b> \\(30\\,000+5\\times12\\,000=90\\,000\\).",
+      "<b>Nube.</b> \\(1\\,300\\times60=78\\,000\\).",
+      "<b>Además.</b> Considerar seguridad, ley y dependencia del proveedor."
+     ],
+     "r": "Nube Q78,000 contra Q90,000 del servidor propio.",
+     "fin": "Calcular el TCO."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica: (a) digitalizar el formulario en papel tal cual; (b) eliminar 3 firmas innecesarias; (c) rediseñar el trámite para que sea en línea de principio a fin.",
+     "pasos": [
+      "<b>(a)</b> Automatización.",
+      "<b>(b)</b> Racionalización.",
+      "<b>(c)</b> Rediseño de procesos (BPR)."
+     ],
+     "r": "Automatización, racionalización y BPR.",
+     "fin": "Reconocer el tipo de cambio."
+    },
+    {
+     "nv": "A",
+     "q": "Los usuarios rechazan un sistema nuevo y siguen usando hojas de cálculo. ¿Qué plan de cambio propones?",
+     "pasos": [
+      "<b>Patrocinio.</b> La dirección comunica que el sistema es el oficial.",
+      "<b>Participación.</b> Usuarios clave validan y proponen mejoras.",
+      "<b>Capacitación.</b> Práctica con casos reales.",
+      "<b>Transición.</b> Fecha de corte y soporte cercano."
+     ],
+     "r": "Patrocinio, participación, capacitación y transición planificada.",
+     "fin": "Gestionar la adopción."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuándo conviene un paquete de software en lugar de desarrollar?",
+     "pasos": [
+      "<b>Paquete.</b> Proceso estándar (contabilidad, nómina), tiempo corto, poca capacidad interna.",
+      "<b>Desarrollo.</b> Proceso único que da ventaja competitiva o requisitos legales muy específicos."
+     ],
+     "r": "Para procesos estándar; desarrollar para lo diferenciador.",
+     "fin": "Decidir comprar o desarrollar."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de cambio organizacional tiene más riesgo y más beneficio potencial?",
+     "r": "El cambio de paradigma."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué incluye el TCO además del precio de compra?",
+     "r": "Instalación, licencias, mantenimiento, soporte, capacitación, energía, personal y reemplazo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué método de construcción ayuda cuando los requerimientos no están claros?",
+     "r": "Prototipos o métodos ágiles."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema de Q50,000 ahorra Q20,000 al año. ¿Periodo de recuperación?",
+     "r": "2.5 años."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué automatizar sin rediseñar puede ser un error?",
+     "r": "Porque se hacen más rápido pasos innecesarios o malos; primero hay que simplificar el proceso."
+    }
+   ]
+  },
+  {
+   "titulo": "Seguridad y control de los sistemas",
+   "intro": "Unidad IV del programa: administración de los sistemas de información, seguridad y control.",
+   "conceptos": [
+    {
+     "n": "Vulnerabilidades y amenazas",
+     "e": [
+      "Los sistemas son vulnerables por fallas técnicas, errores humanos, desastres y ataques: malware (virus, gusanos, troyanos, ransomware), phishing, ingeniería social, denegación de servicio, robo de identidad y amenazas internas (empleados)."
+     ],
+     "u": [
+      "Proteger sistemas institucionales y datos de ciudadanos.",
+      "Un incidente puede detener la operación.",
+      "Siempre, desde el diseño.",
+      "Identifica activos, amenazas y vulnerabilidades."
+     ]
+    },
+    {
+     "n": "Controles y evaluación de riesgos",
+     "e": [
+      "<b>Controles generales:</b> de software, hardware, operaciones, seguridad de datos, implementación y administración. <b>De aplicación:</b> de entrada, procesamiento y salida. La evaluación de riesgos estima la pérdida anual esperada: ALE = ARO × SLE, con SLE = valor del activo × factor de exposición; un control se justifica si cuesta menos que la reducción de pérdida que logra."
+     ],
+     "u": [
+      "Priorizar inversiones de seguridad con números.",
+      "No todo riesgo merece el mismo gasto.",
+      "Al presupuestar seguridad.",
+      "Calcula ALE antes y después del control."
+     ],
+     "f": "SLE=AV\\times EF\\qquad ALE=ARO\\times SLE"
+    },
+    {
+     "n": "Políticas, continuidad y auditoría",
+     "e": [
+      "Una <b>política de seguridad</b> define reglas de uso aceptable, accesos y responsabilidades. El plan de <b>recuperación ante desastres</b> recupera la tecnología; el de <b>continuidad del negocio</b> mantiene operando la organización. La <b>auditoría de sistemas</b> verifica que los controles funcionen. Tecnologías: autenticación (contraseñas, tokens, biometría, MFA), firewalls, IDS, antivirus, cifrado y certificados digitales."
+     ],
+     "u": [
+      "Cumplimiento normativo, preparación ante incidentes.",
+      "Sin plan, un desastre se vuelve crisis.",
+      "Al gobernar la TI.",
+      "Documenta políticas, prueba los planes y audita."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "I",
+     "q": "Un servidor vale Q100,000; un incendio destruiría el 40 % y ocurre una vez cada 2 años. ¿ALE? ¿Se justifica un control de Q8,000 al año que elimina el riesgo?",
+     "pasos": [
+      "<b>SLE.</b> \\(100\\,000\\times0.4=40\\,000\\).",
+      "<b>ARO.</b> 0.5.",
+      "<b>ALE.</b> \\(0.5\\times40\\,000=20\\,000\\).",
+      "<b>Decisión.</b> 8,000 < 20,000: se justifica."
+     ],
+     "r": "ALE Q20,000; el control se justifica.",
+     "fin": "Decidir inversiones de seguridad con números."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica: validar que la fecha de nacimiento no sea futura; restringir el acceso al cuarto de servidores.",
+     "pasos": [
+      "<b>Validación.</b> Control de aplicación (de entrada).",
+      "<b>Acceso físico.</b> Control general (de hardware y seguridad física)."
+     ],
+     "r": "Control de aplicación y control general.",
+     "fin": "Clasificar controles."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es la autenticación multifactor y por qué reduce riesgos?",
+     "pasos": [
+      "<b>Factores.</b> Algo que sabes (contraseña), algo que tienes (token, celular) y algo que eres (huella).",
+      "<b>Efecto.</b> Robar la contraseña no basta para entrar."
+     ],
+     "r": "Combina factores distintos; una contraseña robada no basta.",
+     "fin": "Elegir controles efectivos."
+    },
+    {
+     "nv": "A",
+     "q": "Un ransomware cifró los servidores de una institución. ¿Qué debió existir para recuperarse?",
+     "pasos": [
+      "<b>Respaldos.</b> Aislados o inmutables y probados.",
+      "<b>DRP.</b> Procedimiento y tiempos de recuperación definidos.",
+      "<b>Prevención.</b> Parches, MFA, segmentación y capacitación contra phishing."
+     ],
+     "r": "Respaldos aislados, plan de recuperación y prevención.",
+     "fin": "Prepararse ante el incidente más común."
+    },
+    {
+     "nv": "B",
+     "q": "Diferencia DRP y BCP.",
+     "pasos": [
+      "<b>DRP.</b> Recuperar sistemas y datos.",
+      "<b>BCP.</b> Mantener operando toda la organización (procesos, personas, sedes alternas)."
+     ],
+     "r": "DRP recupera la tecnología; BCP mantiene el negocio.",
+     "fin": "Distinguir planes."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué amenaza engaña al usuario para que entregue sus credenciales?",
+     "ops": [
+      "Gusano",
+      "Denegación de servicio",
+      "Phishing",
+      "Respaldo"
+     ],
+     "ok": 2,
+     "r": "Usa correos o sitios falsos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué malware cifra los datos y pide rescate?",
+     "ops": [
+      "Adware",
+      "Spyware",
+      "Rootkit",
+      "Ransomware"
+     ],
+     "ok": 3,
+     "r": "La defensa principal son los respaldos aislados."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué fórmula da la pérdida anual esperada?",
+     "ops": [
+      "ALE = SLE / ARO",
+      "ALE = AV + EF",
+      "ALE = ROI × TCO",
+      "ALE = ARO × SLE"
+     ],
+     "ok": 3,
+     "r": "Frecuencia anual por pérdida por evento."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tipo de control es una validación de datos en un formulario?",
+     "ops": [
+      "General",
+      "Físico",
+      "De aplicación (entrada)",
+      "Legal"
+     ],
+     "ok": 2,
+     "r": "Actúa dentro de la aplicación."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué verifica una auditoría de sistemas?",
+     "ops": [
+      "Solo el hardware",
+      "El precio del software",
+      "Que los controles existan y funcionen correctamente",
+      "La velocidad de la red"
+     ],
+     "ok": 2,
+     "r": "Evalúa el control interno de TI."
+    }
+   ]
+  }
+ ]
+}

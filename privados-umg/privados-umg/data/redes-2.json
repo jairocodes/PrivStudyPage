@@ -1,0 +1,864 @@
+{
+ "slug": "redes-2",
+ "titulo": "Redes de Computadoras II",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 9, código 090044, bloque Redes del seminario",
+ "firma": "\\text{hosts}=2^{h}-2",
+ "firma_nota": "La fórmula que está detrás de todo plan de direccionamiento.",
+ "lead": "Modelos OSI y TCP/IP, IPv4, IPv6 y VLSM, tipos de redes e interconexión, estándares, rutas estáticas y dinámicas, VLAN, DHCP y DNS en Packet Tracer, cableado estructurado con su energía y la jerarquía de protocolos. Es la práctica de diseñar y configurar una red real.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9RedesII.pdf",
+ "como": "Cada tema trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y preguntas de opción múltiple que te dicen al instante si acertaste. Los comandos son de Cisco IOS, los mismos que se usan en Packet Tracer.",
+ "temas": [
+  {
+   "titulo": "Modelos OSI y TCP/IP, IPv4, IPv6 y subneteo",
+   "intro": "Tema 1 del programa: OSI, TCP/IP, IPv4 e IPv6 y subneteo.",
+   "conceptos": [
+    {
+     "n": "OSI frente a TCP/IP",
+     "e": [
+      "TCP/IP tiene 4 capas: acceso a la red (física y enlace de OSI), internet (IP, ICMP, ARP), transporte (TCP y UDP) y aplicación (sesión, presentación y aplicación de OSI). <b>TCP</b> es orientado a conexión (saludo de tres vías SYN, SYN-ACK, ACK), confiable y con control de flujo; <b>UDP</b> es sin conexión y rápido (DNS, voz, video). Puertos conocidos: 20/21 FTP, 22 SSH, 23 Telnet, 25 SMTP, 53 DNS, 67/68 DHCP, 80 HTTP, 443 HTTPS."
+     ],
+     "u": [
+      "Diagnosticar aplicaciones y firewalls, abrir los puertos correctos.",
+      "TCP/IP es el modelo que realmente usa internet.",
+      "Al analizar una comunicación o configurar reglas.",
+      "Identifica protocolo de transporte y puerto de cada servicio."
+     ]
+    },
+    {
+     "n": "IPv4, IPv6 y NAT",
+     "e": [
+      "IPv4: 32 bits; privadas 10.0.0.0/8, 172.16.0.0/12 y 192.168.0.0/16, que salen a internet con NAT. IPv6: 128 bits en 8 grupos hexadecimales; se omiten ceros a la izquierda y una sola secuencia de grupos en cero se reemplaza por ::. Tipos: global unicast (2000::/3), enlace local (fe80::/10), multicast (ff00::/8); no hay broadcast; un /64 es la subred típica de una LAN."
+     ],
+     "u": [
+      "Planes de direccionamiento, migración a IPv6.",
+      "Las direcciones IPv4 públicas se agotaron.",
+      "Al asignar direcciones o configurar dual stack.",
+      "Abrevia IPv6 con cuidado: :: solo una vez."
+     ]
+    },
+    {
+     "n": "Subneteo y VLSM",
+     "e": [
+      "Con VLSM cada subred recibe el prefijo justo para sus hosts: se ordenan de mayor a menor necesidad y se asignan consecutivamente, sin traslapes. Los enlaces punto a punto entre routers usan /30 (2 hosts) o /31."
+     ],
+     "u": [
+      "Aprovechar un bloque de direcciones en una institución con departamentos de distinto tamaño.",
+      "Evita desperdiciar direcciones.",
+      "Al diseñar el direccionamiento.",
+      "Para cada subred: menor h con 2ʰ − 2 ≥ hosts, luego asigna en orden."
+     ],
+     "f": "\\text{hosts}=2^{h}-2\\qquad \\text{prefijo}=32-h"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Abrevia la IPv6 2001:0db8:0000:0000:0000:ff00:0042:8329.",
+     "pasos": [
+      "<b>Ceros a la izquierda.</b> 2001:db8:0:0:0:ff00:42:8329.",
+      "<b>Grupos en cero consecutivos.</b> Se reemplazan por ::."
+     ],
+     "r": "2001:db8::ff00:42:8329",
+     "fin": "Escribir IPv6 correctamente."
+    },
+    {
+     "nv": "I",
+     "q": "Haz un plan VLSM con 192.168.1.0/24 para 100, 50 y 20 hosts y un enlace entre routers.",
+     "pasos": [
+      "<b>100 hosts.</b> /25: 192.168.1.0–.127.",
+      "<b>50 hosts.</b> /26: .128–.191.",
+      "<b>20 hosts.</b> /27: .192–.223.",
+      "<b>Enlace.</b> /30: .224–.227."
+     ],
+     "r": "/25, /26, /27 y /30 consecutivos sin traslape.",
+     "fin": "Diseñar con VLSM."
+    },
+    {
+     "nv": "I",
+     "q": "Explica el saludo de tres vías de TCP.",
+     "pasos": [
+      "<b>SYN.</b> El cliente pide abrir conexión con su número de secuencia.",
+      "<b>SYN-ACK.</b> El servidor acepta y envía el suyo.",
+      "<b>ACK.</b> El cliente confirma; la conexión queda establecida."
+     ],
+     "r": "SYN, SYN-ACK, ACK.",
+     "fin": "Entender cómo empieza una conexión TCP."
+    },
+    {
+     "nv": "A",
+     "q": "Una aplicación web no carga desde fuera, pero el servidor responde a ping. ¿Qué revisas según TCP/IP?",
+     "pasos": [
+      "<b>Internet (capa 3).</b> Funciona: hay ping.",
+      "<b>Transporte.</b> ¿Está abierto el puerto 443 en el firewall y en el NAT?",
+      "<b>Aplicación.</b> ¿El servicio escucha (<code>ss -tlnp</code>) y el certificado es válido?"
+     ],
+     "r": "Puertos, firewall, NAT y el servicio.",
+     "fin": "Diagnosticar por capas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué usa TCP y qué usa UDP: correo, DNS, transferencia de archivos y llamada de voz?",
+     "pasos": [
+      "<b>TCP.</b> Correo (SMTP) y transferencia de archivos.",
+      "<b>UDP.</b> DNS (consultas normales) y voz."
+     ],
+     "r": "TCP: correo y archivos; UDP: DNS y voz.",
+     "fin": "Elegir el transporte adecuado."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántas capas tiene el modelo TCP/IP?",
+     "ops": [
+      "5",
+      "4",
+      "7",
+      "3"
+     ],
+     "ok": 1,
+     "r": "Acceso a la red, internet, transporte y aplicación."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué puerto usa HTTPS?",
+     "ops": [
+      "80",
+      "22",
+      "53",
+      "443"
+     ],
+     "ok": 3,
+     "r": "HTTP usa 80."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué rango IPv4 es privado?",
+     "ops": [
+      "8.8.8.0/24",
+      "172.16.0.0/12",
+      "200.0.0.0/8",
+      "1.1.1.0/24"
+     ],
+     "ok": 1,
+     "r": "Junto con 10.0.0.0/8 y 192.168.0.0/16."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué prefijo IPv6 identifica direcciones de enlace local?",
+     "ops": [
+      "fe80::/10",
+      "2000::/3",
+      "ff00::/8",
+      "::1/128"
+     ],
+     "ok": 0,
+     "r": "Se autoconfiguran en cada interfaz."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué prefijo es el más eficiente para un enlace punto a punto en IPv4?",
+     "ops": [
+      "/24",
+      "/16",
+      "/28",
+      "/30"
+     ],
+     "ok": 3,
+     "r": "Da exactamente 2 hosts útiles (o /31 sin broadcast)."
+    }
+   ]
+  },
+  {
+   "titulo": "Topologías e interconexión de redes",
+   "intro": "Tema 2 del programa: PAN, LAN, MAN y WAN, medios, tipos y tecnologías de interconexión, DCE y DTE.",
+   "conceptos": [
+    {
+     "n": "Tipos de redes y topologías",
+     "e": [
+      "Por alcance: <b>PAN</b> (personal, Bluetooth), <b>LAN</b> (edificio), <b>MAN</b> (ciudad) y <b>WAN</b> (país o mundo). Topologías: bus, anillo, estrella (la más usada en LAN), malla (redundante, en troncales) e híbridas. El modelo jerárquico separa núcleo, distribución y acceso."
+     ],
+     "u": [
+      "Diseñar la red de una institución con varias sedes.",
+      "La topología determina redundancia y costo.",
+      "Al planear o ampliar una red.",
+      "Usa estrella en el acceso y malla parcial en el núcleo."
+     ]
+    },
+    {
+     "n": "Interconexión y tecnologías WAN",
+     "e": [
+      "Medios de interconexión: cobre, fibra, radio, satélite. Tecnologías WAN: líneas dedicadas (E1 de 2.048 Mbps, T1 de 1.544 Mbps), MPLS, Metro Ethernet, enlaces de fibra, VPN sobre internet (IPsec, SSL) y SD-WAN. Frame Relay y RDSI son tecnologías heredadas."
+     ],
+     "u": [
+      "Unir sedes de una empresa o instituciones del Estado.",
+      "Cada tecnología equilibra costo, ancho de banda y garantías.",
+      "Al contratar enlaces entre sedes.",
+      "Compara SLA, costo y seguridad."
+     ]
+    },
+    {
+     "n": "DTE y DCE",
+     "e": [
+      "El <b>DTE</b> (equipo terminal de datos) es el que genera o consume datos: router, computadora. El <b>DCE</b> (equipo de comunicación de datos) conecta el DTE con la red del proveedor y entrega el reloj del enlace serie: módem, CSU/DSU. En laboratorio, el extremo DCE del cable serie se configura con <code>clock rate</code>."
+     ],
+     "u": [
+      "Configurar enlaces seriales en laboratorio y equipos de proveedor.",
+      "Sin reloj el enlace serie no sube.",
+      "Al conectar routers por serie.",
+      "Identifica el extremo DCE del cable y configura el reloj."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: red de un laboratorio, red de una ciudad universitaria, internet, audífonos Bluetooth.",
+     "pasos": [
+      "<b>Laboratorio.</b> LAN.",
+      "<b>Ciudad universitaria o red municipal.</b> MAN.",
+      "<b>Internet.</b> WAN.",
+      "<b>Audífonos.</b> PAN."
+     ],
+     "r": "LAN, MAN, WAN y PAN.",
+     "fin": "Clasificar redes por alcance."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántos canales de 64 kbps tiene un E1 y cuántos se usan para voz o datos?",
+     "pasos": [
+      "<b>Total.</b> \\(\\tfrac{2048}{64}=32\\) canales.",
+      "<b>Útiles.</b> 30 (uno de sincronía y uno de señalización)."
+     ],
+     "r": "32 canales, 30 útiles.",
+     "fin": "Entender enlaces digitales."
+    },
+    {
+     "nv": "I",
+     "q": "Dos routers se unen por un cable serie en Packet Tracer y el enlace no sube. ¿Qué revisas?",
+     "pasos": [
+      "<b>Reloj.</b> En la interfaz del extremo DCE: <code>clock rate 64000</code>.",
+      "<b>Interfaces.</b> <code>no shutdown</code> en ambos lados.",
+      "<b>Direccionamiento.</b> Misma subred /30."
+     ],
+     "r": "Reloj en el DCE, interfaces encendidas y misma subred.",
+     "fin": "Resolver el error más común de laboratorio."
+    },
+    {
+     "nv": "A",
+     "q": "Una institución con 5 sedes necesita enlaces seguros y económicos. Compara MPLS y VPN sobre internet.",
+     "pasos": [
+      "<b>MPLS.</b> Red privada del proveedor con SLA y QoS; más cara.",
+      "<b>VPN sobre internet.</b> Barata y flexible; depende de internet, sin garantía de calidad.",
+      "<b>Alternativa.</b> SD-WAN combina varios enlaces y gestiona la calidad."
+     ],
+     "r": "MPLS por garantías; VPN o SD-WAN por costo.",
+     "fin": "Decidir la interconexión de sedes."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué topología usa una LAN moderna con switches?",
+     "pasos": [
+      "<b>Estrella.</b> Cada equipo se conecta a un switch central.",
+      "<b>Ventaja.</b> Una falla de cable afecta solo a un equipo."
+     ],
+     "r": "Estrella (o estrella extendida).",
+     "fin": "Reconocer topologías."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de red cubre un edificio?",
+     "ops": [
+      "LAN",
+      "PAN",
+      "MAN",
+      "WAN"
+     ],
+     "ok": 0,
+     "r": "Red de área local."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué equipo provee el reloj en un enlace serie?",
+     "ops": [
+      "DCE",
+      "DTE",
+      "Switch",
+      "Hub"
+     ],
+     "ok": 0,
+     "r": "Por ejemplo, el CSU/DSU o el extremo DCE del cable."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué velocidad tiene un E1?",
+     "ops": [
+      "1.544 Mbps",
+      "2.048 Mbps",
+      "10 Mbps",
+      "64 kbps"
+     ],
+     "ok": 1,
+     "r": "T1 es 1.544 Mbps."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué topología ofrece más redundancia?",
+     "ops": [
+      "Bus",
+      "Estrella",
+      "Anillo simple",
+      "Malla"
+     ],
+     "ok": 3,
+     "r": "Hay múltiples caminos entre nodos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué capas tiene el modelo jerárquico de diseño de redes?",
+     "ops": [
+      "Núcleo, distribución y acceso",
+      "Física, enlace y red",
+      "Cliente, servidor y base de datos",
+      "Aplicación, transporte e internet"
+     ],
+     "ok": 0,
+     "r": "Facilita escalar y aislar fallas."
+    }
+   ]
+  },
+  {
+   "titulo": "Estándares de redes",
+   "intro": "Tema 3 del programa: UIT, IEEE, OSI (ISO), DNA, BNA y TIA/EIA.",
+   "conceptos": [
+    {
+     "n": "Organismos y estándares",
+     "e": [
+      "<b>UIT/ITU-T:</b> telecomunicaciones (G.703, V.xx de módems, H.323). <b>IEEE 802:</b> redes locales (802.3 Ethernet, 802.11 Wi-Fi, 802.1Q VLAN, 802.1X autenticación, 802.15 PAN). <b>ISO:</b> modelo OSI y estándares como ISO/IEC 27001. <b>IETF:</b> protocolos de internet en RFC. <b>TIA/EIA:</b> cableado (568, 569, 606, 607)."
+     ],
+     "u": [
+      "Comprar equipos compatibles, cumplir normas en licitaciones.",
+      "Los estándares garantizan interoperabilidad entre marcas.",
+      "Al especificar o adquirir equipos.",
+      "Exige el número de estándar en las especificaciones."
+     ],
+     "tabla": "<table><thead><tr><th>Estándar</th><th>Tema</th></tr></thead><tbody><tr><td>IEEE 802.3</td><td>Ethernet</td></tr><tr><td>IEEE 802.11</td><td>Wi-Fi</td></tr><tr><td>IEEE 802.1Q</td><td>VLAN</td></tr><tr><td>IEEE 802.1X</td><td>Control de acceso por puerto</td></tr><tr><td>IEEE 802.3af/at/bt</td><td>PoE</td></tr><tr><td>TIA-568</td><td>Cableado de telecomunicaciones</td></tr><tr><td>TIA-606</td><td>Etiquetado y administración</td></tr><tr><td>TIA-607</td><td>Puesta a tierra</td></tr></tbody></table>"
+    },
+    {
+     "n": "Arquitecturas propietarias: DNA y BNA",
+     "e": [
+      "Antes de que TCP/IP se impusiera, los fabricantes tenían sus propias arquitecturas de red: <b>DNA</b> (Digital Network Architecture, de Digital Equipment Corporation, base de DECnet) y <b>BNA</b> (Burroughs Network Architecture, de Burroughs, luego Unisys), además de SNA de IBM. Muestran por qué los estándares abiertos ganaron."
+     ],
+     "u": [
+      "Entender sistemas heredados y la evolución de las redes.",
+      "La interoperabilidad abierta superó a las arquitecturas cerradas.",
+      "Al integrar o migrar sistemas antiguos.",
+      "Identifica el protocolo propietario y su pasarela a TCP/IP."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué estándar define cada uno: Ethernet, Wi-Fi y VLAN?",
+     "pasos": [
+      "<b>Ethernet.</b> IEEE 802.3.",
+      "<b>Wi-Fi.</b> IEEE 802.11.",
+      "<b>VLAN.</b> IEEE 802.1Q."
+     ],
+     "r": "802.3, 802.11 y 802.1Q.",
+     "fin": "Ubicar los estándares IEEE."
+    },
+    {
+     "nv": "I",
+     "q": "Una cámara IP debe alimentarse por el cable de red. ¿Qué estándar exiges al switch?",
+     "pasos": [
+      "<b>PoE.</b> IEEE 802.3af (15.4 W), 802.3at (30 W) o 802.3bt (hasta 90 W) según el consumo.",
+      "<b>Verificación.</b> Revisar el presupuesto total de potencia del switch."
+     ],
+     "r": "PoE IEEE 802.3af/at según la cámara.",
+     "fin": "Especificar equipos correctamente."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué norma TIA usarías para etiquetar el cableado y cuál para la tierra física?",
+     "pasos": [
+      "<b>Etiquetado.</b> TIA-606.",
+      "<b>Tierra.</b> TIA-607."
+     ],
+     "r": "TIA-606 y TIA-607.",
+     "fin": "Conocer normas de cableado."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué TCP/IP desplazó a arquitecturas como DNA, BNA o SNA?",
+     "pasos": [
+      "<b>Abierto.</b> Especificaciones públicas (RFC) que cualquiera puede implementar.",
+      "<b>Interoperable.</b> Equipos de distintas marcas se comunican.",
+      "<b>Internet.</b> Su crecimiento lo volvió el estándar de facto."
+     ],
+     "r": "Por ser abierto, interoperable y la base de internet.",
+     "fin": "Entender la historia de los estándares."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué organismo publica los RFC?",
+     "pasos": [
+      "<b>IETF</b> (Internet Engineering Task Force).",
+      "<b>Ejemplo.</b> RFC 1918 define las direcciones privadas IPv4."
+     ],
+     "r": "IETF",
+     "fin": "Saber dónde se definen los protocolos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué organismo publica los estándares 802?",
+     "ops": [
+      "IEEE",
+      "ISO",
+      "UIT",
+      "IETF"
+     ],
+     "ok": 0,
+     "r": "Institute of Electrical and Electronics Engineers."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué estándar define el cableado estructurado?",
+     "ops": [
+      "IEEE 802.11",
+      "G.703",
+      "RFC 791",
+      "TIA-568"
+     ],
+     "ok": 3,
+     "r": "Incluye T568A y T568B."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué estándar autentica dispositivos antes de dar acceso a un puerto del switch?",
+     "ops": [
+      "802.1Q",
+      "802.3af",
+      "802.15",
+      "802.1X"
+     ],
+     "ok": 3,
+     "r": "Usa un servidor RADIUS."
+    },
+    {
+     "nv": "I",
+     "q": "¿De qué fabricante era la arquitectura DNA?",
+     "ops": [
+      "IBM",
+      "Cisco",
+      "Digital Equipment Corporation",
+      "Burroughs"
+     ],
+     "ok": 2,
+     "r": "Su implementación fue DECnet."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué organismo define G.703?",
+     "ops": [
+      "IEEE",
+      "UIT (ITU-T)",
+      "TIA",
+      "ISO"
+     ],
+     "ok": 1,
+     "r": "Interfaz física de enlaces digitales como E1."
+    }
+   ]
+  },
+  {
+   "titulo": "Configuración de rutas, VLAN, DHCP y DNS",
+   "intro": "Tema 4 del programa: Packet Tracer, rutas estáticas y dinámicas, VLAN, diseño con rutas y VLAN, DHCP y DNS.",
+   "conceptos": [
+    {
+     "n": "Rutas estáticas y dinámicas",
+     "e": [
+      "Una ruta estática se escribe a mano: <code>ip route 192.168.2.0 255.255.255.0 10.0.0.2</code>; la ruta por defecto es <code>ip route 0.0.0.0 0.0.0.0 siguiente_salto</code>. Las dinámicas las aprenden protocolos: <b>RIP</b> (vector distancia, saltos, máximo 15), <b>OSPF</b> (estado de enlace, costo, áreas), <b>EIGRP</b> (Cisco) y <b>BGP</b> (entre sistemas autónomos). Ante dos rutas, gana la de menor distancia administrativa."
+     ],
+     "u": [
+      "Enrutar entre sedes, conectar a internet.",
+      "Las dinámicas se adaptan a fallas; las estáticas son simples y predecibles.",
+      "Al diseñar el enrutamiento.",
+      "Usa estáticas en redes pequeñas y OSPF en medianas."
+     ],
+     "tabla": "<table><thead><tr><th>Origen</th><th>Distancia administrativa</th></tr></thead><tbody><tr><td>Conectada</td><td>0</td></tr><tr><td>Estática</td><td>1</td></tr><tr><td>EIGRP</td><td>90</td></tr><tr><td>OSPF</td><td>110</td></tr><tr><td>RIP</td><td>120</td></tr></tbody></table>"
+    },
+    {
+     "n": "VLAN y enrutamiento entre VLAN",
+     "e": [
+      "Una VLAN separa dominios de difusión en el mismo switch. Puertos de <b>acceso</b> (una VLAN) y <b>troncales</b> (varias, con etiqueta 802.1Q). Entre VLAN se enruta con router-on-a-stick (subinterfaces con <code>encapsulation dot1Q</code>) o con un switch de capa 3."
+     ],
+     "u": [
+      "Separar departamentos, invitados y servidores.",
+      "Mejora seguridad y reduce broadcast.",
+      "Al segmentar una LAN.",
+      "Crea VLAN, asigna puertos, configura troncales y el enrutamiento."
+     ]
+    },
+    {
+     "n": "DHCP y DNS",
+     "e": [
+      "<b>DHCP</b> asigna IP, máscara, puerta de enlace y DNS con el intercambio DORA (Discover, Offer, Request, Acknowledge); en otra subred se necesita un agente de retransmisión (<code>ip helper-address</code>). <b>DNS</b> traduce nombres a direcciones: registros A (IPv4), AAAA (IPv6), MX (correo), CNAME (alias), PTR (inverso), NS (servidores del dominio)."
+     ],
+     "u": [
+      "Toda red de oficina, servidores internos.",
+      "Automatizan la configuración y permiten usar nombres.",
+      "Al montar los servicios base de una red.",
+      "Configura el pool DHCP y los registros DNS necesarios."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Configura en un router la ruta hacia 192.168.2.0/24 por el siguiente salto 10.0.0.2 y una ruta por defecto hacia 10.0.0.1.",
+     "pasos": [
+      "<code>ip route 192.168.2.0 255.255.255.0 10.0.0.2</code>",
+      "<code>ip route 0.0.0.0 0.0.0.0 10.0.0.1</code>"
+     ],
+     "r": "Dos rutas estáticas, una específica y una por defecto.",
+     "fin": "Escribir rutas estáticas."
+    },
+    {
+     "nv": "I",
+     "q": "Crea la VLAN 10 (Ventas) y asígnale el puerto Fa0/5.",
+     "pasos": [
+      "<code>vlan 10</code> y <code>name Ventas</code>",
+      "<code>interface fa0/5</code>",
+      "<code>switchport mode access</code>",
+      "<code>switchport access vlan 10</code>"
+     ],
+     "r": "Puerto de acceso en la VLAN 10.",
+     "fin": "Configurar VLAN en un switch."
+    },
+    {
+     "nv": "I",
+     "q": "Configura router-on-a-stick para las VLAN 10 y 20 en G0/0.",
+     "pasos": [
+      "<code>interface g0/0.10</code>, <code>encapsulation dot1Q 10</code>, <code>ip address 192.168.10.1 255.255.255.0</code>",
+      "<code>interface g0/0.20</code>, <code>encapsulation dot1Q 20</code>, <code>ip address 192.168.20.1 255.255.255.0</code>",
+      "<b>Switch.</b> El puerto hacia el router en <code>switchport mode trunk</code>."
+     ],
+     "r": "Una subinterfaz por VLAN y troncal hacia el router.",
+     "fin": "Enrutar entre VLAN."
+    },
+    {
+     "nv": "A",
+     "q": "Configura un pool DHCP para la VLAN 10 en el router, excluyendo las primeras 10 direcciones.",
+     "pasos": [
+      "<code>ip dhcp excluded-address 192.168.10.1 192.168.10.10</code>",
+      "<code>ip dhcp pool VENTAS</code>",
+      "<code>network 192.168.10.0 255.255.255.0</code>, <code>default-router 192.168.10.1</code>, <code>dns-server 192.168.10.5</code>"
+     ],
+     "r": "Pool con puerta de enlace y DNS, sin las primeras 10.",
+     "fin": "Automatizar el direccionamiento."
+    },
+    {
+     "nv": "I",
+     "q": "Un router conoce 10.1.0.0/16 por OSPF y por RIP. ¿Cuál usa y por qué?",
+     "pasos": [
+      "<b>Distancias.</b> OSPF 110, RIP 120.",
+      "<b>Elección.</b> La de menor distancia administrativa: OSPF."
+     ],
+     "r": "OSPF",
+     "fin": "Aplicar la distancia administrativa."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué comando muestra la tabla de rutas en Cisco?",
+     "r": "<code>show ip route</code>"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace <code>switchport mode trunk</code>?",
+     "r": "Convierte el puerto en troncal para transportar varias VLAN etiquetadas con 802.1Q."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué registro DNS indica el servidor de correo de un dominio?",
+     "r": "MX"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué comando reenvía peticiones DHCP a un servidor en otra subred?",
+     "r": "<code>ip helper-address</code> en la interfaz de la VLAN o subred."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué métrica usa RIP y qué límite tiene?",
+     "r": "Número de saltos; 15 como máximo (16 es inalcanzable)."
+    }
+   ]
+  },
+  {
+   "titulo": "Cableado estructurado y energía",
+   "intro": "Tema 5 del programa: instalaciones (piso, piso falso, visibles), certificación, elementos de instalación; energía: protecciones, tableros, autonomía con UPS y sistemas de protección.",
+   "conceptos": [
+    {
+     "n": "Instalación y certificación",
+     "e": [
+      "El cableado puede ir por canaletas visibles, bajo piso falso o por bandejas en el techo. Elementos: rack, patch panel, organizadores, jacks, faceplates y cordones. Se respeta la separación de cables eléctricos y el radio de curvatura. La <b>certificación</b> con un equipo de prueba verifica mapa de cableado, longitud, atenuación (pérdida de inserción) y diafonía (NEXT) según la categoría."
+     ],
+     "u": [
+      "Instalar o auditar la red de un edificio.",
+      "Un cableado certificado evita fallas intermitentes.",
+      "Al recibir una instalación nueva.",
+      "Exige el reporte de certificación de cada punto."
+     ]
+    },
+    {
+     "n": "Energía y protección",
+     "e": [
+      "Tableros eléctricos con circuitos dedicados para equipos de red, <b>tierra física</b> (TIA-607), supresores de picos y <b>UPS</b>: fuera de línea (básica), interactiva (regula voltaje) y en línea de doble conversión (la mejor protección, para centros de datos). La autonomía depende de la energía de las baterías y de la carga."
+     ],
+     "u": [
+      "Proteger servidores, switches y enlaces críticos.",
+      "Los cortes y picos son causa común de daños y caídas.",
+      "Al diseñar un cuarto de telecomunicaciones.",
+      "Dimensiona la UPS en VA y calcula la autonomía."
+     ],
+     "f": "T_{\\text{autonomía}}\\approx\\frac{V\\cdot Ah\\cdot\\eta}{P}\\qquad VA=\\frac{W}{FP}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "I",
+     "q": "Dos baterías de 12 V y 9 Ah, eficiencia de 90 %, alimentan 300 W. ¿Autonomía?",
+     "pasos": [
+      "<b>Energía.</b> \\(2\\times12\\times9=216\\) Wh.",
+      "<b>Útil.</b> \\(216\\times0.9=194.4\\) Wh.",
+      "<b>Tiempo.</b> \\(\\tfrac{194.4}{300}\\approx0.65\\) h ≈ 39 min."
+     ],
+     "r": "≈ 39 minutos",
+     "fin": "Dimensionar respaldo de energía."
+    },
+    {
+     "nv": "I",
+     "q": "Un rack consume 600 W con factor de potencia 0.8. ¿Qué UPS compras con 25 % de margen?",
+     "pasos": [
+      "<b>VA.</b> \\(\\tfrac{600}{0.8}=750\\) VA.",
+      "<b>Margen.</b> \\(750\\times1.25\\approx938\\) VA.",
+      "<b>Comercial.</b> 1000 VA (1 kVA)."
+     ],
+     "r": "UPS de 1 kVA",
+     "fin": "Elegir una UPS."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué verifica la certificación de un punto de red?",
+     "pasos": [
+      "<b>Mapa de cableado.</b> Pares bien conectados.",
+      "<b>Longitud.</b> Dentro del límite.",
+      "<b>Atenuación y diafonía.</b> Dentro de la categoría."
+     ],
+     "r": "Mapa, longitud, atenuación y diafonía.",
+     "fin": "Recibir instalaciones con calidad."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué UPS recomiendas para un centro de datos institucional y por qué?",
+     "pasos": [
+      "<b>En línea de doble conversión.</b> Convierte siempre AC→DC→AC: la carga nunca ve los problemas de la red eléctrica.",
+      "<b>Complementos.</b> Tierra física, bypass de mantenimiento y planta eléctrica para cortes largos."
+     ],
+     "r": "UPS en línea de doble conversión con planta.",
+     "fin": "Proteger equipos críticos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Por qué no se debe pasar el cable UTP junto a los cables eléctricos?",
+     "pasos": [
+      "<b>Interferencia.</b> La corriente induce ruido en los pares.",
+      "<b>Efecto.</b> Errores y pérdida de velocidad."
+     ],
+     "r": "Por la interferencia electromagnética.",
+     "fin": "Instalar correctamente."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué elemento del rack termina el cableado horizontal?",
+     "ops": [
+      "El patch panel",
+      "El switch",
+      "La UPS",
+      "El router"
+     ],
+     "ok": 0,
+     "r": "Desde ahí se conecta al switch con cordones."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de UPS ofrece la mejor protección?",
+     "ops": [
+      "Fuera de línea",
+      "Interactiva",
+      "Todas igual",
+      "En línea de doble conversión"
+     ],
+     "ok": 3,
+     "r": "La carga siempre se alimenta desde el inversor."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué norma trata la puesta a tierra de telecomunicaciones?",
+     "ops": [
+      "TIA-568",
+      "TIA-606",
+      "IEEE 802.3",
+      "TIA-607"
+     ],
+     "ok": 3,
+     "r": "Tierra y uniones de los sistemas de telecomunicaciones."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué mide el NEXT en una certificación?",
+     "ops": [
+      "La longitud",
+      "La diafonía en el extremo cercano",
+      "El voltaje",
+      "La resistencia de tierra"
+     ],
+     "ok": 1,
+     "r": "Interferencia entre pares en el extremo del equipo."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuántos VA necesita una carga de 400 W con factor de potencia 0.8?",
+     "ops": [
+      "320 VA",
+      "400 VA",
+      "800 VA",
+      "500 VA"
+     ],
+     "ok": 3,
+     "r": "400 / 0.8 = 500 VA."
+    }
+   ]
+  },
+  {
+   "titulo": "Jerarquía de protocolos e interfaces",
+   "intro": "Tema 6 del programa: jerarquía de protocolos, RS-232 y RS-449, G.703 y protocolos de alto nivel.",
+   "conceptos": [
+    {
+     "n": "Jerarquía de protocolos",
+     "e": [
+      "Cada capa usa los servicios de la inferior y ofrece los suyos a la superior; los protocolos de la misma capa se comunican entre sí (comunicación entre pares) mediante encabezados. Ejemplo: HTTP sobre TCP sobre IP sobre Ethernet."
+     ],
+     "u": [
+      "Analizar capturas con Wireshark.",
+      "Permite cambiar una capa sin rehacer las demás.",
+      "Al diagnosticar o diseñar protocolos.",
+      "Lee los encabezados de abajo hacia arriba."
+     ]
+    },
+    {
+     "n": "Interfaces físicas: RS-232, RS-449 y G.703",
+     "e": [
+      "<b>RS-232:</b> serie no balanceada, distancias cortas (unos 15 m) y bajas velocidades; consolas de equipos. <b>RS-449</b> (con RS-422/423): balanceada, mayores distancias y velocidades. <b>G.703:</b> interfaz ITU-T para enlaces digitales (E1 de 2.048 Mbps) sobre coaxial o par trenzado."
+     ],
+     "u": [
+      "Consolas de routers y switches, enlaces E1 de proveedores.",
+      "Cada interfaz tiene límites de distancia y velocidad.",
+      "Al conectar equipos de telecomunicaciones.",
+      "Verifica tipo de señal, conector y velocidad."
+     ]
+    },
+    {
+     "n": "Protocolos de enlace de alto nivel",
+     "e": [
+      "<b>HDLC:</b> protocolo de enlace orientado a bits con tramas delimitadas por banderas 01111110; Cisco lo usa por defecto en interfaces serie. <b>PPP:</b> estándar para enlaces punto a punto con autenticación (PAP en texto plano, CHAP con desafío y hash) y negociación (LCP, NCP)."
+     ],
+     "u": [
+      "Enlaces seriales entre routers de distintas marcas, conexiones de proveedores.",
+      "Encapsulan los paquetes IP sobre el enlace.",
+      "Al configurar enlaces WAN serie.",
+      "Usa PPP con CHAP para interoperar con seguridad."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ordena la pila de una página web: Ethernet, HTTP, IP, TCP.",
+     "pasos": [
+      "<b>Aplicación y transporte.</b> HTTP usa a TCP.",
+      "<b>Red y enlace.</b> TCP viaja en IP, e IP en tramas Ethernet: HTTP → TCP → IP → Ethernet."
+     ],
+     "r": "HTTP, TCP, IP, Ethernet.",
+     "fin": "Entender el apilamiento de protocolos."
+    },
+    {
+     "nv": "I",
+     "q": "Configura PPP con CHAP entre los routers R1 y R2 (contraseña compartida <i>clave</i>).",
+     "pasos": [
+      "<b>En R1.</b> <code>username R2 password clave</code>; en la interfaz: <code>encapsulation ppp</code> y <code>ppp authentication chap</code>.",
+      "<b>En R2.</b> <code>username R1 password clave</code> y lo mismo en la interfaz."
+     ],
+     "r": "PPP con CHAP en ambos extremos.",
+     "fin": "Asegurar un enlace serie."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué CHAP es más seguro que PAP?",
+     "pasos": [
+      "<b>PAP.</b> Envía usuario y contraseña en texto plano.",
+      "<b>CHAP.</b> El autenticador envía un desafío y el otro responde con un hash; la contraseña nunca viaja y se reautentica periódicamente."
+     ],
+     "r": "CHAP no envía la contraseña.",
+     "fin": "Elegir la autenticación correcta."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué pasa si un router Cisco con HDLC se conecta por serie a un router de otra marca?",
+     "pasos": [
+      "<b>Problema.</b> El HDLC de Cisco tiene un campo propietario: no interopera.",
+      "<b>Solución.</b> Configurar PPP en ambos extremos."
+     ],
+     "r": "No levanta; se usa PPP.",
+     "fin": "Resolver un problema de interoperabilidad."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué interfaz usarías para la consola de un switch y cuál para un enlace E1 del proveedor?",
+     "pasos": [
+      "<b>Consola.</b> Serie RS-232 (o su adaptador USB).",
+      "<b>E1.</b> G.703."
+     ],
+     "r": "RS-232 y G.703.",
+     "fin": "Elegir interfaces físicas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué bandera delimita las tramas HDLC?",
+     "r": "01111110 (7Eh)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ventaja tiene RS-449/422 sobre RS-232?",
+     "r": "Señal balanceada: mayor distancia y velocidad con menos ruido."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué subprotocolo de PPP negocia el enlace?",
+     "r": "LCP (y NCP negocia la capa de red)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué encapsulación usa Cisco por defecto en interfaces serie?",
+     "r": "HDLC (propietario de Cisco)."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué es la comunicación entre pares en la jerarquía de protocolos?",
+     "r": "Que cada capa se comunica lógicamente con la misma capa del otro extremo mediante sus encabezados, aunque físicamente los datos bajen y suban por la pila."
+    }
+   ]
+  }
+ ]
+}

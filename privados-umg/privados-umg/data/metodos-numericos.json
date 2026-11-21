@@ -1,0 +1,693 @@
+{
+ "slug": "metodos-numericos",
+ "titulo": "Métodos Numéricos",
+ "meta": "Ciclo 5, código 090021, bloque Cálculo del seminario",
+ "firma": "x_{i+1}=x_i-\\frac{f(x_i)}{f'(x_i)}",
+ "firma_nota": "Newton-Raphson: aproximar una raíz con la recta tangente, una y otra vez.",
+ "lead": "Cuando el álgebra no alcanza, se aproxima con iteraciones controladas: raíces, interpolación y sistemas lineales y no lineales, con MATLAB como herramienta. Es lo que hace cualquier software científico por dentro.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Quinto%20Ciclo/2014-5MetodosNumericos.pdf",
+ "como": "Cada tema trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta. El tema de MATLAB combina ejercicios con un cuestionario que te dice al instante si acertaste. Los valores numéricos están redondeados a los decimales indicados.",
+ "temas": [
+  {
+   "titulo": "Introducción a MATLAB",
+   "intro": "Tema 1 del programa: comandos básicos, vectores y matrices, operaciones elemento a elemento, gráficas 2D y 3D, archivos .m y .mat, programación y animación.",
+   "conceptos": [
+    {
+     "n": "Vectores, matrices y operaciones",
+     "e": [
+      "Todo en MATLAB es una matriz. <code>[1 2 3]</code> es un vector fila; <code>[1; 2; 3]</code>, columna. <code>*</code> es producto de matrices y <code>.*</code> producto elemento a elemento. <code>A'</code> es la transpuesta y <code>A\\b</code> resuelve \\(A\\mathbf x=\\mathbf b\\). El punto y coma al final evita imprimir el resultado."
+     ],
+     "u": [
+      "Cálculo científico, procesamiento de señales e imágenes, prototipos de algoritmos.",
+      "Opera sobre miles de datos en una línea, sin ciclos.",
+      "En cualquier cálculo repetitivo con datos tabulados.",
+      "Escribe la operación vectorizada y revisa dimensiones con size."
+     ]
+    },
+    {
+     "n": "Gráficas 2D y 3D",
+     "e": [
+      "<code>plot(x,y)</code> grafica en 2D; <code>title</code>, <code>xlabel</code>, <code>grid on</code> y <code>hold on</code> completan la figura. En 3D, <code>[X,Y]=meshgrid(...)</code> crea la malla y <code>surf(X,Y,Z)</code> o <code>mesh</code> dibujan la superficie."
+     ],
+     "u": [
+      "Informes técnicos, visualización de resultados de simulaciones.",
+      "Una gráfica revela errores y tendencias de inmediato.",
+      "Siempre que analices resultados numéricos.",
+      "Genera la malla, evalúa con operadores con punto y grafica."
+     ]
+    },
+    {
+     "n": "Scripts, funciones y archivos",
+     "e": [
+      "Un <b>script</b> (.m) ejecuta instrucciones en el espacio de trabajo. Una <b>función</b> (.m que empieza con <code>function</code>) recibe y devuelve valores con variables propias. <code>save('datos.mat','x')</code> guarda variables y <code>load</code> las recupera. Hay <code>for</code>, <code>while</code> e <code>if</code>; las animaciones se hacen redibujando dentro de un ciclo con <code>drawnow</code>."
+     ],
+     "u": [
+      "Automatizar cálculos, reutilizar métodos numéricos, guardar resultados de experimentos.",
+      "Organiza el código como en cualquier lenguaje.",
+      "Cuando un cálculo se repite o se reutiliza.",
+      "Encapsula cada método en una función que reciba f, x₀ y la tolerancia."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con <code>A = [1 2; 3 4]</code>, calcula <code>A*A</code> y <code>A.*A</code>.",
+     "pasos": [
+      "<b>Producto de matrices.</b> Fila por columna: \\(\\begin{pmatrix}7&10\\\\15&22\\end{pmatrix}\\).",
+      "<b>Elemento a elemento.</b> Cada entrada al cuadrado: \\(\\begin{pmatrix}1&4\\\\9&16\\end{pmatrix}\\)."
+     ],
+     "r": "Son resultados distintos: el punto cambia la operación.",
+     "fin": "No confundir los dos productos, fuente de errores frecuentes."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe un script que grafique \\(\\sin x\\) en \\([0,2\\pi]\\) con título y guarde los datos.",
+     "pasos": [
+      "<code>x = linspace(0, 2*pi, 100);</code>",
+      "<code>y = sin(x);</code>",
+      "<code>plot(x, y), grid on, title('Seno')</code>",
+      "<code>save('seno.mat', 'x', 'y')</code>"
+     ],
+     "r": "Un script de 4 líneas que grafica y guarda.",
+     "fin": "Estructura mínima de un script reutilizable."
+    },
+    {
+     "nv": "I",
+     "q": "Crea una función para \\(f(x)=x^3-2x-5\\) y halla su raíz cerca de 2 con <code>fzero</code>.",
+     "pasos": [
+      "<b>Archivo f.m.</b> <code>function y = f(x)</code> / <code>y = x.^3 - 2*x - 5;</code> / <code>end</code>",
+      "<b>Llamada.</b> <code>fzero(@f, 2)</code>.",
+      "<b>Resultado.</b> \\(2.0946\\)."
+     ],
+     "r": "\\(x\\approx2.0946\\)",
+     "fin": "Pasar funciones como argumento, como harás con tus propios métodos."
+    },
+    {
+     "nv": "I",
+     "q": "Suma los enteros de 1 a 100 con un ciclo y sin ciclo.",
+     "pasos": [
+      "<b>Con ciclo.</b> <code>s = 0; for k = 1:100, s = s + k; end</code>",
+      "<b>Vectorizado.</b> <code>sum(1:100)</code>.",
+      "<b>Ambos dan</b> 5050; la versión vectorizada es más corta y rápida."
+     ],
+     "r": "5050",
+     "fin": "Preferir operaciones vectorizadas en MATLAB."
+    },
+    {
+     "nv": "A",
+     "q": "Grafica la superficie \\(z=x^2+y^2\\) en \\([-2,2]\\times[-2,2]\\).",
+     "pasos": [
+      "<b>Malla.</b> <code>[X, Y] = meshgrid(-2:0.1:2);</code>",
+      "<b>Superficie.</b> <code>Z = X.^2 + Y.^2;</code>",
+      "<b>Dibujo.</b> <code>surf(X, Y, Z), xlabel('x'), ylabel('y')</code>"
+     ],
+     "r": "Un paraboloide con mínimo en el origen.",
+     "fin": "Visualizar funciones de dos variables, útil en optimización."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué devuelve <code>linspace(0, 1, 5)</code>?",
+     "ops": [
+      "[0 1 2 3 4]",
+      "[0 0.25 0.5 0.75 1]",
+      "[0 0.2 0.4 0.6 0.8]",
+      "Cinco números aleatorios"
+     ],
+     "ok": 1,
+     "r": "Cinco puntos equiespaciados de 0 a 1, ambos incluidos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Para qué sirve el punto y coma al final de una instrucción?",
+     "ops": [
+      "Termina el programa",
+      "Comenta la línea",
+      "Declara una variable",
+      "Evita que se imprima el resultado"
+     ],
+     "ok": 3,
+     "r": "La instrucción se ejecuta igual; solo se suprime la salida en pantalla."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia a un archivo de función de un script?",
+     "ops": [
+      "El script es más rápido",
+      "La función recibe y devuelve valores y usa variables propias",
+      "No hay diferencia",
+      "La función no puede tener ciclos"
+     ],
+     "ok": 1,
+     "r": "Las variables de una función no contaminan el espacio de trabajo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué guarda un archivo .mat?",
+     "ops": [
+      "Código fuente",
+      "Gráficas en imagen",
+      "Variables del espacio de trabajo",
+      "Comandos del historial"
+     ],
+     "ok": 2,
+     "r": "save y load trabajan con archivos .mat de variables."
+    },
+    {
+     "nv": "A",
+     "q": "Para resolver \\(A\\mathbf x=\\mathbf b\\), ¿por qué se prefiere <code>A\\b</code> a <code>inv(A)*b</code>?",
+     "ops": [
+      "Son idénticos en todo",
+      "A\\b usa eliminación con pivoteo, más rápida y con menos error de redondeo",
+      "inv(A) no existe en MATLAB",
+      "A\\b solo funciona con matrices 2 × 2"
+     ],
+     "ok": 1,
+     "r": "Calcular la inversa explícita cuesta más operaciones y acumula más error."
+    }
+   ]
+  },
+  {
+   "titulo": "Raíces de ecuaciones",
+   "intro": "Tema 2 del programa: aproximaciones y errores de redondeo y truncamiento, Newton-Raphson y su versión modificada, método de Horner y método de Müller.",
+   "conceptos": [
+    {
+     "n": "Errores y criterio de paro",
+     "e": [
+      "Error de <b>redondeo</b>: por usar un número finito de dígitos. Error de <b>truncamiento</b>: por aproximar un proceso matemático (por ejemplo, cortar una serie). Como no se conoce el valor verdadero, se usa el error relativo aproximado entre iteraciones y se detiene cuando baja de la tolerancia \\(\\varepsilon_s\\). Para \\(n\\) cifras significativas: \\(\\varepsilon_s=(0.5\\times10^{2-n})\\%\\)."
+     ],
+     "u": [
+      "Software financiero y científico, control de precisión en simulaciones.",
+      "Saber cuánto confiar en un resultado es tan importante como obtenerlo.",
+      "En todo método iterativo.",
+      "Calcula ε_a en cada iteración y compáralo con ε_s."
+     ],
+     "f": "\\varepsilon_t=\\left|\\frac{\\text{verdadero}-\\text{aprox.}}{\\text{verdadero}}\\right|100\\%\\qquad \\varepsilon_a=\\left|\\frac{x_{i+1}-x_i}{x_{i+1}}\\right|100\\%"
+    },
+    {
+     "n": "Newton-Raphson",
+     "e": [
+      "Desde \\(x_i\\) se traza la tangente y su corte con el eje \\(x\\) es la nueva aproximación. Converge cuadráticamente (los dígitos correctos se duplican) cerca de una raíz simple. Falla si \\(f'(x_i)\\approx0\\), si el punto inicial está lejos o si oscila."
+     ],
+     "u": [
+      "Calculadoras (raíces cuadradas), solvers de ecuaciones, optimización.",
+      "Es de los métodos más rápidos.",
+      "Cuando conoces f′ y tienes un buen punto inicial.",
+      "Itera la fórmula hasta que ε_a sea menor que la tolerancia."
+     ],
+     "f": "x_{i+1}=x_i-\\frac{f(x_i)}{f'(x_i)}"
+    },
+    {
+     "n": "Newton-Raphson modificado (raíces múltiples)",
+     "e": [
+      "En una raíz múltiple Newton se vuelve lineal y lento. La versión modificada aplica Newton a \\(u(x)=\\tfrac{f(x)}{f'(x)}\\), que tiene raíces simples, y recupera la convergencia cuadrática."
+     ],
+     "u": [
+      "Polinomios con raíces repetidas en análisis de sistemas de control.",
+      "Evita la convergencia lenta.",
+      "Cuando Newton avanza muy despacio.",
+      "Usa también f″ en la fórmula modificada."
+     ],
+     "f": "x_{i+1}=x_i-\\frac{f(x_i)f'(x_i)}{[f'(x_i)]^2-f(x_i)f''(x_i)}"
+    },
+    {
+     "n": "Método de Horner",
+     "e": [
+      "Evalúa un polinomio de grado \\(n\\) con \\(n\\) multiplicaciones anidando: \\(a_0+x(a_1+x(a_2+\\cdots))\\). Es la división sintética; repitiéndola sobre el cociente se obtiene \\(P'(x)\\), útil para Newton en polinomios."
+     ],
+     "u": [
+      "Evaluación eficiente de polinomios en hardware y software.",
+      "Reduce operaciones y error de redondeo.",
+      "Al evaluar polinomios muchas veces.",
+      "Baja el coeficiente principal, multiplica por x y suma el siguiente."
+     ]
+    },
+    {
+     "n": "Método de Müller",
+     "e": [
+      "Ajusta una parábola por tres puntos y toma como nueva aproximación su raíz más cercana. Converge rápido y, como usa la fórmula cuadrática, puede encontrar raíces complejas."
+     ],
+     "u": [
+      "Raíces complejas de polinomios en vibraciones y circuitos.",
+      "Newton con valores reales no alcanza raíces complejas.",
+      "Cuando se esperan raíces complejas.",
+      "Con x₀, x₁, x₂ calcula a, b, c de la parábola y elige el signo que da el denominador mayor."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Si \\(\\pi\\) se aproxima con 3.14, halla el error verdadero absoluto y relativo.",
+     "pasos": [
+      "<b>Absoluto.</b> \\(|3.14159265-3.14|=0.00159\\).",
+      "<b>Relativo.</b> \\(\\tfrac{0.00159}{3.14159}\\times100\\%\\approx0.0507\\%\\)."
+     ],
+     "r": "\\(E_t\\approx0.00159\\); \\(\\varepsilon_t\\approx0.0507\\%\\).",
+     "fin": "Cuantificar la calidad de una aproximación."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica Newton-Raphson a \\(f(x)=x^3-2x-5\\) desde \\(x_0=2\\) hasta \\(\\varepsilon_a\\lt0.01\\%\\).",
+     "pasos": [
+      "<b>Derivada.</b> \\(f'(x)=3x^2-2\\).",
+      "<b>Iteración 1.</b> \\(x_1=2-\\tfrac{-1}{10}=2.1\\); \\(\\varepsilon_a=4.76\\%\\).",
+      "<b>Iteración 2.</b> \\(x_2=2.1-\\tfrac{0.061}{11.23}=2.0945681\\); \\(\\varepsilon_a=0.259\\%\\).",
+      "<b>Iteración 3.</b> \\(x_3=2.0945515\\); \\(\\varepsilon_a=0.0008\\%\\lt0.01\\%\\)."
+     ],
+     "r": "\\(x\\approx2.0945515\\)",
+     "fin": "Ver la convergencia cuadrática: el error cae de 4.8 % a 0.0008 % en tres pasos."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa \\(P(x)=2x^3-6x^2+2x-1\\) y \\(P'(x)\\) en \\(x=3\\) con Horner.",
+     "pasos": [
+      "<b>Primera pasada.</b> 2 → \\(2(3)-6=0\\) → \\(0(3)+2=2\\) → \\(2(3)-1=5\\). Así \\(P(3)=5\\).",
+      "<b>Cociente.</b> \\(2x^2+0x+2\\).",
+      "<b>Segunda pasada.</b> 2 → \\(6+0=6\\) → \\(18+2=20\\). Así \\(P'(3)=20\\).",
+      "<b>Verifica.</b> \\(P'=6x^2-12x+2\\Rightarrow54-36+2=20\\)."
+     ],
+     "r": "\\(P(3)=5\\), \\(P'(3)=20\\).",
+     "fin": "Obtener lo que Newton necesita con pocas operaciones."
+    },
+    {
+     "nv": "A",
+     "q": "La función \\(f(x)=x^3-3x+2=(x-1)^2(x+2)\\) tiene raíz doble en 1. Compara Newton estándar y modificado desde \\(x_0=0\\).",
+     "pasos": [
+      "<b>Derivadas.</b> \\(f'=3x^2-3\\), \\(f''=6x\\).",
+      "<b>Estándar.</b> 0.6667, 0.8444, 0.9244, 0.9627: avanza lento (lineal).",
+      "<b>Modificado.</b> 0.6667, 0.9767, 0.9999, 1.0000.",
+      "<b>Conclusión.</b> El modificado recupera la convergencia rápida."
+     ],
+     "r": "Modificado llega a 1.0000 en 4 iteraciones; el estándar sigue en 0.9627.",
+     "fin": "Reconocer y corregir la lentitud ante raíces múltiples."
+    },
+    {
+     "nv": "A",
+     "q": "Haz una iteración de Müller para \\(f(x)=x^3-13x-12\\) con \\(x_0=4.5\\), \\(x_1=5.5\\), \\(x_2=5\\).",
+     "pasos": [
+      "<b>Diferencias.</b> \\(h_0=1,\\ h_1=-0.5\\); \\(\\delta_0=69.75\\), \\(\\delta_1=72.75\\).",
+      "<b>Parábola.</b> \\(a=\\tfrac{\\delta_1-\\delta_0}{h_1+h_0}=15\\), \\(b=ah_1+\\delta_1=62.25\\), \\(c=f(x_2)=48\\).",
+      "<b>Raíz.</b> \\(x_3=x_2-\\tfrac{2c}{b+\\sqrt{b^2-4ac}}=5-\\tfrac{96}{62.25+31.54}\\approx3.9765\\).",
+      "<b>Contexto.</b> La raíz real es 4; la segunda iteración da 4.0011."
+     ],
+     "r": "\\(x_3\\approx3.9765\\)",
+     "fin": "Ejecutar el método que también encuentra raíces complejas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tolerancia \\(\\varepsilon_s\\) garantiza 4 cifras significativas?",
+     "r": "\\(0.5\\times10^{2-4}\\%=0.005\\%\\)"
+    },
+    {
+     "nv": "B",
+     "q": "Explica la diferencia entre error de redondeo y de truncamiento con un ejemplo.",
+     "r": "Redondeo: guardar 1/3 como 0.3333. Truncamiento: aproximar eˣ con solo los primeros términos de su serie."
+    },
+    {
+     "nv": "I",
+     "q": "Aproxima \\(\\sqrt5\\) con Newton sobre \\(f(x)=x^2-5\\) desde \\(x_0=2\\) (dos iteraciones).",
+     "r": "\\(x_1=2.25\\), \\(x_2\\approx2.236111\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa \\(P(x)=x^4-3x^3+x-2\\) en \\(x=2\\) con Horner.",
+     "r": "Fila 1, −1, −2, −3, −8: \\(P(2)=-8\\)."
+    },
+    {
+     "nv": "A",
+     "q": "En el ejercicio de Müller, ¿qué valor da la segunda iteración?",
+     "r": "\\(x_4\\approx4.0011\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Ajuste de curvas e interpolación",
+   "intro": "Tema 3 del programa: polinomio de interpolación de Lagrange y de Newton.",
+   "conceptos": [
+    {
+     "n": "Interpolación polinomial",
+     "e": [
+      "Por \\(n+1\\) puntos con \\(x\\) distintos pasa un único polinomio de grado \\(\\le n\\). <b>Interpolar</b> es pasar exactamente por los puntos para estimar valores intermedios; <b>ajustar</b> (mínimos cuadrados) busca la curva de menor error sin pasar por todos. Extrapolar fuera del rango es riesgoso."
+     ],
+     "u": [
+      "Tablas de datos de sensores, estimar valores entre mediciones, gráficos suaves.",
+      "Llena huecos entre datos conocidos.",
+      "Cuando tienes datos exactos y necesitas valores intermedios.",
+      "Elige los puntos más cercanos al valor buscado."
+     ]
+    },
+    {
+     "n": "Polinomio de Lagrange",
+     "e": [
+      "Se construye con polinomios base \\(L_i\\) que valen 1 en \\(x_i\\) y 0 en los demás puntos. Es directo, pero si agregas un punto hay que rehacerlo todo."
+     ],
+     "u": [
+      "Fórmulas cerradas de interpolación, métodos de integración numérica.",
+      "No requiere resolver sistemas.",
+      "Con pocos puntos y cuando no se agregarán más.",
+      "Calcula cada Lᵢ en el valor buscado y suma f(xᵢ)Lᵢ."
+     ],
+     "f": "P(x)=\\sum_{i=0}^{n}f(x_i)\\prod_{j\\neq i}\\frac{x-x_j}{x_i-x_j}"
+    },
+    {
+     "n": "Polinomio de Newton (diferencias divididas)",
+     "e": [
+      "\\(P(x)=b_0+b_1(x-x_0)+b_2(x-x_0)(x-x_1)+\\cdots\\), con \\(b_k=f[x_0,\\dots,x_k]\\) de la tabla de diferencias divididas. Agregar un punto solo añade un término, y el último coeficiente estima el error."
+     ],
+     "u": [
+      "Interpolación incremental en software, estimación de error.",
+      "Es eficiente y extensible.",
+      "Cuando quizá agregues datos.",
+      "Arma la tabla: cada columna es la diferencia de la anterior entre la distancia de los x extremos."
+     ],
+     "f": "f[x_i,x_j]=\\frac{f(x_j)-f(x_i)}{x_j-x_i}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con \\((1,2)\\) y \\((3,8)\\), estima \\(f(2)\\) por interpolación lineal.",
+     "pasos": [
+      "<b>Pendiente.</b> \\(\\tfrac{8-2}{3-1}=3\\).",
+      "<b>Evalúa.</b> \\(2+3(2-1)=5\\)."
+     ],
+     "r": "5",
+     "fin": "El caso más simple de interpolación."
+    },
+    {
+     "nv": "I",
+     "q": "Construye el polinomio de Lagrange por \\((0,1)\\), \\((1,3)\\), \\((2,7)\\) y evalúa en 1.5.",
+     "pasos": [
+      "<b>Bases.</b> \\(L_0=\\tfrac{(x-1)(x-2)}{2}\\), \\(L_1=\\tfrac{x(x-2)}{-1}\\), \\(L_2=\\tfrac{x(x-1)}{2}\\).",
+      "<b>En 1.5.</b> \\(L_0=-0.125\\), \\(L_1=0.75\\), \\(L_2=0.375\\).",
+      "<b>Suma.</b> \\(1(-0.125)+3(0.75)+7(0.375)=4.75\\).",
+      "<b>Polinomio.</b> \\(x^2+x+1\\)."
+     ],
+     "r": "\\(P(1.5)=4.75\\)",
+     "fin": "Construir Lagrange paso a paso."
+    },
+    {
+     "nv": "I",
+     "q": "Con los mismos puntos, construye el polinomio de Newton.",
+     "pasos": [
+      "<b>Primeras diferencias.</b> \\(f[0,1]=2\\), \\(f[1,2]=4\\).",
+      "<b>Segunda.</b> \\(f[0,1,2]=\\tfrac{4-2}{2}=1\\).",
+      "<b>Polinomio.</b> \\(1+2x+1\\cdot x(x-1)=x^2+x+1\\)."
+     ],
+     "r": "\\(P(x)=x^2+x+1\\), el mismo que con Lagrange.",
+     "fin": "Ver que ambos métodos dan el mismo polinomio."
+    },
+    {
+     "nv": "A",
+     "q": "Estima \\(\\ln2\\) con Newton usando \\(x=1,4,6,5\\).",
+     "pasos": [
+      "<b>Coeficientes.</b> \\(b_0=0\\), \\(b_1=0.4620981\\), \\(b_2=-0.0518731\\), \\(b_3=0.0078655\\).",
+      "<b>Cuadrático (3 puntos).</b> \\(0.5658444\\).",
+      "<b>Cúbico (4 puntos).</b> \\(0.6287686\\).",
+      "<b>Compara.</b> Verdadero 0.6931472: el cuarto punto reduce el error de 18 % a 9 %."
+     ],
+     "r": "\\(\\ln2\\approx0.6287686\\)",
+     "fin": "Ver cómo agregar un punto mejora la estimación sin rehacer los cálculos."
+    },
+    {
+     "nv": "A",
+     "q": "Agrega el punto \\((3,13)\\) al polinomio \\(x^2+x+1\\) de Newton. ¿Qué cambia?",
+     "pasos": [
+      "<b>Nuevas diferencias.</b> \\(f[2,3]=6\\); \\(f[1,2,3]=1\\); \\(f[0,1,2,3]=0\\).",
+      "<b>Nuevo término.</b> \\(0\\cdot x(x-1)(x-2)\\).",
+      "<b>Interpreta.</b> El punto ya estaba en la parábola, así que el polinomio no cambia."
+     ],
+     "r": "No cambia: el coeficiente nuevo es 0.",
+     "fin": "Aprovechar la extensibilidad de Newton."
+    },
+    {
+     "nv": "B",
+     "q": "A las 10:00 hay 20 °C y a las 14:00, 28 °C. Estima la temperatura a las 11:00.",
+     "r": "22 °C"
+    },
+    {
+     "nv": "I",
+     "q": "Construye el polinomio de Lagrange por \\((-1,0)\\), \\((0,1)\\), \\((1,0)\\).",
+     "r": "\\(1-x^2\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Construye el polinomio de Newton por \\((1,1)\\), \\((2,8)\\), \\((3,27)\\).",
+     "r": "\\(6x^2-11x+6\\)"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántos puntos se necesitan para interpolar con un polinomio cúbico?",
+     "r": "4"
+    },
+    {
+     "nv": "A",
+     "q": "Con el polinomio anterior, estima \\(f(2.5)\\) si los datos vienen de \\(x^3\\). ¿Cuál es el error?",
+     "r": "16 contra 15.625: error 0.375."
+    }
+   ]
+  },
+  {
+   "titulo": "Sistemas de ecuaciones lineales",
+   "intro": "Tema 4 del programa: repaso de álgebra lineal, errores de redondeo en métodos directos, Gauss-Seidel y solución en MATLAB.",
+   "conceptos": [
+    {
+     "n": "Métodos directos y errores de redondeo",
+     "e": [
+      "Gauss y Gauss-Jordan dan la solución exacta en aritmética perfecta, pero con dígitos finitos acumulan error, sobre todo con pivotes pequeños. El <b>pivoteo parcial</b> (poner en el pivote el mayor valor absoluto de la columna) reduce ese error. Un sistema mal condicionado (número de condición grande) amplifica pequeños cambios en los datos."
+     ],
+     "u": [
+      "Simulaciones de estructuras y circuitos con miles de ecuaciones.",
+      "Un resultado numéricamente inestable puede ser completamente falso.",
+      "Con pivotes muy pequeños o matrices casi singulares.",
+      "Usa pivoteo y revisa el número de condición con cond(A)."
+     ]
+    },
+    {
+     "n": "Gauss-Seidel",
+     "e": [
+      "Método iterativo: despeja cada incógnita de su ecuación y usa de inmediato los valores recién calculados. Converge con seguridad si la matriz es diagonalmente dominante (cada \\(|a_{ii}|\\) mayor que la suma de los demás valores absolutos de su fila). Jacobi es igual, pero usa solo valores de la iteración anterior."
+     ],
+     "u": [
+      "Sistemas grandes y dispersos: redes eléctricas, flujo de calor, PageRank.",
+      "Usa poca memoria y aprovecha los ceros.",
+      "Con matrices grandes y diagonalmente dominantes.",
+      "Reordena si hace falta, despeja e itera hasta la tolerancia."
+     ],
+     "f": "x_i^{(k+1)}=\\frac{1}{a_{ii}}\\Big(b_i-\\sum_{j\\lt i}a_{ij}x_j^{(k+1)}-\\sum_{j\\gt i}a_{ij}x_j^{(k)}\\Big)"
+    },
+    {
+     "n": "Solución en MATLAB",
+     "e": [
+      "<code>x = A\\b</code> resuelve con eliminación y pivoteo. <code>cond(A)</code> mide el condicionamiento; <code>det(A)</code> cercano a 0 no basta para juzgarlo, el número de condición sí."
+     ],
+     "u": [
+      "Cualquier análisis técnico con sistemas lineales.",
+      "Es rápido, estable y probado.",
+      "En la práctica profesional.",
+      "Define A y b como matrices y usa la barra invertida."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Es diagonalmente dominante \\(\\begin{pmatrix}4&-1&1\\\\2&5&2\\\\1&2&4\\end{pmatrix}\\)?",
+     "pasos": [
+      "<b>Fila 1.</b> \\(4\\gt1+1\\).",
+      "<b>Fila 2.</b> \\(5\\gt2+2\\).",
+      "<b>Fila 3.</b> \\(4\\gt1+2\\)."
+     ],
+     "r": "Sí: Gauss-Seidel converge para este sistema.",
+     "fin": "Comprobar la condición de convergencia antes de iterar."
+    },
+    {
+     "nv": "I",
+     "q": "Haz dos iteraciones de Gauss-Seidel para \\(4x-y+z=7\\), \\(4x-8y+z=-21\\), \\(-2x+y+5z=15\\) desde \\((1,2,2)\\).",
+     "pasos": [
+      "<b>Despeja.</b> \\(x=\\tfrac{7+y-z}4\\), \\(y=\\tfrac{21+4x+z}8\\), \\(z=\\tfrac{15+2x-y}5\\).",
+      "<b>Iteración 1.</b> \\(x=1.75\\), \\(y=3.75\\), \\(z=2.95\\).",
+      "<b>Iteración 2.</b> \\(x=1.95\\), \\(y=3.96875\\), \\(z=2.98625\\).",
+      "<b>Tendencia.</b> Se acerca a la solución exacta \\((2,4,3)\\)."
+     ],
+     "r": "\\((1.95,\\ 3.96875,\\ 2.98625)\\)",
+     "fin": "Ejecutar el método iterativo más usado en sistemas grandes."
+    },
+    {
+     "nv": "I",
+     "q": "El sistema \\(x+5y=7\\), \\(4x-y=7\\) no es diagonalmente dominante. Reordénalo e itera desde \\((0,0)\\).",
+     "pasos": [
+      "<b>Intercambia ecuaciones.</b> \\(4x-y=7\\), \\(x+5y=7\\): ahora sí domina la diagonal.",
+      "<b>Despeja.</b> \\(x=\\tfrac{7+y}4\\), \\(y=\\tfrac{7-x}5\\).",
+      "<b>Iteraciones.</b> \\((1.75,\\ 1.05)\\), \\((2.0125,\\ 0.9975)\\), \\((1.9994,\\ 1.0001)\\)."
+     ],
+     "r": "Converge a \\((2,1)\\).",
+     "fin": "Reordenar para garantizar convergencia."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve en MATLAB el sistema 3 × 3 del ejercicio 2.",
+     "pasos": [
+      "<code>A = [4 -1 1; 4 -8 1; -2 1 5];</code>",
+      "<code>b = [7; -21; 15];</code>",
+      "<code>x = A\\b</code> devuelve \\([2;\\ 4;\\ 3]\\)."
+     ],
+     "r": "\\((2,4,3)\\)",
+     "fin": "Comprobar en segundos un resultado iterativo."
+    },
+    {
+     "nv": "A",
+     "q": "El sistema \\(0.0003x+3y=2.0001\\), \\(x+y=1\\) tiene solución \\(x=\\tfrac13\\), \\(y=\\tfrac23\\). Muestra el efecto del pivoteo con 4 dígitos.",
+     "pasos": [
+      "<b>Sin pivoteo.</b> Con pivote 0.0003, \\(y=0.6667\\) y \\(x=\\tfrac{2.0001-3(0.6667)}{0.0003}=0\\): error del 100 %.",
+      "<b>Con pivoteo.</b> Usa primero \\(x+y=1\\): \\(y=\\tfrac{1.9998}{2.9997}=0.6667\\) y \\(x=1-y=0.3333\\).",
+      "<b>Causa.</b> Dividir entre un pivote diminuto amplifica el redondeo."
+     ],
+     "r": "Sin pivoteo x = 0; con pivoteo x = 0.3333.",
+     "fin": "Entender por qué todo software serio usa pivoteo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es diagonalmente dominante \\(\\begin{pmatrix}2&1\\\\5&3\\end{pmatrix}\\)?",
+     "r": "No: en la fila 2, 3 < 5."
+    },
+    {
+     "nv": "I",
+     "q": "Haz una iteración de Gauss-Seidel para \\(5x+y=7\\), \\(x+4y=9\\) desde \\((0,0)\\).",
+     "r": "\\((1.4,\\ 1.9)\\); converge a \\((1,2)\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe en MATLAB la solución de \\(2x+3y=8\\), \\(x-y=-1\\).",
+     "r": "<code>[2 3; 1 -1] \\ [8; -1]</code> da \\((1,2)\\)."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué se diferencian Jacobi y Gauss-Seidel?",
+     "r": "Jacobi usa solo valores de la iteración anterior; Gauss-Seidel usa los recién calculados y suele converger más rápido."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(A=\\begin{pmatrix}1&1\\\\1&1.0001\\end{pmatrix}\\), compara las soluciones para \\(\\mathbf b=(2,\\,2.0001)\\) y \\((2,\\,2.0002)\\).",
+     "r": "\\((1,1)\\) y \\((0,2)\\): un cambio de 0.0001 cambia todo; cond(A) ≈ 40 002."
+    }
+   ]
+  },
+  {
+   "titulo": "Sistemas de ecuaciones no lineales",
+   "intro": "Tema 5 del programa: Gauss-Seidel para sistemas no lineales y método de Newton.",
+   "conceptos": [
+    {
+     "n": "Iteración de punto fijo (Gauss-Seidel no lineal)",
+     "e": [
+      "Se despeja cada variable de una ecuación y se itera usando los valores nuevos en cuanto se calculan. Es simple, pero la convergencia depende de <b>cómo</b> se despeja: un despeje puede converger y otro divergir."
+     ],
+     "u": [
+      "Modelos de equilibrio en economía, cálculos de flujo en redes.",
+      "No requiere derivadas.",
+      "Cuando el sistema permite despejes naturales.",
+      "Prueba un despeje y, si diverge, cambia la forma."
+     ]
+    },
+    {
+     "n": "Newton multivariable",
+     "e": [
+      "Generaliza Newton con la matriz jacobiana \\(J\\) de derivadas parciales. En cada paso se resuelve un sistema lineal para la corrección. Converge cuadráticamente cerca de la solución, pero necesita un buen punto inicial."
+     ],
+     "u": [
+      "Análisis de circuitos no lineales, cinemática de robots, flujo de potencia eléctrica.",
+      "Es el método estándar en simuladores.",
+      "Con sistemas no lineales y derivadas disponibles.",
+      "Evalúa F y J, resuelve J·Δ = −F y actualiza."
+     ],
+     "f": "J(\\mathbf x_k)\\,\\Delta\\mathbf x=-F(\\mathbf x_k),\\qquad \\mathbf x_{k+1}=\\mathbf x_k+\\Delta\\mathbf x"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Escribe la jacobiana de \\(F(x,y)=(x^2-y,\\ x+y^2-2)\\).",
+     "pasos": [
+      "<b>Fila 1 (primera ecuación).</b> \\(\\left(\\tfrac{\\partial}{\\partial x},\\tfrac{\\partial}{\\partial y}\\right)=(2x,\\,-1)\\).",
+      "<b>Fila 2.</b> \\((1,\\ 2y)\\)."
+     ],
+     "r": "\\(J=\\begin{pmatrix}2x&-1\\\\1&2y\\end{pmatrix}\\)",
+     "fin": "Armar la pieza central del método de Newton."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(x^2+xy=10\\), \\(y+3xy^2=57\\) por punto fijo con \\(x=\\sqrt{10-xy}\\), \\(y=\\sqrt{\\tfrac{57-y}{3x}}\\), desde \\((1.5,3.5)\\).",
+     "pasos": [
+      "<b>Iteración 1.</b> \\(x=\\sqrt{4.75}=2.17945\\); \\(y=\\sqrt{\\tfrac{53.5}{6.53835}}=2.86051\\).",
+      "<b>Iteración 2.</b> \\(x=1.94053\\), \\(y=3.04955\\).",
+      "<b>Tendencia.</b> Oscila hacia la solución \\((2,3)\\)."
+     ],
+     "r": "\\((1.94053,\\ 3.04955)\\) tras dos iteraciones.",
+     "fin": "Ver que un buen despeje hace converger el método."
+    },
+    {
+     "nv": "I",
+     "q": "Da un paso de Newton para \\(x^2+y^2=4\\), \\(xy=1\\) desde \\((2,\\,0.5)\\).",
+     "pasos": [
+      "<b>F.</b> \\((0.25,\\ 0)\\).",
+      "<b>J.</b> \\(\\begin{pmatrix}4&1\\\\0.5&2\\end{pmatrix}\\).",
+      "<b>Resuelve.</b> \\(4\\Delta x+\\Delta y=-0.25\\), \\(0.5\\Delta x+2\\Delta y=0\\Rightarrow\\Delta x=-0.0667\\), \\(\\Delta y=0.0167\\).",
+      "<b>Nuevo punto.</b> \\((1.9333,\\ 0.5167)\\); la solución es \\((1.93185,\\ 0.51764)\\)."
+     ],
+     "r": "\\((1.9333,\\ 0.5167)\\)",
+     "fin": "Ejecutar a mano un paso completo de Newton multivariable."
+    },
+    {
+     "nv": "A",
+     "q": "Da un paso de Newton para \\(x^2+xy-10=0\\), \\(y+3xy^2-57=0\\) desde \\((1.5,3.5)\\).",
+     "pasos": [
+      "<b>F.</b> \\((-2.5,\\ 1.625)\\).",
+      "<b>J.</b> \\(\\begin{pmatrix}2x+y&x\\\\3y^2&1+6xy\\end{pmatrix}=\\begin{pmatrix}6.5&1.5\\\\36.75&32.5\\end{pmatrix}\\).",
+      "<b>Resuelve \\(J\\Delta=-F\\).</b> \\(\\Delta\\approx(0.53603,\\,-0.65612)\\).",
+      "<b>Nuevo punto.</b> \\((2.03603,\\ 2.84388)\\); la segunda iteración da \\((1.9987,\\ 3.0023)\\)."
+     ],
+     "r": "\\((2.03603,\\ 2.84388)\\)",
+     "fin": "Comparar con punto fijo: Newton llega a (2, 3) en tres pasos."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve el sistema anterior con <code>fsolve</code> de MATLAB.",
+     "pasos": [
+      "<code>F = @(v) [v(1)^2 + v(1)*v(2) - 10; v(2) + 3*v(1)*v(2)^2 - 57];</code>",
+      "<code>fsolve(F, [1.5; 3.5])</code>",
+      "<b>Resultado.</b> \\([2;\\ 3]\\)."
+     ],
+     "r": "\\((2,3)\\)",
+     "fin": "Resolver sistemas no lineales en la práctica profesional."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe la jacobiana de \\(F=(e^x+y,\\ xy^2)\\).",
+     "r": "\\(\\begin{pmatrix}e^x&1\\\\y^2&2xy\\end{pmatrix}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "En el ejercicio de punto fijo, calcula la tercera iteración.",
+     "r": "\\((2.02046,\\ 2.98340)\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Da el segundo paso de Newton para \\(x^2+y^2=4\\), \\(xy=1\\).",
+     "r": "\\((1.931853,\\ 0.517637)\\)"
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué Newton necesita un buen punto inicial?",
+     "r": "Lejos de la solución la tangente puede apuntar mal y divergir o ir a otra raíz."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué el despeje \\(x=\\tfrac{10-x^2}{y}\\), \\(y=57-3xy^2\\) puede fallar para el mismo sistema?",
+     "r": "La iteración amplifica los errores en lugar de reducirlos y diverge; la convergencia depende del despeje."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}
