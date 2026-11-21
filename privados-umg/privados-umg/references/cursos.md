@@ -44,7 +44,7 @@ Fuente: portal de contenidos de la carrera (http://umgcontenidos.50webs.com/). L
 | 9 | Inteligencia Artificial | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9InteligenciaArtificial.pdf) | pendiente |
 | 9 | Redes de Computadoras II | Redes | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Noveno%20Ciclo/2014-9RedesII.pdf) | [guía](https://claude.ai/artifact/XWBZvdVmiEReA8e2LKbVHw) |
 | 10 | Seguridad y Auditoría de Sistemas | Auditoría y Seguridad de Sistemas | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeguridadAuditoriaSistemas.pdf) | pendiente |
-| 10 | Seminario de Tecnologías de Información | Sistemas de Información Gerencial | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeminarioTecInfo.pdf) | pendiente |
+| 10 | Seminario de Tecnologías de Información | Sistemas de Información Gerencial | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10SeminarioTecInfo.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/seminario-ti) |
 | 10 | Telecomunicaciones | Comunicaciones | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10TeleComunicaciones.pdf) | [guía](https://claude.ai/artifact/1rfnp6BFG7f7eeLWLMwrYS) |
 
 ## Análisis, Diseño y Desarrollo
