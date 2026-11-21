@@ -1,0 +1,1253 @@
+{
+ "slug": "derecho-informatico",
+ "titulo": "Derecho Informático",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 3, código 090015, bloque Auditoría y Seguridad de Sistemas del seminario",
+ "firma": "\\text{Hechos}\\to\\text{Bien jurídico}\\to\\text{Norma}\\to\\text{Consecuencia}",
+ "firma_nota": "El método para analizar cualquier caso del curso: qué pasó, qué se protege, qué norma guatemalteca aplica y qué resulta.",
+ "lead": "El Derecho visto desde la ingeniería en sistemas: Estado, Derecho y jerarquía de las leyes; Derecho Informático e informática jurídica; acceso a la información pública y datos personales (Decreto 57-2008); documento, firma y comercio electrónicos (Decreto 47-2008); propiedad intelectual del software (Decretos 33-98 y 57-2000); delitos informáticos del Código Penal, con el Convenio de Budapest como referencia; y nociones de Derecho Laboral y Mercantil para el ejercicio profesional. Es el componente jurídico del bloque de Auditoría y Seguridad de Sistemas. Las 9 unidades del programa están organizadas en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3DerechoInformatico.pdf",
+ "como": "Cada sección trae conceptos con su uso real, 5 casos resueltos paso a paso (hechos, bien jurídico o derecho afectado, norma aplicable y consecuencia) y 5 preguntas de opción múltiple que te dicen al instante si acertaste. Las normas son guatemaltecas salvo que se indique que son referencias internacionales. Las leyes se reforman: ante un caso real, consulta el texto vigente y a un abogado.",
+ "temas": [
+  {
+   "titulo": "Estado, Derecho y Derecho Informático",
+   "intro": "Introducción al curso y unidad de Derecho Informático: qué son el Estado, el Derecho, las leyes y los delitos; la jerarquía de las leyes y las ramas del Derecho; evolución y naturaleza jurídica del Derecho Informático, su autonomía, su relación con otras ramas y los conceptos básicos (cibernética, informática, sistema informático, Derecho Informático e informática jurídica).",
+   "conceptos": [
+    {
+     "n": "Estado, Derecho, ley y delito",
+     "e": [
+      "El <b>Estado</b> es la organización jurídica y política de una <b>población</b> asentada en un <b>territorio</b>, con un <b>poder público</b> soberano. En Guatemala ese poder se ejerce por medio de los Organismos Legislativo, Ejecutivo y Judicial.",
+      "El <b>Derecho</b> es el conjunto de normas que regulan la conducta externa de las personas en sociedad. A diferencia de la moral, sus normas son <b>bilaterales</b> (frente a un deber hay un derecho de otro), <b>heterónomas</b> (las dicta un tercero, no la propia conciencia), <b>externas</b> y <b>coercibles</b> (el Estado puede imponerlas por la fuerza).",
+      "La <b>ley</b>, en sentido estricto, es la norma general emitida por el Congreso mediante decreto y publicada en el Diario Oficial. El <b>delito</b> es una conducta <b>típica</b> (descrita en la ley penal), <b>antijurídica</b>, <b>culpable</b> y <b>punible</b>. Rige el <b>principio de legalidad</b>: la Constitución establece que no hay delito ni pena sin ley anterior, por lo que no se castiga una conducta que la ley no describa."
+     ],
+     "u": [
+      "En los sistemas públicos (SAT, RENAP, IGSS) cada regla de negocio nace de una ley o reglamento.",
+      "Quien entiende de dónde viene un requisito sabe cuándo cambiarlo y a quién consultar.",
+      "Al levantar requerimientos de un sistema regulado, como facturación o planillas.",
+      "Identifica la norma que origina cada requisito y anótala en la especificación."
+     ]
+    },
+    {
+     "n": "Jerarquía normativa",
+     "e": [
+      "Las normas se ordenan en niveles (pirámide de Kelsen): una norma inferior no puede contradecir a una superior. La Constitución Política de 1985 está en la cima; las leyes que la contradigan son nulas de pleno derecho y la Corte de Constitucionalidad es su intérprete final. En materia de derechos humanos, los tratados aceptados y ratificados por Guatemala tienen preeminencia sobre el derecho interno.",
+      "Cuando dos normas del mismo rango chocan, se aplican criterios de interpretación: la ley posterior deroga a la anterior y la ley especial prevalece sobre la general."
+     ],
+     "u": [
+      "Políticas internas, reglamentos institucionales y contratos de TI.",
+      "Una política de la empresa o un reglamento que contradiga la ley no se puede aplicar.",
+      "Al revisar si una cláusula, política o regla de negocio es válida.",
+      "Ubica cada norma en su nivel y verifica que no contradiga a las superiores."
+     ],
+     "tabla": "<table><thead><tr><th>Nivel</th><th>Normas</th><th>Ejemplos</th></tr></thead><tbody><tr><td>Constitucional</td><td>Constitución y leyes constitucionales</td><td>Ley de Amparo, Exhibición Personal y de Constitucionalidad; Ley Electoral y de Partidos Políticos; Ley de Orden Público; Ley de Emisión del Pensamiento</td></tr><tr><td>Ordinario</td><td>Decretos del Congreso</td><td>Código Penal (17-73), Código de Trabajo (1441), Código de Comercio (2-70), Decretos 33-98, 47-2008 y 57-2008</td></tr><tr><td>Reglamentario</td><td>Acuerdos gubernativos y reglamentos</td><td>Reglamentos de leyes, acuerdos de salario mínimo</td></tr><tr><td>Individualizado</td><td>Normas para casos concretos</td><td>Sentencias, contratos, resoluciones administrativas</td></tr></tbody></table>"
+    },
+    {
+     "n": "Derecho Informático: evolución, naturaleza y relación con otras ramas",
+     "e": [
+      "Tradicionalmente el Derecho se divide en <b>público</b> (constitucional, administrativo, penal, procesal), <b>privado</b> (civil, mercantil) y <b>social</b> (laboral, agrario). El <b>Derecho Informático</b> es el conjunto de normas y principios que regulan los efectos jurídicos de la informática y de las tecnologías de la información en la sociedad (Téllez Valdés).",
+      "<b>Evolución:</b> en los años setenta aparecen las primeras leyes de protección de datos (Hesse, Alemania, 1970); en los ochenta, la protección del software y los primeros delitos informáticos; en los noventa y dos mil, el comercio electrónico, la firma electrónica y la ciberdelincuencia transnacional.",
+      "<b>Naturaleza y autonomía:</b> se discute si es una rama autónoma. Los criterios usuales son autonomía legislativa (leyes propias), científica (doctrina y principios propios), académica (cursos y cátedras) y jurisprudencial (fallos). En Guatemala la legislación está dispersa en varias leyes, por lo que su autonomía es sobre todo académica y científica. Es <b>transversal</b>: toca lo penal, civil, mercantil, laboral, administrativo, constitucional e internacional."
+     ],
+     "u": [
+      "En proyectos que mezclan datos personales, contratos, licencias y seguridad.",
+      "Un mismo incidente puede tener consecuencias penales, civiles y laborales a la vez.",
+      "Al evaluar el riesgo legal de un sistema o de un incidente de seguridad.",
+      "Revisa el caso rama por rama: penal, civil, laboral, administrativa."
+     ]
+    },
+    {
+     "n": "Conceptos básicos: cibernética, informática, sistema informático e informática jurídica",
+     "e": [
+      "La <b>cibernética</b> (Norbert Wiener, 1948) estudia el control y la comunicación en los seres vivos y las máquinas. La <b>informática</b> es el tratamiento automático y racional de la información por medio de computadoras. Un <b>sistema informático</b> integra hardware, software, datos, personas y procedimientos.",
+      "La diferencia clave del curso: en el <b>Derecho Informático</b> la informática es el <b>objeto</b> que el Derecho regula; en la <b>informática jurídica</b> la informática es el <b>instrumento</b> al servicio del Derecho (bases de datos de leyes, expedientes electrónicos, sistemas de apoyo a decisiones)."
+     ],
+     "u": [
+      "Al clasificar un proyecto como tema legal o como herramienta para juristas.",
+      "Evita confundir regular la tecnología con usarla en el trabajo jurídico.",
+      "En preguntas de examen y al conversar con abogados de la institución.",
+      "Pregunta: ¿la tecnología es lo regulado o es la herramienta?"
+     ],
+     "tabla": "<table><thead><tr><th></th><th>Derecho Informático</th><th>Informática jurídica</th></tr></thead><tbody><tr><td>Informática como</td><td>Objeto regulado</td><td>Instrumento</td></tr><tr><td>Pertenece a</td><td>El Derecho</td><td>La informática aplicada</td></tr><tr><td>Ejemplos</td><td>Delitos informáticos, firma electrónica, protección del software</td><td>Buscadores de jurisprudencia, expediente electrónico, sistemas expertos</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un programador de una empresa de Mixco copia el código fuente del sistema de su empleador y lo vende a la competencia. ¿Qué ramas del Derecho intervienen?",
+     "pasos": [
+      "<b>Hechos.</b> Copia y venta no autorizada de un programa ajeno por un trabajador.",
+      "<b>Bien jurídico o derecho afectado.</b> Los derechos patrimoniales del titular del software, la lealtad del trabajador y los secretos de la empresa.",
+      "<b>Norma aplicable.</b> Ley de Derecho de Autor y Derechos Conexos (Decreto 33-98), que protege los programas de computación; Código Penal, art. 274 \"C\" (reproducción de instrucciones o programas de computación); Código de Trabajo, por la obligación del trabajador de guardar los secretos de la empresa.",
+      "<b>Consecuencia y recomendación.</b> Responsabilidad civil (daños y perjuicios), penal (denuncia ante el MP) y laboral (causa justa de despido). La empresa debe tener contratos de confidencialidad y control de acceso al repositorio."
+     ],
+     "r": "Intervienen el Derecho de autor, el penal y el laboral a la vez.",
+     "fin": "Ver por qué el Derecho Informático es transversal."
+    },
+    {
+     "nv": "B",
+     "q": "La gerencia de TI de una entidad pública emite una política interna que permite revisar el correo personal de los empleados en sus teléfonos propios. ¿Puede aplicarse?",
+     "pasos": [
+      "<b>Hechos.</b> Una política interna (norma de rango inferior) que afecta comunicaciones personales.",
+      "<b>Bien jurídico o derecho afectado.</b> Intimidad e inviolabilidad de la correspondencia y las comunicaciones.",
+      "<b>Norma aplicable.</b> La Constitución, que garantiza la inviolabilidad de la correspondencia, documentos y comunicaciones, prevalece sobre cualquier ley y con mayor razón sobre una política interna.",
+      "<b>Consecuencia y recomendación.</b> La política no puede aplicarse en esa parte. Lo correcto es regular solo los recursos institucionales (correo y equipo de la entidad), informar a los empleados y respetar los procedimientos legales."
+     ],
+     "r": "Una política interna no puede contradecir la Constitución.",
+     "fin": "Aplicar la jerarquía normativa a políticas de TI."
+    },
+    {
+     "nv": "I",
+     "q": "Una persona obtiene la contraseña de la cuenta de redes sociales de su expareja y borra todas sus publicaciones. La víctima pide que se le condene por \"hackeo\". ¿Cómo se analiza?",
+     "pasos": [
+      "<b>Hechos.</b> Uso de una contraseña ajena y eliminación de contenido almacenado en un sistema.",
+      "<b>Bien jurídico o derecho afectado.</b> Integridad de los registros informáticos de la víctima y su intimidad.",
+      "<b>Norma aplicable.</b> Principio de legalidad: solo es delito lo que la ley describe; el \"hackeo\" no es un tipo penal. El fiscal debe encuadrar los hechos en un tipo existente, como el art. 274 \"A\" (destrucción de registros informáticos) del Código Penal.",
+      "<b>Consecuencia y recomendación.</b> Si los hechos encajan en el tipo, procede la acusación; si no, no puede castigarse por analogía, aunque quede la vía civil. Hay que preservar evidencia (capturas, registros de la plataforma) para probar los hechos."
+     ],
+     "r": "La conducta se analiza contra los tipos existentes, como el 274 \"A\".",
+     "fin": "Aplicar el principio de legalidad a casos informáticos."
+    },
+    {
+     "nv": "I",
+     "q": "Un colegio publica en su página de Facebook las fotos y calificaciones de los alumnos que reprobaron. ¿Qué normas aplican?",
+     "pasos": [
+      "<b>Hechos.</b> Difusión pública de datos académicos y fotografías de menores de edad.",
+      "<b>Bien jurídico o derecho afectado.</b> Intimidad, honra y dignidad de niños y adolescentes.",
+      "<b>Norma aplicable.</b> La Constitución protege la dignidad de la persona; la Convención Americana sobre Derechos Humanos (art. 11) protege la vida privada y la honra, y por ser un tratado de derechos humanos ratificado tiene preeminencia sobre el derecho interno; además rige la Ley de Protección Integral de la Niñez y Adolescencia (Decreto 27-2003).",
+      "<b>Consecuencia y recomendación.</b> El colegio debe retirar la publicación de inmediato; los padres pueden acudir a la vía administrativa o al amparo. En TI: definir quién publica en las redes institucionales y qué datos nunca se publican."
+     ],
+     "r": "La publicación viola la intimidad de los menores y debe retirarse.",
+     "fin": "Usar los tratados de derechos humanos en casos de datos."
+    },
+    {
+     "nv": "A",
+     "q": "Evalúa si en Guatemala el Derecho Informático es una rama autónoma del Derecho.",
+     "pasos": [
+      "<b>Hechos.</b> No existe un código informático; las normas están en el Código Penal, el Decreto 33-98, el Decreto 47-2008 y el Decreto 57-2008, entre otros.",
+      "<b>Criterio de análisis.</b> Los criterios de autonomía: legislativo, científico, académico y jurisprudencial.",
+      "<b>Norma aplicable.</b> Legislativo: parcial (leyes dispersas, sin ley integral de datos personales ni de ciberdelincuencia). Científico: sí, hay doctrina propia (Téllez Valdés). Académico: sí, cursos como este. Jurisprudencial: escaso.",
+      "<b>Conclusión.</b> Es una rama en formación, con autonomía académica y científica y autonomía legislativa incompleta. Para el ingeniero significa revisar varias leyes en cada proyecto."
+     ],
+     "r": "Autonomía académica y científica; autonomía legislativa incompleta.",
+     "fin": "Argumentar sobre la naturaleza jurídica de la materia."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es el orden correcto de la jerarquía normativa en Guatemala, de mayor a menor?",
+     "ops": [
+      "Leyes ordinarias, Constitución, reglamentos, contratos",
+      "Constitución y leyes constitucionales, leyes ordinarias, reglamentos, normas individualizadas",
+      "Reglamentos, leyes ordinarias, Constitución, sentencias",
+      "Constitución, reglamentos, leyes ordinarias, contratos"
+     ],
+     "ok": 1,
+     "r": "La Constitución está en la cima; los reglamentos desarrollan las leyes y no pueden contradecirlas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué estudia la informática jurídica?",
+     "ops": [
+      "Las normas que regulan la tecnología",
+      "Los delitos cometidos con computadoras",
+      "La teoría del control en máquinas y seres vivos",
+      "El uso de la informática como herramienta al servicio del Derecho"
+     ],
+     "ok": 3,
+     "r": "La informática es el instrumento; si fuera lo regulado sería Derecho Informático."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál de estas leyes tiene rango constitucional?",
+     "ops": [
+      "Código Penal",
+      "Ley de Amparo, Exhibición Personal y de Constitucionalidad",
+      "Ley de Acceso a la Información Pública",
+      "Código de Trabajo"
+     ],
+     "ok": 1,
+     "r": "Las leyes constitucionales son la de Amparo, la Electoral y de Partidos Políticos, la de Orden Público y la de Emisión del Pensamiento."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué característica distingue a la norma jurídica de la norma moral?",
+     "ops": [
+      "La interioridad: regula solo la conciencia",
+      "La coercibilidad: el Estado puede imponerla por la fuerza",
+      "La autonomía: la dicta la propia persona",
+      "La unilateralidad: impone deberes sin derechos correlativos"
+     ],
+     "ok": 1,
+     "r": "La moral es interna, autónoma y unilateral; el Derecho es externo, heterónomo, bilateral y coercible."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué se dice que el Derecho Informático es transversal?",
+     "ops": [
+      "Porque solo se aplica a empresas de tecnología",
+      "Porque sus problemas atraviesan varias ramas: penal, civil, mercantil, laboral y administrativa",
+      "Porque reemplaza al Derecho Civil en los contratos",
+      "Porque está contenido en un único código"
+     ],
+     "ok": 1,
+     "r": "Un mismo incidente puede generar responsabilidad penal, civil y laboral; en Guatemala sus normas están dispersas."
+    }
+   ]
+  },
+  {
+   "titulo": "Informática jurídica, medios de pago y seguridad",
+   "intro": "Unidad de Informática Jurídica: informática jurídica documental, de gestión (bases de datos) y decisional; el sistema informático, los medios informáticos y electrónicos de pago y su seguridad.",
+   "conceptos": [
+    {
+     "n": "Ramas de la informática jurídica",
+     "e": [
+      "<b>Documental:</b> almacena y recupera leyes, jurisprudencia y doctrina con índices, descriptores y búsqueda por texto completo (por ejemplo, los repositorios de legislación del Congreso y el Centro Nacional de Análisis y Documentación Judicial, CENADOJ, del Organismo Judicial).",
+      "<b>De gestión u operacional:</b> automatiza el trabajo de oficinas jurídicas y registros: expedientes electrónicos, control de plazos, agendas de audiencias, notificaciones, registros públicos (Mercantil, de la Propiedad).",
+      "<b>Decisional o metadocumental:</b> sistemas expertos e inteligencia artificial que sugieren soluciones a partir de reglas o casos previos. Apoyan, pero no sustituyen, la decisión del juez o del abogado."
+     ],
+     "u": [
+      "Organismo Judicial, MP, bufetes, registros públicos y departamentos jurídicos.",
+      "Cada rama tiene requisitos distintos: búsqueda, integridad del expediente o explicabilidad.",
+      "Al proponer o evaluar un sistema para el sector justicia.",
+      "Clasifica el sistema y deriva sus requisitos técnicos y legales."
+     ],
+     "tabla": "<table><thead><tr><th>Rama</th><th>Pregunta que responde</th><th>Requisito crítico</th></tr></thead><tbody><tr><td>Documental</td><td>¿Qué dice la norma o el fallo?</td><td>Indexación y vigencia de los textos</td></tr><tr><td>De gestión</td><td>¿En qué estado está el trámite?</td><td>Integridad, bitácora y plazos</td></tr><tr><td>Decisional</td><td>¿Qué solución se sugiere?</td><td>Explicabilidad y revisión humana</td></tr></tbody></table>"
+    },
+    {
+     "n": "Medios informáticos y electrónicos de pago",
+     "e": [
+      "Incluyen tarjetas de crédito y débito, transferencias electrónicas (ACH y liquidación en tiempo real), banca en línea y móvil, billeteras electrónicas y pagos con código QR. Participan el <b>titular</b>, el <b>emisor</b> (banco que da la tarjeta), el <b>comercio</b>, el <b>adquirente</b> (banco del comercio) y la <b>red o procesador</b>.",
+      "Los bancos están supervisados por la Superintendencia de Bancos y el Banco de Guatemala administra sistemas de pago entre bancos. La industria de tarjetas exige el estándar <b>PCI DSS</b>, que es una norma contractual de la industria, no una ley: por ejemplo, prohíbe guardar el código de verificación (CVV) después de autorizar la transacción."
+     ],
+     "u": [
+      "Tiendas en línea, pasarelas de pago, banca electrónica, cobros municipales en línea.",
+      "Concentran fraude: phishing, robo de tarjetas, transferencias no autorizadas.",
+      "Al diseñar el cobro en línea de un sistema o atender un fraude.",
+      "Delega el manejo de tarjetas a una pasarela certificada y usa tokens."
+     ]
+    },
+    {
+     "n": "Seguridad del sistema informático y su relevancia jurídica",
+     "e": [
+      "La seguridad protege la <b>confidencialidad</b>, la <b>integridad</b> y la <b>disponibilidad</b> de la información, y además la <b>autenticidad</b> y el <b>no repudio</b>. Los controles pueden ser administrativos (políticas, contratos), técnicos (cifrado, control de acceso, respaldos) y físicos.",
+      "Para el Derecho la seguridad es prueba y es deber: un registro con bitácora íntegra vale más como evidencia; la firma electrónica avanzada exige que cualquier alteración sea detectable; quien guarda datos ajenos y los pierde por descuido puede responder civilmente por los daños que cause."
+     ],
+     "u": [
+      "En cualquier sistema que maneje dinero, datos personales o trámites legales.",
+      "Sin controles no hay prueba confiable ni defensa ante un reclamo.",
+      "Al diseñar el sistema, no después del incidente.",
+      "Mapea cada requisito legal a un control: bitácora, cifrado, respaldo, firma."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un bufete de la zona 4 quiere un sistema para buscar sentencias por palabra clave y por artículo citado. ¿Qué rama de la informática jurídica es y qué debe cuidar?",
+     "pasos": [
+      "<b>Hechos.</b> El bufete necesita localizar fallos y normas relevantes para sus casos.",
+      "<b>Interés protegido.</b> Certeza jurídica: trabajar con textos completos y vigentes.",
+      "<b>Norma aplicable.</b> Informática jurídica documental; las fuentes son publicaciones oficiales (Diario Oficial, repositorios del Congreso y del Organismo Judicial).",
+      "<b>Recomendación.</b> Diseñar índices por artículo y descriptor, registrar la fuente y fecha de cada texto y marcar las normas reformadas o derogadas."
+     ],
+     "r": "Informática jurídica documental con control de vigencia.",
+     "fin": "Clasificar sistemas del sector justicia."
+    },
+    {
+     "nv": "I",
+     "q": "Un juzgado implementa el expediente electrónico con notificaciones por correo. ¿Qué requisitos legales y técnicos debe cumplir?",
+     "pasos": [
+      "<b>Hechos.</b> Las actuaciones del proceso pasan de papel a medios electrónicos.",
+      "<b>Bien jurídico o derecho afectado.</b> Debido proceso y derecho de defensa: las partes deben conocer las resoluciones y el expediente debe ser íntegro.",
+      "<b>Norma aplicable.</b> Constitución (derecho de defensa); Decreto 47-2008, que reconoce validez a las comunicaciones y firmas electrónicas; normas procesales sobre notificaciones.",
+      "<b>Consecuencia y recomendación.</b> Es informática de gestión. Requiere firma electrónica avanzada en resoluciones, bitácora inalterable, constancia de envío y recepción, respaldos y acceso seguro para las partes."
+     ],
+     "r": "Informática de gestión con integridad, constancia y firma avanzada.",
+     "fin": "Traducir el debido proceso a requisitos técnicos."
+    },
+    {
+     "nv": "I",
+     "q": "Un ingeniero propone un sistema que sugiere al juez la pena exacta a partir de los datos del expediente. ¿Es aceptable?",
+     "pasos": [
+      "<b>Hechos.</b> Un sistema de informática decisional en materia penal.",
+      "<b>Bien jurídico o derecho afectado.</b> Tutela judicial efectiva, independencia judicial y derecho de defensa.",
+      "<b>Norma aplicable.</b> La Constitución atribuye la función jurisdiccional con exclusividad a la Corte Suprema de Justicia y a los tribunales que establezca la ley.",
+      "<b>Consecuencia y recomendación.</b> Solo es aceptable como apoyo: la decisión debe ser del juez, el sistema debe explicar sus sugerencias y auditarse por sesgos."
+     ],
+     "r": "Aceptable como apoyo explicable, nunca como sustituto del juez.",
+     "fin": "Poner límites jurídicos a la inteligencia artificial."
+    },
+    {
+     "nv": "B",
+     "q": "Un cliente de un banco recibe un mensaje falso, ingresa su usuario y token en una página idéntica a la del banco y pierde Q3,500 por una transferencia. ¿Cómo se analiza?",
+     "pasos": [
+      "<b>Hechos.</b> Phishing: obtención engañosa de credenciales y transferencia no autorizada.",
+      "<b>Bien jurídico o derecho afectado.</b> Patrimonio del cliente y confidencialidad de sus datos de acceso.",
+      "<b>Norma aplicable.</b> Código Penal: art. 274 \"F\" (uso de información obtenida sin autorización de registros informáticos) y la figura general de estafa; relación contractual cliente-banco.",
+      "<b>Consecuencia y recomendación.</b> Bloquear de inmediato el acceso, reclamar al banco y, si no se resuelve, acudir a la Superintendencia de Bancos; denunciar ante el MP. El banco debería usar autenticación de dos factores ligada al dispositivo y alertas en tiempo real."
+     ],
+     "r": "Conducta penal del atacante y reclamo contractual ante el banco.",
+     "fin": "Saber qué hacer ante un fraude de pagos."
+    },
+    {
+     "nv": "A",
+     "q": "Una tienda en línea guatemalteca guarda en MySQL, sin cifrar, el número completo y el CVV de las tarjetas de sus clientes, y sufre una fuga de datos. ¿Qué responsabilidades hay?",
+     "pasos": [
+      "<b>Hechos.</b> Almacenamiento indebido de datos de tarjetas y fuga por un atacante.",
+      "<b>Bien jurídico o derecho afectado.</b> Patrimonio y datos de los tarjetahabientes.",
+      "<b>Norma aplicable.</b> Para el atacante, Código Penal art. 274 \"F\". Para la tienda, PCI DSS por contrato con el adquirente (prohíbe guardar el CVV) y responsabilidad civil por los daños causados por su descuido (Código Civil).",
+      "<b>Consecuencia y recomendación.</b> La tienda puede perder la afiliación, pagar fraudes y responder por daños. Debe usar una pasarela con tokenización, no guardar CVV, cifrar, notificar a los afectados y al adquirente, y denunciar."
+     ],
+     "r": "Responsabilidad penal del atacante y contractual y civil de la tienda.",
+     "fin": "Relacionar fallas de seguridad con responsabilidad legal."
+    },
+    {
+     "nv": "B",
+     "q": "Un sistema que permite buscar leyes y sentencias por palabras clave es informática jurídica…",
+     "ops": [
+      "documental",
+      "de gestión",
+      "decisional",
+      "metadocumental"
+     ],
+     "ok": 0,
+     "r": "Almacena y recupera documentos jurídicos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué propiedad de seguridad garantiza que un registro no fue alterado?",
+     "ops": [
+      "Disponibilidad",
+      "Confidencialidad",
+      "Escalabilidad",
+      "Integridad"
+     ],
+     "ok": 3,
+     "r": "La integridad se comprueba con funciones hash y firmas."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema que controla plazos y agenda de audiencias de un tribunal es informática jurídica…",
+     "ops": [
+      "de gestión u operacional",
+      "documental",
+      "decisional",
+      "legislativa"
+     ],
+     "ok": 0,
+     "r": "Automatiza tareas de la oficina judicial."
+    },
+    {
+     "nv": "I",
+     "q": "Según PCI DSS, ¿qué dato de la tarjeta no puede guardarse después de autorizar el pago?",
+     "ops": [
+      "El nombre del titular",
+      "Los últimos cuatro dígitos",
+      "La fecha de vencimiento protegida",
+      "El código de verificación (CVV)"
+     ],
+     "ok": 3,
+     "r": "El CVV es un dato de autenticación sensible; PCI DSS es una norma contractual de la industria, no una ley guatemalteca."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué aporta una orden de pago firmada con firma electrónica avanzada que no aporta una simple contraseña?",
+     "ops": [
+      "Mayor velocidad de la transferencia",
+      "No repudio: el firmante no puede negar razonablemente haberla emitido",
+      "Confidencialidad del monto",
+      "Disponibilidad del sistema bancario"
+     ],
+     "ok": 1,
+     "r": "La clave privada bajo control exclusivo vincula la orden al firmante."
+    }
+   ]
+  },
+  {
+   "titulo": "La información como bien jurídico tutelado",
+   "intro": "Unidad La información como bien jurídico tutelado: antecedentes del manejo de la información pública y su reconocimiento como derecho humano; normas constitucionales sobre información pública; análisis del Decreto 57-2008, Ley de Acceso a la Información Pública, con habeas data y datos personales.",
+   "conceptos": [
+    {
+     "n": "Acceso a la información como derecho humano",
+     "e": [
+      "Antecedentes: la ley sueca de libertad de prensa de 1766 ya reconocía el acceso a documentos públicos; la Declaración Universal de Derechos Humanos (art. 19) y la Convención Americana (art. 13) protegen la libertad de buscar y recibir información; la Corte Interamericana lo reconoció expresamente como derecho en el caso Claude Reyes y otros vs. Chile (2006).",
+      "En la Constitución de Guatemala: los actos de la administración son públicos y los interesados pueden obtener informes, copias y certificaciones, salvo asuntos militares o diplomáticos de seguridad nacional o datos de particulares dados bajo garantía de confidencia; toda persona puede conocer lo que de ella conste en archivos y registros estatales, para qué se usa y pedir su corrección y actualización; se prohíben los registros de filiación política (salvo los de autoridades electorales y partidos); se garantiza la inviolabilidad de la correspondencia, documentos y comunicaciones."
+     ],
+     "u": [
+      "Portales de transparencia, solicitudes de información y sistemas de registros públicos.",
+      "La información pública permite fiscalizar al Estado y defender derechos.",
+      "Al diseñar sistemas del Estado o pedir información a una entidad.",
+      "Parte del principio de máxima publicidad y justifica cada excepción con la ley."
+     ]
+    },
+    {
+     "n": "Ley de Acceso a la Información Pública (Decreto 57-2008)",
+     "e": [
+      "Garantiza a toda persona el acceso a la información en poder de los <b>sujetos obligados</b>: organismos del Estado, municipalidades, entidades autónomas y descentralizadas, y entes privados que administren fondos públicos. Principios: <b>máxima publicidad</b>, transparencia, gratuidad, sencillez y celeridad.",
+      "Cada sujeto obligado tiene una <b>Unidad de Información Pública</b> y debe publicar <b>información pública de oficio</b> (estructura, presupuesto, salarios, contrataciones, entre otras). La solicitud puede ser verbal, escrita o electrónica y no hay que justificar para qué se pide. La respuesta debe darse en <b>diez días</b>, prorrogables por <b>diez días más</b> cuando el volumen o la complejidad lo justifiquen. Contra la negativa procede el <b>recurso de revisión</b> ante la máxima autoridad de la entidad. El Procurador de los Derechos Humanos es la autoridad reguladora.",
+      "Excepciones: información <b>confidencial</b> (por ejemplo, datos personales sensibles o la protegida por secreto bancario) e información <b>reservada</b>, que debe clasificarse formalmente y por tiempo limitado."
+     ],
+     "u": [
+      "Municipalidades, ministerios, IGSS, universidades públicas y ONG con fondos públicos.",
+      "La negativa o el retraso sin causa legal genera responsabilidad del funcionario.",
+      "Al pedir información, al atender una Unidad de Información Pública o al diseñar su portal.",
+      "Publica de oficio, registra cada solicitud con fecha y controla el plazo en días hábiles."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo de información</th><th>Regla</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Pública de oficio</td><td>Se publica sin que nadie la pida</td><td>Presupuesto, salarios, contratos</td></tr><tr><td>Pública a solicitud</td><td>Se entrega en el plazo legal</td><td>Copias de un expediente de compra</td></tr><tr><td>Confidencial</td><td>No se entrega a terceros</td><td>Datos sensibles de una persona</td></tr><tr><td>Reservada</td><td>Clasificación formal y temporal</td><td>Planes de seguridad nacional</td></tr></tbody></table>"
+    },
+    {
+     "n": "Habeas data y datos personales",
+     "e": [
+      "El <b>habeas data</b> es la garantía que permite a toda persona conocer, actualizar, rectificar y proteger los datos que sobre ella constan en registros. La LAIP define los <b>datos personales</b> y los <b>datos sensibles</b> (origen étnico, características físicas, morales o emocionales, vida afectiva y familiar, ideología, creencias religiosas, estado de salud, entre otros) y prohíbe a los sujetos obligados difundir o comercializar datos personales sin consentimiento expreso; la propia ley sanciona penalmente su comercialización.",
+      "<b>Límite importante:</b> Guatemala no tiene una ley integral de protección de datos personales; la LAIP protege sobre todo los datos en poder de los sujetos obligados, y el sector privado queda cubierto solo de forma parcial (por ejemplo, por el art. 274 \"D\" del Código Penal). Como <b>referencia internacional</b>, el Reglamento General de Protección de Datos de la Unión Europea (RGPD, 2016/679) fija principios de licitud, limitación de la finalidad, minimización, exactitud, limitación del plazo de conservación, integridad y confidencialidad y responsabilidad proactiva."
+     ],
+     "u": [
+      "Bases de datos de clientes, pacientes, empleados y ciudadanos.",
+      "Un mal uso de datos daña a personas reales y genera responsabilidad.",
+      "Al diseñar tablas, formularios, respaldos y reportes con datos personales.",
+      "Recoge solo lo necesario, pide consentimiento, controla accesos y atiende rectificaciones."
+     ],
+     "tabla": "<table><thead><tr><th>Aspecto</th><th>Guatemala</th><th>RGPD (referencia, no ley guatemalteca)</th></tr></thead><tbody><tr><td>Ley integral</td><td>No existe</td><td>Sí, para la Unión Europea</td></tr><tr><td>Sector público</td><td>LAIP: habeas data y datos sensibles</td><td>Cubierto</td></tr><tr><td>Sector privado</td><td>Protección parcial (Código Penal)</td><td>Cubierto</td></tr><tr><td>Derechos</td><td>Conocer, rectificar, actualizar</td><td>Acceso, rectificación, supresión, oposición, portabilidad</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un vecino pide a su municipalidad la lista de contratos de recolección de basura de 2025 con sus montos, y la municipalidad le exige explicar para qué la quiere. ¿Es correcto?",
+     "pasos": [
+      "<b>Hechos.</b> Solicitud de información sobre contrataciones de una municipalidad.",
+      "<b>Bien jurídico o derecho afectado.</b> Derecho de acceso a la información pública.",
+      "<b>Norma aplicable.</b> Constitución (publicidad de los actos administrativos) y Decreto 57-2008: las municipalidades son sujetos obligados, las contrataciones son información pública de oficio y no se exige justificar la solicitud.",
+      "<b>Consecuencia y recomendación.</b> La exigencia es improcedente. La municipalidad debe entregar la información en el plazo legal; si la niega, el vecino puede interponer recurso de revisión."
+     ],
+     "r": "No: no se debe justificar la solicitud y la información es pública.",
+     "fin": "Ejercer el derecho de acceso a la información."
+    },
+    {
+     "nv": "I",
+     "q": "Una solicitud de información se presenta el lunes 2 de febrero de 2026. Contando diez días hábiles a partir del día siguiente, ¿cuándo vence el plazo y cuándo vencería con la prórroga de diez días más?",
+     "pasos": [
+      "<b>Hechos.</b> Solicitud presentada el lunes 2 de febrero de 2026; en febrero no hay asuetos nacionales.",
+      "<b>Derecho afectado.</b> Acceso a la información pública dentro de un plazo cierto.",
+      "<b>Norma aplicable.</b> Decreto 57-2008: diez días para responder, prorrogables por diez días más.",
+      "<b>Cálculo.</b> Días hábiles del 3 al 6 de febrero (4), del 9 al 13 (9) y el lunes 16 (10). Con la prórroga: del 17 al 20 (4), del 23 al 27 (9) y el lunes 2 de marzo (10).",
+      "<b>Consecuencia.</b> Si no hay respuesta al vencer el plazo, el solicitante puede recurrir; la Unidad de Información Pública debe llevar este control en su sistema."
+     ],
+     "r": "Vence el lunes 16 de febrero de 2026; con prórroga, el lunes 2 de marzo de 2026.",
+     "fin": "Controlar plazos legales en un sistema de solicitudes."
+    },
+    {
+     "nv": "I",
+     "q": "Una paciente descubre que el sistema de un hospital público registra un diagnóstico que no es suyo. ¿Qué puede hacer?",
+     "pasos": [
+      "<b>Hechos.</b> Dato de salud inexacto en una base de datos de una entidad pública.",
+      "<b>Bien jurídico o derecho afectado.</b> Autodeterminación informativa e intimidad; el estado de salud es un dato sensible.",
+      "<b>Norma aplicable.</b> Constitución (acceso a archivos y registros estatales para pedir su corrección) y habeas data de la LAIP.",
+      "<b>Consecuencia y recomendación.</b> Pedir por escrito la rectificación a la Unidad de Información Pública; si se la niegan, recurso de revisión y, agotada la vía, amparo. En TI: flujo de rectificación con bitácora de quién cambió qué y por qué."
+     ],
+     "r": "Ejercer habeas data para rectificar el dato.",
+     "fin": "Diseñar sistemas que permitan corregir datos personales."
+    },
+    {
+     "nv": "A",
+     "q": "Un empleado de una entidad pública vende a una empresa de cobros una base de datos con nombres, DPI y teléfonos de los usuarios. ¿Qué consecuencias hay?",
+     "pasos": [
+      "<b>Hechos.</b> Extracción y venta de datos personales sin consentimiento.",
+      "<b>Bien jurídico o derecho afectado.</b> Intimidad y autodeterminación informativa de los titulares de los datos.",
+      "<b>Norma aplicable.</b> Decreto 57-2008, que prohíbe y sanciona penalmente la comercialización de datos personales; Código Penal, art. 274 \"F\" (uso de información sin autorización); responsabilidad administrativa del servidor público.",
+      "<b>Consecuencia y recomendación.</b> Denuncia ante el MP y proceso disciplinario. En TI: mínimo privilegio, bitácora de consultas masivas, alertas de exportación y prohibición de dispositivos externos."
+     ],
+     "r": "Responsabilidad penal y administrativa del empleado; la entidad debe reforzar controles.",
+     "fin": "Relacionar fugas internas con delitos y controles."
+    },
+    {
+     "nv": "A",
+     "q": "Una empresa guatemalteca de comercio electrónico empieza a vender a clientes en España. ¿Qué norma de datos personales debe considerar?",
+     "pasos": [
+      "<b>Hechos.</b> Tratamiento de datos de personas que están en la Unión Europea.",
+      "<b>Bien jurídico o derecho afectado.</b> Protección de datos personales de esos clientes.",
+      "<b>Norma aplicable.</b> En Guatemala no hay ley integral de datos para el sector privado. El RGPD europeo se aplica también a empresas fuera de la Unión que ofrezcan bienes o servicios a personas que estén en ella.",
+      "<b>Consecuencia y recomendación.</b> Debe cumplir el RGPD para esos clientes: base legal del tratamiento, aviso de privacidad, atención de derechos y seguridad. Conviene adoptar esas prácticas para todos sus clientes."
+     ],
+     "r": "El RGPD le aplica por ofrecer bienes a personas en la Unión Europea.",
+     "fin": "Ver el alcance extraterritorial de normas extranjeras."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué derecho constitucional permite a una persona saber qué datos suyos constan en registros del Estado y pedir su corrección?",
+     "ops": [
+      "Libertad de emisión del pensamiento",
+      "Derecho de petición en materia política",
+      "Acceso a archivos y registros estatales",
+      "Libertad de industria y comercio"
+     ],
+     "ok": 2,
+     "r": "Es la base constitucional del habeas data."
+    },
+    {
+     "nv": "B",
+     "q": "Según el Decreto 57-2008, ¿en qué plazo debe responderse una solicitud de información?",
+     "ops": [
+      "Treinta días, sin prórroga",
+      "Diez días, prorrogables por diez días más",
+      "Cinco días, prorrogables por cinco",
+      "Quince días, prorrogables por quince"
+     ],
+     "ok": 1,
+     "r": "La prórroga procede cuando el volumen o la complejidad lo justifican."
+    },
+    {
+     "nv": "I",
+     "q": "¿Quién es la autoridad reguladora de la Ley de Acceso a la Información Pública?",
+     "ops": [
+      "La Contraloría General de Cuentas",
+      "El Procurador de los Derechos Humanos",
+      "El Ministerio Público",
+      "La Corte de Constitucionalidad"
+     ],
+     "ok": 1,
+     "r": "El PDH vigila el cumplimiento de la ley."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál de estos es un dato sensible?",
+     "ops": [
+      "El salario de un funcionario público",
+      "La dirección de una oficina pública",
+      "El estado de salud de una persona",
+      "El presupuesto de una municipalidad"
+     ],
+     "ok": 2,
+     "r": "El salario de los funcionarios y el presupuesto son información pública de oficio."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué afirmación sobre la protección de datos personales en Guatemala es correcta?",
+     "ops": [
+      "El RGPD europeo se aplica a todas las empresas guatemaltecas",
+      "El Decreto 47-2008 es la ley general de protección de datos",
+      "La Constitución prohíbe cualquier base de datos con datos personales",
+      "No existe una ley integral; la LAIP protege datos en poder de sujetos obligados y el sector privado tiene protección parcial"
+     ],
+     "ok": 3,
+     "r": "El RGPD es solo referencia, salvo que la empresa ofrezca bienes o servicios a personas en la Unión Europea."
+    }
+   ]
+  },
+  {
+   "titulo": "Documento electrónico, firma electrónica y comercio electrónico",
+   "intro": "Unidad de Comercio Electrónico: el documento electrónico; la firma electrónica y la firma electrónica avanzada según la Ley para el Reconocimiento de las Comunicaciones y Firmas Electrónicas (Decreto 47-2008); tipos y clases de comercio electrónico; contratación electrónica.",
+   "conceptos": [
+    {
+     "n": "Documento electrónico y equivalencia funcional",
+     "e": [
+      "Una <b>comunicación electrónica</b> es información generada, enviada, recibida o archivada por medios electrónicos. El Decreto 47-2008 sigue los modelos de la CNUDMI (Naciones Unidas) y sus principios: <b>equivalencia funcional</b> (lo electrónico cumple las funciones del papel), <b>neutralidad tecnológica</b> (no favorece una tecnología concreta), autonomía de la voluntad y buena fe.",
+      "Equivalencias: el requisito de <b>escrito</b> se cumple si la información es accesible para consulta posterior; el de <b>original</b>, si hay garantía fiable de su integridad desde que se generó; la <b>conservación</b>, si se guarda en el formato en que se generó con datos de origen, destino, fecha y hora. A una comunicación no se le niegan efectos jurídicos por el solo hecho de ser electrónica."
+     ],
+     "u": [
+      "Contratos por correo, pedidos en línea, expedientes y facturas electrónicas.",
+      "Permite usar lo electrónico como prueba válida.",
+      "Al reemplazar procesos en papel o conservar evidencia digital.",
+      "Garantiza acceso, integridad y metadatos de cada documento."
+     ]
+    },
+    {
+     "n": "Firma electrónica y firma electrónica avanzada",
+     "e": [
+      "<b>Firma electrónica:</b> datos en forma electrónica asociados a una comunicación que permiten identificar al firmante e indicar que aprueba la información (un clic, un PIN, una imagen de firma). <b>Firma electrónica avanzada:</b> además está vinculada al firmante de manera única, permite identificarlo, se crea con medios que el firmante mantiene bajo su <b>control exclusivo</b> y está vinculada a los datos de forma que <b>cualquier cambio posterior es detectable</b>.",
+      "La firma electrónica avanzada tiene los mismos efectos jurídicos que la firma manuscrita. Se apoya en un <b>certificado</b> emitido por un <b>prestador de servicios de certificación</b> autorizado; el registro de prestadores funciona en el Ministerio de Economía. Técnicamente: se calcula el hash del documento y se cifra con la clave privada; quien verifica usa la clave pública del certificado."
+     ],
+     "u": [
+      "Contratos, resoluciones administrativas, órdenes de pago, actas.",
+      "Da autenticidad, integridad y no repudio con valor legal.",
+      "Cuando el documento necesita el mismo peso que uno firmado a mano.",
+      "Usa certificados de un prestador autorizado y valida la firma al recibir."
+     ],
+     "f": "\\sigma=\\text{Firmar}_{K_{\\text{priv}}}\\big(H(m)\\big)\\quad\\Rightarrow\\quad \\text{Verificar}_{K_{\\text{pub}}}(\\sigma,m)"
+    },
+    {
+     "n": "Comercio electrónico: tipos y clases",
+     "e": [
+      "<b>Tipos</b> según quién participa: B2B (empresa a empresa), B2C (empresa a consumidor), C2C (consumidor a consumidor), B2G o G2B (empresas con el Estado, como Guatecompras) y G2C (Estado a ciudadano, como los servicios en línea de la SAT). <b>Clases:</b> <b>directo</b> (el bien es digital y se entrega en línea: licencias, música, cursos) e <b>indirecto</b> (se contrata en línea y el bien físico se entrega por medios tradicionales)."
+     ],
+     "u": [
+      "Tiendas en línea, portales de compras públicas, plataformas de pago de impuestos.",
+      "Cada tipo trae normas distintas: consumidor, contratación pública o tributaria.",
+      "Al definir el modelo de negocio de una plataforma.",
+      "Identifica quién compra y quién vende, y qué norma protege a cada uno."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Ejemplo en Guatemala</th><th>Norma que pesa más</th></tr></thead><tbody><tr><td>B2C</td><td>Tienda en línea de electrodomésticos</td><td>Ley de Protección al Consumidor y Usuario (Decreto 6-2003)</td></tr><tr><td>B2B</td><td>Mayorista que vende a ferreterías por portal</td><td>Código de Comercio y contrato</td></tr><tr><td>B2G</td><td>Oferta en Guatecompras</td><td>Ley de Contrataciones del Estado</td></tr><tr><td>G2C</td><td>Declaraciones y facturación electrónica ante la SAT</td><td>Leyes tributarias</td></tr></tbody></table>"
+    },
+    {
+     "n": "Contratación electrónica",
+     "e": [
+      "El contrato se forma por <b>oferta y aceptación</b>, que pueden expresarse por comunicaciones electrónicas. Modalidades: <b>click-wrap</b> (el usuario marca \"Acepto\" antes de continuar; la prueba del consentimiento es fuerte), <b>browse-wrap</b> (los términos solo están enlazados en la página; prueba débil) y <b>shrink-wrap</b> (licencia que se acepta al abrir o instalar el producto).",
+      "En contratos con consumidores rige la Ley de Protección al Consumidor y Usuario (Decreto 6-2003), con la DIACO como entidad de atención: información clara del precio y condiciones, garantía y prohibición de cláusulas abusivas."
+     ],
+     "u": [
+      "Términos y condiciones de apps, tiendas y servicios en la nube.",
+      "Si no se prueba el consentimiento, los términos pueden no ser oponibles.",
+      "Al diseñar el flujo de registro o de compra.",
+      "Usa click-wrap, guarda versión de términos, fecha, hora e IP de la aceptación."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una pyme de Quetzaltenango recibe pedidos por correo y WhatsApp; un cliente niega haber pedido 50 uniformes. ¿Tiene valor el mensaje?",
+     "pasos": [
+      "<b>Hechos.</b> Pedido hecho por mensajería electrónica y negado después.",
+      "<b>Bien jurídico o derecho afectado.</b> Seguridad del tráfico comercial y cumplimiento de obligaciones.",
+      "<b>Norma aplicable.</b> Decreto 47-2008: no se niegan efectos jurídicos a una comunicación por ser electrónica; su valor probatorio depende de la fiabilidad con que se generó, archivó y conservó.",
+      "<b>Consecuencia y recomendación.</b> El mensaje es prueba válida. La pyme debe conservar los mensajes con sus metadatos y confirmar cada pedido por un canal que deje constancia (correo con resumen o formulario con aceptación)."
+     ],
+     "r": "Sí: el mensaje electrónico vale como prueba del pedido.",
+     "fin": "Aplicar la equivalencia funcional."
+    },
+    {
+     "nv": "I",
+     "q": "Un contrato en PDF se firmó con firma electrónica avanzada. Alguien cambia la cláusula \"El precio total es Q15,000.00\" por \"El precio total es Q51,000.00\". ¿Qué pasa al verificar la firma?",
+     "pasos": [
+      "<b>Hechos.</b> Se altera una cifra después de firmado el documento.",
+      "<b>Bien jurídico.</b> Integridad del documento y seguridad del contrato.",
+      "<b>Norma aplicable.</b> Decreto 47-2008: la firma avanzada debe permitir detectar cualquier cambio posterior.",
+      "<b>Comprobación técnica.</b> La huella SHA-256 de la frase original empieza con <code>401bb1151abcfaa6</code> y la de la frase alterada con <code>bc87b29275e85ff9</code>: cambiar dos dígitos cambia toda la huella, y la firma calculada sobre el original ya no coincide.",
+      "<b>Consecuencia.</b> La verificación falla y se demuestra la alteración; vale el contrato original."
+     ],
+     "r": "La firma no verifica: la alteración queda en evidencia.",
+     "fin": "Entender por qué la firma avanzada protege la integridad."
+    },
+    {
+     "nv": "I",
+     "q": "Un gerente escanea su firma manuscrita y la pega como imagen en los contratos PDF que envía. ¿Es firma electrónica avanzada?",
+     "pasos": [
+      "<b>Hechos.</b> Imagen de una firma insertada en un documento electrónico.",
+      "<b>Bien jurídico o derecho afectado.</b> Autenticidad e integridad del documento.",
+      "<b>Norma aplicable.</b> Decreto 47-2008: la avanzada exige control exclusivo del firmante y vinculación con los datos que haga detectable cualquier cambio.",
+      "<b>Consecuencia y recomendación.</b> No lo es: cualquiera puede copiar la imagen y el documento puede modificarse sin rastro. Es, a lo sumo, una firma electrónica simple cuyo valor lo apreciará el juez. Debe usar un certificado de un prestador autorizado."
+     ],
+     "r": "No: es una firma electrónica simple, fácil de copiar.",
+     "fin": "Distinguir firma electrónica simple y avanzada."
+    },
+    {
+     "nv": "A",
+     "q": "Una persona compra en una tienda en línea guatemalteca una laptop de Q6,500 que llega defectuosa. Los términos, solo enlazados al pie de la página, dicen \"no hay devoluciones bajo ninguna circunstancia\". ¿Qué derechos tiene?",
+     "pasos": [
+      "<b>Hechos.</b> Compra B2C con términos browse-wrap y producto defectuoso.",
+      "<b>Bien jurídico o derecho afectado.</b> Derechos del consumidor: garantía e información.",
+      "<b>Norma aplicable.</b> Ley de Protección al Consumidor y Usuario (Decreto 6-2003), que protege la garantía y considera abusivas las cláusulas que limitan los derechos del consumidor; Decreto 47-2008 para la contratación electrónica.",
+      "<b>Consecuencia y recomendación.</b> La cláusula no anula la garantía; el consumidor puede reclamar a la tienda y presentar queja ante la DIACO. La tienda debería usar click-wrap y una política de devoluciones conforme a la ley."
+     ],
+     "r": "La cláusula no elimina la garantía; procede el reclamo ante la DIACO.",
+     "fin": "Diseñar términos de compra válidos."
+    },
+    {
+     "nv": "B",
+     "q": "Una empresa de software vende licencias al Estado por Guatecompras, a otras empresas por contrato y a personas por su tienda en línea con descarga inmediata. Clasifica su comercio.",
+     "pasos": [
+      "<b>Hechos.</b> Tres canales de venta de un bien digital.",
+      "<b>Interés protegido.</b> Distintos intereses protegidos: legalidad del gasto público, autonomía contractual y derechos del consumidor.",
+      "<b>Norma aplicable.</b> Ley de Contrataciones del Estado (B2G), Código de Comercio y contrato (B2B), Ley de Protección al Consumidor y Usuario (B2C).",
+      "<b>Consecuencia y recomendación.</b> Es comercio B2G, B2B y B2C, y de clase directa porque la licencia se entrega en línea. Cada canal necesita términos y controles propios."
+     ],
+     "r": "B2G, B2B y B2C, todos de comercio electrónico directo.",
+     "fin": "Clasificar el comercio electrónico."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué principio establece que un documento electrónico produce los mismos efectos que uno en papel si cumple sus mismas funciones?",
+     "ops": [
+      "Equivalencia funcional",
+      "Neutralidad tecnológica",
+      "Autonomía de la voluntad",
+      "Literalidad"
+     ],
+     "ok": 0,
+     "r": "Lo electrónico cumple las funciones de escrito, firma y original."
+    },
+    {
+     "nv": "B",
+     "q": "Presentar una oferta en Guatecompras es comercio electrónico de tipo…",
+     "ops": [
+      "B2G",
+      "B2C",
+      "C2C",
+      "G2C"
+     ],
+     "ok": 0,
+     "r": "Una empresa contrata con el Estado."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué requisito distingue a la firma electrónica avanzada?",
+     "ops": [
+      "Se crea con medios bajo el control exclusivo del firmante y detecta cambios posteriores",
+      "Es una imagen escaneada de la firma manuscrita",
+      "Se envía desde un correo institucional",
+      "Se imprime y se firma a mano"
+     ],
+     "ok": 0,
+     "r": "Por eso tiene los mismos efectos que la firma manuscrita."
+    },
+    {
+     "nv": "I",
+     "q": "Comprar y descargar en línea una licencia de software es comercio electrónico…",
+     "ops": [
+      "indirecto",
+      "directo",
+      "presencial",
+      "documental"
+     ],
+     "ok": 1,
+     "r": "El bien es digital y se entrega por la red."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué modalidad de aceptación de términos da la prueba más fuerte del consentimiento?",
+     "ops": [
+      "Browse-wrap: los términos están enlazados al pie de la página",
+      "Click-wrap: el usuario marca \"Acepto\" antes de continuar",
+      "Aviso en el correo de bienvenida",
+      "Términos publicados en redes sociales"
+     ],
+     "ok": 1,
+     "r": "Hay una acción afirmativa registrada con fecha, hora y versión de los términos."
+    }
+   ]
+  },
+  {
+   "titulo": "Propiedad intelectual y protección del software",
+   "intro": "Unidad de Regulación jurídica y propiedad intelectual: conceptos generales de marca, patente y propiedad intelectual; marco internacional; marco nacional con la Ley de Derecho de Autor y Derechos Conexos (Decreto 33-98), la Ley de Propiedad Industrial (Decreto 57-2000) y los artículos del Código Penal.",
+   "conceptos": [
+    {
+     "n": "Propiedad intelectual: derecho de autor y propiedad industrial",
+     "e": [
+      "La Constitución reconoce el derecho de autor y de inventor. La <b>propiedad intelectual</b> se divide en <b>derecho de autor y derechos conexos</b> (obras literarias y artísticas, incluidos los programas de computación y las bases de datos originales; Decreto 33-98) y <b>propiedad industrial</b> (marcas, nombres comerciales, patentes, modelos de utilidad, diseños industriales y secretos empresariales; Decreto 57-2000).",
+      "El derecho de autor nace con la creación de la obra, sin registro. La propiedad industrial, salvo el secreto empresarial, nace del registro. Ambos registros están en el Registro de la Propiedad Intelectual, del Ministerio de Economía."
+     ],
+     "u": [
+      "Código fuente, nombre del producto, logo, diseño de la interfaz, algoritmos internos.",
+      "Cada activo se protege con una figura distinta.",
+      "Al lanzar un producto o al firmar contratos de desarrollo.",
+      "Haz un inventario: qué es obra, qué es marca, qué es secreto."
+     ],
+     "tabla": "<table><thead><tr><th>Figura</th><th>Protege</th><th>Nace</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Derecho de autor</td><td>Expresión de una obra</td><td>Con la creación</td><td>Código fuente de un sistema</td></tr><tr><td>Marca</td><td>Signo distintivo</td><td>Con el registro</td><td>Nombre y logo de una app</td></tr><tr><td>Patente</td><td>Invención nueva con nivel inventivo y aplicación industrial</td><td>Con el registro</td><td>Un dispositivo nuevo</td></tr><tr><td>Secreto empresarial</td><td>Información confidencial con valor</td><td>Con medidas de reserva</td><td>Modelo de puntuación de crédito</td></tr></tbody></table>"
+    },
+    {
+     "n": "Derechos sobre el software y licencias",
+     "e": [
+      "El autor tiene <b>derechos morales</b> (paternidad, integridad, divulgación), que son irrenunciables, y <b>derechos patrimoniales</b> (reproducir, transformar, distribuir, comunicar), que pueden cederse o licenciarse. Para obras creadas por encargo o por un trabajador bajo relación de dependencia, la ley presume, salvo pacto en contrario, la cesión de los derechos patrimoniales a quien encarga o al patrono.",
+      "Una <b>licencia</b> autoriza usos bajo condiciones. Propietaria (EULA, por número de equipos o usuarios); libre con <b>copyleft</b> (GPL: quien distribuye obras derivadas debe hacerlo con la misma licencia y entregar el código fuente); <b>permisiva</b> (MIT, BSD, Apache 2.0: permiten incluirla en software cerrado conservando el aviso). Usar el software fuera de las condiciones de la licencia es un uso no autorizado."
+     ],
+     "u": [
+      "Contratos de desarrollo, uso de librerías de código abierto, licencias corporativas.",
+      "Un error de licencia puede obligar a liberar código o pagar daños.",
+      "Antes de incorporar una librería o firmar un contrato de desarrollo.",
+      "Revisa la licencia de cada dependencia y define por escrito la titularidad del código."
+     ]
+    },
+    {
+     "n": "Marcas, patentes y marco internacional",
+     "e": [
+      "<b>Marca:</b> signo que distingue productos o servicios; su propiedad se adquiere con el registro, que se otorga por diez años renovables. <b>Patente:</b> protege una invención nueva, con nivel inventivo y aplicación industrial, por veinte años desde la solicitud. En general, los programas de computación considerados en sí mismos no son invenciones patentables: se protegen por derecho de autor.",
+      "<b>Marco internacional:</b> Convenio de Berna (obras), Convenio de París (propiedad industrial), Acuerdo sobre los ADPIC de la OMC, tratados de la OMPI y el capítulo de propiedad intelectual del Tratado de Libre Comercio con Estados Unidos y Centroamérica (CAFTA-DR). <b>Penal:</b> el Código Penal sanciona la violación a los derechos de autor y derechos conexos, la violación a los derechos de propiedad industrial y la reproducción no autorizada de programas (art. 274 \"C\")."
+     ],
+     "u": [
+      "Nombre de una startup, dominio web, producto tecnológico innovador.",
+      "Sin registro de marca otro puede apropiarse del nombre.",
+      "Antes de invertir en el nombre o de divulgar una invención.",
+      "Busca antecedentes en el Registro y solicita el registro de inmediato."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una empresa compra 5 licencias de un programa de diseño y lo instala en 25 computadoras. ¿Qué infracción comete?",
+     "pasos": [
+      "<b>Hechos.</b> Instalación de 20 copias sin licencia (25 instaladas menos 5 compradas).",
+      "<b>Bien jurídico o derecho afectado.</b> Derechos patrimoniales de reproducción del titular del software.",
+      "<b>Norma aplicable.</b> Decreto 33-98 (protección de programas de computación); Código Penal, art. 274 \"C\" y delito de violación a los derechos de autor.",
+      "<b>Consecuencia y recomendación.</b> Responsabilidad civil (pago de daños, normalmente al menos el valor de las licencias faltantes) y riesgo penal. Debe regularizar las 20 licencias y llevar un inventario de software."
+     ],
+     "r": "20 copias no autorizadas: infracción civil y riesgo penal.",
+     "fin": "Prevenir la piratería corporativa."
+    },
+    {
+     "nv": "B",
+     "q": "Un programador desarrolla, como empleado de un banco, un módulo de cobros. Al renunciar quiere venderlo a otro banco. ¿Puede?",
+     "pasos": [
+      "<b>Hechos.</b> Software creado por un trabajador en ejercicio de sus funciones.",
+      "<b>Bien jurídico o derecho afectado.</b> Derechos patrimoniales sobre el programa y secretos del empleador.",
+      "<b>Norma aplicable.</b> Decreto 33-98: salvo pacto en contrario, se presume que los derechos patrimoniales de la obra creada bajo relación de dependencia corresponden al patrono; los derechos morales (ser reconocido como autor) siguen siendo del programador. Código de Trabajo: deber de guardar secretos.",
+      "<b>Consecuencia y recomendación.</b> No puede venderlo. Puede mencionarlo en su currículum como autor. Los contratos de trabajo en TI deben regular por escrito la titularidad del código."
+     ],
+     "r": "No: los derechos patrimoniales corresponden al banco.",
+     "fin": "Conocer quién es dueño del código que escribes."
+    },
+    {
+     "nv": "I",
+     "q": "Una empresa incluye una librería con licencia GPL en un producto cerrado que vende e instala a sus clientes, sin entregar el código fuente. ¿Qué problema tiene?",
+     "pasos": [
+      "<b>Hechos.</b> Distribución de una obra derivada de software GPL sin código fuente.",
+      "<b>Bien jurídico o derecho afectado.</b> Derechos patrimoniales de los autores de la librería, que solo autorizaron su uso bajo las condiciones de la GPL.",
+      "<b>Norma aplicable.</b> Licencia GPL (copyleft) y Decreto 33-98: usar la obra fuera de las condiciones de la licencia es un uso no autorizado.",
+      "<b>Consecuencia y recomendación.</b> Debe liberar el código bajo GPL, sustituir la librería por una permisiva (MIT, Apache) o negociar una licencia comercial con los autores."
+     ],
+     "r": "Incumple la licencia: debe liberar el código o cambiar la librería.",
+     "fin": "Gestionar licencias de código abierto."
+    },
+    {
+     "nv": "I",
+     "q": "Una startup usa el nombre \"ChapinPay\" desde hace un año sin registrarlo. Otra empresa lo registra como marca. ¿Qué pasa?",
+     "pasos": [
+      "<b>Hechos.</b> Uso de un signo distintivo sin registro y registro posterior por un tercero.",
+      "<b>Bien jurídico o derecho afectado.</b> Derecho exclusivo sobre la marca.",
+      "<b>Norma aplicable.</b> Ley de Propiedad Industrial (Decreto 57-2000): la propiedad de la marca se adquiere con su registro.",
+      "<b>Consecuencia y recomendación.</b> La startup está en desventaja y podría tener que cambiar de nombre; le conviene buscar asesoría para revisar si procede alguna acción contra el registro. Lección: buscar antecedentes y registrar la marca antes de lanzar."
+     ],
+     "r": "El registro da el derecho exclusivo; la startup queda expuesta.",
+     "fin": "Proteger el nombre de un producto."
+    },
+    {
+     "nv": "A",
+     "q": "Una fintech quiere patentar su algoritmo de evaluación de crédito. ¿Qué estrategia de protección le recomiendas?",
+     "pasos": [
+      "<b>Hechos.</b> Activo intangible: algoritmo, código que lo implementa y nombre del producto.",
+      "<b>Bien jurídico o derecho afectado.</b> Exclusividad sobre su ventaja competitiva.",
+      "<b>Norma aplicable.</b> Decreto 57-2000: los programas de computación en sí mismos no suelen ser patentables; Decreto 33-98 protege el código como obra; la propia Ley de Propiedad Industrial protege los secretos empresariales.",
+      "<b>Consecuencia y recomendación.</b> Proteger el código por derecho de autor, el algoritmo y los modelos como secreto empresarial (acuerdos de confidencialidad, control de acceso) y registrar la marca."
+     ],
+     "r": "Derecho de autor más secreto empresarial más marca, no patente.",
+     "fin": "Diseñar la protección de un producto de software."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuándo nace la protección por derecho de autor de un programa de computación?",
+     "ops": [
+      "Desde que se registra en el Registro de la Propiedad Intelectual",
+      "Desde que se publica en internet",
+      "Desde su creación, sin necesidad de registro",
+      "Desde que se vende la primera licencia"
+     ],
+     "ok": 2,
+     "r": "El registro sirve como prueba, pero no es requisito de protección."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué ley regula las marcas y patentes en Guatemala?",
+     "ops": [
+      "Ley de Derecho de Autor y Derechos Conexos, Decreto 33-98",
+      "Ley de Propiedad Industrial, Decreto 57-2000",
+      "Código de Comercio, Decreto 2-70",
+      "Decreto 47-2008"
+     ],
+     "ok": 1,
+     "r": "El Decreto 33-98 regula el derecho de autor; el 57-2000, la propiedad industrial."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál de estos es un derecho moral del autor de un programa?",
+     "ops": [
+      "Ser reconocido como autor (paternidad)",
+      "Reproducir el programa",
+      "Distribuir copias",
+      "Alquilar el programa"
+     ],
+     "ok": 0,
+     "r": "Los demás son derechos patrimoniales, que sí se pueden ceder."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué licencia obliga a distribuir las obras derivadas con la misma licencia y su código fuente?",
+     "ops": [
+      "GPL",
+      "MIT",
+      "BSD",
+      "Apache 2.0"
+     ],
+     "ok": 0,
+     "r": "Es el efecto copyleft; las otras son permisivas."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por cuánto tiempo protege una patente de invención?",
+     "ops": [
+      "Diez años renovables indefinidamente",
+      "Veinte años contados desde la solicitud",
+      "Toda la vida del inventor",
+      "Cinco años prorrogables"
+     ],
+     "ok": 1,
+     "r": "Los diez años renovables corresponden al registro de marca."
+    }
+   ]
+  },
+  {
+   "titulo": "Delitos informáticos",
+   "intro": "Unidad de Delitos Informáticos, que el programa desarrolla en dos semanas: concepto de delito informático; delitos informáticos reconocidos internacionalmente; marco jurídico nacional; delitos informáticos y cibercrimen (concepto internacional y conductas ilegales).",
+   "conceptos": [
+    {
+     "n": "Concepto de delito informático",
+     "e": [
+      "Conducta típica, antijurídica y culpable en la que la informática es <b>medio</b> (se usa la computadora para cometer el delito, como un fraude) o <b>fin</b> (el ataque se dirige contra datos, programas o equipos, como borrar una base de datos), según la clasificación de Téllez Valdés. <b>Cibercrimen</b> es el término internacional más amplio para los delitos cometidos en o mediante redes.",
+      "Rasgos: el autor suele tener conocimientos técnicos o acceso interno; pueden cometerse a distancia y entre países; dejan evidencia volátil; muchos no se denuncian (cifra negra)."
+     ],
+     "u": [
+      "Investigación de incidentes en bancos, entidades públicas y empresas.",
+      "Sin encuadrar la conducta en un tipo penal no hay persecución.",
+      "Cuando un incidente de seguridad tiene un autor identificable.",
+      "Describe qué se hizo, contra qué dato o sistema y con qué medio."
+     ]
+    },
+    {
+     "n": "Delitos informáticos en el Código Penal",
+     "e": [
+      "El Decreto 33-96 agregó al Código Penal (Decreto 17-73) los artículos 274 \"A\" a 274 \"G\". Son el núcleo del marco nacional. Guatemala no tiene una ley de ciberdelincuencia vigente: conductas como el acceso ilícito sin daño o la interceptación de datos no tienen un tipo específico y deben encuadrarse, cuando es posible, en estos artículos o en figuras generales como la estafa."
+     ],
+     "u": [
+      "Denuncias ante el MP por incidentes informáticos.",
+      "Determina si la conducta es delito y cuál.",
+      "Al documentar un incidente para denunciarlo.",
+      "Compara los hechos con la conducta de cada artículo."
+     ],
+     "tabla": "<table><thead><tr><th>Artículo</th><th>Delito</th><th>Conducta</th><th>Ejemplo</th></tr></thead><tbody><tr><td>274 \"A\"</td><td>Destrucción de registros informáticos</td><td>Destruir, borrar o inutilizar registros informáticos</td><td>Exempleado borra la base de clientes</td></tr><tr><td>274 \"B\"</td><td>Alteración de programas</td><td>Alterar, borrar o inutilizar instrucciones o programas</td><td>Modificar el sistema de planillas para que falle</td></tr><tr><td>274 \"C\"</td><td>Reproducción de instrucciones o programas de computación</td><td>Copiar o reproducir programas sin autorización del autor</td><td>Vender copias de un software</td></tr><tr><td>274 \"D\"</td><td>Registros prohibidos</td><td>Crear bancos de datos o registros con datos que puedan afectar la intimidad</td><td>Lista de pacientes con diagnósticos para venderla</td></tr><tr><td>274 \"E\"</td><td>Manipulación de información</td><td>Usar registros o programas para ocultar, alterar o distorsionar información comercial, ante el Estado o contable</td><td>Alterar la contabilidad para ocultar ventas</td></tr><tr><td>274 \"F\"</td><td>Uso de información</td><td>Utilizar u obtener sin autorización datos de registros, bancos de datos o archivos electrónicos</td><td>Usar credenciales robadas para extraer datos</td></tr><tr><td>274 \"G\"</td><td>Programas destructivos</td><td>Distribuir o poner en circulación programas destructivos</td><td>Difundir ransomware</td></tr></tbody></table>"
+    },
+    {
+     "n": "Convenio de Budapest (referencia internacional)",
+     "e": [
+      "Convenio sobre la Ciberdelincuencia del Consejo de Europa (Budapest, 2001). Es la principal <b>referencia internacional</b>, no ley guatemalteca. Clasifica cuatro grupos de delitos: contra la <b>confidencialidad, integridad y disponibilidad</b> de datos y sistemas (acceso ilícito, interceptación ilícita, ataques a la integridad de los datos y del sistema, abuso de dispositivos); <b>informáticos</b> (falsificación y fraude informáticos); <b>relacionados con el contenido</b> (pornografía infantil); y <b>relacionados con infracciones a la propiedad intelectual</b>.",
+      "Además trae reglas procesales (conservación rápida de datos, registro y decomiso de datos) y de cooperación internacional (red de contacto disponible 24/7). Sirve para identificar los vacíos de la legislación nacional."
+     ],
+     "u": [
+      "Análisis comparado y propuestas de reforma legal.",
+      "Muestra qué conductas no están cubiertas en Guatemala.",
+      "En ataques transnacionales o al evaluar lagunas legales.",
+      "Compara cada categoría de Budapest con los artículos 274 \"A\" a \"G\"."
+     ]
+    },
+    {
+     "n": "Evidencia digital y denuncia",
+     "e": [
+      "La denuncia se presenta ante el Ministerio Público o la Policía Nacional Civil y el proceso se rige por el Código Procesal Penal (Decreto 51-92). La evidencia digital debe preservarse con <b>cadena de custodia</b>: no apagar ni reinstalar el equipo comprometido, aislarlo de la red, documentar quién hizo qué y cuándo, obtener copias forenses y calcular su <b>hash</b> para demostrar que no cambiaron."
+     ],
+     "u": [
+      "Respuesta a incidentes en cualquier organización.",
+      "Evidencia mal manejada puede ser impugnada y perderse el caso.",
+      "Desde el primer minuto del incidente.",
+      "Sigue un procedimiento escrito: aislar, documentar, copiar, calcular hash, denunciar."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un exadministrador de sistemas, despedido el viernes, entra el lunes con su usuario que nadie desactivó y borra la base de datos de clientes. ¿Qué delito comete?",
+     "pasos": [
+      "<b>Hechos.</b> Borrado intencional de registros informáticos ajenos.",
+      "<b>Bien jurídico o derecho afectado.</b> Integridad de la información y patrimonio de la empresa.",
+      "<b>Norma aplicable.</b> Código Penal, art. 274 \"A\" (destrucción de registros informáticos).",
+      "<b>Consecuencia y recomendación.</b> Denuncia ante el MP con bitácoras y copias preservadas; restaurar desde respaldos. Falla de control: desactivar las cuentas el mismo día de la salida."
+     ],
+     "r": "Destrucción de registros informáticos (274 \"A\").",
+     "fin": "Encuadrar un sabotaje interno."
+    },
+    {
+     "nv": "I",
+     "q": "El contador de una empresa usa el sistema contable para borrar facturas y reducir las ventas que declara a la SAT. ¿Qué normas aplican?",
+     "pasos": [
+      "<b>Hechos.</b> Alteración de registros electrónicos para ocultar información al fisco.",
+      "<b>Bien jurídico o derecho afectado.</b> Veracidad de la información contable y los intereses de la hacienda pública.",
+      "<b>Norma aplicable.</b> Código Penal, art. 274 \"E\" (manipulación de información para incumplir obligaciones ante el Estado o falsear estados contables); además, los delitos tributarios del mismo Código, como la defraudación tributaria.",
+      "<b>Consecuencia y recomendación.</b> Responsabilidad penal del contador y de quien lo ordene. En TI: registros inmutables con bitácora y separación de funciones."
+     ],
+     "r": "Manipulación de información (274 \"E\") y posible delito tributario.",
+     "fin": "Relacionar sistemas contables con delitos."
+    },
+    {
+     "nv": "I",
+     "q": "Un técnico de soporte de una clínica copia a su USB la base de pacientes con diagnósticos y la usa para ofrecer servicios a esos pacientes. ¿Qué delitos se configuran?",
+     "pasos": [
+      "<b>Hechos.</b> Obtención no autorizada de datos y creación de un registro propio con datos de salud.",
+      "<b>Bien jurídico o derecho afectado.</b> Intimidad de los pacientes y confidencialidad de la información.",
+      "<b>Norma aplicable.</b> Código Penal: art. 274 \"F\" (obtener y utilizar sin autorización datos de registros informáticos) y art. 274 \"D\" (crear un registro con datos que pueden afectar la intimidad).",
+      "<b>Consecuencia y recomendación.</b> Pueden concurrir ambos delitos. La clínica debe bloquear medios extraíbles, aplicar mínimo privilegio y registrar las exportaciones."
+     ],
+     "r": "Uso de información (274 \"F\") y registros prohibidos (274 \"D\").",
+     "fin": "Reconocer el concurso de delitos informáticos."
+    },
+    {
+     "nv": "A",
+     "q": "Un ransomware cifra los servidores de una municipalidad y el atacante, desde el extranjero, pide un rescate en criptomonedas. Analiza el caso.",
+     "pasos": [
+      "<b>Hechos.</b> Programa malicioso que inutiliza la información y exigencia de pago.",
+      "<b>Bien jurídico o derecho afectado.</b> Disponibilidad e integridad de la información y servicios públicos.",
+      "<b>Norma aplicable.</b> Código Penal: art. 274 \"G\" (programas destructivos), art. 274 \"A\" (inutilización de registros) y la figura general de extorsión. Como referencia, el Convenio de Budapest prevé ataques a la integridad de datos y sistemas y cooperación internacional.",
+      "<b>Consecuencia y recomendación.</b> Aislar los equipos sin apagarlos, preservar evidencia, denunciar ante el MP y recuperar desde respaldos fuera de línea. Pagar no garantiza recuperar los datos. Lo transnacional dificulta la persecución sin cooperación internacional."
+     ],
+     "r": "Programas destructivos y destrucción de registros, con extorsión; persecución difícil por ser transnacional.",
+     "fin": "Responder legal y técnicamente a un ransomware."
+    },
+    {
+     "nv": "A",
+     "q": "Un estudiante entra al sistema de notas de su universidad explotando una inyección SQL; solo consulta notas ajenas y no cambia nada. ¿Es delito en Guatemala?",
+     "pasos": [
+      "<b>Hechos.</b> Acceso no autorizado con consulta de datos, sin alteración.",
+      "<b>Bien jurídico o derecho afectado.</b> Confidencialidad de la información académica.",
+      "<b>Norma aplicable.</b> Guatemala no tiene un tipo de acceso ilícito como el del art. 2 del Convenio de Budapest. Podría encuadrarse en el art. 274 \"F\" si se prueba que obtuvo datos sin autorización; el encuadre es discutible y debe hacerlo el fiscal.",
+      "<b>Consecuencia y recomendación.</b> Hay sanción disciplinaria segura y posible responsabilidad penal. La universidad debe corregir la vulnerabilidad. El camino correcto era reportarla de forma responsable."
+     ],
+     "r": "Encuadre discutible en el 274 \"F\"; muestra el vacío legal sobre acceso ilícito.",
+     "fin": "Identificar lagunas del marco nacional."
+    },
+    {
+     "nv": "B",
+     "q": "Distribuir un programa que daña registros y equipos de computación se encuadra en el delito de…",
+     "ops": [
+      "registros prohibidos (274 \"D\")",
+      "reproducción de programas (274 \"C\")",
+      "manipulación de información (274 \"E\")",
+      "programas destructivos (274 \"G\")"
+     ],
+     "ok": 3,
+     "r": "Castiga distribuir o poner en circulación programas destructivos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué decreto agregó los delitos informáticos al Código Penal?",
+     "ops": [
+      "Decreto 33-96",
+      "Decreto 17-73",
+      "Decreto 47-2008",
+      "Decreto 57-2008"
+     ],
+     "ok": 0,
+     "r": "El Decreto 17-73 es el Código Penal original; el 33-96 le agregó los artículos 274 \"A\" a \"G\"."
+    },
+    {
+     "nv": "I",
+     "q": "Crear una base de datos con información que puede afectar la intimidad de las personas es el delito de…",
+     "ops": [
+      "uso de información",
+      "destrucción de registros informáticos",
+      "registros prohibidos",
+      "alteración de programas"
+     ],
+     "ok": 2,
+     "r": "Art. 274 \"D\" del Código Penal."
+    },
+    {
+     "nv": "I",
+     "q": "En el Convenio de Budapest, el acceso ilícito y la interceptación ilícita pertenecen a los delitos…",
+     "ops": [
+      "contra la confidencialidad, integridad y disponibilidad de datos y sistemas",
+      "relacionados con el contenido",
+      "relacionados con la propiedad intelectual",
+      "informáticos de falsificación y fraude"
+     ],
+     "ok": 0,
+     "r": "Es el primer grupo del Convenio, que es solo referencia internacional."
+    },
+    {
+     "nv": "A",
+     "q": "Al descubrir un servidor comprometido, ¿qué acción preserva mejor la evidencia?",
+     "ops": [
+      "Formatearlo y reinstalarlo para volver a operar",
+      "Aislarlo de la red sin apagarlo, documentar y obtener copias forenses con su hash",
+      "Borrar los archivos maliciosos",
+      "Apagarlo y llevarlo a reparación"
+     ],
+     "ok": 1,
+     "r": "La cadena de custodia exige demostrar que la evidencia no cambió."
+    }
+   ]
+  },
+  {
+   "titulo": "Derecho Laboral y Mercantil para el profesional de TI",
+   "intro": "Unidades de Introducción al Derecho Laboral (nociones e historia; relación obrero-patronal y sustitución patronal; contrato individual y colectivo; suspensión y terminación; despido directo e indirecto y preaviso; jornadas; salario; comisiones paritarias; aguinaldo, descansos, asuetos y vacaciones; reglamento interior; sindicatos; Inspección General de Trabajo; proceso laboral; huelga y paro) e Introducción al Derecho Mercantil (sociedad anónima, empresa mercantil, títulos de crédito y acción cambiaria).",
+   "conceptos": [
+    {
+     "n": "Relación y contrato de trabajo",
+     "e": [
+      "El Derecho Laboral nace de la Revolución Industrial para proteger al trabajador, la parte débil. En Guatemala lo regulan la Constitución y el Código de Trabajo (Decreto 1441); sus principios son tutelar, de irrenunciabilidad de derechos mínimos y de realidad.",
+      "El <b>contrato individual de trabajo</b> es el vínculo por el que una persona presta sus servicios personales a otra, bajo su <b>dependencia continuada y dirección</b>, a cambio de un <b>salario</b>. Basta que inicie la relación de trabajo para que el contrato exista. Puede ser <b>por tiempo indefinido</b> (regla general), <b>a plazo fijo</b> o <b>para obra determinada</b>. El <b>pacto colectivo de condiciones de trabajo</b> se negocia con un sindicato. La <b>sustitución patronal</b> no afecta los contratos vigentes.",
+      "El \"disfraz\" de la relación laboral: contratar por \"servicios profesionales\" con factura a quien cumple horario, recibe órdenes y usa el equipo de la empresa. Por el principio de realidad, cuenta lo que ocurre y no el nombre del contrato."
+     ],
+     "u": [
+      "Contrataciones de desarrolladores, soporte y consultores.",
+      "Define si hay derecho a indemnización, prestaciones e IGSS.",
+      "Al firmar o redactar un contrato en TI.",
+      "Revisa si hay subordinación, horario y salario: si los hay, es relación laboral."
+     ]
+    },
+    {
+     "n": "Jornada, salario y prestaciones",
+     "e": [
+      "Jornadas ordinarias: <b>diurna</b> (de 6:00 a 18:00) hasta 8 horas diarias y 44 semanales (48 para efectos de pago); <b>nocturna</b> (de 18:00 a 6:00) hasta 6 diarias y 36 semanales; <b>mixta</b> hasta 7 diarias y 42 semanales. Las <b>horas extraordinarias</b> se pagan con 50 % más.",
+      "El <b>salario mínimo</b> se fija por acuerdo gubernativo con base en las <b>comisiones paritarias</b> (igual número de representantes de patronos y trabajadores). Prestaciones: <b>aguinaldo</b> (Decreto 76-78, un salario mensual, la mitad en diciembre y la otra mitad en enero; período del 1 de diciembre al 30 de noviembre); <b>bono 14</b> (Decreto 42-92, un salario mensual pagado en julio; período del 1 de julio al 30 de junio); <b>vacaciones</b> de 15 días hábiles por año trabajado; descanso semanal y días de asueto pagados. Cuotas del IGSS: 4.83 % del trabajador; el patrono aporta 10.67 % más 1 % de IRTRA y 1 % de INTECAP.",
+      "El <b>reglamento interior de trabajo</b> regula el orden y la disciplina en la empresa y es obligatorio a partir de cierto número de trabajadores permanentes."
+     ],
+     "u": [
+      "Planillas, sistemas de recursos humanos y turnos de soporte 24/7.",
+      "Un cálculo mal programado viola derechos de cientos de trabajadores.",
+      "Al programar o auditar un sistema de nómina.",
+      "Valida cada regla del sistema contra la ley y con casos de prueba."
+     ],
+     "f": "\\text{Hora extra}=1.5\\times\\frac{\\text{Salario mensual}}{30\\times 8}\\quad(\\text{jornada diurna})"
+    },
+    {
+     "n": "Terminación de la relación y conflictos",
+     "e": [
+      "<b>Despido directo:</b> el patrono termina la relación; si no prueba causa justa, debe pagar <b>indemnización</b> de un mes de salario por cada año de servicios continuos (proporcional por fracción), además de las prestaciones. <b>Despido indirecto:</b> el trabajador termina la relación por falta grave del patrono (por ejemplo, no pagar el salario) y conserva el derecho a indemnización. <b>Renuncia:</b> el trabajador da <b>preaviso</b> según su antigüedad y no recibe indemnización, pero sí las prestaciones proporcionales. <b>Suspensión:</b> cesan temporalmente las obligaciones sin terminar el contrato (por ejemplo, enfermedad cubierta por el IGSS).",
+      "El <b>sindicato</b> es una asociación permanente de trabajadores (gremial, de empresa o de industria) para defender sus intereses. La <b>Inspección General de Trabajo</b> vigila el cumplimiento de las leyes laborales y concilia. Los juicios son el <b>ordinario laboral</b> (oral) y el <b>punitivo</b> (faltas). En los conflictos colectivos, la <b>huelga</b> es la suspensión del trabajo acordada por los trabajadores y el <b>paro</b>, la acordada por el patrono, ambas sujetas a requisitos legales."
+     ],
+     "u": [
+      "Salidas de personal de TI, reclamos y negociación colectiva.",
+      "Una terminación mal hecha genera demandas y pagos adicionales.",
+      "Al renunciar, despedir o calcular una liquidación.",
+      "Identifica la causa de terminación y aplica la regla de pago que le corresponde."
+     ],
+     "tabla": "<table><thead><tr><th>Antigüedad del trabajador</th><th>Preaviso de la renuncia</th></tr></thead><tbody><tr><td>Menos de 6 meses</td><td>Una semana</td></tr><tr><td>De 6 meses a 1 año</td><td>Diez días</td></tr><tr><td>De 1 a 5 años</td><td>Dos semanas</td></tr><tr><td>Más de 5 años</td><td>Un mes</td></tr></tbody></table>"
+    },
+    {
+     "n": "Nociones de Derecho Mercantil",
+     "e": [
+      "Lo regula el Código de Comercio (Decreto 2-70). Son <b>comerciantes</b> quienes ejercen en nombre propio y con fines de lucro actividades de comercio, y las <b>sociedades mercantiles</b>: colectiva, en comandita simple, de responsabilidad limitada, <b>anónima</b> y en comandita por acciones. En la <b>sociedad anónima</b> el capital se divide en acciones y cada accionista responde solo hasta el monto de sus acciones; se constituye en escritura pública y se inscribe en el Registro Mercantil.",
+      "La <b>empresa mercantil</b> es el conjunto de trabajo, elementos materiales y valores incorpóreos coordinados para ofrecer bienes o servicios al público con fin de lucro y de manera sistemática. Los <b>títulos de crédito</b> (letra de cambio, pagaré, cheque, acciones, entre otros) incorporan un derecho <b>literal y autónomo</b> que no se ejerce sin el documento. La <b>acción cambiaria</b> es el medio para cobrarlos judicialmente: <b>directa</b> contra el obligado principal y <b>de regreso</b> contra los demás obligados (endosantes, librador)."
+     ],
+     "u": [
+      "Fundar una empresa de software, cobrar a clientes, recibir inversión.",
+      "La forma de la sociedad define el riesgo personal de los socios.",
+      "Al emprender o al aceptar títulos de crédito como pago.",
+      "Elige la sociedad adecuada e inscríbela; cobra títulos por la vía cambiaria."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una desarrolladora trabaja 3 años para una empresa con factura de \"servicios profesionales\", pero cumple horario de 8:00 a 17:00, tiene jefe y usa la computadora de la empresa. La despiden sin pagarle nada. ¿Tiene derechos laborales?",
+     "pasos": [
+      "<b>Hechos.</b> Contrato con nombre civil, pero con horario, subordinación y pago periódico.",
+      "<b>Bien jurídico o derecho afectado.</b> Estabilidad laboral, indemnización y prestaciones.",
+      "<b>Norma aplicable.</b> Código de Trabajo (definición del contrato de trabajo y existencia del contrato desde que inicia la relación); principio de realidad; Constitución (irrenunciabilidad de los derechos laborales).",
+      "<b>Consecuencia y recomendación.</b> Hay relación laboral disfrazada. Puede acudir a la Inspección General de Trabajo o a los tribunales de trabajo para reclamar indemnización y prestaciones, y actuar pronto porque los plazos para reclamar son cortos."
+     ],
+     "r": "Sí: hay relación laboral y puede reclamar indemnización y prestaciones.",
+     "fin": "Reconocer el disfraz de la relación de trabajo."
+    },
+    {
+     "nv": "I",
+     "q": "Un analista con salario ordinario de Q8,000 trabajó del 1 de febrero de 2023 al 31 de julio de 2026 y lo despidieron sin causa justa. Calcula la indemnización y el aguinaldo y bono 14 proporcionales (sin vacaciones pendientes).",
+     "pasos": [
+      "<b>Hechos.</b> Despido injustificado después de 3 años y 6 meses de servicio.",
+      "<b>Derecho afectado.</b> Indemnización y prestaciones proporcionales.",
+      "<b>Norma aplicable.</b> Constitución y Código de Trabajo (indemnización de un mes por año, proporcional); Decretos 76-78 (aguinaldo) y 42-92 (bono 14).",
+      "<b>Indemnización.</b> \\(8000\\times 3.5=\\text{Q}28{,}000.00\\), tomando Q8,000 como salario promedio de los últimos seis meses.",
+      "<b>Aguinaldo.</b> Del 1 de diciembre de 2025 al 31 de julio de 2026 hay 243 días: \\(8000\\times 243/365=\\text{Q}5{,}326.03\\). <b>Bono 14.</b> Del 1 al 31 de julio de 2026 hay 31 días: \\(8000\\times 31/365=\\text{Q}679.45\\).",
+      "<b>Consecuencia.</b> Total: Q34,005.48. Comprueba el resultado con la calculadora del Ministerio de Trabajo, que puede incluir en la base de la indemnización las partes proporcionales de aguinaldo y bono 14."
+     ],
+     "r": "Indemnización Q28,000.00; aguinaldo Q5,326.03; bono 14 Q679.45; total Q34,005.48.",
+     "fin": "Programar y auditar liquidaciones laborales."
+    },
+    {
+     "nv": "I",
+     "q": "Un técnico de soporte gana Q4,800 al mes en jornada diurna y en una migración trabajó 10 horas extra. ¿Cuánto deben pagarle por ellas?",
+     "pasos": [
+      "<b>Hechos.</b> Trabajo fuera de la jornada ordinaria diurna.",
+      "<b>Derecho afectado.</b> Límite de la jornada y salario por el tiempo extra.",
+      "<b>Norma aplicable.</b> Código de Trabajo: las horas extraordinarias se pagan con 50 % más que las ordinarias; la jornada ordinaria y la extraordinaria juntas tienen un límite diario.",
+      "<b>Cálculo.</b> Hora ordinaria: \\(4800/(30\\times 8)=\\text{Q}20\\). Hora extra: \\(1.5\\times 20=\\text{Q}30\\). Diez horas: \\(10\\times 30=\\text{Q}300\\).",
+      "<b>Consecuencia.</b> Deben pagarle Q300 adicionales; el sistema de planillas debe calcularlo y registrar las horas autorizadas."
+     ],
+     "r": "Q300 por las 10 horas extra.",
+     "fin": "Calcular el tiempo extraordinario."
+    },
+    {
+     "nv": "A",
+     "q": "Una programadora con 2 años y 6 meses en una empresa recibe una oferta y quiere irse el lunes siguiente sin avisar. ¿Qué le corresponde hacer y recibir?",
+     "pasos": [
+      "<b>Hechos.</b> Renuncia voluntaria a un contrato por tiempo indefinido.",
+      "<b>Bien jurídico o derecho afectado.</b> Libertad de trabajo de la programadora y continuidad del servicio para el patrono.",
+      "<b>Norma aplicable.</b> Código de Trabajo: la renuncia exige preaviso según la antigüedad; con 30 meses (entre 1 y 5 años) corresponden dos semanas. Al renunciar no hay indemnización, pero sí prestaciones proporcionales.",
+      "<b>Consecuencia y recomendación.</b> Debe avisar por escrito con dos semanas de anticipación; si no lo hace puede responder frente al patrono. Recibe aguinaldo, bono 14 y vacaciones proporcionales y salarios pendientes, pero no indemnización."
+     ],
+     "r": "Preaviso de dos semanas; prestaciones proporcionales, sin indemnización.",
+     "fin": "Renunciar correctamente."
+    },
+    {
+     "nv": "A",
+     "q": "Un cliente paga Q12,000 a una empresa de desarrollo con un cheque que el banco rechaza por falta de fondos. ¿Qué puede hacer la empresa?",
+     "pasos": [
+      "<b>Hechos.</b> Cheque sin fondos entregado como pago de un servicio.",
+      "<b>Bien jurídico o derecho afectado.</b> Derecho de crédito de la empresa.",
+      "<b>Norma aplicable.</b> Código de Comercio: el cheque es un título de crédito; la constancia de rechazo del banco permite ejercer la acción cambiaria directa contra el librador por la vía ejecutiva. El Código Penal además tipifica la estafa mediante cheque.",
+      "<b>Consecuencia y recomendación.</b> Conservar el cheque y la constancia de rechazo, requerir el pago y, si no paga, demandar por la vía cambiaria; si hubo engaño, denunciar. Para servicios grandes, pedir anticipos o transferencias confirmadas."
+     ],
+     "r": "Acción cambiaria contra el librador y posible denuncia por estafa mediante cheque.",
+     "fin": "Cobrar un título de crédito."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es la jornada ordinaria diurna máxima de trabajo efectivo?",
+     "ops": [
+      "10 horas diarias y 48 semanales",
+      "6 horas diarias y 36 semanales",
+      "8 horas diarias y 44 semanales",
+      "7 horas diarias y 42 semanales"
+     ],
+     "ok": 2,
+     "r": "6 y 36 son de la nocturna; 7 y 42, de la mixta."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cómo se paga el aguinaldo?",
+     "ops": [
+      "Un salario mensual completo en julio",
+      "Un salario mensual: la mitad en diciembre y la otra mitad en enero",
+      "Medio salario en diciembre",
+      "Quince días de salario en junio"
+     ],
+     "ok": 1,
+     "r": "El bono 14 es el que se paga en julio."
+    },
+    {
+     "nv": "I",
+     "q": "Si el patrono deja de pagar el salario y el trabajador da por terminada la relación por esa causa, se trata de…",
+     "ops": [
+      "despido indirecto",
+      "despido directo justificado",
+      "renuncia sin derecho a nada",
+      "suspensión del contrato"
+     ],
+     "ok": 0,
+     "r": "El trabajador conserva el derecho a indemnización."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué sociedad el capital se divide en acciones y cada socio responde solo hasta el monto de sus acciones?",
+     "ops": [
+      "Sociedad colectiva",
+      "Sociedad en comandita simple",
+      "Copropiedad",
+      "Sociedad anónima"
+     ],
+     "ok": 3,
+     "r": "En la sociedad colectiva los socios responden de forma ilimitada."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué significa que un título de crédito sea literal?",
+     "ops": [
+      "El derecho se mide por lo que dice el documento",
+      "El derecho depende del contrato que le dio origen",
+      "Solo puede cobrarlo quien lo firmó",
+      "Debe estar escrito a mano"
+     ],
+     "ok": 0,
+     "r": "Por eso importa revisar el texto del cheque o pagaré antes de recibirlo."
+    }
+   ]
+  }
+ ]
+}
