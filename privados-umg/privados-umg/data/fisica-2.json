@@ -1,0 +1,777 @@
+{
+ "slug": "fisica-2",
+ "titulo": "Física II",
+ "meta": "Ciclo 4, código 020, bloque Física del seminario",
+ "firma": "\\varepsilon=-N\\frac{d\\Phi_B}{dt}",
+ "firma_nota": "Ley de Faraday: un campo magnético que cambia produce voltaje. Así funcionan generadores y transformadores.",
+ "lead": "Electricidad y magnetismo: carga, campo, potencial, circuitos, capacitores, inductores y campo magnético. Es la física detrás de cada componente electrónico. Constantes: k = 8.99 × 10⁹ N·m²/C², e = 1.6 × 10⁻¹⁹ C, ε₀ = 8.85 × 10⁻¹² F/m, μ₀ = 4π × 10⁻⁷ T·m/A.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Cuarto%20Ciclo/2014-4FisicaII.pdf",
+ "temas": [
+  {
+   "titulo": "Electrostática",
+   "intro": "Tema 1 del programa: el átomo y el electrón, conductores y aislantes, ley de Coulomb, campo eléctrico, dipolos y ley de Gauss.",
+   "conceptos": [
+    {
+     "n": "Carga, conductores y aislantes",
+     "e": [
+      "La carga está cuantizada (múltiplos de \\(e=1.6\\times10^{-19}\\) C) y se conserva. Cargas iguales se repelen y opuestas se atraen. En un conductor los electrones se mueven libremente; en un aislante no. Un cuerpo se carga por fricción, contacto o inducción."
+     ],
+     "u": [
+      "Descargas electrostáticas que dañan componentes (pulseras antiestáticas), fotocopiadoras.",
+      "Explica por qué se protege el hardware al manipularlo.",
+      "Al manipular electrónica o analizar materiales.",
+      "Identifica el tipo de material y el signo de las cargas."
+     ]
+    },
+    {
+     "n": "Ley de Coulomb",
+     "e": [
+      "La fuerza entre dos cargas puntuales es proporcional al producto de las cargas e inversamente proporcional al cuadrado de la distancia. Con varias cargas se suman las fuerzas como vectores (superposición)."
+     ],
+     "u": [
+      "Diseño de sensores capacitivos, química, impresoras láser.",
+      "Es la base de toda la interacción eléctrica.",
+      "Con cargas puntuales.",
+      "Calcula cada fuerza por separado y suma componentes."
+     ],
+     "f": "F=k\\frac{|q_1q_2|}{r^2}"
+    },
+    {
+     "n": "Campo eléctrico y dipolos",
+     "e": [
+      "\\(\\vec E=\\tfrac{\\vec F}{q_0}\\): la fuerza por unidad de carga. De una carga puntual: \\(E=k\\tfrac{|q|}{r^2}\\), alejándose de cargas positivas. Un dipolo son dos cargas iguales y opuestas; en un campo uniforme siente una torca que lo alinea."
+     ],
+     "u": [
+      "Pantallas táctiles, osciloscopios de rayos catódicos, moléculas como el agua (dipolos) en hornos de microondas.",
+      "Describe la influencia de una carga en el espacio.",
+      "Para calcular fuerzas sobre cualquier carga de prueba.",
+      "Calcula E de cada fuente y suma vectorialmente."
+     ]
+    },
+    {
+     "n": "Ley de Gauss",
+     "e": [
+      "El flujo eléctrico a través de una superficie cerrada es igual a la carga encerrada entre \\(\\varepsilon_0\\). Con simetría (esferas, cilindros, planos) da el campo fácilmente. Dentro de un conductor en equilibrio el campo es cero y la carga queda en la superficie."
+     ],
+     "u": [
+      "Jaulas de Faraday, blindaje de cables coaxiales y de equipos sensibles.",
+      "Calcula campos con simetría sin integrar.",
+      "Con distribuciones simétricas de carga.",
+      "Elige una superficie gaussiana con la misma simetría."
+     ],
+     "f": "\\oint\\vec E\\cdot d\\vec A=\\frac{Q_{enc}}{\\varepsilon_0}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla la fuerza entre +3 μC y −5 μC separadas 0.2 m.",
+     "pasos": [
+      "<b>Coulomb.</b> \\(8.99\\times10^9\\cdot\\tfrac{(3\\times10^{-6})(5\\times10^{-6})}{0.04}\\).",
+      "<b>Resultado.</b> \\(\\approx3.37\\) N, atractiva."
+     ],
+     "r": "3.37 N de atracción.",
+     "fin": "Aplicar la ley de Coulomb."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el campo de una carga de 5 nC a 10 cm.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(E=\\tfrac{8.99\\times10^9(5\\times10^{-9})}{0.01}\\).",
+      "<b>Dirección.</b> Hacia afuera (carga positiva)."
+     ],
+     "r": "≈ 4495 N/C",
+     "fin": "Calcular campos de cargas puntuales."
+    },
+    {
+     "nv": "I",
+     "q": "Una esfera conductora de radio 0.1 m tiene 2 nC. Halla E dentro y a 0.2 m del centro.",
+     "pasos": [
+      "<b>Dentro.</b> Conductor en equilibrio: \\(E=0\\).",
+      "<b>Fuera (Gauss).</b> Actúa como carga puntual: \\(\\tfrac{8.99\\times10^9(2\\times10^{-9})}{0.04}\\approx449.5\\) N/C."
+     ],
+     "r": "0 dentro y ≈ 449.5 N/C a 0.2 m.",
+     "fin": "Aplicar Gauss y el blindaje de conductores."
+    },
+    {
+     "nv": "I",
+     "q": "Un electrón está en un campo uniforme de 1000 N/C. Halla la fuerza y su aceleración.",
+     "pasos": [
+      "<b>Fuerza.</b> \\(eE=1.6\\times10^{-16}\\) N, opuesta al campo.",
+      "<b>Aceleración.</b> \\(\\tfrac{1.6\\times10^{-16}}{9.11\\times10^{-31}}\\approx1.76\\times10^{14}\\) m/s²."
+     ],
+     "r": "\\(1.6\\times10^{-16}\\) N y \\(1.76\\times10^{14}\\) m/s².",
+     "fin": "Ver por qué los electrones responden tan rápido a los campos."
+    },
+    {
+     "nv": "A",
+     "q": "Hay +2 μC en (0, 0), −3 μC en (0.3, 0) y +1 μC en (0, 0.4) m. Halla la fuerza neta sobre la de +1 μC.",
+     "pasos": [
+      "<b>De la de +2 μC.</b> \\(k\\tfrac{(2)(1)\\times10^{-12}}{0.16}\\approx0.112\\) N hacia +y (repulsión).",
+      "<b>De la de −3 μC.</b> Distancia 0.5 m: \\(\\approx0.108\\) N hacia (0.3, −0.4), es decir dirección (0.6, −0.8).",
+      "<b>Componentes.</b> \\(F_x=0.108(0.6)=0.065\\); \\(F_y=0.112-0.108(0.8)=0.026\\).",
+      "<b>Resultante.</b> \\(\\sqrt{0.065^2+0.026^2}\\approx0.070\\) N a \\(21.9^\\circ\\)."
+     ],
+     "r": "≈ 0.070 N a 21.9° sobre la horizontal.",
+     "fin": "Aplicar superposición vectorial."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos electrones forman una carga de 1 μC?",
+     "r": "\\(6.25\\times10^{12}\\)"
+    },
+    {
+     "nv": "B",
+     "q": "Si la distancia entre dos cargas se duplica, ¿qué pasa con la fuerza?",
+     "r": "Se reduce a la cuarta parte."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto vale el campo en el punto medio entre dos cargas iguales de +2 nC?",
+     "r": "0: los campos se cancelan."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué flujo eléctrico atraviesa una superficie cerrada que encierra 3 nC?",
+     "r": "\\(\\tfrac{3\\times10^{-9}}{8.85\\times10^{-12}}\\approx339\\) N·m²/C"
+    },
+    {
+     "nv": "A",
+     "q": "Halla el campo de una línea infinita con \\(\\lambda=2\\) μC/m a 0.1 m (\\(E=2k\\lambda/r\\)).",
+     "r": "\\(\\approx3.6\\times10^5\\) N/C"
+    }
+   ]
+  },
+  {
+   "titulo": "Potencial eléctrico y corriente",
+   "intro": "Tema 2 del programa: potencial eléctrico, fuerza electromotriz, ley de Ohm, resistividad, coeficiente de temperatura, código de colores y superconductividad.",
+   "conceptos": [
+    {
+     "n": "Potencial eléctrico",
+     "e": [
+      "Es la energía potencial por unidad de carga: \\(V=\\tfrac Uq\\). De una carga puntual \\(V=k\\tfrac qr\\) (escalar, con signo). El trabajo para mover una carga es \\(W=q\\Delta V\\). Entre placas paralelas \\(E=\\tfrac Vd\\)."
+     ],
+     "u": [
+      "Voltajes de alimentación, diferencias de potencial en circuitos.",
+      "Es más fácil trabajar con un escalar que con el vector campo.",
+      "Al calcular energía de cargas o voltajes.",
+      "Suma potenciales con su signo."
+     ],
+     "f": "V=k\\frac qr\\qquad W=q\\,\\Delta V\\qquad E=\\frac Vd"
+    },
+    {
+     "n": "Fuerza electromotriz y ley de Ohm",
+     "e": [
+      "La fem \\(\\varepsilon\\) es el voltaje que entrega una fuente; con resistencia interna \\(r\\), el voltaje en terminales es \\(\\varepsilon-Ir\\). Ohm: \\(V=IR\\). Potencia: \\(P=VI=I^2R=\\tfrac{V^2}R\\)."
+     ],
+     "u": [
+      "Dimensionar fuentes, cables y fusibles; consumo de servidores.",
+      "Relaciona voltaje, corriente y resistencia en cualquier circuito.",
+      "En todo circuito resistivo.",
+      "Despeja la incógnita y verifica potencia disipada."
+     ],
+     "f": "V=IR\\qquad P=VI=I^2R=\\frac{V^2}{R}"
+    },
+    {
+     "n": "Resistividad y temperatura",
+     "e": [
+      "\\(R=\\rho\\tfrac LA\\): crece con la longitud y baja con la sección. En metales la resistencia aumenta con la temperatura: \\(R=R_0[1+\\alpha(T-T_0)]\\). Un superconductor tiene resistencia cero por debajo de su temperatura crítica."
+     ],
+     "u": [
+      "Calibre de cables de red y eléctricos, sensores de temperatura (RTD), resonancia magnética.",
+      "Permite elegir cables que no se calienten.",
+      "Al diseñar instalaciones o sensores.",
+      "Calcula R con ρ, L y A, y ajústala por temperatura."
+     ],
+     "f": "R=\\rho\\frac LA\\qquad R=R_0[1+\\alpha(T-T_0)]"
+    },
+    {
+     "n": "Código de colores",
+     "e": [
+      "Negro 0, café 1, rojo 2, naranja 3, amarillo 4, verde 5, azul 6, violeta 7, gris 8, blanco 9. Las dos primeras bandas son dígitos, la tercera el multiplicador (potencia de 10) y la cuarta la tolerancia: dorado ±5 %, plateado ±10 %."
+     ],
+     "u": [
+      "Armado y reparación de placas electrónicas.",
+      "Identifica resistencias sin medirlas.",
+      "Al trabajar con componentes físicos.",
+      "Lee de izquierda a derecha con la tolerancia a la derecha."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una resistencia de 4 Ω se conecta a 12 V. Halla la corriente y la potencia.",
+     "pasos": [
+      "<b>Ohm.</b> \\(I=\\tfrac{12}4=3\\) A.",
+      "<b>Potencia.</b> \\(12(3)=36\\) W."
+     ],
+     "r": "3 A y 36 W.",
+     "fin": "Aplicar Ohm y potencia."
+    },
+    {
+     "nv": "B",
+     "q": "Halla el potencial a 0.1 m de una carga de 5 nC.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(V=k\\tfrac qr=\\tfrac{8.99\\times10^9(5\\times10^{-9})}{0.1}\\).",
+      "<b>Signo.</b> La carga es positiva, así que el potencial es positivo; es un escalar, sin dirección."
+     ],
+     "r": "≈ 449.5 V",
+     "fin": "Calcular potenciales de cargas puntuales."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la resistencia de 100 m de cable de cobre de 1 mm² (ρ = 1.72 × 10⁻⁸ Ω·m).",
+     "pasos": [
+      "<b>Área.</b> \\(1\\text{ mm}^2=10^{-6}\\) m².",
+      "<b>Fórmula.</b> \\(1.72\\times10^{-8}\\tfrac{100}{10^{-6}}\\)."
+     ],
+     "r": "1.72 Ω",
+     "fin": "Elegir calibres de cable."
+    },
+    {
+     "nv": "I",
+     "q": "Lee una resistencia café-negro-rojo-dorado y halla la corriente a 5 V.",
+     "pasos": [
+      "<b>Dígitos.</b> 1 y 0: 10.",
+      "<b>Multiplicador.</b> Rojo: \\(\\times10^2\\) = 1000 Ω, ±5 % (950 a 1050 Ω).",
+      "<b>Corriente.</b> \\(\\tfrac5{1000}=5\\) mA."
+     ],
+     "r": "1 kΩ ±5 %; 5 mA.",
+     "fin": "Leer componentes reales."
+    },
+    {
+     "nv": "A",
+     "q": "Entre dos placas separadas 2 mm hay 400 V. Halla el campo y el trabajo para mover 2 μC de la placa de 100 V a un punto de 400 V.",
+     "pasos": [
+      "<b>Campo.</b> \\(\\tfrac{400}{0.002}=2\\times10^5\\) V/m.",
+      "<b>Trabajo.</b> \\(q\\Delta V=2\\times10^{-6}(300)\\)."
+     ],
+     "r": "\\(2\\times10^5\\) V/m y \\(6\\times10^{-4}\\) J.",
+     "fin": "Relacionar campo, potencial y trabajo."
+    },
+    {
+     "nv": "B",
+     "q": "Lee una resistencia amarillo-violeta-naranja.",
+     "r": "47 kΩ"
+    },
+    {
+     "nv": "B",
+     "q": "Un foco de 60 W funciona a 120 V. ¿Cuál es su resistencia?",
+     "r": "240 Ω"
+    },
+    {
+     "nv": "I",
+     "q": "Una batería de 9 V con r = 0.5 Ω alimenta 4 Ω. Halla I y el voltaje en terminales.",
+     "r": "2 A y 8 V."
+    },
+    {
+     "nv": "I",
+     "q": "Una resistencia de 10 Ω a 20 °C con α = 0.0039 /°C, ¿cuánto vale a 80 °C?",
+     "r": "12.34 Ω"
+    },
+    {
+     "nv": "A",
+     "q": "Halla el potencial total en un punto a 0.3 m de +3 nC y a 0.2 m de −2 nC.",
+     "r": "0 V"
+    }
+   ]
+  },
+  {
+   "titulo": "Circuitos eléctricos",
+   "intro": "Tema 3 del programa: circuitos simples, serie y paralelo, leyes de Kirchhoff, fuentes de corriente y de voltaje.",
+   "conceptos": [
+    {
+     "n": "Serie y paralelo",
+     "e": [
+      "<b>Serie:</b> misma corriente, los voltajes se suman y \\(R_{eq}=\\sum R_i\\). <b>Paralelo:</b> mismo voltaje, las corrientes se suman y \\(\\tfrac1{R_{eq}}=\\sum\\tfrac1{R_i}\\); el equivalente siempre es menor que la menor resistencia."
+     ],
+     "u": [
+      "Instalaciones eléctricas (las casas se conectan en paralelo), divisores de voltaje en electrónica.",
+      "Reduce circuitos complejos a uno simple.",
+      "Al analizar cualquier red de resistencias.",
+      "Reduce por etapas desde lo más interno."
+     ],
+     "f": "R_s=R_1+R_2+\\cdots\\qquad \\frac1{R_p}=\\frac1{R_1}+\\frac1{R_2}+\\cdots"
+    },
+    {
+     "n": "Leyes de Kirchhoff",
+     "e": [
+      "<b>Nodos:</b> la suma de corrientes que entran es igual a la que sale (conservación de carga). <b>Mallas:</b> la suma de voltajes en un lazo cerrado es cero (conservación de energía). Sirven cuando el circuito no se reduce a serie y paralelo."
+     ],
+     "u": [
+      "Análisis de placas electrónicas, redes de distribución eléctrica.",
+      "Resuelven cualquier circuito.",
+      "Con varias fuentes o redes no reducibles.",
+      "Asigna corrientes de malla, escribe una ecuación por lazo y resuelve el sistema."
+     ]
+    },
+    {
+     "n": "Fuentes de voltaje y de corriente",
+     "e": [
+      "Una fuente ideal de voltaje mantiene \\(V\\) sin importar la carga; una de corriente mantiene \\(I\\). Las reales tienen resistencia interna. Un divisor de voltaje da \\(V_x=V\\tfrac{R_x}{R_T}\\)."
+     ],
+     "u": [
+      "Fuentes de alimentación, cargadores USB, polarización de sensores.",
+      "Modelan cómo se comportan las fuentes reales.",
+      "Al conectar cargas a fuentes.",
+      "Incluye la resistencia interna en el análisis."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Resistencias de 2, 3 y 5 Ω en serie a 20 V. Halla I y el voltaje en cada una.",
+     "pasos": [
+      "<b>Equivalente.</b> 10 Ω.",
+      "<b>Corriente.</b> 2 A.",
+      "<b>Voltajes.</b> 4, 6 y 10 V (suman 20)."
+     ],
+     "r": "2 A; 4, 6 y 10 V.",
+     "fin": "Analizar un circuito en serie."
+    },
+    {
+     "nv": "B",
+     "q": "Resistencias de 6 y 3 Ω en paralelo a 12 V. Halla el equivalente y las corrientes.",
+     "pasos": [
+      "<b>Equivalente.</b> \\(\\tfrac{6\\cdot3}{6+3}=2\\) Ω.",
+      "<b>Ramas.</b> \\(\\tfrac{12}6=2\\) A y \\(\\tfrac{12}3=4\\) A.",
+      "<b>Total.</b> 6 A."
+     ],
+     "r": "2 Ω; 2 A y 4 A.",
+     "fin": "Analizar un circuito en paralelo."
+    },
+    {
+     "nv": "I",
+     "q": "Una resistencia de 4 Ω en serie con un paralelo de 6 y 12 Ω, a 24 V. Halla todas las corrientes.",
+     "pasos": [
+      "<b>Paralelo.</b> \\(\\tfrac{6\\cdot12}{18}=4\\) Ω.",
+      "<b>Total.</b> 8 Ω; \\(I=3\\) A.",
+      "<b>Voltaje del paralelo.</b> \\(3(4)=12\\) V.",
+      "<b>Ramas.</b> 2 A y 1 A."
+     ],
+     "r": "3 A total; 2 A y 1 A en las ramas.",
+     "fin": "Reducir circuitos mixtos."
+    },
+    {
+     "nv": "I",
+     "q": "Un divisor con 1 kΩ y 2 kΩ en serie se conecta a 12 V. ¿Voltaje en la de 2 kΩ?",
+     "pasos": [
+      "<b>Corriente.</b> \\(\\tfrac{12}{3000}=4\\) mA.",
+      "<b>Divisor.</b> \\(V_2=4\\text{ mA}\\cdot2\\text{ k}\\Omega=12\\cdot\\tfrac{2}{3}\\)."
+     ],
+     "r": "8 V",
+     "fin": "Obtener voltajes intermedios, como en la polarización de sensores."
+    },
+    {
+     "nv": "A",
+     "q": "Malla 1: fuente de 12 V con R₁ = 2 Ω. Malla 2: R₃ = 6 Ω y una fuente de 6 V que se opone. Ambas comparten R₂ = 4 Ω. Halla las corrientes.",
+     "pasos": [
+      "<b>Malla 1.</b> \\(12=2I_1+4(I_1-I_2)\\Rightarrow6I_1-4I_2=12\\).",
+      "<b>Malla 2.</b> \\(-6=6I_2+4(I_2-I_1)\\Rightarrow-4I_1+10I_2=-6\\).",
+      "<b>Resuelve.</b> \\(I_1\\approx2.18\\) A, \\(I_2\\approx0.27\\) A.",
+      "<b>Rama común.</b> \\(I_1-I_2\\approx1.91\\) A."
+     ],
+     "r": "\\(I_1\\approx2.18\\) A, \\(I_2\\approx0.27\\) A; 1.91 A por R₂.",
+     "fin": "Resolver circuitos con varias fuentes."
+    },
+    {
+     "nv": "B",
+     "q": "Halla el equivalente de 100, 220 y 330 Ω en serie.",
+     "r": "650 Ω"
+    },
+    {
+     "nv": "I",
+     "q": "Halla el equivalente de tres resistencias de 30 Ω en paralelo.",
+     "r": "10 Ω"
+    },
+    {
+     "nv": "I",
+     "q": "A un nodo entran 5 A y 3 A, y por una rama salen 2 A. ¿Cuánto sale por la otra?",
+     "r": "6 A"
+    },
+    {
+     "nv": "I",
+     "q": "En un lazo hay una fuente de 9 V y caídas de 3 V y 2 V. ¿Cuánto cae en la tercera resistencia?",
+     "r": "4 V"
+    },
+    {
+     "nv": "A",
+     "q": "Un puente de Wheatstone con 100 Ω, 200 Ω y 150 Ω está balanceado. ¿Cuánto vale la cuarta?",
+     "r": "300 Ω"
+    }
+   ]
+  },
+  {
+   "titulo": "Capacitores y dieléctricos",
+   "intro": "Tema 4 del programa: capacitancia, arreglos de capacitores, cálculo de capacitancia y energía del campo eléctrico.",
+   "conceptos": [
+    {
+     "n": "Capacitancia",
+     "e": [
+      "\\(C=\\tfrac QV\\), en faradios. Un capacitor de placas paralelas tiene \\(C=\\kappa\\varepsilon_0\\tfrac Ad\\): un dieléctrico de constante \\(\\kappa\\) la multiplica por \\(\\kappa\\)."
+     ],
+     "u": [
+      "Memorias DRAM (cada bit es un capacitor), filtros de fuentes, sensores táctiles.",
+      "Almacena carga y energía.",
+      "Al diseñar filtros o almacenamiento temporal.",
+      "Calcula C con la geometría y el material."
+     ],
+     "f": "C=\\frac QV=\\kappa\\varepsilon_0\\frac Ad"
+    },
+    {
+     "n": "Arreglos",
+     "e": [
+      "En <b>paralelo</b> las capacitancias se suman (al revés que las resistencias). En <b>serie</b> se suman los inversos y todos tienen la misma carga."
+     ],
+     "u": [
+      "Bancos de capacitores, ajuste de valores en circuitos.",
+      "Permite obtener valores no comerciales.",
+      "Al combinar capacitores.",
+      "Reduce por etapas como con resistencias, con las reglas invertidas."
+     ],
+     "f": "C_p=C_1+C_2\\qquad \\frac1{C_s}=\\frac1{C_1}+\\frac1{C_2}"
+    },
+    {
+     "n": "Energía y circuito RC",
+     "e": [
+      "Energía almacenada \\(U=\\tfrac12CV^2\\), con densidad \\(u=\\tfrac12\\varepsilon_0E^2\\). Al cargarse a través de \\(R\\): \\(q(t)=Q(1-e^{-t/RC})\\), con constante de tiempo \\(\\tau=RC\\): en \\(\\tau\\) llega al 63 % y en unos \\(5\\tau\\) se considera cargado."
+     ],
+     "u": [
+      "Flash de cámaras, temporizadores, eliminación de rebotes en botones.",
+      "Controla tiempos con componentes simples.",
+      "Cuando un capacitor se carga o descarga por una resistencia.",
+      "Calcula τ = RC y usa la exponencial."
+     ],
+     "f": "U=\\tfrac12CV^2\\qquad q(t)=Q\\left(1-e^{-t/RC}\\right)"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un capacitor de 6 μF se conecta a 12 V. Halla la carga y la energía.",
+     "pasos": [
+      "<b>Carga.</b> \\(6\\times10^{-6}(12)=72\\) μC.",
+      "<b>Energía.</b> \\(\\tfrac12(6\\times10^{-6})(144)=432\\) μJ."
+     ],
+     "r": "72 μC y 432 μJ.",
+     "fin": "Aplicar las fórmulas básicas."
+    },
+    {
+     "nv": "I",
+     "q": "Placas de 0.01 m² separadas 1 mm. Halla C en aire y con un dieléctrico κ = 4.",
+     "pasos": [
+      "<b>Aire.</b> \\(8.85\\times10^{-12}\\tfrac{0.01}{0.001}=88.5\\) pF.",
+      "<b>Dieléctrico.</b> \\(4(88.5)=354\\) pF."
+     ],
+     "r": "88.5 pF y 354 pF.",
+     "fin": "Calcular capacitancia por geometría."
+    },
+    {
+     "nv": "I",
+     "q": "Un capacitor de 3 μF en serie con uno de 6 μF, y todo en paralelo con uno de 4 μF. Halla el equivalente.",
+     "pasos": [
+      "<b>Serie.</b> \\(\\tfrac{3\\cdot6}{9}=2\\) μF.",
+      "<b>Paralelo.</b> \\(2+4=6\\) μF."
+     ],
+     "r": "6 μF",
+     "fin": "Reducir arreglos de capacitores."
+    },
+    {
+     "nv": "A",
+     "q": "Un capacitor de 100 μF se carga a través de 2 kΩ. Halla τ, el porcentaje de carga en τ y el tiempo hasta el 99 %.",
+     "pasos": [
+      "<b>Constante.</b> \\(\\tau=2000(100\\times10^{-6})=0.2\\) s.",
+      "<b>En τ.</b> \\(1-e^{-1}\\approx63.2\\%\\).",
+      "<b>99 %.</b> \\(e^{-t/\\tau}=0.01\\Rightarrow t=\\tau\\ln100\\approx0.92\\) s."
+     ],
+     "r": "0.2 s; 63.2 %; ≈ 0.92 s.",
+     "fin": "Diseñar temporizadores RC."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la densidad de energía entre placas con \\(E=2\\times10^5\\) V/m.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\tfrac12(8.85\\times10^{-12})(2\\times10^5)^2\\).",
+      "<b>Calcula.</b> \\(\\tfrac12(8.85\\times10^{-12})(4\\times10^{10})\\)."
+     ],
+     "r": "≈ 0.177 J/m³",
+     "fin": "Ubicar la energía en el campo."
+    },
+    {
+     "nv": "B",
+     "q": "Dos capacitores de 10 μF en serie, ¿qué equivalente dan?",
+     "r": "5 μF"
+    },
+    {
+     "nv": "B",
+     "q": "¿Y en paralelo?",
+     "r": "20 μF"
+    },
+    {
+     "nv": "I",
+     "q": "Un equivalente en serie de 2 μF se conecta a 12 V. ¿Carga en cada capacitor?",
+     "r": "24 μC en cada uno."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánta energía guarda un capacitor de 100 μF a 50 V?",
+     "r": "0.125 J"
+    },
+    {
+     "nv": "A",
+     "q": "Con la batería conectada se inserta un dieléctrico κ. ¿Qué pasa con C, Q, V y U?",
+     "r": "C, Q y U se multiplican por κ; V no cambia."
+    }
+   ]
+  },
+  {
+   "titulo": "Inductancia y circuitos RL y RLC",
+   "intro": "Tema 5 del programa: inductancia, energía del campo magnético, circuitos RL y RLC.",
+   "conceptos": [
+    {
+     "n": "Inductancia",
+     "e": [
+      "Un inductor se opone a los cambios de corriente con una fem \\(\\varepsilon_L=-L\\tfrac{dI}{dt}\\). Guarda energía en su campo magnético: \\(U=\\tfrac12LI^2\\)."
+     ],
+     "u": [
+      "Fuentes conmutadas, filtros de ruido, bobinas de encendido.",
+      "Suaviza la corriente y almacena energía.",
+      "En circuitos con corrientes que cambian.",
+      "Calcula la fem con la tasa de cambio de la corriente."
+     ],
+     "f": "\\varepsilon_L=-L\\frac{dI}{dt}\\qquad U=\\tfrac12LI^2"
+    },
+    {
+     "n": "Circuito RL",
+     "e": [
+      "Al conectar, la corriente crece \\(I(t)=\\tfrac VR(1-e^{-t/\\tau})\\) con \\(\\tau=\\tfrac LR\\): el inductor retrasa el cambio."
+     ],
+     "u": [
+      "Relés, motores, protección de circuitos.",
+      "Explica por qué la corriente no aparece instantáneamente.",
+      "Al encender o apagar cargas inductivas.",
+      "Calcula τ = L/R y usa la exponencial."
+     ]
+    },
+    {
+     "n": "Circuito RLC y resonancia",
+     "e": [
+      "En corriente alterna, el inductor tiene reactancia \\(X_L=2\\pi fL\\) y el capacitor \\(X_C=\\tfrac1{2\\pi fC}\\). La impedancia es \\(Z=\\sqrt{R^2+(X_L-X_C)^2}\\). En resonancia \\(X_L=X_C\\): la impedancia es mínima."
+     ],
+     "u": [
+      "Sintonía de radios, filtros de frecuencia, antenas, comunicaciones inalámbricas.",
+      "Selecciona una frecuencia y rechaza otras.",
+      "En circuitos de corriente alterna con L y C.",
+      "Calcula reactancias, impedancia y frecuencia de resonancia."
+     ],
+     "f": "Z=\\sqrt{R^2+(X_L-X_C)^2}\\qquad f_0=\\frac1{2\\pi\\sqrt{LC}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Por un inductor de 0.2 H la corriente cambia a 50 A/s. ¿Qué fem se induce?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(0.2(50)\\).",
+      "<b>Signo.</b> Se opone al cambio."
+     ],
+     "r": "10 V",
+     "fin": "Calcular la fem autoinducida."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánta energía guarda un inductor de 0.5 H con 4 A?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(U=\\tfrac12LI^2\\).",
+      "<b>Sustituye.</b> \\(\\tfrac12(0.5)(4^2)=\\tfrac12(0.5)(16)\\)."
+     ],
+     "r": "4 J",
+     "fin": "Calcular energía magnética."
+    },
+    {
+     "nv": "I",
+     "q": "Un RL con L = 0.1 H, R = 10 Ω y 12 V. Halla τ, la corriente final y la corriente en t = τ.",
+     "pasos": [
+      "<b>Constante.</b> \\(\\tfrac{0.1}{10}=0.01\\) s.",
+      "<b>Final.</b> \\(\\tfrac{12}{10}=1.2\\) A.",
+      "<b>En τ.</b> \\(1.2(1-e^{-1})\\approx0.76\\) A."
+     ],
+     "r": "0.01 s; 1.2 A; 0.76 A.",
+     "fin": "Analizar la respuesta de un RL."
+    },
+    {
+     "nv": "A",
+     "q": "Con L = 0.1 H y C = 10 μF, halla la frecuencia de resonancia y las reactancias a 60 Hz.",
+     "pasos": [
+      "<b>Resonancia.</b> \\(\\tfrac{1}{2\\pi\\sqrt{0.1(10^{-5})}}\\approx159\\) Hz.",
+      "<b>\\(X_L\\).</b> \\(2\\pi(60)(0.1)\\approx37.7\\) Ω.",
+      "<b>\\(X_C\\).</b> \\(\\tfrac{1}{2\\pi(60)(10^{-5})}\\approx26.5\\) Ω."
+     ],
+     "r": "159 Hz; 37.7 Ω y 26.5 Ω.",
+     "fin": "Calcular la sintonía de un circuito."
+    },
+    {
+     "nv": "A",
+     "q": "Con los mismos L y C en serie con R = 10 Ω a 120 V y 60 Hz, halla la impedancia y la corriente.",
+     "pasos": [
+      "<b>Diferencia de reactancias.</b> \\(37.7-26.5=11.2\\) Ω.",
+      "<b>Impedancia.</b> \\(\\sqrt{100+124.8}\\approx15.0\\) Ω.",
+      "<b>Corriente.</b> \\(\\tfrac{120}{15}=8\\) A."
+     ],
+     "r": "≈ 15 Ω y 8 A.",
+     "fin": "Analizar un RLC en corriente alterna."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué unidad se mide la inductancia?",
+     "r": "Henry (H)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto vale X_L para 10 mH a 1 kHz?",
+     "r": "62.8 Ω"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántas constantes de tiempo tarda un RL en llegar a ~99 %?",
+     "r": "Unas 5."
+    },
+    {
+     "nv": "I",
+     "q": "¿Dónde guarda energía un inductor y dónde un capacitor?",
+     "r": "El inductor en el campo magnético; el capacitor en el campo eléctrico."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la frecuencia de resonancia con L = 1 mH y C = 1 nF.",
+     "r": "≈ 159 kHz"
+    }
+   ]
+  },
+  {
+   "titulo": "Campo magnético e inducción",
+   "intro": "Tema 6 del programa: fuentes de campo magnético, fuerza sobre cargas en movimiento, dipolos magnéticos e inducción electromagnética.",
+   "conceptos": [
+    {
+     "n": "Fuerza magnética",
+     "e": [
+      "Sobre una carga en movimiento \\(\\vec F=q\\vec v\\times\\vec B\\) (perpendicular a la velocidad: curva la trayectoria sin cambiar la rapidez; radio \\(r=\\tfrac{mv}{qB}\\)). Sobre un conductor \\(F=ILB\\sin\\theta\\). La dirección se obtiene con la regla de la mano derecha."
+     ],
+     "u": [
+      "Motores eléctricos, discos duros, espectrómetros de masas, bocinas.",
+      "Convierte energía eléctrica en movimiento.",
+      "Con corrientes o cargas en campos magnéticos.",
+      "Aplica la regla de la mano derecha para la dirección."
+     ],
+     "f": "F=qvB\\sin\\theta\\qquad r=\\frac{mv}{qB}\\qquad F=ILB\\sin\\theta"
+    },
+    {
+     "n": "Fuentes de campo y dipolos",
+     "e": [
+      "Un alambre recto produce \\(B=\\tfrac{\\mu_0I}{2\\pi r}\\) en círculos alrededor; un solenoide, \\(B=\\mu_0nI\\) en su interior. Una espira con corriente es un dipolo magnético \\(\\mu=NIA\\) y en un campo siente una torca \\(\\tau=\\mu B\\sin\\theta\\)."
+     ],
+     "u": [
+      "Electroimanes, relés, cerraduras electrónicas, motores.",
+      "Las corrientes generan magnetismo controlable.",
+      "Al diseñar bobinas o calcular interferencias.",
+      "Elige la fórmula según la geometría."
+     ],
+     "f": "B=\\frac{\\mu_0I}{2\\pi r}\\qquad B=\\mu_0nI"
+    },
+    {
+     "n": "Inducción y ecuaciones de Maxwell",
+     "e": [
+      "Faraday: un flujo magnético variable induce una fem \\(\\varepsilon=-N\\tfrac{d\\Phi_B}{dt}\\). Lenz: la corriente inducida se opone al cambio. Las cuatro ecuaciones de Maxwell resumen el electromagnetismo: Gauss eléctrico, Gauss magnético (no hay monopolos), Faraday y Ampère-Maxwell."
+     ],
+     "u": [
+      "Generadores, transformadores, cargadores inalámbricos, tarjetas NFC.",
+      "Es la base de la generación y transmisión de electricidad.",
+      "Cuando un campo magnético cambia en el tiempo.",
+      "Calcula el cambio de flujo y aplica Lenz para el sentido."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un protón se mueve a 10⁶ m/s perpendicular a un campo de 0.5 T. ¿Fuerza?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(F=qvB\\sin90^\\circ\\).",
+      "<b>Sustituye.</b> \\(1.6\\times10^{-19}(10^6)(0.5)\\); la fuerza es perpendicular a v y a B."
+     ],
+     "r": "\\(8\\times10^{-14}\\) N",
+     "fin": "Calcular la fuerza de Lorentz."
+    },
+    {
+     "nv": "I",
+     "q": "Un electrón a 2 × 10⁶ m/s entra perpendicular a un campo de 0.01 T. ¿Radio de su trayectoria?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(r=\\tfrac{9.11\\times10^{-31}(2\\times10^6)}{1.6\\times10^{-19}(0.01)}\\).",
+      "<b>Calcula.</b> \\(\\approx1.14\\times10^{-3}\\) m."
+     ],
+     "r": "≈ 1.14 mm",
+     "fin": "Entender cómo los campos guían partículas."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el campo a 5 cm de un alambre con 10 A.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(B=\\tfrac{\\mu_0I}{2\\pi r}=\\tfrac{4\\pi\\times10^{-7}(10)}{2\\pi(0.05)}\\).",
+      "<b>Compara.</b> Es comparable al campo terrestre (unos \\(5\\times10^{-5}\\) T), por eso un cable cerca de una brújula la desvía."
+     ],
+     "r": "\\(4\\times10^{-5}\\) T",
+     "fin": "Estimar campos cerca de cables."
+    },
+    {
+     "nv": "I",
+     "q": "Un conductor de 0.2 m con 5 A está perpendicular a un campo de 0.4 T. ¿Fuerza?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(F=ILB\\sin\\theta\\).",
+      "<b>Sustituye.</b> \\(5(0.2)(0.4)\\sin90^\\circ\\); la dirección la da la regla de la mano derecha."
+     ],
+     "r": "0.4 N",
+     "fin": "Base del funcionamiento de un motor."
+    },
+    {
+     "nv": "A",
+     "q": "El flujo por una bobina de 200 vueltas baja de 0.05 a 0.01 Wb en 0.02 s. Halla la fem y el sentido de la corriente.",
+     "pasos": [
+      "<b>Cambio de flujo.</b> \\(-0.04\\) Wb.",
+      "<b>Faraday.</b> \\(\\varepsilon=-200\\tfrac{-0.04}{0.02}=400\\) V.",
+      "<b>Lenz.</b> La corriente crea un campo en el mismo sentido del original para oponerse a su disminución."
+     ],
+     "r": "400 V; la corriente refuerza el campo que disminuye.",
+     "fin": "Aplicar Faraday y Lenz."
+    },
+    {
+     "nv": "B",
+     "q": "Según la regla de la mano derecha, ¿qué dirección tiene F si v apunta a +x y B a +y para una carga positiva?",
+     "r": "+z"
+    },
+    {
+     "nv": "I",
+     "q": "Un solenoide con 1000 vueltas/m lleva 2 A. ¿Campo interior?",
+     "r": "\\(\\approx2.51\\times10^{-3}\\) T"
+    },
+    {
+     "nv": "I",
+     "q": "Un transformador baja de 120 V a 12 V con 500 vueltas en el primario. ¿Vueltas del secundario?",
+     "r": "50"
+    },
+    {
+     "nv": "I",
+     "q": "Una bobina de 100 vueltas, 0.5 A y 0.01 m² está en un campo de 0.2 T. ¿Torca máxima?",
+     "r": "0.1 N·m"
+    },
+    {
+     "nv": "A",
+     "q": "Nombra las cuatro ecuaciones de Maxwell y qué dice cada una.",
+     "r": "Gauss eléctrico (cargas generan E), Gauss magnético (no hay monopolos), Faraday (B variable genera E) y Ampère-Maxwell (corrientes y E variable generan B)."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

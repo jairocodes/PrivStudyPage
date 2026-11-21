@@ -1,0 +1,734 @@
+{
+ "slug": "contabilidad-2",
+ "titulo": "Contabilidad II",
+ "meta": "Ciclo 2, código 009, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "PE=\\frac{CF}{P-CV}",
+ "firma_nota": "El punto de equilibrio: cuántas unidades hay que vender para no perder.",
+ "lead": "Contabilidad administrativa y de costos: cuánto cuesta producir, cuánto hay que vender, cómo presupuestar y cómo evaluar el desempeño. Es la información con la que se decide si un proyecto o un producto conviene. Los 8 temas del programa están organizados en 6 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Segundo%20Ciclo/2014-2ContabilidadII.pdf",
+ "temas": [
+  {
+   "titulo": "Contabilidad administrativa y clasificación de costos",
+   "intro": "Temas 1 y 2 del programa: tipos de contabilidad, diferencias con la financiera, papel en la planeación y el control; costos en empresas comerciales, manufactureras y de servicios; materia prima, mano de obra y gastos indirectos.",
+   "conceptos": [
+    {
+     "n": "Contabilidad administrativa",
+     "e": [
+      "Produce información interna para planear, controlar y decidir. A diferencia de la financiera, no sigue normas obligatorias, mira al futuro, puede usar datos no monetarios y se reporta con la frecuencia que necesite la gerencia."
+     ],
+     "u": [
+      "Costeo de proyectos de software, decisiones de precio, evaluación de sucursales.",
+      "La gerencia necesita información más detallada y oportuna que los estados financieros.",
+      "Al decidir internamente.",
+      "Define qué decisión se tomará y qué datos la apoyan."
+     ]
+    },
+    {
+     "n": "Elementos del costo de producción",
+     "e": [
+      "Materia prima directa (MPD), mano de obra directa (MOD) y gastos indirectos de fabricación (GIF: energía, depreciación de planta, supervisión). Costo primo = MPD + MOD; costo de conversión = MOD + GIF. En una empresa de servicios el costo principal es la mano de obra."
+     ],
+     "u": [
+      "Costeo de manufactura, de horas de consultoría o de desarrollo.",
+      "Permite fijar precios y detectar ineficiencias.",
+      "Al calcular el costo de un producto o servicio.",
+      "Separa lo directo (identificable con el producto) de lo indirecto."
+     ],
+     "f": "\\text{Costo primo}=MPD+MOD\\qquad \\text{Conversión}=MOD+GIF"
+    },
+    {
+     "n": "Comportamiento de los costos",
+     "e": [
+      "<b>Fijo:</b> no cambia con el volumen dentro de un rango (alquiler); por unidad baja al producir más. <b>Variable:</b> cambia en proporción (materiales, comisiones). <b>Mixto:</b> tiene ambas partes (energía); se separa con el método de punto alto y punto bajo."
+     ],
+     "u": [
+      "Costos de nube (fijos por reserva y variables por uso), planes de telefonía.",
+      "Predice cómo cambian los costos al crecer.",
+      "Al proyectar costos a otro volumen.",
+      "Clasifica cada costo y separa los mixtos."
+     ],
+     "f": "v=\\frac{\\Delta\\text{costo}}{\\Delta\\text{actividad}}\\qquad F=\\text{costo}-v\\cdot\\text{actividad}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica para una empresa de software: licencias por usuario, alquiler de oficina, energía eléctrica, sueldo del programador asignado a un proyecto.",
+     "pasos": [
+      "<b>Licencias por usuario.</b> Variable.",
+      "<b>Alquiler.</b> Fijo.",
+      "<b>Energía.</b> Mixto (cargo fijo más consumo).",
+      "<b>Programador del proyecto.</b> Costo directo del proyecto."
+     ],
+     "r": "Variable, fijo, mixto y directo.",
+     "fin": "Clasificar costos en una empresa de servicios."
+    },
+    {
+     "nv": "B",
+     "q": "MPD Q50,000, MOD Q30,000 y GIF Q20,000. Halla el costo primo, el de conversión y el de producción.",
+     "pasos": [
+      "<b>Primo.</b> \\(50000+30000=80000\\).",
+      "<b>Conversión.</b> \\(30000+20000=50000\\).",
+      "<b>Producción.</b> \\(50000+30000+20000=100000\\)."
+     ],
+     "r": "Q80,000; Q50,000; Q100,000.",
+     "fin": "Manejar los conceptos básicos de costo."
+    },
+    {
+     "nv": "I",
+     "q": "CF = Q40,000 y costo variable unitario Q150. Halla el costo unitario total con 1,000 y con 2,000 unidades.",
+     "pasos": [
+      "<b>1,000 u.</b> Fijo unitario \\(40\\); total \\(150+40=190\\).",
+      "<b>2,000 u.</b> Fijo unitario \\(20\\); total \\(170\\).",
+      "<b>Observación.</b> El fijo se diluye; el variable unitario no cambia."
+     ],
+     "r": "Q190 y Q170 por unidad.",
+     "fin": "Ver la economía de escala."
+    },
+    {
+     "nv": "I",
+     "q": "Inventario inicial de producto terminado Q10,000, costo de producción Q100,000 e inventario final Q15,000. ¿Costo de ventas?",
+     "pasos": [
+      "<b>Disponible.</b> \\(10000+100000=110000\\).",
+      "<b>Costo de ventas.</b> \\(110000-15000=95000\\)."
+     ],
+     "r": "Q95,000",
+     "fin": "Pasar de costo de producción a costo de ventas."
+    },
+    {
+     "nv": "A",
+     "q": "La energía costó Q5,000 con 1,000 horas máquina y Q9,000 con 3,000 horas. Separa la parte fija y la variable.",
+     "pasos": [
+      "<b>Variable.</b> \\(\\tfrac{9000-5000}{3000-1000}=2\\) por hora.",
+      "<b>Fija.</b> \\(5000-2(1000)=3000\\).",
+      "<b>Fórmula.</b> \\(y=3000+2x\\)."
+     ],
+     "r": "\\(y=3000+2x\\)",
+     "fin": "Separar costos mixtos con punto alto y punto bajo."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona dos diferencias entre contabilidad financiera y administrativa.",
+     "r": "La financiera es para externos y sigue normas; la administrativa es interna, sin normas obligatorias y orientada al futuro."
+    },
+    {
+     "nv": "I",
+     "q": "MOD Q12,000 y GIF Q8,000. ¿Costo de conversión?",
+     "r": "Q20,000"
+    },
+    {
+     "nv": "I",
+     "q": "Con 200 unidades el costo fue Q1,800 y con 600, Q3,000. Separa fijo y variable.",
+     "r": "Variable Q3 por unidad; fijo Q1,200."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo se clasifica la depreciación de la maquinaria de la planta?",
+     "r": "Gasto indirecto de fabricación, fijo."
+    },
+    {
+     "nv": "A",
+     "q": "CF = Q60,000 y CV = Q20 por unidad. Compara el costo promedio con 3,000 y con 5,000 unidades.",
+     "r": "Q40 y Q32 por unidad."
+    }
+   ]
+  },
+  {
+   "titulo": "Costo del producto: órdenes, procesos y ABC",
+   "intro": "Tema 3 del programa: asignación tradicional de gastos indirectos, costeo basado en actividades, costeo por órdenes y por procesos.",
+   "conceptos": [
+    {
+     "n": "Costeo por órdenes",
+     "e": [
+      "Para productos o servicios a la medida: se acumulan MPD, MOD y GIF en una hoja de costos por pedido. Los GIF se aplican con una tasa predeterminada. Al final, la diferencia entre GIF reales y aplicados es sub o sobreaplicación."
+     ],
+     "u": [
+      "Proyectos de software por cliente, imprentas, talleres.",
+      "Cada pedido tiene costos distintos.",
+      "Cuando cada trabajo es único.",
+      "Suma directos reales y aplica GIF con la tasa."
+     ],
+     "f": "\\text{Tasa}=\\frac{GIF\\text{ presupuestados}}{\\text{base presupuestada}}"
+    },
+    {
+     "n": "Costeo por procesos",
+     "e": [
+      "Para producción continua y homogénea: se acumulan costos por departamento y se dividen entre <b>unidades equivalentes</b> (unidades terminadas más el porcentaje de avance de las que quedan en proceso), calculadas por separado para materiales y conversión."
+     ],
+     "u": [
+      "Bebidas, cemento, alimentos, energía.",
+      "Todas las unidades son iguales; no tiene sentido costearlas una por una.",
+      "Con producción en masa continua.",
+      "Calcula unidades equivalentes, costo por unidad equivalente y asigna."
+     ]
+    },
+    {
+     "n": "Costeo basado en actividades (ABC)",
+     "e": [
+      "Asigna los indirectos según las actividades que consume cada producto, con generadores de costo (número de preparaciones, órdenes, inspecciones) en lugar de una sola tasa. Es más preciso cuando los productos usan recursos de forma muy distinta."
+     ],
+     "u": [
+      "Empresas con muchos productos o clientes distintos, servicios de TI con soporte desigual.",
+      "Evita que unos productos subsidien a otros.",
+      "Cuando los indirectos son grandes y variados.",
+      "Identifica actividades, su costo, su generador y cuánto consume cada producto."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Costeo por órdenes o por procesos? (a) desarrollo de un sitio web para un cliente; (b) embotelladora de agua.",
+     "pasos": [
+      "<b>(a)</b> Trabajo único: órdenes.",
+      "<b>(b)</b> Producción continua y homogénea: procesos."
+     ],
+     "r": "Órdenes y procesos.",
+     "fin": "Elegir el sistema de costeo."
+    },
+    {
+     "nv": "I",
+     "q": "GIF presupuestados Q90,000 y 6,000 horas de MOD. La orden 101 usó MPD Q4,000 y 100 horas de MOD a Q25. Halla su costo y el unitario si son 50 unidades.",
+     "pasos": [
+      "<b>Tasa.</b> \\(\\tfrac{90000}{6000}=15\\) por hora.",
+      "<b>MOD.</b> \\(100(25)=2500\\).",
+      "<b>GIF aplicados.</b> \\(100(15)=1500\\).",
+      "<b>Total.</b> \\(4000+2500+1500=8000\\); unitario \\(160\\)."
+     ],
+     "r": "Q8,000 y Q160 por unidad.",
+     "fin": "Costear un pedido."
+    },
+    {
+     "nv": "I",
+     "q": "Hay 1,000 unidades terminadas y 200 en proceso con materiales al 100 % y conversión al 50 %. Materiales Q24,000 y conversión Q33,000. Asigna costos.",
+     "pasos": [
+      "<b>Unidades equivalentes.</b> Materiales 1,200; conversión \\(1000+100=1100\\).",
+      "<b>Costo por UE.</b> Materiales 20; conversión 30.",
+      "<b>Terminadas.</b> \\(1000(50)=50000\\).",
+      "<b>En proceso.</b> \\(200(20)+100(30)=7000\\)."
+     ],
+     "r": "Terminadas Q50,000; en proceso Q7,000 (total Q57,000).",
+     "fin": "Aplicar el costeo por procesos."
+    },
+    {
+     "nv": "A",
+     "q": "Indirectos: preparaciones Q20,000 (40 en total: A 30, B 10) e inspecciones Q10,000 (100: A 20, B 80). Con la tasa tradicional por horas máquina (1,000 horas cada uno) se reparten 15,000 a cada uno. Compara con ABC.",
+     "pasos": [
+      "<b>Producto A en ABC.</b> \\(\\tfrac{30}{40}(20000)+\\tfrac{20}{100}(10000)=15000+2000=17000\\).",
+      "<b>Producto B en ABC.</b> \\(5000+8000=13000\\).",
+      "<b>Comparación.</b> El método tradicional subcosteaba A en 2,000 y sobrecosteaba B."
+     ],
+     "r": "ABC: A Q17,000 y B Q13,000.",
+     "fin": "Ver por qué ABC da costos más justos."
+    },
+    {
+     "nv": "A",
+     "q": "Con la tasa de Q15 por hora se trabajaron 6,200 horas reales y los GIF reales fueron Q91,000. ¿Hay sub o sobreaplicación?",
+     "pasos": [
+      "<b>Aplicados.</b> \\(6200(15)=93000\\).",
+      "<b>Comparación.</b> \\(93000-91000=2000\\).",
+      "<b>Ajuste.</b> Sobreaplicados: se reduce el costo de ventas en 2,000."
+     ],
+     "r": "Sobreaplicación de Q2,000.",
+     "fin": "Cerrar las diferencias de GIF."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué sistema usa una fábrica de cemento?",
+     "r": "Costeo por procesos."
+    },
+    {
+     "nv": "I",
+     "q": "Una orden usó MPD Q2,000 y 40 horas de MOD a Q25, con tasa de GIF de Q20 por hora. ¿Costo total?",
+     "r": "Q3,800"
+    },
+    {
+     "nv": "I",
+     "q": "Hay 500 terminadas y 100 en proceso al 40 % de conversión. ¿Unidades equivalentes de conversión?",
+     "r": "540"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué generador de costo usarías para la actividad de compras?",
+     "r": "Número de órdenes de compra."
+    },
+    {
+     "nv": "A",
+     "q": "Si los GIF reales fueron Q95,000 y los aplicados Q93,000, ¿qué pasa y cómo se ajusta?",
+     "r": "Subaplicación de Q2,000: se aumenta el costo de ventas."
+    }
+   ]
+  },
+  {
+   "titulo": "Costo-volumen-utilidad",
+   "intro": "Tema 4 del programa: comportamiento de costos, punto de equilibrio y planeación de utilidades.",
+   "conceptos": [
+    {
+     "n": "Margen de contribución",
+     "e": [
+      "Lo que aporta cada unidad para cubrir costos fijos y generar utilidad: \\(MC=P-CV\\). La razón de margen es \\(\\tfrac{MC}{P}\\)."
+     ],
+     "u": [
+      "Decidir qué productos promover, precios mínimos.",
+      "Indica qué tan rentable es cada unidad adicional.",
+      "Al analizar precios o mezcla de productos.",
+      "Resta el costo variable al precio."
+     ],
+     "f": "MC=P-CV\\qquad RMC=\\frac{P-CV}{P}"
+    },
+    {
+     "n": "Punto de equilibrio y utilidad deseada",
+     "e": [
+      "En el equilibrio la utilidad es cero. Para una utilidad deseada se suma al numerador; si es después de impuestos, se divide primero entre \\((1-t)\\)."
+     ],
+     "u": [
+      "Evaluar si un emprendimiento o un producto es viable.",
+      "Dice cuánto hay que vender para no perder.",
+      "Al planear ventas o fijar metas.",
+      "Aplica la fórmula en unidades o en quetzales."
+     ],
+     "f": "PE_u=\\frac{CF}{P-CV}\\qquad PE_Q=\\frac{CF}{RMC}\\qquad u=\\frac{CF+U_{antes}}{P-CV},\\ \\ U_{antes}=\\frac{U_{neta}}{1-t}"
+    },
+    {
+     "n": "Margen de seguridad y apalancamiento",
+     "e": [
+      "El margen de seguridad indica cuánto pueden caer las ventas antes de perder: \\(\\tfrac{\\text{ventas}-\\text{ventas en PE}}{\\text{ventas}}\\). El grado de apalancamiento operativo \\(\\tfrac{MC\\text{ total}}{\\text{utilidad}}\\) mide cuánto cambia la utilidad por cada 1 % de cambio en ventas."
+     ],
+     "u": [
+      "Evaluar riesgo de un negocio con muchos costos fijos (centros de datos, software).",
+      "Un negocio con mucho costo fijo gana mucho al crecer pero pierde mucho al caer.",
+      "Al evaluar riesgo.",
+      "Calcula ambos indicadores con el volumen actual."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un servicio se vende a Q250 con CV de Q150. Halla el margen de contribución y su razón.",
+     "pasos": [
+      "<b>MC.</b> \\(250-150=100\\).",
+      "<b>Razón.</b> \\(\\tfrac{100}{250}=40\\%\\)."
+     ],
+     "r": "Q100 por unidad y 40 %.",
+     "fin": "Calcular el margen de contribución."
+    },
+    {
+     "nv": "I",
+     "q": "Con CF = Q40,000, halla el punto de equilibrio en unidades y en quetzales.",
+     "pasos": [
+      "<b>Unidades.</b> \\(\\tfrac{40000}{100}=400\\).",
+      "<b>Quetzales.</b> \\(\\tfrac{40000}{0.40}=100000\\) (o \\(400\\times250\\))."
+     ],
+     "r": "400 unidades o Q100,000.",
+     "fin": "Hallar el equilibrio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántas unidades se deben vender para ganar Q20,000 antes de impuestos?",
+     "pasos": [
+      "<b>Idea.</b> El margen de contribución debe cubrir los fijos y además la utilidad.",
+      "<b>Fórmula.</b> \\(\\tfrac{40000+20000}{100}=600\\)."
+     ],
+     "r": "600 unidades",
+     "fin": "Planear metas de utilidad."
+    },
+    {
+     "nv": "A",
+     "q": "Se quiere una utilidad neta de Q15,000 con ISR del 25 %. ¿Unidades?",
+     "pasos": [
+      "<b>Antes de impuestos.</b> \\(\\tfrac{15000}{0.75}=20000\\).",
+      "<b>Unidades.</b> \\(\\tfrac{40000+20000}{100}=600\\)."
+     ],
+     "r": "600 unidades",
+     "fin": "Incluir el impuesto en la meta."
+    },
+    {
+     "nv": "A",
+     "q": "Si el precio baja a Q230, ¿cuál es el nuevo punto de equilibrio? Con ventas de 600 unidades, ¿cuál es el margen de seguridad antes y después?",
+     "pasos": [
+      "<b>Nuevo MC.</b> \\(230-150=80\\); \\(PE=\\tfrac{40000}{80}=500\\).",
+      "<b>Margen antes.</b> \\(\\tfrac{600-400}{600}\\approx33.3\\%\\).",
+      "<b>Margen después.</b> \\(\\tfrac{600-500}{600}\\approx16.7\\%\\)."
+     ],
+     "r": "PE de 500; el margen de seguridad baja de 33.3 % a 16.7 %.",
+     "fin": "Evaluar el riesgo de bajar precios."
+    },
+    {
+     "nv": "B",
+     "q": "Con los datos originales, ¿utilidad al vender 500 unidades?",
+     "r": "Q10,000"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es el margen de seguridad en quetzales con ventas de 600 unidades?",
+     "r": "Q50,000"
+    },
+    {
+     "nv": "I",
+     "q": "Si los CF suben a Q50,000, ¿nuevo punto de equilibrio?",
+     "r": "500 unidades"
+    },
+    {
+     "nv": "I",
+     "q": "Con 600 unidades, halla el grado de apalancamiento operativo.",
+     "r": "MC total Q60,000 ÷ utilidad Q20,000 = 3."
+    },
+    {
+     "nv": "A",
+     "q": "Si el CV sube a Q170 con precio de Q250, ¿nuevo punto de equilibrio?",
+     "r": "500 unidades"
+    }
+   ]
+  },
+  {
+   "titulo": "Planeación, presupuestos y control presupuestal",
+   "intro": "Temas 5 y 6 del programa: tipos de planeación, presupuesto maestro, ventajas y desventajas, presupuesto de efectivo y estados financieros presupuestados.",
+   "conceptos": [
+    {
+     "n": "Presupuesto maestro",
+     "e": [
+      "Parte <b>operativa</b>: ventas → producción → materiales, mano de obra y GIF → costo de ventas → gastos de operación → estado de resultados presupuestado. Parte <b>financiera</b>: presupuesto de efectivo, balance presupuestado y presupuesto de inversiones. Todo empieza por el pronóstico de ventas."
+     ],
+     "u": [
+      "Planeación anual de una empresa o de un departamento de TI.",
+      "Coordina áreas y anticipa necesidades.",
+      "Antes de cada año fiscal.",
+      "Construye cada presupuesto a partir del anterior."
+     ]
+    },
+    {
+     "n": "Presupuestos de producción y de efectivo",
+     "e": [
+      "Producción = ventas + inventario final deseado − inventario inicial. El presupuesto de efectivo suma saldo inicial y cobros, resta pagos y compara con el saldo mínimo: el faltante indica cuánto financiar."
+     ],
+     "u": [
+      "Evitar quedarse sin liquidez, planificar compras.",
+      "Anticipa faltantes para buscar financiamiento a tiempo.",
+      "Mes a mes o trimestre a trimestre.",
+      "Calcula cobros según la política de crédito y pagos según los compromisos."
+     ],
+     "f": "\\text{Producción}=\\text{Ventas}+\\text{IF}-\\text{II}"
+    },
+    {
+     "n": "Control presupuestal",
+     "e": [
+      "Se compara lo real contra lo presupuestado; la diferencia es una variación favorable o desfavorable que se analiza para corregir. Un presupuesto <b>flexible</b> se ajusta al volumen real y permite comparaciones justas."
+     ],
+     "u": [
+      "Seguimiento de gastos de proyectos y departamentos.",
+      "Detecta desviaciones a tiempo.",
+      "Periódicamente durante el año.",
+      "Calcula variaciones y busca su causa."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Se venderán 1,000, 1,200 y 1,500 unidades en tres trimestres a Q50. Elabora el presupuesto de ventas.",
+     "pasos": [
+      "<b>Trimestre 1.</b> Q50,000.",
+      "<b>Trimestre 2.</b> Q60,000.",
+      "<b>Trimestre 3.</b> Q75,000."
+     ],
+     "r": "Q50,000, Q60,000 y Q75,000 (total Q185,000).",
+     "fin": "Iniciar el presupuesto maestro."
+    },
+    {
+     "nv": "I",
+     "q": "El inventario final deseado es 20 % de las ventas del siguiente trimestre y el inicial del trimestre 1 es 200 unidades. ¿Producción del trimestre 1?",
+     "pasos": [
+      "<b>Inventario final.</b> \\(0.2(1200)=240\\).",
+      "<b>Producción.</b> \\(1000+240-200=1040\\)."
+     ],
+     "r": "1,040 unidades",
+     "fin": "Calcular la producción necesaria."
+    },
+    {
+     "nv": "I",
+     "q": "Se cobra 60 % al contado y 40 % el trimestre siguiente. ¿Cobros del trimestre 2?",
+     "pasos": [
+      "<b>Contado del trimestre 2.</b> \\(0.6(60000)=36000\\).",
+      "<b>Crédito del trimestre 1.</b> \\(0.4(50000)=20000\\).",
+      "<b>Total.</b> 56,000."
+     ],
+     "r": "Q56,000",
+     "fin": "Proyectar cobros."
+    },
+    {
+     "nv": "A",
+     "q": "Saldo inicial Q10,000, cobros Q56,000, pagos Q70,000 y saldo mínimo Q5,000. ¿Cuánto hay que financiar?",
+     "pasos": [
+      "<b>Disponible.</b> \\(10000+56000=66000\\).",
+      "<b>Después de pagos.</b> \\(66000-70000=-4000\\).",
+      "<b>Para el mínimo.</b> \\(5000-(-4000)=9000\\)."
+     ],
+     "r": "Q9,000",
+     "fin": "Anticipar necesidades de crédito."
+    },
+    {
+     "nv": "I",
+     "q": "Se presupuestaron Q50,000 de gastos y se gastaron Q52,000. Analiza la variación.",
+     "pasos": [
+      "<b>Diferencia.</b> \\(52000-50000=2000\\).",
+      "<b>Tipo.</b> Desfavorable (más gasto).",
+      "<b>Porcentaje.</b> 4 %; se investiga la causa."
+     ],
+     "r": "Variación desfavorable de Q2,000 (4 %).",
+     "fin": "Controlar el presupuesto."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona dos ventajas de presupuestar.",
+     "r": "Coordina áreas y anticipa problemas de liquidez; también fija metas para evaluar el desempeño."
+    },
+    {
+     "nv": "I",
+     "q": "Producción de 1,040 unidades con 2 kg por unidad, inventario final de 300 kg e inicial de 250 kg. ¿Compras de materia prima?",
+     "r": "2,130 kg"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cobros del trimestre 3?",
+     "r": "Q69,000"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia hay entre presupuesto fijo y flexible?",
+     "r": "El fijo se mantiene en un volumen; el flexible se ajusta al volumen real."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué estados financieros se presupuestan al final del presupuesto maestro?",
+     "r": "Estado de resultados, balance general y flujo de efectivo presupuestados."
+    }
+   ]
+  },
+  {
+   "titulo": "Estado de flujo de efectivo",
+   "intro": "Tema 7 del programa: actividades de operación, inversión y financiamiento; métodos directo e indirecto.",
+   "conceptos": [
+    {
+     "n": "Las tres actividades",
+     "e": [
+      "<b>Operación:</b> cobros a clientes, pagos a proveedores y empleados. <b>Inversión:</b> compra y venta de activos fijos e inversiones. <b>Financiamiento:</b> préstamos recibidos o pagados, aportes y dividendos."
+     ],
+     "u": [
+      "Análisis de liquidez, solicitudes de crédito, evaluación de startups.",
+      "La utilidad no es efectivo; este estado muestra de dónde vino y a dónde fue el dinero.",
+      "Al cierre y en la planeación.",
+      "Clasifica cada movimiento de efectivo."
+     ]
+    },
+    {
+     "n": "Método indirecto",
+     "e": [
+      "Parte de la utilidad neta, suma partidas que no son efectivo (depreciación), resta aumentos de activos corrientes (clientes, inventarios) y suma aumentos de pasivos corrientes (proveedores). El método directo lista cobros y pagos reales."
+     ],
+     "u": [
+      "Es el método más usado en estados financieros publicados.",
+      "Concilia utilidad y efectivo.",
+      "Al preparar el estado.",
+      "Ajusta la utilidad con los cambios del capital de trabajo."
+     ],
+     "f": "FEO=UN+\\text{Dep.}-\\Delta\\text{AC}+\\Delta\\text{PC}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: compra de servidores, pago a proveedores, préstamo bancario recibido, pago de dividendos.",
+     "pasos": [
+      "<b>Servidores.</b> Inversión.",
+      "<b>Proveedores.</b> Operación.",
+      "<b>Préstamo recibido.</b> Financiamiento.",
+      "<b>Dividendos.</b> Financiamiento."
+     ],
+     "r": "Inversión, operación, financiamiento, financiamiento.",
+     "fin": "Clasificar flujos."
+    },
+    {
+     "nv": "I",
+     "q": "Utilidad neta Q22,500, depreciación Q2,000, aumento de clientes Q5,000, de inventarios Q4,000 y de proveedores Q3,000. Halla el flujo de operación.",
+     "pasos": [
+      "<b>Parte de la utilidad.</b> 22,500.",
+      "<b>Suma la depreciación.</b> +2,000.",
+      "<b>Activos corrientes.</b> −5,000 y −4,000.",
+      "<b>Pasivo corriente.</b> +3,000."
+     ],
+     "r": "Q18,500",
+     "fin": "Aplicar el método indirecto."
+    },
+    {
+     "nv": "I",
+     "q": "Se compró equipo por Q15,000 y se vendió un terreno por Q8,000. ¿Flujo de inversión?",
+     "pasos": [
+      "<b>Salida.</b> −15,000.",
+      "<b>Entrada.</b> +8,000."
+     ],
+     "r": "−Q7,000",
+     "fin": "Calcular el flujo de inversión."
+    },
+    {
+     "nv": "I",
+     "q": "Se recibió un préstamo de Q10,000 y se pagaron dividendos por Q6,000. ¿Flujo de financiamiento?",
+     "pasos": [
+      "<b>Entrada.</b> +10,000.",
+      "<b>Salida.</b> −6,000."
+     ],
+     "r": "+Q4,000",
+     "fin": "Calcular el flujo de financiamiento."
+    },
+    {
+     "nv": "A",
+     "q": "Con los tres flujos anteriores y saldo inicial de efectivo de Q12,000, ¿saldo final?",
+     "pasos": [
+      "<b>Variación neta.</b> \\(18500-7000+4000=15500\\).",
+      "<b>Saldo final.</b> \\(12000+15500=27500\\)."
+     ],
+     "r": "Q27,500",
+     "fin": "Integrar el estado completo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Por qué se suma la depreciación en el método indirecto?",
+     "r": "Porque redujo la utilidad pero no fue una salida de efectivo."
+    },
+    {
+     "nv": "I",
+     "q": "Ventas Q200,000 y los clientes aumentaron Q5,000. ¿Cobros a clientes (método directo)?",
+     "r": "Q195,000"
+    },
+    {
+     "nv": "I",
+     "q": "¿Un aumento de proveedores suma o resta en el flujo de operación?",
+     "r": "Suma: se pagó menos de lo que se compró."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué actividad se clasifica la compra de una licencia de software de uso permanente?",
+     "r": "Inversión (activo intangible)."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cómo puede una empresa con utilidad tener flujo de operación negativo?",
+     "r": "Si aumentan mucho sus cuentas por cobrar o sus inventarios: vende pero no cobra, o compra para almacenar."
+    }
+   ]
+  },
+  {
+   "titulo": "Contabilidad por áreas de responsabilidad",
+   "intro": "Tema 8 del programa: estructura organizacional, estándares de evaluación, ventajas y desventajas.",
+   "conceptos": [
+    {
+     "n": "Centros de responsabilidad",
+     "e": [
+      "<b>Costos:</b> se evalúa el gasto contra el presupuesto (TI, producción). <b>Ingresos:</b> ventas (departamento comercial). <b>Utilidades:</b> ingresos y costos (sucursal). <b>Inversión:</b> además el capital invertido (división)."
+     ],
+     "u": [
+      "Evaluar departamentos, sucursales y gerentes.",
+      "Cada gerente responde solo por lo que controla.",
+      "Al diseñar la evaluación del desempeño.",
+      "Asigna a cada área el tipo según lo que controla."
+     ]
+    },
+    {
+     "n": "ROI y utilidad residual",
+     "e": [
+      "ROI = utilidad de operación ÷ inversión, que se descompone (Du Pont) en margen × rotación. La utilidad residual = utilidad − tasa mínima × inversión: evita rechazar proyectos rentables que bajan el ROI promedio de una división."
+     ],
+     "u": [
+      "Comparar divisiones, aprobar inversiones en infraestructura.",
+      "Mide si el capital se usa bien.",
+      "En centros de inversión.",
+      "Calcula ROI y utilidad residual y compáralos con la tasa mínima."
+     ],
+     "f": "ROI=\\frac{U}{I}=\\frac{U}{V}\\cdot\\frac{V}{I}\\qquad UR=U-k\\cdot I"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: departamento de TI, departamento de ventas, sucursal de Jutiapa, división regional con presupuesto de inversión.",
+     "pasos": [
+      "<b>TI.</b> Centro de costos.",
+      "<b>Ventas.</b> Centro de ingresos.",
+      "<b>Sucursal.</b> Centro de utilidades.",
+      "<b>División.</b> Centro de inversión."
+     ],
+     "r": "Costos, ingresos, utilidades e inversión.",
+     "fin": "Asignar responsabilidades."
+    },
+    {
+     "nv": "I",
+     "q": "Una división tiene utilidad de Q150,000 e inversión de Q1,000,000. ¿ROI?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(ROI=\\tfrac{U}{I}=\\tfrac{150000}{1000000}=0.15\\).",
+      "<b>Interpreta.</b> Cada quetzal invertido genera 15 centavos de utilidad al año."
+     ],
+     "r": "15 %",
+     "fin": "Calcular el ROI."
+    },
+    {
+     "nv": "I",
+     "q": "Con ventas de Q1,500,000, descompón ese ROI con Du Pont.",
+     "pasos": [
+      "<b>Margen.</b> \\(\\tfrac{150000}{1500000}=10\\%\\).",
+      "<b>Rotación.</b> \\(\\tfrac{1500000}{1000000}=1.5\\).",
+      "<b>Producto.</b> \\(10\\%\\times1.5=15\\%\\)."
+     ],
+     "r": "Margen 10 % × rotación 1.5 = 15 %.",
+     "fin": "Ver qué impulsa el ROI."
+    },
+    {
+     "nv": "A",
+     "q": "La tasa mínima es 12 %. Un nuevo proyecto rinde 13 %. ¿Lo aceptaría un gerente evaluado por ROI? ¿Y por utilidad residual?",
+     "pasos": [
+      "<b>Utilidad residual actual.</b> \\(150000-0.12(1000000)=30000\\).",
+      "<b>Por ROI.</b> El proyecto baja el 15 % de la división: el gerente podría rechazarlo.",
+      "<b>Por utilidad residual.</b> 13 % > 12 %: la aumenta, se acepta."
+     ],
+     "r": "Por ROI podría rechazarlo; por utilidad residual se acepta.",
+     "fin": "Ver la falla del ROI como único indicador."
+    },
+    {
+     "nv": "I",
+     "q": "El presupuesto de ingresos era Q200,000 y se lograron Q210,000. Analiza la variación.",
+     "pasos": [
+      "<b>Diferencia.</b> \\(210000-200000=10000\\).",
+      "<b>Tipo.</b> Favorable (más ingreso)."
+     ],
+     "r": "Favorable de Q10,000 (5 %).",
+     "fin": "Evaluar un centro de ingresos."
+    },
+    {
+     "nv": "B",
+     "q": "¿De qué responde el gerente de un centro de costos?",
+     "r": "De controlar sus costos frente al presupuesto."
+    },
+    {
+     "nv": "I",
+     "q": "Utilidad Q80,000 e inversión Q500,000. ¿ROI?",
+     "r": "16 %"
+    },
+    {
+     "nv": "I",
+     "q": "Con ventas de Q800,000, ¿margen y rotación?",
+     "r": "Margen 10 % y rotación 1.6."
+    },
+    {
+     "nv": "I",
+     "q": "Con tasa mínima de 12 %, ¿utilidad residual del caso anterior?",
+     "r": "Q20,000"
+    },
+    {
+     "nv": "A",
+     "q": "Menciona dos desventajas de evaluar solo por ROI.",
+     "r": "Puede llevar a rechazar proyectos rentables y a recortar inversiones necesarias para mejorar el corto plazo."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

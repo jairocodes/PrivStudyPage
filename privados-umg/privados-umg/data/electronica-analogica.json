@@ -1,0 +1,935 @@
+{
+ "slug": "electronica-analogica",
+ "titulo": "Electrónica Analógica",
+ "meta": "Ciclo 5, código 090024, bloque Electrónica del seminario",
+ "firma": "V_{TH}=V\\,\\frac{R_2}{R_1+R_2}",
+ "firma_nota": "Thévenin: cualquier red lineal se reduce a una fuente y una resistencia.",
+ "lead": "De la medición de señales al análisis de circuitos y los dispositivos semiconductores: diodos, transistores BJT y FET, tiristores, optoacopladores y el 555. Es el hardware que hay detrás de cada fuente de poder y cada placa. Los 7 temas del programa están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Quinto%20Ciclo/2014-5ElectronicaAnalogica.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta. La sección de tiristores y optoelectrónica, más conceptual, combina ejercicios con un cuestionario de opción múltiple que te dice al instante si acertaste.",
+ "temas": [
+  {
+   "titulo": "Fundamentos: señales, medición y componentes pasivos",
+   "intro": "Tema 1 del programa: medición e instrumentación, señales AC y DC, frecuencia, amplitud, fase, periodo, valor RMS y pico a pico, resistencia, ley de Ohm, curva I-V, capacitancia, inductores y transformadores.",
+   "conceptos": [
+    {
+     "n": "Señales AC y DC",
+     "e": [
+      "Una señal DC es constante; una AC cambia periódicamente: \\(v(t)=V_p\\sin(\\omega t+\\phi)\\), con \\(\\omega=2\\pi f\\) y \\(T=\\tfrac1f\\). El valor RMS es el DC que disiparía la misma potencia: \\(V_{rms}=\\tfrac{V_p}{\\sqrt2}\\). El pico a pico es \\(2V_p\\). La fase indica el desplazamiento en el tiempo entre dos señales."
+     ],
+     "u": [
+      "La red eléctrica (120 V RMS, 60 Hz en Guatemala), audio, señales de sensores.",
+      "Para especificar y comparar señales alternas.",
+      "Al medir o diseñar con corriente alterna.",
+      "Lee pico, periodo y fase y convierte a RMS y frecuencia."
+     ],
+     "f": "V_{rms}=\\frac{V_p}{\\sqrt2}\\qquad V_{pp}=2V_p\\qquad f=\\frac1T"
+    },
+    {
+     "n": "Instrumentos de medición",
+     "e": [
+      "El multímetro mide voltaje (en paralelo), corriente (en serie, abriendo el circuito) y resistencia (sin energía). El osciloscopio muestra la señal en el tiempo: divisiones verticales por volts/div dan amplitud y horizontales por tiempo/div dan el periodo."
+     ],
+     "u": [
+      "Diagnóstico de fuentes, depuración de placas, mantenimiento de equipos.",
+      "Sin medir correctamente no se puede diagnosticar.",
+      "En todo trabajo práctico con circuitos.",
+      "Elige el modo y la escala antes de conectar."
+     ]
+    },
+    {
+     "n": "Resistencia, capacitancia, inductancia y curva I-V",
+     "e": [
+      "Una resistencia óhmica tiene curva I-V recta (\\(V=IR\\)); un diodo no. El capacitor se opone a cambios de voltaje (\\(X_C=\\tfrac1{2\\pi fC}\\)) y el inductor a cambios de corriente (\\(X_L=2\\pi fL\\))."
+     ],
+     "u": [
+      "Filtros, acoplamiento de señales, fuentes de poder.",
+      "Cada componente responde distinto a la frecuencia.",
+      "Al seleccionar componentes.",
+      "Calcula la reactancia a la frecuencia de trabajo."
+     ]
+    },
+    {
+     "n": "Transformadores",
+     "e": [
+      "Cambian el nivel de voltaje AC por inducción: \\(\\tfrac{V_1}{V_2}=\\tfrac{N_1}{N_2}=\\tfrac{I_2}{I_1}\\) (ideal). Si bajan voltaje, suben corriente."
+     ],
+     "u": [
+      "Fuentes de poder, cargadores, distribución eléctrica.",
+      "Adaptan el voltaje de la red al que necesita el equipo.",
+      "Al diseñar fuentes lineales.",
+      "Usa la relación de vueltas."
+     ],
+     "f": "\\frac{V_1}{V_2}=\\frac{N_1}{N_2}=\\frac{I_2}{I_1}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una señal tiene 170 V pico a 60 Hz. Halla V RMS, pico a pico, periodo y ω.",
+     "pasos": [
+      "<b>RMS.</b> \\(\\tfrac{170}{\\sqrt2}\\approx120.2\\) V.",
+      "<b>Pico a pico.</b> 340 V.",
+      "<b>Periodo.</b> \\(\\tfrac1{60}\\approx16.67\\) ms.",
+      "<b>ω.</b> \\(2\\pi(60)\\approx377\\) rad/s."
+     ],
+     "r": "120.2 V, 340 V, 16.67 ms, 377 rad/s.",
+     "fin": "Entender que los 120 V de la red son un valor RMS."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cómo se conecta el multímetro para medir voltaje, corriente y resistencia?",
+     "pasos": [
+      "<b>Voltaje.</b> En paralelo con el elemento.",
+      "<b>Corriente.</b> En serie: se abre el circuito y se intercala el medidor.",
+      "<b>Resistencia.</b> Con el circuito apagado y el elemento aislado."
+     ],
+     "r": "Paralelo, serie y sin energía.",
+     "fin": "Evitar dañar el instrumento o el circuito."
+    },
+    {
+     "nv": "I",
+     "q": "En el osciloscopio una señal ocupa 4 divisiones pico a pico a 2 V/div y su periodo 5 divisiones a 1 ms/div. Halla Vpp, Vrms y f.",
+     "pasos": [
+      "<b>Vpp.</b> \\(4(2)=8\\) V, así que \\(V_p=4\\) V.",
+      "<b>Vrms.</b> \\(\\tfrac4{\\sqrt2}\\approx2.83\\) V.",
+      "<b>Frecuencia.</b> \\(T=5\\) ms, \\(f=200\\) Hz."
+     ],
+     "r": "8 Vpp, 2.83 Vrms, 200 Hz.",
+     "fin": "Leer un osciloscopio."
+    },
+    {
+     "nv": "I",
+     "q": "Un transformador baja de 120 V a 12 V. Si el secundario entrega 2 A, ¿cuánta corriente toma el primario?",
+     "pasos": [
+      "<b>Relación.</b> 10:1.",
+      "<b>Corriente.</b> \\(I_1=\\tfrac{2}{10}=0.2\\) A (potencias iguales: 24 W)."
+     ],
+     "r": "0.2 A",
+     "fin": "Ver la conservación de potencia en un transformador ideal."
+    },
+    {
+     "nv": "A",
+     "q": "Dos señales \\(v_1=10\\sin(377t)\\) y \\(v_2=10\\sin(377t+\\tfrac\\pi4)\\). ¿Cuál es el desfase en grados y en tiempo?",
+     "pasos": [
+      "<b>Ángulo.</b> \\(\\tfrac\\pi4=45^\\circ\\); \\(v_2\\) adelanta.",
+      "<b>Tiempo.</b> \\(\\Delta t=\\tfrac{\\phi}{\\omega}=\\tfrac{0.785}{377}\\approx2.08\\) ms."
+     ],
+     "r": "45° o 2.08 ms de adelanto.",
+     "fin": "Medir desfases entre señales."
+    },
+    {
+     "nv": "B",
+     "q": "Una señal tiene periodo de 20 ms. ¿Frecuencia?",
+     "r": "50 Hz"
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es el RMS de una senoidal de 10 V pico?",
+     "r": "7.07 V"
+    },
+    {
+     "nv": "I",
+     "q": "Halla X_C de 10 μF a 60 Hz.",
+     "r": "≈ 265 Ω"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué indica que la curva I-V de un componente sea una recta por el origen?",
+     "r": "Que es óhmico: R constante."
+    },
+    {
+     "nv": "A",
+     "q": "Un transformador de 230 V a 12 V tiene 500 vueltas en el primario. ¿Cuántas en el secundario?",
+     "r": "≈ 26"
+    }
+   ]
+  },
+  {
+   "titulo": "Análisis de circuitos",
+   "intro": "Tema 2 del programa: divisores de voltaje y corriente, método de mallas, método de nodos y teoremas de Thévenin y Norton.",
+   "conceptos": [
+    {
+     "n": "Divisores de voltaje y de corriente",
+     "e": [
+      "En serie: \\(V_x=V\\tfrac{R_x}{R_T}\\). En paralelo de dos ramas: \\(I_1=I\\tfrac{R_2}{R_1+R_2}\\) (la corriente prefiere la rama de menor resistencia)."
+     ],
+     "u": [
+      "Polarización de transistores, lectura de sensores (potenciómetros, termistores) con microcontroladores.",
+      "Obtienen voltajes o corrientes intermedios sin fuentes adicionales.",
+      "Con resistencias en serie o en paralelo.",
+      "Aplica la proporción directamente."
+     ]
+    },
+    {
+     "n": "Método de mallas",
+     "e": [
+      "Se asigna una corriente a cada malla y se aplica la ley de voltajes de Kirchhoff. En una resistencia compartida la corriente es la diferencia de las dos corrientes de malla."
+     ],
+     "u": [
+      "Análisis de cualquier red con varias fuentes.",
+      "Reduce el problema a un sistema de ecuaciones.",
+      "Con pocas mallas y fuentes de voltaje.",
+      "Una ecuación por malla; resuelve el sistema."
+     ]
+    },
+    {
+     "n": "Método de nodos",
+     "e": [
+      "Se elige un nodo de referencia (tierra) y se aplica la ley de corrientes en cada nodo con los voltajes como incógnitas: \\(\\sum\\tfrac{V_n-V_k}{R}=0\\)."
+     ],
+     "u": [
+      "Simuladores como SPICE usan este método.",
+      "Suele dar menos ecuaciones que mallas.",
+      "Con fuentes de corriente o muchas ramas en paralelo.",
+      "Escribe las corrientes que salen de cada nodo e iguala a cero."
+     ]
+    },
+    {
+     "n": "Thévenin, Norton y máxima transferencia",
+     "e": [
+      "Vista desde dos terminales, toda red lineal equivale a \\(V_{TH}\\) en serie con \\(R_{TH}\\) (Thévenin) o a \\(I_N\\) en paralelo con \\(R_N\\) (Norton), con \\(V_{TH}=I_NR_{TH}\\). \\(V_{TH}\\) es el voltaje en circuito abierto; \\(R_{TH}\\) se obtiene apagando fuentes (las de voltaje en corto, las de corriente en abierto). La potencia en la carga es máxima si \\(R_L=R_{TH}\\)."
+     ],
+     "u": [
+      "Acoplamiento de antenas y bocinas, análisis de fuentes con distintas cargas.",
+      "Simplifica una red compleja para probar muchas cargas.",
+      "Cuando solo importa lo que pasa en una carga.",
+      "Calcula V en abierto y R con fuentes apagadas."
+     ],
+     "f": "V_{TH}=I_NR_{TH}\\qquad P_{max}=\\frac{V_{TH}^2}{4R_{TH}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un divisor con 4 kΩ y 8 kΩ en serie a 12 V. ¿Voltaje en la de 8 kΩ?",
+     "pasos": [
+      "<b>Resistencia total.</b> \\(4+8=12\\) kΩ, corriente \\(1\\) mA.",
+      "<b>Proporción.</b> \\(12\\cdot\\tfrac{8}{12}=8\\) V (o \\(1\\text{ mA}\\cdot8\\text{ k}\\Omega\\))."
+     ],
+     "r": "8 V",
+     "fin": "Aplicar el divisor de voltaje."
+    },
+    {
+     "nv": "I",
+     "q": "Un nodo se conecta a 12 V por 2 Ω, a 6 V por 3 Ω y a tierra por 6 Ω. Halla su voltaje y las corrientes.",
+     "pasos": [
+      "<b>Ley de corrientes.</b> \\(\\tfrac{12-V}{2}+\\tfrac{6-V}{3}=\\tfrac V6\\).",
+      "<b>Multiplica por 6.</b> \\(36-3V+12-2V=V\\Rightarrow V=8\\) V.",
+      "<b>Corrientes.</b> Entran 2 A desde 12 V; salen 0.67 A hacia la fuente de 6 V y 1.33 A a tierra."
+     ],
+     "r": "V = 8 V",
+     "fin": "Aplicar el método de nodos."
+    },
+    {
+     "nv": "I",
+     "q": "Malla 1: fuente de 10 V, R₁ = 2 Ω y R₂ = 3 Ω compartida. Malla 2: R₂, R₃ = 5 Ω y una fuente de 5 V a favor de I₂. Halla las corrientes.",
+     "pasos": [
+      "<b>Malla 1.</b> \\(10=2I_1+3(I_1-I_2)\\Rightarrow5I_1-3I_2=10\\).",
+      "<b>Malla 2.</b> \\(5=5I_2+3(I_2-I_1)\\Rightarrow-3I_1+8I_2=5\\).",
+      "<b>Resuelve.</b> \\(I_1\\approx3.06\\) A, \\(I_2\\approx1.77\\) A."
+     ],
+     "r": "\\(I_1\\approx3.06\\) A, \\(I_2\\approx1.77\\) A",
+     "fin": "Aplicar el método de mallas."
+    },
+    {
+     "nv": "A",
+     "q": "Fuente de 12 V con R₁ = 4 Ω en serie hasta un nodo A; de A a tierra R₂ = 12 Ω; de A a la terminal de salida R₃ = 3 Ω. Halla el equivalente de Thévenin y la potencia máxima.",
+     "pasos": [
+      "<b>V_TH (sin carga).</b> Por R₃ no circula corriente: \\(12\\cdot\\tfrac{12}{16}=9\\) V.",
+      "<b>R_TH (fuente en corto).</b> \\(4\\parallel12+3=3+3=6\\) Ω.",
+      "<b>Potencia máxima.</b> Con \\(R_L=6\\) Ω: \\(\\tfrac{81}{24}\\approx3.38\\) W."
+     ],
+     "r": "\\(V_{TH}=9\\) V, \\(R_{TH}=6\\) Ω, \\(P_{max}\\approx3.38\\) W.",
+     "fin": "Reducir una red para analizar cualquier carga."
+    },
+    {
+     "nv": "A",
+     "q": "Convierte ese Thévenin a Norton y halla la corriente en una carga de 3 Ω.",
+     "pasos": [
+      "<b>Norton.</b> \\(I_N=\\tfrac96=1.5\\) A, \\(R_N=6\\) Ω.",
+      "<b>Carga.</b> \\(I=\\tfrac{9}{6+3}=1\\) A (o divisor de corriente: \\(1.5\\cdot\\tfrac{6}{9}\\))."
+     ],
+     "r": "\\(I_N=1.5\\) A, \\(R_N=6\\) Ω; 1 A en la carga.",
+     "fin": "Pasar entre ambos equivalentes."
+    },
+    {
+     "nv": "B",
+     "q": "6 A se reparten entre 3 Ω y 6 Ω en paralelo. ¿Corriente en cada una?",
+     "r": "4 A y 2 A."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el Thévenin de una fuente de 10 V con un divisor de dos resistencias de 2 kΩ, visto en la de abajo.",
+     "r": "5 V y 1 kΩ."
+    },
+    {
+     "nv": "I",
+     "q": "Para máxima potencia en una antena de 50 Ω, ¿qué resistencia de salida debe tener el transmisor?",
+     "r": "50 Ω"
+    },
+    {
+     "nv": "I",
+     "q": "Al calcular R_TH, ¿qué haces con una fuente de corriente?",
+     "r": "La reemplazas por un circuito abierto."
+    },
+    {
+     "nv": "A",
+     "q": "Un Norton tiene I_N = 2 mA y R_N = 5 kΩ. ¿Cuál es su Thévenin?",
+     "r": "10 V en serie con 5 kΩ."
+    }
+   ]
+  },
+  {
+   "titulo": "El diodo y sus aplicaciones",
+   "intro": "Tema 3 del programa, primera parte: el diodo, rectificación, recortadores y reguladores.",
+   "conceptos": [
+    {
+     "n": "Funcionamiento del diodo",
+     "e": [
+      "La unión PN conduce en polarización directa cuando supera unos 0.7 V (silicio) o 0.3 V (germanio) y bloquea en inversa hasta su voltaje de ruptura. El LED emite luz al conducir (caída de 1.8 a 3.3 V según el color)."
+     ],
+     "u": [
+      "Protección contra polaridad invertida, indicadores LED, puertas lógicas simples.",
+      "Permite que la corriente vaya en un solo sentido.",
+      "Cuando se necesita controlar el sentido de la corriente.",
+      "Revisa la polarización y resta la caída del diodo."
+     ]
+    },
+    {
+     "n": "Rectificadores y filtro",
+     "e": [
+      "<b>Media onda:</b> deja pasar un semiciclo; \\(V_{DC}=\\tfrac{V_p}\\pi\\). <b>Onda completa</b> (puente de 4 diodos o derivación central): aprovecha ambos; \\(V_{DC}=\\tfrac{2V_p}\\pi\\) y el rizo sale a 120 Hz. Un capacitor de filtro reduce el rizo: \\(V_r\\approx\\tfrac{I}{fC}\\)."
+     ],
+     "u": [
+      "Todas las fuentes de poder que convierten AC en DC: cargadores, computadoras.",
+      "Los circuitos digitales necesitan DC estable.",
+      "Al diseñar o reparar fuentes.",
+      "Calcula Vp, resta caídas, elige C para el rizo deseado."
+     ],
+     "f": "V_{DC,\\,\\text{media}}=\\frac{V_p}{\\pi}\\qquad V_{DC,\\,\\text{completa}}=\\frac{2V_p}{\\pi}\\qquad V_r\\approx\\frac{I}{fC}"
+    },
+    {
+     "n": "Recortadores y regulador Zener",
+     "e": [
+      "Un recortador limita la señal a un nivel (protege entradas). El diodo Zener, en inversa, mantiene un voltaje casi fijo \\(V_Z\\): con una resistencia en serie forma un regulador simple, \\(R=\\tfrac{V_{in}-V_Z}{I_L+I_Z}\\)."
+     ],
+     "u": [
+      "Protección de entradas de microcontroladores, referencias de voltaje.",
+      "Mantiene un voltaje estable aunque varíe la entrada.",
+      "Cuando una carga pequeña necesita voltaje fijo.",
+      "Calcula R y verifica la potencia del Zener."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un diodo de silicio en directa con 1 kΩ se conecta a 5 V. ¿Corriente?",
+     "pasos": [
+      "<b>Caída del diodo.</b> 0.7 V.",
+      "<b>Ohm en la resistencia.</b> \\(\\tfrac{5-0.7}{1000}\\)."
+     ],
+     "r": "4.3 mA",
+     "fin": "Incluir la caída del diodo."
+    },
+    {
+     "nv": "I",
+     "q": "Un transformador entrega 12 V RMS a un rectificador de media onda. Halla Vp y el voltaje DC ideal.",
+     "pasos": [
+      "<b>Pico.</b> \\(12\\sqrt2\\approx16.97\\) V (≈ 16.27 V restando 0.7 V).",
+      "<b>DC ideal.</b> \\(\\tfrac{16.97}{\\pi}\\approx5.40\\) V."
+     ],
+     "r": "≈ 16.97 V pico; ≈ 5.4 V DC.",
+     "fin": "Analizar el rectificador más simple."
+    },
+    {
+     "nv": "I",
+     "q": "Con los mismos 12 V RMS y un puente de diodos, halla el pico de salida, el DC ideal y la frecuencia del rizo.",
+     "pasos": [
+      "<b>Pico.</b> Conducen dos diodos: \\(16.97-1.4\\approx15.57\\) V.",
+      "<b>DC ideal.</b> \\(\\tfrac{2(16.97)}{\\pi}\\approx10.8\\) V.",
+      "<b>Rizo.</b> 120 Hz (dos pulsos por ciclo)."
+     ],
+     "r": "≈ 15.57 V pico, ≈ 10.8 V DC, 120 Hz.",
+     "fin": "Ver la ventaja de la onda completa."
+    },
+    {
+     "nv": "A",
+     "q": "Una fuente de onda completa entrega 0.5 A. ¿Qué capacitor da un rizo de 1 V pico a pico?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(C=\\tfrac{I}{fV_r}\\).",
+      "<b>Sustituye.</b> \\(\\tfrac{0.5}{120(1)}\\approx4.17\\times10^{-3}\\) F."
+     ],
+     "r": "≈ 4167 μF (se usa 4700 μF).",
+     "fin": "Dimensionar el filtro de una fuente."
+    },
+    {
+     "nv": "A",
+     "q": "Un regulador Zener de 5.1 V se alimenta con 12 V; la carga toma 20 mA y se quieren 10 mA de Zener. Halla R y las potencias.",
+     "pasos": [
+      "<b>Resistencia.</b> \\(\\tfrac{12-5.1}{0.030}=230\\) Ω.",
+      "<b>Potencia en R.</b> \\(0.03^2(230)\\approx0.21\\) W (usar ½ W).",
+      "<b>Potencia en el Zener.</b> \\(5.1(0.01)=51\\) mW."
+     ],
+     "r": "230 Ω; 0.21 W y 51 mW.",
+     "fin": "Diseñar un regulador simple."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué resistencia limita un LED de 2 V a 20 mA desde 5 V?",
+     "r": "150 Ω"
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué pasa con un diodo en polarización inversa por debajo de su ruptura?",
+     "r": "Bloquea (solo circula una corriente de fuga mínima)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace un recortador con un diodo en paralelo a la salida?",
+     "r": "Limita la salida a unos 0.7 V en el sentido en que el diodo conduce."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el DC ideal de media onda con Vp = 10 V.",
+     "r": "≈ 3.18 V"
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué el rizo de un rectificador de onda completa conectado a la red sale a 120 Hz?",
+     "r": "Porque cada semiciclo de 60 Hz produce un pulso: dos pulsos por ciclo."
+    }
+   ]
+  },
+  {
+   "titulo": "El transistor bipolar (BJT)",
+   "intro": "Tema 3 del programa, segunda parte: el transistor BJT, regiones de trabajo, ganancia, configuración de emisor común y uso como interruptor.",
+   "conceptos": [
+    {
+     "n": "Estructura y relaciones",
+     "e": [
+      "Un BJT (NPN o PNP) tiene emisor, base y colector y se controla por corriente de base: \\(I_C=\\beta I_B\\), \\(I_E=I_B+I_C\\), \\(V_{BE}\\approx0.7\\) V. \\(\\alpha=\\tfrac{\\beta}{\\beta+1}\\approx1\\)."
+     ],
+     "u": [
+      "Amplificadores de audio, control de cargas desde microcontroladores, sensores.",
+      "Una corriente pequeña controla una grande.",
+      "Cuando necesitas amplificar o conmutar.",
+      "Calcula I_B, multiplica por β y revisa V_CE."
+     ],
+     "f": "I_C=\\beta I_B\\qquad I_E=I_B+I_C"
+    },
+    {
+     "n": "Regiones de trabajo",
+     "e": [
+      "<b>Corte:</b> ambas uniones en inversa, no conduce (interruptor abierto). <b>Activa:</b> base-emisor directa y base-colector inversa (amplificador). <b>Saturación:</b> ambas en directa, \\(V_{CE}\\approx0.2\\) V (interruptor cerrado)."
+     ],
+     "u": [
+      "Elegir el modo según se quiera amplificar o conmutar.",
+      "Cada región da un comportamiento distinto.",
+      "Al diseñar o diagnosticar un circuito con BJT.",
+      "Si el I_C calculado da V_CE negativo, está saturado."
+     ],
+     "tabla": "<table><thead><tr><th>Región</th><th>Base-emisor</th><th>Base-colector</th><th>Uso</th></tr></thead><tbody><tr><td>Corte</td><td>Inversa</td><td>Inversa</td><td>Interruptor abierto</td></tr><tr><td>Activa</td><td>Directa</td><td>Inversa</td><td>Amplificador</td></tr><tr><td>Saturación</td><td>Directa</td><td>Directa</td><td>Interruptor cerrado</td></tr></tbody></table>"
+    },
+    {
+     "n": "Emisor común y conmutación",
+     "e": [
+      "En emisor común la ganancia de voltaje aproximada es \\(A_v\\approx-\\tfrac{R_C}{r_e}\\), con \\(r_e\\approx\\tfrac{25\\text{ mV}}{I_E}\\); el signo indica inversión. Como interruptor, se asegura la saturación dando una corriente de base varias veces mayor que \\(\\tfrac{I_{C,sat}}{\\beta}\\)."
+     ],
+     "u": [
+      "Encender relés, LEDs o motores desde un pin de 3.3 o 5 V.",
+      "Los microcontroladores no entregan suficiente corriente por sí solos.",
+      "Al conectar cargas a lógica digital.",
+      "Calcula I_C de saturación, divide entre β y multiplica por un margen."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con β = 100 e I_B = 20 μA, halla I_C e I_E.",
+     "pasos": [
+      "<b>Colector.</b> \\(100(20)=2000\\) μA = 2 mA.",
+      "<b>Emisor.</b> \\(2+0.02=2.02\\) mA."
+     ],
+     "r": "2 mA y 2.02 mA.",
+     "fin": "Aplicar las relaciones del BJT."
+    },
+    {
+     "nv": "I",
+     "q": "V_BB = 5 V con R_B = 100 kΩ, β = 100, V_CC = 12 V y R_C = 2 kΩ. Halla I_B, I_C, V_CE y la región.",
+     "pasos": [
+      "<b>Base.</b> \\(\\tfrac{5-0.7}{100\\text{k}}=43\\) μA.",
+      "<b>Colector.</b> 4.3 mA.",
+      "<b>V_CE.</b> \\(12-4.3(2)=3.4\\) V.",
+      "<b>Región.</b> \\(V_{CE}\\gt0.2\\) V: activa."
+     ],
+     "r": "43 μA, 4.3 mA, 3.4 V; región activa.",
+     "fin": "Analizar la polarización fija."
+    },
+    {
+     "nv": "I",
+     "q": "Un pin de 5 V debe saturar un NPN (β = 100) que enciende una carga de 5 mA. Elige R_B con margen ×5.",
+     "pasos": [
+      "<b>Base mínima.</b> \\(\\tfrac{5\\text{ mA}}{100}=50\\) μA.",
+      "<b>Con margen.</b> 250 μA.",
+      "<b>Resistencia.</b> \\(\\tfrac{5-0.7}{250\\,\\mu\\text{A}}=17.2\\) kΩ; se usa 15 kΩ."
+     ],
+     "r": "R_B ≈ 15 kΩ",
+     "fin": "Diseñar un transistor como interruptor."
+    },
+    {
+     "nv": "A",
+     "q": "Con el circuito del ejercicio 2, ¿qué pasa si R_B baja a 20 kΩ?",
+     "pasos": [
+      "<b>Base.</b> \\(\\tfrac{4.3}{20\\text{k}}=215\\) μA.",
+      "<b>I_C supuesto.</b> \\(100(215)\\) μA = 21.5 mA.",
+      "<b>V_CE.</b> \\(12-21.5(2)\\lt0\\): imposible.",
+      "<b>Conclusión.</b> Está saturado: \\(I_C\\approx\\tfrac{12-0.2}{2\\text{k}}\\approx5.9\\) mA."
+     ],
+     "r": "Pasa a saturación con I_C ≈ 5.9 mA.",
+     "fin": "Detectar la saturación."
+    },
+    {
+     "nv": "A",
+     "q": "Estima la ganancia en emisor común del ejercicio 2 (sin resistencia de emisor).",
+     "pasos": [
+      "<b>r_e.</b> \\(\\tfrac{25\\text{ mV}}{4.3\\text{ mA}}\\approx5.8\\) Ω.",
+      "<b>Ganancia.</b> \\(-\\tfrac{2000}{5.8}\\approx-344\\)."
+     ],
+     "r": "≈ −344 (invierte la señal).",
+     "fin": "Estimar la amplificación."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué región trabaja un BJT usado como amplificador?",
+     "r": "Activa"
+    },
+    {
+     "nv": "I",
+     "q": "Con I_C = 5 mA y β = 50, halla I_B e I_E.",
+     "r": "0.1 mA y 5.1 mA."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula α para β = 100.",
+     "r": "≈ 0.990"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia de conexión hay entre un NPN y un PNP como interruptor?",
+     "r": "El NPN conmuta del lado de tierra (base positiva); el PNP del lado positivo (base más baja que el emisor)."
+    },
+    {
+     "nv": "A",
+     "q": "Con I_B = 30 μA, β = 150, V_CC = 15 V y R_C = 2.2 kΩ, halla V_CE.",
+     "r": "I_C = 4.5 mA; V_CE ≈ 5.1 V."
+    }
+   ]
+  },
+  {
+   "titulo": "Transistores de efecto de campo (FET y MOSFET)",
+   "intro": "Tema 4 del programa: FET, MOSFET y su comparación con el BJT.",
+   "conceptos": [
+    {
+     "n": "JFET",
+     "e": [
+      "Se controla por voltaje de compuerta (casi sin corriente). Ecuación de Shockley: \\(I_D=I_{DSS}\\left(1-\\tfrac{V_{GS}}{V_P}\\right)^2\\). Con \\(V_{GS}=0\\) conduce \\(I_{DSS}\\); con \\(V_{GS}=V_P\\) queda en corte."
+     ],
+     "u": [
+      "Preamplificadores de alta impedancia, instrumentos de medición.",
+      "No carga a la señal que mide.",
+      "Con señales débiles o de alta impedancia.",
+      "Aplica Shockley con los datos de la hoja técnica."
+     ],
+     "f": "I_D=I_{DSS}\\left(1-\\frac{V_{GS}}{V_P}\\right)^2"
+    },
+    {
+     "n": "MOSFET",
+     "e": [
+      "De empobrecimiento (conduce con \\(V_{GS}=0\\)) o de enriquecimiento (necesita \\(V_{GS}\\gt V_T\\)): \\(I_D=k(V_{GS}-V_T)^2\\). Como interruptor tiene \\(R_{DS(on)}\\) muy baja. CMOS combina MOSFET de canal N y P y solo consume al conmutar."
+     ],
+     "u": [
+      "Procesadores y memorias (miles de millones de MOSFET), fuentes conmutadas, control de motores.",
+      "Conmutan rápido con muy poca pérdida.",
+      "Para conmutar cargas grandes o en lógica digital.",
+      "Verifica V_GS respecto a V_T y la potencia I²R_DS(on)."
+     ],
+     "f": "I_D=k(V_{GS}-V_T)^2"
+    },
+    {
+     "n": "FET frente a BJT",
+     "e": [
+      "El BJT se controla por corriente y tiene baja impedancia de entrada; el FET se controla por voltaje y tiene impedancia altísima. El MOSFET de potencia pierde menos como interruptor y es más fácil de manejar desde lógica."
+     ],
+     "u": [
+      "Elegir el transistor para un diseño.",
+      "Cada uno conviene en contextos distintos.",
+      "Al seleccionar componentes.",
+      "Compara corriente de control, pérdidas y velocidad."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un JFET con I_DSS = 10 mA y V_P = −4 V tiene V_GS = −2 V. ¿I_D?",
+     "pasos": [
+      "<b>Cociente.</b> \\(\\tfrac{V_{GS}}{V_P}=\\tfrac{-2}{-4}=0.5\\).",
+      "<b>Shockley.</b> \\(10(1-0.5)^2=10(0.25)\\)."
+     ],
+     "r": "2.5 mA",
+     "fin": "Aplicar la ecuación del JFET."
+    },
+    {
+     "nv": "I",
+     "q": "Con el mismo JFET, ¿qué V_GS da I_D = 5 mA?",
+     "pasos": [
+      "<b>Despeja.</b> \\(\\left(1-\\tfrac{V_{GS}}{V_P}\\right)^2=0.5\\Rightarrow1-\\tfrac{V_{GS}}{V_P}=0.707\\).",
+      "<b>V_GS.</b> \\(-4(0.293)\\approx-1.17\\) V."
+     ],
+     "r": "≈ −1.17 V",
+     "fin": "Polarizar un JFET para una corriente dada."
+    },
+    {
+     "nv": "I",
+     "q": "Un MOSFET de enriquecimiento con k = 0.5 mA/V² y V_T = 2 V tiene V_GS = 5 V. ¿I_D?",
+     "pasos": [
+      "<b>¿Conduce?</b> \\(V_{GS}=5\\gt V_T=2\\): sí.",
+      "<b>Fórmula.</b> \\(0.5(5-2)^2=0.5(9)\\)."
+     ],
+     "r": "4.5 mA",
+     "fin": "Aplicar la ecuación del MOSFET."
+    },
+    {
+     "nv": "A",
+     "q": "Una carga de 1 A se conmuta con un MOSFET de R_DS(on) = 0.05 Ω o con un BJT con V_CE(sat) = 0.2 V. Compara las pérdidas.",
+     "pasos": [
+      "<b>MOSFET.</b> \\(I^2R=1(0.05)=0.05\\) W.",
+      "<b>BJT.</b> \\(V_{CE}I=0.2(1)=0.2\\) W.",
+      "<b>Conclusión.</b> El MOSFET disipa 4 veces menos y no necesita corriente de base."
+     ],
+     "r": "0.05 W contra 0.2 W.",
+     "fin": "Elegir el transistor de potencia adecuado."
+    },
+    {
+     "nv": "B",
+     "q": "¿Por qué un FET casi no consume corriente en la compuerta?",
+     "pasos": [
+      "<b>Estructura.</b> La compuerta está aislada (MOSFET) o en unión inversa (JFET).",
+      "<b>Consecuencia.</b> Impedancia de entrada altísima: se controla con voltaje."
+     ],
+     "r": "Porque la compuerta está aislada o polarizada en inversa.",
+     "fin": "Entender la diferencia clave con el BJT."
+    },
+    {
+     "nv": "B",
+     "q": "Nombra los cuatro tipos básicos de MOSFET.",
+     "r": "Canal N y canal P, cada uno de enriquecimiento o de empobrecimiento."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto vale I_D de un JFET con V_GS = 0?",
+     "r": "I_DSS"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ocurre en un JFET si V_GS = V_P?",
+     "r": "Corte: I_D = 0."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(g_m=\\tfrac{2I_{DSS}}{|V_P|}\\left(1-\\tfrac{V_{GS}}{V_P}\\right)\\) para el JFET con V_GS = −2 V.",
+     "r": "2.5 mS"
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué un circuito CMOS casi no consume energía en reposo?",
+     "r": "En cada estado uno de los dos transistores está apagado: no hay camino de corriente entre alimentación y tierra salvo al conmutar."
+    }
+   ]
+  },
+  {
+   "titulo": "Tiristores y optoelectrónica",
+   "intro": "Temas 4 a 6 del programa: tiristores (SCR, DIAC, TRIAC) y optoacopladores y sus tipos.",
+   "conceptos": [
+    {
+     "n": "SCR",
+     "e": [
+      "Rectificador controlado de silicio: conduce en un sentido solo después de un pulso en la compuerta y se mantiene encendido aunque el pulso desaparezca, hasta que la corriente baja de la de mantenimiento \\(I_H\\). En AC se apaga solo al final de cada semiciclo."
+     ],
+     "u": [
+      "Control de potencia en cargadores de baterías, arrancadores de motores, protección (crowbar).",
+      "Maneja corrientes grandes con un pulso pequeño.",
+      "Para controlar potencia en DC o media onda.",
+      "Ajusta el ángulo de disparo para regular la potencia."
+     ]
+    },
+    {
+     "n": "DIAC y TRIAC",
+     "e": [
+      "El TRIAC equivale a dos SCR en antiparalelo: controla ambos semiciclos de AC. El DIAC conduce en ambos sentidos al superar su voltaje de ruptura (unos 30 V) y se usa para disparar al TRIAC de forma simétrica. Retrasar el disparo (ángulo α) reduce la potencia entregada."
+     ],
+     "u": [
+      "Atenuadores de luz (dimmers), control de velocidad de ventiladores, relés de estado sólido.",
+      "Controlan potencia AC sin partes mecánicas.",
+      "Para variar la potencia de cargas AC.",
+      "Una red RC retrasa el voltaje que dispara al DIAC y este al TRIAC."
+     ]
+    },
+    {
+     "n": "Optoacopladores",
+     "e": [
+      "Unen un LED y un fotodetector en un mismo encapsulado: la señal pasa por luz y los circuitos quedan aislados eléctricamente. Tipos según la salida: fototransistor, fotodarlington, fototriac y fotoSCR. La relación de transferencia (CTR) es \\(\\tfrac{I_C}{I_F}\\)."
+     ],
+     "u": [
+      "Aislar un microcontrolador de la red eléctrica, fuentes conmutadas, interfaces industriales.",
+      "Protege la lógica de voltajes peligrosos y del ruido.",
+      "Cuando dos circuitos no deben compartir tierra.",
+      "Dimensiona la resistencia del LED y verifica el CTR."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cómo se enciende y cómo se apaga un SCR?",
+     "pasos": [
+      "<b>Encendido.</b> Con polarización directa y un pulso en la compuerta.",
+      "<b>Mantenimiento.</b> Sigue conduciendo sin el pulso.",
+      "<b>Apagado.</b> Cuando la corriente baja de I_H (en AC, al cruzar por cero)."
+     ],
+     "r": "Pulso para encender; corriente menor que I_H para apagar.",
+     "fin": "Entender el comportamiento con memoria del SCR."
+    },
+    {
+     "nv": "I",
+     "q": "Se maneja el LED de un optoacoplador desde 5 V con V_F = 1.2 V e I_F = 10 mA. Si el CTR es 50 %, ¿qué corriente puede dar la salida?",
+     "pasos": [
+      "<b>Resistencia.</b> \\(\\tfrac{5-1.2}{0.01}=380\\) Ω; se usa 390 Ω.",
+      "<b>Salida.</b> \\(0.5(10)=5\\) mA."
+     ],
+     "r": "390 Ω; 5 mA en la salida.",
+     "fin": "Diseñar una interfaz aislada."
+    },
+    {
+     "nv": "I",
+     "q": "Un TRIAC alimenta una carga resistiva con ángulo de disparo de 90°. ¿Qué fracción de la potencia máxima recibe?",
+     "pasos": [
+      "<b>Forma de onda.</b> Conduce la segunda mitad de cada semiciclo.",
+      "<b>Simetría.</b> La segunda mitad de una senoidal aporta la mitad de la energía del semiciclo."
+     ],
+     "r": "50 %",
+     "fin": "Relacionar el ángulo de disparo con la potencia."
+    },
+    {
+     "nv": "A",
+     "q": "Explica cómo funciona un dimmer con DIAC, TRIAC y red RC.",
+     "pasos": [
+      "<b>Red RC.</b> El capacitor se carga a través de un potenciómetro y retrasa su voltaje respecto a la red.",
+      "<b>DIAC.</b> Cuando el capacitor llega a unos 30 V, el DIAC conduce y entrega un pulso.",
+      "<b>TRIAC.</b> El pulso lo dispara y conduce el resto del semiciclo; se repite en el negativo.",
+      "<b>Control.</b> Más resistencia, más retraso, menos potencia en la lámpara."
+     ],
+     "r": "El potenciómetro ajusta el ángulo de disparo y con ello la potencia.",
+     "fin": "Entender un circuito de control de potencia completo."
+    },
+    {
+     "nv": "I",
+     "q": "Compara SCR y TRIAC.",
+     "pasos": [
+      "<b>Sentido.</b> SCR, uno; TRIAC, ambos.",
+      "<b>Uso.</b> SCR en DC o media onda; TRIAC en AC de onda completa.",
+      "<b>Disparo.</b> Ambos por compuerta; el TRIAC con pulsos de cualquier polaridad."
+     ],
+     "r": "El TRIAC es el equivalente bidireccional del SCR.",
+     "fin": "Elegir el tiristor correcto."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué dispositivo conduce en ambos sentidos y se usa para controlar cargas de AC?",
+     "ops": [
+      "TRIAC",
+      "SCR",
+      "Diodo Zener",
+      "JFET"
+     ],
+     "ok": 0,
+     "r": "El TRIAC equivale a dos SCR en antiparalelo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué componente transmite una señal entre dos circuitos usando luz y los aísla eléctricamente?",
+     "ops": [
+      "Transformador",
+      "Relé",
+      "Optoacoplador",
+      "Capacitor"
+     ],
+     "ok": 2,
+     "r": "El LED y el fotodetector comparten encapsulado, no conexión eléctrica."
+    },
+    {
+     "nv": "I",
+     "q": "En un circuito de DC, ¿cómo se apaga un SCR que ya está conduciendo?",
+     "ops": [
+      "Reduciendo su corriente por debajo de la de mantenimiento",
+      "Quitando el pulso de compuerta",
+      "Aplicando otro pulso positivo",
+      "Calentándolo"
+     ],
+     "ok": 0,
+     "r": "Quitar el pulso no basta: el SCR se mantiene hasta que la corriente cae bajo I_H."
+    },
+    {
+     "nv": "I",
+     "q": "¿Para qué se usa el DIAC en un atenuador de luz?",
+     "ops": [
+      "Para rectificar la señal",
+      "Para filtrar el ruido",
+      "Para medir la corriente",
+      "Para disparar al TRIAC de forma simétrica en ambos semiciclos"
+     ],
+     "ok": 3,
+     "r": "Conduce al superar su ruptura en cualquier polaridad y entrega el pulso al TRIAC."
+    },
+    {
+     "nv": "A",
+     "q": "Para que un microcontrolador encienda una lámpara de 120 V AC de forma aislada, ¿qué optoacoplador conviene?",
+     "ops": [
+      "De salida fototransistor",
+      "De salida fototriac",
+      "De salida fotodarlington",
+      "Uno sin salida"
+     ],
+     "ok": 1,
+     "r": "El fototriac conduce en AC y puede disparar a un TRIAC de potencia."
+    }
+   ]
+  },
+  {
+   "titulo": "Formas de onda y temporizador 555",
+   "intro": "Tema 7 del programa: ondas, configuraciones básicas del NE555 (monoestable y astable) y circuitos con el temporizador.",
+   "conceptos": [
+    {
+     "n": "Formas de onda",
+     "e": [
+      "Senoidal, cuadrada, triangular y diente de sierra. En una onda cuadrada, el ciclo de trabajo es el porcentaje del periodo en alto: \\(D=\\tfrac{t_H}{T}\\times100\\%\\). Un capacitor que se carga y descarga produce una rampa exponencial."
+     ],
+     "u": [
+      "Relojes de sistemas digitales, PWM para controlar motores y LEDs, generadores de señales.",
+      "Cada forma sirve a una aplicación distinta.",
+      "Al generar o analizar señales.",
+      "Mide t_H, t_L y periodo."
+     ]
+    },
+    {
+     "n": "555 astable",
+     "e": [
+      "Oscila solo: \\(t_H=0.693(R_1+R_2)C\\), \\(t_L=0.693R_2C\\), \\(f=\\tfrac{1.44}{(R_1+R_2+R_2)C}\\). Como \\(t_H\\gt t_L\\), el ciclo de trabajo básico siempre supera 50 %."
+     ],
+     "u": [
+      "Parpadeo de LEDs, señales de reloj, alarmas, PWM simple.",
+      "Genera una onda cuadrada con dos resistencias y un capacitor.",
+      "Cuando necesitas una frecuencia fija sin microcontrolador.",
+      "Elige C, despeja R₁ + 2R₂ para la frecuencia deseada."
+     ],
+     "f": "f=\\frac{1.44}{(R_1+2R_2)C}\\qquad D=\\frac{R_1+R_2}{R_1+2R_2}"
+    },
+    {
+     "n": "555 monoestable",
+     "e": [
+      "Un pulso en el disparo (pin 2) produce una salida alta de duración fija \\(t=1.1RC\\). Pines clave: 2 disparo, 3 salida, 4 reset, 6 umbral, 7 descarga, 8 \\(V_{CC}\\), 1 tierra."
+     ],
+     "u": [
+      "Temporizadores de luces, eliminación de rebotes, retardos de encendido.",
+      "Da un tiempo preciso a partir de un evento.",
+      "Cuando un evento debe durar un tiempo fijo.",
+      "Despeja R o C de t = 1.1RC."
+     ],
+     "f": "t=1.1RC"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un 555 astable con R₁ = 1 kΩ, R₂ = 10 kΩ y C = 10 μF. Halla f y el ciclo de trabajo.",
+     "pasos": [
+      "<b>Frecuencia.</b> \\(\\tfrac{1.44}{(1\\text{k}+20\\text{k})(10\\,\\mu\\text{F})}\\approx6.86\\) Hz.",
+      "<b>Ciclo.</b> \\(\\tfrac{11}{21}\\approx52.4\\%\\)."
+     ],
+     "r": "≈ 6.86 Hz y 52.4 %.",
+     "fin": "Calcular un astable."
+    },
+    {
+     "nv": "I",
+     "q": "Un monoestable con R = 100 kΩ y C = 10 μF. ¿Duración del pulso?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(t=1.1RC\\).",
+      "<b>Sustituye.</b> \\(1.1(100\\times10^3)(10\\times10^{-6})\\)."
+     ],
+     "r": "1.1 s",
+     "fin": "Calcular un temporizador."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña un astable de 1 kHz con C = 0.01 μF y R₁ = 1 kΩ.",
+     "pasos": [
+      "<b>Despeja.</b> \\(R_1+2R_2=\\tfrac{1.44}{1000(10^{-8})}=144\\) kΩ.",
+      "<b>R₂.</b> \\(\\tfrac{144-1}{2}=71.5\\) kΩ (valor comercial 68 kΩ o 75 kΩ)."
+     ],
+     "r": "R₂ ≈ 71.5 kΩ",
+     "fin": "Diseñar para una frecuencia dada."
+    },
+    {
+     "nv": "A",
+     "q": "Con R₁ = 1 kΩ, R₂ = 10 kΩ y C = 10 μF, calcula t_H y t_L y verifica la frecuencia.",
+     "pasos": [
+      "<b>Alto.</b> \\(0.693(11\\text{k})(10\\,\\mu\\text{F})\\approx0.0762\\) s.",
+      "<b>Bajo.</b> \\(0.693(10\\text{k})(10\\,\\mu\\text{F})\\approx0.0693\\) s.",
+      "<b>Periodo.</b> 0.1455 s, \\(f\\approx6.87\\) Hz."
+     ],
+     "r": "t_H ≈ 76.2 ms, t_L ≈ 69.3 ms.",
+     "fin": "Entender de dónde sale la fórmula de frecuencia."
+    },
+    {
+     "nv": "I",
+     "q": "Una onda cuadrada de 2 kHz está en alto 0.1 ms. ¿Ciclo de trabajo?",
+     "pasos": [
+      "<b>Periodo.</b> 0.5 ms.",
+      "<b>Ciclo.</b> \\(\\tfrac{0.1}{0.5}=20\\%\\)."
+     ],
+     "r": "20 %",
+     "fin": "Calcular ciclos de trabajo para PWM."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hacen los pines 2, 3 y 7 del 555?",
+     "r": "Disparo, salida y descarga."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué R da un monoestable de 5 s con C = 47 μF?",
+     "r": "≈ 96.7 kΩ (se usa 100 kΩ)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla f de un astable con R₁ = R₂ = 10 kΩ y C = 0.1 μF.",
+     "r": "480 Hz"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ciclo de trabajo tiene ese astable?",
+     "r": "66.7 %"
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué el astable básico no puede dar un ciclo de trabajo menor de 50 % y cómo se corrige?",
+     "r": "El capacitor se carga por R₁ + R₂ y se descarga solo por R₂; se corrige con un diodo en paralelo a R₂."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

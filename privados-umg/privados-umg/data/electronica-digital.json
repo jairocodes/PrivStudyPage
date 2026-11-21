@@ -1,0 +1,987 @@
+{
+ "slug": "electronica-digital",
+ "titulo": "Electrónica Digital",
+ "meta": "Ciclo 6, código 030, bloque Electrónica del seminario",
+ "firma": "\\overline{A+B}=\\overline A\\cdot\\overline B",
+ "firma_nota": "De Morgan: la ley que permite construir cualquier circuito solo con compuertas NAND o NOR.",
+ "lead": "Compuertas, simplificación, lógica secuencial, multiplexores, bases de tiempo, microcontroladores PICAXE, comunicación serie e I²C y memorias: el hardware sobre el que corre todo el software. Los 8 temas del programa están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6ElectronicaDigital.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta o en forma de cuestionario de opción múltiple que te dice al instante si acertaste. En los mapas de Karnaugh, A es el bit más significativo.",
+ "temas": [
+  {
+   "titulo": "Sistemas numéricos y compuertas lógicas",
+   "intro": "Tema 1 del programa: compuertas AND, OR, NOT, XOR y sus complementos, implementación de funciones lógicas; incluye los sistemas numéricos que se usan en todo el curso.",
+   "conceptos": [
+    {
+     "n": "Sistemas numéricos",
+     "e": [
+      "Binario (base 2), octal (8), decimal (10) y hexadecimal (16). De decimal a binario se divide entre 2 y se leen los residuos de abajo hacia arriba. Cada dígito hexadecimal son 4 bits y cada octal 3 bits. El <b>complemento a 2</b> (invertir bits y sumar 1) representa negativos: con \\(n\\) bits va de \\(-2^{n-1}\\) a \\(2^{n-1}-1\\)."
+     ],
+     "u": [
+      "Direcciones de memoria y colores en hexadecimal, máscaras de red, permisos de Linux en octal (chmod 755).",
+      "Las computadoras solo manejan bits; hex y octal los compactan.",
+      "Al programar a bajo nivel, configurar redes o leer volcados de memoria.",
+      "Agrupa bits de 4 en 4 (hex) o de 3 en 3 (octal) desde la derecha."
+     ]
+    },
+    {
+     "n": "Compuertas lógicas",
+     "e": [
+      "AND (1 si todas son 1), OR (1 si alguna es 1), NOT (invierte), NAND y NOR (sus complementos), XOR (1 si las entradas son distintas) y XNOR (1 si son iguales). NAND y NOR son <b>universales</b>: con cualquiera de ellas se construye todo."
+     ],
+     "u": [
+      "Procesadores, controladores, lógica de alarmas y semáforos.",
+      "Son los bloques básicos de todo circuito digital.",
+      "Al traducir una condición lógica a hardware.",
+      "Escribe la tabla de verdad y elige compuertas para cada término."
+     ],
+     "tabla": "<table><thead><tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>NAND</th><th>NOR</th><th>XOR</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>"
+    },
+    {
+     "n": "Implementación de funciones",
+     "e": [
+      "Una función se escribe como suma de productos (un término AND por cada fila con salida 1, sumados con OR) o producto de sumas. Un sumador completo es el ejemplo clásico: \\(S=A\\oplus B\\oplus C_{in}\\), \\(C_{out}=AB+C_{in}(A\\oplus B)\\)."
+     ],
+     "u": [
+      "Unidades aritméticas de los procesadores, comparadores.",
+      "Convierte especificaciones en circuitos.",
+      "Al diseñar lógica combinacional.",
+      "Arma la tabla, escribe la suma de productos y luego simplifica."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Convierte 245 a binario, octal y hexadecimal.",
+     "pasos": [
+      "<b>Binario.</b> Divisiones sucesivas entre 2: \\(11110101_2\\).",
+      "<b>Octal.</b> Grupos de 3 desde la derecha: 011 110 101 → \\(365_8\\).",
+      "<b>Hexadecimal.</b> Grupos de 4: 1111 0101 → \\(F5_{16}\\)."
+     ],
+     "r": "\\(11110101_2=365_8=F5_{16}\\)",
+     "fin": "Moverse entre bases con agrupaciones de bits."
+    },
+    {
+     "nv": "B",
+     "q": "Convierte \\(10110110_2\\) y \\(3F_{16}\\) a decimal.",
+     "pasos": [
+      "<b>Binario.</b> \\(128+32+16+4+2=182\\).",
+      "<b>Hexadecimal.</b> \\(3(16)+15=63\\)."
+     ],
+     "r": "182 y 63.",
+     "fin": "Leer valores en otras bases."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula 45 − 62 en complemento a 2 con 8 bits.",
+     "pasos": [
+      "<b>45.</b> \\(00101101\\).",
+      "<b>−62.</b> 62 es \\(00111110\\); invierte: \\(11000001\\); suma 1: \\(11000010\\).",
+      "<b>Suma.</b> \\(00101101+11000010=11101111\\).",
+      "<b>Interpreta.</b> Bit de signo 1: invierte y suma 1 → \\(00010001=17\\); el resultado es −17."
+     ],
+     "r": "11101111 = −17",
+     "fin": "Ver cómo resta un procesador: sumando el complemento."
+    },
+    {
+     "nv": "I",
+     "q": "Haz la tabla de verdad de \\(F=AB+\\overline C\\).",
+     "pasos": [
+      "<b>Filas con C = 0.</b> \\(\\overline C=1\\): F = 1 en las cuatro.",
+      "<b>Filas con C = 1.</b> F = AB: solo con A = B = 1.",
+      "<b>Minitérminos.</b> \\(F=\\sum m(0,2,4,6,7)\\)."
+     ],
+     "r": "F = 1 en las filas 0, 2, 4, 6 y 7.",
+     "fin": "Pasar de expresión a tabla."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña un sumador completo de un bit.",
+     "pasos": [
+      "<b>Tabla.</b> S = 1 cuando hay un número impar de unos entre A, B y Cᵢₙ; Cₒᵤₜ = 1 cuando hay dos o más.",
+      "<b>Suma.</b> \\(S=A\\oplus B\\oplus C_{in}\\).",
+      "<b>Acarreo.</b> \\(C_{out}=AB+C_{in}(A\\oplus B)\\).",
+      "<b>Compuertas.</b> Dos XOR, dos AND y una OR."
+     ],
+     "r": "\\(S=A\\oplus B\\oplus C_{in}\\), \\(C_{out}=AB+C_{in}(A\\oplus B)\\)",
+     "fin": "Construir la pieza básica de la ALU."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué entrega una NAND con entradas 1 y 1?",
+     "r": "0"
+    },
+    {
+     "nv": "B",
+     "q": "Suma en binario \\(1101+0110\\).",
+     "r": "\\(10011\\) (13 + 6 = 19)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo obtienes un NOT con una compuerta NAND?",
+     "r": "Uniendo sus dos entradas."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe XOR como suma de productos.",
+     "r": "\\(\\overline AB+A\\overline B\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Representa −100 en complemento a 2 con 8 bits.",
+     "r": "\\(10011100\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Simplificación de funciones lógicas",
+   "intro": "Tema 2 del programa: álgebra booleana, mapas de Karnaugh e implementación con circuitos integrados.",
+   "conceptos": [
+    {
+     "n": "Álgebra booleana",
+     "e": [
+      "Leyes clave: \\(A+0=A\\), \\(A+1=1\\), \\(A+A=A\\), \\(A+\\overline A=1\\), \\(A\\cdot\\overline A=0\\), absorción \\(A+AB=A\\), \\(A+\\overline AB=A+B\\), y De Morgan \\(\\overline{AB}=\\overline A+\\overline B\\), \\(\\overline{A+B}=\\overline A\\,\\overline B\\)."
+     ],
+     "u": [
+      "Reducir compuertas en un diseño, optimizar condiciones en código.",
+      "Menos compuertas significa menos costo, consumo y retardo.",
+      "Con expresiones pequeñas.",
+      "Factoriza y aplica las leyes paso a paso."
+     ],
+     "f": "A+AB=A\\qquad A+\\overline AB=A+B"
+    },
+    {
+     "n": "Mapas de Karnaugh",
+     "e": [
+      "Las celdas siguen código Gray (00, 01, 11, 10) para que las vecinas difieran en un bit, incluidos los bordes. Se agrupan unos en rectángulos de 1, 2, 4, 8 o 16 celdas, lo más grandes posible; cada grupo elimina las variables que cambian dentro de él. Las condiciones “no importa” (X) se usan solo si agrandan grupos."
+     ],
+     "u": [
+      "Diseño de lógica de control con pocas variables.",
+      "Da la expresión mínima de forma visual.",
+      "Con 3 o 4 variables.",
+      "Llena el mapa, agrupa los unos con el mínimo de grupos y lee cada grupo."
+     ]
+    },
+    {
+     "n": "Implementación con circuitos integrados",
+     "e": [
+      "Familia 74xx: 7400 (cuatro NAND), 7402 (NOR), 7404 (seis NOT), 7408 (AND), 7432 (OR), 7486 (XOR). Convertir todo a NAND reduce el número de chips distintos."
+     ],
+     "u": [
+      "Prototipos en protoboard, laboratorios, reparación de equipos.",
+      "Lleva el diseño a componentes reales.",
+      "Al armar el circuito.",
+      "Cuenta compuertas por tipo y elige los chips."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Simplifica \\(F=AB+A\\overline B\\).",
+     "pasos": [
+      "<b>Factoriza.</b> \\(A(B+\\overline B)\\).",
+      "<b>Complemento.</b> \\(B+\\overline B=1\\)."
+     ],
+     "r": "\\(F=A\\)",
+     "fin": "Eliminar una variable redundante."
+    },
+    {
+     "nv": "I",
+     "q": "Simplifica \\(F=\\overline{AB}+A\\).",
+     "pasos": [
+      "<b>De Morgan.</b> \\(\\overline A+\\overline B+A\\).",
+      "<b>Complemento.</b> \\(\\overline A+A=1\\), y \\(1+\\overline B=1\\)."
+     ],
+     "r": "\\(F=1\\)",
+     "fin": "Usar De Morgan para descubrir una tautología."
+    },
+    {
+     "nv": "I",
+     "q": "Simplifica con Karnaugh \\(F(A,B,C)=\\sum m(0,2,4,5,6)\\).",
+     "pasos": [
+      "<b>Mapa.</b> Unos en 000, 010, 100, 101, 110.",
+      "<b>Grupo de 4.</b> Las celdas con C = 0 (0, 2, 4, 6): da \\(\\overline C\\).",
+      "<b>Grupo de 2.</b> 100 y 101: da \\(A\\overline B\\)."
+     ],
+     "r": "\\(F=\\overline C+A\\overline B\\)",
+     "fin": "Agrupar en un mapa de 3 variables."
+    },
+    {
+     "nv": "A",
+     "q": "Simplifica \\(F(A,B,C,D)=\\sum m(0,1,2,5,8,9,10)\\).",
+     "pasos": [
+      "<b>Grupo de esquinas.</b> 0, 2, 8, 10: \\(\\overline B\\,\\overline D\\).",
+      "<b>Grupo de 4.</b> 0, 1, 8, 9: \\(\\overline B\\,\\overline C\\).",
+      "<b>Grupo de 2.</b> 1 y 5: \\(\\overline A\\,\\overline C D\\).",
+      "<b>Suma.</b> Todos los unos cubiertos."
+     ],
+     "r": "\\(F=\\overline B\\,\\overline C+\\overline B\\,\\overline D+\\overline A\\,\\overline CD\\)",
+     "fin": "Aprovechar las esquinas del mapa de 4 variables."
+    },
+    {
+     "nv": "A",
+     "q": "Simplifica \\(F=\\sum m(1,3,7,11,15)+d(0,2,5)\\).",
+     "pasos": [
+      "<b>Grupo con no importa.</b> 0, 1, 2, 3 (usando 0 y 2 como X): \\(\\overline A\\,\\overline B\\).",
+      "<b>Columna CD = 11.</b> 3, 7, 11, 15: \\(CD\\).",
+      "<b>El 5.</b> No hace falta cubrirlo: es no importa."
+     ],
+     "r": "\\(F=\\overline A\\,\\overline B+CD\\)",
+     "fin": "Usar condiciones no importa a favor."
+    },
+    {
+     "nv": "B",
+     "q": "Simplifica \\(A(A+B)\\).",
+     "r": "\\(A\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Simplifica \\(F(A,B,C)=\\sum m(1,3,5,7)\\).",
+     "r": "\\(F=C\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Simplifica \\(F=\\sum m(0,2,5,7,8,10,13,15)\\).",
+     "r": "\\(BD+\\overline B\\,\\overline D\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Diseña la función mayoría de 3 entradas (1 si dos o más son 1).",
+     "r": "\\(AB+AC+BC\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Implementa \\(F=AB+CD\\) solo con NAND.",
+     "r": "\\(F=\\overline{\\overline{AB}\\cdot\\overline{CD}}\\): tres NAND (un solo 7400)."
+    }
+   ]
+  },
+  {
+   "titulo": "Lógica secuencial: flip-flops, registros y contadores",
+   "intro": "Tema 3 del programa: flip-flops, diseño secuencial, registros, contadores y decodificadores.",
+   "conceptos": [
+    {
+     "n": "Combinacional frente a secuencial",
+     "e": [
+      "Un circuito combinacional depende solo de las entradas actuales. Uno secuencial depende también de su estado anterior: tiene memoria, normalmente sincronizada con un reloj."
+     ],
+     "u": [
+      "Memorias, registros del procesador, máquinas de estados (semáforos, cajeros).",
+      "Sin memoria no hay computación.",
+      "Cuando la salida depende de la historia.",
+      "Identifica si hay realimentación o flip-flops."
+     ]
+    },
+    {
+     "n": "Flip-flops",
+     "e": [
+      "<b>SR:</b> S pone 1, R pone 0, S = R = 1 prohibido. <b>D:</b> copia D en el flanco de reloj. <b>JK:</b> como SR, pero J = K = 1 conmuta. <b>T:</b> conmuta si T = 1."
+     ],
+     "u": [
+      "Almacenar un bit, sincronizar señales, divisores de frecuencia.",
+      "Son la celda de memoria básica.",
+      "Al guardar estado en un circuito.",
+      "Usa la tabla característica para hallar el siguiente estado."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Entradas</th><th>Siguiente estado</th></tr></thead><tbody><tr><td>SR</td><td>S, R</td><td>S = 1 pone 1; R = 1 pone 0; ambos 1 prohibido</td></tr><tr><td>D</td><td>D</td><td>Q = D</td></tr><tr><td>JK</td><td>J, K</td><td>11 conmuta; 10 pone 1; 01 pone 0; 00 mantiene</td></tr><tr><td>T</td><td>T</td><td>T = 1 conmuta; T = 0 mantiene</td></tr></tbody></table>"
+    },
+    {
+     "n": "Registros y contadores",
+     "e": [
+      "Un registro guarda varios bits; uno de desplazamiento los mueve una posición por pulso (serie-paralelo, paralelo-serie). Un contador de \\(n\\) flip-flops tiene hasta \\(2^n\\) estados. Los asíncronos encadenan relojes (más lentos, con retardos acumulados); los síncronos comparten reloj. Cada flip-flop T divide la frecuencia entre 2."
+     ],
+     "u": [
+      "Puertos serie, relojes digitales, divisores de frecuencia, contadores de eventos.",
+      "Cuentan, almacenan y convierten datos entre serie y paralelo.",
+      "Al contar pulsos o convertir formatos.",
+      "Haz la tabla de estados y deduce las entradas de cada flip-flop."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un flip-flop D recibe D = 1, 0, 1, 1 en cuatro flancos de reloj, partiendo de Q = 0. ¿Qué valores toma Q?",
+     "pasos": [
+      "<b>Regla.</b> En cada flanco, Q toma el valor de D.",
+      "<b>Secuencia.</b> 1, 0, 1, 1."
+     ],
+     "r": "Q = 1, 0, 1, 1",
+     "fin": "Entender el flip-flop más usado en registros."
+    },
+    {
+     "nv": "I",
+     "q": "Un JK con J = K = 1 parte de Q = 0. ¿Qué pasa en tres flancos y para qué sirve?",
+     "pasos": [
+      "<b>Regla.</b> J = K = 1 conmuta.",
+      "<b>Secuencia.</b> 1, 0, 1.",
+      "<b>Uso.</b> La salida tiene la mitad de la frecuencia del reloj."
+     ],
+     "r": "Q = 1, 0, 1: divide la frecuencia entre 2.",
+     "fin": "Ver el flip-flop como divisor de frecuencia."
+    },
+    {
+     "nv": "I",
+     "q": "Un contador asíncrono de 3 bits, ¿cuántos estados tiene? ¿Cómo se convierte en módulo 6?",
+     "pasos": [
+      "<b>Estados.</b> \\(2^3=8\\) (0 a 7).",
+      "<b>Módulo 6.</b> Detectar el estado 110 con una AND de Q₂ y Q₁ y usarla para el reset.",
+      "<b>Resultado.</b> Cuenta 0 a 5 y vuelve a 0."
+     ],
+     "r": "8 estados; reset al llegar a 110.",
+     "fin": "Diseñar contadores de cualquier módulo."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña un contador síncrono ascendente de 2 bits con flip-flops T.",
+     "pasos": [
+      "<b>Secuencia.</b> 00 → 01 → 10 → 11 → 00.",
+      "<b>Bit 0.</b> Cambia siempre: \\(T_0=1\\).",
+      "<b>Bit 1.</b> Cambia solo cuando Q₀ = 1: \\(T_1=Q_0\\).",
+      "<b>Verifica.</b> De 01 a 10 conmutan ambos; de 10 a 11 solo Q₀."
+     ],
+     "r": "\\(T_0=1\\), \\(T_1=Q_0\\)",
+     "fin": "Seguir el método de diseño secuencial."
+    },
+    {
+     "nv": "I",
+     "q": "Un registro serie-paralelo de 4 bits vacío recibe 1, 0, 1, 1 (desplazando hacia la derecha). ¿Contenido tras cada pulso?",
+     "pasos": [
+      "<b>Pulso 1.</b> 1000.",
+      "<b>Pulso 2.</b> 0100.",
+      "<b>Pulso 3.</b> 1010.",
+      "<b>Pulso 4.</b> 1101."
+     ],
+     "r": "1101 (el primer bit recibido quedó a la derecha).",
+     "fin": "Ver cómo un puerto serie arma un byte."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos flip-flops necesita un contador hasta 100?",
+     "r": "7 (2⁷ = 128)."
+    },
+    {
+     "nv": "I",
+     "q": "Con 3 flip-flops T en cascada y un reloj de 8 MHz, ¿qué frecuencia sale del último?",
+     "r": "1 MHz"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué pasa con un flip-flop SR si S = R = 1?",
+     "r": "Es una condición prohibida: el estado es indefinido."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué un contador síncrono es más rápido que uno asíncrono?",
+     "r": "Todos los flip-flops cambian con el mismo reloj; no se acumulan retardos."
+    },
+    {
+     "nv": "A",
+     "q": "Un contador síncrono cuenta 0-1-2-3-0 con flip-flops D. Da D₁ y D₀.",
+     "r": "\\(D_0=\\overline{Q_0}\\), \\(D_1=Q_1\\oplus Q_0\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Multiplexores, demultiplexores y decodificadores",
+   "intro": "Temas 3 y 4 del programa: decodificadores, multiplexores, demultiplexores y transmisión de datos con ellos.",
+   "conceptos": [
+    {
+     "n": "Multiplexor",
+     "e": [
+      "Un MUX de \\(2^n\\) entradas usa \\(n\\) líneas de selección para enviar una de ellas a la salida: es un selector de datos. Con un MUX de \\(2^n\\) entradas se implementa cualquier función de \\(n\\) variables (y de \\(n+1\\) usando la última variable como dato)."
+     ],
+     "u": [
+      "Selección de fuentes de datos en buses, transmisión de varios canales por un cable.",
+      "Comparte un medio entre varias señales.",
+      "Cuando hay que elegir entre varias entradas.",
+      "Conecta las variables a la selección y fija cada entrada en 0, 1 o la variable restante."
+     ]
+    },
+    {
+     "n": "Demultiplexor y decodificador",
+     "e": [
+      "El DEMUX envía una entrada a una de \\(2^n\\) salidas. Un decodificador de \\(n\\) entradas activa una de \\(2^n\\) salidas; se usa para seleccionar chips de memoria o manejar displays de 7 segmentos."
+     ],
+     "u": [
+      "Direccionamiento de memoria, displays, distribución de señales.",
+      "Traduce un código binario en una línea activa.",
+      "Al seleccionar un dispositivo entre varios.",
+      "La salida activa es la que corresponde al número binario de entrada."
+     ]
+    },
+    {
+     "n": "Transmisión de datos con MUX y DEMUX",
+     "e": [
+      "Un MUX en el emisor y un DEMUX en el receptor, con las mismas líneas de selección sincronizadas, permiten enviar varias señales por un solo canal turnándose en el tiempo (multiplexación por división de tiempo)."
+     ],
+     "u": [
+      "Telefonía digital, buses de datos, sensores múltiples con un solo convertidor.",
+      "Ahorra cables y canales.",
+      "Cuando muchas señales deben compartir un medio.",
+      "Sincroniza las selecciones de ambos extremos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un MUX 4 a 1 tiene S₁S₀ = 10. ¿Qué entrada pasa a la salida?",
+     "pasos": [
+      "<b>Selección.</b> \\(10_2=2\\).",
+      "<b>Salida.</b> La entrada I₂."
+     ],
+     "r": "I₂",
+     "fin": "Entender la selección de datos."
+    },
+    {
+     "nv": "I",
+     "q": "Implementa \\(F(A,B,C)=\\sum m(1,2,6,7)\\) con un MUX 8 a 1.",
+     "pasos": [
+      "<b>Selección.</b> A, B, C a S₂, S₁, S₀.",
+      "<b>Entradas en 1.</b> D₁, D₂, D₆, D₇.",
+      "<b>Entradas en 0.</b> D₀, D₃, D₄, D₅."
+     ],
+     "r": "D₁ = D₂ = D₆ = D₇ = 1; las demás en 0.",
+     "fin": "Usar un MUX como generador de funciones."
+    },
+    {
+     "nv": "A",
+     "q": "Implementa la misma función con un MUX 4 a 1, usando A y B como selección.",
+     "pasos": [
+      "<b>AB = 00.</b> m₀ = 0, m₁ = 1: la entrada es C.",
+      "<b>AB = 01.</b> m₂ = 1, m₃ = 0: la entrada es \\(\\overline C\\).",
+      "<b>AB = 10.</b> m₄ = m₅ = 0: entrada 0.",
+      "<b>AB = 11.</b> m₆ = m₇ = 1: entrada 1."
+     ],
+     "r": "I₀ = C, I₁ = \\(\\overline C\\), I₂ = 0, I₃ = 1.",
+     "fin": "Ahorrar hardware usando la última variable como dato."
+    },
+    {
+     "nv": "I",
+     "q": "Un DEMUX 1 a 4 recibe un dato con S₁S₀ = 11. ¿A dónde va?",
+     "pasos": [
+      "<b>Selección.</b> \\(11_2=3\\).",
+      "<b>Salida.</b> Y₃; las demás quedan en 0."
+     ],
+     "r": "Y₃",
+     "fin": "Distribuir una señal a un destino."
+    },
+    {
+     "nv": "I",
+     "q": "Dos chips de memoria comparten un bus. ¿Cómo usas un decodificador 1 a 2 (o 2 a 4) para elegir cuál responde?",
+     "pasos": [
+      "<b>Entrada.</b> El bit de dirección más alto entra al decodificador.",
+      "<b>Salidas.</b> Cada salida va a la habilitación (chip select) de un chip.",
+      "<b>Efecto.</b> Solo un chip responde a cada dirección."
+     ],
+     "r": "El bit alto de dirección selecciona el chip a través del decodificador.",
+     "fin": "Entender el direccionamiento de memoria."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántas líneas de selección tiene un MUX de 16 entradas?",
+     "r": "4"
+    },
+    {
+     "nv": "I",
+     "q": "Un decodificador 3 a 8 recibe 101. ¿Qué salida se activa?",
+     "r": "Y₅"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo se envían 8 señales por un cable con MUX y DEMUX?",
+     "r": "MUX 8 a 1 en el emisor y DEMUX 1 a 8 en el receptor con 3 líneas de selección sincronizadas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace un decodificador BCD a 7 segmentos?",
+     "r": "Convierte un dígito BCD en las 7 señales que encienden los segmentos del display."
+    },
+    {
+     "nv": "A",
+     "q": "Construye un MUX 8 a 1 con dos MUX 4 a 1 y uno 2 a 1.",
+     "r": "Los dos 4 a 1 usan S₁S₀; sus salidas entran al 2 a 1, que usa S₂."
+    }
+   ]
+  },
+  {
+   "titulo": "Base de tiempo y microcontrolador PICAXE",
+   "intro": "Temas 5 y 6 del programa: frecuencia, periodo y simetría, el 555 como base de tiempo; puertos, variables, set de instrucciones y conversión analógica-digital del PICAXE.",
+   "conceptos": [
+    {
+     "n": "Base de tiempo",
+     "e": [
+      "Un sistema digital necesita un reloj: una onda cuadrada de frecuencia \\(f\\), periodo \\(T=\\tfrac1f\\) y simetría (ciclo de trabajo) cercana a 50 %. El 555 astable da \\(f=\\tfrac{1.44}{(R_1+2R_2)C}\\); el monoestable, un pulso de \\(1.1RC\\)."
+     ],
+     "u": [
+      "Relojes de circuitos simples, parpadeo de indicadores, temporizadores.",
+      "Sincroniza todo el sistema.",
+      "Cuando no hay microcontrolador o se necesita un reloj independiente.",
+      "Despeja R o C para la frecuencia deseada."
+     ]
+    },
+    {
+     "n": "PICAXE: puertos y variables",
+     "e": [
+      "El PICAXE es un microcontrolador PIC con intérprete BASIC. Tiene pines de salida y entrada (B.0, C.1, etc.) y variables de byte <code>b0</code> a <code>b27</code> (0 a 255) que se agrupan en palabras de 16 bits <code>w0</code>, <code>w1</code>…"
+     ],
+     "u": [
+      "Robótica educativa, automatización sencilla, prototipos.",
+      "Programar es más rápido que armar lógica discreta.",
+      "En proyectos de control pequeños.",
+      "Asigna pines, define variables y escribe el ciclo principal."
+     ]
+    },
+    {
+     "n": "Instrucciones y conversión A/D",
+     "e": [
+      "Instrucciones clave: <code>high</code>, <code>low</code>, <code>toggle</code>, <code>pause</code> (milisegundos), <code>if…then</code>, <code>goto</code>, <code>for…next</code>, <code>readadc</code>. Un ADC de \\(n\\) bits divide el rango en \\(2^n\\) niveles: resolución \\(\\tfrac{V_{ref}}{2^n}\\); el valor leído es \\(\\tfrac{V}{V_{ref}}(2^n-1)\\)."
+     ],
+     "u": [
+      "Lectura de sensores de temperatura o luz, control de motores y ventiladores.",
+      "Convierte el mundo analógico en números.",
+      "Al leer sensores.",
+      "Calcula el valor esperado y compáralo con el umbral en el programa."
+     ],
+     "f": "\\text{resolución}=\\frac{V_{ref}}{2^n}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un reloj de 1 kHz con simetría de 50 %, ¿qué periodo y tiempo en alto tiene?",
+     "pasos": [
+      "<b>Periodo.</b> \\(\\tfrac1{1000}=1\\) ms.",
+      "<b>Alto.</b> 50 % de 1 ms."
+     ],
+     "r": "1 ms y 0.5 ms.",
+     "fin": "Describir una base de tiempo."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña un 555 astable de 2 Hz con C = 10 μF y R₁ = 1 kΩ.",
+     "pasos": [
+      "<b>Despeja.</b> \\(R_1+2R_2=\\tfrac{1.44}{2(10^{-5})}=72\\) kΩ.",
+      "<b>R₂.</b> \\(\\tfrac{72-1}{2}=35.5\\) kΩ (usa 33 kΩ o 39 kΩ)."
+     ],
+     "r": "R₂ ≈ 35.5 kΩ",
+     "fin": "Dimensionar un reloj para un LED intermitente."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe un programa PICAXE que haga parpadear un LED en B.1 una vez por segundo.",
+     "pasos": [
+      "<code>main:</code>",
+      "<code>high B.1</code> / <code>pause 500</code>",
+      "<code>low B.1</code> / <code>pause 500</code>",
+      "<code>goto main</code>"
+     ],
+     "r": "Medio segundo encendido y medio apagado.",
+     "fin": "El “hola mundo” del hardware."
+    },
+    {
+     "nv": "I",
+     "q": "Un sensor da 3.2 V a un ADC de 8 bits con referencia de 5 V. ¿Qué valor lee readadc?",
+     "pasos": [
+      "<b>Proporción.</b> \\(\\tfrac{3.2}{5}(255)=163.2\\).",
+      "<b>Entero.</b> 163."
+     ],
+     "r": "163",
+     "fin": "Interpretar lecturas analógicas."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe un programa que encienda un ventilador en B.2 cuando la lectura de C.1 supere 150 y lo apague en caso contrario.",
+     "pasos": [
+      "<code>main: readadc C.1, b0</code>",
+      "<code>if b0 > 150 then high B.2 else low B.2 endif</code>",
+      "<code>pause 200 : goto main</code>",
+      "<b>Mejora.</b> Usar dos umbrales (histéresis) evita que el ventilador se encienda y apague sin parar cerca del límite."
+     ],
+     "r": "Un control de temperatura con lectura, comparación y salida.",
+     "fin": "Combinar ADC, decisión y control."
+    },
+    {
+     "nv": "B",
+     "q": "En PICAXE, ¿qué hace <code>pause 1000</code>?",
+     "ops": [
+      "Espera 1000 segundos",
+      "Apaga el pin 1000",
+      "Detiene el programa",
+      "Espera 1 segundo"
+     ],
+     "ok": 3,
+     "r": "pause trabaja en milisegundos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué rango de valores guarda una variable <code>b0</code>?",
+     "ops": [
+      "0 a 1",
+      "0 a 255",
+      "0 a 65 535",
+      "−128 a 127"
+     ],
+     "ok": 1,
+     "r": "Es un byte sin signo; w0 es una palabra de 16 bits."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la resolución de un ADC de 10 bits con referencia de 5 V?",
+     "ops": [
+      "19.5 mV",
+      "4.88 mV",
+      "0.5 V",
+      "1 mV"
+     ],
+     "ok": 1,
+     "r": "\\(\\tfrac{5}{1024}\\approx4.88\\) mV."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué significa que un reloj tenga simetría de 50 %?",
+     "ops": [
+      "Que está en alto la mitad del periodo",
+      "Que su frecuencia es 50 Hz",
+      "Que tiene 50 pulsos por segundo",
+      "Que su amplitud es 50 %"
+     ],
+     "ok": 0,
+     "r": "Tiempo en alto igual al tiempo en bajo."
+    },
+    {
+     "nv": "A",
+     "q": "Un botón conectado a una entrada del PICAXE da lecturas aleatorias cuando no se presiona. ¿Qué falta?",
+     "ops": [
+      "Un capacitor de 1000 μF",
+      "Más pause",
+      "Una resistencia de pull-down o pull-up",
+      "Un diodo Zener"
+     ],
+     "ok": 2,
+     "r": "Una entrada sin conexión flota; la resistencia fija un nivel lógico definido."
+    }
+   ]
+  },
+  {
+   "titulo": "Comunicación serie, I²C y pantalla LCD",
+   "intro": "Tema 7 del programa: protocolo serie RS-232, I²C y pantalla LCD.",
+   "conceptos": [
+    {
+     "n": "Comunicación serie RS-232",
+     "e": [
+      "Asíncrona y punto a punto con líneas TX, RX y GND. Cada trama lleva bit de inicio, datos (normalmente 8), paridad opcional y bit de parada (formato 8N1 = 10 bits). La velocidad se mide en baudios. RS-232 usa niveles de ±3 a ±15 V (el 1 lógico es negativo), por eso con lógica TTL se usa un adaptador como el MAX232."
+     ],
+     "u": [
+      "Consolas de switches y routers, puertos COM, adaptadores USB-serie, módulos GPS.",
+      "Es simple y universal para configurar equipos.",
+      "Al conectarte a la consola de un equipo de red.",
+      "Configura la misma velocidad y formato en ambos extremos (por ejemplo 9600 8N1)."
+     ]
+    },
+    {
+     "n": "Bus I²C",
+     "e": [
+      "Síncrono de dos hilos: SDA (datos) y SCL (reloj), con resistencias de pull-up porque los dispositivos solo pueden poner la línea en 0 (drenador abierto). Arquitectura maestro-esclavo con direcciones de 7 bits. Secuencia: inicio, dirección + lectura/escritura, ACK, datos con ACK, parada."
+     ],
+     "u": [
+      "Sensores, memorias EEPROM, relojes de tiempo real, pantallas, dentro de computadoras.",
+      "Conecta muchos dispositivos con solo dos cables.",
+      "Cuando hay varios periféricos en la misma placa.",
+      "Asigna una dirección única a cada dispositivo y revisa las pull-up."
+     ]
+    },
+    {
+     "n": "Pantalla LCD",
+     "e": [
+      "Las LCD de texto con controlador HD44780 (16 × 2) se manejan en modo de 8 o 4 bits con las líneas RS (comando o dato), E (habilitación) y D4–D7. En modo de 4 bits cada byte se envía en dos mitades, primero la alta."
+     ],
+     "u": [
+      "Interfaces de equipos, termostatos, impresoras.",
+      "Muestra información sin una computadora.",
+      "En proyectos embebidos.",
+      "Inicializa, luego envía comandos con RS = 0 y caracteres con RS = 1."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "A 9600 baudios en formato 8N1, ¿cuánto tarda un byte y cuántos bytes por segundo se transmiten?",
+     "pasos": [
+      "<b>Bits por byte.</b> 1 inicio + 8 datos + 1 parada = 10.",
+      "<b>Tiempo.</b> \\(\\tfrac{10}{9600}\\approx1.04\\) ms.",
+      "<b>Velocidad.</b> 960 bytes por segundo."
+     ],
+     "r": "1.04 ms por byte; 960 B/s.",
+     "fin": "Calcular el rendimiento real de un enlace serie."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué no se conecta directamente el TX de un microcontrolador de 5 V al puerto RS-232 de una PC?",
+     "pasos": [
+      "<b>Niveles distintos.</b> TTL usa 0 y 5 V; RS-232 usa ±3 a ±15 V con lógica invertida.",
+      "<b>Riesgo.</b> Lecturas erróneas o daño al microcontrolador.",
+      "<b>Solución.</b> Un adaptador como el MAX232 o un convertidor USB-TTL."
+     ],
+     "r": "Los niveles de voltaje y la lógica no coinciden.",
+     "fin": "Evitar dañar equipos al conectar consolas."
+    },
+    {
+     "nv": "I",
+     "q": "Describe una escritura I²C del maestro a un sensor en la dirección 0x48.",
+     "pasos": [
+      "<b>Inicio.</b> SDA baja mientras SCL está alto.",
+      "<b>Dirección.</b> 7 bits (1001000) + bit 0 de escritura; el sensor responde ACK.",
+      "<b>Datos.</b> Cada byte va seguido de un ACK del receptor.",
+      "<b>Parada.</b> SDA sube mientras SCL está alto."
+     ],
+     "r": "Inicio, dirección + W, ACK, datos con ACK, parada.",
+     "fin": "Entender lo que muestra un analizador lógico."
+    },
+    {
+     "nv": "A",
+     "q": "En modo de 4 bits, ¿cómo se envía la letra A (0x41) a una LCD HD44780?",
+     "pasos": [
+      "<b>Tipo.</b> Es un dato: RS = 1.",
+      "<b>Mitad alta.</b> 0100 en D7–D4 y un pulso en E.",
+      "<b>Mitad baja.</b> 0001 en D7–D4 y otro pulso en E."
+     ],
+     "r": "Dos pulsos de E: primero 0100, luego 0001, con RS = 1.",
+     "fin": "Controlar una pantalla con solo 6 pines."
+    },
+    {
+     "nv": "I",
+     "q": "Compara UART, I²C y SPI.",
+     "pasos": [
+      "<b>UART.</b> Asíncrono, 2 hilos, punto a punto.",
+      "<b>I²C.</b> Síncrono, 2 hilos, muchos dispositivos con dirección.",
+      "<b>SPI.</b> Síncrono, 4 hilos, más rápido, un chip select por dispositivo."
+     ],
+     "r": "UART para consolas, I²C para muchos sensores lentos, SPI para velocidad.",
+     "fin": "Elegir el bus adecuado."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué líneas usa el bus I²C?",
+     "ops": [
+      "TX y RX",
+      "MOSI y MISO",
+      "D+ y D−",
+      "SDA y SCL"
+     ],
+     "ok": 3,
+     "r": "SDA lleva los datos y SCL el reloj."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué significa 9600 baudios en un enlace serie binario?",
+     "ops": [
+      "9600 bytes por segundo",
+      "9600 bits por segundo",
+      "9600 caracteres por minuto",
+      "9600 tramas por segundo"
+     ],
+     "ok": 1,
+     "r": "Con dos niveles, un baudio es un bit por segundo."
+    },
+    {
+     "nv": "I",
+     "q": "Con paridad par, ¿qué bit se agrega a los datos 1011001?",
+     "ops": [
+      "1",
+      "0",
+      "Depende del baudaje",
+      "No se agrega nada"
+     ],
+     "ok": 1,
+     "r": "Ya tiene cuatro unos (par), así que la paridad es 0."
+    },
+    {
+     "nv": "I",
+     "q": "En I²C, ¿quién envía el ACK después de cada byte?",
+     "ops": [
+      "El receptor del byte",
+      "Siempre el maestro",
+      "Siempre el esclavo",
+      "Nadie"
+     ],
+     "ok": 0,
+     "r": "Quien recibe confirma; en una lectura, el maestro."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué el bus I²C necesita resistencias de pull-up?",
+     "ops": [
+      "Para aumentar la velocidad",
+      "Para limitar la corriente de los LEDs",
+      "Porque las salidas son de drenador abierto y solo pueden poner la línea en 0",
+      "Para alimentar a los esclavos"
+     ],
+     "ok": 2,
+     "r": "La resistencia lleva la línea a 1 cuando nadie la baja."
+    }
+   ]
+  },
+  {
+   "titulo": "Memorias",
+   "intro": "Tema 8 del programa: RAM, ROM, SRAM y EEPROM.",
+   "conceptos": [
+    {
+     "n": "Capacidad y organización",
+     "e": [
+      "Una memoria de \\(2^n\\) posiciones necesita \\(n\\) líneas de dirección; con palabras de \\(m\\) bits su capacidad es \\(2^n\\times m\\) bits. 1 KB = 1024 bytes."
+     ],
+     "u": [
+      "Dimensionar memoria en sistemas embebidos, entender el espacio de direcciones.",
+      "Relaciona pines de dirección con capacidad.",
+      "Al seleccionar o conectar memorias.",
+      "Usa n = log₂(posiciones)."
+     ],
+     "f": "\\text{capacidad}=2^{n}\\times m"
+    },
+    {
+     "n": "RAM: SRAM y DRAM",
+     "e": [
+      "La RAM es volátil (se borra sin energía). La <b>SRAM</b> guarda cada bit en un flip-flop: rápida y cara, se usa como caché. La <b>DRAM</b> lo guarda en un capacitor: densa y barata, pero necesita refresco periódico; es la memoria principal."
+     ],
+     "u": [
+      "Caché del procesador (SRAM), memoria principal de servidores y PC (DRAM).",
+      "Equilibra velocidad, costo y capacidad.",
+      "Al dimensionar servidores o entender el rendimiento.",
+      "Asocia velocidad con SRAM y capacidad con DRAM."
+     ]
+    },
+    {
+     "n": "ROM, EEPROM y flash",
+     "e": [
+      "La ROM es no volátil. La <b>EEPROM</b> se borra y reescribe eléctricamente byte por byte (configuraciones). La <b>flash</b> se borra por bloques, es más densa y se usa en SSD, memorias USB y firmware. Todas tienen un número limitado de ciclos de escritura."
+     ],
+     "u": [
+      "BIOS/UEFI, firmware de routers, SSD, configuración de equipos.",
+      "Guarda datos sin energía.",
+      "Para datos que deben sobrevivir a un apagado.",
+      "Elige por tamaño de borrado, densidad y ciclos de escritura."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una memoria tiene 16 líneas de dirección y datos de 8 bits. ¿Capacidad?",
+     "pasos": [
+      "<b>Posiciones.</b> \\(2^{16}=65\\,536\\).",
+      "<b>Capacidad.</b> 65 536 bytes = 64 KB."
+     ],
+     "r": "64 KB",
+     "fin": "Relacionar dirección con capacidad."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántas líneas de dirección necesita una memoria de 4K × 8?",
+     "pasos": [
+      "<b>Posiciones.</b> 4K = 4096 = \\(2^{12}\\).",
+      "<b>Líneas.</b> 12."
+     ],
+     "r": "12 líneas",
+     "fin": "Hacer el cálculo inverso."
+    },
+    {
+     "nv": "I",
+     "q": "Compara SRAM y DRAM y di dónde se usa cada una.",
+     "pasos": [
+      "<b>SRAM.</b> Flip-flop por bit, sin refresco, rápida, cara, poca densidad: caché.",
+      "<b>DRAM.</b> Capacitor por bit, necesita refresco, más lenta, barata, alta densidad: memoria principal."
+     ],
+     "r": "SRAM en caché; DRAM como memoria principal.",
+     "fin": "Entender la jerarquía de memoria."
+    },
+    {
+     "nv": "A",
+     "q": "Dos chips de 32 KB forman un espacio de 64 KB. Haz el mapa de memoria.",
+     "pasos": [
+      "<b>Líneas.</b> 32 KB usan A0–A14; A15 elige el chip.",
+      "<b>Chip 0 (A15 = 0).</b> 0x0000 a 0x7FFF.",
+      "<b>Chip 1 (A15 = 1).</b> 0x8000 a 0xFFFF."
+     ],
+     "r": "0x0000–0x7FFF y 0x8000–0xFFFF.",
+     "fin": "Construir un mapa de memoria con decodificación."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué la configuración de un equipo se guarda en EEPROM y el firmware en flash?",
+     "pasos": [
+      "<b>EEPROM.</b> Permite cambiar un solo byte (un parámetro) sin borrar bloques.",
+      "<b>Flash.</b> Más densa y barata para grandes volúmenes que se escriben en bloque."
+     ],
+     "r": "EEPROM para pocos datos cambiantes; flash para mucho volumen.",
+     "fin": "Elegir la memoria no volátil adecuada."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué memoria pierde su contenido al apagar el equipo?",
+     "ops": [
+      "ROM",
+      "RAM",
+      "Flash",
+      "EEPROM"
+     ],
+     "ok": 1,
+     "r": "La RAM es volátil."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué memoria necesita refresco periódico?",
+     "ops": [
+      "SRAM",
+      "EEPROM",
+      "ROM",
+      "DRAM"
+     ],
+     "ok": 3,
+     "r": "El capacitor de cada celda se descarga y hay que reescribirlo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tecnología se usa como memoria caché del procesador?",
+     "ops": [
+      "DRAM",
+      "Flash",
+      "EEPROM",
+      "SRAM"
+     ],
+     "ok": 3,
+     "r": "Es la más rápida."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué se diferencian EEPROM y flash al borrar?",
+     "ops": [
+      "Son iguales",
+      "La flash borra por bytes",
+      "La EEPROM borra por bytes y la flash por bloques",
+      "La EEPROM no se puede borrar"
+     ],
+     "ok": 2,
+     "r": "Por eso la flash es más densa y la EEPROM más flexible."
+    },
+    {
+     "nv": "A",
+     "q": "Un SSD de 1 TB tiene un límite de ciclos de escritura. ¿Qué técnica lo protege?",
+     "ops": [
+      "Refresco de celdas",
+      "Nivelación de desgaste (wear leveling)",
+      "Paridad",
+      "Multiplexación"
+     ],
+     "ok": 1,
+     "r": "Reparte las escrituras entre todos los bloques para que se desgasten parejo."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

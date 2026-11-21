@@ -1,0 +1,673 @@
+{
+ "slug": "sistemas-operativos-1",
+ "titulo": "Sistemas Operativos I",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 6, código 029, bloque Sistemas operativos del seminario",
+ "firma": "T_{espera}=T_{retorno}-T_{\\text{ráfaga}}",
+ "firma_nota": "La medida con que se comparan los algoritmos de planificación.",
+ "lead": "Qué hace un sistema operativo y cómo administra procesos, concurrencia, interbloqueos y memoria. Es la base para administrar servidores, entender el rendimiento y programar aplicaciones concurrentes.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6SOI.pdf",
+ "como": "Cada tema trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y, en los temas conceptuales, preguntas de opción múltiple que te dicen al instante si acertaste.",
+ "temas": [
+  {
+   "titulo": "Introducción a los sistemas operativos",
+   "intro": "Tema 1 del programa: definición, evolución, llamadas al sistema y protección, clasificación.",
+   "conceptos": [
+    {
+     "n": "Qué es y qué administra",
+     "e": [
+      "El sistema operativo es el software que administra los recursos de la computadora (CPU, memoria, dispositivos de E/S y archivos) y ofrece una interfaz a usuarios y programas. Evolucionó de los sistemas por lotes a la multiprogramación, el tiempo compartido, las computadoras personales, los sistemas distribuidos y los móviles."
+     ],
+     "u": [
+      "Servidores Linux y Windows, celulares, routers, sistemas embebidos.",
+      "Sin él cada programa tendría que manejar el hardware por su cuenta.",
+      "Al elegir o administrar la plataforma de un sistema.",
+      "Identifica qué recursos administra y con qué políticas."
+     ]
+    },
+    {
+     "n": "Modo núcleo, llamadas al sistema y protección",
+     "e": [
+      "El núcleo (kernel) corre en modo privilegiado; las aplicaciones en modo usuario. Para pedir un servicio (abrir un archivo, crear un proceso) un programa hace una <b>llamada al sistema</b> (<code>open</code>, <code>read</code>, <code>fork</code>, <code>exec</code>), que cambia a modo núcleo de forma controlada. Así un programa no puede dañar a otros ni al sistema."
+     ],
+     "u": [
+      "Aislamiento entre aplicaciones, seguridad de servidores, contenedores.",
+      "La protección evita que un error o un ataque tumbe todo el sistema.",
+      "Al analizar permisos, errores de acceso o rendimiento.",
+      "Sigue la petición: aplicación, llamada al sistema, núcleo, hardware."
+     ]
+    },
+    {
+     "n": "Clasificación",
+     "e": [
+      "Por usuarios (mono o multiusuario), por tareas (mono o multitarea), por estructura (monolítico como Linux, microkernel como MINIX o QNX, híbrido como Windows y macOS) y por uso (escritorio, servidor, tiempo real, embebido, móvil)."
+     ],
+     "u": [
+      "Elegir un sistema para un servidor, un controlador industrial o un dispositivo IoT.",
+      "Cada tipo optimiza objetivos distintos.",
+      "Al diseñar o comprar infraestructura.",
+      "Compara requisitos (latencia, estabilidad, recursos) con el tipo de sistema."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica Linux de servidor, un controlador de frenos ABS y Android.",
+     "pasos": [
+      "<b>Linux de servidor.</b> Multiusuario, multitarea, monolítico.",
+      "<b>ABS.</b> De tiempo real (debe responder en un plazo garantizado), embebido.",
+      "<b>Android.</b> Móvil, multitarea, basado en el núcleo Linux."
+     ],
+     "r": "Servidor multiusuario; tiempo real embebido; móvil.",
+     "fin": "Relacionar cada sistema con su propósito."
+    },
+    {
+     "nv": "I",
+     "q": "Explica qué pasa cuando un programa en C ejecuta <code>read(fd, buf, 100)</code>.",
+     "pasos": [
+      "<b>Modo usuario.</b> La función de biblioteca prepara los parámetros.",
+      "<b>Trampa.</b> Una instrucción especial cambia a modo núcleo.",
+      "<b>Núcleo.</b> Valida permisos, pide los datos al dispositivo o a la caché y los copia al buffer.",
+      "<b>Regreso.</b> Vuelve a modo usuario con el número de bytes leídos."
+     ],
+     "r": "Una transición controlada de modo usuario a núcleo y de regreso.",
+     "fin": "Entender el costo y la seguridad de las llamadas al sistema."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué un error en un controlador puede tumbar todo un sistema monolítico, pero no un microkernel?",
+     "pasos": [
+      "<b>Monolítico.</b> Los controladores corren dentro del núcleo, con todos los privilegios.",
+      "<b>Microkernel.</b> Corren como procesos de usuario aislados; si fallan, se reinician."
+     ],
+     "r": "Por el aislamiento: en el microkernel el controlador no está en el núcleo.",
+     "fin": "Comparar estructuras por confiabilidad."
+    },
+    {
+     "nv": "A",
+     "q": "Compara multiprogramación y tiempo compartido.",
+     "pasos": [
+      "<b>Multiprogramación.</b> Varios programas en memoria; cuando uno espera E/S, otro usa el CPU: maximiza el uso del CPU.",
+      "<b>Tiempo compartido.</b> Además reparte el CPU en turnos cortos para que cada usuario interactivo sienta respuesta inmediata."
+     ],
+     "r": "La primera busca uso del CPU; la segunda, tiempo de respuesta.",
+     "fin": "Ver de dónde vienen los planificadores modernos."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona cuatro funciones de un sistema operativo.",
+     "pasos": [
+      "<b>Procesos.</b> Crear, planificar y terminar.",
+      "<b>Memoria.</b> Asignar y proteger.",
+      "<b>Archivos y E/S.</b> Organizar datos y manejar dispositivos.",
+      "<b>Seguridad.</b> Usuarios, permisos y protección."
+     ],
+     "r": "Procesos, memoria, archivos y E/S, seguridad.",
+     "fin": "Tener el panorama del curso."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué modo corre el núcleo del sistema operativo?",
+     "ops": [
+      "Modo privilegiado o núcleo",
+      "Modo usuario",
+      "Modo invitado",
+      "Modo seguro de BIOS"
+     ],
+     "ok": 0,
+     "r": "Solo el núcleo accede directamente al hardware."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cómo pide un programa un servicio al sistema operativo?",
+     "ops": [
+      "Escribiendo directamente en el disco",
+      "Con una llamada al sistema",
+      "Reiniciando el equipo",
+      "Modificando el kernel"
+     ],
+     "ok": 1,
+     "r": "La llamada al sistema es la puerta controlada al núcleo."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema que debe responder dentro de un plazo garantizado es…",
+     "ops": [
+      "Por lotes",
+      "De escritorio",
+      "Monousuario",
+      "De tiempo real"
+     ],
+     "ok": 3,
+     "r": "El tiempo de respuesta es parte de su correcto funcionamiento."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué estructura de núcleo tiene Linux?",
+     "ops": [
+      "Monolítica (con módulos cargables)",
+      "Microkernel",
+      "Exokernel",
+      "Sin núcleo"
+     ],
+     "ok": 0,
+     "r": "Todo el núcleo corre en un mismo espacio, con módulos que se cargan en caliente."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué los contenedores comparten el núcleo del anfitrión y aun así están aislados?",
+     "ops": [
+      "Porque el núcleo aísla procesos con espacios de nombres y límites de recursos",
+      "Porque no usan llamadas al sistema",
+      "Porque cada uno trae su propio núcleo",
+      "No están aislados"
+     ],
+     "ok": 0,
+     "r": "Namespaces y cgroups son mecanismos de protección del núcleo."
+    }
+   ]
+  },
+  {
+   "titulo": "Procesos e hilos",
+   "intro": "Tema 2 del programa: qué es un proceso, estados, descripción y control, procesos e hilos, quantum y el PCB.",
+   "conceptos": [
+    {
+     "n": "Proceso, estados y PCB",
+     "e": [
+      "Un proceso es un programa en ejecución. Estados: nuevo, listo, en ejecución, bloqueado (esperando E/S o un evento) y terminado. El <b>PCB</b> guarda identificador, estado, contador de programa, registros, prioridad, memoria asignada y archivos abiertos. El <b>cambio de contexto</b> guarda el PCB del proceso que sale y carga el del que entra."
+     ],
+     "u": [
+      "Monitoreo de procesos con top o el Administrador de tareas, diagnóstico de servidores lentos.",
+      "Permite ejecutar muchos programas a la vez.",
+      "Al analizar consumo de CPU o procesos colgados.",
+      "Ubica el estado de cada proceso y qué lo bloquea."
+     ]
+    },
+    {
+     "n": "Hilos",
+     "e": [
+      "Un hilo es una unidad de ejecución dentro de un proceso; los hilos comparten código, datos y archivos, pero cada uno tiene su pila y sus registros. Crear y cambiar entre hilos es más barato que entre procesos, pero un error en un hilo puede afectar a todo el proceso."
+     ],
+     "u": [
+      "Servidores web que atienden muchas peticiones, interfaces que no se congelan.",
+      "Aprovechan varios núcleos y ocultan la espera de E/S.",
+      "Cuando hay tareas concurrentes que comparten datos.",
+      "Separa trabajo independiente en hilos y protege lo compartido."
+     ]
+    },
+    {
+     "n": "Planificación y quantum",
+     "e": [
+      "El planificador elige qué proceso listo usa el CPU. Con Round Robin cada proceso recibe un <b>quantum</b>: si es muy grande se comporta como FCFS; si es muy pequeño, el costo de los cambios de contexto domina. Medidas: tiempo de retorno (fin − llegada) y de espera (retorno − ráfaga)."
+     ],
+     "u": [
+      "Configuración del planificador en servidores, priorización de servicios.",
+      "Afecta directamente el tiempo de respuesta.",
+      "Al comparar algoritmos o ajustar prioridades.",
+      "Dibuja el Gantt y calcula los tiempos de cada proceso."
+     ],
+     "f": "T_{retorno}=T_{fin}-T_{llegada}\\qquad T_{espera}=T_{retorno}-T_{\\text{ráfaga}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un proceso en ejecución pide leer del disco. ¿A qué estado pasa y qué ocurre cuando termina la lectura?",
+     "pasos": [
+      "<b>Al pedir E/S.</b> Pasa a bloqueado y el CPU se asigna a otro proceso listo.",
+      "<b>Al terminar.</b> La interrupción del disco lo pasa a listo; volverá a ejecución cuando el planificador lo elija."
+     ],
+     "r": "Ejecución → bloqueado → listo → ejecución.",
+     "fin": "Entender el ciclo de estados."
+    },
+    {
+     "nv": "I",
+     "q": "Procesos: <table><thead><tr><th>Proceso</th><th>Llegada</th><th>Ráfaga</th></tr></thead><tbody><tr><td>P1</td><td>0</td><td>8</td></tr><tr><td>P2</td><td>1</td><td>4</td></tr><tr><td>P3</td><td>2</td><td>9</td></tr><tr><td>P4</td><td>3</td><td>5</td></tr></tbody></table> Calcula espera y retorno promedio con FCFS.",
+     "pasos": [
+      "<b>Gantt.</b> P1 0–8, P2 8–12, P3 12–21, P4 21–26.",
+      "<b>Retorno.</b> 8, 11, 19, 23: promedio 15.25.",
+      "<b>Espera.</b> 0, 7, 10, 18: promedio 8.75."
+     ],
+     "r": "Espera promedio 8.75; retorno 15.25.",
+     "fin": "Aplicar FCFS y ver el efecto convoy."
+    },
+    {
+     "nv": "I",
+     "q": "Con los mismos procesos, aplica SJF no apropiativo.",
+     "pasos": [
+      "<b>t = 0.</b> Solo está P1: corre 0–8.",
+      "<b>t = 8.</b> Elige la ráfaga menor: P2 8–12, P4 12–17, P3 17–26.",
+      "<b>Espera.</b> P1 0, P2 7, P4 9, P3 15: promedio 7.75."
+     ],
+     "r": "Espera promedio 7.75.",
+     "fin": "Ver cómo atender primero lo corto reduce la espera."
+    },
+    {
+     "nv": "A",
+     "q": "Con los mismos procesos, aplica SRTF (apropiativo).",
+     "pasos": [
+      "<b>t = 1.</b> Llega P2 (4) y le quedan 7 a P1: entra P2, 1–5.",
+      "<b>t = 5.</b> Restantes: P1 7, P3 9, P4 5: entra P4, 5–10.",
+      "<b>Luego.</b> P1 10–17 y P3 17–26.",
+      "<b>Espera.</b> P1 9, P2 0, P3 15, P4 2: promedio 6.5."
+     ],
+     "r": "Espera promedio 6.5, la menor de los tres.",
+     "fin": "Aplicar planificación apropiativa."
+    },
+    {
+     "nv": "A",
+     "q": "Con los mismos procesos, aplica Round Robin con quantum 4.",
+     "pasos": [
+      "<b>Gantt.</b> P1 0–4, P2 4–8, P3 8–12, P4 12–16, P1 16–20, P3 20–24, P4 24–25, P3 25–26.",
+      "<b>Fin.</b> P2 8, P1 20, P4 25, P3 26.",
+      "<b>Espera.</b> 12, 3, 15, 17: promedio 11.75."
+     ],
+     "r": "Espera promedio 11.75; mejor respuesta inicial, peor espera total.",
+     "fin": "Comparar equidad contra eficiencia."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona cinco campos del PCB.",
+     "r": "Identificador, estado, contador de programa, registros, prioridad, memoria asignada, archivos abiertos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué comparten los hilos de un mismo proceso y qué no?",
+     "r": "Comparten código, datos y archivos; cada uno tiene su pila, registros y contador de programa."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué pasa en Round Robin si el quantum es enorme? ¿Y si es diminuto?",
+     "r": "Enorme: se comporta como FCFS. Diminuto: casi todo el tiempo se pierde en cambios de contexto."
+    },
+    {
+     "nv": "I",
+     "q": "Tres procesos llegan en 0 con ráfagas 24, 3 y 3. Espera promedio con FCFS en ese orden y con SJF.",
+     "r": "FCFS 17; SJF 3."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué SJF puede causar inanición y cómo se corrige?",
+     "r": "Los procesos largos pueden esperar indefinidamente si siguen llegando cortos; se corrige con envejecimiento (aumentar la prioridad con el tiempo de espera)."
+    }
+   ]
+  },
+  {
+   "titulo": "Concurrencia y sincronización",
+   "intro": "Tema 3 del programa: algoritmos de Dekker, comunicación y sincronización, semáforos, monitores, mensajes y memoria compartida.",
+   "conceptos": [
+    {
+     "n": "Condición de carrera y sección crítica",
+     "e": [
+      "Hay <b>condición de carrera</b> cuando el resultado depende del orden en que se ejecutan procesos que comparten datos. La <b>sección crítica</b> es el código que accede a lo compartido. Una solución correcta garantiza exclusión mutua, progreso y espera acotada."
+     ],
+     "u": [
+      "Saldos bancarios, inventarios, contadores en servidores web con muchos hilos.",
+      "Los errores de concurrencia son intermitentes y difíciles de reproducir.",
+      "Siempre que varios hilos modifican datos comunes.",
+      "Identifica lo compartido y protégelo con un mecanismo de sincronización."
+     ]
+    },
+    {
+     "n": "Dekker, semáforos y monitores",
+     "e": [
+      "El algoritmo de <b>Dekker</b> (y el de Peterson) logra exclusión mutua entre dos procesos con banderas y una variable de turno. Un <b>semáforo</b> es un contador con operaciones atómicas <code>wait</code> (P: decrementa y bloquea si queda negativo) y <code>signal</code> (V: incrementa y despierta). Un <b>monitor</b> agrupa datos y procedimientos con exclusión mutua automática y variables de condición."
+     ],
+     "u": [
+      "Bloqueos en bases de datos, colas de trabajos, sincronización en Java (<code>synchronized</code>).",
+      "Coordinan el acceso sin espera activa.",
+      "Al programar código concurrente.",
+      "Usa un semáforo binario para exclusión y semáforos contadores para recursos."
+     ]
+    },
+    {
+     "n": "Comunicación entre procesos",
+     "e": [
+      "Por <b>memoria compartida</b> (rápida, requiere sincronización) o por <b>paso de mensajes</b> (send y receive, más fácil de distribuir). Problemas clásicos: productor-consumidor, lectores-escritores y filósofos comensales."
+     ],
+     "u": [
+      "Colas de mensajes (RabbitMQ), tuberías de Linux, microservicios.",
+      "Permite dividir un sistema en procesos cooperativos.",
+      "Al diseñar sistemas con varios procesos.",
+      "Elige memoria compartida para velocidad local y mensajes para desacoplar."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Dos hilos ejecutan <code>saldo = saldo + 100</code> sobre un saldo de 1000 sin sincronizar. ¿Cómo puede quedar en 1100 en lugar de 1200?",
+     "pasos": [
+      "<b>La operación no es atómica.</b> Leer, sumar y escribir son pasos separados.",
+      "<b>Intercalado.</b> Ambos leen 1000, ambos calculan 1100 y ambos escriben 1100."
+     ],
+     "r": "Una actualización se pierde por la condición de carrera.",
+     "fin": "Ver por qué hace falta sincronizar."
+    },
+    {
+     "nv": "I",
+     "q": "Protege el saldo con un semáforo.",
+     "pasos": [
+      "<b>Inicializa.</b> <code>mutex = 1</code>.",
+      "<b>Antes.</b> <code>wait(mutex)</code>.",
+      "<b>Sección crítica.</b> <code>saldo = saldo + 100</code>.",
+      "<b>Después.</b> <code>signal(mutex)</code>."
+     ],
+     "r": "Solo un hilo a la vez modifica el saldo.",
+     "fin": "Aplicar exclusión mutua con semáforos."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve productor-consumidor con un buffer de N espacios.",
+     "pasos": [
+      "<b>Semáforos.</b> <code>mutex = 1</code>, <code>vacios = N</code>, <code>llenos = 0</code>.",
+      "<b>Productor.</b> <code>wait(vacios); wait(mutex);</code> insertar; <code>signal(mutex); signal(llenos);</code>",
+      "<b>Consumidor.</b> <code>wait(llenos); wait(mutex);</code> extraer; <code>signal(mutex); signal(vacios);</code>",
+      "<b>Orden.</b> Invertir los <code>wait</code> puede causar interbloqueo."
+     ],
+     "r": "Tres semáforos: exclusión, espacios vacíos y espacios llenos.",
+     "fin": "Resolver el problema clásico más preguntado."
+    },
+    {
+     "nv": "I",
+     "q": "Un semáforo contador vale 3 y cinco procesos ejecutan <code>wait</code>. ¿Qué pasa?",
+     "pasos": [
+      "<b>Primeros tres.</b> Pasan y el semáforo llega a 0.",
+      "<b>Siguientes dos.</b> Se bloquean (valor −2 en la implementación con cola).",
+      "<b>Cada signal.</b> Despierta a uno de los bloqueados."
+     ],
+     "r": "Pasan 3 y se bloquean 2.",
+     "fin": "Usar semáforos para limitar recursos (por ejemplo, conexiones)."
+    },
+    {
+     "nv": "A",
+     "q": "Compara memoria compartida y paso de mensajes.",
+     "pasos": [
+      "<b>Memoria compartida.</b> Muy rápida, pero el programador debe sincronizar.",
+      "<b>Mensajes.</b> Más lenta (copia de datos), pero desacopla y funciona entre máquinas."
+     ],
+     "r": "Velocidad contra simplicidad y distribución.",
+     "fin": "Elegir el mecanismo de comunicación."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuáles son los tres requisitos de una solución a la sección crítica?",
+     "r": "Exclusión mutua, progreso y espera acotada."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia hay entre un semáforo binario y uno contador?",
+     "r": "El binario vale 0 o 1 (exclusión mutua); el contador administra varias unidades de un recurso."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ventaja tiene un monitor sobre los semáforos?",
+     "r": "La exclusión mutua es automática y se evitan errores de orden en wait y signal."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué problema clásico modela una base de datos con muchos lectores y pocos escritores?",
+     "r": "Lectores-escritores."
+    },
+    {
+     "nv": "A",
+     "q": "En los filósofos comensales, ¿cómo se evita el interbloqueo?",
+     "r": "Por ejemplo, que un filósofo tome los tenedores en orden inverso, o permitir solo 4 sentados a la vez, o tomar ambos tenedores de forma atómica."
+    }
+   ]
+  },
+  {
+   "titulo": "Interbloqueos",
+   "intro": "Tema 4 del programa: casos de interbloqueo, condiciones y estrategias para resolverlos.",
+   "conceptos": [
+    {
+     "n": "Condiciones de Coffman",
+     "e": [
+      "Un interbloqueo ocurre cuando cada proceso de un grupo espera un recurso que tiene otro del grupo. Requiere las cuatro condiciones a la vez: <b>exclusión mutua</b>, <b>retención y espera</b>, <b>no expropiación</b> y <b>espera circular</b>. Se visualiza con un grafo de asignación de recursos: un ciclo indica posible interbloqueo."
+     ],
+     "u": [
+      "Bloqueos entre transacciones de bases de datos, aplicaciones colgadas.",
+      "Un interbloqueo detiene procesos indefinidamente.",
+      "Al diagnosticar sistemas que se congelan.",
+      "Revisa las cuatro condiciones y el grafo de asignación."
+     ]
+    },
+    {
+     "n": "Estrategias",
+     "e": [
+      "<b>Prevenir:</b> romper una condición (pedir todos los recursos al inicio, ordenar los recursos para evitar la espera circular). <b>Evitar:</b> conceder solo si el sistema queda en estado seguro (algoritmo del banquero). <b>Detectar y recuperar:</b> buscar ciclos y terminar o expropiar. <b>Ignorar:</b> algoritmo del avestruz, usado por muchos sistemas de propósito general."
+     ],
+     "u": [
+      "Motores de bases de datos (detectan y abortan una transacción), diseño de bloqueos en código.",
+      "Cada estrategia equilibra seguridad y costo.",
+      "Al diseñar el manejo de recursos.",
+      "Ordena los bloqueos siempre igual en el código para prevenir."
+     ]
+    },
+    {
+     "n": "Algoritmo del banquero",
+     "e": [
+      "Con matrices de asignación, máximo y necesidad (máximo − asignación) y el vector disponible, busca una secuencia en que cada proceso pueda terminar con lo disponible y luego liberar lo suyo. Si existe, el estado es seguro."
+     ],
+     "u": [
+      "Asignación de recursos en sistemas críticos, ejercicio clásico de examen.",
+      "Garantiza que nunca se entre en interbloqueo.",
+      "Cuando los procesos declaran su máximo de antemano.",
+      "Calcula Necesidad, compara con Disponible y acumula."
+     ],
+     "f": "\\text{Necesidad}=\\text{Máximo}-\\text{Asignación}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Dos transacciones: T1 bloquea la tabla A y pide B; T2 bloquea B y pide A. Identifica las condiciones de Coffman.",
+     "pasos": [
+      "<b>Exclusión mutua.</b> Los bloqueos son exclusivos.",
+      "<b>Retención y espera.</b> Cada una retiene una tabla y pide otra.",
+      "<b>No expropiación.</b> Nadie les quita el bloqueo.",
+      "<b>Espera circular.</b> T1 espera a T2 y T2 a T1."
+     ],
+     "r": "Se cumplen las cuatro: hay interbloqueo.",
+     "fin": "Reconocer un interbloqueo real."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cómo se previene el interbloqueo anterior en el código?",
+     "pasos": [
+      "<b>Ordenar recursos.</b> Ambas transacciones bloquean siempre A antes que B.",
+      "<b>Efecto.</b> Se elimina la espera circular."
+     ],
+     "r": "Adquirir los bloqueos en un orden global fijo.",
+     "fin": "La técnica de prevención más práctica."
+    },
+    {
+     "nv": "A",
+     "q": "Recursos totales (10, 5, 7). Asignación: P0 (0,1,0), P1 (2,0,0), P2 (3,0,2), P3 (2,1,1), P4 (0,0,2). Máximo: P0 (7,5,3), P1 (3,2,2), P2 (9,0,2), P3 (2,2,2), P4 (4,3,3). ¿Estado seguro?",
+     "pasos": [
+      "<b>Disponible.</b> \\((10,5,7)-(7,2,5)=(3,3,2)\\).",
+      "<b>Necesidad.</b> P0 (7,4,3), P1 (1,2,2), P2 (6,0,0), P3 (0,1,1), P4 (4,3,1).",
+      "<b>Secuencia.</b> P1 → (5,3,2); P3 → (7,4,3); P0 → (7,5,3); P2 → (10,5,5); P4 → (10,5,7).",
+      "<b>Conclusión.</b> Todos terminan."
+     ],
+     "r": "Seguro, con la secuencia P1, P3, P0, P2, P4.",
+     "fin": "Aplicar el algoritmo del banquero."
+    },
+    {
+     "nv": "I",
+     "q": "En el estado anterior, P1 pide (1,0,2). ¿Se concede?",
+     "pasos": [
+      "<b>Prueba.</b> (1,0,2) ≤ necesidad (1,2,2) y ≤ disponible (3,3,2).",
+      "<b>Estado tentativo.</b> Disponible (2,3,0); asignación de P1 (3,0,2); necesidad (0,2,0).",
+      "<b>Busca secuencia.</b> P1, P3, P4, P0, P2 termina: es seguro."
+     ],
+     "r": "Sí, el estado resultante es seguro.",
+     "fin": "Evaluar una solicitud con el banquero."
+    },
+    {
+     "nv": "B",
+     "q": "Diferencia prevenir de evitar.",
+     "pasos": [
+      "<b>Prevenir.</b> Diseña el sistema para que una condición nunca se cumpla.",
+      "<b>Evitar.</b> Las condiciones pueden darse, pero cada asignación se decide revisando si el estado queda seguro."
+     ],
+     "r": "Prevenir cambia las reglas; evitar decide caso por caso.",
+     "fin": "Distinguir las estrategias."
+    },
+    {
+     "nv": "B",
+     "q": "Menciona las cuatro condiciones de Coffman.",
+     "r": "Exclusión mutua, retención y espera, no expropiación y espera circular."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué indica un ciclo en el grafo de asignación cuando cada recurso tiene una sola instancia?",
+     "r": "Que hay interbloqueo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hacen muchos motores de bases de datos al detectar un interbloqueo?",
+     "r": "Abortan una de las transacciones (la víctima) para liberar sus bloqueos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es el algoritmo del avestruz y por qué se usa?",
+     "r": "Ignorar el problema porque es raro y prevenirlo sería más costoso."
+    },
+    {
+     "nv": "A",
+     "q": "Con 12 unidades de un recurso y procesos con máximo 10, 4 y 9 y asignación 5, 2 y 2, ¿es seguro el estado?",
+     "r": "Disponible 3; necesidades 5, 2, 7. Secuencia P1 (queda 5), P0 (queda 10), P2: es seguro."
+    }
+   ]
+  },
+  {
+   "titulo": "Administración de memoria",
+   "intro": "Tema 5 del programa: métodos de ajuste, gestión en sistemas monoprogramados y multiprogramados, asignación contigua y no contigua.",
+   "conceptos": [
+    {
+     "n": "Asignación contigua y métodos de ajuste",
+     "e": [
+      "Cada proceso ocupa un bloque continuo. <b>Primer ajuste:</b> el primer hueco suficiente. <b>Mejor ajuste:</b> el hueco más pequeño suficiente. <b>Peor ajuste:</b> el más grande. Aparece fragmentación externa (huecos dispersos) e interna (sobrante dentro del bloque asignado); la compactación junta los huecos."
+     ],
+     "u": [
+      "Asignadores de memoria (malloc), sistemas embebidos simples.",
+      "La estrategia afecta cuánta memoria se desperdicia.",
+      "Al analizar consumo o fragmentación.",
+      "Recorre la lista de huecos con la regla elegida."
+     ]
+    },
+    {
+     "n": "Monoprogramación y multiprogramación",
+     "e": [
+      "Con un solo programa en memoria el sistema solo separa núcleo y usuario. Con varios se usan particiones fijas (fragmentación interna) o variables (fragmentación externa) y registros base y límite para proteger cada proceso."
+     ],
+     "u": [
+      "Entender la evolución hacia la memoria virtual.",
+      "La multiprogramación aprovecha el CPU mientras otros esperan E/S.",
+      "Al estudiar cómo protege el sistema a cada proceso.",
+      "Verifica que toda dirección quede entre base y base + límite."
+     ]
+    },
+    {
+     "n": "Asignación no contigua: paginación y segmentación",
+     "e": [
+      "La <b>paginación</b> divide la memoria lógica en páginas y la física en marcos del mismo tamaño; una tabla de páginas los relaciona; no hay fragmentación externa. La <b>segmentación</b> divide por unidades lógicas (código, datos, pila) de tamaño variable."
+     ],
+     "u": [
+      "Toda la memoria de los sistemas modernos, aislamiento entre procesos.",
+      "Permite cargar procesos en marcos dispersos.",
+      "Al traducir direcciones o analizar uso de memoria.",
+      "Divide la dirección en número de página y desplazamiento."
+     ],
+     "f": "p=\\left\\lfloor\\frac{d}{T}\\right\\rfloor,\\quad o=d\\bmod T,\\quad \\text{física}=\\text{marco}(p)\\times T+o"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Huecos de 100, 500, 200, 300 y 600 KB. Asigna 212, 417, 112 y 426 KB con primer ajuste.",
+     "pasos": [
+      "<b>212.</b> Primer hueco suficiente: 500 (quedan 288).",
+      "<b>417.</b> El 600 (quedan 183).",
+      "<b>112.</b> El 288 (quedan 176).",
+      "<b>426.</b> No cabe en ningún hueco: espera."
+     ],
+     "r": "212→500, 417→600, 112→288; 426 espera.",
+     "fin": "Aplicar primer ajuste."
+    },
+    {
+     "nv": "I",
+     "q": "Repite con mejor ajuste.",
+     "pasos": [
+      "<b>212.</b> El 300 (quedan 88).",
+      "<b>417.</b> El 500 (quedan 83).",
+      "<b>112.</b> El 200 (quedan 88).",
+      "<b>426.</b> El 600 (quedan 174)."
+     ],
+     "r": "Todos caben; es el más eficiente en este caso.",
+     "fin": "Comparar estrategias."
+    },
+    {
+     "nv": "I",
+     "q": "Repite con peor ajuste.",
+     "pasos": [
+      "<b>212.</b> El 600 (quedan 388).",
+      "<b>417.</b> El 500 (quedan 83).",
+      "<b>112.</b> El 388 (quedan 276).",
+      "<b>426.</b> No cabe: espera."
+     ],
+     "r": "426 KB queda en espera.",
+     "fin": "Ver por qué el peor ajuste rara vez es buena idea."
+    },
+    {
+     "nv": "A",
+     "q": "Con páginas de 1 KB, la dirección lógica 2500 está en una página cargada en el marco 5. ¿Dirección física?",
+     "pasos": [
+      "<b>Página.</b> \\(\\lfloor2500/1024\\rfloor=2\\).",
+      "<b>Desplazamiento.</b> \\(2500-2048=452\\).",
+      "<b>Física.</b> \\(5\\times1024+452=5572\\)."
+     ],
+     "r": "5572",
+     "fin": "Traducir direcciones con paginación."
+    },
+    {
+     "nv": "A",
+     "q": "Un proceso usa base 30000 y límite 12000. ¿Es válida la dirección lógica 12500? ¿Y la 8000?",
+     "pasos": [
+      "<b>12500.</b> Supera el límite: error de protección (trampa al sistema).",
+      "<b>8000.</b> Es válida: física \\(30000+8000=38000\\)."
+     ],
+     "r": "12500 no; 8000 sí, física 38000.",
+     "fin": "Entender la protección con registros base y límite."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué fragmentación tiene la paginación y cuál evita?",
+     "r": "Puede tener fragmentación interna en la última página; evita la externa."
+    },
+    {
+     "nv": "I",
+     "q": "Con páginas de 4 KB, ¿cuántos bits de desplazamiento tiene una dirección?",
+     "r": "12 bits."
+    },
+    {
+     "nv": "I",
+     "q": "Con direcciones lógicas de 32 bits y páginas de 4 KB, ¿cuántas entradas puede tener la tabla de páginas?",
+     "r": "\\(2^{20}\\) (un millón)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia a la segmentación de la paginación?",
+     "r": "Divide por unidades lógicas de tamaño variable en lugar de bloques fijos."
+    },
+    {
+     "nv": "A",
+     "q": "Con páginas de 2 KB, la dirección lógica 7000 está en el marco 9. ¿Dirección física?",
+     "r": "Página 3, desplazamiento 856; física 9 × 2048 + 856 = 19288."
+    }
+   ]
+  }
+ ]
+}

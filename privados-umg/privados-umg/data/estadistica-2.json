@@ -1,0 +1,891 @@
+{
+ "slug": "estadistica-2",
+ "titulo": "Estadística II",
+ "meta": "Ciclo 5, código 090025, bloque Probabilidad y estadística del seminario",
+ "firma": "\\bar x\\pm t_{\\alpha/2,\\,n-1}\\,\\frac{s}{\\sqrt n}",
+ "firma_nota": "Un intervalo de confianza: estimar con un margen de error conocido.",
+ "lead": "Inferencia: sacar conclusiones de una población a partir de una muestra, con un riesgo de error controlado. Estimación, intervalos, pruebas de hipótesis, regresión y ANOVA: lo que se usa para decidir con datos, desde pruebas A/B hasta control de calidad. Los 10 temas del programa están agrupados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Quinto%20Ciclo/2014-5EstadisticaII.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta. Los valores críticos de t, z, χ² y F usados están indicados en cada ejercicio para que puedas compararlos con tu tabla.",
+ "temas": [
+  {
+   "titulo": "Estimación puntual y distribución de la media",
+   "intro": "Temas 1 y 2 del programa: métodos de momentos y de máxima verosimilitud, distribución de la media muestral, teorema del límite central e intervalo con σ conocida.",
+   "conceptos": [
+    {
+     "n": "Estimadores",
+     "e": [
+      "Un estimador es una fórmula que usa la muestra para aproximar un parámetro: \\(\\bar x\\) estima \\(\\mu\\), \\(s^2\\) estima \\(\\sigma^2\\), \\(\\hat p\\) estima \\(p\\). Es <b>insesgado</b> si su valor esperado es el parámetro; por eso \\(s^2\\) divide entre \\(n-1\\)."
+     ],
+     "u": [
+      "Estimar el tiempo medio de carga o la tasa de errores sin medir todo.",
+      "Medir toda la población suele ser imposible o caro.",
+      "Siempre que trabajas con muestras.",
+      "Calcula el estadístico muestral correspondiente."
+     ]
+    },
+    {
+     "n": "Momentos y máxima verosimilitud",
+     "e": [
+      "<b>Momentos:</b> iguala momentos muestrales y teóricos (por ejemplo \\(\\bar x=E(X)\\)) y despeja. <b>Máxima verosimilitud:</b> elige el parámetro que hace más probable la muestra: se maximiza \\(\\ln L(\\theta)=\\sum\\ln f(x_i;\\theta)\\) derivando e igualando a cero."
+     ],
+     "u": [
+      "Ajuste de modelos estadísticos y de aprendizaje automático (regresión logística, redes).",
+      "Da estimadores con buenas propiedades en muestras grandes.",
+      "Al ajustar parámetros de una distribución a datos.",
+      "Escribe ln L, deriva respecto al parámetro e iguala a cero."
+     ]
+    },
+    {
+     "n": "Distribución de la media y teorema del límite central",
+     "e": [
+      "La media muestral tiene media \\(\\mu\\) y error estándar \\(\\tfrac{\\sigma}{\\sqrt n}\\). Por el teorema del límite central, con \\(n\\ge30\\) es aproximadamente normal aunque la población no lo sea."
+     ],
+     "u": [
+      "Promedios de métricas de rendimiento, encuestas, control estadístico de procesos.",
+      "Justifica usar la normal en casi toda la inferencia.",
+      "Con promedios de muestras grandes.",
+      "Estandariza con σ/√n en lugar de σ."
+     ],
+     "f": "Z=\\frac{\\bar x-\\mu}{\\sigma/\\sqrt n}\\qquad \\bar x\\pm z_{\\alpha/2}\\frac{\\sigma}{\\sqrt n}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con la muestra 2, 3, 5, 6, estima μ y σ².",
+     "pasos": [
+      "<b>Media.</b> \\(\\tfrac{16}4=4\\).",
+      "<b>Varianza muestral.</b> \\(\\tfrac{4+1+1+4}{3}=\\tfrac{10}3\\approx3.33\\)."
+     ],
+     "r": "\\(\\hat\\mu=4\\), \\(\\hat\\sigma^2\\approx3.33\\).",
+     "fin": "Calcular estimadores puntuales insesgados."
+    },
+    {
+     "nv": "I",
+     "q": "Si la muestra viene de una uniforme en \\([0,\\theta]\\), estima \\(\\theta\\) por momentos.",
+     "pasos": [
+      "<b>Momento teórico.</b> \\(E(X)=\\tfrac\\theta2\\).",
+      "<b>Iguala.</b> \\(\\tfrac\\theta2=\\bar x=4\\Rightarrow\\hat\\theta=8\\)."
+     ],
+     "r": "\\(\\hat\\theta=8\\)",
+     "fin": "Aplicar el método de momentos."
+    },
+    {
+     "nv": "A",
+     "q": "Si la muestra 2, 3, 5, 6 viene de una exponencial, halla λ por máxima verosimilitud.",
+     "pasos": [
+      "<b>Verosimilitud.</b> \\(L=\\lambda^ne^{-\\lambda\\sum x_i}\\).",
+      "<b>Logaritmo.</b> \\(\\ln L=n\\ln\\lambda-\\lambda\\sum x_i\\).",
+      "<b>Deriva e iguala.</b> \\(\\tfrac n\\lambda-\\sum x_i=0\\Rightarrow\\hat\\lambda=\\tfrac1{\\bar x}\\).",
+      "<b>Valor.</b> \\(\\tfrac14\\)."
+     ],
+     "r": "\\(\\hat\\lambda=0.25\\)",
+     "fin": "Ejecutar el método de máxima verosimilitud completo."
+    },
+    {
+     "nv": "I",
+     "q": "Una población tiene μ = 50 y σ = 6. Con n = 36, ¿probabilidad de que la media muestral supere 52?",
+     "pasos": [
+      "<b>Error estándar.</b> \\(\\tfrac6{\\sqrt{36}}=1\\).",
+      "<b>Estandariza.</b> \\(z=\\tfrac{52-50}{1}=2\\).",
+      "<b>Área.</b> \\(P(Z\\gt2)=0.0228\\)."
+     ],
+     "r": "0.0228",
+     "fin": "Aplicar el teorema del límite central."
+    },
+    {
+     "nv": "I",
+     "q": "Con x̄ = 50, σ = 6 y n = 36, construye el intervalo de 95 % para μ.",
+     "pasos": [
+      "<b>Valor crítico.</b> \\(z_{0.025}=1.96\\).",
+      "<b>Margen.</b> \\(1.96\\cdot1=1.96\\).",
+      "<b>Intervalo.</b> \\(50\\pm1.96\\)."
+     ],
+     "r": "(48.04, 51.96)",
+     "fin": "Construir el intervalo más básico."
+    },
+    {
+     "nv": "B",
+     "q": "Halla el error estándar con σ = 12 y n = 36.",
+     "r": "2"
+    },
+    {
+     "nv": "B",
+     "q": "¿Por qué la varianza muestral divide entre n − 1?",
+     "r": "Para que sea un estimador insesgado de σ²."
+    },
+    {
+     "nv": "I",
+     "q": "Con μ = 50, σ = 6 y n = 36, halla P(x̄ < 48).",
+     "r": "0.0228"
+    },
+    {
+     "nv": "I",
+     "q": "Construye el intervalo de 99 % con x̄ = 50, σ = 6 y n = 36.",
+     "r": "(47.42, 52.58), con z = 2.576."
+    },
+    {
+     "nv": "A",
+     "q": "Halla el estimador de máxima verosimilitud de λ para una Poisson con datos 1, 3, 2, 4, 0.",
+     "r": "\\(\\hat\\lambda=\\bar x=2\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Intervalos de confianza y tamaño de muestra",
+   "intro": "Temas 3 y 5 del programa: distribución t, intervalo con σ estimada, intervalo para la varianza, intervalo para una proporción y tamaño de muestra.",
+   "conceptos": [
+    {
+     "n": "Intervalo con σ desconocida: t de Student",
+     "e": [
+      "Si \\(\\sigma\\) se estima con \\(s\\) y la población es aproximadamente normal, se usa \\(t\\) con \\(n-1\\) grados de libertad. La \\(t\\) tiene colas más pesadas que la normal y se le parece cuando \\(n\\) crece."
+     ],
+     "u": [
+      "Estimar tiempos promedio con muestras pequeñas de pruebas de rendimiento.",
+      "En la práctica σ casi nunca se conoce.",
+      "Con σ desconocida, sobre todo si n < 30.",
+      "Busca t con n − 1 gl y calcula x̄ ± t·s/√n."
+     ],
+     "f": "\\bar x\\pm t_{\\alpha/2,\\,n-1}\\frac{s}{\\sqrt n}"
+    },
+    {
+     "n": "Intervalo para una proporción y para la varianza",
+     "e": [
+      "Proporción: \\(\\hat p\\pm z_{\\alpha/2}\\sqrt{\\tfrac{\\hat p\\hat q}{n}}\\). Varianza (población normal): \\(\\left(\\tfrac{(n-1)s^2}{\\chi^2_{\\alpha/2}},\\ \\tfrac{(n-1)s^2}{\\chi^2_{1-\\alpha/2}}\\right)\\), que no es simétrico."
+     ],
+     "u": [
+      "Porcentaje de usuarios satisfechos, tasa de fallos, variabilidad de un proceso.",
+      "Cuantifica la incertidumbre de porcentajes y de la consistencia.",
+      "Con datos de sí o no, o al evaluar la variabilidad.",
+      "Aplica la fórmula correspondiente con su tabla."
+     ]
+    },
+    {
+     "n": "Tamaño de muestra",
+     "e": [
+      "Despejando \\(n\\) del margen de error \\(E\\): para la media \\(n=\\left(\\tfrac{z\\sigma}{E}\\right)^2\\) y para la proporción \\(n=\\tfrac{z^2\\hat p\\hat q}{E^2}\\), con \\(\\hat p=0.5\\) si no hay dato previo (el caso más conservador). Siempre se redondea hacia arriba. Reducir \\(E\\) a la mitad cuadruplica \\(n\\)."
+     ],
+     "u": [
+      "Planificar encuestas a usuarios, pruebas de software o auditorías por muestreo.",
+      "Evita muestras insuficientes o costosas de más.",
+      "Antes de recolectar datos.",
+      "Fija confianza y error, despeja n y redondea hacia arriba."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con n = 16, x̄ = 245 ms y s = 20 ms, construye el intervalo de 95 % para μ.",
+     "pasos": [
+      "<b>Valor crítico.</b> \\(t_{0.025,15}=2.131\\).",
+      "<b>Margen.</b> \\(2.131\\cdot\\tfrac{20}{4}=10.66\\).",
+      "<b>Intervalo.</b> \\(245\\pm10.66\\)."
+     ],
+     "r": "(234.34, 255.66) ms",
+     "fin": "Estimar con muestras pequeñas."
+    },
+    {
+     "nv": "I",
+     "q": "En una encuesta, 210 de 500 usuarios prefieren el modo oscuro. Construye el intervalo de 95 % para p.",
+     "pasos": [
+      "<b>Proporción.</b> \\(\\hat p=0.42\\).",
+      "<b>Error estándar.</b> \\(\\sqrt{\\tfrac{0.42(0.58)}{500}}\\approx0.0221\\).",
+      "<b>Margen.</b> \\(1.96(0.0221)\\approx0.0433\\)."
+     ],
+     "r": "(0.377, 0.463)",
+     "fin": "Reportar porcentajes con su margen de error."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué muestra se necesita para estimar una proporción con error de 3 % y 95 % de confianza, sin dato previo?",
+     "pasos": [
+      "<b>Supuesto conservador.</b> \\(\\hat p=0.5\\).",
+      "<b>Fórmula.</b> \\(\\tfrac{1.96^2(0.25)}{0.03^2}=1067.1\\).",
+      "<b>Redondea hacia arriba.</b> 1068."
+     ],
+     "r": "1068 personas",
+     "fin": "Planificar el tamaño de una encuesta."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué muestra se necesita para estimar una media con σ = 15 y error de 3, al 95 %?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\left(\\tfrac{1.96\\cdot15}{3}\\right)^2=96.04\\).",
+      "<b>Redondea hacia arriba.</b> 97."
+     ],
+     "r": "97",
+     "fin": "Calcular cuántas mediciones hacen falta."
+    },
+    {
+     "nv": "A",
+     "q": "Con n = 20 y s² = 1.5, construye el intervalo de 95 % para σ².",
+     "pasos": [
+      "<b>Valores χ² con 19 gl.</b> \\(\\chi^2_{0.025}=32.852\\), \\(\\chi^2_{0.975}=8.907\\).",
+      "<b>Numerador.</b> \\(19(1.5)=28.5\\).",
+      "<b>Intervalo.</b> \\(\\left(\\tfrac{28.5}{32.852},\\ \\tfrac{28.5}{8.907}\\right)\\)."
+     ],
+     "r": "(0.868, 3.200)",
+     "fin": "Estimar la variabilidad de un proceso."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es el valor de t para 95 % con 9 grados de libertad?",
+     "r": "2.262"
+    },
+    {
+     "nv": "I",
+     "q": "Construye el intervalo de 90 % para p con p̂ = 0.6 y n = 400.",
+     "r": "(0.560, 0.640)"
+    },
+    {
+     "nv": "I",
+     "q": "Con n = 25, x̄ = 12.5 y s = 2, construye el intervalo de 95 %.",
+     "r": "(11.67, 13.33), con t = 2.064."
+    },
+    {
+     "nv": "I",
+     "q": "Si quieres reducir el margen de error a la mitad, ¿qué pasa con n?",
+     "r": "Se multiplica por 4."
+    },
+    {
+     "nv": "A",
+     "q": "Con una estimación previa p̂ = 0.1, ¿qué n se necesita para E = 0.02 al 95 %?",
+     "r": "865"
+    }
+   ]
+  },
+  {
+   "titulo": "Pruebas de hipótesis",
+   "intro": "Temas 4 y 5 del programa: nivel de significancia, pruebas sobre la media, la varianza y una proporción.",
+   "conceptos": [
+    {
+     "n": "Lógica de una prueba",
+     "e": [
+      "\\(H_0\\) es la afirmación que se asume (contiene la igualdad) y \\(H_1\\) lo que se quiere demostrar. <b>Error tipo I:</b> rechazar \\(H_0\\) siendo verdadera (probabilidad \\(\\alpha\\)). <b>Error tipo II:</b> no rechazarla siendo falsa (\\(\\beta\\)); la potencia es \\(1-\\beta\\). Se rechaza \\(H_0\\) si el estadístico cae en la región crítica o si el valor p es menor que \\(\\alpha\\)."
+     ],
+     "u": [
+      "Pruebas A/B de interfaces, verificación de acuerdos de nivel de servicio, control de calidad.",
+      "Permite decidir con datos controlando el riesgo de equivocarse.",
+      "Cuando hay una afirmación que verificar.",
+      "Plantea hipótesis, elige α, calcula el estadístico y decide."
+     ]
+    },
+    {
+     "n": "Estadísticos de prueba",
+     "e": [
+      "El tipo de prueba depende de lo que se prueba y de lo que se conoce."
+     ],
+     "u": [
+      "Elegir la prueba correcta según los datos disponibles.",
+      "Usar el estadístico equivocado invalida la conclusión.",
+      "Antes de calcular.",
+      "Identifica parámetro, si σ es conocida y el tamaño de muestra."
+     ],
+     "f": "z=\\frac{\\bar x-\\mu_0}{\\sigma/\\sqrt n}\\quad t=\\frac{\\bar x-\\mu_0}{s/\\sqrt n}\\quad z=\\frac{\\hat p-p_0}{\\sqrt{p_0q_0/n}}\\quad \\chi^2=\\frac{(n-1)s^2}{\\sigma_0^2}"
+    },
+    {
+     "n": "Una cola o dos colas",
+     "e": [
+      "Si \\(H_1\\) dice “distinto”, la prueba es de dos colas y \\(\\alpha\\) se reparte. Si dice “mayor” o “menor”, es de una cola. Valores críticos usuales con \\(\\alpha=0.05\\): \\(\\pm1.96\\) (dos colas) y \\(1.645\\) (una cola)."
+     ],
+     "u": [
+      "Verificar si una optimización mejoró (una cola) o si un cambio alteró algo (dos colas).",
+      "La dirección de H₁ cambia la región crítica.",
+      "Al plantear H₁.",
+      "Fíjate en la palabra clave: “mejora”, “excede”, “difiere”."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un proveedor dice que su API responde en promedio en menos de 500 ms. Plantea las hipótesis y explica los errores posibles.",
+     "pasos": [
+      "<b>Hipótesis.</b> \\(H_0:\\mu\\ge500\\), \\(H_1:\\mu\\lt500\\) (lo que se quiere demostrar). Prueba de cola izquierda.",
+      "<b>Error tipo I.</b> Concluir que responde en menos de 500 ms cuando no es así.",
+      "<b>Error tipo II.</b> No reconocer que sí es más rápida."
+     ],
+     "r": "\\(H_0:\\mu\\ge500\\); \\(H_1:\\mu\\lt500\\).",
+     "fin": "Plantear correctamente qué se está probando."
+    },
+    {
+     "nv": "I",
+     "q": "Con σ = 20, n = 40 y x̄ = 492 ms, prueba la afirmación anterior con α = 0.05.",
+     "pasos": [
+      "<b>Estadístico.</b> \\(z=\\tfrac{492-500}{20/\\sqrt{40}}\\approx-2.53\\).",
+      "<b>Valor crítico.</b> \\(-1.645\\).",
+      "<b>Decisión.</b> \\(-2.53\\lt-1.645\\): se rechaza \\(H_0\\). Valor p ≈ 0.0057."
+     ],
+     "r": "Hay evidencia de que la media es menor que 500 ms.",
+     "fin": "Tomar una decisión con un nivel de riesgo conocido."
+    },
+    {
+     "nv": "I",
+     "q": "Con n = 16, x̄ = 245 y s = 20, prueba H₀: μ = 250 contra H₁: μ ≠ 250 con α = 0.05.",
+     "pasos": [
+      "<b>Estadístico.</b> \\(t=\\tfrac{245-250}{20/4}=-1\\).",
+      "<b>Valores críticos.</b> \\(\\pm t_{0.025,15}=\\pm2.131\\).",
+      "<b>Decisión.</b> \\(|-1|\\lt2.131\\): no se rechaza."
+     ],
+     "r": "No hay evidencia de que μ sea distinta de 250.",
+     "fin": "Distinguir “no rechazar” de “demostrar que es igual”."
+    },
+    {
+     "nv": "I",
+     "q": "Un proveedor garantiza a lo sumo 5 % de defectos. En 200 piezas hay 16 defectuosas. Prueba con α = 0.05.",
+     "pasos": [
+      "<b>Hipótesis.</b> \\(H_0:p\\le0.05\\), \\(H_1:p\\gt0.05\\).",
+      "<b>Estadístico.</b> \\(\\hat p=0.08\\); \\(z=\\tfrac{0.03}{\\sqrt{0.05(0.95)/200}}\\approx1.95\\).",
+      "<b>Decisión.</b> \\(1.95\\gt1.645\\): se rechaza (valor p ≈ 0.026)."
+     ],
+     "r": "La tasa de defectos excede la garantía.",
+     "fin": "Verificar un acuerdo de calidad con datos."
+    },
+    {
+     "nv": "A",
+     "q": "Con n = 20 y s² = 1.5, prueba H₀: σ² = 1 contra H₁: σ² > 1 con α = 0.05.",
+     "pasos": [
+      "<b>Estadístico.</b> \\(\\chi^2=\\tfrac{19(1.5)}{1}=28.5\\).",
+      "<b>Crítico.</b> \\(\\chi^2_{0.05,19}=30.14\\).",
+      "<b>Decisión.</b> \\(28.5\\lt30.14\\): no se rechaza."
+     ],
+     "r": "No hay evidencia suficiente de que la variabilidad aumentó.",
+     "fin": "Probar la consistencia de un proceso."
+    },
+    {
+     "nv": "B",
+     "q": "Si el valor p es 0.03 y α = 0.05, ¿qué decides?",
+     "r": "Rechazar H₀."
+    },
+    {
+     "nv": "B",
+     "q": "En un control de calidad, ¿qué es más grave aceptar un lote malo o rechazar uno bueno? Nombra cada error.",
+     "r": "Aceptar uno malo es error tipo II; rechazar uno bueno es error tipo I. La gravedad depende del contexto."
+    },
+    {
+     "nv": "I",
+     "q": "Con σ = 10, n = 25 y x̄ = 103, prueba H₀: μ = 100 contra μ ≠ 100 (α = 0.05).",
+     "r": "z = 1.5 < 1.96: no se rechaza."
+    },
+    {
+     "nv": "I",
+     "q": "Con n = 9, x̄ = 52 y s = 3, prueba H₀: μ = 50 contra μ > 50 (α = 0.05).",
+     "r": "t = 2 > 1.860: se rechaza."
+    },
+    {
+     "nv": "A",
+     "q": "60 de 100 usuarios prefieren la nueva versión. Prueba H₀: p = 0.5 contra p ≠ 0.5 con α = 0.05 y α = 0.01.",
+     "r": "z = 2: se rechaza con 0.05 (crítico 1.96) pero no con 0.01 (crítico 2.576)."
+    }
+   ]
+  },
+  {
+   "titulo": "Comparación de dos poblaciones",
+   "intro": "Temas 5 y 6 del programa: dos proporciones con proporción agrupada, distribución F, prueba t agrupada, varianzas desiguales y datos pareados.",
+   "conceptos": [
+    {
+     "n": "Dos medias independientes",
+     "e": [
+      "Con varianzas iguales se usa \\(t\\) agrupada con \\(n_1+n_2-2\\) gl. Con varianzas distintas, la de Welch con gl aproximados."
+     ],
+     "u": [
+      "Comparar rendimiento de dos servidores, dos algoritmos o dos versiones de una app.",
+      "Decide si una diferencia observada es real o azar.",
+      "Con dos grupos independientes.",
+      "Prueba primero las varianzas con F y elige la versión de t."
+     ],
+     "f": "s_p^2=\\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\\qquad t=\\frac{\\bar x_1-\\bar x_2}{s_p\\sqrt{\\frac1{n_1}+\\frac1{n_2}}}"
+    },
+    {
+     "n": "Datos pareados",
+     "e": [
+      "Si cada dato de un grupo se empareja con uno del otro (antes y después en el mismo equipo), se trabaja con las diferencias \\(d\\): \\(t=\\tfrac{\\bar d}{s_d/\\sqrt n}\\) con \\(n-1\\) gl. Elimina la variación entre sujetos y es más potente."
+     ],
+     "u": [
+      "Medir el efecto de una optimización en los mismos servidores, antes y después de una capacitación.",
+      "Compara cada unidad consigo misma.",
+      "Cuando las mediciones vienen en pares naturales.",
+      "Resta cada par y aplica una prueba t a las diferencias."
+     ]
+    },
+    {
+     "n": "Dos varianzas y dos proporciones",
+     "e": [
+      "Varianzas: \\(F=\\tfrac{s_1^2}{s_2^2}\\) con \\((n_1-1,\\,n_2-1)\\) gl. Proporciones: bajo \\(H_0:p_1=p_2\\) se usa la proporción agrupada \\(\\hat p=\\tfrac{x_1+x_2}{n_1+n_2}\\) y \\(z=\\tfrac{\\hat p_1-\\hat p_2}{\\sqrt{\\hat p\\hat q(1/n_1+1/n_2)}}\\)."
+     ],
+     "u": [
+      "Pruebas A/B de tasas de conversión, comparar variabilidad de dos proveedores.",
+      "Extiende la inferencia a comparaciones.",
+      "Con tasas o consistencias de dos grupos.",
+      "Calcula el estadístico y compáralo con su tabla."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con s₁² = 25 (n₁ = 12) y s₂² = 16 (n₂ = 10), ¿hay evidencia de varianzas distintas? (α = 0.05, dos colas)",
+     "pasos": [
+      "<b>Estadístico.</b> \\(F=\\tfrac{25}{16}=1.5625\\).",
+      "<b>Crítico.</b> \\(F_{0.025;11,9}\\approx3.91\\).",
+      "<b>Decisión.</b> \\(1.56\\lt3.91\\): no se rechaza; se pueden agrupar."
+     ],
+     "r": "No hay evidencia de varianzas distintas.",
+     "fin": "Decidir qué versión de la prueba t usar."
+    },
+    {
+     "nv": "I",
+     "q": "Servidor A: n = 10, x̄ = 85, s = 4. Servidor B: n = 12, x̄ = 81, s = 5. ¿Difieren las medias? (α = 0.05)",
+     "pasos": [
+      "<b>Varianza agrupada.</b> \\(s_p=\\sqrt{\\tfrac{9(16)+11(25)}{20}}\\approx4.577\\).",
+      "<b>Estadístico.</b> \\(t=\\tfrac{4}{4.577\\sqrt{1/10+1/12}}\\approx2.04\\).",
+      "<b>Crítico.</b> \\(t_{0.025,20}=2.086\\).",
+      "<b>Decisión.</b> \\(2.04\\lt2.086\\): no se rechaza, por poco."
+     ],
+     "r": "No hay evidencia suficiente de diferencia.",
+     "fin": "Comparar dos grupos independientes."
+    },
+    {
+     "nv": "I",
+     "q": "Tiempos de 8 consultas antes y después de crear un índice dan diferencias 5, 3, 8, 6, 2, 7, 4, 5 ms. ¿Mejoró? (α = 0.05)",
+     "pasos": [
+      "<b>Diferencias.</b> \\(\\bar d=5\\), \\(s_d=2\\).",
+      "<b>Estadístico.</b> \\(t=\\tfrac{5}{2/\\sqrt8}\\approx7.07\\).",
+      "<b>Crítico (una cola).</b> \\(t_{0.05,7}=1.895\\).",
+      "<b>Decisión.</b> Se rechaza \\(H_0\\)."
+     ],
+     "r": "Sí, el índice redujo el tiempo.",
+     "fin": "Medir el efecto de una optimización correctamente."
+    },
+    {
+     "nv": "A",
+     "q": "La versión A convierte 30 de 200 visitas y la B 18 de 200. ¿Hay diferencia? (α = 0.05)",
+     "pasos": [
+      "<b>Proporciones.</b> 0.15 y 0.09; agrupada \\(\\hat p=\\tfrac{48}{400}=0.12\\).",
+      "<b>Estadístico.</b> \\(z=\\tfrac{0.06}{\\sqrt{0.12(0.88)(2/200)}}\\approx1.85\\).",
+      "<b>Decisión.</b> \\(1.85\\lt1.96\\): no se rechaza (valor p ≈ 0.065)."
+     ],
+     "r": "No hay evidencia suficiente; conviene más muestra.",
+     "fin": "Analizar una prueba A/B."
+    },
+    {
+     "nv": "A",
+     "q": "A: n = 15, x̄ = 30, s = 2. B: n = 12, x̄ = 27, s = 6. Las varianzas difieren. ¿Difieren las medias? (α = 0.05)",
+     "pasos": [
+      "<b>Error estándar.</b> \\(\\sqrt{\\tfrac4{15}+\\tfrac{36}{12}}\\approx1.807\\).",
+      "<b>Estadístico.</b> \\(t=\\tfrac3{1.807}\\approx1.66\\).",
+      "<b>Grados de Welch.</b> \\(\\approx13\\); crítico 2.160.",
+      "<b>Decisión.</b> No se rechaza."
+     ],
+     "r": "No hay evidencia de diferencia.",
+     "fin": "Aplicar Welch cuando las varianzas son distintas."
+    },
+    {
+     "nv": "B",
+     "q": "Se mide el consumo de 10 servidores antes y después de un parche. ¿Qué prueba usas?",
+     "r": "Prueba t pareada."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe H₀ y H₁ para comparar dos proporciones de error.",
+     "r": "\\(H_0:p_1=p_2\\); \\(H_1:p_1\\neq p_2\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula s_p con n₁ = n₂ = 8, s₁ = 3 y s₂ = 5.",
+     "r": "\\(\\sqrt{17}\\approx4.123\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Con s₁² = 36 y s₂² = 9, calcula F.",
+     "r": "4"
+    },
+    {
+     "nv": "A",
+     "q": "Diferencias pareadas 2, 4, 1, 3, 5. Prueba si la media es mayor que 0 (α = 0.05).",
+     "r": "d̄ = 3, s_d = 1.581, t = 4.24 > 2.132: se rechaza."
+    }
+   ]
+  },
+  {
+   "titulo": "Pruebas no paramétricas de Wilcoxon",
+   "intro": "Tema 7 del programa: suma de rangos y rango con signo de Wilcoxon.",
+   "conceptos": [
+    {
+     "n": "Por qué no paramétricas",
+     "e": [
+      "No suponen normalidad: trabajan con rangos en lugar de valores, así que resisten valores atípicos. Se usan con muestras pequeñas no normales o datos ordinales. Son un poco menos potentes que t cuando los datos sí son normales."
+     ],
+     "u": [
+      "Tiempos de respuesta con valores extremos, encuestas con escalas 1 a 5.",
+      "Evitan conclusiones falsas cuando no se cumplen los supuestos.",
+      "Con datos sesgados, ordinales o muestras pequeñas.",
+      "Revisa la forma de los datos antes de elegir la prueba."
+     ]
+    },
+    {
+     "n": "Suma de rangos (Mann-Whitney)",
+     "e": [
+      "Para dos muestras independientes: se ordenan todos los datos juntos, se asignan rangos (los empates reciben el promedio) y se suma el rango \\(W\\) de un grupo. \\(U=W-\\tfrac{n_1(n_1+1)}{2}\\); se rechaza \\(H_0\\) si \\(U\\) es menor o igual al valor crítico."
+     ],
+     "u": [
+      "Comparar dos versiones de un algoritmo con tiempos muy dispersos.",
+      "Equivale a la t de dos muestras sin suponer normalidad.",
+      "Con dos grupos independientes no normales.",
+      "Ordena todo junto, asigna rangos y suma por grupo."
+     ]
+    },
+    {
+     "n": "Rango con signo",
+     "e": [
+      "Para datos pareados: se calculan diferencias, se descartan los ceros, se ordenan sus valores absolutos y se suman los rangos de las positivas (\\(W^+\\)) y de las negativas (\\(W^-\\)). El estadístico es el menor; \\(W^++W^-=\\tfrac{n(n+1)}2\\). Con \\(n\\) grande: \\(z=\\tfrac{W-n(n+1)/4}{\\sqrt{n(n+1)(2n+1)/24}}\\)."
+     ],
+     "u": [
+      "Antes y después con datos no normales.",
+      "Equivale a la t pareada sin suponer normalidad.",
+      "Con pares de mediciones sesgadas.",
+      "Ordena |d|, suma rangos por signo y compara el menor con la tabla."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Asigna rangos a 5, 7, 7, 9.",
+     "pasos": [
+      "<b>Orden.</b> 5 es primero.",
+      "<b>Empate.</b> Los dos 7 ocupan las posiciones 2 y 3: cada uno recibe 2.5.",
+      "<b>Último.</b> 9 recibe 4."
+     ],
+     "r": "1, 2.5, 2.5, 4",
+     "fin": "Manejar empates correctamente."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuándo conviene una prueba de Wilcoxon en lugar de una t?",
+     "pasos": [
+      "<b>Supuesto de t.</b> Normalidad, sobre todo con n pequeño.",
+      "<b>Wilcoxon.</b> Solo usa el orden, así que tolera sesgo y atípicos."
+     ],
+     "r": "Con muestras pequeñas no normales, con atípicos o con datos ordinales.",
+     "fin": "Elegir la prueba adecuada a los datos."
+    },
+    {
+     "nv": "I",
+     "q": "A: 12, 15, 18, 20. B: 22, 25, 19, 30, 28. Aplica la suma de rangos (α = 0.05, dos colas).",
+     "pasos": [
+      "<b>Rangos de A.</b> 1, 2, 3, 5 (el 19 de B es el 4): \\(W_A=11\\).",
+      "<b>U.</b> \\(11-\\tfrac{4\\cdot5}{2}=1\\).",
+      "<b>Crítico.</b> Para \\(n_1=4\\), \\(n_2=5\\): 1.",
+      "<b>Decisión.</b> \\(U\\le1\\): se rechaza (valor p ≈ 0.032)."
+     ],
+     "r": "Los grupos difieren.",
+     "fin": "Comparar dos grupos sin suponer normalidad."
+    },
+    {
+     "nv": "I",
+     "q": "Diferencias pareadas 3, −1, 4, 6, 2, 5, 8, 7. Aplica rango con signo (α = 0.05, dos colas).",
+     "pasos": [
+      "<b>Rangos de |d|.</b> 3, 1, 4, 6, 2, 5, 8, 7.",
+      "<b>Sumas.</b> \\(W^-=1\\) (solo el −1); \\(W^+=35\\).",
+      "<b>Crítico.</b> Para \\(n=8\\): 3.",
+      "<b>Decisión.</b> \\(1\\le3\\): se rechaza."
+     ],
+     "r": "Hay un cambio significativo.",
+     "fin": "Analizar antes y después sin suponer normalidad."
+    },
+    {
+     "nv": "A",
+     "q": "Con n = 20 pares, W⁺ = 150. Usa la aproximación normal (α = 0.05, dos colas).",
+     "pasos": [
+      "<b>Media.</b> \\(\\tfrac{20\\cdot21}{4}=105\\).",
+      "<b>Desviación.</b> \\(\\sqrt{\\tfrac{20\\cdot21\\cdot41}{24}}\\approx26.79\\).",
+      "<b>z.</b> \\(\\tfrac{150-105}{26.79}\\approx1.68\\lt1.96\\)."
+     ],
+     "r": "No se rechaza.",
+     "fin": "Usar la aproximación normal con muestras grandes."
+    },
+    {
+     "nv": "B",
+     "q": "Asigna rangos a 10, 20, 20, 30.",
+     "r": "1, 2.5, 2.5, 4"
+    },
+    {
+     "nv": "I",
+     "q": "Con n = 10 diferencias y W⁺ = 40, ¿cuánto vale W⁻?",
+     "r": "15 (la suma total es 55)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué prueba usas para dos muestras independientes con datos muy sesgados?",
+     "r": "Suma de rangos de Wilcoxon (Mann-Whitney)."
+    },
+    {
+     "nv": "I",
+     "q": "En la prueba de rango con signo, ¿qué haces con las diferencias iguales a cero?",
+     "r": "Se descartan y se reduce n."
+    },
+    {
+     "nv": "A",
+     "q": "Con n₁ = n₂ = 10 y W₁ = 80, aplica la aproximación normal de la suma de rangos (α = 0.05).",
+     "r": "μ = 105, σ ≈ 13.23, z ≈ −1.89: no se rechaza."
+    }
+   ]
+  },
+  {
+   "titulo": "Regresión lineal simple y múltiple",
+   "intro": "Temas 8 y 9 del programa: mínimos cuadrados, inferencias sobre la pendiente, predicción, análisis residual, correlación, regresión múltiple con enfoque matricial y variables indicadoras.",
+   "conceptos": [
+    {
+     "n": "Inferencia en regresión simple",
+     "e": [
+      "En \\(y=\\beta_0+\\beta_1x+\\varepsilon\\), se prueba \\(H_0:\\beta_1=0\\) (no hay relación lineal) con \\(t=\\tfrac{b_1}{s_e/\\sqrt{S_{xx}}}\\) y \\(n-2\\) gl, donde \\(s_e=\\sqrt{\\tfrac{SSE}{n-2}}\\). \\(R^2=\\tfrac{SSR}{SST}\\)."
+     ],
+     "u": [
+      "Validar si una variable realmente predice otra (usuarios y carga de CPU).",
+      "Una recta siempre se puede ajustar; la prueba dice si sirve.",
+      "Antes de usar un modelo para predecir.",
+      "Calcula SSE, sₑ, el error de la pendiente y t."
+     ],
+     "f": "SST=SSR+SSE\\qquad R^2=1-\\frac{SSE}{SST}"
+    },
+    {
+     "n": "Análisis residual",
+     "e": [
+      "Los residuos \\(e_i=y_i-\\hat y_i\\) deben verse aleatorios alrededor de 0. Un patrón curvo indica que falta un término no lineal; un embudo indica varianza no constante; valores muy alejados señalan atípicos."
+     ],
+     "u": [
+      "Diagnóstico de modelos predictivos.",
+      "Un R² alto no garantiza que el modelo sea adecuado.",
+      "Siempre después de ajustar.",
+      "Grafica residuos contra ŷ o x y busca patrones."
+     ]
+    },
+    {
+     "n": "Regresión múltiple matricial",
+     "e": [
+      "\\(\\mathbf y=X\\boldsymbol\\beta+\\boldsymbol\\varepsilon\\). Las ecuaciones normales \\(X^TX\\mathbf b=X^T\\mathbf y\\) dan \\(\\mathbf b=(X^TX)^{-1}X^T\\mathbf y\\). Una variable indicadora (dummy) vale 0 o 1 para incluir categorías. El modelo polinomial usa \\(x,\\ x^2,\\dots\\) como predictores. El \\(R^2\\) ajustado penaliza agregar variables inútiles."
+     ],
+     "u": [
+      "Modelos de costo con varios factores, predicción de demanda, aprendizaje automático lineal.",
+      "La realidad depende de varias variables a la vez.",
+      "Con varios predictores o categorías.",
+      "Arma la matriz X con una columna de unos y resuelve las ecuaciones normales."
+     ],
+     "f": "\\mathbf b=(X^TX)^{-1}X^T\\mathbf y\\qquad R^2_{aj}=1-(1-R^2)\\frac{n-1}{n-k-1}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ajusta la recta para x = 1…5 y y = 2, 4, 5, 4, 5.",
+     "pasos": [
+      "<b>Sumas.</b> \\(\\sum x=15,\\ \\sum y=20,\\ \\sum xy=66,\\ \\sum x^2=55\\).",
+      "<b>Pendiente.</b> \\(b_1=\\tfrac{5(66)-15(20)}{5(55)-225}=0.6\\).",
+      "<b>Intercepto.</b> \\(b_0=4-0.6(3)=2.2\\)."
+     ],
+     "r": "\\(\\hat y=2.2+0.6x\\)",
+     "fin": "Punto de partida de la inferencia."
+    },
+    {
+     "nv": "I",
+     "q": "¿Es significativa la pendiente del modelo anterior? (α = 0.05)",
+     "pasos": [
+      "<b>Residuos.</b> SSE = 2.4; \\(s_e=\\sqrt{2.4/3}\\approx0.894\\).",
+      "<b>Error de la pendiente.</b> \\(S_{xx}=10\\): \\(\\tfrac{0.894}{\\sqrt{10}}\\approx0.283\\).",
+      "<b>t.</b> \\(\\tfrac{0.6}{0.283}\\approx2.12\\); crítico \\(t_{0.025,3}=3.182\\).",
+      "<b>Decisión.</b> No se rechaza \\(H_0:\\beta_1=0\\)."
+     ],
+     "r": "Con solo 5 datos, la pendiente no es significativa.",
+     "fin": "No confiar en un modelo solo porque se puede ajustar."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula SST, SSR y R² del mismo modelo.",
+     "pasos": [
+      "<b>SST.</b> \\(\\sum(y-\\bar y)^2=4+0+1+0+1=6\\).",
+      "<b>SSR.</b> \\(6-2.4=3.6\\).",
+      "<b>R².</b> \\(\\tfrac{3.6}6=0.6\\)."
+     ],
+     "r": "R² = 0.6",
+     "fin": "Descomponer la variación total."
+    },
+    {
+     "nv": "I",
+     "q": "Un modelo de costo mensual es \\(\\hat y=10+2x_1-3x_2+5D\\), con \\(D=1\\) si el servidor está en la nube. Predice con \\(x_1=4\\), \\(x_2=1\\), \\(D=1\\) e interpreta el 5.",
+     "pasos": [
+      "<b>Sustituye.</b> \\(10+8-3+5=20\\).",
+      "<b>Interpreta D.</b> Con las mismas \\(x_1\\) y \\(x_2\\), estar en la nube suma 5 unidades de costo."
+     ],
+     "r": "ŷ = 20; la nube cuesta 5 unidades más.",
+     "fin": "Usar variables indicadoras para categorías."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve las ecuaciones normales en forma matricial para los datos x = 1…5, y = 2, 4, 5, 4, 5.",
+     "pasos": [
+      "<b>Matrices.</b> \\(X^TX=\\begin{pmatrix}5&15\\\\15&55\\end{pmatrix}\\), \\(X^T\\mathbf y=\\begin{pmatrix}20\\\\66\\end{pmatrix}\\).",
+      "<b>Determinante.</b> \\(275-225=50\\).",
+      "<b>Inversa por el vector.</b> \\(b_0=\\tfrac{55(20)-15(66)}{50}=2.2\\); \\(b_1=\\tfrac{5(66)-15(20)}{50}=0.6\\)."
+     ],
+     "r": "\\(\\mathbf b=(2.2,\\ 0.6)\\), igual que con las fórmulas.",
+     "fin": "Ver el enfoque matricial que usa el software en regresión múltiple."
+    },
+    {
+     "nv": "B",
+     "q": "Con \\(\\hat y=2.2+0.6x\\), predice y para x = 4.",
+     "r": "4.6"
+    },
+    {
+     "nv": "I",
+     "q": "Si R² = 0.81 y la pendiente es negativa, ¿cuánto vale r?",
+     "r": "−0.9"
+    },
+    {
+     "nv": "I",
+     "q": "Los residuos forman un embudo que se abre. ¿Qué indica?",
+     "r": "Varianza no constante (heterocedasticidad)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Para qué se incluye x² en un modelo?",
+     "r": "Para capturar una relación curva (regresión polinomial)."
+    },
+    {
+     "nv": "A",
+     "q": "Con n = 30, k = 3 predictores y R² = 0.80, calcula el R² ajustado.",
+     "r": "\\(1-0.2\\cdot\\tfrac{29}{26}\\approx0.777\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Análisis de varianza de un factor",
+   "intro": "Tema 10 del programa: modelo de efectos fijos de un factor, prueba de H₀ y comparaciones por pares.",
+   "conceptos": [
+    {
+     "n": "Idea del ANOVA",
+     "e": [
+      "Compara las medias de \\(k\\) grupos a la vez: \\(H_0:\\mu_1=\\cdots=\\mu_k\\). Separa la variación total en <b>entre grupos</b> (SSA) y <b>dentro de grupos</b> (SSE). Si la variación entre grupos es grande comparada con la de dentro, las medias difieren. Supuestos: normalidad, varianzas iguales e independencia."
+     ],
+     "u": [
+      "Comparar tres o más configuraciones, proveedores o algoritmos.",
+      "Hacer muchas pruebas t infla el error tipo I.",
+      "Con tres o más grupos.",
+      "Calcula sumas de cuadrados, cuadrados medios y F."
+     ]
+    },
+    {
+     "n": "Tabla ANOVA",
+     "e": [
+      "\\(SST=SSA+SSE\\). Grados de libertad: \\(k-1\\) y \\(N-k\\). \\(MSA=\\tfrac{SSA}{k-1}\\), \\(MSE=\\tfrac{SSE}{N-k}\\), \\(F=\\tfrac{MSA}{MSE}\\). Se rechaza si \\(F\\gt F_{\\alpha;k-1,N-k}\\)."
+     ],
+     "u": [
+      "Diseño de experimentos en ingeniería y pruebas de rendimiento.",
+      "Resume el análisis en una tabla estándar.",
+      "Al reportar un ANOVA.",
+      "Llena la tabla columna por columna."
+     ],
+     "tabla": "<table><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>F</th></tr></thead><tbody><tr><td>Entre grupos</td><td>SSA</td><td>k − 1</td><td>MSA</td><td>MSA/MSE</td></tr><tr><td>Dentro (error)</td><td>SSE</td><td>N − k</td><td>MSE</td><td></td></tr><tr><td>Total</td><td>SST</td><td>N − 1</td><td></td><td></td></tr></tbody></table>"
+    },
+    {
+     "n": "Comparaciones por pares",
+     "e": [
+      "Si se rechaza \\(H_0\\), se averigua qué medias difieren. Con la diferencia mínima significativa de Fisher, \\(LSD=t_{\\alpha/2,N-k}\\sqrt{\\tfrac{2MSE}{n}}\\); también se usan Tukey o Duncan. Dos medias difieren si su diferencia supera ese umbral."
+     ],
+     "u": [
+      "Elegir el mejor de varios proveedores o configuraciones.",
+      "El ANOVA dice que hay diferencias, no dónde.",
+      "Después de rechazar H₀ en el ANOVA.",
+      "Calcula el umbral y compara cada par de medias."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué supuestos requiere el ANOVA de un factor y por qué no hacer varias pruebas t?",
+     "pasos": [
+      "<b>Supuestos.</b> Normalidad en cada grupo, varianzas iguales e independencia.",
+      "<b>Varias t.</b> Con 3 comparaciones a α = 0.05, el riesgo total de un error tipo I sube a \\(1-0.95^3\\approx14\\%\\)."
+     ],
+     "r": "El ANOVA controla el error global en una sola prueba.",
+     "fin": "Justificar el uso del ANOVA."
+    },
+    {
+     "nv": "I",
+     "q": "Grupos: A = 5, 7, 6, 8; B = 9, 8, 10, 9; C = 4, 5, 6, 5. Haz el ANOVA con α = 0.05.",
+     "pasos": [
+      "<b>Medias.</b> 6.5, 9, 5; general 6.833.",
+      "<b>SSA.</b> \\(4[(6.5-6.833)^2+(9-6.833)^2+(5-6.833)^2]\\approx32.67\\).",
+      "<b>SSE.</b> \\(5+2+2=9\\).",
+      "<b>F.</b> \\(\\tfrac{32.67/2}{9/9}=16.33\\); crítico \\(F_{0.05;2,9}=4.26\\)."
+     ],
+     "r": "F = 16.33 > 4.26: las medias difieren.",
+     "fin": "Ejecutar un ANOVA completo."
+    },
+    {
+     "nv": "I",
+     "q": "Completa la tabla: SSA = 40, SSE = 60, k = 4, N = 24 (α = 0.05).",
+     "pasos": [
+      "<b>gl.</b> 3 y 20.",
+      "<b>Cuadrados medios.</b> \\(MSA=13.33\\), \\(MSE=3\\).",
+      "<b>F.</b> \\(4.44\\); crítico \\(F_{0.05;3,20}=3.10\\)."
+     ],
+     "r": "F = 4.44: se rechaza H₀.",
+     "fin": "Llenar la tabla ANOVA desde las sumas de cuadrados."
+    },
+    {
+     "nv": "A",
+     "q": "Con los datos del ejercicio 2, ¿qué pares de medias difieren? Usa LSD de Fisher.",
+     "pasos": [
+      "<b>Umbral.</b> \\(t_{0.025,9}=2.262\\); \\(LSD=2.262\\sqrt{\\tfrac{2(1)}4}\\approx1.60\\).",
+      "<b>A contra B.</b> \\(|6.5-9|=2.5\\gt1.60\\): difieren.",
+      "<b>A contra C.</b> \\(1.5\\lt1.60\\): no difieren.",
+      "<b>B contra C.</b> \\(4\\gt1.60\\): difieren."
+     ],
+     "r": "B difiere de A y de C; A y C no difieren.",
+     "fin": "Identificar cuál grupo es distinto."
+    },
+    {
+     "nv": "I",
+     "q": "Con 5 grupos y 30 observaciones, ¿cuáles son los grados de libertad?",
+     "pasos": [
+      "<b>Entre grupos.</b> \\(k-1=4\\).",
+      "<b>Dentro.</b> \\(N-k=25\\).",
+      "<b>Total.</b> 29."
+     ],
+     "r": "4, 25 y 29.",
+     "fin": "Ubicar el valor crítico correcto."
+    },
+    {
+     "nv": "B",
+     "q": "Si SST = 100 y SSA = 30, ¿cuánto vale SSE?",
+     "r": "70"
+    },
+    {
+     "nv": "I",
+     "q": "Si MSA = 12, MSE = 4 y el crítico es 3.5, ¿qué decides?",
+     "r": "F = 3 < 3.5: no se rechaza."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace el ANOVA si rechazas H₀ y qué sigue?",
+     "r": "Indica que al menos una media difiere; siguen las comparaciones por pares."
+    },
+    {
+     "nv": "I",
+     "q": "Con k = 3 grupos de n = 6 y MSE = 2, calcula el LSD con t = 2.131.",
+     "r": "\\(2.131\\sqrt{2(2)/6}\\approx1.74\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Grupos 2, 3, 4 y 5, 6, 7. Haz el ANOVA (α = 0.05, crítico 7.71).",
+     "r": "SSA = 13.5, SSE = 4, F = 13.5: se rechaza."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

@@ -1,0 +1,779 @@
+{
+ "slug": "telecomunicaciones",
+ "titulo": "Telecomunicaciones",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 10, código 046, bloque Comunicaciones del seminario",
+ "firma": "P_{rx}=P_{tx}+G_{tx}+G_{rx}-L_{total}",
+ "firma_nota": "El presupuesto de enlace: la cuenta que decide si un radioenlace o una fibra funcionan.",
+ "lead": "Fundamentos de redes por capas con enfoque de negocio, LAN y troncales, MAN, WAN e internet, seguridad, diseño y administración de redes, telefonía fija y celular, satélites, microondas y fibra óptica. Los 5 temas del programa están organizados en 6 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Decimo%20Ciclo/2014-10TeleComunicaciones.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y preguntas de opción múltiple que te dicen al instante si acertaste.",
+ "temas": [
+  {
+   "titulo": "Fundamentos: de la capa de aplicación a la física",
+   "intro": "Tema 1 del programa: capas de aplicación, física, enlace de datos, red y transporte.",
+   "conceptos": [
+    {
+     "n": "Capa de aplicación",
+     "e": [
+      "Arquitecturas cliente-servidor, de varias capas (presentación, lógica, datos) y entre pares (P2P). HTTP usa métodos (GET, POST, PUT, DELETE) y códigos de estado: 2xx éxito (200 OK), 3xx redirección (301), 4xx error del cliente (404 no encontrado, 403 prohibido), 5xx error del servidor (500, 503). Correo: SMTP envía; IMAP y POP3 leen. DNS resuelve nombres."
+     ],
+     "u": [
+      "Diagnosticar aplicaciones web y de correo.",
+      "Los códigos indican de qué lado está el problema.",
+      "Al revisar registros de servidores.",
+      "Identifica el método, el código y el protocolo."
+     ]
+    },
+    {
+     "n": "Capas física y de enlace",
+     "e": [
+      "La física transmite bits: ancho de banda, atenuación, ruido y codificación de línea (NRZ, Manchester). La de enlace forma tramas, usa direcciones MAC de 48 bits, detecta errores (CRC) y controla el acceso al medio: <b>CSMA/CD</b> en Ethernet cableado compartido y <b>CSMA/CA</b> en Wi-Fi (evita colisiones porque no puede detectarlas). <b>ARP</b> obtiene la MAC a partir de la IP en la red local."
+     ],
+     "u": [
+      "Diagnosticar fallas de cableado, conflictos de IP, lentitud en Wi-Fi.",
+      "Muchas fallas de red están en las capas bajas.",
+      "Al revisar conectividad local.",
+      "Revisa enlace físico, tabla ARP y errores de la interfaz."
+     ]
+    },
+    {
+     "n": "Capas de red y transporte",
+     "e": [
+      "La de red enruta paquetes entre redes con IP (direccionamiento, TTL, fragmentación). La de transporte entrega de extremo a extremo con puertos: TCP (confiable, con control de flujo por ventana y de congestión) o UDP (sin conexión, para voz, video y DNS)."
+     ],
+     "u": [
+      "Elegir protocolos para aplicaciones, abrir puertos.",
+      "Determina confiabilidad y latencia de la aplicación.",
+      "Al diseñar o diagnosticar servicios.",
+      "Usa TCP si importa la integridad y UDP si importa la latencia."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Interpreta los códigos HTTP 200, 301, 404 y 503.",
+     "pasos": [
+      "<b>200.</b> Éxito.",
+      "<b>301.</b> Redirección permanente.",
+      "<b>404.</b> El recurso no existe (error del cliente).",
+      "<b>503.</b> Servicio no disponible (error del servidor)."
+     ],
+     "r": "Éxito, redirección, no encontrado y servidor no disponible.",
+     "fin": "Leer respuestas de servidores web."
+    },
+    {
+     "nv": "I",
+     "q": "Describe lo que pasa al escribir www.ejemplo.com en el navegador.",
+     "pasos": [
+      "<b>DNS.</b> Se resuelve el nombre a una IP.",
+      "<b>TCP y TLS.</b> Saludo de tres vías al puerto 443 y negociación de cifrado.",
+      "<b>HTTP.</b> Se envía GET y llega la respuesta.",
+      "<b>Capas bajas.</b> ARP para la MAC de la puerta de enlace; tramas Ethernet o Wi-Fi."
+     ],
+     "r": "DNS, TCP, TLS, HTTP, sobre IP y Ethernet o Wi-Fi.",
+     "fin": "Integrar todas las capas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué Wi-Fi usa CSMA/CA y no CSMA/CD?",
+     "pasos": [
+      "<b>Problema.</b> Un equipo inalámbrico no puede escuchar mientras transmite, ni oye a todos (nodo oculto).",
+      "<b>Solución.</b> Evita colisiones: espera aleatoria, confirmaciones (ACK) y opcionalmente RTS/CTS."
+     ],
+     "r": "Porque en radio no se pueden detectar colisiones de forma fiable.",
+     "fin": "Entender el acceso al medio inalámbrico."
+    },
+    {
+     "nv": "A",
+     "q": "Dos equipos tienen la misma IP en una LAN y se desconectan de forma intermitente. ¿Cómo lo confirmas?",
+     "pasos": [
+      "<b>ARP.</b> <code>arp -a</code> muestra que la IP cambia de MAC.",
+      "<b>Registros.</b> El sistema operativo avisa de conflicto de IP.",
+      "<b>Solución.</b> Reservas DHCP y revisar IP fijas."
+     ],
+     "r": "Revisando la tabla ARP y los avisos de conflicto.",
+     "fin": "Diagnosticar un problema de capa 2-3."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tamaño tiene una dirección MAC y cómo se escribe?",
+     "pasos": [
+      "<b>Tamaño.</b> 48 bits.",
+      "<b>Notación.</b> 6 pares hexadecimales, como 00:1A:2B:3C:4D:5E; los primeros 3 identifican al fabricante."
+     ],
+     "r": "48 bits en 6 pares hexadecimales.",
+     "fin": "Reconocer direcciones físicas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué código HTTP indica que el recurso no existe?",
+     "ops": [
+      "200",
+      "404",
+      "301",
+      "500"
+     ],
+     "ok": 1,
+     "r": "Error del lado del cliente."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué protocolo obtiene la MAC a partir de una IP?",
+     "ops": [
+      "ARP",
+      "DNS",
+      "DHCP",
+      "ICMP"
+     ],
+     "ok": 0,
+     "r": "Address Resolution Protocol."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué protocolo de transporte usa normalmente una llamada de voz por IP?",
+     "ops": [
+      "TCP",
+      "SMTP",
+      "FTP",
+      "UDP"
+     ],
+     "ok": 3,
+     "r": "Prefiere baja latencia a retransmitir."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué arquitectura no depende de un servidor central?",
+     "ops": [
+      "Cliente-servidor",
+      "De tres capas",
+      "Entre pares (P2P)",
+      "Mainframe"
+     ],
+     "ok": 2,
+     "r": "Cada nodo es cliente y servidor."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué mecanismo de TCP reduce la velocidad cuando detecta pérdidas en la red?",
+     "ops": [
+      "ARP",
+      "Control de congestión",
+      "NAT",
+      "DNS"
+     ],
+     "ok": 1,
+     "r": "Ajusta la ventana para no saturar la red."
+    }
+   ]
+  },
+  {
+   "titulo": "Redes de área local y troncales",
+   "intro": "Tema 2 del programa: redes de área local y redes troncales (backbone), características y configuraciones.",
+   "conceptos": [
+    {
+     "n": "Ethernet y Wi-Fi",
+     "e": [
+      "Ethernet (IEEE 802.3) domina las LAN cableadas: 100 Mbps, 1 Gbps, 10 Gbps y más, con switches en estrella. Wi-Fi (802.11): 802.11n (Wi-Fi 4), ac (Wi-Fi 5), ax (Wi-Fi 6/6E), be (Wi-Fi 7); en 2.4 GHz solo los canales 1, 6 y 11 no se traslapan; 5 y 6 GHz ofrecen más canales y menos interferencia."
+     ],
+     "u": [
+      "Diseñar la red de oficinas y aulas.",
+      "La LAN es donde trabajan los usuarios.",
+      "Al planificar cobertura y capacidad.",
+      "Cablea lo fijo y usa Wi-Fi para movilidad, con canales que no se traslapen."
+     ]
+    },
+    {
+     "n": "Redes troncales (backbone)",
+     "e": [
+      "Interconectan LAN y concentran el tráfico. Arquitecturas: <b>colapsada</b> (un switch central de alta capacidad), <b>enrutada</b> (routers entre segmentos) y <b>basada en VLAN</b> (switches de capa 3). Se diseña con redundancia (enlaces dobles, agregación de enlaces) y fibra entre edificios o pisos."
+     ],
+     "u": [
+      "Campus universitarios, edificios institucionales.",
+      "Una falla en la troncal afecta a todos.",
+      "Al diseñar el núcleo de la red.",
+      "Usa enlaces redundantes y de mayor capacidad que el acceso."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Tres puntos de acceso de 2.4 GHz están en la misma área. ¿Qué canales les asignas?",
+     "pasos": [
+      "<b>Canales sin traslape.</b> 1, 6 y 11.",
+      "<b>Asignación.</b> Uno a cada punto de acceso."
+     ],
+     "r": "1, 6 y 11.",
+     "fin": "Evitar interferencia entre puntos de acceso."
+    },
+    {
+     "nv": "I",
+     "q": "Un piso tiene 48 usuarios con 1 Gbps al escritorio. Si el uso simultáneo promedio es 10 %, ¿qué capacidad necesita el enlace troncal?",
+     "pasos": [
+      "<b>Demanda pico estimada.</b> \\(48\\times1\\text{ Gbps}\\times0.10=4.8\\) Gbps.",
+      "<b>Enlace.</b> 10 Gbps (o 2 × 10 Gbps para redundancia)."
+     ],
+     "r": "Un enlace de 10 Gbps.",
+     "fin": "Dimensionar troncales."
+    },
+    {
+     "nv": "I",
+     "q": "Compara backbone colapsado y basado en VLAN.",
+     "pasos": [
+      "<b>Colapsado.</b> Simple y rápido; el switch central es un punto único de falla.",
+      "<b>Basado en VLAN.</b> Flexible: agrupa usuarios por función aunque estén en distintos pisos; requiere switches de capa 3."
+     ],
+     "r": "Simplicidad contra flexibilidad.",
+     "fin": "Elegir arquitectura troncal."
+    },
+    {
+     "nv": "A",
+     "q": "Los usuarios se quejan de Wi-Fi lento en un auditorio lleno. ¿Qué propones?",
+     "pasos": [
+      "<b>Densidad.</b> Más puntos de acceso con menor potencia y celdas pequeñas.",
+      "<b>Bandas.</b> Priorizar 5 y 6 GHz (Wi-Fi 6/6E).",
+      "<b>Canales.</b> Planificar canales sin traslape y limitar velocidades bajas heredadas."
+     ],
+     "r": "Más APs, bandas altas y plan de canales.",
+     "fin": "Diseñar Wi-Fi de alta densidad."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué estándar Wi-Fi corresponde a Wi-Fi 6?",
+     "pasos": [
+      "<b>IEEE 802.11ax.</b>",
+      "<b>Mejoras.</b> OFDMA y mejor rendimiento con muchos dispositivos."
+     ],
+     "r": "802.11ax",
+     "fin": "Ubicar estándares Wi-Fi."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué topología usan las LAN Ethernet modernas?",
+     "r": "Estrella con switches."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué técnica une varios enlaces físicos en uno lógico para más capacidad y redundancia?",
+     "r": "Agregación de enlaces (LACP, IEEE 802.3ad)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué se usa fibra en la troncal entre pisos?",
+     "r": "Por su capacidad, distancia e inmunidad a interferencias."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué banda Wi-Fi tiene más alcance y cuál más capacidad?",
+     "r": "2.4 GHz más alcance; 5 y 6 GHz más capacidad."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué riesgo tiene un backbone colapsado y cómo se mitiga?",
+     "r": "El switch central es un punto único de falla; se mitiga con dos switches de núcleo redundantes."
+    }
+   ]
+  },
+  {
+   "titulo": "MAN, WAN, internet, intranet y extranet",
+   "intro": "Tema 2 del programa: redes de área metropolitana y extensa, internet, intranet, extranet y redes avanzadas.",
+   "conceptos": [
+    {
+     "n": "Servicios WAN",
+     "e": [
+      "Circuitos dedicados (E1 2.048 Mbps, T1 1.544 Mbps), Metro Ethernet, MPLS (red privada del proveedor con calidad de servicio), enlaces de fibra, VPN sobre internet (IPsec, SSL) y SD-WAN (gestiona varios enlaces por software). La elección pondera costo, ancho de banda, latencia, disponibilidad (SLA) y seguridad."
+     ],
+     "u": [
+      "Unir sedes de instituciones y empresas.",
+      "El enlace WAN suele ser el recurso más caro.",
+      "Al contratar conectividad entre sedes.",
+      "Compara opciones por SLA, costo mensual y seguridad."
+     ]
+    },
+    {
+     "n": "Internet, intranet y extranet",
+     "e": [
+      "<b>Internet:</b> red pública global. <b>Intranet:</b> red privada de la organización con tecnología web (portales, sistemas internos). <b>Extranet:</b> parte de la intranet abierta a socios externos autorizados (proveedores, otras instituciones). <b>Redes avanzadas</b> académicas (Internet2, RedCLARA) conectan universidades e investigación con gran capacidad."
+     ],
+     "u": [
+      "Portales internos, sistemas compartidos con otras instituciones.",
+      "Define quién accede y con qué controles.",
+      "Al publicar sistemas.",
+      "Decide el alcance y protege cada nivel con autenticación y cifrado."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: portal de nómina para empleados, sistema de pedidos para proveedores, sitio web público.",
+     "pasos": [
+      "<b>Nómina.</b> Intranet.",
+      "<b>Pedidos de proveedores.</b> Extranet.",
+      "<b>Sitio público.</b> Internet."
+     ],
+     "r": "Intranet, extranet e internet.",
+     "fin": "Distinguir alcances."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántos canales de 64 kbps tiene un T1 y por qué su velocidad es 1.544 Mbps?",
+     "pasos": [
+      "<b>Canales.</b> 24 × 64 kbps = 1.536 Mbps.",
+      "<b>Trama.</b> Se suman 8 kbps de sincronía: 1.544 Mbps."
+     ],
+     "r": "24 canales; 1.544 Mbps con la sincronía.",
+     "fin": "Entender circuitos dedicados."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué garantiza MPLS que no garantiza una VPN sobre internet?",
+     "pasos": [
+      "<b>MPLS.</b> SLA con latencia, disponibilidad y calidad de servicio dentro de la red del proveedor.",
+      "<b>VPN.</b> Cifrado, pero el desempeño depende de internet."
+     ],
+     "r": "Calidad y disponibilidad contratadas.",
+     "fin": "Comparar servicios WAN."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña la conexión de una institución con sede central y 4 delegaciones departamentales con presupuesto limitado.",
+     "pasos": [
+      "<b>Sede central.</b> Enlace principal de fibra y uno de respaldo de otro proveedor.",
+      "<b>Delegaciones.</b> Internet de banda ancha con VPN IPsec hacia la central (o SD-WAN).",
+      "<b>Seguridad.</b> Firewalls en cada punto y monitoreo de enlaces."
+     ],
+     "r": "Fibra redundante en la central y VPN o SD-WAN en las delegaciones.",
+     "fin": "Diseñar una WAN realista."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué es una red avanzada académica?",
+     "pasos": [
+      "<b>Definición.</b> Red de alta capacidad que conecta universidades y centros de investigación.",
+      "<b>Ejemplos.</b> Internet2 en Estados Unidos y RedCLARA en Latinoamérica."
+     ],
+     "r": "Una red de investigación de alta capacidad.",
+     "fin": "Conocer el ecosistema académico."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué velocidad tiene un E1?",
+     "r": "2.048 Mbps"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tecnología gestiona por software varios enlaces de distinto tipo?",
+     "r": "SD-WAN"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué protocolo se usa comúnmente para VPN entre sedes?",
+     "r": "IPsec."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia una extranet de una intranet?",
+     "r": "La extranet da acceso controlado a usuarios externos autorizados."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué debe incluir un SLA de enlace WAN?",
+     "r": "Disponibilidad garantizada, tiempo de reparación, latencia, pérdida de paquetes y penalizaciones."
+    }
+   ]
+  },
+  {
+   "titulo": "Seguridad, diseño y administración de redes",
+   "intro": "Temas 3 y 4 del programa: seguridad de las redes, diseño de redes y administración de redes con buenas prácticas.",
+   "conceptos": [
+    {
+     "n": "Seguridad de redes",
+     "e": [
+      "Objetivos: confidencialidad, integridad y disponibilidad. Controles: firewall (filtrado por reglas; perimetral y de host), <b>DMZ</b> para servidores públicos, IDS e IPS, VPN, segmentación con VLAN, autenticación 802.1X, cifrado WPA2 o WPA3 en Wi-Fi, actualizaciones y respaldos. Amenazas: malware, phishing, denegación de servicio, accesos no autorizados."
+     ],
+     "u": [
+      "Proteger la red institucional y sus servicios publicados.",
+      "Una red sin controles expone datos y operación.",
+      "Siempre, desde el diseño.",
+      "Aplica defensa en profundidad: varias capas de control."
+     ]
+    },
+    {
+     "n": "Diseño de redes",
+     "e": [
+      "Pasos: análisis de necesidades (usuarios, aplicaciones, crecimiento), diseño lógico (direccionamiento, VLAN, enrutamiento) y físico (cableado, equipos), cálculo de capacidad y costos, y documentación. Modelo jerárquico: núcleo, distribución y acceso."
+     ],
+     "u": [
+      "Nueva sede, ampliación de red, licitaciones.",
+      "Un buen diseño evita rehacer la red.",
+      "Antes de comprar e instalar.",
+      "Estima demanda, elige topología y documenta."
+     ]
+    },
+    {
+     "n": "Administración de redes",
+     "e": [
+      "Modelo FCAPS: fallas, configuración, contabilidad (uso), rendimiento (performance) y seguridad. Herramientas: SNMP (puertos 161 y 162) para monitoreo, sistemas como Zabbix o PRTG, registros centralizados (syslog), respaldo de configuraciones y gestión de cambios."
+     ],
+     "u": [
+      "Operación diaria de redes institucionales.",
+      "Detecta problemas antes que los usuarios.",
+      "De forma continua.",
+      "Monitorea, alerta, documenta y controla los cambios."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Dónde ubicas un servidor web público para no exponer la red interna?",
+     "pasos": [
+      "<b>DMZ.</b> Segmento separado entre el firewall externo y la red interna.",
+      "<b>Efecto.</b> Si comprometen el servidor, el atacante no llega directo a la LAN."
+     ],
+     "r": "En una DMZ.",
+     "fin": "Diseñar con seguridad."
+    },
+    {
+     "nv": "I",
+     "q": "Estima el ancho de banda de internet para 200 usuarios que usan en promedio 2 Mbps con 30 % de simultaneidad.",
+     "pasos": [
+      "<b>Demanda.</b> \\(200\\times2\\times0.30=120\\) Mbps.",
+      "<b>Margen.</b> 25 % de crecimiento: 150 Mbps.",
+      "<b>Contratación.</b> Un enlace de unos 150 a 200 Mbps."
+     ],
+     "r": "≈ 150 Mbps",
+     "fin": "Dimensionar el acceso a internet."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe tres reglas de firewall para un servidor web con administración por SSH solo desde la red de TI (10.10.5.0/24).",
+     "pasos": [
+      "<b>Permitir</b> TCP 80 y 443 desde cualquier origen.",
+      "<b>Permitir</b> TCP 22 solo desde 10.10.5.0/24.",
+      "<b>Denegar</b> todo lo demás (política por defecto)."
+     ],
+     "r": "Web abierta, SSH restringido, el resto bloqueado.",
+     "fin": "Aplicar el mínimo privilegio en la red."
+    },
+    {
+     "nv": "A",
+     "q": "Clasifica en FCAPS: un enlace caído, un cambio de VLAN, el consumo por departamento, la latencia alta y un intento de acceso no autorizado.",
+     "pasos": [
+      "<b>Fallas.</b> Enlace caído.",
+      "<b>Configuración.</b> Cambio de VLAN.",
+      "<b>Contabilidad.</b> Consumo por departamento.",
+      "<b>Rendimiento.</b> Latencia alta.",
+      "<b>Seguridad.</b> Acceso no autorizado."
+     ],
+     "r": "F, C, A, P y S en ese orden.",
+     "fin": "Organizar la administración de redes."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia hay entre IDS e IPS?",
+     "pasos": [
+      "<b>IDS.</b> Detecta y alerta.",
+      "<b>IPS.</b> Detecta y bloquea en línea."
+     ],
+     "r": "El IPS además bloquea.",
+     "fin": "Elegir controles de seguridad."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué cifrado se recomienda hoy para Wi-Fi?",
+     "ops": [
+      "WPA2 o WPA3",
+      "WEP",
+      "WPA",
+      "Ninguno"
+     ],
+     "ok": 0,
+     "r": "WEP y WPA original son inseguros."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué protocolo se usa para monitorear equipos de red?",
+     "ops": [
+      "SMTP",
+      "FTP",
+      "ARP",
+      "SNMP"
+     ],
+     "ok": 3,
+     "r": "Simple Network Management Protocol."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué capa del modelo jerárquico conecta a los usuarios finales?",
+     "ops": [
+      "Núcleo",
+      "Distribución",
+      "Acceso",
+      "Aplicación"
+     ],
+     "ok": 2,
+     "r": "Switches de acceso y puntos de acceso."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué estrategia combina varias capas de controles de seguridad?",
+     "ops": [
+      "Defensa en profundidad",
+      "Seguridad por oscuridad",
+      "Punto único de control",
+      "Confianza implícita"
+     ],
+     "ok": 0,
+     "r": "Si una capa falla, otra protege."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué tipo de ataque busca dejar un servicio sin disponibilidad?",
+     "ops": [
+      "Phishing",
+      "Denegación de servicio (DoS/DDoS)",
+      "Sniffing",
+      "Inyección SQL"
+     ],
+     "ok": 1,
+     "r": "Afecta la disponibilidad."
+    }
+   ]
+  },
+  {
+   "titulo": "Telefonía tradicional y celular",
+   "intro": "Tema 5 del programa: sistema de telefonía tradicional y sistema de telefonía celular.",
+   "conceptos": [
+    {
+     "n": "Telefonía tradicional y VoIP",
+     "e": [
+      "La red telefónica pública conmutada (PSTN) usa conmutación de circuitos: se reserva un canal de 64 kbps durante la llamada. Una <b>PBX</b> da extensiones internas a una empresa. La <b>VoIP</b> transporta voz en paquetes IP con SIP para señalización y RTP para el audio; códecs como G.711 (64 kbps) o G.729 (8 kbps)."
+     ],
+     "u": [
+      "Centrales telefónicas de oficinas, call centers, telefonía en la nube.",
+      "VoIP reduce costos y se integra con sistemas.",
+      "Al implementar comunicaciones de voz.",
+      "Calcula ancho de banda por llamada y aplica QoS."
+     ]
+    },
+    {
+     "n": "Telefonía celular",
+     "e": [
+      "El territorio se divide en celdas con estaciones base y reutilización de frecuencias; el traspaso (handover) mantiene la llamada al cambiar de celda. Generaciones: <b>2G</b> (GSM, voz digital, SMS), <b>3G</b> (UMTS, datos), <b>4G</b> (LTE, todo IP, decenas de Mbps) y <b>5G</b> (baja latencia, alta densidad, segmentación de red)."
+     ],
+     "u": [
+      "Conectividad móvil, IoT, respaldos de enlace con 4G o 5G.",
+      "Es el acceso a internet más usado.",
+      "Al diseñar soluciones móviles o de respaldo.",
+      "Elige la tecnología según cobertura y latencia."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuánto ancho de banda ocupa un canal de voz digital tradicional?",
+     "pasos": [
+      "<b>Muestreo.</b> 8000 muestras por segundo.",
+      "<b>Bits.</b> 8 por muestra: 64 kbps."
+     ],
+     "r": "64 kbps",
+     "fin": "Entender el canal de voz."
+    },
+    {
+     "nv": "I",
+     "q": "Una oficina tendrá 20 llamadas VoIP simultáneas con G.711 (unos 87 kbps por llamada con encabezados). ¿Ancho de banda?",
+     "pasos": [
+      "<b>Cálculo.</b> \\(20\\times87\\approx1740\\) kbps.",
+      "<b>Resultado.</b> ≈ 1.74 Mbps en cada sentido, con QoS."
+     ],
+     "r": "≈ 1.74 Mbps por sentido",
+     "fin": "Dimensionar VoIP."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué la telefonía celular reutiliza frecuencias?",
+     "pasos": [
+      "<b>Espectro limitado.</b> No hay frecuencias para cada usuario en todo el territorio.",
+      "<b>Celdas.</b> Celdas alejadas pueden usar la misma frecuencia sin interferirse, multiplicando la capacidad."
+     ],
+     "r": "Para multiplicar la capacidad con espectro limitado.",
+     "fin": "Entender el concepto celular."
+    },
+    {
+     "nv": "A",
+     "q": "Compara 4G y 5G para un sistema de telemetría de miles de sensores y un enlace de respaldo de oficina.",
+     "pasos": [
+      "<b>Sensores.</b> 5G (o LTE-M / NB-IoT) soporta alta densidad de dispositivos y bajo consumo.",
+      "<b>Respaldo de oficina.</b> 4G suele bastar; 5G si hay cobertura y se necesita más velocidad o menor latencia."
+     ],
+     "r": "5G o NB-IoT para sensores; 4G o 5G para respaldo.",
+     "fin": "Elegir tecnología celular."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué protocolos usa VoIP para señalización y para el audio?",
+     "pasos": [
+      "<b>Señalización.</b> SIP.",
+      "<b>Audio.</b> RTP."
+     ],
+     "r": "SIP y RTP.",
+     "fin": "Conocer los protocolos de VoIP."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de conmutación usa la PSTN?",
+     "r": "Conmutación de circuitos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué generación celular introdujo una red totalmente IP?",
+     "r": "4G (LTE)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es el handover?",
+     "r": "El traspaso de una llamada o sesión de una celda a otra sin cortarse."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué códec VoIP usa menos ancho de banda: G.711 o G.729?",
+     "r": "G.729 (8 kbps)."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué hace una PBX IP?",
+     "r": "Gestiona extensiones, llamadas internas, colas y salida a la red pública sobre la red de datos."
+    }
+   ]
+  },
+  {
+   "titulo": "Satélites, microondas, radiofrecuencia y fibra óptica",
+   "intro": "Tema 5 del programa: sistemas de satélites, de microondas y radiofrecuencia, de fibra óptica y casos de estudio.",
+   "conceptos": [
+    {
+     "n": "Satélites",
+     "e": [
+      "<b>GEO</b> (35 786 km): fijo respecto a la Tierra, gran cobertura, unos 240 ms de propagación en un sentido. <b>MEO</b> (como GPS). <b>LEO</b> (unos 500 a 1200 km): baja latencia, requiere constelaciones grandes (Starlink, OneWeb) y antenas que siguen satélites en movimiento."
+     ],
+     "u": [
+      "Conectividad rural, respaldo de enlaces, navegación.",
+      "Llega donde no hay infraestructura terrestre.",
+      "En zonas remotas o como respaldo.",
+      "Compara latencia, costo y cobertura."
+     ],
+     "f": "t=\\frac{2h}{c}"
+    },
+    {
+     "n": "Microondas y radiofrecuencia",
+     "e": [
+      "Enlaces punto a punto con línea de vista: se despeja al menos el 60 % de la primera zona de Fresnel. La pérdida en espacio libre crece con la distancia y la frecuencia; el presupuesto de enlace suma potencias y ganancias y resta pérdidas; la lluvia atenúa las frecuencias altas."
+     ],
+     "u": [
+      "Enlaces entre edificios o municipios, backhaul de radiobases.",
+      "Se instalan rápido y sin obra civil.",
+      "Cuando hay línea de vista y no conviene cablear.",
+      "Calcula FSPL, presupuesto y despeje de Fresnel."
+     ],
+     "f": "FSPL=20\\log_{10}d_{km}+20\\log_{10}f_{MHz}+32.44\\qquad r_F=17.32\\sqrt{\\frac{d_1d_2}{f_{GHz}\\,d}}"
+    },
+    {
+     "n": "Fibra óptica",
+     "e": [
+      "La luz viaja por el núcleo gracias a la reflexión interna total. Multimodo para distancias cortas, monomodo para largas (atenuación de unos 0.2 a 0.35 dB/km). WDM multiplexa varias longitudes de onda. El presupuesto óptico compara la potencia del transmisor con la sensibilidad del receptor y las pérdidas de fibra, conectores y empalmes."
+     ],
+     "u": [
+      "Troncales, FTTH, enlaces entre sedes.",
+      "Ofrece la mayor capacidad y distancia.",
+      "En troncales y enlaces de alta capacidad.",
+      "Suma pérdidas y verifica el margen."
+     ],
+     "f": "L=\\alpha L_{km}+n_cL_c+n_eL_e"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula el tiempo de propagación hacia un satélite LEO a 550 km y de regreso.",
+     "pasos": [
+      "<b>Distancia.</b> 2 × 550 = 1100 km.",
+      "<b>Tiempo.</b> \\(\\tfrac{1100}{300\\,000}\\approx3.7\\) ms."
+     ],
+     "r": "≈ 3.7 ms (contra ≈ 240 ms de un GEO)",
+     "fin": "Comparar órbitas."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula la pérdida en espacio libre de un enlace de 10 km a 5.8 GHz.",
+     "pasos": [
+      "<b>Distancia.</b> \\(20\\log_{10}10=20\\).",
+      "<b>Frecuencia.</b> \\(20\\log_{10}5800\\approx75.27\\).",
+      "<b>Total.</b> \\(20+75.27+32.44\\approx127.7\\) dB."
+     ],
+     "r": "≈ 127.7 dB",
+     "fin": "Calcular la pérdida de un radioenlace."
+    },
+    {
+     "nv": "A",
+     "q": "Con ese enlace, potencia de 20 dBm, antenas de 25 dBi cada una y 2 dB de pérdidas en cables, ¿potencia recibida?",
+     "pasos": [
+      "<b>Presupuesto.</b> \\(20+25+25-127.7-2\\).",
+      "<b>Resultado.</b> ≈ −59.7 dBm, suficiente para radios con sensibilidad de −75 dBm (margen ≈ 15 dB)."
+     ],
+     "r": "≈ −59.7 dBm",
+     "fin": "Validar un radioenlace."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula el radio de la primera zona de Fresnel en el centro de ese enlace y el despeje mínimo.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(17.32\\sqrt{\\tfrac{5\\times5}{5.8\\times10}}\\approx11.4\\) m.",
+      "<b>60 %.</b> ≈ 6.8 m libres de obstáculos en el centro."
+     ],
+     "r": "≈ 11.4 m; despejar al menos 6.8 m.",
+     "fin": "Ubicar las antenas a la altura correcta."
+    },
+    {
+     "nv": "A",
+     "q": "Un enlace de fibra de 40 km tiene 0.25 dB/km, 2 conectores de 0.5 dB y 4 empalmes de 0.1 dB. El transmisor da −3 dBm y el receptor necesita −28 dBm. ¿Funciona?",
+     "pasos": [
+      "<b>Pérdidas.</b> \\(10+1+0.4=11.4\\) dB.",
+      "<b>Presupuesto disponible.</b> \\(-3-(-28)=25\\) dB.",
+      "<b>Margen.</b> \\(25-11.4=13.6\\) dB."
+     ],
+     "r": "Sí, con 13.6 dB de margen.",
+     "fin": "Validar un enlace óptico."
+    },
+    {
+     "nv": "B",
+     "q": "¿A qué altura orbita un satélite geoestacionario?",
+     "r": "≈ 35 786 km"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué fenómeno guía la luz en la fibra?",
+     "r": "La reflexión interna total."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué porcentaje de la primera zona de Fresnel debe estar despejado?",
+     "r": "Al menos 60 %."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué técnica envía varias señales por una fibra con distintas longitudes de onda?",
+     "r": "WDM (multiplexación por división de longitud de onda)."
+    },
+    {
+     "nv": "A",
+     "q": "Si la distancia de un radioenlace se duplica, ¿cuánto aumenta la pérdida en espacio libre?",
+     "r": "≈ 6 dB (20 log₁₀ 2)."
+    }
+   ]
+  }
+ ]
+}

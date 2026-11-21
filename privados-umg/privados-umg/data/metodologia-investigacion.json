@@ -1,0 +1,970 @@
+{
+ "slug": "metodologia-investigacion",
+ "titulo": "Metodología de la Investigación",
+ "meta": "Ciclo 1, código 002, bloque Metodología del seminario",
+ "firma": "n=\\frac{Z^2\\,p\\,q\\,N}{e^2(N-1)+Z^2\\,p\\,q}",
+ "firma_nota": "El tamaño de muestra: uno de los pocos cálculos del curso y de los más preguntados.",
+ "lead": "Cómo investigar con rigor: método científico, planteamiento del problema, normas APA, hipótesis, recolección y análisis de datos, e informe final. Es la base del proyecto final del seminario y del proyecto de graduación. Los 4 temas del programa están organizados en 6 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Metodologia.pdf",
+ "como": "Cada sección trae conceptos con su uso real, 5 ejercicios resueltos paso a paso y un cuestionario de 5 preguntas de opción múltiple que te dice al instante si acertaste. Los ejemplos se basan en Hernández Sampieri y en APA 7.ª edición.",
+ "temas": [
+  {
+   "titulo": "Método científico, enfoques y alcances",
+   "intro": "Tema 1 del programa, primera parte: la investigación experimental, el modelo científico y los tipos de investigación.",
+   "conceptos": [
+    {
+     "n": "Método científico",
+     "e": [
+      "Proceso sistemático: observación, planteamiento del problema, hipótesis, prueba con datos, análisis y conclusión. Sus rasgos son sistematicidad, objetividad, verificabilidad y replicabilidad: otro investigador debería obtener lo mismo siguiendo los mismos pasos."
+     ],
+     "u": [
+      "Evaluar si una tecnología nueva mejora un proceso, validar un sistema antes de implantarlo.",
+      "Separa conclusiones basadas en evidencia de opiniones.",
+      "En toda investigación, incluida la tesis.",
+      "Sigue el ciclo completo y documenta cada paso."
+     ]
+    },
+    {
+     "n": "Enfoques cuantitativo, cualitativo y mixto",
+     "e": [
+      "<b>Cuantitativo:</b> mide con números, prueba hipótesis con estadística y busca generalizar. <b>Cualitativo:</b> comprende significados con entrevistas y observación; las hipótesis surgen durante el estudio. <b>Mixto:</b> combina ambos."
+     ],
+     "u": [
+      "Medir tiempos de respuesta (cuantitativo) o entender por qué los usuarios rechazan un sistema (cualitativo).",
+      "El enfoque define qué datos se recogen y cómo se analizan.",
+      "Al diseñar la investigación.",
+      "Elige según la pregunta: ¿cuánto? cuantitativo; ¿por qué o cómo? cualitativo."
+     ],
+     "tabla": "<table><thead><tr><th>Enfoque</th><th>Datos</th><th>Lógica</th><th>Propósito</th></tr></thead><tbody><tr><td>Cuantitativo</td><td>Numéricos</td><td>Deductiva</td><td>Generalizar</td></tr><tr><td>Cualitativo</td><td>Descriptivos</td><td>Inductiva</td><td>Comprender</td></tr><tr><td>Mixto</td><td>Ambos</td><td>Integra</td><td>Visión completa</td></tr></tbody></table>"
+    },
+    {
+     "n": "Alcances de la investigación",
+     "e": [
+      "<b>Exploratorio:</b> tema poco estudiado. <b>Descriptivo:</b> especifica propiedades. <b>Correlacional:</b> mide la relación entre variables. <b>Explicativo:</b> busca causas. Un estudio puede empezar exploratorio y terminar correlacional."
+     ],
+     "u": [
+      "Clasificar una tesis o un estudio de factibilidad.",
+      "El alcance define qué conclusiones son válidas.",
+      "Al redactar el protocolo.",
+      "Pregúntate si describes, relacionas o explicas causas."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ordena los pasos del método científico para estudiar si un caché reduce el tiempo de carga de un sitio.",
+     "pasos": [
+      "<b>Observación.</b> El sitio carga lento.",
+      "<b>Problema.</b> ¿Reduce el caché el tiempo de carga?",
+      "<b>Hipótesis.</b> El caché reduce el tiempo medio al menos 30 %.",
+      "<b>Prueba.</b> Medir con y sin caché en condiciones iguales.",
+      "<b>Análisis y conclusión.</b> Comparar estadísticamente y concluir."
+     ],
+     "r": "Observación, problema, hipótesis, prueba, análisis y conclusión.",
+     "fin": "Aplicar el método a un problema de sistemas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué enfoque usarías para medir cuántos usuarios abandonan un formulario y para entender por qué lo abandonan?",
+     "pasos": [
+      "<b>Cuántos.</b> Se mide con números de analítica: cuantitativo.",
+      "<b>Por qué.</b> Requiere entrevistas o pruebas de usabilidad: cualitativo.",
+      "<b>Ambos.</b> Combinados forman un enfoque mixto."
+     ],
+     "r": "Cuantitativo para cuántos, cualitativo para por qué; juntos, mixto.",
+     "fin": "Elegir el enfoque según la pregunta."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica por alcance: (a) describir el perfil de los usuarios de un sistema; (b) medir si la edad se relaciona con el uso de la app; (c) determinar si una capacitación causa menos errores.",
+     "pasos": [
+      "<b>(a)</b> Describe características: descriptivo.",
+      "<b>(b)</b> Relación entre variables: correlacional.",
+      "<b>(c)</b> Causa y efecto: explicativo."
+     ],
+     "r": "Descriptivo, correlacional y explicativo.",
+     "fin": "Ubicar correctamente el alcance de un estudio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué la replicabilidad es esencial en una investigación de rendimiento de servidores?",
+     "pasos": [
+      "<b>Definición.</b> Otro investigador debe obtener resultados similares con el mismo procedimiento.",
+      "<b>Requisito.</b> Documentar hardware, versiones, carga y configuración.",
+      "<b>Consecuencia.</b> Sin eso, el resultado no se puede verificar."
+     ],
+     "r": "Porque permite verificar los resultados de forma independiente.",
+     "fin": "Documentar pensando en que otros puedan repetirlo."
+    },
+    {
+     "nv": "A",
+     "q": "Un estudio sobre un tema nuevo (uso de IA en municipalidades de Jutiapa) empieza sin antecedentes. ¿Qué alcance tiene y cómo podría evolucionar?",
+     "pasos": [
+      "<b>Inicio.</b> Sin estudios previos: exploratorio.",
+      "<b>Siguiente paso.</b> Con lo encontrado se describe el uso actual: descriptivo.",
+      "<b>Después.</b> Se puede relacionar el uso con variables como presupuesto: correlacional."
+     ],
+     "r": "Empieza exploratorio y puede avanzar a descriptivo y correlacional.",
+     "fin": "Ver que los alcances se encadenan."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué enfoque usa lógica deductiva y prueba hipótesis con estadística?",
+     "ops": [
+      "Cualitativo",
+      "Etnográfico",
+      "Cuantitativo",
+      "Ninguno"
+     ],
+     "ok": 2,
+     "r": "El cuantitativo parte de la teoría, deduce hipótesis y las prueba con datos numéricos."
+    },
+    {
+     "nv": "B",
+     "q": "Un estudio que busca causas es de alcance…",
+     "ops": [
+      "Exploratorio",
+      "Descriptivo",
+      "Correlacional",
+      "Explicativo"
+     ],
+     "ok": 3,
+     "r": "El explicativo responde por qué ocurre un fenómeno."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué característica del método científico exige que los resultados puedan comprobarse con evidencia?",
+     "ops": [
+      "Creatividad",
+      "Subjetividad",
+      "Verificabilidad",
+      "Flexibilidad"
+     ],
+     "ok": 2,
+     "r": "Una afirmación científica debe poder contrastarse con datos."
+    },
+    {
+     "nv": "I",
+     "q": "En el enfoque cualitativo, ¿cuándo surgen las hipótesis?",
+     "ops": [
+      "Antes de recolectar datos, siempre",
+      "Nunca se plantean",
+      "Durante el proceso, a partir de los datos",
+      "Solo al final, en las recomendaciones"
+     ],
+     "ok": 2,
+     "r": "Su lógica es inductiva: la teoría emerge de los datos."
+    },
+    {
+     "nv": "A",
+     "q": "Una encuesta mide satisfacción con un sistema y además se entrevista a 10 usuarios para entender las calificaciones bajas. El enfoque es…",
+     "ops": [
+      "Cuantitativo puro",
+      "Cualitativo puro",
+      "Mixto",
+      "Documental"
+     ],
+     "ok": 2,
+     "r": "Combina medición numérica y comprensión profunda."
+    }
+   ]
+  },
+  {
+   "titulo": "Planteamiento del problema y protocolo",
+   "intro": "Tema 1 del programa, segunda parte: planteamiento del problema y presentación del proyecto de investigación.",
+   "conceptos": [
+    {
+     "n": "Elementos del planteamiento",
+     "e": [
+      "Según Hernández Sampieri: <b>objetivos</b>, <b>preguntas de investigación</b>, <b>justificación</b>, <b>viabilidad</b> y <b>deficiencias en el conocimiento</b>. Un buen problema es claro, delimitado (qué, dónde, cuándo, quiénes) y se puede investigar con datos."
+     ],
+     "u": [
+      "Protocolo de tesis, propuesta de un proyecto de TI a la gerencia.",
+      "Un problema mal planteado arruina toda la investigación.",
+      "Al iniciar cualquier proyecto.",
+      "Responde qué, por qué, para qué, dónde y cuándo."
+     ]
+    },
+    {
+     "n": "Objetivos",
+     "e": [
+      "Se redactan con un verbo en infinitivo medible (determinar, analizar, evaluar, diseñar, comparar). Hay un objetivo general y varios específicos que, juntos, lo cumplen. Cada objetivo específico debe tener una conclusión al final."
+     ],
+     "u": [
+      "Definir el alcance de un sistema o de una tesis.",
+      "Guían todo el trabajo y su evaluación.",
+      "En el protocolo y en el informe.",
+      "Verbo + qué + dónde + cuándo; evita verbos vagos como “conocer” o “entender”."
+     ]
+    },
+    {
+     "n": "Justificación y viabilidad",
+     "e": [
+      "La justificación explica por qué vale la pena: conveniencia, relevancia social, implicaciones prácticas, valor teórico y utilidad metodológica. La viabilidad confirma que hay tiempo, recursos, acceso a datos y conocimientos."
+     ],
+     "u": [
+      "Convencer a un asesor, a un comité o a un patrocinador.",
+      "Sin justificación ni viabilidad el proyecto no se aprueba.",
+      "Al presentar el protocolo.",
+      "Responde a cada criterio con argumentos concretos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Convierte “Quiero conocer los problemas del sistema de inventarios” en un objetivo general bien redactado.",
+     "pasos": [
+      "<b>Problema.</b> “Conocer” no es medible.",
+      "<b>Verbo medible.</b> Determinar, evaluar o identificar.",
+      "<b>Delimita.</b> Qué sistema, dónde y cuándo."
+     ],
+     "r": "Evaluar el funcionamiento del sistema de inventarios de la empresa X durante 2026 para identificar sus fallas principales.",
+     "fin": "Redactar objetivos que se puedan cumplir y medir."
+    },
+    {
+     "nv": "I",
+     "q": "Redacta tres objetivos específicos para el objetivo anterior.",
+     "pasos": [
+      "<b>1.</b> Identificar los errores más frecuentes registrados en el sistema.",
+      "<b>2.</b> Medir el tiempo promedio de los procesos de entrada y salida.",
+      "<b>3.</b> Determinar el nivel de satisfacción de los usuarios."
+     ],
+     "r": "Tres objetivos medibles que juntos cumplen el general.",
+     "fin": "Descomponer el objetivo general."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe dos preguntas de investigación alineadas con esos objetivos.",
+     "pasos": [
+      "<b>Regla.</b> Cada pregunta corresponde a un objetivo.",
+      "<b>Pregunta 1.</b> ¿Cuáles son los errores más frecuentes del sistema?",
+      "<b>Pregunta 2.</b> ¿Qué tan satisfechos están los usuarios con el sistema?"
+     ],
+     "r": "Preguntas que se responden con los datos que se recogerán.",
+     "fin": "Alinear preguntas y objetivos."
+    },
+    {
+     "nv": "I",
+     "q": "Justifica la investigación anterior con al menos tres criterios.",
+     "pasos": [
+      "<b>Conveniencia.</b> Las fallas generan pérdidas de inventario.",
+      "<b>Implicaciones prácticas.</b> Los resultados guiarán mejoras al sistema.",
+      "<b>Relevancia.</b> Beneficia a empleados y clientes."
+     ],
+     "r": "Conveniencia, implicaciones prácticas y relevancia.",
+     "fin": "Argumentar el valor de un proyecto."
+    },
+    {
+     "nv": "A",
+     "q": "Un estudiante propone “Analizar la seguridad informática de todas las empresas de Guatemala en un mes”. Evalúa su viabilidad y corrígela.",
+     "pasos": [
+      "<b>Problema.</b> Alcance enorme, sin acceso a los datos y con poco tiempo.",
+      "<b>Delimita.</b> Una organización, un aspecto y un periodo realista.",
+      "<b>Corrección.</b> “Evaluar las contraseñas y el control de accesos del sistema de nóminas de la institución X en el segundo semestre de 2026”."
+     ],
+     "r": "No es viable; hay que delimitar organización, aspecto y tiempo.",
+     "fin": "Detectar proyectos imposibles antes de empezar."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es un verbo adecuado para un objetivo?",
+     "ops": [
+      "Conocer",
+      "Determinar",
+      "Entender",
+      "Saber"
+     ],
+     "ok": 1,
+     "r": "Determinar es medible; los otros son vagos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué elemento del planteamiento responde por qué vale la pena investigar?",
+     "ops": [
+      "Viabilidad",
+      "Hipótesis",
+      "Justificación",
+      "Marco teórico"
+     ],
+     "ok": 2,
+     "r": "La justificación expone la importancia del estudio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué analiza la viabilidad?",
+     "ops": [
+      "La redacción del título",
+      "El número de páginas",
+      "La disponibilidad de tiempo, recursos y acceso a la información",
+      "La opinión del asesor"
+     ],
+     "ok": 2,
+     "r": "Confirma que el estudio se puede realizar."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué relación debe haber entre objetivos específicos y conclusiones?",
+     "ops": [
+      "Cada objetivo específico debe tener una conclusión",
+      "Ninguna",
+      "Las conclusiones repiten el marco teórico",
+      "Solo el objetivo general lleva conclusión"
+     ],
+     "ok": 0,
+     "r": "Las conclusiones responden a cada objetivo."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál problema está mejor delimitado?",
+     "ops": [
+      "La tecnología en Guatemala",
+      "El tiempo de atención del sistema de turnos del hospital X durante el primer trimestre de 2026",
+      "El uso de internet",
+      "Los problemas de los sistemas"
+     ],
+     "ok": 1,
+     "r": "Indica qué, dónde y cuándo."
+    }
+   ]
+  },
+  {
+   "titulo": "Bibliografía y normas APA",
+   "intro": "Tema 2 del programa: normas APA, referencias e ilustraciones.",
+   "conceptos": [
+    {
+     "n": "Citas en el texto",
+     "e": [
+      "APA 7.ª edición usa autor y año. Cita narrativa: Pérez (2020) afirma… Parentética: (Pérez, 2020). Con dos autores se nombran ambos; con tres o más, el primero y et al. desde la primera cita. Las citas textuales llevan página: menos de 40 palabras van entre comillas; 40 o más, en bloque con sangría y sin comillas."
+     ],
+     "u": [
+      "Tesis, artículos, informes técnicos.",
+      "Reconoce el trabajo ajeno y evita el plagio.",
+      "Cada vez que usas una idea o dato de otra fuente.",
+      "Cita en el texto y agrega la referencia completa al final."
+     ]
+    },
+    {
+     "n": "Lista de referencias",
+     "e": [
+      "Orden alfabético por apellido, con sangría francesa. Libro: Apellido, I. (año). <i>Título en cursiva</i> (ed.). Editorial. Artículo: Apellido, I. (año). Título. <i>Revista</i>, volumen(número), páginas. https://doi.org/… Web: Autor u organización. (año, día mes). <i>Título</i>. Sitio. URL."
+     ],
+     "u": [
+      "Tesis, documentos de proyecto, informes de auditoría.",
+      "Permite al lector encontrar y verificar las fuentes.",
+      "Al final de todo trabajo académico.",
+      "Sigue el formato exacto según el tipo de fuente."
+     ]
+    },
+    {
+     "n": "Tablas, figuras y plagio",
+     "e": [
+      "Tablas y figuras se numeran (Tabla 1, Figura 1), llevan título en cursiva y una nota con la fuente si no son propias. Plagio es presentar ideas ajenas como propias, aunque se parafraseen sin citar; en Guatemala la obra intelectual está protegida por la Ley de Derecho de Autor."
+     ],
+     "u": [
+      "Informes con gráficas de resultados, diagramas de arquitectura.",
+      "Presenta datos de forma ordenada y honesta.",
+      "Siempre que incluyas datos visuales.",
+      "Numera, titula, cita la fuente y menciónala en el texto."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Escribe la referencia APA 7 del libro de Hernández Sampieri, Fernández Collado y Baptista Lucio, 5.ª edición, 2010, McGraw-Hill.",
+     "pasos": [
+      "<b>Autores.</b> Apellidos, iniciales y & antes del último.",
+      "<b>Año, título y edición.</b> Título en cursiva y edición entre paréntesis.",
+      "<b>Editorial.</b> Sin ciudad en APA 7."
+     ],
+     "r": "Hernández Sampieri, R., Fernández Collado, C., &amp; Baptista Lucio, P. (2010). <i>Metodología de la investigación</i> (5.ª ed.). McGraw-Hill.",
+     "fin": "Dominar la referencia más común."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe la cita narrativa y la parentética de esa obra.",
+     "pasos": [
+      "<b>Tres o más autores.</b> Primer autor y et al.",
+      "<b>Narrativa.</b> Hernández Sampieri et al. (2010) señalan que…",
+      "<b>Parentética.</b> …(Hernández Sampieri et al., 2010)."
+     ],
+     "r": "Hernández Sampieri et al. (2010) y (Hernández Sampieri et al., 2010).",
+     "fin": "Citar correctamente dentro del texto."
+    },
+    {
+     "nv": "I",
+     "q": "Con estos datos de práctica, escribe la referencia: artículo de Laura García, 2022, “Seguridad en aplicaciones web”, revista Ingeniería y Tecnología, volumen 15, número 2, páginas 45 a 60, DOI 10.1234/iyt.2022.15.",
+     "pasos": [
+      "<b>Autor y año.</b> García, L. (2022).",
+      "<b>Título del artículo.</b> Sin cursiva.",
+      "<b>Revista y volumen.</b> En cursiva; número entre paréntesis sin cursiva.",
+      "<b>DOI.</b> Como enlace completo."
+     ],
+     "r": "García, L. (2022). Seguridad en aplicaciones web. <i>Ingeniería y Tecnología</i>, <i>15</i>(2), 45–60. https://doi.org/10.1234/iyt.2022.15",
+     "fin": "Referenciar artículos científicos."
+    },
+    {
+     "nv": "I",
+     "q": "Una cita textual tiene 52 palabras. ¿Cómo se presenta?",
+     "pasos": [
+      "<b>Regla.</b> 40 palabras o más: cita en bloque.",
+      "<b>Formato.</b> Párrafo aparte con sangría, sin comillas.",
+      "<b>Fuente.</b> Al final, autor, año y página."
+     ],
+     "r": "En bloque, con sangría, sin comillas y con página.",
+     "fin": "Aplicar la regla de las 40 palabras."
+    },
+    {
+     "nv": "A",
+     "q": "Un estudiante parafrasea un párrafo de un blog técnico sin citarlo porque “lo dijo con sus palabras”. ¿Es plagio? ¿Cómo se corrige?",
+     "pasos": [
+      "<b>Análisis.</b> La idea sigue siendo ajena aunque cambien las palabras.",
+      "<b>Conclusión.</b> Sí es plagio.",
+      "<b>Corrección.</b> Agregar la cita (Autor, año) y la referencia web completa."
+     ],
+     "r": "Es plagio; se corrige citando la fuente.",
+     "fin": "Evitar el error ético más común en tesis."
+    },
+    {
+     "nv": "B",
+     "q": "En APA 7, una obra de tres autores se cita en el texto como…",
+     "ops": [
+      "Primer autor et al. desde la primera cita",
+      "Los tres apellidos siempre",
+      "Solo el año",
+      "Primer autor y segundo autor"
+     ],
+     "ok": 0,
+     "r": "APA 7 simplificó: et al. desde la primera vez con tres o más autores."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cómo se ordena la lista de referencias?",
+     "ops": [
+      "Por año",
+      "Por orden de aparición",
+      "Alfabéticamente por apellido del primer autor",
+      "Por tipo de fuente"
+     ],
+     "ok": 2,
+     "r": "Orden alfabético con sangría francesa."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué va en cursiva en la referencia de un artículo de revista?",
+     "ops": [
+      "El título del artículo",
+      "El nombre de la revista y el volumen",
+      "El nombre del autor",
+      "Las páginas"
+     ],
+     "ok": 1,
+     "r": "La revista y su volumen; el título del artículo no."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué debe llevar una figura tomada de otra fuente?",
+     "ops": [
+      "Nada",
+      "Solo un número",
+      "El nombre del estudiante",
+      "Número, título y una nota con la fuente"
+     ],
+     "ok": 3,
+     "r": "Toda figura ajena necesita su crédito."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál cita parentética es correcta en APA 7 para una página web de una institución sin fecha?",
+     "ops": [
+      "(s. f., Institución)",
+      "(Institución)",
+      "(Institución, s. f.)",
+      "(Sin autor, 2026)"
+     ],
+     "ok": 2,
+     "r": "Se usa s. f. (sin fecha) cuando no hay año."
+    }
+   ]
+  },
+  {
+   "titulo": "Hipótesis, variables y diseños",
+   "intro": "Tema 3 del programa, primera parte: formulación y comprobación de hipótesis.",
+   "conceptos": [
+    {
+     "n": "Hipótesis",
+     "e": [
+      "Respuesta tentativa que relaciona variables y se puede probar. Tipos: de investigación (Hi), nula (Ho, niega la relación), alternativa (Ha) y estadística. Debe referirse a una situación real, ser precisa y tener técnicas para probarse. No todo estudio lleva hipótesis: los exploratorios normalmente no."
+     ],
+     "u": [
+      "Validar si una mejora técnica funciona, pruebas A/B.",
+      "Da una predicción concreta que los datos pueden confirmar o rechazar.",
+      "En estudios correlacionales y explicativos.",
+      "Relaciona variables en un enunciado medible."
+     ]
+    },
+    {
+     "n": "Variables",
+     "e": [
+      "La <b>independiente</b> es la causa supuesta; la <b>dependiente</b>, el efecto. La definición conceptual dice qué es la variable; la <b>operacional</b>, cómo se medirá (indicador, instrumento, escala)."
+     ],
+     "u": [
+      "Diseñar experimentos y métricas.",
+      "Sin operacionalizar, no se puede medir.",
+      "Al construir la matriz de variables.",
+      "Para cada variable, define indicador e instrumento."
+     ]
+    },
+    {
+     "n": "Diseños de investigación",
+     "e": [
+      "<b>Experimental:</b> manipula la variable independiente y asigna los grupos al azar. <b>Cuasiexperimental:</b> manipula sin asignación aleatoria. <b>No experimental:</b> observa sin manipular; puede ser transversal (un momento) o longitudinal (varios momentos)."
+     ],
+     "u": [
+      "Probar un nuevo sistema contra el anterior, encuestas de opinión.",
+      "El diseño determina si se pueden afirmar causas.",
+      "Al planificar la recolección.",
+      "Pregúntate si manipulas la variable y si asignas al azar."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Redacta Hi y Ho para: “la capacitación reduce los errores de captura”.",
+     "pasos": [
+      "<b>Hi.</b> Los usuarios capacitados cometen menos errores de captura que los no capacitados.",
+      "<b>Ho.</b> No hay diferencia en los errores de captura entre capacitados y no capacitados."
+     ],
+     "r": "Hi afirma la relación; Ho la niega.",
+     "fin": "Formular hipótesis contrastables."
+    },
+    {
+     "nv": "B",
+     "q": "Identifica las variables en “la cantidad de RAM influye en el tiempo de compilación”.",
+     "pasos": [
+      "<b>Independiente.</b> Cantidad de RAM (la causa).",
+      "<b>Dependiente.</b> Tiempo de compilación (el efecto)."
+     ],
+     "r": "VI: RAM; VD: tiempo de compilación.",
+     "fin": "Distinguir causa y efecto."
+    },
+    {
+     "nv": "I",
+     "q": "Operacionaliza la variable “satisfacción del usuario”.",
+     "pasos": [
+      "<b>Definición conceptual.</b> Grado en que el sistema cumple las expectativas del usuario.",
+      "<b>Indicadores.</b> Facilidad de uso, rapidez y utilidad percibidas.",
+      "<b>Instrumento.</b> Cuestionario con escala de Likert de 1 a 5."
+     ],
+     "r": "Indicadores medidos con un cuestionario Likert.",
+     "fin": "Convertir un concepto abstracto en algo medible."
+    },
+    {
+     "nv": "I",
+     "q": "Se compara el rendimiento de dos grupos de cajeros, uno con el sistema nuevo y otro con el viejo, sin asignarlos al azar. ¿Qué diseño es?",
+     "pasos": [
+      "<b>¿Se manipula?</b> Sí: se decide qué sistema usa cada grupo.",
+      "<b>¿Asignación aleatoria?</b> No: los grupos ya estaban formados.",
+      "<b>Diseño.</b> Cuasiexperimental."
+     ],
+     "r": "Cuasiexperimental.",
+     "fin": "Clasificar diseños correctamente."
+    },
+    {
+     "nv": "A",
+     "q": "Se mide el uso de una plataforma en 2024, 2025 y 2026 en las mismas escuelas, sin intervenir. Clasifica el diseño y explica qué no puede concluir.",
+     "pasos": [
+      "<b>Manipulación.</b> No hay: no experimental.",
+      "<b>Tiempo.</b> Varios momentos: longitudinal.",
+      "<b>Límite.</b> Puede describir tendencias, pero no demostrar causas."
+     ],
+     "r": "No experimental longitudinal; no permite afirmar causalidad.",
+     "fin": "Reconocer los límites de cada diseño."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hipótesis niega la relación entre variables?",
+     "ops": [
+      "De investigación",
+      "Alternativa",
+      "Nula",
+      "Descriptiva"
+     ],
+     "ok": 2,
+     "r": "Ho es la que se pone a prueba para intentar rechazarla."
+    },
+    {
+     "nv": "B",
+     "q": "En “el tamaño del caché afecta el tiempo de respuesta”, la variable dependiente es…",
+     "ops": [
+      "El tamaño del caché",
+      "El servidor",
+      "El usuario",
+      "El tiempo de respuesta"
+     ],
+     "ok": 3,
+     "r": "Es el efecto que se mide."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diseño manipula la variable y asigna los grupos al azar?",
+     "ops": [
+      "No experimental",
+      "Transversal",
+      "Documental",
+      "Experimental puro"
+     ],
+     "ok": 3,
+     "r": "La aleatorización permite atribuir causas."
+    },
+    {
+     "nv": "I",
+     "q": "La definición operacional de una variable indica…",
+     "ops": [
+      "Cómo se medirá",
+      "Su significado de diccionario",
+      "Su historia",
+      "Su importancia social"
+     ],
+     "ok": 0,
+     "r": "Señala indicadores, instrumento y escala."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué tipo de estudio normalmente no formula hipótesis?",
+     "ops": [
+      "Exploratorio",
+      "Correlacional",
+      "Explicativo",
+      "Experimental"
+     ],
+     "ok": 0,
+     "r": "Sin conocimiento previo no hay base para predecir."
+    }
+   ]
+  },
+  {
+   "titulo": "Recolección y análisis de la información",
+   "intro": "Tema 3 del programa, segunda parte: recabar y analizar información y criterios del informe.",
+   "conceptos": [
+    {
+     "n": "Población y muestra",
+     "e": [
+      "La población es el conjunto total; la muestra, un subconjunto representativo. El muestreo probabilístico (aleatorio simple, estratificado, por conglomerados, sistemático) permite generalizar; el no probabilístico (conveniencia, cuotas, bola de nieve) no."
+     ],
+     "u": [
+      "Encuestas a usuarios, auditorías por muestreo de registros.",
+      "Estudiar a todos suele ser imposible o caro.",
+      "Antes de recolectar datos.",
+      "Define la población, calcula n y elige el tipo de muestreo."
+     ],
+     "f": "n=\\frac{Z^2pqN}{e^2(N-1)+Z^2pq}\\qquad n_0=\\frac{Z^2pq}{e^2}\\ (\\text{población infinita})"
+    },
+    {
+     "n": "Instrumentos",
+     "e": [
+      "Cuestionario (preguntas cerradas o abiertas), escala de Likert, entrevista (estructurada o semiestructurada), observación, análisis documental, registros del sistema (logs). Un instrumento debe ser <b>confiable</b> (resultados consistentes) y <b>válido</b> (mide lo que pretende); se prueba antes con una prueba piloto."
+     ],
+     "u": [
+      "Levantamiento de requerimientos, evaluación de usabilidad, auditorías.",
+      "Datos malos producen conclusiones malas.",
+      "Al diseñar la recolección.",
+      "Elige el instrumento según la variable y valídalo con un piloto."
+     ]
+    },
+    {
+     "n": "Análisis de datos",
+     "e": [
+      "Cuantitativo: estadística descriptiva (frecuencias, media, desviación, gráficas) e inferencial (pruebas de hipótesis, correlación). Cualitativo: codificación y categorización de respuestas. Los resultados se presentan con tablas y figuras y se interpretan contra los objetivos."
+     ],
+     "u": [
+      "Informes de encuestas, análisis de métricas de un sistema.",
+      "Convierte datos en evidencia.",
+      "Después de recolectar.",
+      "Tabula, grafica, aplica la prueba adecuada e interpreta."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula la muestra para una población muy grande con 95 % de confianza, 5 % de error y p = 0.5.",
+     "pasos": [
+      "<b>Fórmula infinita.</b> \\(n_0=\\tfrac{1.96^2(0.25)}{0.05^2}\\).",
+      "<b>Calcula.</b> \\(384.16\\), se redondea hacia arriba."
+     ],
+     "r": "385 personas",
+     "fin": "Saber el número de referencia de muchas encuestas."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula la muestra para 1200 usuarios con 95 % de confianza y 5 % de error.",
+     "pasos": [
+      "<b>Fórmula finita.</b> \\(\\tfrac{1.96^2(0.25)(1200)}{0.05^2(1199)+1.96^2(0.25)}\\).",
+      "<b>Numerador.</b> 1152.48. <b>Denominador.</b> \\(2.9975+0.9604=3.9579\\).",
+      "<b>Resultado.</b> 291.2, se redondea a 292."
+     ],
+     "r": "292 usuarios",
+     "fin": "Ajustar la muestra a una población conocida."
+    },
+    {
+     "nv": "I",
+     "q": "Hay 600 usuarios administrativos y 400 técnicos, y la muestra es de 200. ¿Cuántos de cada grupo en un muestreo estratificado proporcional?",
+     "pasos": [
+      "<b>Proporciones.</b> 60 % y 40 %.",
+      "<b>Asignación.</b> \\(0.6(200)=120\\) y \\(0.4(200)=80\\)."
+     ],
+     "r": "120 administrativos y 80 técnicos.",
+     "fin": "Garantizar que cada grupo esté representado."
+    },
+    {
+     "nv": "I",
+     "q": "Redacta un ítem Likert para medir la facilidad de uso de un sistema.",
+     "pasos": [
+      "<b>Afirmación.</b> “El sistema es fácil de usar sin ayuda”.",
+      "<b>Escala.</b> 1 Totalmente en desacuerdo, 2 En desacuerdo, 3 Neutral, 4 De acuerdo, 5 Totalmente de acuerdo.",
+      "<b>Cuidado.</b> Una sola idea por ítem y sin palabras que induzcan la respuesta."
+     ],
+     "r": "Afirmación clara con escala de 5 puntos.",
+     "fin": "Construir instrumentos medibles."
+    },
+    {
+     "nv": "A",
+     "q": "Un cuestionario aplicado dos veces a las mismas personas da resultados muy distintos sin que nada haya cambiado. ¿Qué problema tiene y qué haces?",
+     "pasos": [
+      "<b>Diagnóstico.</b> Falta de confiabilidad (consistencia).",
+      "<b>Causas probables.</b> Preguntas ambiguas o instrucciones confusas.",
+      "<b>Acción.</b> Reformular ítems, hacer prueba piloto y calcular un coeficiente como alfa de Cronbach."
+     ],
+     "r": "Es poco confiable; se corrige con piloto y reformulación.",
+     "fin": "Validar instrumentos antes de usarlos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué muestreo permite generalizar los resultados a la población?",
+     "ops": [
+      "Probabilístico",
+      "Por conveniencia",
+      "Bola de nieve",
+      "Por cuotas"
+     ],
+     "ok": 0,
+     "r": "Cada elemento tiene una probabilidad conocida de ser elegido."
+    },
+    {
+     "nv": "B",
+     "q": "Un instrumento que mide lo que pretende medir es…",
+     "ops": [
+      "Confiable",
+      "Largo",
+      "Válido",
+      "Abierto"
+     ],
+     "ok": 2,
+     "r": "Validez: mide el concepto correcto."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué valor de p se usa cuando no hay estudios previos?",
+     "ops": [
+      "0.1",
+      "0.9",
+      "0.5",
+      "1"
+     ],
+     "ok": 2,
+     "r": "p = 0.5 da la muestra más grande, la opción conservadora."
+    },
+    {
+     "nv": "I",
+     "q": "Para entender a fondo las razones de rechazo de un sistema, el instrumento más adecuado es…",
+     "ops": [
+      "Un cuestionario cerrado",
+      "La entrevista semiestructurada",
+      "Un registro de logs",
+      "Una prueba de rendimiento"
+     ],
+     "ok": 1,
+     "r": "Permite profundizar en significados y razones."
+    },
+    {
+     "nv": "A",
+     "q": "Si en lugar de 5 % se quiere un error de 2.5 % (población grande), la muestra…",
+     "ops": [
+      "Se cuadruplica aproximadamente",
+      "Se reduce a la mitad",
+      "Se duplica",
+      "No cambia"
+     ],
+     "ok": 0,
+     "r": "n depende de 1/e²: reducir e a la mitad multiplica n por 4."
+    }
+   ]
+  },
+  {
+   "titulo": "Informe final y presentación del proyecto",
+   "intro": "Tema 4 del programa: conclusiones, recomendaciones, presentación del documento final y exposición.",
+   "conceptos": [
+    {
+     "n": "Estructura del informe",
+     "e": [
+      "Portada, índice, introducción, planteamiento del problema, objetivos, justificación, marco teórico, metodología, resultados, análisis y discusión, conclusiones, recomendaciones, referencias y anexos. La discusión compara los resultados con los antecedentes del marco teórico."
+     ],
+     "u": [
+      "Tesis, informes técnicos, documentos de proyecto.",
+      "Una estructura estándar facilita la lectura y la evaluación.",
+      "Al redactar el documento final.",
+      "Sigue el orden y revisa que cada sección cumpla su función."
+     ]
+    },
+    {
+     "n": "Conclusiones y recomendaciones",
+     "e": [
+      "Las <b>conclusiones</b> responden a cada objetivo con base en los resultados, sin datos nuevos ni opiniones sin sustento. Las <b>recomendaciones</b> proponen acciones concretas derivadas de las conclusiones, dirigidas a alguien específico."
+     ],
+     "u": [
+      "Cierre de tesis, informes de auditoría, reportes ejecutivos.",
+      "Es lo primero que lee quien toma decisiones.",
+      "Al final del informe.",
+      "Una conclusión por objetivo y una recomendación por conclusión relevante."
+     ]
+    },
+    {
+     "n": "Exposición oral",
+     "e": [
+      "Se presenta el problema, los objetivos, la metodología, los hallazgos principales y las conclusiones, en el tiempo asignado. Diapositivas con poco texto y gráficas claras; se ensaya y se anticipan preguntas. La defensa del proyecto final del seminario sigue este esquema."
+     ],
+     "u": [
+      "Defensa de tesis, presentación del proyecto del seminario, propuestas a la gerencia.",
+      "Un buen trabajo mal presentado pierde valor.",
+      "En la presentación final.",
+      "Ensaya con tiempo, cuida la estructura y prepara respuestas."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ordena: resultados, conclusiones, marco teórico, metodología, recomendaciones.",
+     "pasos": [
+      "<b>Base teórica.</b> Marco teórico.",
+      "<b>Cómo se hizo.</b> Metodología.",
+      "<b>Qué se encontró.</b> Resultados.",
+      "<b>Cierre.</b> Conclusiones y luego recomendaciones."
+     ],
+     "r": "Marco teórico, metodología, resultados, conclusiones y recomendaciones.",
+     "fin": "Recordar la estructura estándar."
+    },
+    {
+     "nv": "I",
+     "q": "Objetivo: “Medir el tiempo promedio de despacho”. Resultado: 18 minutos, contra una meta de 10. Redacta la conclusión.",
+     "pasos": [
+      "<b>Responde al objetivo.</b> Menciona el valor medido.",
+      "<b>Compara.</b> Con la meta o el referente.",
+      "<b>Sin opiniones.</b> Solo lo que dicen los datos."
+     ],
+     "r": "El tiempo promedio de despacho es de 18 minutos, 80 % más que la meta de 10 minutos.",
+     "fin": "Redactar conclusiones basadas en datos."
+    },
+    {
+     "nv": "I",
+     "q": "Redacta la recomendación derivada de esa conclusión.",
+     "pasos": [
+      "<b>Acción concreta.</b> Qué hacer.",
+      "<b>Responsable.</b> A quién va dirigida.",
+      "<b>Plazo o medida.</b> Cómo se verificará."
+     ],
+     "r": "Se recomienda a la jefatura de bodega automatizar el registro de salidas con lector de código de barras y medir el tiempo de despacho mensualmente.",
+     "fin": "Convertir hallazgos en acciones."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia hay entre resultados y discusión?",
+     "pasos": [
+      "<b>Resultados.</b> Presentan los datos obtenidos (tablas, gráficas) sin interpretarlos a fondo.",
+      "<b>Discusión.</b> Los interpreta y compara con estudios previos y la teoría."
+     ],
+     "r": "Resultados muestran; discusión interpreta y compara.",
+     "fin": "Escribir cada sección con su propósito."
+    },
+    {
+     "nv": "A",
+     "q": "Prepara la estructura de una exposición de 15 minutos del proyecto final.",
+     "pasos": [
+      "<b>1 minuto.</b> Problema y relevancia.",
+      "<b>2 minutos.</b> Objetivos y metodología.",
+      "<b>7 minutos.</b> Resultados principales con gráficas.",
+      "<b>3 minutos.</b> Conclusiones y recomendaciones.",
+      "<b>2 minutos.</b> Cierre y apertura a preguntas."
+     ],
+     "r": "Una exposición centrada en los resultados, con tiempos definidos.",
+     "fin": "Administrar el tiempo en la defensa."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué deben responder las conclusiones?",
+     "ops": [
+      "El marco teórico",
+      "Los objetivos de la investigación",
+      "La opinión del autor",
+      "La bibliografía"
+     ],
+     "ok": 1,
+     "r": "Cada conclusión responde a un objetivo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Dónde se comparan los resultados con estudios anteriores?",
+     "ops": [
+      "Introducción",
+      "Anexos",
+      "Portada",
+      "Discusión"
+     ],
+     "ok": 3,
+     "r": "La discusión interpreta y contrasta."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué no debe aparecer en las conclusiones?",
+     "ops": [
+      "Respuesta a los objetivos",
+      "Datos nuevos que no se presentaron en resultados",
+      "Hallazgos principales",
+      "Referencias a los resultados"
+     ],
+     "ok": 1,
+     "r": "Las conclusiones se basan solo en lo ya presentado."
+    },
+    {
+     "nv": "I",
+     "q": "Una buena recomendación es…",
+     "ops": [
+      "“Mejorar el sistema”",
+      "“Hacer más estudios”",
+      "“Implementar respaldos diarios automáticos a cargo del área de TI a partir de enero”",
+      "“Tener cuidado”"
+     ],
+     "ok": 2,
+     "r": "Es concreta, con responsable y plazo."
+    },
+    {
+     "nv": "A",
+     "q": "En una diapositiva de resultados conviene…",
+     "ops": [
+      "Pegar párrafos completos del informe",
+      "Usar una gráfica clara con el dato clave destacado",
+      "Usar muchas animaciones",
+      "Mostrar todas las tablas del anexo"
+     ],
+     "ok": 1,
+     "r": "Poco texto y la evidencia principal a la vista."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

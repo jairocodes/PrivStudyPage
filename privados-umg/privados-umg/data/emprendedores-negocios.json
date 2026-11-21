@@ -1,0 +1,760 @@
+{
+ "slug": "emprendedores-negocios",
+ "titulo": "Emprendedores de Negocios",
+ "meta": "Ciclo 5, código 090023, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "VAN=-I_0+\\sum_{t=1}^{n}\\frac{FC_t}{(1+i)^t}",
+ "firma_nota": "El valor actual neto: la prueba de fuego de cualquier idea de negocio.",
+ "lead": "De la idea al negocio: creatividad e innovación, liderazgo, planificación estratégica, evaluación de viabilidad y financiamiento. Útil para emprender una startup tecnológica o defender un proyecto de TI ante la gerencia.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Quinto%20Ciclo/2014-5EmprendedoresNegocios.pdf",
+ "como": "Cada tema trae conceptos con su uso real, 5 ejercicios resueltos paso a paso y 5 preguntas: cuestionario de opción múltiple en los temas conceptuales y ejercicios con respuesta oculta en los de evaluación financiera.",
+ "temas": [
+  {
+   "titulo": "Generación de ideas: creatividad e innovación",
+   "intro": "Tema 1 del programa: creatividad, creatividad e innovación, cómo innovar constantemente y técnicas de creatividad.",
+   "conceptos": [
+    {
+     "n": "Creatividad e innovación",
+     "e": [
+      "Creatividad es generar ideas nuevas; innovación es convertirlas en valor que alguien adopta y paga. La innovación puede ser <b>incremental</b> (mejora lo existente) o <b>disruptiva</b> (cambia el mercado y suele empezar por un segmento desatendido). Puede ser de producto, proceso, modelo de negocio o mercadeo."
+     ],
+     "u": [
+      "Nuevas funciones de una app, automatización de procesos, nuevos modelos (suscripción).",
+      "Sin innovación un negocio queda obsoleto.",
+      "Al buscar oportunidades o mejorar un producto.",
+      "Parte de un problema real de un cliente."
+     ]
+    },
+    {
+     "n": "Técnicas de creatividad",
+     "e": [
+      "<b>Lluvia de ideas:</b> cantidad antes que calidad, sin criticar. <b>SCAMPER:</b> sustituir, combinar, adaptar, modificar, poner otros usos, eliminar, reordenar. <b>Seis sombreros</b> de De Bono: mirar el problema desde hechos, emociones, riesgos, beneficios, creatividad y control. <b>Mapas mentales</b> para conectar ideas."
+     ],
+     "u": [
+      "Talleres de producto, diseño de funcionalidades, resolución de problemas en equipo.",
+      "Estructuran la generación de ideas.",
+      "En sesiones de diseño o planeación.",
+      "Elige la técnica según el problema y documenta todas las ideas."
+     ]
+    },
+    {
+     "n": "Innovar constantemente",
+     "e": [
+      "Requiere escuchar al cliente, experimentar rápido y barato (prototipos, producto mínimo viable), medir y aprender de los fracasos. Kawasaki propone lanzar pronto y mejorar con retroalimentación real en lugar de buscar la perfección antes de salir."
+     ],
+     "u": [
+      "Desarrollo ágil, startups, mejora continua de servicios.",
+      "El mercado cambia más rápido que los planes largos.",
+      "En cualquier etapa del negocio.",
+      "Construye, mide y aprende en ciclos cortos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Diferencia creatividad e innovación con el ejemplo de una app de citas médicas.",
+     "pasos": [
+      "<b>Creatividad.</b> Idear que los pacientes reserven por WhatsApp.",
+      "<b>Innovación.</b> Implementarlo y que clínicas y pacientes lo usen y paguen."
+     ],
+     "r": "La creatividad genera la idea; la innovación la lleva al mercado.",
+     "fin": "Distinguir ambos conceptos."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica SCAMPER a un sistema de control de inventarios.",
+     "pasos": [
+      "<b>Sustituir.</b> Registro manual por lector de código QR.",
+      "<b>Combinar.</b> Inventario con facturación electrónica.",
+      "<b>Adaptar.</b> Alertas como las de apps bancarias.",
+      "<b>Eliminar.</b> Doble captura de datos.",
+      "<b>Reordenar.</b> Reabastecer antes según la demanda pronosticada."
+     ],
+     "r": "Cinco mejoras concretas a partir de un sistema existente.",
+     "fin": "Generar ideas de forma sistemática."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica como incremental o disruptiva: (a) agregar modo oscuro a una app; (b) el comercio electrónico frente a las tiendas por catálogo.",
+     "pasos": [
+      "<b>(a)</b> Mejora lo existente: incremental.",
+      "<b>(b)</b> Cambió la forma de comprar y desplazó al modelo anterior: disruptiva."
+     ],
+     "r": "Incremental y disruptiva.",
+     "fin": "Reconocer el tipo de innovación."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué reglas aseguran una buena lluvia de ideas?",
+     "pasos": [
+      "<b>Sin críticas.</b> Se evalúa después.",
+      "<b>Cantidad.</b> Más ideas aumentan la probabilidad de una buena.",
+      "<b>Construir.</b> Combinar y mejorar ideas de otros.",
+      "<b>Registrar.</b> Anotar todo."
+     ],
+     "r": "No criticar, buscar cantidad, combinar y registrar.",
+     "fin": "Conducir una sesión productiva."
+    },
+    {
+     "nv": "A",
+     "q": "Usa los seis sombreros para evaluar migrar los sistemas de una empresa a la nube.",
+     "pasos": [
+      "<b>Blanco (hechos).</b> Costos actuales y estimados.",
+      "<b>Rojo (emociones).</b> Temor del personal al cambio.",
+      "<b>Negro (riesgos).</b> Dependencia del proveedor y conectividad.",
+      "<b>Amarillo (beneficios).</b> Escalabilidad y menos mantenimiento.",
+      "<b>Verde y azul.</b> Alternativa híbrida y plan de decisión."
+     ],
+     "r": "Una evaluación completa desde seis perspectivas.",
+     "fin": "Tomar decisiones equilibradas en equipo."
+    },
+    {
+     "nv": "B",
+     "q": "Convertir una idea en algo que el mercado adopta es…",
+     "ops": [
+      "Creatividad",
+      "Invención",
+      "Lluvia de ideas",
+      "Innovación"
+     ],
+     "ok": 3,
+     "r": "La innovación agrega valor real y adopción."
+    },
+    {
+     "nv": "B",
+     "q": "En una lluvia de ideas, ¿qué se debe evitar?",
+     "ops": [
+      "Proponer muchas ideas",
+      "Combinar ideas",
+      "Criticar las ideas en el momento",
+      "Anotar todo"
+     ],
+     "ok": 2,
+     "r": "La crítica temprana frena la generación."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué significa la E de SCAMPER?",
+     "ops": [
+      "Evaluar",
+      "Eliminar",
+      "Escalar",
+      "Exportar"
+     ],
+     "ok": 1,
+     "r": "Quitar partes, pasos o funciones innecesarias."
+    },
+    {
+     "nv": "I",
+     "q": "Lanzar una versión mínima para aprender de usuarios reales se conoce como…",
+     "ops": [
+      "Plan quinquenal",
+      "Benchmarking",
+      "Producto mínimo viable",
+      "Outsourcing"
+     ],
+     "ok": 2,
+     "r": "Reduce el riesgo de construir algo que nadie quiere."
+    },
+    {
+     "nv": "A",
+     "q": "Una innovación disruptiva suele empezar…",
+     "ops": [
+      "Por los clientes más exigentes del mercado principal",
+      "Por un segmento desatendido o con una solución más simple y barata",
+      "Con un producto más caro y completo",
+      "Solo en grandes empresas"
+     ],
+     "ok": 1,
+     "r": "Crece desde abajo hasta desplazar a los líderes."
+    }
+   ]
+  },
+  {
+   "titulo": "Modelos estratégicos y liderazgo emprendedor",
+   "intro": "Tema 2 del programa: liderazgo, sus componentes y enfoques, liderazgo transaccional y transformacional y un modelo práctico.",
+   "conceptos": [
+    {
+     "n": "Liderazgo y sus componentes",
+     "e": [
+      "Liderar es influir en otros para lograr objetivos comunes. Componentes: el líder, los seguidores, la situación y la comunicación. Enfoques: de <b>rasgos</b> (características personales), <b>conductual</b> (lo que el líder hace) y <b>situacional</b> (el estilo depende de la madurez del equipo y del contexto)."
+     ],
+     "u": [
+      "Dirigir equipos de desarrollo, coordinar proyectos.",
+      "Un buen equipo sin liderazgo pierde rumbo.",
+      "Al formar y dirigir equipos.",
+      "Adapta el estilo al nivel de experiencia del equipo."
+     ]
+    },
+    {
+     "n": "Liderazgo transaccional y transformacional",
+     "e": [
+      "El <b>transaccional</b> intercambia recompensas por cumplimiento de metas y corrige desviaciones. El <b>transformacional</b> inspira con una visión, motiva, estimula intelectualmente y considera a cada persona. Un emprendedor necesita ambos."
+     ],
+     "u": [
+      "Gestión de equipos en startups y proyectos de TI.",
+      "La visión atrae talento; los acuerdos claros aseguran resultados.",
+      "Al motivar y evaluar al equipo.",
+      "Combina metas claras con propósito compartido."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un jefe ofrece bono a quien cierre más tickets. Otro explica cómo el sistema mejorará la atención de hospitales y deja que el equipo proponga soluciones. Clasifica.",
+     "pasos": [
+      "<b>Primero.</b> Recompensa por resultado: transaccional.",
+      "<b>Segundo.</b> Visión y participación: transformacional."
+     ],
+     "r": "Transaccional y transformacional.",
+     "fin": "Reconocer estilos de liderazgo."
+    },
+    {
+     "nv": "I",
+     "q": "Según el enfoque situacional, ¿qué estilo usar con un programador nuevo y con uno experto?",
+     "pasos": [
+      "<b>Nuevo.</b> Más dirección: instrucciones claras y seguimiento.",
+      "<b>Experto.</b> Delegar: autonomía y confianza."
+     ],
+     "r": "Dirigir al nuevo y delegar en el experto.",
+     "fin": "Adaptar el estilo a la persona."
+    },
+    {
+     "nv": "I",
+     "q": "Identifica los componentes del liderazgo en la migración de un sistema.",
+     "pasos": [
+      "<b>Líder.</b> El jefe de proyecto.",
+      "<b>Seguidores.</b> Desarrolladores y usuarios.",
+      "<b>Situación.</b> Plazo corto y resistencia al cambio.",
+      "<b>Comunicación.</b> Reuniones y avances claros."
+     ],
+     "r": "Líder, seguidores, situación y comunicación.",
+     "fin": "Analizar el liderazgo como sistema."
+    },
+    {
+     "nv": "I",
+     "q": "Propón una visión inspiradora para un equipo que desarrolla software para municipalidades.",
+     "pasos": [
+      "<b>Propósito.</b> A quién se beneficia.",
+      "<b>Futuro deseado.</b> Qué cambia gracias al equipo.",
+      "<b>Redacción.</b> Corta y memorable."
+     ],
+     "r": "“Que cada vecino pueda hacer sus trámites municipales desde el celular en minutos.”",
+     "fin": "Practicar el liderazgo transformacional."
+    },
+    {
+     "nv": "A",
+     "q": "Un equipo cumple metas pero tiene alta rotación y poca iniciativa. ¿Qué diagnóstico y qué cambio propones?",
+     "pasos": [
+      "<b>Diagnóstico.</b> Liderazgo solo transaccional: se cumplen tareas sin compromiso.",
+      "<b>Cambio.</b> Compartir la visión, dar autonomía y reconocer aportes individuales.",
+      "<b>Mantener.</b> Metas claras y retroalimentación."
+     ],
+     "r": "Agregar componentes transformacionales sin perder la claridad de metas.",
+     "fin": "Resolver un problema real de gestión."
+    },
+    {
+     "nv": "B",
+     "q": "El liderazgo que inspira con una visión es…",
+     "ops": [
+      "Transaccional",
+      "Autocrático",
+      "Transformacional",
+      "Laissez-faire"
+     ],
+     "ok": 2,
+     "r": "Motiva más allá del intercambio de recompensas."
+    },
+    {
+     "nv": "B",
+     "q": "El enfoque que dice que el estilo depende del contexto es…",
+     "ops": [
+      "De rasgos",
+      "Burocrático",
+      "Científico",
+      "Situacional"
+     ],
+     "ok": 3,
+     "r": "No hay un estilo único: depende del equipo y la situación."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace un líder transaccional ante un error?",
+     "ops": [
+      "Lo ignora",
+      "Corrige la desviación frente a lo acordado",
+      "Cambia la visión",
+      "Delega todo"
+     ],
+     "ok": 1,
+     "r": "Supervisa el cumplimiento de acuerdos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es un componente del liderazgo?",
+     "ops": [
+      "El organigrama",
+      "El presupuesto",
+      "El logotipo",
+      "Los seguidores"
+     ],
+     "ok": 3,
+     "r": "No hay líder sin seguidores."
+    },
+    {
+     "nv": "A",
+     "q": "Con un equipo experimentado y motivado, el estilo situacional recomienda…",
+     "ops": [
+      "Dirigir cada tarea",
+      "Delegar",
+      "Supervisar cada hora",
+      "Sancionar"
+     ],
+     "ok": 1,
+     "r": "Alta madurez requiere autonomía."
+    }
+   ]
+  },
+  {
+   "titulo": "Planificación de proyectos empresariales",
+   "intro": "Tema 3 del programa: claves de planificación y control, idea de negocio, visión, metas, filosofía corporativa, manejo corporativo y estrategia.",
+   "conceptos": [
+    {
+     "n": "Visión, misión, valores y metas",
+     "e": [
+      "La <b>misión</b> dice qué hace la empresa, para quién y cómo; la <b>visión</b>, a dónde quiere llegar; los <b>valores</b> forman su filosofía corporativa. Las metas deben ser SMART: específicas, medibles, alcanzables, relevantes y con tiempo definido."
+     ],
+     "u": [
+      "Plan de negocios, planeación estratégica de un departamento de TI.",
+      "Alinea al equipo y permite medir avances.",
+      "Al iniciar o reorientar un negocio.",
+      "Redacta con verbos concretos y fechas."
+     ]
+    },
+    {
+     "n": "FODA y estrategia",
+     "e": [
+      "FODA cruza factores internos (fortalezas y debilidades) con externos (oportunidades y amenazas). Estrategias: FO (usar fortalezas para aprovechar oportunidades), DO (superar debilidades con oportunidades), FA (usar fortalezas contra amenazas), DA (minimizar ambos)."
+     ],
+     "u": [
+      "Análisis de un emprendimiento o de un producto tecnológico.",
+      "Convierte el diagnóstico en acciones.",
+      "Al definir la estrategia.",
+      "Llena la matriz y redacta una estrategia por cuadrante."
+     ]
+    },
+    {
+     "n": "Modelo Canvas y plan de negocio",
+     "e": [
+      "El Canvas resume el negocio en nueve bloques: segmentos de clientes, propuesta de valor, canales, relación con clientes, fuentes de ingreso, recursos clave, actividades clave, socios clave y estructura de costos. El plan de negocio lo desarrolla con mercado, marketing (4 P), operaciones, organización y finanzas."
+     ],
+     "u": [
+      "Presentar una startup a inversionistas, validar una idea rápido.",
+      "Da una visión completa del negocio en una página.",
+      "Al diseñar o comunicar el modelo de negocio.",
+      "Empieza por clientes y propuesta de valor."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Redacta misión y visión para una empresa de desarrollo de software en Jutiapa.",
+     "pasos": [
+      "<b>Misión.</b> Qué hace, para quién y cómo.",
+      "<b>Visión.</b> A dónde quiere llegar y en qué plazo."
+     ],
+     "r": "Misión: “Desarrollamos software a la medida para pymes del oriente del país con soporte cercano y precios accesibles.” Visión: “Ser en 2030 la empresa de software de referencia para las pymes del sur-oriente de Guatemala.”",
+     "fin": "Redactar las bases de la planeación."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte “crecer mucho” en una meta SMART.",
+     "pasos": [
+      "<b>Específica y medible.</b> Número de clientes o ingresos.",
+      "<b>Alcanzable y relevante.</b> Acorde con la capacidad.",
+      "<b>Con tiempo.</b> Fecha límite."
+     ],
+     "r": "“Conseguir 20 clientes con contrato de mantenimiento mensual antes del 31 de diciembre de 2027.”",
+     "fin": "Formular metas medibles."
+    },
+    {
+     "nv": "I",
+     "q": "Haz un FODA breve para una startup de facturación electrónica.",
+     "pasos": [
+      "<b>Fortalezas.</b> Equipo técnico con experiencia.",
+      "<b>Debilidades.</b> Poca marca y capital.",
+      "<b>Oportunidades.</b> La obligación de facturar electrónicamente amplía el mercado.",
+      "<b>Amenazas.</b> Competidores grandes y cambios de regulación."
+     ],
+     "r": "Un FODA con un factor por cuadrante.",
+     "fin": "Diagnosticar un negocio."
+    },
+    {
+     "nv": "A",
+     "q": "Con ese FODA, propone una estrategia FO y una DA.",
+     "pasos": [
+      "<b>FO.</b> Usar el equipo técnico para lanzar rápido una solución para pequeños contribuyentes recién obligados.",
+      "<b>DA.</b> Aliarse con un contador o gremio para ganar marca y reducir la amenaza de competidores grandes."
+     ],
+     "r": "Estrategias que cruzan factores internos y externos.",
+     "fin": "Pasar del diagnóstico a la acción."
+    },
+    {
+     "nv": "I",
+     "q": "Completa cuatro bloques del Canvas para una app de reservas en barberías.",
+     "pasos": [
+      "<b>Segmento.</b> Barberías pequeñas y sus clientes.",
+      "<b>Propuesta de valor.</b> Cero filas y menos citas perdidas.",
+      "<b>Ingresos.</b> Suscripción mensual por barbería.",
+      "<b>Recursos clave.</b> Plataforma, equipo de desarrollo y soporte."
+     ],
+     "r": "Cuatro bloques coherentes entre sí.",
+     "fin": "Modelar un negocio en una página."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué expresa la visión de una empresa?",
+     "ops": [
+      "Qué hace hoy",
+      "Su estructura de costos",
+      "Sus proveedores",
+      "A dónde quiere llegar"
+     ],
+     "ok": 3,
+     "r": "La misión es el presente; la visión, el futuro deseado."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué letra de SMART indica que la meta tiene fecha?",
+     "ops": [
+      "S",
+      "M",
+      "A",
+      "T"
+     ],
+     "ok": 3,
+     "r": "T de temporal (con tiempo definido)."
+    },
+    {
+     "nv": "I",
+     "q": "En el FODA, ¿qué factores son externos?",
+     "ops": [
+      "Oportunidades y amenazas",
+      "Fortalezas y debilidades",
+      "Fortalezas y amenazas",
+      "Todos"
+     ],
+     "ok": 0,
+     "r": "Los externos no dependen de la empresa."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué bloque del Canvas responde por qué el cliente elegiría tu producto?",
+     "ops": [
+      "Canales",
+      "Socios clave",
+      "Propuesta de valor",
+      "Estructura de costos"
+     ],
+     "ok": 2,
+     "r": "Es el valor que resuelve el problema del cliente."
+    },
+    {
+     "nv": "A",
+     "q": "Usar una debilidad interna como punto de mejora aprovechando una oportunidad externa es una estrategia…",
+     "ops": [
+      "FO",
+      "FA",
+      "DA",
+      "DO"
+     ],
+     "ok": 3,
+     "r": "Debilidad + oportunidad."
+    }
+   ]
+  },
+  {
+   "titulo": "Gestión de nuevos proyectos: previabilidad y viabilidad",
+   "intro": "Tema 4 del programa: herramientas para la toma de decisiones, análisis de previabilidad y diseño de viabilidad.",
+   "conceptos": [
+    {
+     "n": "Previabilidad y viabilidad",
+     "e": [
+      "La <b>previabilidad</b> filtra ideas con información general antes de invertir en estudios. La <b>viabilidad</b> se estudia en cuatro frentes: de mercado (¿hay demanda?), técnica (¿se puede hacer?), legal (¿está permitido?) y financiera (¿es rentable?)."
+     ],
+     "u": [
+      "Evaluar un proyecto de software, una ampliación o un nuevo servicio.",
+      "Evita invertir en proyectos condenados al fracaso.",
+      "Antes de comprometer recursos.",
+      "Revisa los cuatro frentes; uno solo puede detener el proyecto."
+     ]
+    },
+    {
+     "n": "Herramientas de decisión financiera",
+     "e": [
+      "<b>VAN:</b> valor presente de los flujos menos la inversión; se acepta si es positivo. <b>TIR:</b> la tasa que hace el VAN igual a 0; se acepta si supera la tasa mínima. <b>Periodo de recuperación:</b> tiempo para recuperar la inversión."
+     ],
+     "u": [
+      "Justificar compras de infraestructura, comparar proyectos.",
+      "Considera el valor del dinero en el tiempo.",
+      "Al comparar inversiones.",
+      "Descuenta cada flujo a la tasa mínima y suma."
+     ],
+     "f": "VAN=-I_0+\\sum\\frac{FC_t}{(1+i)^t}\\qquad VAN(TIR)=0"
+    },
+    {
+     "n": "Otras herramientas",
+     "e": [
+      "El <b>árbol de decisión</b> calcula el valor esperado de cada alternativa con sus probabilidades. La <b>matriz de decisión ponderada</b> califica opciones según criterios con pesos."
+     ],
+     "u": [
+      "Elegir proveedor, tecnología o estrategia.",
+      "Hace explícitos riesgos y criterios.",
+      "Con decisiones inciertas o con varios criterios.",
+      "Asigna probabilidades o pesos y calcula el puntaje de cada opción."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "I",
+     "q": "Inversión Q50,000 y flujos de Q15,000, Q20,000, Q25,000 y Q20,000 con tasa mínima de 12 %. Halla el VAN.",
+     "pasos": [
+      "<b>Descuenta.</b> \\(\\tfrac{15000}{1.12}=13393\\), \\(\\tfrac{20000}{1.12^2}=15944\\), \\(\\tfrac{25000}{1.12^3}=17795\\), \\(\\tfrac{20000}{1.12^4}=12710\\).",
+      "<b>Suma.</b> 59,842.",
+      "<b>VAN.</b> \\(59842-50000\\)."
+     ],
+     "r": "VAN ≈ Q9,842: se acepta.",
+     "fin": "Evaluar un proyecto con el criterio más sólido."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el periodo de recuperación del mismo proyecto.",
+     "pasos": [
+      "<b>Acumulado.</b> −35,000 al año 1; −15,000 al año 2; +10,000 al año 3.",
+      "<b>Interpola.</b> \\(2+\\tfrac{15000}{25000}=2.6\\) años."
+     ],
+     "r": "2.6 años",
+     "fin": "Medir en cuánto tiempo vuelve la inversión."
+    },
+    {
+     "nv": "A",
+     "q": "La TIR del proyecto es aproximadamente 20.5 %. ¿Qué significa y se acepta?",
+     "pasos": [
+      "<b>Definición.</b> Con 20.5 % el VAN sería 0.",
+      "<b>Comparación.</b> 20.5 % > 12 % de tasa mínima.",
+      "<b>Decisión.</b> Se acepta: rinde más que lo exigido."
+     ],
+     "r": "Se acepta: la TIR supera la tasa mínima.",
+     "fin": "Interpretar la TIR."
+    },
+    {
+     "nv": "I",
+     "q": "Expandir el negocio da Q100,000 con probabilidad 0.6 o pierde Q30,000 con 0.4. No expandir da Q20,000 seguros. ¿Qué conviene?",
+     "pasos": [
+      "<b>Valor esperado de expandir.</b> \\(0.6(100000)+0.4(-30000)=48000\\).",
+      "<b>Comparación.</b> 48,000 > 20,000."
+     ],
+     "r": "Expandir (valor esperado Q48,000).",
+     "fin": "Decidir con incertidumbre."
+    },
+    {
+     "nv": "B",
+     "q": "Una idea de app requiere datos personales de menores sin autorización de los padres. ¿Qué frente de viabilidad falla?",
+     "pasos": [
+      "<b>Mercado y técnica.</b> Podrían ser viables.",
+      "<b>Legal.</b> Viola la protección de datos y derechos de menores."
+     ],
+     "r": "La viabilidad legal: el proyecto no procede así.",
+     "fin": "Ver que un solo frente puede detener un proyecto."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuáles son los cuatro frentes de la viabilidad?",
+     "r": "Mercado, técnica, legal y financiera."
+    },
+    {
+     "nv": "I",
+     "q": "Inversión Q30,000 y cuatro flujos de Q10,000 al 10 %. Halla el VAN.",
+     "r": "≈ Q1,699: se acepta."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la TIR aproximada de ese proyecto?",
+     "r": "≈ 12.6 %"
+    },
+    {
+     "nv": "I",
+     "q": "Si dos proyectos excluyentes tienen VAN de Q8,000 y Q12,000, ¿cuál eliges?",
+     "r": "El de Q12,000."
+    },
+    {
+     "nv": "A",
+     "q": "Con pesos de 50 % costo, 30 % soporte y 20 % escalabilidad, el proveedor A califica 8, 6, 9 y el B 6, 9, 8. ¿Cuál gana?",
+     "r": "A: 7.6; B: 7.3. Gana A."
+    }
+   ]
+  },
+  {
+   "titulo": "Financiamiento",
+   "intro": "Tema 5 del programa: fuentes de financiamiento, plan financiero, problemas de las pymes, sociedades y búsqueda de socios.",
+   "conceptos": [
+    {
+     "n": "Fuentes de financiamiento",
+     "e": [
+      "Capital propio (bootstrapping), familia y amigos, préstamos bancarios, ángeles inversionistas, capital de riesgo, crowdfunding, subvenciones y socios estratégicos. La <b>deuda</b> no cede propiedad pero obliga a pagos fijos; el <b>capital</b> no exige pagos, pero diluye la propiedad."
+     ],
+     "u": [
+      "Financiar una startup, comprar equipo, crecer.",
+      "Cada fuente tiene costos y condiciones distintas.",
+      "Al planear cómo financiar el negocio.",
+      "Compara costo, control y riesgo de cada fuente."
+     ]
+    },
+    {
+     "n": "Plan financiero y cuota de un préstamo",
+     "e": [
+      "El plan financiero proyecta ingresos, costos, flujo de efectivo y necesidades de capital. La cuota fija de un préstamo es \\(C=P\\tfrac{r}{1-(1+r)^{-n}}\\)."
+     ],
+     "u": [
+      "Solicitar crédito, presentar a inversionistas.",
+      "Muestra si el negocio puede pagar sus obligaciones.",
+      "Antes de buscar financiamiento.",
+      "Proyecta el flujo y verifica que cubra las cuotas."
+     ],
+     "f": "C=P\\,\\frac{r}{1-(1+r)^{-n}}"
+    },
+    {
+     "n": "Pymes, sociedades y socios",
+     "e": [
+      "Problemas típicos de las pymes: poco acceso a crédito, falta de garantías, informalidad y mala administración financiera. Formalizarse (sociedad anónima o de responsabilidad limitada) facilita el crédito y la entrada de socios. Un buen socio aporta capital, conocimiento o contactos, con acuerdos escritos."
+     ],
+     "u": [
+      "Constituir una empresa de tecnología, incorporar socios inversionistas.",
+      "La forma jurídica limita la responsabilidad y ordena la relación.",
+      "Al crecer o incorporar socios.",
+      "Define aportes, participación y salida en un pacto de socios."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "I",
+     "q": "Un ángel invierte Q200,000 por el 20 % de la empresa. ¿Valoración después y antes de la inversión?",
+     "pasos": [
+      "<b>Post-money.</b> \\(\\tfrac{200000}{0.20}=1000000\\).",
+      "<b>Pre-money.</b> \\(1000000-200000=800000\\)."
+     ],
+     "r": "Q1,000,000 después y Q800,000 antes.",
+     "fin": "Entender la valoración y la dilución."
+    },
+    {
+     "nv": "A",
+     "q": "Un préstamo de Q100,000 al 12 % anual a 3 años en cuotas anuales iguales. ¿Cuota?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(100000\\cdot\\tfrac{0.12}{1-1.12^{-3}}\\).",
+      "<b>Factor.</b> \\(1.12^{-3}\\approx0.71178\\Rightarrow1-0.71178=0.28822\\).",
+      "<b>Cuota.</b> \\(\\tfrac{12000}{0.28822}\\approx41635\\)."
+     ],
+     "r": "≈ Q41,635 por año.",
+     "fin": "Calcular la carga de una deuda."
+    },
+    {
+     "nv": "B",
+     "q": "Compara financiar con préstamo bancario y con capital de riesgo.",
+     "pasos": [
+      "<b>Préstamo.</b> Conservas el 100 %, pero pagas cuotas e intereses aunque no vendas.",
+      "<b>Capital de riesgo.</b> No pagas cuotas, pero cedes parte de la empresa y del control."
+     ],
+     "r": "Deuda conserva propiedad con obligación de pago; capital la diluye sin cuotas.",
+     "fin": "Elegir la fuente adecuada."
+    },
+    {
+     "nv": "I",
+     "q": "Menciona tres problemas comunes de financiamiento de las pymes y una solución para cada uno.",
+     "pasos": [
+      "<b>Falta de garantías.</b> Programas de garantía o cooperativas.",
+      "<b>Informalidad.</b> Formalizarse y llevar contabilidad.",
+      "<b>Mala administración.</b> Presupuesto y control de flujo de efectivo."
+     ],
+     "r": "Garantías, informalidad y administración, con su solución.",
+     "fin": "Diagnosticar obstáculos reales."
+    },
+    {
+     "nv": "A",
+     "q": "Dos socios fundan una empresa: uno aporta Q60,000 y el otro el desarrollo del software valorado en Q40,000. ¿Participación de cada uno y qué debe incluir su pacto?",
+     "pasos": [
+      "<b>Total.</b> Q100,000.",
+      "<b>Participación.</b> 60 % y 40 %.",
+      "<b>Pacto.</b> Aportes, roles, toma de decisiones, salida de un socio y propiedad del código."
+     ],
+     "r": "60 % y 40 %, con un pacto de socios escrito.",
+     "fin": "Ordenar la relación entre socios desde el inicio."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué fuente de financiamiento diluye la propiedad?",
+     "ops": [
+      "Préstamo bancario",
+      "Ahorro propio",
+      "Crédito de proveedores",
+      "Capital de inversionistas"
+     ],
+     "ok": 3,
+     "r": "El inversionista recibe parte de la empresa."
+    },
+    {
+     "nv": "B",
+     "q": "Financiar el negocio con los propios ingresos se conoce como…",
+     "ops": [
+      "Crowdfunding",
+      "Leasing",
+      "Bootstrapping",
+      "Factoraje"
+     ],
+     "ok": 2,
+     "r": "Crecer con recursos propios, sin inversionistas."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es el crowdfunding?",
+     "ops": [
+      "Un préstamo bancario",
+      "Un subsidio del gobierno",
+      "Financiamiento de muchas personas con aportes pequeños, normalmente en línea",
+      "Un tipo de sociedad"
+     ],
+     "ok": 2,
+     "r": "Plataformas en línea reúnen a muchos pequeños aportantes."
+    },
+    {
+     "nv": "I",
+     "q": "Un ángel inversionista suele…",
+     "ops": [
+      "Invertir su propio dinero en etapas tempranas a cambio de participación",
+      "Prestar con garantía hipotecaria",
+      "Comprar empresas grandes",
+      "Dar subvenciones sin retorno"
+     ],
+     "ok": 0,
+     "r": "Además de dinero, aporta experiencia y contactos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué formalizarse como sociedad facilita el financiamiento?",
+     "ops": [
+      "Porque da personalidad jurídica, estados financieros y responsabilidad limitada que bancos e inversionistas exigen",
+      "Porque elimina los impuestos",
+      "Porque obliga a los bancos a prestar",
+      "No lo facilita"
+     ],
+     "ok": 0,
+     "r": "La formalidad genera confianza y respaldo legal."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}
