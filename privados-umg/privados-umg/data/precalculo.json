@@ -1,0 +1,977 @@
+{
+ "slug": "precalculo",
+ "titulo": "Precálculo",
+ "meta": "Ciclo 2, código 006, bloque Matemática del seminario",
+ "firma": "x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
+ "firma_nota": "La fórmula general: la herramienta que más reaparece en todo el bloque de Matemática y Cálculo.",
+ "lead": "Funciones, ecuaciones, polinomios y trigonometría: el lenguaje que usan Cálculo, Física y Métodos Numéricos. Domínalo aquí y lo demás se vuelve aplicación.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Segundo%20Ciclo/2014-006precalculo.pdf",
+ "temas": [
+  {
+   "titulo": "Ecuaciones, desigualdades y geometría analítica",
+   "intro": "Resolver ecuaciones es encontrar los valores que hacen verdadera una igualdad; resolver desigualdades es encontrar intervalos completos. La geometría analítica traduce figuras a ecuaciones.",
+   "conceptos": [
+    {
+     "n": "Ecuaciones lineales",
+     "e": "Una ecuación lineal tiene la incógnita con exponente 1: \\(ax+b=0\\). Se resuelve dejando la incógnita sola con operaciones inversas aplicadas a ambos lados, y su solución es \\(x=-\\tfrac{b}{a}\\) si \\(a\\neq 0\\).",
+     "u": [
+      "Tarifas de servicios, presupuestos, conversión de unidades, costo por usuario de un servidor.",
+      "Modelan relaciones con cambio constante: cada unidad extra agrega lo mismo.",
+      "Cuando una cantidad crece o decrece a ritmo fijo.",
+      "Plantea costo = fijo + unitario·cantidad y despeja la cantidad."
+     ]
+    },
+    {
+     "n": "Ecuaciones cuadráticas",
+     "e": [
+      "Tienen la forma \\(ax^2+bx+c=0\\) con \\(a\\neq0\\). Se resuelven factorizando, completando el cuadrado o con la fórmula general.",
+      "El discriminante \\(\\Delta=b^2-4ac\\) anticipa el tipo de soluciones: dos reales si \\(\\Delta\\gt0\\), una doble si \\(\\Delta=0\\) y dos complejas si \\(\\Delta\\lt0\\)."
+     ],
+     "f": "\\Delta=b^2-4ac \\qquad x=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}",
+     "u": [
+      "Tiro parabólico, áreas, ingresos cuando el precio afecta la demanda, tiempos de frenado.",
+      "Muchos fenómenos tienen un término al cuadrado: área, aceleración, ingreso = precio × cantidad.",
+      "Cuando aparece un producto de dos cantidades que dependen de la misma variable.",
+      "Pasa todo a un lado igualado a cero, calcula Δ y aplica la fórmula."
+     ]
+    },
+    {
+     "n": "Ecuaciones racionales y con radicales",
+     "e": [
+      "En una ecuación racional la incógnita está en un denominador. Se multiplica todo por el mínimo común denominador, sin olvidar que los valores que anulan un denominador quedan excluidos.",
+      "En una ecuación con radicales se aísla la raíz y se eleva al cuadrado. Elevar al cuadrado puede crear <b>soluciones extrañas</b>, así que toda solución se verifica en la ecuación original."
+     ],
+     "u": [
+      "Problemas de trabajo conjunto (dos servidores o dos personas), velocidades, resistencias en paralelo, distancias.",
+      "Las tasas (trabajo por hora, km por hora) son cocientes; las distancias usan raíces.",
+      "Cuando el dato es un tiempo o una tasa, o cuando hay una distancia euclidiana.",
+      "Restringe el dominio, elimina denominadores o radicales y verifica cada resultado."
+     ]
+    },
+    {
+     "n": "Valor absoluto y ecuaciones que conducen a cuadráticas",
+     "e": [
+      "\\(|x|\\) es la distancia de \\(x\\) al cero. \\(|A|=k\\) con \\(k\\ge0\\) se separa en \\(A=k\\) o \\(A=-k\\).",
+      "Una ecuación como \\(x^4-13x^2+36=0\\) se convierte en cuadrática con un cambio de variable \\(u=x^2\\)."
+     ],
+     "u": [
+      "Tolerancias de fabricación, márgenes de error de sensores, ecuaciones bicuadradas en física.",
+      "El valor absoluto expresa “a cierta distancia de un valor ideal” sin importar el lado.",
+      "Cuando importa la magnitud de una desviación, no su dirección.",
+      "Separa en casos con signo + y −; para potencias pares usa u = x²."
+     ]
+    },
+    {
+     "n": "Desigualdades e inecuaciones",
+     "e": [
+      "Se resuelven como ecuaciones, con una regla extra: al multiplicar o dividir por un negativo, el sentido de la desigualdad se invierte. La respuesta es un intervalo.",
+      "Para inecuaciones polinomiales o racionales se usa la <b>tabla de signos</b>: se ubican los ceros del numerador y del denominador, se prueba el signo en cada intervalo y los ceros del denominador nunca se incluyen.",
+      "Con valor absoluto: \\(|A|\\lt k \\iff -k\\lt A\\lt k\\) y \\(|A|\\gt k \\iff A\\lt -k\\) o \\(A\\gt k\\)."
+     ],
+     "u": [
+      "Acuerdos de nivel de servicio (respuesta menor que 200 ms), rangos de temperatura seguros, presupuestos máximos.",
+      "Las restricciones reales casi nunca son un valor exacto, sino un rango permitido.",
+      "Cuando la pregunta dice “a lo sumo”, “al menos”, “no más de” o “dentro de”.",
+      "Resuelve la igualdad asociada, ubica los puntos críticos y prueba cada intervalo."
+     ]
+    },
+    {
+     "n": "Plano cartesiano: distancia y punto medio",
+     "e": "Cada punto es un par \\((x,y)\\). La distancia entre dos puntos sale del teorema de Pitágoras y el punto medio es el promedio de coordenadas.",
+     "f": "d=\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\\qquad M=\\left(\\tfrac{x_1+x_2}{2},\\tfrac{y_1+y_2}{2}\\right)",
+     "u": [
+      "GPS y mapas, posiciones de píxeles en pantalla, videojuegos, robótica.",
+      "Permite medir y ubicar con números lo que antes era solo dibujo.",
+      "Cuando necesitas la separación entre dos ubicaciones o su punto central.",
+      "Resta coordenadas, eleva al cuadrado, suma y saca raíz."
+     ]
+    },
+    {
+     "n": "Lugares geométricos y la recta",
+     "e": [
+      "Un lugar geométrico es el conjunto de puntos que cumplen una condición; su ecuación describe esa condición. La recta tiene pendiente \\(m=\\tfrac{y_2-y_1}{x_2-x_1}\\) (cuánto sube por cada unidad que avanza).",
+      "Formas: punto-pendiente \\(y-y_1=m(x-x_1)\\), pendiente-ordenada \\(y=mx+b\\) y general \\(Ax+By+C=0\\). Paralelas: \\(m_1=m_2\\). Perpendiculares: \\(m_1m_2=-1\\)."
+     ],
+     "f": "d_{P,\\,r}=\\frac{|Ax_0+By_0+C|}{\\sqrt{A^2+B^2}}",
+     "fn": "Distancia del punto (x₀, y₀) a la recta Ax + By + C = 0.",
+     "u": [
+      "Tendencias de ventas, tasas de crecimiento de usuarios, rampas, trazado de vías.",
+      "La pendiente es una tasa de cambio, la idea que luego se convierte en derivada.",
+      "Cuando dos variables cambian proporcionalmente.",
+      "Calcula m con dos puntos y sustituye en punto-pendiente."
+     ]
+    },
+    {
+     "n": "La circunferencia",
+     "e": "Es el lugar de puntos a distancia \\(r\\) de un centro \\((h,k)\\). La forma general \\(x^2+y^2+Dx+Ey+F=0\\) se lleva a la ordinaria completando cuadrados.",
+     "f": "(x-h)^2+(y-k)^2=r^2",
+     "u": [
+      "Cobertura de antenas WiFi o celulares, radios de entrega, detección de colisiones en juegos.",
+      "Describe exactamente “todo lo que está a cierta distancia de un punto”.",
+      "Cuando hay un alcance o radio de acción.",
+      "Completa cuadrados para hallar centro y radio; compara la distancia de un punto con r."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Resuelve \\(3(x-2)+5=2x+7\\).",
+     "pasos": [
+      "<b>Elimina el paréntesis.</b> \\(3x-6+5=2x+7\\Rightarrow 3x-1=2x+7\\).",
+      "<b>Agrupa la incógnita.</b> Resta \\(2x\\) en ambos lados: \\(x-1=7\\).",
+      "<b>Despeja.</b> Suma 1: \\(x=8\\).",
+      "<b>Verifica.</b> Izquierda: \\(3(6)+5=23\\). Derecha: \\(2(8)+7=23\\). Coinciden."
+     ],
+     "r": "\\(x=8\\)",
+     "fin": "Practicar el despeje ordenado y la verificación, base de cualquier ecuación más compleja."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(2x^2-3x-5=0\\) con la fórmula general.",
+     "pasos": [
+      "<b>Identifica coeficientes.</b> \\(a=2,\\ b=-3,\\ c=-5\\).",
+      "<b>Calcula el discriminante.</b> \\(\\Delta=(-3)^2-4(2)(-5)=9+40=49\\gt0\\): dos soluciones reales.",
+      "<b>Aplica la fórmula.</b> \\(x=\\dfrac{3\\pm7}{4}\\).",
+      "<b>Separa los casos.</b> \\(x_1=\\tfrac{10}{4}=\\tfrac52\\) y \\(x_2=\\tfrac{-4}{4}=-1\\)."
+     ],
+     "r": "\\(x=\\tfrac52\\) o \\(x=-1\\)",
+     "fin": "Usar el discriminante para anticipar el tipo de raíz antes de calcular."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve \\(\\sqrt{x+7}=x-5\\).",
+     "pasos": [
+      "<b>Restringe.</b> Una raíz no es negativa, así que \\(x-5\\ge0\\Rightarrow x\\ge5\\).",
+      "<b>Eleva al cuadrado.</b> \\(x+7=x^2-10x+25\\Rightarrow x^2-11x+18=0\\).",
+      "<b>Factoriza.</b> \\((x-9)(x-2)=0\\Rightarrow x=9\\) o \\(x=2\\).",
+      "<b>Verifica.</b> \\(x=9\\): \\(\\sqrt{16}=4=9-5\\). Sí. \\(x=2\\): \\(\\sqrt9=3\\neq-3\\). Es una solución extraña."
+     ],
+     "r": "\\(x=9\\)",
+     "fin": "Ver por qué elevar al cuadrado obliga a verificar: aparecen soluciones que no cumplen la ecuación original."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(|2x-3|\\le5\\) e interpreta el resultado como un rango permitido de valores para \\(x\\).",
+     "pasos": [
+      "<b>Quita el valor absoluto.</b> \\(|A|\\le5\\iff -5\\le A\\le5\\): \\(-5\\le 2x-3\\le 5\\).",
+      "<b>Suma 3 en las tres partes.</b> \\(-2\\le 2x\\le 8\\).",
+      "<b>Divide entre 2 (positivo, no cambia el sentido).</b> \\(-1\\le x\\le 4\\)."
+     ],
+     "r": "\\(x\\in[-1,\\,4]\\)",
+     "fin": "Traducir “dentro de cierta distancia” a una doble desigualdad, como en controles de calidad."
+    },
+    {
+     "nv": "A",
+     "q": "Una antena está descrita por \\(x^2+y^2-6x+4y-12=0\\) (km). Halla centro y radio de cobertura y decide si el punto \\((7,1)\\) recibe señal.",
+     "pasos": [
+      "<b>Agrupa por variable.</b> \\((x^2-6x)+(y^2+4y)=12\\).",
+      "<b>Completa cuadrados.</b> Suma \\(9\\) y \\(4\\) en ambos lados: \\((x-3)^2+(y+2)^2=25\\).",
+      "<b>Lee centro y radio.</b> Centro \\((3,-2)\\), \\(r=5\\) km.",
+      "<b>Mide la distancia al punto.</b> \\(d=\\sqrt{(7-3)^2+(1+2)^2}=\\sqrt{16+9}=5\\).",
+      "<b>Compara.</b> \\(d=r\\): el punto está exactamente en el borde de la cobertura."
+     ],
+     "r": "Centro \\((3,-2)\\), radio 5 km; \\((7,1)\\) está sobre el borde (señal límite).",
+     "fin": "Pasar de la forma general a la ordinaria para decidir con números si algo está dentro de un alcance."
+    },
+    {
+     "nv": "B",
+     "q": "Un servidor procesa un lote en 6 h y otro en 3 h. ¿Cuánto tardan trabajando juntos?",
+     "r": "\\(\\tfrac16+\\tfrac13=\\tfrac1t\\Rightarrow t=2\\) horas."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(\\dfrac{x-1}{x+2}\\ge0\\).",
+     "r": "\\((-\\infty,-2)\\cup[1,\\infty)\\). El −2 se excluye porque anula el denominador."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(x^4-13x^2+36=0\\).",
+     "r": "Con \\(u=x^2\\): \\(u=4\\) o \\(u=9\\), así que \\(x=\\pm2,\\ \\pm3\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la recta perpendicular a \\(3x-4y+8=0\\) que pasa por \\((1,2)\\).",
+     "r": "\\(m=-\\tfrac43\\); \\(y=-\\tfrac43x+\\tfrac{10}{3}\\), o bien \\(4x+3y-10=0\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe la ecuación de la circunferencia con centro \\((-2,3)\\) tangente a la recta \\(3x+4y-10=0\\).",
+     "r": "\\(r=\\tfrac{|3(-2)+4(3)-10|}{5}=\\tfrac45\\); \\((x+2)^2+(y-3)^2=\\tfrac{16}{25}\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Funciones y gráficas",
+   "intro": "Una función asigna a cada entrada una única salida. Casi todo lo que se modela en ingeniería es una función: tiempo de respuesta según la carga, costo según la cantidad, posición según el tiempo.",
+   "conceptos": [
+    {
+     "n": "Función, dominio y rango",
+     "e": [
+      "Una función \\(f\\) asigna a cada \\(x\\) del <b>dominio</b> exactamente un valor \\(f(x)\\); el conjunto de salidas es el <b>rango</b>.",
+      "Para hallar el dominio se excluye lo que no se puede calcular: denominadores iguales a cero y raíces pares de negativos."
+     ],
+     "u": [
+      "Validación de entradas en software, rangos de operación de equipos, tablas de precios.",
+      "Saber qué entradas son válidas evita errores como división entre cero o raíces de negativos.",
+      "Antes de evaluar, graficar o programar una fórmula.",
+      "Escribe las condiciones (denominador ≠ 0, radicando ≥ 0) y resuélvelas."
+     ]
+    },
+    {
+     "n": "Gráficas y prueba de la recta vertical u horizontal",
+     "e": "Una curva es función si ninguna recta vertical la corta más de una vez. Si además ninguna recta horizontal la corta más de una vez, la función es uno a uno y tiene inversa.",
+     "u": [
+      "Lectura de gráficos de monitoreo, análisis de datos, interpretación de reportes.",
+      "Detecta a simple vista si una relación es predecible (una salida por entrada).",
+      "Al recibir una gráfica o un conjunto de datos.",
+      "Desliza mentalmente una recta vertical u horizontal sobre la gráfica."
+     ]
+    },
+    {
+     "n": "Crecimiento, máximos y mínimos, simetría",
+     "e": [
+      "\\(f\\) es creciente en un intervalo si al aumentar \\(x\\) aumenta \\(f(x)\\). Los puntos donde pasa de crecer a decrecer son máximos locales y al revés, mínimos.",
+      "Par: \\(f(-x)=f(x)\\), simétrica respecto al eje \\(y\\). Impar: \\(f(-x)=-f(x)\\), simétrica respecto al origen. La concavidad indica si la curva se dobla hacia arriba o hacia abajo y el punto de inflexión es donde cambia."
+     ],
+     "u": [
+      "Picos de tráfico de un sitio, ganancias máximas, temperatura mínima de un proceso.",
+      "Identificar dónde una magnitud deja de crecer es la base de la optimización.",
+      "Cuando te preguntan por tendencias o valores extremos.",
+      "Revisa f(−x) para la simetría y la gráfica o la tabla para los cambios de tendencia."
+     ]
+    },
+    {
+     "n": "Funciones definidas por partes",
+     "e": "Usan fórmulas distintas en distintos intervalos. Son continuas en un punto de unión si los dos tramos llegan al mismo valor; si no, hay un salto.",
+     "u": [
+      "Tarifas eléctricas por bloques, impuestos por tramos, planes de datos móviles.",
+      "Las reglas de negocio cambian según rangos de consumo.",
+      "Cuando el comportamiento cambia al cruzar un umbral.",
+      "Ubica en qué tramo cae x y usa solo esa fórmula."
+     ]
+    },
+    {
+     "n": "Transformaciones de funciones",
+     "e": "A partir de \\(y=f(x)\\): \\(f(x)+k\\) sube \\(k\\); \\(f(x-h)\\) se corre \\(h\\) a la derecha; \\(-f(x)\\) refleja en el eje \\(x\\); \\(f(-x)\\) refleja en el eje \\(y\\); \\(a\\,f(x)\\) estira si \\(|a|\\gt1\\) y comprime si \\(|a|\\lt1\\).",
+     "f": "y=a\\,f(x-h)+k",
+     "u": [
+      "Ajuste de curvas, procesamiento de señales, animaciones y escalado de gráficos.",
+      "Permite graficar funciones nuevas sin tabular, partiendo de una conocida.",
+      "Cuando la fórmula es una versión desplazada o escalada de una básica.",
+      "Identifica la función base y aplica estiramiento, reflexión y traslación en ese orden."
+     ]
+    },
+    {
+     "n": "Función cuadrática, valores extremos y optimización",
+     "e": [
+      "\\(f(x)=ax^2+bx+c\\) es una parábola con vértice en \\(x=-\\tfrac{b}{2a}\\). Si \\(a\\gt0\\) el vértice es mínimo; si \\(a\\lt0\\), máximo.",
+      "Optimizar es plantear la cantidad a maximizar o minimizar como función de una sola variable y hallar su extremo."
+     ],
+     "f": "f(x)=a(x-h)^2+k,\\qquad h=-\\frac{b}{2a},\\quad k=f(h)",
+     "u": [
+      "Área máxima con material fijo, ingreso máximo, mínimo costo de producción.",
+      "Muchas cantidades de negocio e ingeniería resultan cuadráticas y su extremo es el vértice.",
+      "Cuando piden “máximo”, “mínimo”, “mejor” o “más eficiente”.",
+      "Escribe la cantidad en función de x, identifica a, b y calcula el vértice."
+     ]
+    },
+    {
+     "n": "Combinación, composición y funciones inversas",
+     "e": [
+      "Las funciones se suman, restan, multiplican y dividen punto a punto. La composición \\((f\\circ g)(x)=f(g(x))\\) aplica primero \\(g\\) y luego \\(f\\).",
+      "Una función uno a uno tiene inversa \\(f^{-1}\\), que deshace a \\(f\\): \\(f^{-1}(f(x))=x\\). Se obtiene intercambiando \\(x\\) e \\(y\\) y despejando. El dominio de \\(f^{-1}\\) es el rango de \\(f\\)."
+     ],
+     "u": [
+      "Tuberías de procesamiento de datos, conversiones encadenadas de unidades, cifrado y descifrado.",
+      "Componer encadena procesos; invertir permite recuperar la entrada a partir de la salida.",
+      "Cuando una salida se vuelve entrada de otro proceso, o necesitas deshacer una transformación.",
+      "Sustituye g(x) dentro de f; para la inversa, intercambia variables y despeja."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla el dominio de \\(f(x)=\\dfrac{\\sqrt{x-3}}{x-5}\\).",
+     "pasos": [
+      "<b>Condición de la raíz.</b> \\(x-3\\ge0\\Rightarrow x\\ge3\\).",
+      "<b>Condición del denominador.</b> \\(x-5\\neq0\\Rightarrow x\\neq5\\).",
+      "<b>Intersecta ambas.</b> Todos los \\(x\\ge3\\) excepto el 5."
+     ],
+     "r": "\\([3,5)\\cup(5,\\infty)\\)",
+     "fin": "Saber qué entradas acepta una fórmula antes de usarla, igual que validar datos en un programa."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es \\(f(x)=x^3-x\\) par, impar o ninguna?",
+     "pasos": [
+      "<b>Evalúa en \\(-x\\).</b> \\(f(-x)=(-x)^3-(-x)=-x^3+x\\).",
+      "<b>Compara.</b> \\(-x^3+x=-(x^3-x)=-f(x)\\).",
+      "<b>Concluye.</b> Cumple la definición de función impar."
+     ],
+     "r": "Es impar: su gráfica es simétrica respecto al origen.",
+     "fin": "La simetría reduce a la mitad el trabajo de graficar o integrar."
+    },
+    {
+     "nv": "I",
+     "q": "Para \\(f(x)=-2x^2+8x-3\\), halla vértice, eje de simetría, valor extremo y rango.",
+     "pasos": [
+      "<b>Abscisa del vértice.</b> \\(h=-\\tfrac{8}{2(-2)}=2\\).",
+      "<b>Ordenada.</b> \\(f(2)=-8+16-3=5\\).",
+      "<b>Tipo de extremo.</b> \\(a=-2\\lt0\\): la parábola abre hacia abajo, el vértice es un máximo.",
+      "<b>Forma ordinaria y rango.</b> \\(f(x)=-2(x-2)^2+5\\); rango \\((-\\infty,5]\\)."
+     ],
+     "r": "Vértice \\((2,5)\\), eje \\(x=2\\), máximo 5, rango \\((-\\infty,5]\\).",
+     "fin": "Leer el máximo de una parábola sin graficar, clave en optimización."
+    },
+    {
+     "nv": "A",
+     "q": "Con 200 m de cerca se encierra un terreno rectangular junto a un río; el lado del río no lleva cerca. ¿Qué dimensiones dan el área máxima?",
+     "pasos": [
+      "<b>Define variables.</b> \\(x\\): cada lado perpendicular al río; el lado paralelo mide \\(200-2x\\).",
+      "<b>Función a maximizar.</b> \\(A(x)=x(200-2x)=-2x^2+200x\\).",
+      "<b>Vértice.</b> \\(x=-\\tfrac{200}{2(-2)}=50\\).",
+      "<b>Dimensiones y área.</b> Lado paralelo \\(200-100=100\\); \\(A=50\\cdot100=5000\\text{ m}^2\\)."
+     ],
+     "r": "50 m × 100 m, con área máxima de 5000 m².",
+     "fin": "Ver el flujo completo de optimización: variable, función, extremo e interpretación."
+    },
+    {
+     "nv": "I",
+     "q": "Si \\(f(x)=2x+1\\) y \\(g(x)=x^2-3\\), calcula \\((f\\circ g)(x)\\) y \\((g\\circ f)(2)\\).",
+     "pasos": [
+      "<b>Composición general.</b> \\(f(g(x))=2(x^2-3)+1=2x^2-5\\).",
+      "<b>Evalúa primero la interna.</b> \\(f(2)=5\\).",
+      "<b>Aplica la externa.</b> \\(g(5)=25-3=22\\)."
+     ],
+     "r": "\\((f\\circ g)(x)=2x^2-5\\); \\((g\\circ f)(2)=22\\).",
+     "fin": "Entender que el orden importa: f∘g y g∘f son procesos distintos."
+    },
+    {
+     "nv": "B",
+     "q": "Evalúa \\(f(x)=\\begin{cases}x^2 & x\\lt0\\\\ 2x+1 & x\\ge0\\end{cases}\\) en \\(x=-3,\\,0,\\,2\\).",
+     "r": "\\(f(-3)=9,\\ f(0)=1,\\ f(2)=5\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Describe cómo se obtiene \\(y=-\\sqrt{x+2}+3\\) a partir de \\(y=\\sqrt{x}\\).",
+     "r": "Se corre 2 a la izquierda, se refleja en el eje x y se sube 3."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la inversa de \\(f(x)=\\dfrac{3x-2}{5}\\).",
+     "r": "\\(f^{-1}(x)=\\dfrac{5x+2}{3}\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el rango de \\(f(x)=x^2-4x+7\\).",
+     "r": "Vértice \\((2,3)\\) y abre hacia arriba: rango \\([3,\\infty)\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la inversa de \\(f(x)=\\dfrac{2x+1}{x-3}\\) y su dominio.",
+     "r": "\\(f^{-1}(x)=\\dfrac{3x+1}{x-2}\\), con dominio \\(x\\neq2\\) (el rango de \\(f\\))."
+    }
+   ]
+  },
+  {
+   "titulo": "Funciones polinomiales",
+   "intro": "Los polinomios son las funciones más fáciles de calcular, por eso las computadoras aproximan casi todo con ellos. Aquí aprendes a dividirlos, encontrar sus raíces reales y complejas, y leer su gráfica.",
+   "conceptos": [
+    {
+     "n": "Gráficas de polinomios",
+     "e": [
+      "Un polinomio de grado \\(n\\) tiene a lo sumo \\(n\\) ceros reales y \\(n-1\\) extremos locales. Su comportamiento en los extremos lo decide el término principal \\(a_nx^n\\).",
+      "Un cero de multiplicidad impar cruza el eje \\(x\\); uno de multiplicidad par lo toca y rebota."
+     ],
+     "u": [
+      "Curvas de diseño en CAD, trayectorias suaves en robótica, interpolación de datos.",
+      "Son continuos y suaves, fáciles de evaluar y derivar.",
+      "Cuando un modelo debe pasar por varios puntos o tener forma suave.",
+      "Factoriza, marca los ceros con su multiplicidad y usa el término principal para los extremos."
+     ]
+    },
+    {
+     "n": "División larga y sintética",
+     "e": [
+      "Algoritmo de la división: \\(P(x)=D(x)\\,Q(x)+R(x)\\), con el grado de \\(R\\) menor que el de \\(D\\).",
+      "La división sintética es un atajo para dividir entre \\(x-c\\): se baja el primer coeficiente, se multiplica por \\(c\\) y se suma con el siguiente, repitiendo."
+     ],
+     "f": "P(x)=(x-c)\\,Q(x)+P(c)",
+     "u": [
+      "Simplificación de expresiones, factorización de modelos, códigos de detección de errores (CRC usa división polinomial).",
+      "Reduce el grado del problema y separa factores conocidos.",
+      "Cuando ya conoces una raíz o un factor.",
+      "Ordena coeficientes, incluye ceros por potencias faltantes y aplica el algoritmo."
+     ]
+    },
+    {
+     "n": "Teoremas del residuo y del factor",
+     "e": "El residuo de dividir \\(P(x)\\) entre \\(x-c\\) es \\(P(c)\\). Por eso, \\(x-c\\) es factor de \\(P\\) si y solo si \\(P(c)=0\\).",
+     "u": [
+      "Evaluar polinomios rápido (método de Horner en Métodos Numéricos), comprobar raíces.",
+      "Convierte la búsqueda de factores en una simple evaluación.",
+      "Cuando quieres saber si un número es raíz sin factorizar todo.",
+      "Evalúa P(c); si da cero, divide entre x − c para bajar el grado."
+     ]
+    },
+    {
+     "n": "Ceros reales: raíces racionales, Descartes y cotas",
+     "e": [
+      "<b>Raíces racionales posibles:</b> \\(\\pm\\tfrac{p}{q}\\), con \\(p\\) divisor del término independiente y \\(q\\) divisor del coeficiente principal.",
+      "<b>Regla de los signos de Descartes:</b> el número de raíces positivas es igual al número de cambios de signo de \\(P(x)\\) o menor en un número par; para las negativas se usa \\(P(-x)\\).",
+      "<b>Cotas:</b> si al dividir sintéticamente entre \\(x-c\\) con \\(c\\gt0\\) todos los números de la última fila son no negativos, \\(c\\) es cota superior. Si con \\(c\\lt0\\) los signos alternan, \\(c\\) es cota inferior."
+     ],
+     "u": [
+      "Búsqueda de raíces en software matemático, análisis de estabilidad de sistemas de control.",
+      "Reducen una búsqueda infinita a una lista corta de candidatos.",
+      "Antes de probar raíces al azar en un polinomio de grado 3 o mayor.",
+      "Lista candidatos, descarta con Descartes y cotas, prueba con división sintética."
+     ]
+    },
+    {
+     "n": "Números complejos y teorema fundamental del álgebra",
+     "e": [
+      "\\(i=\\sqrt{-1}\\), así que \\(i^2=-1\\). Un complejo es \\(a+bi\\); su conjugado es \\(a-bi\\) y \\((a+bi)(a-bi)=a^2+b^2\\).",
+      "Teorema fundamental: todo polinomio de grado \\(n\\ge1\\) tiene exactamente \\(n\\) raíces complejas contando multiplicidad. Si los coeficientes son reales, las raíces complejas vienen en pares conjugados."
+     ],
+     "f": "P(x)=a_n(x-c_1)(x-c_2)\\cdots(x-c_n)",
+     "u": [
+      "Circuitos de corriente alterna (impedancias), procesamiento de señales, transformada de Fourier.",
+      "Garantizan que toda ecuación polinomial tiene solución y permiten factorizar por completo.",
+      "Cuando el discriminante es negativo o se necesita la factorización completa.",
+      "Encuentra las raíces reales, divide, y resuelve la cuadrática restante con la fórmula general."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Divide \\(P(x)=2x^3-3x^2+4x-5\\) entre \\(x-2\\) por división sintética y verifica con el teorema del residuo.",
+     "pasos": [
+      "<b>Prepara.</b> Coeficientes \\(2,\\,-3,\\,4,\\,-5\\) y \\(c=2\\).",
+      "<b>Opera.</b> Baja 2. \\(2\\cdot2=4\\), \\(-3+4=1\\). \\(1\\cdot2=2\\), \\(4+2=6\\). \\(6\\cdot2=12\\), \\(-5+12=7\\).",
+      "<b>Lee el resultado.</b> Cociente \\(2x^2+x+6\\), residuo 7.",
+      "<b>Verifica.</b> \\(P(2)=16-12+8-5=7\\). Coincide con el residuo."
+     ],
+     "r": "\\(Q(x)=2x^2+x+6\\), \\(R=7\\).",
+     "fin": "Dividir rápido entre factores lineales; es el mismo procedimiento que el método de Horner."
+    },
+    {
+     "nv": "I",
+     "q": "Factoriza completamente \\(P(x)=x^3-6x^2+11x-6\\).",
+     "pasos": [
+      "<b>Candidatos racionales.</b> \\(\\pm1,\\pm2,\\pm3,\\pm6\\).",
+      "<b>Prueba.</b> \\(P(1)=1-6+11-6=0\\): \\(x-1\\) es factor.",
+      "<b>Divide.</b> Sintética con 1: \\(1,\\,-5,\\,6\\) y residuo 0. Queda \\(x^2-5x+6\\).",
+      "<b>Factoriza la cuadrática.</b> \\(x^2-5x+6=(x-2)(x-3)\\)."
+     ],
+     "r": "\\(P(x)=(x-1)(x-2)(x-3)\\)",
+     "fin": "Combinar raíces racionales y división sintética para bajar el grado paso a paso."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica la regla de Descartes a \\(P(x)=x^4-3x^3+2x^2-x+5\\).",
+     "pasos": [
+      "<b>Signos de \\(P(x)\\).</b> \\(+,-,+,-,+\\): 4 cambios. Posibles raíces positivas: 4, 2 o 0.",
+      "<b>Calcula \\(P(-x)\\).</b> \\(x^4+3x^3+2x^2+x+5\\).",
+      "<b>Signos de \\(P(-x)\\).</b> Todos positivos: 0 cambios, no hay raíces negativas."
+     ],
+     "r": "4, 2 o 0 raíces positivas y ninguna negativa.",
+     "fin": "Saber dónde buscar antes de probar candidatos."
+    },
+    {
+     "nv": "A",
+     "q": "Encuentra todos los ceros de \\(P(x)=x^3-2x^2+4x-8\\).",
+     "pasos": [
+      "<b>Agrupa.</b> \\(x^2(x-2)+4(x-2)=(x-2)(x^2+4)\\).",
+      "<b>Factor lineal.</b> \\(x-2=0\\Rightarrow x=2\\).",
+      "<b>Factor cuadrático.</b> \\(x^2+4=0\\Rightarrow x^2=-4\\Rightarrow x=\\pm2i\\).",
+      "<b>Comprueba el teorema fundamental.</b> Grado 3, tres raíces: \\(2,\\,2i,\\,-2i\\), con las complejas conjugadas."
+     ],
+     "r": "\\(x=2,\\ x=2i,\\ x=-2i\\)",
+     "fin": "Ver en acción el teorema fundamental y el par conjugado."
+    },
+    {
+     "nv": "A",
+     "q": "Construye el polinomio mónico de grado 3 con coeficientes reales que tiene ceros \\(1\\) y \\(2-i\\).",
+     "pasos": [
+      "<b>Tercer cero.</b> Con coeficientes reales, \\(2+i\\) también es cero.",
+      "<b>Multiplica los conjugados.</b> \\((x-(2-i))(x-(2+i))=(x-2)^2-i^2=x^2-4x+5\\).",
+      "<b>Incluye el factor real.</b> \\(P(x)=(x-1)(x^2-4x+5)\\).",
+      "<b>Desarrolla.</b> \\(x^3-4x^2+5x-x^2+4x-5=x^3-5x^2+9x-5\\)."
+     ],
+     "r": "\\(P(x)=x^3-5x^2+9x-5\\)",
+     "fin": "Ir al revés: de las raíces al polinomio, como al diseñar un filtro con polos dados."
+    },
+    {
+     "nv": "B",
+     "q": "Sin dividir, halla el residuo de \\(x^4-3x^2+2\\) entre \\(x+1\\).",
+     "r": "\\(P(-1)=1-3+2=0\\): residuo 0, así que \\(x+1\\) es factor."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\((3+2i)(1-4i)\\).",
+     "r": "\\(3-12i+2i-8i^2=11-10i\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Describe el comportamiento en los extremos y los ceros de \\(P(x)=-(x-1)^2(x+3)\\).",
+     "r": "Grado 3 con coeficiente principal −1: sube hacia la izquierda y baja hacia la derecha. Cero en 1 (multiplicidad 2, rebota) y en −3 (cruza)."
+    },
+    {
+     "nv": "I",
+     "q": "Divide \\(3x^3+5x^2-2x+1\\) entre \\(x^2+1\\) con división larga.",
+     "r": "Cociente \\(3x+5\\), residuo \\(-5x-4\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Verifica que 3 es cota superior y −3 cota inferior de los ceros reales de \\(P(x)=x^3-x^2-4x+4\\), y luego halla esos ceros.",
+     "r": "Con 3 la fila es \\(1,2,2,10\\) (todo no negativo). Con −3 es \\(1,-4,8,-20\\) (alterna). Ceros: \\(-2,\\ 1,\\ 2\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Funciones trigonométricas de ángulos",
+   "intro": "La trigonometría resuelve triángulos: con unos pocos lados y ángulos se calcula todo lo demás. Es la base de la topografía, la navegación y los gráficos por computadora.",
+   "conceptos": [
+    {
+     "n": "Medida en radianes y grados",
+     "e": "Un radián es el ángulo que abarca un arco igual al radio. Una vuelta completa son \\(2\\pi\\) rad, es decir \\(360^\\circ\\). Para convertir: grados × π/180 da radianes y radianes × 180/π da grados.",
+     "f": "\\pi\\ \\text{rad}=180^\\circ",
+     "u": [
+      "Programación de gráficos y juegos (las funciones sin y cos de los lenguajes usan radianes), motores, ruedas.",
+      "Los radianes vuelven más simples las fórmulas de arco, velocidad angular y cálculo.",
+      "Siempre que uses funciones trigonométricas en código o en cálculo.",
+      "Multiplica por π/180 o por 180/π."
+     ]
+    },
+    {
+     "n": "Sector circular: arco y área",
+     "e": "Con el ángulo central \\(\\theta\\) en radianes: longitud de arco \\(s=r\\theta\\) y área del sector \\(A=\\tfrac12r^2\\theta\\). La velocidad lineal de un punto que gira es \\(v=r\\omega\\).",
+     "f": "s=r\\theta\\qquad A=\\tfrac12 r^2\\theta",
+     "u": [
+      "Distancia recorrida por una rueda, áreas de riego por aspersor, discos duros y poleas.",
+      "Relaciona giro con distancia lineal.",
+      "Cuando algo gira y necesitas cuánto avanza o qué área barre.",
+      "Convierte el ángulo a radianes y sustituye."
+     ]
+    },
+    {
+     "n": "Razones trigonométricas en el triángulo rectángulo",
+     "e": [
+      "Con un ángulo agudo \\(\\theta\\): \\(\\sin\\theta=\\tfrac{\\text{opuesto}}{\\text{hipotenusa}}\\), \\(\\cos\\theta=\\tfrac{\\text{adyacente}}{\\text{hipotenusa}}\\), \\(\\tan\\theta=\\tfrac{\\text{opuesto}}{\\text{adyacente}}\\); sus recíprocas son csc, sec y cot.",
+      "Ángulos notables: \\(\\sin30^\\circ=\\tfrac12\\), \\(\\cos30^\\circ=\\tfrac{\\sqrt3}{2}\\), \\(\\sin45^\\circ=\\cos45^\\circ=\\tfrac{\\sqrt2}{2}\\), \\(\\tan60^\\circ=\\sqrt3\\)."
+     ],
+     "u": [
+      "Alturas de edificios y antenas, pendientes de rampas, instalación de cableado en postes.",
+      "Permiten medir lo inaccesible con una distancia y un ángulo.",
+      "Cuando hay un ángulo recto implícito (horizontal y vertical).",
+      "Dibuja el triángulo, rotula opuesto, adyacente e hipotenusa y elige la razón que relaciona dato e incógnita."
+     ]
+    },
+    {
+     "n": "Ley de senos (y el caso ambiguo)",
+     "e": [
+      "En cualquier triángulo, cada lado es proporcional al seno del ángulo opuesto. Se usa con dos ángulos y un lado, o con dos lados y el ángulo opuesto a uno de ellos.",
+      "El caso LLA es ambiguo: \\(\\sin B\\) puede dar dos ángulos, \\(B\\) y \\(180^\\circ-B\\). Ambos sirven si la suma con el ángulo dado es menor que 180°."
+     ],
+     "f": "\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}",
+     "u": [
+      "Topografía, triangulación de señales, navegación, ubicación de antenas.",
+      "Resuelve triángulos que no son rectángulos.",
+      "Cuando conoces un par lado-ángulo opuesto completo.",
+      "Plantea la proporción con el par conocido y despeja."
+     ]
+    },
+    {
+     "n": "Ley de cosenos y área de un triángulo",
+     "e": "Generaliza a Pitágoras: sirve con dos lados y el ángulo entre ellos (LAL) o con los tres lados (LLL). El área con dos lados y el ángulo comprendido es \\(\\tfrac12ab\\sin C\\).",
+     "f": "c^2=a^2+b^2-2ab\\cos C\\qquad \\text{Área}=\\tfrac12ab\\sin C",
+     "u": [
+      "Distancias entre puntos con ángulo conocido, cálculo de fuerzas, áreas de terrenos irregulares.",
+      "Funciona cuando la ley de senos no tiene un par completo.",
+      "Con datos LAL o LLL.",
+      "Despeja el lado o, para un ángulo, cos C = (a² + b² − c²)/(2ab)."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Convierte \\(150^\\circ\\) a radianes y \\(\\tfrac{7\\pi}{4}\\) a grados.",
+     "pasos": [
+      "<b>Grados a radianes.</b> \\(150\\cdot\\tfrac{\\pi}{180}=\\tfrac{5\\pi}{6}\\).",
+      "<b>Radianes a grados.</b> \\(\\tfrac{7\\pi}{4}\\cdot\\tfrac{180}{\\pi}=315^\\circ\\)."
+     ],
+     "r": "\\(\\tfrac{5\\pi}{6}\\) rad y \\(315^\\circ\\).",
+     "fin": "Moverse con soltura entre ambas unidades, como al pasar ángulos a funciones de un lenguaje de programación."
+    },
+    {
+     "nv": "B",
+     "q": "Un aspersor de 12 m de alcance gira 60°. Halla la longitud del arco y el área que riega.",
+     "pasos": [
+      "<b>Convierte el ángulo.</b> \\(60^\\circ=\\tfrac{\\pi}{3}\\).",
+      "<b>Arco.</b> \\(s=12\\cdot\\tfrac{\\pi}{3}=4\\pi\\approx12.57\\text{ m}\\).",
+      "<b>Área.</b> \\(A=\\tfrac12(12)^2\\tfrac{\\pi}{3}=24\\pi\\approx75.40\\text{ m}^2\\)."
+     ],
+     "r": "Arco ≈ 12.57 m; área ≈ 75.40 m².",
+     "fin": "Aplicar s = rθ y A = ½r²θ, que solo funcionan con radianes."
+    },
+    {
+     "nv": "I",
+     "q": "Desde 40 m de la base de una antena, el ángulo de elevación a la punta es 35°. ¿Qué altura tiene?",
+     "pasos": [
+      "<b>Identifica el triángulo.</b> Adyacente 40 m, opuesto \\(h\\), ángulo 35°.",
+      "<b>Elige la razón.</b> \\(\\tan35^\\circ=\\tfrac{h}{40}\\).",
+      "<b>Despeja.</b> \\(h=40\\tan35^\\circ\\approx40(0.7002)\\approx28.01\\text{ m}\\)."
+     ],
+     "r": "≈ 28.0 m",
+     "fin": "Medir alturas inaccesibles con un ángulo y una distancia."
+    },
+    {
+     "nv": "I",
+     "q": "En un triángulo, \\(a=7\\), \\(b=10\\) y \\(C=60^\\circ\\). Resuélvelo.",
+     "pasos": [
+      "<b>Lado c (ley de cosenos).</b> \\(c^2=49+100-2(7)(10)(0.5)=79\\Rightarrow c\\approx8.89\\).",
+      "<b>Ángulo A (ley de senos).</b> \\(\\sin A=\\tfrac{7\\sin60^\\circ}{8.89}\\approx0.682\\Rightarrow A\\approx43.0^\\circ\\).",
+      "<b>Ángulo B.</b> \\(B=180^\\circ-60^\\circ-43.0^\\circ=77.0^\\circ\\).",
+      "<b>Revisa coherencia.</b> El lado mayor (10) queda frente al ángulo mayor (77°)."
+     ],
+     "r": "\\(c\\approx8.89\\), \\(A\\approx43.0^\\circ\\), \\(B\\approx77.0^\\circ\\).",
+     "fin": "Encadenar ambas leyes: cosenos para arrancar, senos para terminar."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve el triángulo con \\(A=30^\\circ\\), \\(a=6\\) y \\(b=10\\) (caso ambiguo).",
+     "pasos": [
+      "<b>Ley de senos.</b> \\(\\sin B=\\tfrac{10\\sin30^\\circ}{6}=\\tfrac56\\approx0.8333\\).",
+      "<b>Dos ángulos posibles.</b> \\(B_1\\approx56.44^\\circ\\) y \\(B_2=180^\\circ-56.44^\\circ=123.56^\\circ\\).",
+      "<b>Valida.</b> \\(30^\\circ+123.56^\\circ\\lt180^\\circ\\): ambos triángulos existen.",
+      "<b>Triángulo 1.</b> \\(C_1\\approx93.56^\\circ\\), \\(c_1=\\tfrac{6\\sin93.56^\\circ}{\\sin30^\\circ}\\approx11.98\\).",
+      "<b>Triángulo 2.</b> \\(C_2\\approx26.44^\\circ\\), \\(c_2=\\tfrac{6\\sin26.44^\\circ}{\\sin30^\\circ}\\approx5.34\\)."
+     ],
+     "r": "Dos soluciones: \\((B,C,c)\\approx(56.44^\\circ,\\,93.56^\\circ,\\,11.98)\\) y \\((123.56^\\circ,\\,26.44^\\circ,\\,5.34)\\).",
+     "fin": "Reconocer cuándo un problema tiene dos respuestas válidas, error frecuente en exámenes."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula el valor exacto de \\(\\sin60^\\circ\\cos30^\\circ+\\tan45^\\circ\\).",
+     "r": "\\(\\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt3}{2}+1=\\tfrac74\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Un triángulo rectángulo tiene catetos 5 y 12. Halla la hipotenusa y \\(\\sin\\theta,\\cos\\theta,\\tan\\theta\\) para el ángulo opuesto al cateto 5.",
+     "r": "Hipotenusa 13; \\(\\sin\\theta=\\tfrac5{13},\\ \\cos\\theta=\\tfrac{12}{13},\\ \\tan\\theta=\\tfrac5{12}\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el área del triángulo con \\(a=8\\), \\(b=11\\) y \\(C=40^\\circ\\).",
+     "r": "\\(\\tfrac12(8)(11)\\sin40^\\circ\\approx28.28\\) u²."
+    },
+    {
+     "nv": "I",
+     "q": "Una rueda de 30 cm de radio da 5 vueltas. ¿Qué distancia avanza?",
+     "r": "\\(5\\cdot2\\pi\\cdot30=300\\pi\\approx942.5\\) cm."
+    },
+    {
+     "nv": "A",
+     "q": "Un triángulo tiene lados 5, 7 y 9. Halla su ángulo mayor.",
+     "r": "Frente al lado 9: \\(\\cos C=\\tfrac{25+49-81}{70}=-0.1\\Rightarrow C\\approx95.74^\\circ\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Funciones trigonométricas de números reales",
+   "intro": "Al pasar del triángulo al círculo unitario, las funciones trigonométricas aceptan cualquier número real y se vuelven periódicas: el modelo natural de todo lo que se repite.",
+   "conceptos": [
+    {
+     "n": "Círculo unitario y punto terminal",
+     "e": "Es el círculo de radio 1 centrado en el origen. Al recorrer una longitud \\(t\\) desde \\((1,0)\\) se llega al punto terminal \\(P(x,y)\\), y se define \\(\\cos t=x\\), \\(\\sin t=y\\), \\(\\tan t=\\tfrac{y}{x}\\).",
+     "f": "\\cos^2t+\\sin^2t=1",
+     "u": [
+      "Rotaciones en gráficos 2D, posición de un punto que gira, animaciones circulares.",
+      "Extiende seno y coseno a cualquier ángulo, incluso negativos o mayores que una vuelta.",
+      "Cuando el ángulo no es agudo.",
+      "Ubica t en el círculo y lee coordenadas."
+     ]
+    },
+    {
+     "n": "Número de referencia y signos por cuadrante",
+     "e": [
+      "El número de referencia \\(\\bar t\\) es la distancia más corta, sobre el círculo, entre el punto terminal y el eje \\(x\\). El valor de una función en \\(t\\) es el mismo que en \\(\\bar t\\), con el signo del cuadrante.",
+      "Signos positivos: en el I todas; en el II solo seno; en el III solo tangente; en el IV solo coseno."
+     ],
+     "u": [
+      "Cálculo exacto sin calculadora, simplificación de expresiones en programación de juegos.",
+      "Reduce cualquier ángulo a uno agudo conocido.",
+      "Al evaluar ángulos como 7π/6, 5π/4 o −π/3.",
+      "Halla el cuadrante, el número de referencia y aplica el signo."
+     ]
+    },
+    {
+     "n": "Periodicidad, paridad y gráficas",
+     "e": "Seno y coseno tienen periodo \\(2\\pi\\) y rango \\([-1,1]\\); la tangente tiene periodo \\(\\pi\\) y asíntotas donde \\(\\cos t=0\\). El seno es impar (\\(\\sin(-t)=-\\sin t\\)) y el coseno es par (\\(\\cos(-t)=\\cos t\\)).",
+     "u": [
+      "Corriente alterna, sonido, ondas de radio, ciclos de temperatura o demanda eléctrica.",
+      "Describen cualquier fenómeno que se repite a intervalos regulares.",
+      "Cuando los datos muestran un patrón que vuelve a empezar.",
+      "Identifica periodo y valores máximo y mínimo en los datos."
+     ]
+    },
+    {
+     "n": "Transformaciones: amplitud, periodo, desfase y desplazamiento",
+     "e": "En \\(y=A\\sin(Bx-C)+D\\): la amplitud es \\(|A|\\), el periodo \\(\\tfrac{2\\pi}{|B|}\\), el desfase \\(\\tfrac{C}{B}\\) (a la derecha si es positivo) y \\(D\\) es el desplazamiento vertical o línea media.",
+     "f": "y=A\\sin(Bx-C)+D,\\qquad T=\\frac{2\\pi}{|B|},\\qquad \\phi=\\frac{C}{B}",
+     "u": [
+      "Modelado de señales, mareas, horas de luz solar, ciclos de carga de servidores.",
+      "Ajusta una onda básica a datos reales.",
+      "Cuando conoces máximo, mínimo y duración de un ciclo.",
+      "D = (máx + mín)/2, A = (máx − mín)/2, B = 2π/periodo y ubica un máximo o mínimo para el desfase."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla el punto terminal de \\(t=\\tfrac{2\\pi}{3}\\) y los valores de seno, coseno y tangente.",
+     "pasos": [
+      "<b>Cuadrante.</b> \\(\\tfrac{2\\pi}{3}=120^\\circ\\): cuadrante II.",
+      "<b>Referencia.</b> \\(\\bar t=\\pi-\\tfrac{2\\pi}{3}=\\tfrac{\\pi}{3}\\), con punto \\((\\tfrac12,\\tfrac{\\sqrt3}{2})\\).",
+      "<b>Aplica signos del II.</b> \\(x\\) negativo, \\(y\\) positivo: \\(P=(-\\tfrac12,\\tfrac{\\sqrt3}{2})\\).",
+      "<b>Funciones.</b> \\(\\sin t=\\tfrac{\\sqrt3}{2}\\), \\(\\cos t=-\\tfrac12\\), \\(\\tan t=-\\sqrt3\\)."
+     ],
+     "r": "\\(P=(-\\tfrac12,\\tfrac{\\sqrt3}2)\\); \\(\\sin=\\tfrac{\\sqrt3}2,\\ \\cos=-\\tfrac12,\\ \\tan=-\\sqrt3\\).",
+     "fin": "Usar referencia y cuadrante para obtener valores exactos."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula el valor exacto de \\(\\cos\\tfrac{7\\pi}{6}\\).",
+     "pasos": [
+      "<b>Cuadrante.</b> \\(\\tfrac{7\\pi}{6}=210^\\circ\\): cuadrante III.",
+      "<b>Referencia.</b> \\(\\tfrac{7\\pi}{6}-\\pi=\\tfrac{\\pi}{6}\\).",
+      "<b>Signo.</b> En el III el coseno es negativo: \\(-\\cos\\tfrac{\\pi}{6}\\)."
+     ],
+     "r": "\\(-\\tfrac{\\sqrt3}{2}\\)",
+     "fin": "Evaluar sin calculadora, como se exige en el privado."
+    },
+    {
+     "nv": "I",
+     "q": "Para \\(y=3\\sin(2x-\\tfrac{\\pi}{2})+1\\), halla amplitud, periodo, desfase, línea media y rango.",
+     "pasos": [
+      "<b>Identifica parámetros.</b> \\(A=3,\\ B=2,\\ C=\\tfrac{\\pi}{2},\\ D=1\\).",
+      "<b>Periodo.</b> \\(\\tfrac{2\\pi}{2}=\\pi\\).",
+      "<b>Desfase.</b> \\(\\tfrac{C}{B}=\\tfrac{\\pi}{4}\\) a la derecha.",
+      "<b>Rango.</b> \\([D-A,\\,D+A]=[-2,\\,4]\\)."
+     ],
+     "r": "Amplitud 3, periodo π, desfase π/4 a la derecha, línea media y = 1, rango [−2, 4].",
+     "fin": "Leer una señal directamente de su ecuación."
+    },
+    {
+     "nv": "A",
+     "q": "Si \\(\\sin t=-\\tfrac35\\) y \\(t\\) está en el cuadrante IV, halla \\(\\cos t\\), \\(\\tan t\\) y \\(\\sec t\\).",
+     "pasos": [
+      "<b>Identidad pitagórica.</b> \\(\\cos^2t=1-\\tfrac{9}{25}=\\tfrac{16}{25}\\).",
+      "<b>Signo.</b> En el IV el coseno es positivo: \\(\\cos t=\\tfrac45\\).",
+      "<b>Tangente.</b> \\(\\tan t=\\tfrac{-3/5}{4/5}=-\\tfrac34\\).",
+      "<b>Secante.</b> \\(\\sec t=\\tfrac{1}{\\cos t}=\\tfrac54\\)."
+     ],
+     "r": "\\(\\cos t=\\tfrac45,\\ \\tan t=-\\tfrac34,\\ \\sec t=\\tfrac54\\)",
+     "fin": "Obtener todas las funciones a partir de una sola y el cuadrante."
+    },
+    {
+     "nv": "A",
+     "q": "La temperatura de un cuarto de servidores varía entre 14 °C (mínimo a las 5:00) y 28 °C (máximo a las 17:00), con ciclo de 24 h. Modela T(t) con t en horas.",
+     "pasos": [
+      "<b>Línea media.</b> \\(D=\\tfrac{28+14}{2}=21\\).",
+      "<b>Amplitud.</b> \\(A=\\tfrac{28-14}{2}=7\\).",
+      "<b>Frecuencia.</b> \\(B=\\tfrac{2\\pi}{24}=\\tfrac{\\pi}{12}\\).",
+      "<b>Fase.</b> El mínimo ocurre en \\(t=5\\); \\(-\\cos\\) empieza en su mínimo, así que se usa \\(-7\\cos\\big(\\tfrac{\\pi}{12}(t-5)\\big)\\).",
+      "<b>Comprueba.</b> \\(T(5)=21-7=14\\) y \\(T(17)=21-7\\cos\\pi=28\\)."
+     ],
+     "r": "\\(T(t)=21-7\\cos\\!\\left(\\tfrac{\\pi}{12}(t-5)\\right)\\)",
+     "fin": "Construir un modelo periódico a partir de datos reales."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué cuadrante se cumple \\(\\sin t\\gt0\\) y \\(\\tan t\\lt0\\)?",
+     "r": "Cuadrante II."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\sin\\left(-\\tfrac{\\pi}{4}\\right)\\).",
+     "r": "\\(-\\tfrac{\\sqrt2}{2}\\) (el seno es impar)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el periodo y las asíntotas de \\(y=\\tan2x\\).",
+     "r": "Periodo \\(\\tfrac{\\pi}{2}\\); asíntotas en \\(x=\\tfrac{\\pi}{4}+\\tfrac{k\\pi}{2}\\), con \\(k\\) entero."
+    },
+    {
+     "nv": "I",
+     "q": "Para \\(y=-2\\cos(\\pi x+\\pi)-3\\), halla amplitud, periodo, desfase y rango.",
+     "r": "Amplitud 2 (reflejada), periodo 2, desfase 1 a la izquierda, rango [−5, −1]."
+    },
+    {
+     "nv": "A",
+     "q": "La red eléctrica de Guatemala entrega 120 V RMS a 60 Hz. Escribe el voltaje como función senoidal del tiempo.",
+     "r": "\\(V_p=120\\sqrt2\\approx169.7\\) V; \\(v(t)\\approx169.7\\sin(120\\pi t)\\), periodo \\(\\tfrac1{60}\\) s."
+    }
+   ]
+  },
+  {
+   "titulo": "Trigonometría analítica",
+   "intro": "Las identidades son igualdades que se cumplen para todo valor permitido. Sirven para simplificar, demostrar y resolver ecuaciones trigonométricas.",
+   "conceptos": [
+    {
+     "n": "Identidades fundamentales",
+     "e": "Recíprocas: \\(\\csc x=\\tfrac{1}{\\sin x}\\), \\(\\sec x=\\tfrac{1}{\\cos x}\\), \\(\\cot x=\\tfrac{1}{\\tan x}\\). Cociente: \\(\\tan x=\\tfrac{\\sin x}{\\cos x}\\). Pitagóricas: \\(\\sin^2x+\\cos^2x=1\\), \\(1+\\tan^2x=\\sec^2x\\), \\(1+\\cot^2x=\\csc^2x\\).",
+     "f": "\\sin^2x+\\cos^2x=1\\qquad 1+\\tan^2x=\\sec^2x\\qquad 1+\\cot^2x=\\csc^2x",
+     "u": [
+      "Simplificación de expresiones en física y en cálculo de integrales.",
+      "Reemplazan expresiones complicadas por otras equivalentes más simples.",
+      "Antes de derivar, integrar o resolver.",
+      "Pasa todo a seno y coseno y simplifica."
+     ]
+    },
+    {
+     "n": "Demostración de identidades",
+     "e": "Se trabaja un solo lado (el más complicado) hasta llegar al otro. Estrategias: pasar a seno y coseno, factorizar, sumar fracciones, multiplicar por el conjugado y usar las pitagóricas.",
+     "u": [
+      "Verificación de fórmulas en ingeniería y deducciones en física.",
+      "Entrena el manejo algebraico que luego exige Cálculo II en integrales trigonométricas.",
+      "Cuando te piden probar que dos expresiones son iguales.",
+      "Elige el lado más complejo y transfórmalo paso a paso."
+     ]
+    },
+    {
+     "n": "Fórmulas de suma, resta y ángulo doble",
+     "e": "Permiten calcular valores exactos de ángulos como 15° o 75° y reescribir productos de funciones.",
+     "f": "\\begin{aligned}\\sin(a\\pm b)&=\\sin a\\cos b\\pm\\cos a\\sin b\\\\ \\cos(a\\pm b)&=\\cos a\\cos b\\mp\\sin a\\sin b\\\\ \\sin2x&=2\\sin x\\cos x\\\\ \\cos2x&=\\cos^2x-\\sin^2x=2\\cos^2x-1=1-2\\sin^2x\\end{aligned}",
+     "u": [
+      "Modulación de señales en telecomunicaciones, rotación de coordenadas, óptica.",
+      "Descomponen ángulos difíciles en conocidos y convierten productos en sumas.",
+      "Con ángulos que son suma o diferencia de notables, o con 2x.",
+      "Escribe el ángulo como suma de notables y aplica la fórmula."
+     ]
+    },
+    {
+     "n": "Fórmulas producto-suma y suma-producto",
+     "e": "Convierten productos en sumas y viceversa, algo muy usado en análisis de señales.",
+     "f": "\\sin A\\sin B=\\tfrac12[\\cos(A-B)-\\cos(A+B)]\\qquad \\cos A\\cos B=\\tfrac12[\\cos(A-B)+\\cos(A+B)]\\qquad \\sin A\\cos B=\\tfrac12[\\sin(A+B)+\\sin(A-B)]",
+     "u": [
+      "Modulación AM, interferencia de ondas, batidos en acústica.",
+      "Multiplicar dos ondas produce la suma de dos frecuencias nuevas.",
+      "Cuando aparece un producto de senos o cosenos.",
+      "Identifica A y B y sustituye en la fórmula correspondiente."
+     ]
+    },
+    {
+     "n": "Funciones trigonométricas inversas",
+     "e": "Para invertir se restringe el dominio: \\(\\arcsin x\\in[-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}]\\), \\(\\arccos x\\in[0,\\pi]\\), \\(\\arctan x\\in(-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2})\\). Devuelven el ángulo cuyo seno, coseno o tangente es \\(x\\).",
+     "u": [
+      "Calcular ángulos a partir de medidas: inclinación de una rampa, dirección en robótica, atan2 en programación.",
+      "Recuperan el ángulo cuando solo conoces las razones.",
+      "Cuando la incógnita es un ángulo.",
+      "Aplica la inversa y revisa que el resultado esté en el rango permitido."
+     ]
+    },
+    {
+     "n": "Ecuaciones trigonométricas",
+     "e": "Se despeja la función trigonométrica (factorizando o con identidades), se halla el ángulo de referencia y se ubican todas las soluciones del intervalo pedido usando los cuadrantes y la periodicidad.",
+     "u": [
+      "Encontrar instantes en que una señal alcanza un valor, sincronización de ciclos, mecanismos.",
+      "Responden “¿cuándo ocurre?” en fenómenos periódicos.",
+      "Cuando la incógnita está dentro de una función trigonométrica.",
+      "Reduce a una sola función, factoriza, resuelve cada factor en el intervalo."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Simplifica \\(\\dfrac{\\sin x\\sec x}{\\tan x}\\).",
+     "pasos": [
+      "<b>Pasa a seno y coseno.</b> \\(\\dfrac{\\sin x\\cdot\\frac{1}{\\cos x}}{\\frac{\\sin x}{\\cos x}}\\).",
+      "<b>Simplifica.</b> Numerador y denominador son ambos \\(\\tfrac{\\sin x}{\\cos x}\\)."
+     ],
+     "r": "1",
+     "fin": "Ver que pasar a seno y coseno es la estrategia de arranque más segura."
+    },
+    {
+     "nv": "I",
+     "q": "Demuestra que \\((1-\\cos^2x)(1+\\cot^2x)=1\\).",
+     "pasos": [
+      "<b>Primer factor.</b> \\(1-\\cos^2x=\\sin^2x\\).",
+      "<b>Segundo factor.</b> \\(1+\\cot^2x=\\csc^2x\\).",
+      "<b>Multiplica.</b> \\(\\sin^2x\\cdot\\csc^2x=\\sin^2x\\cdot\\tfrac{1}{\\sin^2x}=1\\)."
+     ],
+     "r": "Se cumple la identidad.",
+     "fin": "Reconocer las identidades pitagóricas dentro de expresiones."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el valor exacto de \\(\\cos75^\\circ\\).",
+     "pasos": [
+      "<b>Descompón.</b> \\(75^\\circ=45^\\circ+30^\\circ\\).",
+      "<b>Aplica la fórmula.</b> \\(\\cos45^\\circ\\cos30^\\circ-\\sin45^\\circ\\sin30^\\circ\\).",
+      "<b>Sustituye.</b> \\(\\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2}-\\tfrac{\\sqrt2}{2}\\cdot\\tfrac12\\).",
+      "<b>Simplifica.</b> \\(\\tfrac{\\sqrt6-\\sqrt2}{4}\\approx0.2588\\)."
+     ],
+     "r": "\\(\\dfrac{\\sqrt6-\\sqrt2}{4}\\)",
+     "fin": "Obtener valores exactos de ángulos no notables."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve \\(2\\sin^2x-\\sin x-1=0\\) en \\([0,2\\pi)\\).",
+     "pasos": [
+      "<b>Trata como cuadrática.</b> Con \\(u=\\sin x\\): \\(2u^2-u-1=0\\Rightarrow(2u+1)(u-1)=0\\).",
+      "<b>Primer factor.</b> \\(\\sin x=1\\Rightarrow x=\\tfrac{\\pi}{2}\\).",
+      "<b>Segundo factor.</b> \\(\\sin x=-\\tfrac12\\): referencia \\(\\tfrac{\\pi}{6}\\), seno negativo en III y IV.",
+      "<b>Ubica.</b> \\(x=\\pi+\\tfrac{\\pi}{6}=\\tfrac{7\\pi}{6}\\) y \\(x=2\\pi-\\tfrac{\\pi}{6}=\\tfrac{11\\pi}{6}\\)."
+     ],
+     "r": "\\(x=\\tfrac{\\pi}{2},\\ \\tfrac{7\\pi}{6},\\ \\tfrac{11\\pi}{6}\\)",
+     "fin": "Combinar factorización y cuadrantes para no perder soluciones."
+    },
+    {
+     "nv": "A",
+     "q": "Calcula el valor exacto de \\(\\sin\\!\\left(2\\arcsin\\tfrac35\\right)\\).",
+     "pasos": [
+      "<b>Nombra el ángulo.</b> \\(\\theta=\\arcsin\\tfrac35\\), con \\(\\theta\\in[-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}]\\) y \\(\\sin\\theta=\\tfrac35\\).",
+      "<b>Coseno del ángulo.</b> \\(\\cos\\theta=\\sqrt{1-\\tfrac{9}{25}}=\\tfrac45\\) (positivo en ese rango).",
+      "<b>Ángulo doble.</b> \\(\\sin2\\theta=2\\sin\\theta\\cos\\theta=2\\cdot\\tfrac35\\cdot\\tfrac45\\)."
+     ],
+     "r": "\\(\\tfrac{24}{25}\\)",
+     "fin": "Combinar funciones inversas con identidades, tema frecuente en Cálculo."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\arccos\\left(-\\tfrac12\\right)\\).",
+     "r": "\\(\\tfrac{2\\pi}{3}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Halla el valor exacto de \\(\\sin15^\\circ\\).",
+     "r": "\\(\\sin(45^\\circ-30^\\circ)=\\tfrac{\\sqrt6-\\sqrt2}{4}\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(\\cos2x=\\cos x\\) en \\([0,2\\pi)\\).",
+     "r": "\\((2\\cos x+1)(\\cos x-1)=0\\Rightarrow x=0,\\ \\tfrac{2\\pi}{3},\\ \\tfrac{4\\pi}{3}\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe \\(\\sin5x\\,\\sin3x\\) como suma o resta.",
+     "r": "\\(\\tfrac12[\\cos2x-\\cos8x]\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Demuestra que \\(\\tan x+\\cot x=2\\csc2x\\).",
+     "r": "\\(\\tfrac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\tfrac{1}{\\sin x\\cos x}=\\tfrac{2}{\\sin2x}=2\\csc2x\\)."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

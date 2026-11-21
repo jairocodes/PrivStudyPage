@@ -1,0 +1,657 @@
+{
+ "slug": "desarrollo-humano-profesional",
+ "titulo": "Desarrollo Humano y Profesional",
+ "meta": "Ciclo 1, código 001, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "\\text{Siembra}\\ \\Rightarrow\\ \\text{Cosecha}",
+ "firma_nota": "La ley de la siembra y la cosecha: el eje de los ocho principios del curso.",
+ "lead": "Principios y valores para la vida y el trabajo profesional, desde la filosofía institucional de la UMG: el reto del cambio, la siembra y la cosecha y ocho principios (planeación, trabajo duro, conciencia financiera, liderazgo, dominio propio, generosidad, perdón y moralidad). Los 12 temas del programa están organizados en 4 secciones con cuestionario.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Desarrollo.pdf",
+ "como": "Cada sección trae conceptos con su aplicación en la vida profesional y un cuestionario de 10 preguntas de opción múltiple, muchas con casos del trabajo en sistemas. Al responder verás al instante si acertaste y la explicación.",
+ "temas": [
+  {
+   "titulo": "El cambio, los principios y la siembra y la cosecha",
+   "intro": "Temas 1 a 3 y 12 del programa: el shock del presente, introducción a principios y valores, la ley de la siembra y la cosecha y el reto al cambio.",
+   "conceptos": [
+    {
+     "n": "El shock del presente y el reto al cambio",
+     "e": [
+      "El cambio acelerado (tecnológico, social, laboral) genera desorientación y estrés. La respuesta puede ser <b>reactiva</b> (sentirse víctima de las circunstancias) o <b>proactiva</b> (asumir responsabilidad por la propia respuesta y adaptarse). El curso abre y cierra con este reto."
+     ],
+     "u": [
+      "Actualizarse ante nuevas tecnologías, migraciones de sistemas, cambios de empleo.",
+      "En sistemas, lo que se sabe hoy queda obsoleto pronto.",
+      "Ante cualquier cambio en el trabajo o la vida.",
+      "Identifica qué controlas y actúa sobre eso."
+     ]
+    },
+    {
+     "n": "Principios y valores",
+     "e": [
+      "Un <b>principio</b> es una verdad universal y permanente que produce consecuencias predecibles, se respete o no. Un <b>valor</b> es la importancia que una persona da a algo y guía su conducta; los valores cambian entre personas, los principios no."
+     ],
+     "u": [
+      "Decisiones éticas en el trabajo, cultura de un equipo.",
+      "Dan estabilidad a las decisiones en medio del cambio.",
+      "Al enfrentar dilemas.",
+      "Revisa si tu decisión respeta principios, no solo preferencias."
+     ]
+    },
+    {
+     "n": "La ley de la siembra y la cosecha",
+     "e": [
+      "Los resultados son consecuencia de decisiones y hábitos acumulados: se cosecha lo que se siembra, más de lo que se siembra y después de sembrar. Aplica a la carrera, las finanzas, la salud y las relaciones."
+     ],
+     "u": [
+      "Constancia en el estudio, reputación profesional, calidad del código.",
+      "Explica por qué los atajos se pagan después.",
+      "Al elegir hábitos de largo plazo.",
+      "Piensa qué cosecha producirá cada decisión de hoy."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Según el curso, un principio…",
+     "ops": [
+      "Es una verdad universal con consecuencias predecibles",
+      "Cambia según la persona",
+      "Es una moda",
+      "Depende de la ley vigente"
+     ],
+     "ok": 0,
+     "r": "Los valores varían; los principios no."
+    },
+    {
+     "nv": "B",
+     "q": "Ante un cambio de tecnología en el trabajo, la actitud proactiva es…",
+     "ops": [
+      "Quejarse del cambio",
+      "Esperar a que otro lo resuelva",
+      "Renunciar",
+      "Aprender la nueva herramienta y proponer cómo aprovecharla"
+     ],
+     "ok": 3,
+     "r": "Asume responsabilidad por la propia respuesta."
+    },
+    {
+     "nv": "B",
+     "q": "La ley de la siembra y la cosecha dice que…",
+     "ops": [
+      "Se cosecha lo que se siembra, más de lo que se siembra y después de sembrar",
+      "Los resultados dependen solo de la suerte",
+      "Se cosecha de inmediato",
+      "La cosecha no depende de la siembra"
+     ],
+     "ok": 0,
+     "r": "Los resultados son consecuencia de decisiones y hábitos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué diferencia hay entre principio y valor?",
+     "ops": [
+      "Ninguna",
+      "El principio es personal",
+      "El valor es personal y puede cambiar; el principio es universal",
+      "Los valores son leyes"
+     ],
+     "ok": 2,
+     "r": "Por eso conviene que los valores se alineen con principios."
+    },
+    {
+     "nv": "I",
+     "q": "“El shock del presente” se refiere a…",
+     "ops": [
+      "Un accidente laboral",
+      "La desorientación que produce el ritmo acelerado del cambio",
+      "La crisis económica",
+      "Un virus informático"
+     ],
+     "ok": 1,
+     "r": "Es el punto de partida del curso."
+    },
+    {
+     "nv": "I",
+     "q": "Un estudiante que deja todo para el último día y reprueba ilustra…",
+     "ops": [
+      "La mala suerte",
+      "El dominio propio exitoso",
+      "La generosidad",
+      "La siembra y la cosecha"
+     ],
+     "ok": 3,
+     "r": "Cosecha la consecuencia de su hábito."
+    },
+    {
+     "nv": "I",
+     "q": "Saltarse las pruebas para entregar más rápido un sistema es una siembra que suele cosechar…",
+     "ops": [
+      "Más reconocimiento a largo plazo",
+      "Errores en producción y pérdida de confianza",
+      "Nada",
+      "Menos trabajo futuro"
+     ],
+     "ok": 1,
+     "r": "Los atajos se pagan después, y con intereses."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué la cosecha llega “después” de sembrar y qué implica para la carrera profesional?",
+     "ops": [
+      "Porque el esfuerzo nunca rinde",
+      "Porque el jefe decide",
+      "Porque los resultados de hábitos como estudiar requieren tiempo; implica perseverar aunque no se vean resultados inmediatos",
+      "No implica nada"
+     ],
+     "ok": 2,
+     "r": "La constancia se recompensa a mediano y largo plazo."
+    },
+    {
+     "nv": "A",
+     "q": "En el reto al cambio, ¿qué distingue a una persona proactiva de una reactiva?",
+     "ops": [
+      "La edad",
+      "El salario",
+      "El título universitario",
+      "Que la proactiva actúa sobre lo que puede controlar; la reactiva culpa a las circunstancias"
+     ],
+     "ok": 3,
+     "r": "La diferencia está en la respuesta, no en las circunstancias."
+    },
+    {
+     "nv": "A",
+     "q": "Un equipo adopta una nueva metodología y un miembro se resiste diciendo “siempre lo hicimos así”. Según el curso, ¿qué le ayudaría?",
+     "ops": [
+      "Ignorar el cambio",
+      "Pedir que se cancele",
+      "Trabajar en secreto a su manera",
+      "Entender el propósito del cambio y enfocarse en cómo adaptarse y aportar"
+     ],
+     "ok": 3,
+     "r": "Aceptar el reto del cambio con una respuesta proactiva."
+    }
+   ]
+  },
+  {
+   "titulo": "Planeación, trabajo duro y conciencia financiera",
+   "intro": "Principios I a III del programa: planeación efectiva, trabajo duro y conciencia financiera.",
+   "conceptos": [
+    {
+     "n": "Planeación efectiva",
+     "e": [
+      "Definir metas claras, priorizar lo importante sobre lo urgente, organizar el tiempo y revisar el avance. Sin plan, el día lo dictan las interrupciones."
+     ],
+     "u": [
+      "Planificar sprints, estudiar para los privados, organizar la semana.",
+      "Multiplica lo que se logra con el mismo tiempo.",
+      "Al iniciar cada semana o proyecto.",
+      "Escribe metas, divídelas en tareas y asígnales tiempo."
+     ]
+    },
+    {
+     "n": "Trabajo duro",
+     "e": [
+      "Diligencia, constancia y excelencia: hacer bien el trabajo aunque nadie supervise y no conformarse con lo mínimo. El talento sin esfuerzo rinde poco."
+     ],
+     "u": [
+      "Calidad del código, documentación, atención al usuario.",
+      "Construye reputación y oportunidades.",
+      "En cada tarea.",
+      "Termina lo que empiezas con el estándar más alto posible."
+     ]
+    },
+    {
+     "n": "Conciencia financiera",
+     "e": [
+      "Administrar los recursos con responsabilidad: presupuestar, ahorrar, evitar deudas de consumo innecesarias y vivir por debajo de los ingresos. También implica cuidar los recursos de la empresa como propios."
+     ],
+     "u": [
+      "Finanzas personales, presupuesto de proyectos, uso de recursos institucionales.",
+      "Las deudas mal manejadas limitan las decisiones.",
+      "Con cada ingreso y cada gasto.",
+      "Haz un presupuesto mensual y separa el ahorro primero."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "La planeación efectiva prioriza…",
+     "ops": [
+      "Lo urgente siempre",
+      "Lo importante, aunque no sea urgente",
+      "Lo más fácil",
+      "Lo que pida cualquiera"
+     ],
+     "ok": 1,
+     "r": "Lo importante y no urgente previene crisis futuras."
+    },
+    {
+     "nv": "B",
+     "q": "El principio del trabajo duro implica…",
+     "ops": [
+      "Diligencia y excelencia aunque nadie supervise",
+      "Trabajar solo cuando te ven",
+      "Trabajar sin descanso nunca",
+      "Hacer el mínimo"
+     ],
+     "ok": 0,
+     "r": "La calidad no depende de la supervisión."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es una práctica de conciencia financiera?",
+     "ops": [
+      "Gastar todo el salario",
+      "Hacer un presupuesto y ahorrar una parte fija de los ingresos",
+      "Usar la tarjeta de crédito para todo",
+      "Prestar sin registro"
+     ],
+     "ok": 1,
+     "r": "Planear el dinero antes de gastarlo."
+    },
+    {
+     "nv": "I",
+     "q": "Si ahorras Q500 al mes, ¿cuánto acumulas en un año sin intereses?",
+     "ops": [
+      "Q6,000",
+      "Q5,000",
+      "Q500",
+      "Q12,000"
+     ],
+     "ok": 0,
+     "r": "500 × 12 = 6,000."
+    },
+    {
+     "nv": "I",
+     "q": "Un programador revisa su código y escribe pruebas aunque el cliente no lo pidió. Aplica el principio de…",
+     "ops": [
+      "Trabajo duro (excelencia)",
+      "Generosidad",
+      "Perdón",
+      "Conciencia financiera"
+     ],
+     "ok": 0,
+     "r": "Busca la calidad más allá del mínimo."
+    },
+    {
+     "nv": "I",
+     "q": "Para preparar los privados con planeación efectiva conviene…",
+     "ops": [
+      "Distribuir los temas en un calendario con metas semanales y repasos",
+      "Estudiar todo la noche anterior",
+      "Esperar a sentirse motivado",
+      "Estudiar solo lo que guste"
+     ],
+     "ok": 0,
+     "r": "Metas, calendario y revisión periódica."
+    },
+    {
+     "nv": "I",
+     "q": "Usar el equipo de la empresa para fines personales sin autorización va contra…",
+     "ops": [
+      "La conciencia financiera y la moralidad",
+      "El trabajo duro",
+      "La planeación",
+      "El liderazgo"
+     ],
+     "ok": 0,
+     "r": "Los recursos ajenos deben cuidarse como propios."
+    },
+    {
+     "nv": "A",
+     "q": "Una deuda de tarjeta de Q10,000 al 36 % anual sin abonos genera en un año, en interés simple aproximado…",
+     "ops": [
+      "Q360",
+      "Q36",
+      "Q3,600",
+      "Q1,000"
+     ],
+     "ok": 2,
+     "r": "10,000 × 0.36 = 3,600: por eso se evitan deudas de consumo."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué relación hay entre trabajo duro y la ley de la siembra y la cosecha?",
+     "ops": [
+      "Ninguna",
+      "El trabajo duro garantiza resultados inmediatos",
+      "El esfuerzo constante es la siembra que produce reputación y oportunidades",
+      "Se contradicen"
+     ],
+     "ok": 2,
+     "r": "La diligencia acumulada da frutos con el tiempo."
+    },
+    {
+     "nv": "A",
+     "q": "Un líder de proyecto que planifica, trabaja con excelencia y cuida el presupuesto…",
+     "ops": [
+      "Integra los tres principios de esta sección",
+      "Solo aplica un principio",
+      "No aplica ninguno",
+      "Aplica solo el perdón"
+     ],
+     "ok": 0,
+     "r": "Planeación, trabajo duro y conciencia financiera se refuerzan entre sí."
+    }
+   ]
+  },
+  {
+   "titulo": "Liderazgo de calidad y dominio propio",
+   "intro": "Principios IV y V del programa: liderazgo de calidad y dominio propio.",
+   "conceptos": [
+    {
+     "n": "Liderazgo de calidad",
+     "e": [
+      "Liderar con el ejemplo y como servicio: influir para que otros crezcan y logren metas comunes, con integridad, visión y cuidado de las personas. Un líder no se mide por su cargo sino por su influencia."
+     ],
+     "u": [
+      "Coordinar equipos de desarrollo o soporte, mentorías.",
+      "Los equipos siguen a quien da ejemplo.",
+      "Siempre que tengas influencia sobre otros.",
+      "Haz primero lo que pides y reconoce el trabajo ajeno."
+     ]
+    },
+    {
+     "n": "Dominio propio",
+     "e": [
+      "Controlar emociones, impulsos y hábitos: responder con calma bajo presión, posponer gratificaciones y cumplir compromisos aunque cueste. Es la base de los demás principios."
+     ],
+     "u": [
+      "Atender incidentes críticos, negociar con clientes difíciles, constancia en el estudio.",
+      "Las decisiones impulsivas suelen empeorar los problemas.",
+      "En situaciones de presión o tentación.",
+      "Haz una pausa antes de responder y vuelve a tus metas."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "El liderazgo de calidad se basa principalmente en…",
+     "ops": [
+      "El ejemplo y el servicio",
+      "El cargo",
+      "El miedo",
+      "El salario"
+     ],
+     "ok": 0,
+     "r": "La influencia se gana con el ejemplo."
+    },
+    {
+     "nv": "B",
+     "q": "El dominio propio consiste en…",
+     "ops": [
+      "Dominar a otros",
+      "No sentir emociones",
+      "Controlar las propias emociones, impulsos y hábitos",
+      "Hacer lo que uno quiere"
+     ],
+     "ok": 2,
+     "r": "Gobernarse a uno mismo."
+    },
+    {
+     "nv": "B",
+     "q": "Un líder que llega tarde y exige puntualidad…",
+     "ops": [
+      "Lidera con el ejemplo",
+      "Aplica el dominio propio",
+      "Pierde credibilidad",
+      "Es eficiente"
+     ],
+     "ok": 2,
+     "r": "El ejemplo pesa más que las palabras."
+    },
+    {
+     "nv": "I",
+     "q": "En un incidente crítico con el sistema caído y el cliente molesto, el dominio propio implica…",
+     "ops": [
+      "Responder con enojo",
+      "Culpar al equipo",
+      "Desconectarse",
+      "Mantener la calma, informar con claridad y concentrarse en resolver"
+     ],
+     "ok": 3,
+     "r": "La calma permite pensar y resolver."
+    },
+    {
+     "nv": "I",
+     "q": "Posponer una compra impulsiva para cumplir una meta de ahorro es…",
+     "ops": [
+      "Generosidad",
+      "Dominio propio",
+      "Planeación sin ejecución",
+      "Moralidad"
+     ],
+     "ok": 1,
+     "r": "Postergar la gratificación inmediata."
+    },
+    {
+     "nv": "I",
+     "q": "Un líder de calidad, cuando el equipo logra un éxito…",
+     "ops": [
+      "Se atribuye el mérito",
+      "Reconoce públicamente el trabajo del equipo",
+      "No dice nada",
+      "Pide más trabajo de inmediato"
+     ],
+     "ok": 1,
+     "r": "El liderazgo como servicio da el crédito al equipo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué el dominio propio es base de los demás principios?",
+     "ops": [
+      "Porque es el más fácil",
+      "Porque lo exige la ley",
+      "No lo es",
+      "Porque sin controlar impulsos no se sostiene la planeación, el ahorro ni la integridad"
+     ],
+     "ok": 3,
+     "r": "Permite cumplir lo que uno decide."
+    },
+    {
+     "nv": "A",
+     "q": "Un compañero critica tu código frente a todos de forma injusta. La respuesta coherente con el dominio propio y el liderazgo es…",
+     "ops": [
+      "Contraatacar en el momento",
+      "Agradecer, revisar los puntos válidos y conversar en privado los que no lo son",
+      "Renunciar",
+      "Ignorarlo para siempre"
+     ],
+     "ok": 1,
+     "r": "Calma, apertura y diálogo privado."
+    },
+    {
+     "nv": "A",
+     "q": "Un jefe de TI asigna tareas difíciles y además capacita y acompaña a su equipo. Esto refleja…",
+     "ops": [
+      "Liderazgo de servicio que desarrolla a las personas",
+      "Liderazgo autoritario",
+      "Falta de dominio propio",
+      "Conciencia financiera"
+     ],
+     "ok": 0,
+     "r": "Busca el crecimiento del equipo, no solo el resultado."
+    },
+    {
+     "nv": "A",
+     "q": "Estudiar para los privados mientras amigos salen de fiesta cada fin de semana requiere sobre todo…",
+     "ops": [
+      "Dominio propio y planeación",
+      "Generosidad",
+      "Perdón",
+      "Liderazgo de otros"
+     ],
+     "ok": 0,
+     "r": "Mantener el plan pese a las tentaciones."
+    }
+   ]
+  },
+  {
+   "titulo": "Generosidad, perdón y moralidad",
+   "intro": "Principios VI a VIII del programa: generosidad, perdón y moralidad.",
+   "conceptos": [
+    {
+     "n": "Generosidad",
+     "e": [
+      "Dar tiempo, conocimiento y recursos sin esperar algo a cambio. En lo profesional: compartir conocimiento, ser mentor, apoyar a compañeros y a la comunidad."
+     ],
+     "u": [
+      "Documentar, enseñar a compañeros, contribuir a proyectos de código abierto.",
+      "Fortalece equipos y comunidades.",
+      "Cuando alguien necesita lo que sabes o tienes.",
+      "Comparte lo que sabes sin condicionar."
+     ]
+    },
+    {
+     "n": "Perdón",
+     "e": [
+      "Soltar el resentimiento por una ofensa para restaurar relaciones. No significa justificar la falta ni eliminar sus consecuencias, sino no cargar el rencor."
+     ],
+     "u": [
+      "Resolver conflictos en equipos, relaciones con clientes y proveedores.",
+      "El rencor deteriora el trabajo en equipo.",
+      "Después de un conflicto.",
+      "Separa a la persona del error y busca la solución."
+     ]
+    },
+    {
+     "n": "Moralidad",
+     "e": [
+      "Actuar con rectitud aunque nadie observe: honestidad, integridad y respeto a la ley. En sistemas incluye la confidencialidad de los datos, el respeto a las licencias y no falsear información."
+     ],
+     "u": [
+      "Manejo de datos personales, auditorías, licencias de software.",
+      "La confianza es el activo principal de un profesional de TI.",
+      "En cada decisión, sobre todo sin supervisión.",
+      "Pregúntate si lo harías igual si todos lo supieran."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "La generosidad en lo profesional incluye…",
+     "ops": [
+      "Ocultar lo que sabes para ser indispensable",
+      "Cobrar por cada consejo",
+      "Compartir conocimiento y apoyar a compañeros",
+      "Trabajar solo"
+     ],
+     "ok": 2,
+     "r": "Dar sin esperar algo a cambio."
+    },
+    {
+     "nv": "B",
+     "q": "Perdonar significa…",
+     "ops": [
+      "Soltar el rencor para restaurar la relación",
+      "Justificar la ofensa",
+      "Olvidar todo y no aprender",
+      "Fingir que nada pasó"
+     ],
+     "ok": 0,
+     "r": "No elimina las consecuencias, pero libera el resentimiento."
+    },
+    {
+     "nv": "B",
+     "q": "La moralidad implica actuar con rectitud…",
+     "ops": [
+      "Solo cuando te observan",
+      "Solo si conviene",
+      "Solo en la iglesia",
+      "Aunque nadie observe"
+     ],
+     "ok": 3,
+     "r": "La integridad no depende del público."
+    },
+    {
+     "nv": "I",
+     "q": "Usar software sin licencia en la empresa para ahorrar dinero viola principalmente…",
+     "ops": [
+      "La generosidad",
+      "El perdón",
+      "La moralidad",
+      "La planeación"
+     ],
+     "ok": 2,
+     "r": "Es deshonesto e ilegal."
+    },
+    {
+     "nv": "I",
+     "q": "Un compañero borró por error una base de datos y luego pidió disculpas. Coherente con el perdón es…",
+     "ops": [
+      "Aceptar la disculpa, restaurar desde el respaldo y mejorar el procedimiento",
+      "Exponerlo ante todos",
+      "No volver a hablarle",
+      "Pedir su despido de inmediato"
+     ],
+     "ok": 0,
+     "r": "Se resuelve el problema y se restaura la relación."
+    },
+    {
+     "nv": "I",
+     "q": "Escribir una buena documentación para que otros entiendan tu sistema es un acto de…",
+     "ops": [
+      "Dominio propio",
+      "Generosidad",
+      "Conciencia financiera",
+      "Perdón"
+     ],
+     "ok": 1,
+     "r": "Compartes conocimiento útil para otros."
+    },
+    {
+     "nv": "I",
+     "q": "Tienes acceso a datos personales de ciudadanos por tu trabajo. La moralidad exige…",
+     "ops": [
+      "Usarlos solo para fines autorizados y protegerlos",
+      "Consultarlos por curiosidad",
+      "Compartirlos con amigos",
+      "Venderlos"
+     ],
+     "ok": 0,
+     "r": "La confidencialidad es un deber profesional."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué perdonar no significa eliminar las consecuencias de una falta?",
+     "ops": [
+      "Porque el perdón no existe",
+      "Porque siempre hay que castigar",
+      "Porque se puede soltar el rencor y a la vez aplicar medidas para que no se repita",
+      "Porque las consecuencias son el perdón"
+     ],
+     "ok": 2,
+     "r": "Perdón y responsabilidad pueden coexistir."
+    },
+    {
+     "nv": "A",
+     "q": "Un cliente ofrece una “comisión” personal para que le des prioridad indebida. Según el principio de moralidad…",
+     "ops": [
+      "Aceptas si nadie se entera",
+      "La rechazas y sigues el procedimiento normal",
+      "Aceptas y lo repartes con el equipo",
+      "Pides más"
+     ],
+     "ok": 1,
+     "r": "Es soborno: la integridad no se negocia."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cómo se relaciona la generosidad con la ley de la siembra y la cosecha?",
+     "ops": [
+      "Compartir conocimiento siembra confianza y colaboración que regresan con el tiempo",
+      "No se relacionan",
+      "La generosidad empobrece",
+      "Solo aplica al dinero"
+     ],
+     "ok": 0,
+     "r": "Lo que se da construye relaciones y reputación."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

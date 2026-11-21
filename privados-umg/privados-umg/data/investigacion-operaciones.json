@@ -1,0 +1,760 @@
+{
+ "slug": "investigacion-operaciones",
+ "titulo": "Investigación de Operaciones",
+ "meta": "Ciclo 6, código 026, asignado al bloque Probabilidad y estadística",
+ "firma": "\\max Z=\\mathbf c^T\\mathbf x\\quad\\text{s.a. }A\\mathbf x\\le\\mathbf b,\\ \\mathbf x\\ge\\mathbf 0",
+ "firma_nota": "Programación lineal: la mejor decisión posible dentro de los recursos disponibles.",
+ "lead": "Modelos matemáticos para decidir mejor: cuánto producir, cómo transportar, a quién asignar cada tarea, qué ruta tomar, cuándo terminar un proyecto y cuánto inventario mantener.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6InvestigacionOperaciones.pdf",
+ "temas": [
+  {
+   "titulo": "Programación lineal: modelo y método gráfico",
+   "intro": "Tema 1 del programa: construcción de modelos, solución gráfica de maximización y minimización y solución por computadora.",
+   "conceptos": [
+    {
+     "n": "Construcción del modelo",
+     "e": [
+      "Un modelo de PL tiene tres partes: <b>variables de decisión</b> (lo que se decide), <b>función objetivo</b> lineal (lo que se maximiza o minimiza) y <b>restricciones</b> lineales (recursos, demandas), más la no negatividad."
+     ],
+     "u": [
+      "Mezcla de productos, asignación de presupuesto, planificación de turnos, uso de servidores.",
+      "Convierte un problema de negocio en uno resoluble.",
+      "Cuando hay recursos limitados y un objetivo claro.",
+      "Define variables con unidades, escribe el objetivo y una restricción por recurso."
+     ]
+    },
+    {
+     "n": "Método gráfico",
+     "e": [
+      "Con dos variables se grafica cada restricción, se sombrea la región factible (un polígono convexo) y se evalúa el objetivo en los vértices: el óptimo siempre está en uno. Casos especiales: <b>múltiples óptimos</b> (objetivo paralelo a una restricción activa), <b>no acotado</b>, <b>no factible</b> y <b>degenerado</b>."
+     ],
+     "u": [
+      "Explicar decisiones con una gráfica, verificar resultados de software.",
+      "Da intuición geométrica de lo que hace el simplex.",
+      "Con dos variables de decisión.",
+      "Grafica, ubica vértices resolviendo sistemas 2 × 2 y evalúa Z en cada uno."
+     ]
+    },
+    {
+     "n": "Solución por computadora",
+     "e": [
+      "Excel Solver, LibreOffice, Python (<code>scipy.optimize.linprog</code>) o LINDO resuelven modelos con miles de variables. Reportan la solución, el valor óptimo, las holguras y los precios sombra (cuánto mejora Z por una unidad más de un recurso)."
+     ],
+     "u": [
+      "Planeación real en empresas, con cientos de variables.",
+      "El método gráfico no escala.",
+      "Con más de dos variables.",
+      "Escribe coeficientes en forma matricial y revisa el reporte de sensibilidad."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una empresa ensambla laptops estándar (x) y premium (y) con ganancia de Q40 y Q30. Cada una usa 1 h de ensamble (12 h disponibles); las estándar usan 2 h de pruebas y las premium 1 h (16 h disponibles). Plantea el modelo.",
+     "pasos": [
+      "<b>Variables.</b> \\(x,y\\): laptops de cada tipo por día.",
+      "<b>Objetivo.</b> \\(\\max Z=40x+30y\\).",
+      "<b>Restricciones.</b> \\(x+y\\le12\\) (ensamble), \\(2x+y\\le16\\) (pruebas), \\(x,y\\ge0\\)."
+     ],
+     "r": "\\(\\max Z=40x+30y\\) s.a. \\(x+y\\le12\\), \\(2x+y\\le16\\), \\(x,y\\ge0\\).",
+     "fin": "Traducir un enunciado a un modelo, el paso más evaluado."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve gráficamente el modelo anterior.",
+     "pasos": [
+      "<b>Vértices.</b> \\((0,0)\\), \\((8,0)\\), \\((0,12)\\) y la intersección de \\(x+y=12\\) con \\(2x+y=16\\): \\((4,8)\\).",
+      "<b>Evalúa.</b> \\(Z(8,0)=320\\), \\(Z(0,12)=360\\), \\(Z(4,8)=400\\).",
+      "<b>Óptimo.</b> El mayor valor."
+     ],
+     "r": "4 estándar y 8 premium, Z = Q400.",
+     "fin": "Aplicar el teorema de los vértices."
+    },
+    {
+     "nv": "I",
+     "q": "Minimiza \\(Z=3x+2y\\) con \\(x+y\\ge4\\), \\(x+3y\\ge6\\), \\(x,y\\ge0\\).",
+     "pasos": [
+      "<b>Región.</b> No acotada hacia arriba, pero con mínimo.",
+      "<b>Vértices.</b> \\((0,4)\\), \\((3,1)\\) y \\((6,0)\\).",
+      "<b>Evalúa.</b> 8, 11 y 18."
+     ],
+     "r": "\\((0,4)\\) con \\(Z=8\\).",
+     "fin": "Resolver minimizaciones con restricciones de “al menos”."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(\\max Z=2x+2y\\) y las mismas restricciones del ejercicio 1, ¿qué ocurre?",
+     "pasos": [
+      "<b>Evalúa.</b> \\(Z(0,12)=24\\), \\(Z(4,8)=24\\), \\(Z(8,0)=16\\).",
+      "<b>Empate.</b> El objetivo es paralelo a \\(x+y=12\\).",
+      "<b>Concluye.</b> Todo el segmento entre \\((0,12)\\) y \\((4,8)\\) es óptimo."
+     ],
+     "r": "Óptimos múltiples con Z = 24.",
+     "fin": "Reconocer casos especiales."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve el modelo del ejercicio 1 con Python.",
+     "pasos": [
+      "<b>Minimiza el negativo.</b> <code>linprog([-40, -30], A_ub=[[1,1],[2,1]], b_ub=[12,16])</code>.",
+      "<b>Resultado.</b> <code>x = [4, 8]</code>, <code>fun = -400</code>."
+     ],
+     "r": "Mismo óptimo: (4, 8), Z = 400.",
+     "fin": "Escalar a problemas reales con software."
+    },
+    {
+     "nv": "B",
+     "q": "En un problema de dieta, ¿qué serían las variables, el objetivo y las restricciones?",
+     "r": "Variables: cantidad de cada alimento. Objetivo: minimizar costo. Restricciones: mínimos de nutrientes."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ocurre con \\(\\max Z=x+y\\) s.a. \\(x-y\\le2\\), \\(x,y\\ge0\\)?",
+     "r": "No acotado: Z crece sin límite."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ocurre con \\(x+y\\le2\\) y \\(x+y\\ge5\\)?",
+     "r": "No factible: no hay región."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve \\(\\max Z=5x+4y\\) s.a. \\(6x+4y\\le24\\), \\(x+2y\\le6\\).",
+     "r": "\\((3,\\ 1.5)\\), \\(Z=21\\)."
+    },
+    {
+     "nv": "A",
+     "q": "En el ejercicio 1, si la ganancia de la estándar sube a Q60, ¿cambia el óptimo?",
+     "r": "Empatan (8, 0) y (4, 8) con Z = 480; por encima de Q60 el óptimo pasa a (8, 0)."
+    }
+   ]
+  },
+  {
+   "titulo": "Método simplex",
+   "intro": "Tema 2 del programa: forma estándar, soluciones básicas, variables no restringidas, maximización y minimización.",
+   "conceptos": [
+    {
+     "n": "Forma estándar y soluciones básicas",
+     "e": [
+      "Cada restricción \\(\\le\\) recibe una variable de <b>holgura</b> \\(+s\\) para volverse igualdad. Con \\(m\\) restricciones y \\(n\\) variables, una solución básica fija \\(n-m\\) variables en 0 (no básicas) y resuelve las demás. Cada vértice de la región es una solución básica factible."
+     ],
+     "u": [
+      "Es la representación que usan internamente todos los solvers.",
+      "Convierte la geometría en álgebra.",
+      "Antes de aplicar el simplex.",
+      "Agrega holguras y arma la tabla inicial."
+     ]
+    },
+    {
+     "n": "Algoritmo simplex",
+     "e": [
+      "(1) Tabla inicial con holguras como básicas. (2) <b>Entra</b> la variable con el coeficiente más negativo en el renglón Z (maximización). (3) <b>Sale</b> la de menor razón positiva lado derecho / coeficiente de la columna pivote. (4) Pivotea. (5) Repite hasta que no haya negativos en el renglón Z."
+     ],
+     "u": [
+      "Planeación con muchas variables en manufactura, logística y finanzas.",
+      "Recorre vértices mejorando siempre, sin evaluar todos.",
+      "Con más de dos variables.",
+      "Aplica la prueba de entrada, la de razón mínima y pivotea."
+     ]
+    },
+    {
+     "n": "Minimización y variables no restringidas",
+     "e": [
+      "Minimizar \\(Z\\) equivale a maximizar \\(-Z\\). Una variable que puede ser negativa se reemplaza por \\(x=x^+-x^-\\) con ambas no negativas."
+     ],
+     "u": [
+      "Minimizar costos o tiempos; variables como cambios de inventario que pueden ser negativos.",
+      "Lleva cualquier modelo a la forma que el simplex acepta.",
+      "Con objetivos de minimizar o variables libres.",
+      "Cambia el signo del objetivo o divide la variable."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Escribe en forma estándar: \\(\\max Z=3x_1+5x_2\\) s.a. \\(x_1\\le4\\), \\(2x_2\\le12\\), \\(3x_1+2x_2\\le18\\).",
+     "pasos": [
+      "<b>Holguras.</b> \\(x_1+s_1=4\\), \\(2x_2+s_2=12\\), \\(3x_1+2x_2+s_3=18\\).",
+      "<b>Renglón Z.</b> \\(Z-3x_1-5x_2=0\\).",
+      "<b>Solución inicial.</b> \\(x_1=x_2=0\\), \\(s=(4,12,18)\\)."
+     ],
+     "r": "Tres holguras y la solución básica inicial en el origen.",
+     "fin": "Preparar un modelo para el simplex."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve ese modelo con simplex.",
+     "pasos": [
+      "<b>Entra \\(x_2\\)</b> (−5). Razones: \\(12/2=6\\), \\(18/2=9\\): sale \\(s_2\\). Ahora \\(x_2=6\\), Z = 30.",
+      "<b>Renglón Z.</b> Queda −3 en \\(x_1\\): entra \\(x_1\\). Razones: \\(4/1=4\\), \\(6/3=2\\): sale \\(s_3\\).",
+      "<b>Pivotea.</b> \\(x_1=2\\), \\(x_2=6\\), \\(s_1=2\\).",
+      "<b>Prueba de optimalidad.</b> El renglón Z queda sin negativos."
+     ],
+     "r": "\\(x_1=2,\\ x_2=6,\\ Z=36\\).",
+     "fin": "Ejecutar el algoritmo completo."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve \\(\\max Z=2x+3y+4z\\) s.a. \\(3x+2y+z\\le10\\), \\(2x+5y+3z\\le15\\).",
+     "pasos": [
+      "<b>Entra z</b> (−4). Razones: \\(10/1=10\\), \\(15/3=5\\): sale \\(s_2\\).",
+      "<b>Nueva fila de z.</b> \\(z=5-\\tfrac23x-\\tfrac53y-\\tfrac13s_2\\).",
+      "<b>Renglón Z.</b> Coeficientes \\(\\tfrac23,\\ \\tfrac{11}3,\\ 0,\\ 0,\\ \\tfrac43\\): ninguno negativo."
+     ],
+     "r": "\\(x=0,\\ y=0,\\ z=5,\\ Z=20\\).",
+     "fin": "Resolver con tres variables, imposible gráficamente."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte a maximización: \\(\\min Z=4x_1+x_2\\).",
+     "pasos": [
+      "<b>Multiplica por −1.</b> \\(\\max W=-4x_1-x_2\\).",
+      "<b>Al final.</b> \\(Z_{\\min}=-W_{\\max}\\)."
+     ],
+     "r": "\\(\\max W=-4x_1-x_2\\), con \\(Z=-W\\).",
+     "fin": "Usar el mismo algoritmo para minimizar."
+    },
+    {
+     "nv": "B",
+     "q": "Si \\(x\\) puede ser negativa (cambio de inventario), ¿cómo se trata en el simplex?",
+     "pasos": [
+      "<b>Sustitución.</b> \\(x=x^+-x^-\\), con \\(x^+,x^-\\ge0\\).",
+      "<b>Interpretación.</b> Si al final \\(x^+=3\\) y \\(x^-=0\\), entonces \\(x=3\\)."
+     ],
+     "r": "\\(x=x^+-x^-\\)",
+     "fin": "Modelar variables libres."
+    },
+    {
+     "nv": "B",
+     "q": "Un modelo tiene 3 restricciones ≤ y 2 variables. ¿Cuántas holguras y cuántas variables básicas hay?",
+     "r": "3 holguras; 3 variables básicas en cada tabla."
+    },
+    {
+     "nv": "I",
+     "q": "En el renglón Z (maximización) hay −4, −7 y 2. ¿Qué variable entra?",
+     "r": "La de −7."
+    },
+    {
+     "nv": "I",
+     "q": "Las razones de la columna pivote son 5, −2 y 3. ¿Qué fila sale?",
+     "r": "La de razón 3 (menor positiva; las negativas se ignoran)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué indica un empate en la prueba de razón mínima?",
+     "r": "Degeneración: una básica quedará en 0 y puede haber ciclaje."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve con simplex \\(\\max Z=5x+4y\\) s.a. \\(6x+4y\\le24\\), \\(x+2y\\le6\\).",
+     "r": "\\(x=3,\\ y=1.5,\\ Z=21\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Variables artificiales: método de la M y dos fases",
+   "intro": "Tema 3 del programa: problemas con restricciones ≥ o =, método de la gran M y método de dos fases.",
+   "conceptos": [
+    {
+     "n": "Restricciones ≥ e igualdades",
+     "e": [
+      "Una restricción \\(\\ge\\) recibe una variable de <b>excedente</b> \\(-e\\) y una <b>artificial</b> \\(+A\\); una igualdad recibe solo artificial. Las artificiales dan una solución inicial, pero deben salir (valer 0) para que la solución sea factible."
+     ],
+     "u": [
+      "Demandas mínimas, contratos obligatorios, mezclas exactas.",
+      "El simplex necesita una base inicial y el origen ya no sirve.",
+      "Con restricciones ≥ o =.",
+      "Agrega excedentes y artificiales donde corresponda."
+     ]
+    },
+    {
+     "n": "Método de la gran M",
+     "e": [
+      "Penaliza las artificiales en el objetivo: \\(+MA\\) al minimizar y \\(-MA\\) al maximizar, con \\(M\\) muy grande. El simplex las expulsa por ser costosas. Si al final una artificial es positiva, el problema no es factible."
+     ],
+     "u": [
+      "Resolver modelos reales con mínimos obligatorios.",
+      "Integra la búsqueda de factibilidad y la optimización.",
+      "En cálculos a mano con pocas artificiales.",
+      "Elimina primero las M del renglón Z con operaciones de fila."
+     ]
+    },
+    {
+     "n": "Método de dos fases",
+     "e": [
+      "<b>Fase 1:</b> minimiza la suma de artificiales; si llega a 0, hay solución factible. <b>Fase 2:</b> elimina las artificiales y optimiza el objetivo original desde esa base. Evita trabajar con números enormes y es el que usa el software."
+     ],
+     "u": [
+      "Solvers comerciales.",
+      "Más estable numéricamente que la gran M.",
+      "En software o problemas grandes.",
+      "Resuelve la fase 1 y continúa con la tabla resultante."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué variables agregas a \\(x+2y\\le8\\), \\(x+y\\ge3\\) y \\(x-y=1\\)?",
+     "pasos": [
+      "<b>≤.</b> Holgura: \\(x+2y+s_1=8\\).",
+      "<b>≥.</b> Excedente y artificial: \\(x+y-e_2+A_2=3\\).",
+      "<b>=.</b> Solo artificial: \\(x-y+A_3=1\\)."
+     ],
+     "r": "\\(s_1\\); \\(e_2\\) y \\(A_2\\); \\(A_3\\).",
+     "fin": "Preparar cualquier modelo para el simplex."
+    },
+    {
+     "nv": "I",
+     "q": "Plantea con gran M: \\(\\min Z=2x_1+3x_2\\) s.a. \\(0.5x_1+0.25x_2\\le4\\), \\(x_1+3x_2\\ge20\\), \\(x_1+x_2=10\\).",
+     "pasos": [
+      "<b>Forma.</b> \\(0.5x_1+0.25x_2+s_1=4\\); \\(x_1+3x_2-e_2+A_2=20\\); \\(x_1+x_2+A_3=10\\).",
+      "<b>Objetivo penalizado.</b> \\(\\min Z=2x_1+3x_2+MA_2+MA_3\\).",
+      "<b>Solución del simplex.</b> \\(x_1=5\\), \\(x_2=5\\), artificiales en 0."
+     ],
+     "r": "\\(x_1=5,\\ x_2=5,\\ Z=25\\).",
+     "fin": "Penalizar artificiales correctamente."
+    },
+    {
+     "nv": "I",
+     "q": "Explica cómo resolverías el mismo problema por dos fases.",
+     "pasos": [
+      "<b>Fase 1.</b> \\(\\min W=A_2+A_3\\) con las mismas restricciones.",
+      "<b>Resultado.</b> \\(W=0\\): existe solución factible.",
+      "<b>Fase 2.</b> Se quitan las columnas artificiales y se optimiza \\(Z=2x_1+3x_2\\) desde esa base."
+     ],
+     "r": "Fase 1 da W = 0; la fase 2 llega a Z = 25.",
+     "fin": "Comprender el método que usa el software."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué pasa al aplicar la fase 1 a \\(x+y\\le2\\), \\(x+y\\ge5\\)?",
+     "pasos": [
+      "<b>Fase 1.</b> \\(\\min W=A_2\\) con \\(x+y+s_1=2\\) y \\(x+y-e_2+A_2=5\\).",
+      "<b>Mejor caso.</b> \\(x+y=2\\) deja \\(A_2=3\\gt0\\).",
+      "<b>Concluye.</b> No se puede anular la artificial."
+     ],
+     "r": "W = 3 > 0: el problema no es factible.",
+     "fin": "Detectar infactibilidad con el algoritmo."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve \\(\\min Z=x+y\\) s.a. \\(x+2y\\ge4\\), \\(3x+y\\ge6\\).",
+     "pasos": [
+      "<b>Vértices de la región.</b> \\((0,6)\\), \\((4,0)\\) y la intersección.",
+      "<b>Intersección.</b> \\(y=6-3x\\Rightarrow x+12-6x=4\\Rightarrow x=1.6,\\ y=1.2\\).",
+      "<b>Evalúa.</b> 6, 4 y 2.8."
+     ],
+     "r": "\\((1.6,\\ 1.2)\\), \\(Z=2.8\\).",
+     "fin": "Verificar gráficamente lo que el método de artificiales obtiene."
+    },
+    {
+     "nv": "B",
+     "q": "Al maximizar con gran M, ¿con qué signo entra la artificial al objetivo?",
+     "r": "−M"
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué M debe ser mucho mayor que los demás coeficientes?",
+     "r": "Para que ninguna solución con artificiales positivas parezca óptima."
+    },
+    {
+     "nv": "I",
+     "q": "Si al terminar el simplex una artificial vale 4, ¿qué concluyes?",
+     "r": "El problema no tiene solución factible."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué objetivo se usa en la fase 2?",
+     "r": "El objetivo original."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve \\(\\min Z=4x+y\\) s.a. \\(3x+y=3\\), \\(4x+3y\\ge6\\), \\(x+2y\\le4\\).",
+     "r": "\\(x=0.4,\\ y=1.8,\\ Z=3.4\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Transporte, asignación y trasbordo",
+   "intro": "Tema 4 del programa: esquina noroeste, costo mínimo, aproximación de Vogel, asignación y trasbordo.",
+   "conceptos": [
+    {
+     "n": "Modelo de transporte",
+     "e": [
+      "Envía productos de \\(m\\) orígenes con oferta a \\(n\\) destinos con demanda al menor costo. Debe estar balanceado (oferta = demanda); si no, se agrega un origen o destino ficticio con costo 0. Una solución básica tiene \\(m+n-1\\) celdas ocupadas."
+     ],
+     "u": [
+      "Distribución desde bodegas, asignación de tráfico entre centros de datos.",
+      "Tiene estructura especial que se resuelve muy rápido.",
+      "Con orígenes, destinos y costos unitarios.",
+      "Balancea, obtén solución inicial y mejórala."
+     ]
+    },
+    {
+     "n": "Soluciones iniciales",
+     "e": [
+      "<b>Esquina noroeste:</b> asigna desde la celda superior izquierda sin ver costos. <b>Costo mínimo:</b> asigna primero la celda más barata. <b>Vogel:</b> calcula la penalización (diferencia de los dos costos menores) de cada fila y columna y asigna en la celda más barata de la de mayor penalización; suele quedar en o cerca del óptimo."
+     ],
+     "u": [
+      "Planeación logística rápida.",
+      "Una buena solución inicial ahorra iteraciones.",
+      "Al empezar un problema de transporte.",
+      "Asigna lo máximo posible y tacha la fila o columna agotada."
+     ],
+     "tabla": "<table><thead><tr><th>Método</th><th>Mira costos</th><th>Calidad típica</th></tr></thead><tbody><tr><td>Esquina noroeste</td><td>No</td><td>La más lejana al óptimo</td></tr><tr><td>Costo mínimo</td><td>Sí</td><td>Intermedia</td></tr><tr><td>Vogel</td><td>Sí, con penalizaciones</td><td>Muy cercana al óptimo</td></tr></tbody></table>"
+    },
+    {
+     "n": "Asignación y trasbordo",
+     "e": [
+      "<b>Asignación:</b> transporte con ofertas y demandas de 1 (una tarea por persona). Método húngaro: resta el mínimo de cada fila y luego de cada columna, cubre los ceros con el mínimo de líneas; si se necesitan \\(n\\) líneas, hay asignación óptima en ceros. <b>Trasbordo:</b> hay nodos intermedios que reciben y reenvían."
+     ],
+     "u": [
+      "Asignar tareas a programadores, servidores a cargas, rutas con centros de distribución.",
+      "Encuentra el emparejamiento óptimo.",
+      "Cuando cada recurso hace exactamente una tarea, o hay puntos intermedios.",
+      "Aplica las reducciones y busca un cero por fila y columna."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Orígenes con oferta 70, 50 y 30; destinos con demanda 40, 60 y 50. Costos: fila 1 (2, 3, 1), fila 2 (5, 4, 8), fila 3 (5, 6, 8). Halla la solución por esquina noroeste.",
+     "pasos": [
+      "<b>Balance.</b> 150 = 150.",
+      "<b>Asignaciones.</b> \\(x_{11}=40\\), \\(x_{12}=30\\), \\(x_{22}=30\\), \\(x_{23}=20\\), \\(x_{33}=30\\): 5 celdas (\\(m+n-1\\)).",
+      "<b>Costo.</b> \\(80+90+120+160+240\\)."
+     ],
+     "r": "Costo Q690.",
+     "fin": "Obtener una solución inicial factible."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve el mismo problema con Vogel.",
+     "pasos": [
+      "<b>Penalizaciones iniciales.</b> La columna 3 tiene la mayor (8 − 1 = 7): \\(x_{13}=50\\).",
+      "<b>Siguiente.</b> Columna 1 (penalización 3): \\(x_{11}=20\\); se agota la fila 1.",
+      "<b>Siguiente.</b> Columna 2: \\(x_{22}=50\\); luego \\(x_{32}=10\\) y \\(x_{31}=20\\).",
+      "<b>Costo.</b> \\(50+40+200+60+100\\)."
+     ],
+     "r": "Costo Q450, que es el óptimo.",
+     "fin": "Ver por qué Vogel suele llegar al óptimo."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve el mismo problema con costo mínimo.",
+     "pasos": [
+      "<b>Celda más barata.</b> \\((1,3)\\) con 1: \\(x_{13}=50\\).",
+      "<b>Siguiente.</b> \\((1,1)\\) con 2: \\(x_{11}=20\\).",
+      "<b>Siguiente.</b> \\((2,2)\\) con 4: \\(x_{22}=50\\).",
+      "<b>Resto.</b> \\(x_{31}=20\\), \\(x_{32}=10\\)."
+     ],
+     "r": "Costo Q450.",
+     "fin": "Comparar métodos: aquí costo mínimo y Vogel coinciden."
+    },
+    {
+     "nv": "A",
+     "q": "Asigna 4 tareas a 4 programadores con costos (horas): fila 1 (9, 2, 7, 8), fila 2 (6, 4, 3, 7), fila 3 (5, 8, 1, 8), fila 4 (7, 6, 9, 4).",
+     "pasos": [
+      "<b>Reduce filas.</b> Mínimos 2, 3, 1, 4.",
+      "<b>Reduce columnas.</b> Mínimos de la nueva matriz y cubre ceros.",
+      "<b>Asignación en ceros.</b> P1 → T2, P2 → T1, P3 → T3, P4 → T4.",
+      "<b>Costo.</b> \\(2+6+1+4\\)."
+     ],
+     "r": "13 horas.",
+     "fin": "Aplicar el método húngaro."
+    },
+    {
+     "nv": "I",
+     "q": "Oferta total 120 y demanda total 100. ¿Cómo balanceas el problema?",
+     "pasos": [
+      "<b>Diferencia.</b> Sobran 20 unidades.",
+      "<b>Destino ficticio.</b> Demanda 20 con costo 0.",
+      "<b>Interpretación.</b> Lo enviado al ficticio queda sin despachar en el origen."
+     ],
+     "r": "Agrega un destino ficticio de 20 unidades con costo 0.",
+     "fin": "Preparar problemas desbalanceados."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántas celdas básicas tiene un problema de 4 orígenes y 5 destinos?",
+     "r": "8"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la penalización de Vogel de una fila con costos 7, 3, 9, 4?",
+     "r": "4 − 3 = 1"
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué se diferencia el modelo de asignación del de transporte?",
+     "r": "Ofertas y demandas valen 1; cada recurso hace una sola tarea."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es un nodo de trasbordo?",
+     "r": "Un punto intermedio que recibe y reenvía mercancía (por ejemplo, un centro de distribución)."
+    },
+    {
+     "nv": "A",
+     "q": "Con ofertas 50, 60, 40, demandas 40, 70, 40 y los mismos costos del ejercicio 1, ¿cuál es el costo óptimo?",
+     "r": "Q510"
+    }
+   ]
+  },
+  {
+   "titulo": "Modelos de redes y PERT/CPM",
+   "intro": "Tema 5 del programa: árbol de expansión mínima, ruta más corta, flujo máximo y PERT/CPM.",
+   "conceptos": [
+    {
+     "n": "Árbol de expansión mínima y ruta más corta",
+     "e": [
+      "El <b>árbol de expansión mínima</b> conecta todos los nodos con costo mínimo (Kruskal o Prim). La <b>ruta más corta</b> desde un origen se halla con Dijkstra: se fija el nodo de menor distancia tentativa y se actualizan sus vecinos."
+     ],
+     "u": [
+      "Diseño de cableado y fibra, enrutamiento de paquetes (OSPF usa Dijkstra), GPS.",
+      "Minimiza costos o distancias en redes.",
+      "Con redes de nodos y aristas con peso.",
+      "Aplica el algoritmo nodo por nodo y registra las etiquetas."
+     ]
+    },
+    {
+     "n": "Flujo máximo",
+     "e": [
+      "Calcula cuánto puede pasar de una fuente a un sumidero respetando capacidades. Ford-Fulkerson busca caminos con capacidad sobrante hasta que no queda ninguno. El flujo máximo es igual a la capacidad del corte mínimo."
+     ],
+     "u": [
+      "Capacidad de una red de datos, tuberías, tráfico vehicular.",
+      "Identifica cuellos de botella.",
+      "Cuando importa cuánto cabe, no cuánto cuesta.",
+      "Busca caminos aumentantes y resta capacidad usada."
+     ]
+    },
+    {
+     "n": "PERT/CPM",
+     "e": [
+      "CPM: con duraciones fijas se calculan inicio y fin tempranos (pasada hacia adelante) y tardíos (hacia atrás). Holgura = inicio tardío − inicio temprano; la <b>ruta crítica</b> son las actividades con holgura 0. PERT usa tres estimaciones por actividad."
+     ],
+     "u": [
+      "Planificación de proyectos de software, construcción, migraciones de infraestructura.",
+      "Indica qué tareas no pueden atrasarse.",
+      "En proyectos con dependencias entre tareas.",
+      "Dibuja la red, haz ambas pasadas y busca holgura 0."
+     ],
+     "f": "t_e=\\frac{a+4m+b}{6}\\qquad \\sigma^2=\\left(\\frac{b-a}{6}\\right)^2\\qquad Z=\\frac{T-\\sum t_e}{\\sqrt{\\sum\\sigma^2}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con aristas AB 7, AC 9, AF 14, BC 10, BD 15, CD 11, CF 2, DE 6, EF 9, halla el árbol de expansión mínima.",
+     "pasos": [
+      "<b>Kruskal en orden.</b> CF 2, DE 6, AB 7, AC 9, EF 9.",
+      "<b>Descartes.</b> BC 10 formaría ciclo; las demás ya no se necesitan.",
+      "<b>Verifica.</b> 5 aristas para 6 nodos."
+     ],
+     "r": "CF, DE, AB, AC, EF con costo 33.",
+     "fin": "Conectar una red al menor costo."
+    },
+    {
+     "nv": "I",
+     "q": "En la misma red, halla la ruta más corta de A a E.",
+     "pasos": [
+      "<b>Desde A.</b> B = 7, C = 9, F = 14.",
+      "<b>Fija B (7)</b>: D = 22. <b>Fija C (9)</b>: F = 11, D = 20.",
+      "<b>Fija F (11)</b>: E = 20.",
+      "<b>Ruta.</b> A → C → F → E."
+     ],
+     "r": "A–C–F–E con longitud 20.",
+     "fin": "Aplicar Dijkstra, el algoritmo detrás del enrutamiento."
+    },
+    {
+     "nv": "I",
+     "q": "Red dirigida con capacidades S→A 10, S→B 5, A→B 15, A→T 10, B→T 10. Halla el flujo máximo.",
+     "pasos": [
+      "<b>Camino S–A–T.</b> 10 unidades.",
+      "<b>Camino S–B–T.</b> 5 unidades.",
+      "<b>Más caminos.</b> S ya no tiene capacidad sobrante.",
+      "<b>Corte mínimo.</b> {S→A, S→B} con capacidad 15."
+     ],
+     "r": "15 unidades.",
+     "fin": "Encontrar la capacidad y el cuello de botella."
+    },
+    {
+     "nv": "A",
+     "q": "Actividades: A (3 días), B (4), C (2, tras A), D (4, tras A), E (3, tras B y C), F (2, tras D y E). Halla la ruta crítica.",
+     "pasos": [
+      "<b>Adelante.</b> A 0–3, B 0–4, C 3–5, D 3–7, E 5–8, F 8–10.",
+      "<b>Atrás.</b> F 8–10, E 5–8, D 4–8, C 3–5, B 1–5, A 0–3.",
+      "<b>Holguras.</b> B 1, D 1; las demás 0."
+     ],
+     "r": "Ruta crítica A–C–E–F; el proyecto dura 10 días.",
+     "fin": "Saber qué tareas no pueden retrasarse."
+    },
+    {
+     "nv": "A",
+     "q": "Una ruta crítica suma tₑ = 20 días con varianza total 4. ¿Probabilidad de terminar en 23 días o menos?",
+     "pasos": [
+      "<b>Desviación.</b> \\(\\sqrt4=2\\).",
+      "<b>Estandariza.</b> \\(z=\\tfrac{23-20}{2}=1.5\\).",
+      "<b>Tabla.</b> \\(P(Z\\le1.5)=0.9332\\)."
+     ],
+     "r": "≈ 93.3 %",
+     "fin": "Dar una fecha de entrega con su probabilidad."
+    },
+    {
+     "nv": "B",
+     "q": "Una actividad tiene a = 2, m = 4 y b = 12. Halla tₑ y σ².",
+     "r": "\\(t_e=5\\); \\(\\sigma^2\\approx2.78\\)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué significa que una actividad tenga holgura 3?",
+     "r": "Puede retrasarse hasta 3 días sin atrasar el proyecto."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué se diferencia el árbol de expansión mínima de la ruta más corta?",
+     "r": "El árbol conecta todos los nodos al menor costo total; la ruta une dos nodos con la menor distancia."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué relación hay entre flujo máximo y corte mínimo?",
+     "r": "Son iguales."
+    },
+    {
+     "nv": "A",
+     "q": "En el ejercicio de CPM, si D pasa a durar 6 días, ¿cuánto dura el proyecto?",
+     "r": "11 días: la ruta crítica pasa a ser A–D–F."
+    }
+   ]
+  },
+  {
+   "titulo": "Modelos de inventarios",
+   "intro": "Tema 6 del programa: componentes, modelos determinísticos de revisión continua y periódica, modelo estocástico de revisión continua y modelo de un solo periodo para perecederos.",
+   "conceptos": [
+    {
+     "n": "Componentes del costo",
+     "e": [
+      "Costo de <b>ordenar</b> (por pedido), de <b>mantener</b> (por unidad y periodo: almacén, capital, obsolescencia), de <b>faltante</b> (ventas perdidas) y de <b>compra</b>. Pedir mucho reduce pedidos pero sube el inventario; pedir poco hace lo contrario."
+     ],
+     "u": [
+      "Repuestos de equipos, licencias, discos para un centro de datos, insumos.",
+      "Equilibra costos opuestos.",
+      "Al decidir cuánto y cuándo pedir.",
+      "Identifica D, S, H y el tiempo de entrega."
+     ]
+    },
+    {
+     "n": "Lote económico (EOQ) y punto de reorden",
+     "e": [
+      "Con demanda constante, el lote óptimo iguala el costo anual de ordenar con el de mantener. Se pide cuando el inventario baja al punto de reorden. En <b>revisión periódica</b> se revisa cada \\(T\\) días y se pide hasta un nivel objetivo \\(d(T+L)+SS\\)."
+     ],
+     "u": [
+      "Compras programadas, abastecimiento de tiendas.",
+      "Minimiza el costo total de inventario.",
+      "Con demanda estable.",
+      "Calcula Q*, número de pedidos, costo total y ROP."
+     ],
+     "f": "Q^*=\\sqrt{\\frac{2DS}{H}}\\qquad CT=\\frac DQS+\\frac Q2H\\qquad ROP=dL"
+    },
+    {
+     "n": "Modelo estocástico y de un solo periodo",
+     "e": [
+      "Con demanda incierta se agrega inventario de seguridad \\(SS=z\\,\\sigma_L\\) según el nivel de servicio; \\(ROP=\\mu_L+SS\\). Para perecederos (un solo periodo) se pide la cantidad cuya probabilidad acumulada iguala la razón crítica \\(\\tfrac{C_u}{C_u+C_o}\\), con \\(C_u\\) costo de faltante y \\(C_o\\) costo de sobrante."
+     ],
+     "u": [
+      "Stock de seguridad de componentes críticos, periódicos, comida, boletos.",
+      "Protege contra la variabilidad o el desperdicio.",
+      "Con demanda aleatoria o producto que caduca.",
+      "Elige z según el servicio o calcula la razón crítica."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Demanda anual 1200 unidades, costo por pedido Q50 y costo de mantener Q3 por unidad al año. Halla el EOQ.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\sqrt{\\tfrac{2(1200)(50)}{3}}=\\sqrt{40000}\\).",
+      "<b>Resultado.</b> 200 unidades."
+     ],
+     "r": "Q* = 200",
+     "fin": "Calcular el tamaño óptimo de pedido."
+    },
+    {
+     "nv": "I",
+     "q": "Con los datos anteriores, halla pedidos por año, costo total y punto de reorden si hay 240 días hábiles y el proveedor tarda 4 días.",
+     "pasos": [
+      "<b>Pedidos.</b> \\(\\tfrac{1200}{200}=6\\).",
+      "<b>Costo total.</b> \\(6(50)+\\tfrac{200}2(3)=300+300=600\\).",
+      "<b>Demanda diaria.</b> \\(\\tfrac{1200}{240}=5\\); \\(ROP=5(4)=20\\)."
+     ],
+     "r": "6 pedidos, Q600 al año, reordenar al llegar a 20 unidades.",
+     "fin": "Completar la política de inventario."
+    },
+    {
+     "nv": "I",
+     "q": "Revisión periódica cada 10 días, demanda de 5 por día, entrega en 4 días y stock de seguridad 15. Hay 30 unidades. ¿Cuánto pides?",
+     "pasos": [
+      "<b>Nivel objetivo.</b> \\(5(10+4)+15=85\\).",
+      "<b>Pedido.</b> \\(85-30=55\\)."
+     ],
+     "r": "55 unidades",
+     "fin": "Aplicar la política de revisión periódica."
+    },
+    {
+     "nv": "A",
+     "q": "La demanda durante el tiempo de entrega tiene media 20 y σ = 5. ¿Qué ROP da 95 % de nivel de servicio?",
+     "pasos": [
+      "<b>z.</b> 1.645.",
+      "<b>Stock de seguridad.</b> \\(1.645(5)\\approx8.2\\).",
+      "<b>ROP.</b> \\(20+8.2\\approx28.2\\), se redondea a 29."
+     ],
+     "r": "ROP = 29 unidades",
+     "fin": "Proteger contra la incertidumbre de la demanda."
+    },
+    {
+     "nv": "A",
+     "q": "Un producto perecedero cuesta Q4, se vende a Q10 y lo sobrante se rescata a Q1. La demanda es N(100, 20). ¿Cuánto pedir?",
+     "pasos": [
+      "<b>Costos.</b> \\(C_u=10-4=6\\), \\(C_o=4-1=3\\).",
+      "<b>Razón crítica.</b> \\(\\tfrac6{9}\\approx0.667\\Rightarrow z\\approx0.43\\).",
+      "<b>Cantidad.</b> \\(100+0.43(20)\\approx108.6\\)."
+     ],
+     "r": "Unas 109 unidades.",
+     "fin": "Decidir cuánto pedir de algo que no se puede guardar."
+    },
+    {
+     "nv": "B",
+     "q": "Con D = 800, S = Q25 y H = Q4, halla el EOQ.",
+     "r": "100"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué pasa con Q* si el costo de mantener se cuadruplica?",
+     "r": "Se reduce a la mitad."
+    },
+    {
+     "nv": "I",
+     "q": "Con demanda de 8 diarias y entrega en 5 días, ¿cuál es el ROP sin stock de seguridad?",
+     "r": "40"
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué en el EOQ óptimo el costo de ordenar es igual al de mantener?",
+     "r": "Porque la suma de un término que baja con Q y otro que sube con Q es mínima donde se igualan."
+    },
+    {
+     "nv": "A",
+     "q": "En el problema del perecedero, ¿cuánto pedirías si el sobrante no se pudiera rescatar?",
+     "r": "\\(C_o=4\\), razón \\(0.6\\), \\(z\\approx0.25\\): unas 105 unidades."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

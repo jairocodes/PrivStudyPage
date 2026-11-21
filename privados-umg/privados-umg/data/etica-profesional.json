@@ -1,0 +1,859 @@
+{
+ "slug": "etica-profesional",
+ "titulo": "Ética Profesional",
+ "meta": "Ciclo 8, código 039, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "\\text{Victoria privada}\\ \\to\\ \\text{Victoria pública}\\ \\to\\ \\text{Renovación}",
+ "firma_nota": "La secuencia de los siete hábitos de Covey que estructura el curso.",
+ "lead": "Ética y moral, paradigmas, autoridad, comunicación, principios de carácter (honestidad, honradez, humildad, integridad, justicia, ética financiera) y Los 7 hábitos de la gente altamente efectiva, con su aplicación al ejercicio de la ingeniería en sistemas. Los 16 temas del programa están organizados en 5 secciones con cuestionario.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8Etica.pdf",
+ "como": "Cada sección trae conceptos con su aplicación profesional y un cuestionario de 10 preguntas de opción múltiple con casos reales del trabajo en sistemas. Al responder verás al instante si acertaste y la explicación.",
+ "temas": [
+  {
+   "titulo": "Ética, moral y paradigmas",
+   "intro": "Temas 1 a 3 del programa: marco institucional, diagnóstico de ética personal, conducta en Guatemala, cambio de paradigmas, ética y moral y principios aprendidos en el hogar.",
+   "conceptos": [
+    {
+     "n": "Ética y moral",
+     "e": [
+      "La <b>moral</b> es el conjunto de normas y costumbres que una sociedad o persona considera buenas; responde “qué se hace”. La <b>ética</b> es la reflexión racional sobre esas normas; pregunta “por qué debería hacerse”. La ética profesional aplica esa reflexión a los deberes de una profesión."
+     ],
+     "u": [
+      "Dilemas sobre privacidad de datos, propiedad intelectual, seguridad.",
+      "Un ingeniero en sistemas maneja información sensible y poder técnico.",
+      "Ante decisiones con impacto en otras personas.",
+      "Analiza el porqué de la norma y sus consecuencias."
+     ]
+    },
+    {
+     "n": "Paradigmas",
+     "e": [
+      "Un paradigma es el lente con el que interpretamos la realidad. Covey sostiene que los cambios profundos de conducta vienen de cambiar paradigmas, y que conviene centrarlos en principios y no en el dinero, el trabajo, el placer u otras personas."
+     ],
+     "u": [
+      "Cambiar de “el usuario es un estorbo” a “el usuario es la razón del sistema”.",
+      "Cambiar el lente cambia la conducta sin forzarla.",
+      "Cuando una situación se repite sin mejorar.",
+      "Pregúntate desde qué supuesto estás mirando el problema."
+     ]
+    },
+    {
+     "n": "Conducta y principios del hogar",
+     "e": [
+      "Los valores se forman primero en la familia y se refuerzan o debilitan en la sociedad. Analizar la conducta común en Guatemala (puntualidad, cumplimiento de normas, respeto a lo público) ayuda a identificar qué paradigmas conviene cambiar."
+     ],
+     "u": [
+      "Cultura organizacional, puntualidad en proyectos, cumplimiento de normas.",
+      "Lo normalizado no siempre es correcto.",
+      "Al evaluar hábitos personales y de grupo.",
+      "Identifica hábitos aprendidos y decide cuáles conservar."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "La reflexión racional sobre las normas morales se llama…",
+     "ops": [
+      "Moral",
+      "Ley",
+      "Costumbre",
+      "Ética"
+     ],
+     "ok": 3,
+     "r": "La ética pregunta por qué; la moral describe qué se considera bueno."
+    },
+    {
+     "nv": "B",
+     "q": "Un paradigma es…",
+     "ops": [
+      "Una ley penal",
+      "Un tipo de software",
+      "Un hábito físico",
+      "El lente con que interpretamos la realidad"
+     ],
+     "ok": 3,
+     "r": "Condiciona cómo vemos y actuamos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Dónde se forman primero los valores de una persona?",
+     "ops": [
+      "En la universidad",
+      "En la familia",
+      "En el trabajo",
+      "En redes sociales"
+     ],
+     "ok": 1,
+     "r": "El hogar es la primera escuela de valores."
+    },
+    {
+     "nv": "I",
+     "q": "Un técnico piensa “si todos lo hacen, no está mal” al instalar software pirata. Confunde…",
+     "ops": [
+      "Lo que es común (costumbre) con lo que es correcto",
+      "Ética con eficiencia",
+      "Ley con economía",
+      "Nada"
+     ],
+     "ok": 0,
+     "r": "Que algo sea frecuente no lo hace ético."
+    },
+    {
+     "nv": "I",
+     "q": "Según Covey, ¿en qué conviene centrar la vida para tomar decisiones estables?",
+     "ops": [
+      "En el dinero",
+      "En el trabajo",
+      "En la opinión de los demás",
+      "En principios"
+     ],
+     "ok": 3,
+     "r": "Los centros alternativos son inestables; los principios no."
+    },
+    {
+     "nv": "I",
+     "q": "La ética profesional se diferencia de la ética general en que…",
+     "ops": [
+      "No tiene relación",
+      "Aplica la reflexión ética a los deberes específicos de una profesión",
+      "Solo aplica a médicos",
+      "Es opcional"
+     ],
+     "ok": 1,
+     "r": "Se concreta en códigos de ética profesionales."
+    },
+    {
+     "nv": "I",
+     "q": "Cambiar de “la seguridad estorba” a “la seguridad protege a los usuarios” es un ejemplo de…",
+     "ops": [
+      "Cambio de software",
+      "Moral pública",
+      "Ley",
+      "Cambio de paradigma"
+     ],
+     "ok": 3,
+     "r": "Cambia el lente y con él la conducta."
+    },
+    {
+     "nv": "A",
+     "q": "Un jefe pide marcar como “resuelto” un incidente que no lo está para mejorar las métricas. ¿Qué responde un profesional ético?",
+     "ops": [
+      "Lo marca para no tener problemas",
+      "Lo marca y lo publica en redes",
+      "Explica que falsear datos engaña a la organización y propone reportar el estado real con un plan",
+      "Renuncia sin decir nada"
+     ],
+     "ok": 2,
+     "r": "La honestidad con los datos es un deber profesional."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué un cambio de paradigma suele ser más eficaz que una regla impuesta?",
+     "ops": [
+      "Porque cambia la forma de ver y la conducta se ajusta sola, sin depender de la vigilancia",
+      "Porque las reglas son ilegales",
+      "Porque es más rápido de escribir",
+      "No es más eficaz"
+     ],
+     "ok": 0,
+     "r": "La conducta sigue a la percepción."
+    },
+    {
+     "nv": "A",
+     "q": "Una persona centrada en el dinero, al recibir una oferta para vender datos de clientes, tiende a…",
+     "ops": [
+      "Rechazarla siempre",
+      "Racionalizar la venta porque su criterio principal es la ganancia",
+      "Pedir permiso al cliente",
+      "Denunciarla"
+     ],
+     "ok": 1,
+     "r": "Por eso Covey propone centrarse en principios."
+    }
+   ]
+  },
+  {
+   "titulo": "Autoridad, motivación y comunicación",
+   "intro": "Temas 4 a 6 del programa: leyes y autoridad, motivar a las personas, principios del desarrollo y el cambio, comunicación familiar, laboral y estudiantil, y panorama de los siete hábitos.",
+   "conceptos": [
+    {
+     "n": "Leyes y autoridad",
+     "e": [
+      "La autoridad legítima organiza la convivencia y merece respeto; la obediencia responsable cumple leyes y normas, pero no obliga a participar en actos ilegales o inmorales. En lo profesional: cumplir políticas, contratos y leyes (Código de Trabajo, Ley de Derecho de Autor)."
+     ],
+     "u": [
+      "Cumplimiento de políticas de seguridad, licencias y contratos.",
+      "Sin respeto a las normas no hay confianza ni orden.",
+      "Al recibir instrucciones o aplicar políticas.",
+      "Cumple, y si una orden es ilegal, cuestiónala por el canal adecuado."
+     ]
+    },
+    {
+     "n": "Motivación, desarrollo y cambio",
+     "e": [
+      "Motivar es dar razones para actuar: propósito, reconocimiento, crecimiento. El desarrollo personal sigue etapas: no se salta de la dependencia a la interdependencia sin pasar por la independencia (el continuo de madurez de Covey)."
+     ],
+     "u": [
+      "Dirigir equipos, formar nuevos técnicos.",
+      "Las personas motivadas aprenden y aportan más.",
+      "Al guiar a otros o a uno mismo.",
+      "Respeta las etapas y busca motivaciones internas."
+     ]
+    },
+    {
+     "n": "Comunicación y los siete hábitos",
+     "e": [
+      "Comunicar bien exige escuchar, hablar con claridad y respeto y confirmar lo entendido. Los siete hábitos de Covey se agrupan en <b>victoria privada</b> (1 a 3, independencia), <b>victoria pública</b> (4 a 6, interdependencia) y <b>renovación</b> (7)."
+     ],
+     "u": [
+      "Reuniones de proyecto, atención a usuarios, relaciones familiares.",
+      "La mayoría de conflictos son malentendidos.",
+      "En toda relación.",
+      "Escucha primero y confirma lo entendido."
+     ],
+     "tabla": "<table><thead><tr><th>Hábito</th><th>Nombre</th><th>Grupo</th></tr></thead><tbody><tr><td>1</td><td>Ser proactivo</td><td>Victoria privada</td></tr><tr><td>2</td><td>Empezar con un fin en mente</td><td>Victoria privada</td></tr><tr><td>3</td><td>Establecer primero lo primero</td><td>Victoria privada</td></tr><tr><td>4</td><td>Pensar ganar-ganar</td><td>Victoria pública</td></tr><tr><td>5</td><td>Procurar primero comprender y después ser comprendido</td><td>Victoria pública</td></tr><tr><td>6</td><td>Sinergizar</td><td>Victoria pública</td></tr><tr><td>7</td><td>Afilar la sierra</td><td>Renovación</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuántos hábitos forman la victoria privada?",
+     "ops": [
+      "Uno",
+      "Cuatro",
+      "Siete",
+      "Tres"
+     ],
+     "ok": 3,
+     "r": "Los hábitos 1, 2 y 3."
+    },
+    {
+     "nv": "B",
+     "q": "El continuo de madurez de Covey va de…",
+     "ops": [
+      "Independencia a dependencia",
+      "Interdependencia a dependencia",
+      "Ninguno",
+      "Dependencia a independencia y luego a interdependencia"
+     ],
+     "ok": 3,
+     "r": "No se puede ser interdependiente sin antes ser independiente."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hábito corresponde a la renovación?",
+     "ops": [
+      "Afilar la sierra",
+      "Ser proactivo",
+      "Sinergizar",
+      "Pensar ganar-ganar"
+     ],
+     "ok": 0,
+     "r": "Renovar las dimensiones física, mental, social y espiritual."
+    },
+    {
+     "nv": "I",
+     "q": "Tu jefe te ordena desactivar los respaldos para ahorrar espacio, contra la política de la empresa. Lo correcto es…",
+     "ops": [
+      "Advertir del riesgo y de la política, por escrito y por el canal adecuado",
+      "Obedecer sin decir nada",
+      "Ignorar la orden en secreto",
+      "Publicarlo en redes"
+     ],
+     "ok": 0,
+     "r": "La obediencia responsable no implica omitir riesgos ni violar normas."
+    },
+    {
+     "nv": "I",
+     "q": "Una buena comunicación laboral se caracteriza por…",
+     "ops": [
+      "Escuchar, ser claro y confirmar lo entendido",
+      "Hablar más que los demás",
+      "Usar solo correo",
+      "Evitar preguntas"
+     ],
+     "ok": 0,
+     "r": "La retroalimentación confirma el entendimiento."
+    },
+    {
+     "nv": "I",
+     "q": "La motivación más duradera suele venir de…",
+     "ops": [
+      "Amenazas",
+      "Solo el salario",
+      "El propósito, el crecimiento y el reconocimiento",
+      "La presión del grupo"
+     ],
+     "ok": 2,
+     "r": "La motivación interna sostiene el esfuerzo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ley protege el software y las obras intelectuales en Guatemala?",
+     "ops": [
+      "Código de Comercio",
+      "Código Civil",
+      "Ley del IVA",
+      "Ley de Derecho de Autor y Derechos Conexos"
+     ],
+     "ok": 3,
+     "r": "Es el Decreto 33-98."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué no se puede saltar directamente a la interdependencia?",
+     "ops": [
+      "Porque cooperar bien con otros requiere primero dominio de uno mismo",
+      "Porque es ilegal",
+      "Porque la interdependencia no existe",
+      "Porque es más fácil"
+     ],
+     "ok": 0,
+     "r": "La victoria privada precede a la pública."
+    },
+    {
+     "nv": "A",
+     "q": "En una reunión, un usuario se queja del sistema. La respuesta más alineada con buena comunicación es…",
+     "ops": [
+      "Defender el sistema de inmediato",
+      "Pedirle que lo mande por escrito y cortar",
+      "Culpar a otro departamento",
+      "Escuchar sin interrumpir, resumir su problema y luego proponer"
+     ],
+     "ok": 3,
+     "r": "Primero comprender, después ser comprendido."
+    },
+    {
+     "nv": "A",
+     "q": "Cumplir la ley pero dañar a otros con una acción legal pero injusta muestra que…",
+     "ops": [
+      "Legalidad y ética siempre coinciden",
+      "La ética no importa",
+      "Lo legal no siempre es ético",
+      "La ley es injusta siempre"
+     ],
+     "ok": 2,
+     "r": "La ética puede exigir más que la ley."
+    }
+   ]
+  },
+  {
+   "titulo": "Victoria privada: hábitos 1 a 3",
+   "intro": "Temas 7, 9 y 10 del programa: honestidad y proactividad, comprender a la gente y centros alternativos, honradez, roles y misión personal, humildad y administración personal con roles y metas semanales.",
+   "conceptos": [
+    {
+     "n": "Hábito 1: ser proactivo",
+     "e": [
+      "Asumir la responsabilidad por la propia respuesta. Distingue el <b>círculo de influencia</b> (lo que puedo cambiar) del <b>círculo de preocupación</b> (lo que no). El lenguaje proactivo dice “elijo” y “puedo”; el reactivo, “no puedo” y “me obligaron”."
+     ],
+     "u": [
+      "Responder ante fallas, cambios de prioridades, críticas.",
+      "Enfocarse en lo controlable produce resultados.",
+      "En todo momento, sobre todo bajo presión.",
+      "Actúa dentro de tu círculo de influencia."
+     ]
+    },
+    {
+     "n": "Hábito 2: empezar con un fin en mente",
+     "e": [
+      "Definir quién quieres ser y qué quieres lograr antes de actuar: un <b>enunciado de misión</b> personal (y familiar u organizacional) basado en principios y en los roles de tu vida."
+     ],
+     "u": [
+      "Plan de carrera, objetivos de un proyecto, propósito de un equipo.",
+      "Sin destino claro, cualquier camino da igual.",
+      "Al planificar la vida o un proyecto.",
+      "Redacta tu misión por roles: profesional, familiar, personal."
+     ]
+    },
+    {
+     "n": "Hábito 3: establecer primero lo primero",
+     "e": [
+      "Administrarse según prioridades. La matriz del tiempo clasifica actividades por urgencia e importancia; el <b>cuadrante II</b> (importante y no urgente: planificar, prevenir, aprender, relaciones) reduce las crisis. Se planifica por semana con roles y metas."
+     ],
+     "u": [
+      "Mantenimiento preventivo, documentación, estudio para los privados.",
+      "Lo urgente desplaza a lo importante si no se planifica.",
+      "Al organizar la semana.",
+      "Agenda primero las actividades del cuadrante II."
+     ],
+     "tabla": "<table><thead><tr><th></th><th>Urgente</th><th>No urgente</th></tr></thead><tbody><tr><td>Importante</td><td>I: crisis, incidentes</td><td>II: planear, prevenir, aprender</td></tr><tr><td>No importante</td><td>III: interrupciones, algunas reuniones</td><td>IV: distracciones</td></tr></tbody></table>"
+    },
+    {
+     "n": "Honestidad, honradez y humildad",
+     "e": [
+      "<b>Honestidad:</b> decir la verdad. <b>Honradez:</b> no tomar lo ajeno. <b>Humildad:</b> reconocer límites y errores y estar dispuesto a aprender. Son la base de la confianza personal."
+     ],
+     "u": [
+      "Reportar errores propios, estimaciones realistas, manejo de recursos.",
+      "Sin confianza, no hay victoria pública posible.",
+      "En cada interacción.",
+      "Admite errores pronto y corrígelos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué cuadrante de la matriz del tiempo es importante y no urgente?",
+     "ops": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "ok": 1,
+     "r": "Es el de las personas efectivas: planear y prevenir."
+    },
+    {
+     "nv": "B",
+     "q": "El lenguaje proactivo usa expresiones como…",
+     "ops": [
+      "“Elijo” y “puedo”",
+      "“No puedo hacer nada”",
+      "“Me obligaron”",
+      "“Así soy”"
+     ],
+     "ok": 0,
+     "r": "Asume la responsabilidad de la respuesta."
+    },
+    {
+     "nv": "B",
+     "q": "El hábito 2 se concreta en…",
+     "ops": [
+      "Un presupuesto",
+      "Una lista de compras",
+      "Un organigrama",
+      "Un enunciado de misión personal"
+     ],
+     "ok": 3,
+     "r": "Define el fin antes de actuar."
+    },
+    {
+     "nv": "I",
+     "q": "Mantener respaldos y monitoreo antes de que ocurra una falla pertenece al cuadrante…",
+     "ops": [
+      "I",
+      "III",
+      "IV",
+      "II"
+     ],
+     "ok": 3,
+     "r": "Importante y no urgente: prevención."
+    },
+    {
+     "nv": "I",
+     "q": "Preocuparse por el tipo de cambio del dólar sin poder influir en él está en…",
+     "ops": [
+      "El círculo de influencia",
+      "El cuadrante II",
+      "El círculo de preocupación",
+      "El hábito 6"
+     ],
+     "ok": 2,
+     "r": "No depende de ti; conviene enfocarse en lo que sí."
+    },
+    {
+     "nv": "I",
+     "q": "Reconocer ante el equipo que tu cambio causó la caída del servicio muestra…",
+     "ops": [
+      "Honestidad y humildad",
+      "Debilidad",
+      "Falta de liderazgo",
+      "Proactividad negativa"
+     ],
+     "ok": 0,
+     "r": "Admitir el error genera confianza y permite corregir."
+    },
+    {
+     "nv": "I",
+     "q": "Llevarse a casa un disco duro de la empresa sin permiso viola…",
+     "ops": [
+      "La humildad",
+      "El hábito 7",
+      "La honradez",
+      "La sinergia"
+     ],
+     "ok": 2,
+     "r": "Honradez es no tomar lo ajeno."
+    },
+    {
+     "nv": "A",
+     "q": "Un administrador de sistemas vive apagando incendios. Según Covey, ¿qué debe hacer?",
+     "ops": [
+      "Trabajar más horas en el cuadrante I",
+      "Reservar tiempo para el cuadrante II (automatizar, documentar, prevenir) para reducir las crisis",
+      "Ignorar los incidentes",
+      "Pasar al cuadrante IV"
+     ],
+     "ok": 1,
+     "r": "Invertir en prevención reduce las urgencias."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué la misión personal se organiza por roles?",
+     "ops": [
+      "Para equilibrar las áreas de la vida (profesional, familiar, personal) y no descuidar ninguna",
+      "Porque es obligatorio",
+      "Para tener más trabajo",
+      "Porque lo exige el jefe"
+     ],
+     "ok": 0,
+     "r": "Evita que un rol absorba a todos los demás."
+    },
+    {
+     "nv": "A",
+     "q": "Un desarrollador promete entregar en 2 días algo que sabe que tomará 2 semanas para quedar bien. ¿Qué principio falla y qué consecuencia tiene?",
+     "ops": [
+      "Honestidad; pierde confianza cuando no cumple",
+      "Generosidad; ninguna",
+      "Humildad; gana prestigio",
+      "Proactividad; ninguna"
+     ],
+     "ok": 0,
+     "r": "Las estimaciones honestas sostienen la confianza."
+    }
+   ]
+  },
+  {
+   "titulo": "Victoria pública: hábitos 4 a 6",
+   "intro": "Temas 11 a 14 del programa: crítica constructiva y paradigmas de interdependencia, integridad y códigos de ética profesionales, liderazgo interpersonal, justicia y comunicación empática, ética financiera y sinergia.",
+   "conceptos": [
+    {
+     "n": "Hábito 4: pensar ganar-ganar",
+     "e": [
+      "Buscar acuerdos de beneficio mutuo, no ganar a costa del otro. Requiere carácter (integridad, madurez, mentalidad de abundancia) y relaciones de confianza. La <b>cuenta bancaria emocional</b> se alimenta con cortesía, honestidad y cumplimiento de compromisos."
+     ],
+     "u": [
+      "Negociar con clientes y proveedores, acuerdos de nivel de servicio.",
+      "Las relaciones de largo plazo necesitan que ambos ganen.",
+      "En negociaciones y acuerdos.",
+      "Busca primero los intereses de ambos y luego la solución."
+     ]
+    },
+    {
+     "n": "Hábito 5: comprender y después ser comprendido",
+     "e": [
+      "Escuchar con empatía, para entender y no solo para responder. Después, exponer el propio punto con claridad. La crítica constructiva describe hechos, propone mejoras y respeta a la persona."
+     ],
+     "u": [
+      "Levantamiento de requerimientos, soporte a usuarios, revisiones de código.",
+      "Un requerimiento mal entendido produce un sistema inútil.",
+      "Antes de proponer soluciones.",
+      "Escucha, resume lo entendido y confirma."
+     ]
+    },
+    {
+     "n": "Hábito 6: sinergizar",
+     "e": [
+      "Valorar las diferencias para lograr soluciones mejores que las de cada parte por separado: el todo es mayor que la suma de las partes."
+     ],
+     "u": [
+      "Equipos multidisciplinarios: desarrollo, infraestructura, negocio.",
+      "Las diferencias bien gestionadas generan innovación.",
+      "En trabajo en equipo.",
+      "Busca una tercera alternativa mejor que las posiciones iniciales."
+     ]
+    },
+    {
+     "n": "Integridad, justicia y ética financiera",
+     "e": [
+      "<b>Integridad:</b> coherencia entre lo que se piensa, dice y hace. <b>Justicia:</b> dar a cada quien lo que le corresponde. <b>Ética financiera:</b> cumplir con el fisco, no evadir impuestos y manejar con transparencia el dinero ajeno. Los colegios profesionales (como el de contadores) tienen códigos de ética que concretan estos deberes."
+     ],
+     "u": [
+      "Facturación honesta, asignación justa de cargas de trabajo, manejo de presupuestos.",
+      "Son la base de la confianza pública en una profesión.",
+      "En cada transacción y decisión.",
+      "Actúa igual con o sin supervisión."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ganar-ganar significa…",
+     "ops": [
+      "Ganar a costa del otro",
+      "Buscar acuerdos de beneficio mutuo",
+      "Ceder siempre",
+      "Evitar negociar"
+     ],
+     "ok": 1,
+     "r": "Ambas partes salen beneficiadas."
+    },
+    {
+     "nv": "B",
+     "q": "El hábito 5 propone…",
+     "ops": [
+      "Hablar primero",
+      "No escuchar",
+      "Comprender primero y después ser comprendido",
+      "Imponer la opinión"
+     ],
+     "ok": 2,
+     "r": "La escucha empática precede a la exposición."
+    },
+    {
+     "nv": "B",
+     "q": "Sinergia significa que…",
+     "ops": [
+      "Cada uno trabaja solo",
+      "Gana el más fuerte",
+      "Se evita el conflicto",
+      "El todo es mayor que la suma de las partes"
+     ],
+     "ok": 3,
+     "r": "La cooperación crea algo mejor que lo individual."
+    },
+    {
+     "nv": "I",
+     "q": "En el levantamiento de requerimientos, aplicar el hábito 5 implica…",
+     "ops": [
+      "Escuchar a fondo al usuario y confirmar lo entendido antes de diseñar",
+      "Proponer la tecnología antes de escuchar",
+      "Copiar otro sistema",
+      "Diseñar sin preguntar"
+     ],
+     "ok": 0,
+     "r": "Entender el problema antes de resolverlo."
+    },
+    {
+     "nv": "I",
+     "q": "Una crítica constructiva a un compañero debe…",
+     "ops": [
+      "Ser pública y personal",
+      "Ser sarcástica",
+      "Evitarse siempre",
+      "Describir hechos, proponer mejoras y respetar a la persona"
+     ],
+     "ok": 3,
+     "r": "Se critica el trabajo, no a la persona."
+    },
+    {
+     "nv": "I",
+     "q": "Cumplir siempre lo que prometes a un cliente es un depósito en…",
+     "ops": [
+      "La cuenta bancaria emocional",
+      "El cuadrante IV",
+      "El círculo de preocupación",
+      "La matriz FODA"
+     ],
+     "ok": 0,
+     "r": "Aumenta la confianza."
+    },
+    {
+     "nv": "I",
+     "q": "Emitir facturas por servicios no prestados para reducir impuestos viola…",
+     "ops": [
+      "La sinergia",
+      "El hábito 7",
+      "La humildad",
+      "La ética financiera"
+     ],
+     "ok": 3,
+     "r": "Es evasión fiscal y engaño."
+    },
+    {
+     "nv": "A",
+     "q": "Infraestructura quiere más seguridad y desarrollo quiere más velocidad. Una solución sinérgica sería…",
+     "ops": [
+      "Que gane quien tenga más poder",
+      "Eliminar la seguridad",
+      "Automatizar los controles de seguridad dentro del flujo de despliegue para lograr ambos objetivos",
+      "Detener los despliegues"
+     ],
+     "ok": 2,
+     "r": "Una tercera alternativa que satisface a ambos."
+    },
+    {
+     "nv": "A",
+     "q": "Repartir el trabajo de un proyecto según capacidad y reconocer el aporte de cada quien aplica principalmente…",
+     "ops": [
+      "El hábito 1",
+      "La justicia",
+      "La ética financiera",
+      "El cuadrante III"
+     ],
+     "ok": 1,
+     "r": "Dar a cada uno lo que le corresponde."
+    },
+    {
+     "nv": "A",
+     "q": "Un proveedor y tu empresa negocian: si el proveedor pierde dinero, ¿por qué es mala noticia también para tu empresa a largo plazo?",
+     "ops": [
+      "Porque un acuerdo perder-ganar no es sostenible: el proveedor bajará la calidad o abandonará la relación",
+      "No lo es",
+      "Porque es ilegal",
+      "Porque los proveedores no importan"
+     ],
+     "ok": 0,
+     "r": "Solo los acuerdos ganar-ganar perduran."
+    }
+   ]
+  },
+  {
+   "titulo": "Renovación, liderazgo y ética en sistemas",
+   "intro": "Temas 15 y 16 del programa: confiar en Dios, dimensiones de la renovación, liderazgo de calidad, perdón y tema de ecología; incluye como complemento la ética aplicada a la ingeniería en sistemas.",
+   "conceptos": [
+    {
+     "n": "Hábito 7: afilar la sierra",
+     "e": [
+      "Renovar con regularidad las cuatro dimensiones: <b>física</b> (ejercicio, descanso, alimentación), <b>mental</b> (leer, aprender), <b>social-emocional</b> (relaciones, servicio) y <b>espiritual</b> (valores, reflexión, fe). Sin renovación, el desempeño se agota."
+     ],
+     "u": [
+      "Prevenir el agotamiento en trabajos de guardia o con alta presión.",
+      "La capacidad de producir debe cuidarse.",
+      "De forma constante, no solo en vacaciones.",
+      "Agenda actividades de las cuatro dimensiones cada semana."
+     ]
+    },
+    {
+     "n": "Liderazgo de calidad, perdón y ecología",
+     "e": [
+      "El liderazgo de calidad sirve y da ejemplo; el perdón restaura relaciones sin negar responsabilidades; la responsabilidad ecológica cuida los recursos (energía de centros de datos, desechos electrónicos)."
+     ],
+     "u": [
+      "Dirigir equipos, resolver conflictos, reciclar equipo informático.",
+      "La profesión tiene impacto social y ambiental.",
+      "Al liderar y al decidir sobre recursos.",
+      "Considera el impacto en personas y ambiente."
+     ]
+    },
+    {
+     "n": "Ética en la ingeniería en sistemas",
+     "e": [
+      "Como complemento, el Código de Ética de la ACM pide contribuir al bienestar humano, evitar daños, ser honesto, respetar la privacidad, la confidencialidad y la propiedad intelectual. En Guatemala aplican la Ley de Derecho de Autor y las normas sobre delitos informáticos del Código Penal."
+     ],
+     "u": [
+      "Manejo de datos personales, pruebas de seguridad autorizadas, licencias.",
+      "El poder técnico exige responsabilidad.",
+      "En todo proyecto con datos o sistemas ajenos.",
+      "Pregunta: ¿está autorizado?, ¿protege a las personas?, ¿respeta la ley?"
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuántas dimensiones de renovación propone el hábito 7?",
+     "ops": [
+      "Dos",
+      "Tres",
+      "Cuatro",
+      "Siete"
+     ],
+     "ok": 2,
+     "r": "Física, mental, social-emocional y espiritual."
+    },
+    {
+     "nv": "B",
+     "q": "Leer y tomar cursos corresponde a la renovación…",
+     "ops": [
+      "Física",
+      "Mental",
+      "Espiritual",
+      "Social"
+     ],
+     "ok": 1,
+     "r": "Afilar la mente."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué organización internacional tiene un código de ética para profesionales de la computación?",
+     "ops": [
+      "FIFA",
+      "OMS",
+      "ACM",
+      "OPEP"
+     ],
+     "ok": 2,
+     "r": "La Association for Computing Machinery."
+    },
+    {
+     "nv": "I",
+     "q": "Un técnico trabaja 80 horas semanales sin descanso y cada vez comete más errores. Le falta…",
+     "ops": [
+      "Afilar la sierra",
+      "Proactividad",
+      "Sinergia",
+      "Ganar-ganar"
+     ],
+     "ok": 0,
+     "r": "Sin renovación el rendimiento cae."
+    },
+    {
+     "nv": "I",
+     "q": "Desechar computadoras viejas en la basura común va contra…",
+     "ops": [
+      "El hábito 5",
+      "La ética financiera",
+      "La responsabilidad ecológica",
+      "La humildad"
+     ],
+     "ok": 2,
+     "r": "Los residuos electrónicos contienen materiales tóxicos."
+    },
+    {
+     "nv": "I",
+     "q": "Hacer pruebas de penetración a un sistema sin autorización del dueño es…",
+     "ops": [
+      "Ético si se encuentran fallas",
+      "Obligatorio",
+      "No ético y puede ser delito, aunque la intención sea buena",
+      "Indiferente"
+     ],
+     "ok": 2,
+     "r": "La autorización es indispensable."
+    },
+    {
+     "nv": "I",
+     "q": "El liderazgo de calidad se caracteriza por…",
+     "ops": [
+      "Mandar sin explicar",
+      "Evitar decisiones",
+      "Servir al equipo y dar ejemplo",
+      "Buscar culpables"
+     ],
+     "ok": 2,
+     "r": "La influencia nace del ejemplo."
+    },
+    {
+     "nv": "A",
+     "q": "Descubres que un sistema que mantienes guarda contraseñas en texto plano. Lo ético es…",
+     "ops": [
+      "Reportarlo a quien corresponde con una propuesta de corrección y priorizarla",
+      "No decir nada para no tener trabajo extra",
+      "Publicarlo en redes",
+      "Aprovecharlo"
+     ],
+     "ok": 0,
+     "r": "Evitar daños y proteger a los usuarios es un deber."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué la dimensión social-emocional también es parte de la renovación de un profesional de TI?",
+     "ops": [
+      "Porque las relaciones sanas sostienen el trabajo en equipo y la estabilidad personal",
+      "No lo es",
+      "Porque lo exige la ley",
+      "Porque sustituye al trabajo técnico"
+     ],
+     "ok": 0,
+     "r": "La efectividad depende también de las relaciones."
+    },
+    {
+     "nv": "A",
+     "q": "Un cliente pide copiar el diseño y código de un competidor “porque está en internet”. ¿Qué respondes?",
+     "ops": [
+      "Lo copias porque es público",
+      "Lo copias y cambias los colores",
+      "Explicas que está protegido por derechos de autor y propones un desarrollo propio inspirado en buenas prácticas",
+      "Pides más dinero y lo copias"
+     ],
+     "ok": 2,
+     "r": "Que algo sea visible no lo hace libre de derechos."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

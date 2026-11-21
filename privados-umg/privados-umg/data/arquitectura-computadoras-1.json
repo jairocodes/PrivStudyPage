@@ -1,0 +1,839 @@
+{
+ "slug": "arquitectura-computadoras-1",
+ "titulo": "Arquitectura de Computadoras I",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 7, código 090034, bloque Arquitectura de computadoras del seminario",
+ "firma": "MIPS=\\frac{f_{reloj}}{CPI\\times10^{6}}",
+ "firma_nota": "Millones de instrucciones por segundo: la medida clásica de rendimiento del procesador.",
+ "lead": "Microprocesadores y microcontroladores: arquitecturas, el PICAXE y su programación, conversión analógica-digital, protocolos de transmisión y sensores para controlar variables físicas. Es la base del IoT y de cualquier sistema de control automático. Los 7 temas del programa están organizados en 6 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7ArquitecturaComputadorasI.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y preguntas de opción múltiple que te dicen al instante si acertaste.",
+ "temas": [
+  {
+   "titulo": "Microprocesador, microcontrolador y arquitecturas",
+   "intro": "Tema 1 del programa: generalidades, ventajas y desventajas, sistemas abiertos y cerrados, Von Neumann y Harvard, RISC y CISC, bus de datos, memoria, interrupciones, banderas, reloj y MIPS.",
+   "conceptos": [
+    {
+     "n": "Microprocesador y microcontrolador",
+     "e": [
+      "El <b>microprocesador</b> es solo la CPU; necesita memoria y periféricos externos (sistema abierto, flexible y potente: computadoras, servidores). El <b>microcontrolador</b> integra CPU, memoria RAM y de programa, temporizadores y puertos de E/S en un solo chip (sistema cerrado, barato y de bajo consumo: electrodomésticos, IoT, autos)."
+     ],
+     "u": [
+      "Elegir el corazón de un proyecto: una PC industrial o un microcontrolador.",
+      "Define costo, consumo y capacidad.",
+      "Al diseñar un sistema embebido.",
+      "Si basta controlar sensores y actuadores, usa un microcontrolador."
+     ]
+    },
+    {
+     "n": "Von Neumann y Harvard; RISC y CISC",
+     "e": [
+      "<b>Von Neumann:</b> un mismo bus y memoria para instrucciones y datos (cuello de botella de Von Neumann). <b>Harvard:</b> memorias y buses separados, lee instrucción y dato a la vez; la usan la mayoría de microcontroladores. <b>RISC:</b> pocas instrucciones simples de longitud fija, muchos registros y segmentación eficiente (ARM, RISC-V, PIC). <b>CISC:</b> muchas instrucciones complejas de longitud variable (x86)."
+     ],
+     "u": [
+      "Entender por qué los celulares usan ARM y las PC x86.",
+      "La arquitectura determina rendimiento y consumo.",
+      "Al comparar procesadores.",
+      "Compara buses, set de instrucciones y consumo."
+     ]
+    },
+    {
+     "n": "Buses, memoria, interrupciones y rendimiento",
+     "e": [
+      "El bus de <b>datos</b> define cuántos bits se mueven a la vez; el de <b>direcciones</b>, cuánta memoria se direcciona (\\(2^n\\) posiciones); el de <b>control</b>, las señales de lectura y escritura. Memorias: ROM/flash (programa), RAM (datos), EEPROM (configuración). Una <b>interrupción</b> pausa el programa para atender un evento; las <b>banderas</b> (cero, acarreo, signo, desbordamiento) reflejan el resultado de la última operación."
+     ],
+     "u": [
+      "Dimensionar memoria, comparar procesadores, responder a eventos externos.",
+      "Explica límites de memoria y velocidad.",
+      "Al seleccionar hardware.",
+      "Calcula capacidad con 2ⁿ y rendimiento con MIPS o tiempo de CPU."
+     ],
+     "f": "T_{CPU}=\\frac{N_{instr}\\times CPI}{f_{reloj}}\\qquad T_{ciclo}=\\frac{1}{f}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula los MIPS de un procesador de 2 GHz con CPI promedio de 1.25.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\tfrac{2\\times10^9}{1.25\\times10^6}\\).",
+      "<b>Resultado.</b> 1600 MIPS."
+     ],
+     "r": "1600 MIPS",
+     "fin": "Medir rendimiento."
+    },
+    {
+     "nv": "I",
+     "q": "Un programa ejecuta \\(10^9\\) instrucciones con CPI 2 en un procesador de 2.5 GHz. ¿Tiempo de CPU?",
+     "pasos": [
+      "<b>Ciclos.</b> \\(2\\times10^9\\).",
+      "<b>Tiempo.</b> \\(\\tfrac{2\\times10^9}{2.5\\times10^9}=0.8\\) s."
+     ],
+     "r": "0.8 s",
+     "fin": "Relacionar instrucciones, CPI y frecuencia."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánta memoria direcciona un bus de direcciones de 16 bits con palabras de 8 bits? ¿Y uno de 32 bits?",
+     "pasos": [
+      "<b>16 bits.</b> \\(2^{16}=65\\,536\\) posiciones: 64 KB.",
+      "<b>32 bits.</b> \\(2^{32}\\) bytes: 4 GB."
+     ],
+     "r": "64 KB y 4 GB.",
+     "fin": "Entender el límite de 4 GB de los sistemas de 32 bits."
+    },
+    {
+     "nv": "B",
+     "q": "Período de reloj de un microcontrolador a 4 MHz.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(T=\\tfrac1f=\\tfrac{1}{4\\times10^6}\\).",
+      "<b>Resultado.</b> 250 ns."
+     ],
+     "r": "250 ns",
+     "fin": "Relacionar frecuencia y período."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué la arquitectura Harvard es más rápida para un microcontrolador?",
+     "pasos": [
+      "<b>Von Neumann.</b> Instrucción y dato compiten por el mismo bus: hay que leerlos en ciclos distintos.",
+      "<b>Harvard.</b> Buses separados: puede leer la siguiente instrucción mientras accede a un dato.",
+      "<b>Extra.</b> Permite anchos distintos de instrucción y de dato."
+     ],
+     "r": "Porque lee instrucción y dato en paralelo.",
+     "fin": "Justificar una elección de arquitectura."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué integra un microcontrolador que un microprocesador no?",
+     "ops": [
+      "Solo la ALU",
+      "Un disco duro",
+      "Una tarjeta de video",
+      "CPU, memoria y puertos de E/S en un chip"
+     ],
+     "ok": 3,
+     "r": "Por eso es un sistema cerrado y barato."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué arquitectura usa memorias separadas para programa y datos?",
+     "ops": [
+      "Von Neumann",
+      "Harvard",
+      "CISC",
+      "Monolítica"
+     ],
+     "ok": 1,
+     "r": "Típica de microcontroladores."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué característica es propia de RISC?",
+     "ops": [
+      "Pocas instrucciones simples, de longitud fija",
+      "Instrucciones de longitud variable y muy complejas",
+      "Ausencia de registros",
+      "Solo se usa en servidores"
+     ],
+     "ok": 0,
+     "r": "Facilita la segmentación y reduce el consumo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué bandera se activa cuando el resultado de una operación es cero?",
+     "ops": [
+      "Cero (Z)",
+      "Acarreo",
+      "Signo",
+      "Desbordamiento"
+     ],
+     "ok": 0,
+     "r": "Los saltos condicionales la consultan."
+    },
+    {
+     "nv": "A",
+     "q": "Un sistema debe atender un botón de emergencia sin importar lo que esté ejecutando. ¿Qué mecanismo usas?",
+     "ops": [
+      "Sondeo cada minuto",
+      "Un ciclo infinito sin pausa",
+      "Una interrupción",
+      "Un retardo largo"
+     ],
+     "ok": 2,
+     "r": "La interrupción atiende el evento de inmediato."
+    }
+   ]
+  },
+  {
+   "titulo": "Microcontroladores PICAXE",
+   "intro": "Tema 2 del programa: versiones de PICAXE (original, M, M2 y X2), puertos y tipos de entradas y salidas, bancos de memoria.",
+   "conceptos": [
+    {
+     "n": "Familias y puertos",
+     "e": [
+      "El PICAXE es un microcontrolador PIC con un intérprete de BASIC que se programa por cable serie o USB. Familias: las originales, M, <b>M2</b> (multitarea simple, uso general) y <b>X2</b> (más memoria, velocidad y pines). Los pines se nombran por puerto: B.0 a B.7, C.0 a C.7; algunos son entrada, salida, analógicos o con funciones especiales (PWM, I²C, serie)."
+     ],
+     "u": [
+      "Robótica educativa, automatización de invernaderos, prototipos rápidos.",
+      "Permite controlar hardware con pocas líneas de código.",
+      "En proyectos pequeños de control.",
+      "Revisa en la hoja de datos qué funciones tiene cada pin."
+     ]
+    },
+    {
+     "n": "Entradas y salidas",
+     "e": [
+      "Entradas <b>digitales</b> (botones, finales de carrera: 0 o 1, con resistencia pull-up o pull-down para evitar lecturas flotantes) y <b>analógicas</b> (sensores de voltaje variable, leídos con el ADC). Salidas digitales (LED, relé mediante transistor), <b>PWM</b> (brillo, velocidad de motor) y servo. Un pin entrega solo unos 20 mA: cargas mayores requieren transistor o controlador."
+     ],
+     "u": [
+      "Conectar sensores y actuadores reales.",
+      "Una conexión mal hecha daña el microcontrolador.",
+      "Al cablear el proyecto.",
+      "Usa resistencias limitadoras y transistores para cargas grandes."
+     ]
+    },
+    {
+     "n": "Bancos de memoria",
+     "e": [
+      "Memoria de programa (flash), variables de byte (<code>b0</code> a <code>b27</code> en M2) que se combinan en palabras de 16 bits (<code>w0</code> = b1:b0), memoria de almacenamiento temporal (scratchpad o RAM extra con <code>peek</code> y <code>poke</code>) y EEPROM para datos que deben sobrevivir al apagado (<code>read</code> y <code>write</code>)."
+     ],
+     "u": [
+      "Guardar configuraciones o lecturas entre reinicios.",
+      "Cada memoria sirve a un propósito distinto.",
+      "Al almacenar datos del proyecto.",
+      "Usa variables para cálculos y EEPROM para datos persistentes."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula la resistencia para un LED (2 V, 15 mA) en un pin de 5 V.",
+     "pasos": [
+      "<b>Caída en la resistencia.</b> \\(5-2=3\\) V.",
+      "<b>Ohm.</b> \\(\\tfrac{3}{0.015}=200\\) Ω; se usa 220 Ω."
+     ],
+     "r": "220 Ω",
+     "fin": "Proteger el pin y el LED."
+    },
+    {
+     "nv": "I",
+     "q": "Un relé de 12 V y 70 mA debe activarse desde un pin del PICAXE. ¿Cómo se conecta?",
+     "pasos": [
+      "<b>Problema.</b> El pin da unos 20 mA a 5 V.",
+      "<b>Solución.</b> Un transistor NPN con resistencia de base; el relé entre 12 V y el colector.",
+      "<b>Protección.</b> Un diodo en antiparalelo con la bobina del relé."
+     ],
+     "r": "Con transistor y diodo de protección.",
+     "fin": "Manejar cargas de potencia."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué un botón conectado a una entrada necesita resistencia pull-down?",
+     "pasos": [
+      "<b>Sin resistencia.</b> Con el botón suelto la entrada queda flotando y lee ruido.",
+      "<b>Con pull-down.</b> Se fija en 0 V hasta que el botón la lleva a 5 V."
+     ],
+     "r": "Para tener un nivel lógico definido.",
+     "fin": "Evitar lecturas aleatorias."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cómo guardas el número de arranques del equipo para que no se pierda al apagarlo?",
+     "pasos": [
+      "<b>Leer.</b> <code>read 0, b0</code> desde la EEPROM.",
+      "<b>Incrementar.</b> <code>b0 = b0 + 1</code>.",
+      "<b>Guardar.</b> <code>write 0, b0</code>.",
+      "<b>Cuidado.</b> La EEPROM tiene ciclos de escritura limitados: no escribir en un ciclo continuo."
+     ],
+     "r": "Leer, incrementar y escribir en la EEPROM.",
+     "fin": "Usar memoria no volátil."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué relación hay entre <code>w0</code>, <code>b0</code> y <code>b1</code>?",
+     "pasos": [
+      "<b>Palabra.</b> <code>w0</code> tiene 16 bits.",
+      "<b>Bytes.</b> <code>b0</code> es el byte bajo y <code>b1</code> el alto: \\(w0=256\\cdot b1+b0\\)."
+     ],
+     "r": "w0 = b1:b0",
+     "fin": "Evitar sobrescribir variables por error."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué rango de valores guarda una variable de byte del PICAXE?",
+     "ops": [
+      "0 a 255",
+      "0 a 1",
+      "0 a 65 535",
+      "−128 a 127"
+     ],
+     "ok": 0,
+     "r": "Ocho bits sin signo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué salida se usa para regular el brillo de un LED o la velocidad de un motor?",
+     "ops": [
+      "Digital simple",
+      "Entrada analógica",
+      "PWM",
+      "EEPROM"
+     ],
+     "ok": 2,
+     "r": "Varía el ciclo de trabajo de la señal."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué familia de PICAXE ofrece más memoria y velocidad?",
+     "ops": [
+      "M2",
+      "Original",
+      "X2",
+      "Todas son iguales"
+     ],
+     "ok": 2,
+     "r": "La X2 es la de mayores prestaciones."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué memoria conserva datos sin energía?",
+     "ops": [
+      "EEPROM",
+      "Variables b0–b27",
+      "Registros",
+      "Scratchpad"
+     ],
+     "ok": 0,
+     "r": "Se usa con read y write."
+    },
+    {
+     "nv": "A",
+     "q": "Si escribes en <code>b1</code>, ¿qué pasa con <code>w0</code>?",
+     "ops": [
+      "Cambia, porque b1 es su byte alto",
+      "Nada",
+      "Se borra la EEPROM",
+      "Se reinicia el chip"
+     ],
+     "ok": 0,
+     "r": "Las variables de palabra comparten memoria con las de byte."
+    }
+   ]
+  },
+  {
+   "titulo": "Programación y set de instrucciones",
+   "intro": "Temas 3 y 4 del programa: programación estructurada, variables, HIGH y LOW, funciones de tiempo, ciclos de conteo y comparación, frecuencia de ejecución, saltos, subrutinas y servomecanismos.",
+   "conceptos": [
+    {
+     "n": "Programación estructurada",
+     "e": [
+      "Se construye con secuencia, decisión y repetición, evitando saltos desordenados. En PICAXE BASIC: <code>if … then … else … endif</code>, <code>for … next</code>, <code>do … loop until</code>, subrutinas con <code>gosub</code> y <code>return</code>, y etiquetas con <code>goto</code> solo cuando es imprescindible."
+     ],
+     "u": [
+      "Programas de control legibles y mantenibles.",
+      "Un código ordenado se depura más rápido.",
+      "En todo programa de microcontrolador.",
+      "Divide el programa en subrutinas con una tarea cada una."
+     ]
+    },
+    {
+     "n": "Instrucciones básicas",
+     "e": [
+      "<code>high</code> y <code>low</code> encienden y apagan salidas; <code>toggle</code> invierte; <code>pause</code> espera en milisegundos y <code>wait</code> en segundos; <code>setfreq</code> cambia la frecuencia de reloj (y con ella la escala de los tiempos); <code>servo pin, valor</code> mueve un servomotor con pulsos de unos 0.75 a 2.25 ms (valores 75 a 225, centro 150)."
+     ],
+     "u": [
+      "Semáforos, alarmas, brazos robóticos, puertas automáticas.",
+      "Son los bloques de cualquier control.",
+      "Al escribir la lógica del proyecto.",
+      "Combina salidas, tiempos y condiciones."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Escribe un semáforo simple con LEDs en B.0 (rojo), B.1 (amarillo) y B.2 (verde).",
+     "pasos": [
+      "<code>main: high B.2 : pause 5000 : low B.2</code>",
+      "<code>high B.1 : pause 2000 : low B.1</code>",
+      "<code>high B.0 : pause 5000 : low B.0</code>",
+      "<code>goto main</code>"
+     ],
+     "r": "Verde 5 s, amarillo 2 s, rojo 5 s, en ciclo.",
+     "fin": "Secuencia temporizada básica."
+    },
+    {
+     "nv": "I",
+     "q": "Haz parpadear un LED 10 veces con un ciclo.",
+     "pasos": [
+      "<code>for b0 = 1 to 10</code>",
+      "<code>  high B.0 : pause 250 : low B.0 : pause 250</code>",
+      "<code>next b0</code>"
+     ],
+     "r": "10 parpadeos de medio segundo.",
+     "fin": "Usar ciclos de conteo."
+    },
+    {
+     "nv": "I",
+     "q": "Cuenta las pulsaciones de un botón en C.3 y enciende un LED al llegar a 5.",
+     "pasos": [
+      "<code>b1 = 0</code>",
+      "<code>main: if pinC.3 = 1 then : inc b1 : pause 300 : endif</code> (la pausa evita contar rebotes)",
+      "<code>if b1 >= 5 then high B.0 endif</code>",
+      "<code>goto main</code>"
+     ],
+     "r": "Contador con antirrebote por software.",
+     "fin": "Combinar comparación y conteo."
+    },
+    {
+     "nv": "A",
+     "q": "Mueve un servo de un extremo al otro y regresa al centro usando una subrutina.",
+     "pasos": [
+      "<code>main: servo B.3, 75 : pause 1000 : gosub centro</code>",
+      "<code>servo B.3, 225 : pause 1000 : gosub centro : goto main</code>",
+      "<code>centro: servoPos B.3, 150 : pause 1000 : return</code>"
+     ],
+     "r": "Movimiento a 0°, centro y 180° con subrutina.",
+     "fin": "Controlar servomecanismos."
+    },
+    {
+     "nv": "I",
+     "q": "Si cambias <code>setfreq m8</code> en un PICAXE M2 que normalmente corre a 4 MHz, ¿qué pasa con <code>pause 1000</code>?",
+     "pasos": [
+      "<b>Escala.</b> Los tiempos se calculan para 4 MHz.",
+      "<b>A 8 MHz.</b> La pausa dura la mitad: unos 500 ms.",
+      "<b>Corrección.</b> Usar <code>pause 2000</code> o el valor ajustado."
+     ],
+     "r": "Dura la mitad; hay que ajustar los tiempos.",
+     "fin": "Entender la dependencia del reloj."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué diferencia hay entre <code>pause 2</code> y <code>wait 2</code>?",
+     "r": "pause espera 2 ms; wait espera 2 s."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace <code>toggle B.4</code>?",
+     "r": "Invierte el estado de la salida B.4."
+    },
+    {
+     "nv": "I",
+     "q": "¿Para qué sirven <code>gosub</code> y <code>return</code>?",
+     "r": "Para llamar a una subrutina y regresar al punto siguiente a la llamada."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué valor de servo pone el eje al centro?",
+     "r": "150 (un pulso de unos 1.5 ms)."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué conviene evitar <code>goto</code> desordenados?",
+     "r": "Producen código espagueti difícil de seguir y depurar; las estructuras y subrutinas son más claras."
+    }
+   ]
+  },
+  {
+   "titulo": "Conversión A/D, matemáticas y estadística",
+   "intro": "Temas 4 y 5 del programa: configuración del conversor analógico-digital, operaciones matemáticas y procesos estadísticos (promedio, moda, máximos, mínimos y factores correctivos).",
+   "conceptos": [
+    {
+     "n": "Conversión analógica-digital",
+     "e": [
+      "El ADC convierte un voltaje en un número: con \\(n\\) bits y referencia \\(V_{ref}\\), el valor es \\(\\tfrac{V}{V_{ref}}(2^n-1)\\) y la resolución \\(\\tfrac{V_{ref}}{2^n}\\). En PICAXE <code>readadc</code> da 8 bits (0 a 255) y <code>readadc10</code> da 10 bits (0 a 1023)."
+     ],
+     "u": [
+      "Leer temperatura, luz, humedad o posición.",
+      "El mundo es analógico; el microcontrolador, digital.",
+      "Con cualquier sensor de voltaje variable.",
+      "Convierte la lectura a voltaje y luego a la magnitud física."
+     ],
+     "f": "N=\\frac{V}{V_{ref}}(2^n-1)\\qquad V=\\frac{N\\,V_{ref}}{2^n-1}"
+    },
+    {
+     "n": "Aritmética entera",
+     "e": [
+      "El PICAXE trabaja con enteros sin signo: bytes de 0 a 255 y palabras de 0 a 65 535; la división trunca los decimales y los resultados que exceden el rango dan la vuelta. Para conservar precisión se multiplica antes de dividir y se usan palabras para sumas grandes."
+     ],
+     "u": [
+      "Promediar lecturas, convertir unidades, calibrar sensores.",
+      "Un desbordamiento produce lecturas absurdas.",
+      "Al hacer cálculos en el microcontrolador.",
+      "Usa palabras para acumular y multiplica antes de dividir."
+     ]
+    },
+    {
+     "n": "Procesos estadísticos y factores correctivos",
+     "e": [
+      "Para reducir ruido se toman varias lecturas y se calcula el <b>promedio</b>; la <b>moda</b> y la mediana descartan valores atípicos; los <b>máximos y mínimos</b> sirven para alarmas. Un <b>factor correctivo</b> ajusta la lectura para que coincida con un instrumento de referencia (calibración): valor = lectura × factor + desplazamiento."
+     ],
+     "u": [
+      "Sensores con ruido, estaciones meteorológicas, básculas.",
+      "Mejora la exactitud sin cambiar el hardware.",
+      "Al calibrar o filtrar lecturas.",
+      "Compara contra un patrón y calcula factor y desplazamiento."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un ADC de 8 bits con referencia de 5 V lee 128. ¿Qué voltaje es?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(\\tfrac{128\\times5}{255}\\).",
+      "<b>Resultado.</b> ≈ 2.51 V."
+     ],
+     "r": "≈ 2.51 V",
+     "fin": "Pasar de número a voltaje."
+    },
+    {
+     "nv": "I",
+     "q": "Un LM35 (10 mV/°C) se lee con un ADC de 10 bits y referencia de 5 V; la lectura es 51. ¿Temperatura?",
+     "pasos": [
+      "<b>Voltaje.</b> \\(\\tfrac{51\\times5}{1023}\\approx0.249\\) V.",
+      "<b>Temperatura.</b> \\(\\tfrac{0.249}{0.010}\\approx24.9\\) °C."
+     ],
+     "r": "≈ 24.9 °C",
+     "fin": "Convertir una lectura a magnitud física."
+    },
+    {
+     "nv": "I",
+     "q": "Promedia las lecturas 120, 130, 125 y 127 en un PICAXE.",
+     "pasos": [
+      "<b>Acumula en una palabra.</b> <code>w1 = 0</code> y suma las cuatro: 502 (no cabe en un byte).",
+      "<b>Divide.</b> <code>w1 = w1 / 4</code> da 125 (trunca 125.5)."
+     ],
+     "r": "125",
+     "fin": "Evitar desbordamientos y entender el truncamiento."
+    },
+    {
+     "nv": "A",
+     "q": "Un sensor marca 20 °C cuando el patrón marca 22 °C y 80 °C cuando el patrón marca 86 °C. Calcula el factor y el desplazamiento.",
+     "pasos": [
+      "<b>Factor.</b> \\(\\tfrac{86-22}{80-20}=\\tfrac{64}{60}\\approx1.067\\).",
+      "<b>Desplazamiento.</b> \\(22-1.067(20)\\approx0.67\\).",
+      "<b>Corrección.</b> \\(T=1.067\\,L+0.67\\); en enteros: \\(T=(L\\times16)/15+1\\) aproximado."
+     ],
+     "r": "T ≈ 1.067·lectura + 0.67",
+     "fin": "Calibrar un sensor con dos puntos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál es la resolución de un ADC de 10 bits con 5 V? ¿Y de 8 bits?",
+     "pasos": [
+      "<b>10 bits.</b> \\(\\tfrac{5}{1024}\\approx4.88\\) mV.",
+      "<b>8 bits.</b> \\(\\tfrac{5}{256}\\approx19.5\\) mV."
+     ],
+     "r": "4.88 mV y 19.5 mV.",
+     "fin": "Elegir la resolución adecuada."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué valor máximo devuelve <code>readadc10</code>?",
+     "r": "1023"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto da 200 + 100 en una variable de byte del PICAXE?",
+     "r": "44 (300 − 256: se desborda)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto da 7 / 2 en el PICAXE?",
+     "r": "3 (la división entera trunca)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué conviene usar la mediana en lugar del promedio con un sensor que a veces da picos absurdos?",
+     "r": "Porque la mediana no se ve afectada por valores atípicos."
+    },
+    {
+     "nv": "A",
+     "q": "Un ADC de 8 bits con referencia de 5 V lee 51 de un LM35. ¿Temperatura?",
+     "r": "≈ 1.0 V → 100 °C."
+    }
+   ]
+  },
+  {
+   "titulo": "Protocolos de transmisión",
+   "intro": "Tema 6 del programa: protocolo serie RS-232, I²C, transmisores RF, pantalla LCD, conexión a la terminal del editor y a la hiperterminal, creación de archivos CSV.",
+   "conceptos": [
+    {
+     "n": "Serie y RS-232",
+     "e": [
+      "La transmisión serie asíncrona envía bit a bit con bit de inicio, datos, paridad opcional y bit de parada, a una velocidad acordada (por ejemplo 9600 baudios, 8N1). RS-232 usa niveles de ±3 a ±15 V; con lógica TTL de 5 V se necesita un adaptador. En PICAXE: <code>sertxd</code> envía a la terminal del editor y <code>serout</code> y <code>serin</code> manejan otros pines."
+     ],
+     "u": [
+      "Depurar programas, enviar lecturas a una PC, módulos GPS y Bluetooth.",
+      "Es la forma más simple de comunicar dos equipos.",
+      "Al registrar datos en una computadora.",
+      "Configura la misma velocidad y formato en ambos lados."
+     ]
+    },
+    {
+     "n": "I²C, RF y LCD",
+     "e": [
+      "<b>I²C</b> usa dos hilos (SDA y SCL) con pull-up, maestro y esclavos con dirección; conecta memorias, relojes y sensores. Los módulos <b>RF</b> (433 MHz) envían datos sin cables a corta distancia. Una <b>LCD</b> de texto se maneja directamente o por un módulo serie o I²C."
+     ],
+     "u": [
+      "Estaciones remotas, pantallas de equipos, redes de sensores.",
+      "Amplían lo que el microcontrolador puede mostrar y comunicar.",
+      "Cuando hay varios periféricos o distancia.",
+      "Elige I²C para muchos dispositivos cercanos y RF para enlaces sin cable."
+     ]
+    },
+    {
+     "n": "Registro de datos en CSV",
+     "e": [
+      "Un archivo CSV guarda una lectura por línea con valores separados por comas (fecha, hora, temperatura, humedad). El microcontrolador envía las líneas por serie y la PC las guarda con una terminal o un programa; luego se abren en Excel o se cargan a una base de datos."
+     ],
+     "u": [
+      "Monitoreo de invernaderos, bitácoras de sensores, análisis posterior.",
+      "Es un formato universal y fácil de procesar.",
+      "Al registrar datos para analizarlos.",
+      "Envía encabezado y luego una línea por medición."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "A 9600 baudios en 8N1, ¿cuántos bytes por segundo se transmiten?",
+     "pasos": [
+      "<b>Bits por byte.</b> 10 (inicio, 8 datos, parada).",
+      "<b>Bytes.</b> \\(\\tfrac{9600}{10}=960\\) por segundo."
+     ],
+     "r": "960 B/s",
+     "fin": "Estimar la capacidad de un enlace serie."
+    },
+    {
+     "nv": "I",
+     "q": "Envía temperatura y humedad a la PC en formato CSV.",
+     "pasos": [
+      "<code>sertxd (&quot;temp,hum&quot;, 13, 10)</code> (encabezado y salto de línea)",
+      "<code>main: readadc C.1, b0 : readadc C.2, b1</code>",
+      "<code>sertxd (#b0, &quot;,&quot;, #b1, 13, 10) : wait 60 : goto main</code>"
+     ],
+     "r": "Una línea CSV por minuto.",
+     "fin": "Registrar datos para análisis."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántas líneas necesita I²C para tres sensores y una memoria, y qué los distingue?",
+     "pasos": [
+      "<b>Líneas.</b> Solo dos compartidas: SDA y SCL (más alimentación y tierra).",
+      "<b>Distinción.</b> Cada dispositivo tiene una dirección distinta."
+     ],
+     "r": "Dos líneas; direcciones únicas.",
+     "fin": "Aprovechar el bus I²C."
+    },
+    {
+     "nv": "A",
+     "q": "Una estación a 50 m debe enviar datos sin cable cada 10 minutos. Propón la solución y su riesgo.",
+     "pasos": [
+      "<b>Enlace.</b> Módulos RF de 433 MHz (o LoRa para más alcance).",
+      "<b>Trama.</b> Encabezado, identificador, datos y suma de verificación.",
+      "<b>Riesgo.</b> Interferencia y pérdida de paquetes: repetir el envío o pedir confirmación."
+     ],
+     "r": "RF con tramas verificadas y reintentos.",
+     "fin": "Diseñar comunicación inalámbrica simple."
+    },
+    {
+     "nv": "B",
+     "q": "¿Por qué la terminal muestra caracteres extraños al recibir datos?",
+     "pasos": [
+      "<b>Causa típica.</b> Velocidad (baudios) o formato distintos entre emisor y receptor.",
+      "<b>Solución.</b> Configurar ambos igual."
+     ],
+     "r": "Velocidad o formato distintos.",
+     "fin": "Depurar comunicación serie."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué instrucción del PICAXE envía datos a la terminal del editor?",
+     "ops": [
+      "<code>readadc</code>",
+      "<code>servo</code>",
+      "<code>sertxd</code>",
+      "<code>pause</code>"
+     ],
+     "ok": 2,
+     "r": "Envía por el cable de programación."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué separa los valores en un archivo CSV?",
+     "ops": [
+      "Puntos y comas siempre",
+      "Tabuladores siempre",
+      "Comas",
+      "Espacios"
+     ],
+     "ok": 2,
+     "r": "Comma-separated values."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué necesita el bus I²C además de SDA y SCL?",
+     "ops": [
+      "Un cable coaxial",
+      "Un módem",
+      "Resistencias de pull-up",
+      "Fibra óptica"
+     ],
+     "ok": 2,
+     "r": "Las salidas solo bajan la línea; la resistencia la sube."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué RS-232 no se conecta directo a un pin de 5 V?",
+     "ops": [
+      "Porque es inalámbrico",
+      "Porque usa niveles de ±3 a ±15 V con lógica invertida",
+      "Porque es paralelo",
+      "Porque no usa tierra"
+     ],
+     "ok": 1,
+     "r": "Requiere un adaptador de niveles."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué agregas a una trama RF para detectar datos corruptos?",
+     "ops": [
+      "Más velocidad",
+      "Una suma de verificación o CRC",
+      "Un LED",
+      "Un retardo"
+     ],
+     "ok": 1,
+     "r": "El receptor recalcula y descarta las tramas erróneas."
+    }
+   ]
+  },
+  {
+   "titulo": "Sensores y variables físicas",
+   "intro": "Tema 7 del programa: sensores inductivos, de temperatura, peso, humedad, encoder, ultrasónicos, de corriente y de deformación.",
+   "conceptos": [
+    {
+     "n": "Tipos de sensores",
+     "e": [
+      "<b>Inductivo:</b> detecta metal sin contacto. <b>Temperatura:</b> LM35 (analógico, 10 mV/°C), DS18B20 (digital), termistor. <b>Peso:</b> celda de carga con amplificador (HX711). <b>Humedad:</b> capacitivo o resistivo (DHT11, DHT22). <b>Encoder:</b> pulsos por vuelta para posición y velocidad. <b>Ultrasónico:</b> distancia por tiempo de eco. <b>Corriente:</b> efecto Hall (ACS712). <b>Deformación:</b> galga extensiométrica."
+     ],
+     "u": [
+      "Invernaderos, básculas, robots, monitoreo de energía en centros de datos.",
+      "Convierten el mundo físico en datos.",
+      "Al automatizar o medir.",
+      "Elige por magnitud, rango, precisión y tipo de salida."
+     ]
+    },
+    {
+     "n": "Del sensor a la medición",
+     "e": [
+      "Cada sensor tiene una función de transferencia: voltaje o pulsos en función de la magnitud. Se lee, se convierte con la fórmula del fabricante y se calibra. Distancia ultrasónica: \\(d=\\tfrac{v\\,t}{2}\\) con \\(v\\approx343\\) m/s. Velocidad con encoder: rpm = pulsos por segundo ÷ pulsos por vuelta × 60."
+     ],
+     "u": [
+      "Medir distancias, caudal, velocidad de motores, consumo eléctrico.",
+      "La fórmula correcta da mediciones útiles.",
+      "Al procesar lecturas.",
+      "Aplica la función de transferencia y verifica con un patrón."
+     ],
+     "f": "d=\\frac{v\\,t}{2}\\qquad rpm=\\frac{\\text{pulsos/s}}{\\text{pulsos/vuelta}}\\times60"
+    },
+    {
+     "n": "Control retroalimentado",
+     "e": [
+      "Un sistema de lazo cerrado mide la variable, la compara con el valor deseado (consigna) y actúa para reducir la diferencia. El control todo-o-nada con <b>histéresis</b> (encender bajo un umbral y apagar sobre otro) evita que el actuador oscile; el control PID ajusta de forma proporcional, integral y derivativa."
+     ],
+     "u": [
+      "Riego automático, climatización, control de motores.",
+      "Mantiene la variable en su valor sin intervención humana.",
+      "Cuando hay que sostener una condición.",
+      "Define consigna, sensor, actuador y regla de control."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un sensor ultrasónico recibe el eco a los 5.8 ms. ¿A qué distancia está el objeto?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(d=\\tfrac{343\\times0.0058}{2}\\).",
+      "<b>Resultado.</b> ≈ 0.99 m."
+     ],
+     "r": "≈ 0.99 m",
+     "fin": "Medir distancias sin contacto."
+    },
+    {
+     "nv": "I",
+     "q": "Un encoder de 360 pulsos por vuelta da 1800 pulsos en un segundo. ¿Velocidad?",
+     "pasos": [
+      "<b>Vueltas por segundo.</b> \\(\\tfrac{1800}{360}=5\\).",
+      "<b>rpm.</b> \\(5\\times60=300\\)."
+     ],
+     "r": "300 rpm",
+     "fin": "Medir velocidad de un motor."
+    },
+    {
+     "nv": "I",
+     "q": "Un ACS712 de 5 A (185 mV/A, 2.5 V en 0 A) da 2.87 V. ¿Corriente?",
+     "pasos": [
+      "<b>Diferencia.</b> \\(2.87-2.5=0.37\\) V.",
+      "<b>Corriente.</b> \\(\\tfrac{0.37}{0.185}=2\\) A."
+     ],
+     "r": "2 A",
+     "fin": "Medir consumo eléctrico."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña el control de humedad del suelo de un invernadero.",
+     "pasos": [
+      "<b>Sensor.</b> Humedad del suelo en una entrada analógica.",
+      "<b>Actuador.</b> Bomba con relé y transistor.",
+      "<b>Regla con histéresis.</b> Encender si humedad < 40 % y apagar si > 60 %.",
+      "<b>Registro.</b> Enviar lecturas en CSV y alarmar si la bomba funciona más de 10 minutos seguidos."
+     ],
+     "r": "Lazo cerrado con histéresis, registro y alarma.",
+     "fin": "Diseñar el proyecto final típico del curso."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué sensor usarías para contar piezas metálicas en una banda y por qué?",
+     "pasos": [
+      "<b>Sensor.</b> Inductivo.",
+      "<b>Razón.</b> Detecta metal sin contacto, es robusto y no lo afecta la suciedad."
+     ],
+     "r": "Sensor inductivo.",
+     "fin": "Elegir el sensor adecuado."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué mide una galga extensiométrica?",
+     "r": "Deformación (y, a través de ella, fuerza o peso)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué distancia corresponde a un eco de 2 ms?",
+     "r": "≈ 0.34 m"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué es la histéresis en un control todo-o-nada?",
+     "r": "Usar umbrales distintos para encender y apagar para evitar oscilaciones."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué sensor digital mide temperatura y humedad en un solo módulo?",
+     "r": "DHT11 o DHT22."
+    },
+    {
+     "nv": "A",
+     "q": "Una celda de carga con su amplificador entrega 20 mV por kg y el ADC mide 0.5 V. ¿Peso?",
+     "r": "0.5 ÷ 0.020 = 25 kg."
+    }
+   ]
+  }
+ ]
+}

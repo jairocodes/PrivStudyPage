@@ -1,0 +1,847 @@
+{
+ "slug": "arquitectura-computadoras-2",
+ "titulo": "Arquitectura de Computadoras II",
+ "area": "Administración de Sistemas",
+ "meta": "Ciclo 8, código 040, bloque Arquitectura de computadoras del seminario",
+ "firma": "\\text{Dirección física}=\\text{segmento}\\times16+\\text{desplazamiento}",
+ "firma_nota": "La segmentación del 8086: cómo un procesador de 16 bits direcciona 1 MB.",
+ "lead": "La organización interna de la PC: CPU, ALU, registros y buses, el set de instrucciones del Intel de 16 bits, interrupciones, DMA, interfaces (USB, SATA, Wi-Fi, Bluetooth) y almacenamiento con respaldos. Sirve para diagnosticar equipos y entender el rendimiento del hardware.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8ArquitecturaComputadorasII.pdf",
+ "como": "Cada tema trae conceptos con su uso real y 10 ejercicios: resueltos paso a paso, para resolver con la respuesta oculta y preguntas de opción múltiple que te dicen al instante si acertaste. Los números terminados en h están en hexadecimal.",
+ "temas": [
+  {
+   "titulo": "Organización de la computadora",
+   "intro": "Tema 1 del programa: arquitecturas Von Neumann y Harvard, unidad central de proceso, unidad aritmético-lógica, tipos de memorias, registros, puertos de E/S y buses del sistema.",
+   "conceptos": [
+    {
+     "n": "CPU, ALU y ciclo de instrucción",
+     "e": [
+      "La CPU tiene <b>unidad de control</b> (busca, decodifica y coordina), <b>ALU</b> (operaciones aritméticas y lógicas) y <b>registros</b> (almacenamiento ultrarrápido). Ciclo de instrucción: búsqueda (con el contador de programa), decodificación, ejecución y escritura del resultado. La segmentación (pipeline) traslapa las etapas de varias instrucciones."
+     ],
+     "u": [
+      "Entender el rendimiento de servidores y la diferencia entre procesadores.",
+      "Explica qué limita la velocidad de un programa.",
+      "Al comparar o diagnosticar equipos.",
+      "Sigue el recorrido de una instrucción por cada etapa."
+     ]
+    },
+    {
+     "n": "Memorias y jerarquía",
+     "e": [
+      "Registros → caché (L1, L2, L3, SRAM) → memoria principal (DRAM) → almacenamiento (SSD, disco). Hacia abajo aumentan capacidad y latencia y baja el costo por byte. ROM/flash guarda el firmware (BIOS/UEFI). El principio de localidad (temporal y espacial) hace que la caché funcione."
+     ],
+     "u": [
+      "Elegir RAM y caché de servidores, ajustar bases de datos.",
+      "Acceder a RAM es cientos de veces más lento que a caché.",
+      "Al optimizar rendimiento.",
+      "Ubica dónde está el dato y cuánto cuesta traerlo."
+     ]
+    },
+    {
+     "n": "Buses y puertos",
+     "e": [
+      "El bus del sistema tiene líneas de <b>datos</b>, <b>direcciones</b> y <b>control</b>. Los puertos de E/S conectan periféricos; pueden estar mapeados en memoria o en un espacio de E/S separado (en x86 se usan las instrucciones IN y OUT). Buses actuales: PCI Express (carriles seriales punto a punto)."
+     ],
+     "u": [
+      "Instalar tarjetas, diagnosticar cuellos de botella de E/S.",
+      "El bus limita cuántos datos pueden moverse.",
+      "Al ampliar hardware.",
+      "Calcula el ancho de banda: bits × frecuencia."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Describe las etapas del ciclo de instrucción para <code>ADD AX, BX</code>.",
+     "pasos": [
+      "<b>Búsqueda.</b> Se lee la instrucción de la dirección que indica IP.",
+      "<b>Decodificación.</b> La unidad de control identifica una suma entre registros.",
+      "<b>Ejecución.</b> La ALU suma AX y BX.",
+      "<b>Escritura.</b> El resultado queda en AX y se actualizan las banderas."
+     ],
+     "r": "Búsqueda, decodificación, ejecución y escritura.",
+     "fin": "Entender cómo trabaja el procesador."
+    },
+    {
+     "nv": "I",
+     "q": "Ordena por velocidad y capacidad: disco, caché L1, RAM, registros, caché L3.",
+     "pasos": [
+      "<b>Más rápido y pequeño.</b> Registros.",
+      "<b>Luego.</b> Caché L1, caché L3, RAM.",
+      "<b>Más lento y grande.</b> Disco."
+     ],
+     "r": "Registros > L1 > L3 > RAM > disco en velocidad; al revés en capacidad.",
+     "fin": "Aplicar la jerarquía de memoria."
+    },
+    {
+     "nv": "I",
+     "q": "Un bus de 64 bits trabaja a 100 MHz con una transferencia por ciclo. ¿Ancho de banda?",
+     "pasos": [
+      "<b>Bytes por ciclo.</b> 64 / 8 = 8.",
+      "<b>Por segundo.</b> \\(8\\times100\\times10^6=800\\) MB/s."
+     ],
+     "r": "800 MB/s",
+     "fin": "Calcular capacidad de un bus."
+    },
+    {
+     "nv": "A",
+     "q": "Explica por qué recorrer una matriz por filas es más rápido que por columnas en C.",
+     "pasos": [
+      "<b>Almacenamiento.</b> C guarda las matrices por filas.",
+      "<b>Localidad espacial.</b> Al leer un elemento, la caché trae una línea completa con los vecinos de la misma fila.",
+      "<b>Por columnas.</b> Cada acceso salta a otra línea y provoca fallos de caché."
+     ],
+     "r": "Por la localidad espacial y la caché.",
+     "fin": "Relacionar arquitectura con rendimiento de programas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hacen los buses de datos, direcciones y control?",
+     "pasos": [
+      "<b>Datos.</b> Transportan la información.",
+      "<b>Direcciones.</b> Indican dónde leer o escribir.",
+      "<b>Control.</b> Indican la operación (lectura, escritura, interrupción, reloj)."
+     ],
+     "r": "Qué, dónde y cómo.",
+     "fin": "Fijar los conceptos básicos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué unidad realiza las operaciones aritméticas y lógicas?",
+     "ops": [
+      "La ALU",
+      "La unidad de control",
+      "La caché",
+      "El bus"
+     ],
+     "ok": 0,
+     "r": "Arithmetic Logic Unit."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué registro indica la dirección de la siguiente instrucción en el 8086?",
+     "ops": [
+      "AX",
+      "IP",
+      "SP",
+      "DS"
+     ],
+     "ok": 1,
+     "r": "Instruction Pointer (contador de programa)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tecnología de memoria se usa en la caché?",
+     "ops": [
+      "DRAM",
+      "SRAM",
+      "Flash",
+      "Disco"
+     ],
+     "ok": 1,
+     "r": "Es más rápida y no necesita refresco."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué bus actual conecta tarjetas de video y SSD NVMe?",
+     "ops": [
+      "ISA",
+      "IDE",
+      "PCI Express",
+      "AGP"
+     ],
+     "ok": 2,
+     "r": "Carriles seriales punto a punto de alta velocidad."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué principio explica que la caché acierte la mayoría de las veces?",
+     "ops": [
+      "Ley de Ohm",
+      "Teorema de Shannon",
+      "Principio de localidad",
+      "Ley de Moore"
+     ],
+     "ok": 2,
+     "r": "Los programas reutilizan datos recientes y cercanos."
+    }
+   ]
+  },
+  {
+   "titulo": "Set de instrucciones del Intel de 16 bits",
+   "intro": "Tema 2 del programa: instrucciones de cadenas, de entrada y salida, aritméticas y lógicas, saltos condicionales y desarrollo de software (memoria, interfaces, retardos).",
+   "conceptos": [
+    {
+     "n": "Registros y segmentación del 8086",
+     "e": [
+      "Generales: AX (acumulador), BX (base), CX (contador), DX (datos), con mitades altas y bajas (AH, AL…). Índice y puntero: SI, DI, BP, SP. Segmento: CS (código), DS (datos), SS (pila), ES (extra). IP y el registro de banderas: CF (acarreo), ZF (cero), SF (signo), OF (desbordamiento), PF (paridad). Con 20 bits de dirección accede a 1 MB."
+     ],
+     "u": [
+      "Depurar programas a bajo nivel, entender exploits y malware, sistemas embebidos.",
+      "Muestra cómo ejecuta realmente la máquina.",
+      "Al leer o escribir ensamblador.",
+      "Calcula direcciones con segmento × 16 + desplazamiento."
+     ],
+     "f": "\\text{física}=\\text{segmento}\\times10h+\\text{desplazamiento}"
+    },
+    {
+     "n": "Grupos de instrucciones",
+     "e": [
+      "Transferencia: MOV, PUSH, POP, XCHG. Aritméticas: ADD, SUB, INC, DEC, MUL (AX × operando → DX:AX), DIV (cociente en AL o AX, residuo en AH o DX), CMP. Lógicas: AND, OR, XOR, NOT, SHL, SHR. Saltos: JMP, JE/JZ, JNE/JNZ, JG, JL, LOOP (decrementa CX y salta si no es cero), CALL, RET. Cadenas: MOVSB, CMPSB, SCASB, LODSB, STOSB con REP. E/S: IN, OUT."
+     ],
+     "u": [
+      "Optimización de rutinas críticas, controladores, ingeniería inversa.",
+      "Son las operaciones primitivas del procesador.",
+      "Al programar a bajo nivel.",
+      "Elige la instrucción y verifica las banderas que modifica."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula la dirección física de 2000h:0345h.",
+     "pasos": [
+      "<b>Segmento × 16.</b> 20000h.",
+      "<b>Suma.</b> 20000h + 0345h."
+     ],
+     "r": "20345h",
+     "fin": "Dominar la segmentación."
+    },
+    {
+     "nv": "I",
+     "q": "Si AL = FFh y se ejecuta <code>ADD AL, 1</code>, ¿qué queda en AL y en las banderas CF y ZF?",
+     "pasos": [
+      "<b>Suma.</b> FFh + 1 = 100h, que no cabe en 8 bits.",
+      "<b>AL.</b> 00h.",
+      "<b>Banderas.</b> CF = 1 (acarreo) y ZF = 1 (resultado cero)."
+     ],
+     "r": "AL = 00h, CF = 1, ZF = 1.",
+     "fin": "Entender las banderas."
+    },
+    {
+     "nv": "I",
+     "q": "Suma los números del 1 al 10 con LOOP.",
+     "pasos": [
+      "<code>MOV AX, 0</code>",
+      "<code>MOV CX, 10</code>",
+      "<code>sumar: ADD AX, CX</code>",
+      "<code>LOOP sumar</code>",
+      "<b>Resultado.</b> AX = 55 = 37h."
+     ],
+     "r": "AX = 37h (55)",
+     "fin": "Usar ciclos en ensamblador."
+    },
+    {
+     "nv": "A",
+     "q": "Si AX = 17 y BL = 5, ¿qué hace <code>DIV BL</code>? Y con AX = 5, BX = 3, ¿qué hace <code>MUL BX</code>?",
+     "pasos": [
+      "<b>DIV BL.</b> Divide AX entre BL: AL = 3 (cociente), AH = 2 (residuo).",
+      "<b>MUL BX.</b> Multiplica AX por BX: DX:AX = 15, es decir AX = 15 y DX = 0."
+     ],
+     "r": "DIV: AL = 3, AH = 2. MUL: AX = 15, DX = 0.",
+     "fin": "Entender dónde quedan los resultados."
+    },
+    {
+     "nv": "I",
+     "q": "Copia 100 bytes de DS:SI a ES:DI con instrucciones de cadena.",
+     "pasos": [
+      "<code>CLD</code> (dirección hacia adelante)",
+      "<code>MOV CX, 100</code>",
+      "<code>REP MOVSB</code>"
+     ],
+     "r": "REP MOVSB repite la copia 100 veces.",
+     "fin": "Usar las instrucciones de cadena."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué hace <code>CMP AX, BX</code> si no guarda el resultado?",
+     "r": "Resta internamente y solo actualiza las banderas para un salto condicional."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula la dirección física de 1234h:0010h.",
+     "r": "12350h"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace <code>XOR AX, AX</code>?",
+     "r": "Pone AX en cero (forma rápida y común)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace <code>SHL AL, 1</code> con AL = 05h?",
+     "r": "AL = 0Ah (multiplica por 2)."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe un salto que vaya a la etiqueta <code>mayor</code> si AX es mayor que BX con signo.",
+     "r": "<code>CMP AX, BX</code> seguido de <code>JG mayor</code>."
+    }
+   ]
+  },
+  {
+   "titulo": "Interrupciones",
+   "intro": "Tema 3 del programa: concepto de interrupción, interrupciones por hardware y por software, implementación con Arduino.",
+   "conceptos": [
+    {
+     "n": "Concepto y tipos",
+     "e": [
+      "Una interrupción detiene el programa para atender un evento y luego lo reanuda. <b>Por hardware:</b> la provoca un dispositivo (teclado, temporizador, tarjeta de red) por una línea IRQ; pueden ser enmascarables o no. <b>Por software:</b> la provoca una instrucción INT (por ejemplo INT 21h de DOS o las llamadas al sistema). Las <b>excepciones</b> las provoca el propio CPU (división entre cero, fallo de página)."
+     ],
+     "u": [
+      "Atender botones, sensores y paquetes de red sin sondear, llamadas al sistema.",
+      "Permite reaccionar de inmediato sin desperdiciar CPU.",
+      "Con eventos asíncronos.",
+      "Asocia cada evento a una rutina de servicio corta."
+     ]
+    },
+    {
+     "n": "Tabla de vectores y rutina de servicio",
+     "e": [
+      "En el 8086 la tabla de vectores ocupa los primeros 1024 bytes: 256 vectores de 4 bytes (segmento y desplazamiento); el vector de la interrupción \\(n\\) está en la dirección \\(4n\\). Al ocurrir, el CPU guarda banderas, CS e IP en la pila, salta a la rutina de servicio (ISR) y regresa con IRET."
+     ],
+     "u": [
+      "Depuración de sistemas, manejadores de dispositivos.",
+      "Explica cómo el CPU encuentra el código que atiende cada evento.",
+      "Al programar manejadores.",
+      "Calcula la posición del vector con 4n."
+     ],
+     "f": "\\text{dirección del vector}=4n"
+    },
+    {
+     "n": "Interrupciones en Arduino",
+     "e": [
+      "<code>attachInterrupt(digitalPinToInterrupt(2), rutina, FALLING)</code> asocia una rutina a un pin (en el Uno, pines 2 y 3) con modo RISING, FALLING, CHANGE o LOW. La rutina debe ser corta, sin <code>delay</code> ni impresión serie, y las variables compartidas se declaran <code>volatile</code>."
+     ],
+     "u": [
+      "Contar pulsos de un encoder o caudalímetro, botones de emergencia.",
+      "No se pierden eventos rápidos.",
+      "Con señales que llegan en cualquier momento.",
+      "Marca un indicador en la ISR y procésalo en el loop."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿En qué dirección está el vector de la interrupción 21h en el 8086?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(4\\times21h\\).",
+      "<b>Resultado.</b> 84h (en el segmento 0000h)."
+     ],
+     "r": "0000:0084h",
+     "fin": "Ubicar vectores de interrupción."
+    },
+    {
+     "nv": "I",
+     "q": "Describe qué hace el CPU cuando llega una interrupción por hardware.",
+     "pasos": [
+      "<b>Termina</b> la instrucción actual.",
+      "<b>Guarda</b> banderas, CS e IP en la pila.",
+      "<b>Busca</b> el vector y salta a la ISR.",
+      "<b>Regresa</b> con IRET, que restaura lo guardado."
+     ],
+     "r": "Guardar estado, atender y restaurar.",
+     "fin": "Entender el mecanismo completo."
+    },
+    {
+     "nv": "I",
+     "q": "Cuenta pulsos de un caudalímetro en el pin 2 de un Arduino.",
+     "pasos": [
+      "<code>volatile unsigned long pulsos = 0;</code>",
+      "<code>void contar() { pulsos++; }</code>",
+      "<code>setup: attachInterrupt(digitalPinToInterrupt(2), contar, RISING);</code>",
+      "<b>Loop.</b> Cada segundo se lee y reinicia <code>pulsos</code> para calcular el caudal."
+     ],
+     "r": "Un contador en la ISR y el cálculo en el loop.",
+     "fin": "Medir señales rápidas sin perder pulsos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué no se debe usar <code>delay</code> ni <code>Serial.print</code> dentro de una ISR?",
+     "pasos": [
+      "<b>Bloqueo.</b> Mientras corre la ISR otras interrupciones (como la del temporizador que usa delay) pueden estar deshabilitadas.",
+      "<b>Efecto.</b> El programa se congela o pierde eventos.",
+      "<b>Buena práctica.</b> Solo actualizar variables volatile y procesar fuera."
+     ],
+     "r": "Porque bloquea el sistema y se pierden eventos.",
+     "fin": "Escribir ISR correctas."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica: teclado, INT 21h, división entre cero.",
+     "pasos": [
+      "<b>Teclado.</b> Hardware.",
+      "<b>INT 21h.</b> Software.",
+      "<b>División entre cero.</b> Excepción del CPU."
+     ],
+     "r": "Hardware, software y excepción.",
+     "fin": "Distinguir tipos de interrupción."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué instrucción regresa de una rutina de interrupción en x86?",
+     "ops": [
+      "IRET",
+      "RET",
+      "JMP",
+      "HLT"
+     ],
+     "ok": 0,
+     "r": "Restaura banderas, CS e IP."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántos vectores tiene la tabla de interrupciones del 8086?",
+     "ops": [
+      "16",
+      "256",
+      "64",
+      "1024"
+     ],
+     "ok": 1,
+     "r": "256 vectores de 4 bytes = 1 KB."
+    },
+    {
+     "nv": "I",
+     "q": "En Arduino, ¿cómo se declaran las variables que modifica una ISR?",
+     "ops": [
+      "const",
+      "static",
+      "global sin modificador",
+      "volatile"
+     ],
+     "ok": 3,
+     "r": "Evita que el compilador las optimice incorrectamente."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué modo de attachInterrupt detecta el paso de bajo a alto?",
+     "ops": [
+      "RISING",
+      "FALLING",
+      "LOW",
+      "CHANGE"
+     ],
+     "ok": 0,
+     "r": "Flanco de subida."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué tipo de interrupción no puede ser ignorada por el CPU?",
+     "ops": [
+      "Enmascarable",
+      "Por software",
+      "Ninguna",
+      "No enmascarable (NMI)"
+     ],
+     "ok": 3,
+     "r": "Se reserva para eventos críticos, como errores de memoria."
+    }
+   ]
+  },
+  {
+   "titulo": "DMA, buses y transmisión serial",
+   "intro": "Tema 4 del programa: acceso directo a memoria, clasificación y tipos de buses, transmisión serial asíncrona.",
+   "conceptos": [
+    {
+     "n": "DMA",
+     "e": [
+      "El <b>DMA</b> transfiere bloques entre un dispositivo y la memoria sin que el CPU copie cada dato: el CPU programa dirección, cantidad y sentido, el controlador DMA hace la transferencia y avisa con una interrupción al final. La alternativa, E/S programada (PIO), ocupa al CPU todo el tiempo."
+     ],
+     "u": [
+      "Discos, tarjetas de red y de sonido, captura de video.",
+      "Libera al CPU para otras tareas.",
+      "Con transferencias grandes o continuas.",
+      "Compara cuánto CPU consume con PIO y con DMA."
+     ]
+    },
+    {
+     "n": "Clasificación de buses",
+     "e": [
+      "Por función: datos, direcciones y control. Por ubicación: internos del CPU, del sistema y de expansión. Por forma: <b>paralelos</b> (varios bits a la vez; sufren desfase a alta velocidad) y <b>seriales</b> (un bit por línea, más rápidos y simples a alta frecuencia: PCIe, SATA, USB). Por sincronía: síncronos (con reloj) y asíncronos (con señales de inicio y fin)."
+     ],
+     "u": [
+      "Elegir interfaces y entender por qué todo migró a serie.",
+      "El tipo de bus define velocidad y distancia.",
+      "Al comparar tecnologías.",
+      "Identifica ancho, frecuencia y si es serie o paralelo."
+     ]
+    },
+    {
+     "n": "Transmisión serial asíncrona",
+     "e": [
+      "No hay reloj compartido: cada carácter va con un bit de inicio (0), los bits de datos (empezando por el menos significativo), paridad opcional y bits de parada (1). Ambos extremos deben acordar la velocidad (baudios). Eficiencia de 8N1: 8 de cada 10 bits son datos."
+     ],
+     "u": [
+      "Consolas de equipos de red, módulos GPS, depuración de microcontroladores.",
+      "Es simple y robusto.",
+      "Con enlaces sencillos de baja velocidad.",
+      "Configura la misma velocidad, datos, paridad y parada."
+     ],
+     "f": "\\text{bytes/s}=\\frac{\\text{baudios}}{\\text{bits por trama}}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Explica los pasos de una transferencia por DMA.",
+     "pasos": [
+      "<b>Programación.</b> El CPU indica al controlador la dirección de memoria, la cantidad y el sentido.",
+      "<b>Transferencia.</b> El controlador toma el bus y mueve los datos.",
+      "<b>Fin.</b> Genera una interrupción para avisar al CPU."
+     ],
+     "r": "Programar, transferir y avisar.",
+     "fin": "Entender el DMA."
+    },
+    {
+     "nv": "I",
+     "q": "A 115 200 baudios en 8N1, ¿cuántos bytes por segundo? ¿Y con paridad y 2 bits de parada?",
+     "pasos": [
+      "<b>8N1.</b> 10 bits por byte: 11 520 B/s.",
+      "<b>8E2.</b> 1 + 8 + 1 + 2 = 12 bits: 9600 B/s."
+     ],
+     "r": "11 520 B/s y 9600 B/s.",
+     "fin": "Calcular el rendimiento real."
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué las interfaces modernas pasaron de paralelo (IDE, LPT) a serie (SATA, USB)?",
+     "pasos": [
+      "<b>Paralelo.</b> A alta frecuencia los bits llegan desfasados y hay interferencia entre líneas.",
+      "<b>Serie.</b> Menos cables, más frecuencia y mayor distancia."
+     ],
+     "r": "Por el desfase y la interferencia del paralelo a alta velocidad.",
+     "fin": "Entender la evolución de los buses."
+    },
+    {
+     "nv": "A",
+     "q": "Un disco transfiere 200 MB/s. Con PIO el CPU gasta 10 ciclos por byte a 2 GHz. ¿Qué porcentaje del CPU consume? ¿Y con DMA?",
+     "pasos": [
+      "<b>Ciclos por segundo.</b> \\(200\\times10^6\\times10=2\\times10^9\\).",
+      "<b>PIO.</b> \\(\\tfrac{2\\times10^9}{2\\times10^9}=100\\%\\) del CPU.",
+      "<b>DMA.</b> Solo programar y atender la interrupción final: casi 0 %."
+     ],
+     "r": "PIO consume todo el CPU; DMA casi nada.",
+     "fin": "Justificar el uso de DMA."
+    },
+    {
+     "nv": "B",
+     "q": "Dibuja la trama 8N1 del carácter 'A' (41h = 01000001b).",
+     "pasos": [
+      "<b>Inicio.</b> 0.",
+      "<b>Datos (bit menos significativo primero).</b> 1 0 0 0 0 0 1 0.",
+      "<b>Parada.</b> 1."
+     ],
+     "r": "0 10000010 1",
+     "fin": "Visualizar una trama serie."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué genera el controlador DMA al terminar?",
+     "r": "Una interrupción al CPU."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántos bytes por segundo da un enlace de 9600 baudios 8N1?",
+     "r": "960"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué ventaja tiene un bus síncrono sobre uno asíncrono?",
+     "r": "Mayor velocidad al compartir reloj; el asíncrono es más simple y tolera relojes distintos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué bit se envía primero en una trama serie RS-232?",
+     "r": "El bit de inicio y luego el bit menos significativo de los datos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Por qué una tarjeta de red de 10 Gbps necesita DMA?",
+     "r": "Porque copiar más de 1 GB/s con el CPU lo saturaría; el DMA mueve los paquetes a memoria sin ocuparlo."
+    }
+   ]
+  },
+  {
+   "titulo": "Interfaces: USB, SATA, FireWire, Wi-Fi y Bluetooth",
+   "intro": "Tema 5 del programa: USB (introducción, velocidades, conectores, conexión de hardware), SATA, FireWire, Wi-Fi y Bluetooth.",
+   "conceptos": [
+    {
+     "n": "USB",
+     "e": [
+      "Bus serie con topología de estrella con concentradores, conexión en caliente y alimentación. Velocidades: 1.1 (12 Mbps), 2.0 (480 Mbps), 3.2 Gen 1 (5 Gbps), Gen 2 (10 Gbps), Gen 2x2 (20 Gbps), USB4 (40 Gbps y 80 Gbps en la versión 2.0). Conectores: A, B, Mini, Micro y USB-C (reversible, también lleva video y carga de alta potencia con Power Delivery)."
+     ],
+     "u": [
+      "Periféricos, almacenamiento externo, carga de dispositivos.",
+      "Es la interfaz universal de la PC.",
+      "Al elegir cables, puertos y dispositivos.",
+      "Verifica la versión real del puerto y del cable, no solo el conector."
+     ],
+     "tabla": "<table><thead><tr><th>Interfaz</th><th>Velocidad nominal</th><th>Uso</th></tr></thead><tbody><tr><td>USB 2.0</td><td>480 Mbps</td><td>Teclados, impresoras</td></tr><tr><td>USB 3.2 Gen 1 / Gen 2</td><td>5 / 10 Gbps</td><td>Discos externos</td></tr><tr><td>USB4</td><td>40 Gbps (80 en v2)</td><td>Docks, pantallas, discos rápidos</td></tr><tr><td>SATA III</td><td>6 Gbps</td><td>Discos y SSD internos</td></tr><tr><td>FireWire 400 / 800</td><td>400 / 800 Mbps</td><td>Video profesional (en desuso)</td></tr></tbody></table>"
+    },
+    {
+     "n": "SATA y FireWire",
+     "e": [
+      "<b>SATA</b> conecta discos internos en serie punto a punto (I 1.5, II 3, III 6 Gbps) y admite conexión en caliente; los SSD NVMe usan PCIe y superan su límite. <b>FireWire</b> (IEEE 1394) fue popular en video por su transferencia isócrona; hoy está en desuso."
+     ],
+     "u": [
+      "Ampliar almacenamiento de servidores y PC.",
+      "Determina el techo de velocidad del disco.",
+      "Al elegir discos.",
+      "Compara la velocidad del disco con la de la interfaz."
+     ]
+    },
+    {
+     "n": "Wi-Fi y Bluetooth",
+     "e": [
+      "<b>Wi-Fi</b> (IEEE 802.11) conecta a la red local: 802.11n (Wi-Fi 4), ac (Wi-Fi 5), ax (Wi-Fi 6/6E) y be (Wi-Fi 7) en bandas de 2.4, 5 y 6 GHz. <b>Bluetooth</b> es una red de área personal de corto alcance (unos 10 m) para periféricos; Bluetooth LE reduce el consumo para sensores y wearables."
+     ],
+     "u": [
+      "Redes de oficina, periféricos inalámbricos, IoT.",
+      "Eliminan cables con distintos alcances y consumos.",
+      "Al diseñar conectividad inalámbrica.",
+      "Elige Wi-Fi para red y Bluetooth para periféricos cercanos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuánto tarda en teoría copiar 2 GB por USB 2.0?",
+     "pasos": [
+      "<b>Velocidad.</b> 480 Mbps = 60 MB/s.",
+      "<b>Tiempo.</b> \\(\\tfrac{2000}{60}\\approx33\\) s.",
+      "<b>En la práctica.</b> Más lento (unos 30 a 40 MB/s reales)."
+     ],
+     "r": "≈ 33 s teóricos.",
+     "fin": "Estimar tiempos de transferencia."
+    },
+    {
+     "nv": "I",
+     "q": "Y por USB 3.2 Gen 1 (5 Gbps)?",
+     "pasos": [
+      "<b>Velocidad.</b> 5 Gbps = 625 MB/s sin contar codificación.",
+      "<b>Tiempo.</b> \\(\\tfrac{2000}{625}=3.2\\) s; con la codificación 8b/10b, unos 4 s."
+     ],
+     "r": "≈ 3.2 a 4 s",
+     "fin": "Comparar generaciones de USB."
+    },
+    {
+     "nv": "I",
+     "q": "Un SSD SATA no pasa de 550 MB/s aunque el fabricante promete más. ¿Por qué?",
+     "pasos": [
+      "<b>Límite.</b> SATA III es 6 Gbps; con codificación 8b/10b, unos 600 MB/s útiles.",
+      "<b>Solución.</b> Usar un SSD NVMe en PCIe."
+     ],
+     "r": "La interfaz SATA es el cuello de botella.",
+     "fin": "Diagnosticar rendimiento de almacenamiento."
+    },
+    {
+     "nv": "A",
+     "q": "Un disco externo USB-C funciona a velocidad de USB 2.0. ¿Qué revisas?",
+     "pasos": [
+      "<b>Cable.</b> Algunos cables USB-C solo soportan USB 2.0.",
+      "<b>Puerto.</b> Verificar que el puerto de la PC sea 3.x o USB4.",
+      "<b>Controlador.</b> Revisar el driver del controlador USB."
+     ],
+     "r": "Cable, puerto y controlador: el conector no garantiza la velocidad.",
+     "fin": "Diagnosticar un problema común."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tecnología inalámbrica usarías para un teclado y cuál para conectar la laptop a la red?",
+     "pasos": [
+      "<b>Teclado.</b> Bluetooth (corto alcance, bajo consumo).",
+      "<b>Red.</b> Wi-Fi."
+     ],
+     "r": "Bluetooth y Wi-Fi.",
+     "fin": "Elegir la tecnología correcta."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué velocidad nominal tiene USB 2.0?",
+     "ops": [
+      "12 Mbps",
+      "5 Gbps",
+      "480 Mbps",
+      "10 Gbps"
+     ],
+     "ok": 2,
+     "r": "High Speed."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué conector USB es reversible?",
+     "ops": [
+      "USB-A",
+      "Micro-B",
+      "Mini-B",
+      "USB-C"
+     ],
+     "ok": 3,
+     "r": "Se puede conectar en cualquier orientación."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué velocidad máxima tiene SATA III?",
+     "ops": [
+      "1.5 Gbps",
+      "6 Gbps",
+      "3 Gbps",
+      "40 Gbps"
+     ],
+     "ok": 1,
+     "r": "Unos 600 MB/s útiles."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué estándar IEEE corresponde a Wi-Fi 6?",
+     "ops": [
+      "802.11n",
+      "802.11ac",
+      "802.11ax",
+      "802.3"
+     ],
+     "ok": 2,
+     "r": "Wi-Fi 4 es n y Wi-Fi 5 es ac."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué variante de Bluetooth se diseñó para sensores con batería de larga duración?",
+     "ops": [
+      "Bluetooth Low Energy",
+      "Bluetooth Classic",
+      "Bluetooth 1.0",
+      "Wi-Fi Direct"
+     ],
+     "ok": 0,
+     "r": "Reduce mucho el consumo."
+    }
+   ]
+  },
+  {
+   "titulo": "Almacenamiento, recuperación y respaldos",
+   "intro": "Tema 6 del programa: métodos de almacenamiento, medios magnéticos, discos duros, ópticos y de estado sólido, recuperación de archivos, copias de seguridad y redundancia.",
+   "conceptos": [
+    {
+     "n": "Medios de almacenamiento",
+     "e": [
+      "<b>Magnéticos:</b> discos duros (platos, cabezales; tiempo de búsqueda y latencia) y cintas (respaldos de gran volumen, acceso secuencial). <b>Ópticos:</b> CD 700 MB, DVD 4.7 GB por capa, Blu-ray 25 GB por capa. <b>Estado sólido:</b> SSD con memoria flash, sin partes móviles, mucho más rápidos en acceso aleatorio, con ciclos de escritura limitados."
+     ],
+     "u": [
+      "Elegir almacenamiento para servidores, respaldos y archivo histórico.",
+      "Cada medio equilibra costo, velocidad y durabilidad.",
+      "Al diseñar el almacenamiento.",
+      "Usa SSD para rendimiento, HDD para capacidad y cinta o nube para archivo."
+     ]
+    },
+    {
+     "n": "Recuperación de archivos",
+     "e": [
+      "Al borrar un archivo normalmente solo se marca su espacio como libre; puede recuperarse si no se sobrescribe (herramientas como PhotoRec o TestDisk). En SSD con TRIM la recuperación es casi imposible. Para borrar de forma segura se sobrescribe o se usa el borrado seguro del fabricante."
+     ],
+     "u": [
+      "Recuperar información borrada por error, informática forense, baja segura de equipos.",
+      "Lo borrado no siempre desaparece.",
+      "Ante pérdidas o al desechar discos.",
+      "Deja de escribir en el disco afectado y trabaja sobre una imagen."
+     ]
+    },
+    {
+     "n": "Respaldos y redundancia",
+     "e": [
+      "<b>Completo:</b> todo. <b>Incremental:</b> lo cambiado desde el último respaldo de cualquier tipo (rápido de hacer, lento de restaurar). <b>Diferencial:</b> lo cambiado desde el último completo (crece cada día, restaura con dos conjuntos). Regla <b>3-2-1:</b> 3 copias, 2 medios, 1 fuera del sitio. La <b>redundancia</b> (RAID, fuentes dobles) da disponibilidad, no respaldo."
+     ],
+     "u": [
+      "Planes de respaldo institucionales, protección contra ransomware.",
+      "Sin respaldos verificados no hay recuperación.",
+      "Siempre, en todo sistema con datos valiosos.",
+      "Define frecuencia, tipo, retención y prueba de restauración."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuántos DVD de una capa se necesitan para respaldar 20 GB?",
+     "pasos": [
+      "<b>Capacidad.</b> 4.7 GB por disco.",
+      "<b>Cálculo.</b> \\(\\tfrac{20}{4.7}\\approx4.26\\): se necesitan 5."
+     ],
+     "r": "5 DVD",
+     "fin": "Dimensionar medios."
+    },
+    {
+     "nv": "I",
+     "q": "Respaldo completo el domingo de 100 GB y cada día cambian 5 GB distintos. Compara el tamaño de los respaldos de lunes a sábado con incrementales y diferenciales.",
+     "pasos": [
+      "<b>Incrementales.</b> 5 GB cada día: 30 GB en la semana.",
+      "<b>Diferenciales.</b> 5, 10, 15, 20, 25 y 30 GB: 105 GB en la semana."
+     ],
+     "r": "Incremental 30 GB; diferencial 105 GB.",
+     "fin": "Comparar estrategias de respaldo."
+    },
+    {
+     "nv": "I",
+     "q": "Con ese esquema, ¿qué conjuntos se restauran si falla el jueves por la noche?",
+     "pasos": [
+      "<b>Incremental.</b> Completo del domingo + lunes + martes + miércoles + jueves: 5 conjuntos.",
+      "<b>Diferencial.</b> Completo del domingo + diferencial del jueves: 2 conjuntos."
+     ],
+     "r": "5 conjuntos contra 2.",
+     "fin": "Ver la ventaja del diferencial al restaurar."
+    },
+    {
+     "nv": "A",
+     "q": "Un usuario borró por error una carpeta en un disco duro de un servidor. ¿Qué haces?",
+     "pasos": [
+      "<b>Primero.</b> Restaurar desde el respaldo más reciente.",
+      "<b>Si no hay respaldo.</b> Dejar de escribir en ese disco, crear una imagen y recuperar con PhotoRec o TestDisk sobre la imagen.",
+      "<b>Después.</b> Revisar la política de respaldos y la papelera o instantáneas (snapshots)."
+     ],
+     "r": "Respaldo primero; si no, recuperar sobre una imagen sin escribir en el disco.",
+     "fin": "Actuar correctamente ante una pérdida."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica la regla 3-2-1 a la base de datos de una institución.",
+     "pasos": [
+      "<b>3 copias.</b> La base en producción, un respaldo local y otro externo.",
+      "<b>2 medios.</b> Por ejemplo, disco del servidor y NAS o cinta.",
+      "<b>1 fuera.</b> Una copia en la nube o en otra sede, idealmente inmutable."
+     ],
+     "r": "Producción + respaldo local + copia externa en otro medio.",
+     "fin": "Diseñar respaldos resistentes a desastres y ransomware."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuánto almacena un Blu-ray de doble capa?",
+     "r": "50 GB"
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué es casi imposible recuperar archivos borrados en un SSD con TRIM?",
+     "r": "Porque TRIM indica al SSD que borre físicamente los bloques liberados."
+    },
+    {
+     "nv": "I",
+     "q": "¿RAID 1 reemplaza a los respaldos?",
+     "r": "No: replica también los borrados y el ransomware; da disponibilidad, no recuperación histórica."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué tipo de respaldo es más rápido de hacer cada día?",
+     "r": "El incremental."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué medida protege los respaldos contra el ransomware?",
+     "r": "Copias aisladas o inmutables (fuera de línea o con bloqueo de escritura) y pruebas periódicas de restauración."
+    }
+   ]
+  }
+ ]
+}

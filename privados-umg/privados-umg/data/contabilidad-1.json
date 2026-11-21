@@ -1,0 +1,669 @@
+{
+ "slug": "contabilidad-1",
+ "titulo": "Contabilidad I",
+ "meta": "Ciclo 1, código 003, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "\\text{Activo}=\\text{Pasivo}+\\text{Capital}",
+ "firma_nota": "La ecuación contable: cada transacción la mantiene en equilibrio.",
+ "lead": "El ciclo contable completo: de la transacción al estado financiero. Partida doble, libros, hoja de trabajo, ajustes, estados financieros y cierre, con la normativa guatemalteca básica (IVA del 12 %, libros que exige el Código de Comercio).",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Conta.pdf",
+ "como": "Cada tema trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para resolver con la respuesta oculta (el primer tema, más conceptual, usa un cuestionario). Las partidas se muestran en tablas de Debe y Haber.",
+ "temas": [
+  {
+   "titulo": "El sistema contable y su entorno",
+   "intro": "Tema 1 del programa: la contabilidad y su entorno, características de la información, contabilidad financiera y administrativa, PCGA, NIC, NIIF y aspectos legales.",
+   "conceptos": [
+    {
+     "n": "Qué es y para quién",
+     "e": [
+      "La contabilidad registra, clasifica y resume las operaciones de una entidad para informar su situación. La <b>financiera</b> informa a usuarios externos (inversionistas, bancos, SAT) bajo normas obligatorias; la <b>administrativa</b> informa a la gerencia para planear y decidir, sin normas fijas."
+     ],
+     "u": [
+      "Sistemas ERP, módulos contables, facturación electrónica (FEL) de la SAT.",
+      "Un desarrollador de sistemas contables debe entender lo que automatiza.",
+      "Al diseñar o mantener software financiero.",
+      "Identifica quién usará la información y con qué fin."
+     ]
+    },
+    {
+     "n": "Características de la información",
+     "e": [
+      "Útil si es <b>relevante</b> (influye en decisiones), <b>confiable</b> (verificable y sin sesgo), <b>comprensible</b> y <b>comparable</b> (entre periodos y empresas)."
+     ],
+     "u": [
+      "Diseño de reportes y tableros financieros.",
+      "Información que no cumple esto lleva a malas decisiones.",
+      "Al preparar o evaluar estados financieros.",
+      "Revisa cada reporte contra las cuatro características."
+     ]
+    },
+    {
+     "n": "Principios y normas",
+     "e": [
+      "Principios básicos: entidad, negocio en marcha, periodo contable, devengado (se registra cuando ocurre, no cuando se cobra o paga), costo histórico, consistencia, prudencia y revelación suficiente. Las <b>NIIF</b> (IFRS) son las normas internacionales vigentes; las <b>NIC</b> son las anteriores aún vigentes. En Guatemala se aplican las NIIF y las NIIF para PYMES."
+     ],
+     "u": [
+      "Auditorías, consolidación de empresas internacionales.",
+      "Hacen que los estados financieros sean comparables en todo el mundo.",
+      "Al decidir cómo registrar una operación.",
+      "Identifica qué principio aplica a cada situación."
+     ]
+    },
+    {
+     "n": "Aspectos legales en Guatemala",
+     "e": [
+      "El Código de Comercio exige llevar los libros de Inventarios, Diario, Mayor y Estados Financieros, habilitados ante la SAT. El IVA es del 12 % y suele estar incluido en el precio: base = precio ÷ 1.12."
+     ],
+     "u": [
+      "Facturación, declaraciones de IVA e ISR, sistemas de nómina.",
+      "El incumplimiento genera multas.",
+      "En toda empresa constituida.",
+      "Separa siempre el IVA del valor de la operación."
+     ],
+     "f": "\\text{IVA}=\\frac{\\text{Precio}}{1.12}\\times0.12"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica como financiera o administrativa: (a) balance general para un banco; (b) informe de costos por proyecto para el gerente.",
+     "pasos": [
+      "<b>(a)</b> Usuario externo, bajo normas: financiera.",
+      "<b>(b)</b> Uso interno para decidir: administrativa."
+     ],
+     "r": "Financiera y administrativa.",
+     "fin": "Distinguir los dos tipos de contabilidad."
+    },
+    {
+     "nv": "B",
+     "q": "Separa el IVA de una factura de Q1,120.",
+     "pasos": [
+      "<b>Base.</b> \\(\\tfrac{1120}{1.12}=1000\\).",
+      "<b>IVA.</b> \\(1000\\times0.12=120\\)."
+     ],
+     "r": "Base Q1,000 e IVA Q120.",
+     "fin": "Aplicar el IVA guatemalteco."
+    },
+    {
+     "nv": "I",
+     "q": "Un servicio se presta en diciembre y se cobra en enero. ¿En qué mes se registra el ingreso y por qué?",
+     "pasos": [
+      "<b>Principio.</b> Devengado.",
+      "<b>Aplicación.</b> El ingreso se gana en diciembre, aunque el cobro sea en enero."
+     ],
+     "r": "En diciembre (devengado).",
+     "fin": "Aplicar el principio más importante del registro."
+    },
+    {
+     "nv": "I",
+     "q": "Una empresa cambia cada año el método de depreciación para mostrar más utilidad. ¿Qué principio viola?",
+     "pasos": [
+      "<b>Problema.</b> Los estados de distintos años dejan de ser comparables.",
+      "<b>Principio.</b> Consistencia."
+     ],
+     "r": "Consistencia (y afecta la comparabilidad).",
+     "fin": "Reconocer prácticas incorrectas."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué libros exige el Código de Comercio y qué se registra en cada uno?",
+     "pasos": [
+      "<b>Inventarios.</b> Detalle de activos, pasivos y capital al inicio y cierre.",
+      "<b>Diario.</b> Todas las operaciones en orden cronológico (partidas).",
+      "<b>Mayor.</b> Movimiento y saldo de cada cuenta.",
+      "<b>Estados Financieros.</b> Balance general y estado de resultados."
+     ],
+     "r": "Inventarios, Diario, Mayor y Estados Financieros.",
+     "fin": "Conocer las obligaciones legales básicas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué principio establece que la empresa es distinta de sus dueños?",
+     "ops": [
+      "Negocio en marcha",
+      "Costo histórico",
+      "Prudencia",
+      "Entidad"
+     ],
+     "ok": 3,
+     "r": "Los gastos personales del dueño no son gastos de la empresa."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es la tasa general del IVA en Guatemala?",
+     "ops": [
+      "5 %",
+      "10 %",
+      "15 %",
+      "12 %"
+     ],
+     "ok": 3,
+     "r": "IVA del 12 %, normalmente incluido en el precio."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué significa el principio de negocio en marcha?",
+     "ops": [
+      "Que la empresa vende mucho",
+      "Que la empresa tiene sucursales",
+      "Que se presume que la empresa seguirá operando",
+      "Que se registra al costo"
+     ],
+     "ok": 2,
+     "r": "Por eso los activos se valúan al costo y no a precio de liquidación."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué normas sustituyeron progresivamente a las NIC?",
+     "ops": [
+      "PCGA",
+      "NIIF",
+      "Código de Comercio",
+      "Ley del IVA"
+     ],
+     "ok": 1,
+     "r": "Las NIIF (IFRS) son las vigentes; algunas NIC siguen en uso."
+    },
+    {
+     "nv": "A",
+     "q": "Ante la duda, registrar la posible pérdida y no la posible ganancia corresponde al principio de…",
+     "ops": [
+      "Prudencia",
+      "Consistencia",
+      "Revelación suficiente",
+      "Periodo contable"
+     ],
+     "ok": 0,
+     "r": "La prudencia evita sobrestimar activos o utilidades."
+    }
+   ]
+  },
+  {
+   "titulo": "La ecuación contable",
+   "intro": "Tema 2 del programa: el ciclo contable, la ecuación contable y las agrupaciones básicas.",
+   "conceptos": [
+    {
+     "n": "Ecuación contable y partida doble",
+     "e": [
+      "Activo (lo que la empresa tiene) = Pasivo (lo que debe) + Capital (lo que pertenece a los dueños). Toda transacción afecta al menos dos cuentas y la ecuación siempre queda en equilibrio. Ingresos aumentan el capital; gastos lo disminuyen."
+     ],
+     "u": [
+      "Validación automática en sistemas contables: un asiento descuadrado se rechaza.",
+      "Es el control básico de que todo está registrado.",
+      "En cada transacción.",
+      "Analiza qué aumenta y qué disminuye, y verifica la igualdad."
+     ],
+     "f": "A=P+C\\qquad C=\\text{Capital aportado}+\\text{Ingresos}-\\text{Gastos}"
+    },
+    {
+     "n": "Agrupaciones básicas",
+     "e": [
+      "<b>Activo</b> corriente (bancos, clientes, inventarios) y no corriente (equipo, edificios). <b>Pasivo</b> corriente (proveedores, impuestos por pagar) y no corriente (préstamos a largo plazo). <b>Capital</b> (aportes, utilidades). <b>Ingresos</b> y <b>gastos</b>."
+     ],
+     "u": [
+      "Diseño del catálogo de cuentas de un sistema.",
+      "Ordena la información para analizarla.",
+      "Al clasificar cuentas.",
+      "Corriente si se convierte o vence en un año o menos."
+     ]
+    },
+    {
+     "n": "El ciclo contable",
+     "e": [
+      "Documento fuente → jornalización (Diario) → mayorización (Mayor) → balance de comprobación → ajustes → hoja de trabajo → estados financieros → cierre → reapertura."
+     ],
+     "u": [
+      "Flujo de procesos que automatiza un ERP.",
+      "Asegura que nada se omita.",
+      "En cada periodo contable.",
+      "Sigue las etapas en orden."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Los socios aportan Q50,000 en efectivo. ¿Cómo queda la ecuación?",
+     "pasos": [
+      "<b>Activo.</b> Bancos +50,000.",
+      "<b>Capital.</b> Capital social +50,000."
+     ],
+     "r": "A 50,000 = P 0 + C 50,000.",
+     "fin": "Iniciar la ecuación."
+    },
+    {
+     "nv": "I",
+     "q": "Luego se compra mobiliario por Q8,000 al crédito. ¿Ecuación?",
+     "pasos": [
+      "<b>Activo.</b> Mobiliario +8,000.",
+      "<b>Pasivo.</b> Proveedores +8,000."
+     ],
+     "r": "A 58,000 = P 8,000 + C 50,000.",
+     "fin": "Ver una operación que aumenta activo y pasivo."
+    },
+    {
+     "nv": "I",
+     "q": "Se pagan Q3,000 al proveedor. ¿Ecuación?",
+     "pasos": [
+      "<b>Activo.</b> Bancos −3,000.",
+      "<b>Pasivo.</b> Proveedores −3,000."
+     ],
+     "r": "A 55,000 = P 5,000 + C 50,000.",
+     "fin": "Ver una operación que disminuye ambos lados."
+    },
+    {
+     "nv": "I",
+     "q": "Se presta un servicio por Q4,000 al contado (sin IVA para simplificar) y se pagan sueldos por Q1,500. ¿Ecuación final?",
+     "pasos": [
+      "<b>Ingreso.</b> Bancos +4,000; capital +4,000 (vía utilidad).",
+      "<b>Gasto.</b> Bancos −1,500; capital −1,500.",
+      "<b>Total.</b> Activo 57,500; pasivo 5,000; capital 52,500."
+     ],
+     "r": "A 57,500 = P 5,000 + C 52,500.",
+     "fin": "Ver cómo ingresos y gastos afectan el capital."
+    },
+    {
+     "nv": "A",
+     "q": "Una empresa tiene activos por Q120,000 y pasivos por Q45,000. En el año aportaron Q60,000. ¿Cuál fue la utilidad?",
+     "pasos": [
+      "<b>Capital total.</b> \\(120000-45000=75000\\).",
+      "<b>Utilidad.</b> \\(75000-60000=15000\\)."
+     ],
+     "r": "Q15,000",
+     "fin": "Usar la ecuación para deducir resultados."
+    },
+    {
+     "nv": "B",
+     "q": "Si A = Q80,000 y C = Q50,000, ¿cuánto vale P?",
+     "r": "Q30,000"
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica: clientes, préstamo a 5 años, equipo de cómputo, IVA por pagar.",
+     "r": "Activo corriente, pasivo no corriente, activo no corriente y pasivo corriente."
+    },
+    {
+     "nv": "I",
+     "q": "Se compra equipo por Q10,000 pagando Q4,000 y el resto a crédito. ¿Efecto en la ecuación?",
+     "r": "Activo: equipo +10,000 y bancos −4,000; pasivo +6,000."
+    },
+    {
+     "nv": "I",
+     "q": "Ordena las etapas: mayorización, ajustes, jornalización, estados financieros, balance de comprobación.",
+     "r": "Jornalización, mayorización, balance de comprobación, ajustes, estados financieros."
+    },
+    {
+     "nv": "A",
+     "q": "Capital inicial Q40,000, ingresos Q25,000, gastos Q18,000 y retiros del dueño Q2,000. ¿Capital final?",
+     "r": "Q45,000"
+    }
+   ]
+  },
+  {
+   "titulo": "Registro de operaciones",
+   "intro": "Tema 3 del programa: teoría del cargo y del abono, cuentas reales y nominales, catálogo y nomenclatura, jornalización, mayorización y libros contables.",
+   "conceptos": [
+    {
+     "n": "Cargo y abono",
+     "e": [
+      "Cargar es registrar en el Debe (izquierda); abonar, en el Haber (derecha). En cada partida, la suma del Debe es igual a la del Haber."
+     ],
+     "u": [
+      "Asientos contables en cualquier sistema.",
+      "Es la regla que mantiene cuadrada la contabilidad.",
+      "En cada registro.",
+      "Decide si cada cuenta aumenta o disminuye y aplica la tabla."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo de cuenta</th><th>Aumenta con</th><th>Disminuye con</th><th>Saldo normal</th></tr></thead><tbody><tr><td>Activo</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr><tr><td>Gasto y costo</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr><tr><td>Pasivo</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr><tr><td>Capital</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr><tr><td>Ingreso</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr></tbody></table>"
+    },
+    {
+     "n": "Cuentas reales, nominales y catálogo",
+     "e": [
+      "<b>Reales</b> (de balance: activo, pasivo, capital) pasan al siguiente periodo. <b>Nominales</b> (de resultados: ingresos y gastos) se cierran cada periodo. El catálogo codifica las cuentas: 1 Activo, 1.1 Activo corriente, 1.1.01 Caja, 1.1.02 Bancos…"
+     ],
+     "u": [
+      "Diseño de la base de datos de un sistema contable (tabla de cuentas jerárquica).",
+      "Ordena y estandariza los registros.",
+      "Al configurar un sistema contable.",
+      "Asigna códigos jerárquicos por grupo."
+     ]
+    },
+    {
+     "n": "Jornalización y mayorización",
+     "e": [
+      "<b>Jornalizar</b> es registrar la partida en el Diario: fecha, cuentas, Debe, Haber y descripción. <b>Mayorizar</b> es trasladar cada movimiento a la cuenta T del Mayor y obtener su saldo (diferencia entre Debe y Haber)."
+     ],
+     "u": [
+      "Libro diario y mayor que genera un ERP.",
+      "El Diario da el orden cronológico; el Mayor, el saldo por cuenta.",
+      "Con cada operación y al cierre.",
+      "Registra la partida y suma por cuenta."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Jornaliza el aporte de Q50,000 de los socios depositado en el banco.",
+     "pasos": [
+      "<b>Análisis.</b> Bancos (activo) aumenta: cargo. Capital (capital) aumenta: abono.",
+      "<b>Partida.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Bancos</td><td>Q50,000.00</td><td></td></tr><tr><td>Capital social</td><td></td><td>Q50,000.00</td></tr></tbody></table></div><p><i>Por aporte inicial de los socios.</i></p>"
+     ],
+     "r": "Cargo a Bancos y abono a Capital social por Q50,000.",
+     "fin": "Registrar la primera partida de una empresa."
+    },
+    {
+     "nv": "I",
+     "q": "Se compra equipo de cómputo por Q11,200 con IVA incluido, pagando con cheque. Jornaliza.",
+     "pasos": [
+      "<b>Separa el IVA.</b> Base 10,000; IVA 1,200.",
+      "<b>Partida.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Equipo de cómputo</td><td>Q10,000.00</td><td></td></tr><tr><td>IVA por cobrar (crédito fiscal)</td><td>Q1,200.00</td><td></td></tr><tr><td>Bancos</td><td></td><td>Q11,200.00</td></tr></tbody></table></div><p><i>Por compra de equipo según factura.</i></p>"
+     ],
+     "r": "Cargo a Equipo Q10,000 e IVA Q1,200; abono a Bancos Q11,200.",
+     "fin": "Registrar compras con IVA."
+    },
+    {
+     "nv": "I",
+     "q": "Se presta un servicio por Q5,600 con IVA incluido, al crédito. Jornaliza.",
+     "pasos": [
+      "<b>Separa el IVA.</b> Base 5,000; IVA 600.",
+      "<b>Partida.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Clientes</td><td>Q5,600.00</td><td></td></tr><tr><td>Ingresos por servicios</td><td></td><td>Q5,000.00</td></tr><tr><td>IVA por pagar (débito fiscal)</td><td></td><td>Q600.00</td></tr></tbody></table></div><p><i>Por servicio prestado al crédito.</i></p>"
+     ],
+     "r": "Cargo a Clientes Q5,600; abono a Ingresos Q5,000 e IVA Q600.",
+     "fin": "Registrar ventas con IVA."
+    },
+    {
+     "nv": "I",
+     "q": "Se pagan 3 meses de alquiler por adelantado: Q4,500. Jornaliza.",
+     "pasos": [
+      "<b>Análisis.</b> Todavía no es gasto: es un activo (se consumirá en 3 meses).",
+      "<b>Partida.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Alquiler pagado por anticipado</td><td>Q4,500.00</td><td></td></tr><tr><td>Bancos</td><td></td><td>Q4,500.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Cargo a Alquiler pagado por anticipado; abono a Bancos.",
+     "fin": "Aplicar el devengado al pagar por adelantado."
+    },
+    {
+     "nv": "A",
+     "q": "Bancos tuvo: aporte 50,000, cobro 4,000, pago a proveedor 3,000 y sueldos 1,500. Mayoriza y halla su saldo.",
+     "pasos": [
+      "<b>Debe.</b> \\(50000+4000=54000\\).",
+      "<b>Haber.</b> \\(3000+1500=4500\\).",
+      "<b>Saldo.</b> \\(54000-4500=49500\\), deudor (normal para un activo)."
+     ],
+     "r": "Saldo deudor de Q49,500.",
+     "fin": "Mayorizar y obtener saldos."
+    },
+    {
+     "nv": "B",
+     "q": "¿La cuenta Proveedores aumenta con cargo o con abono?",
+     "r": "Con abono."
+    },
+    {
+     "nv": "B",
+     "q": "Clasifica como real o nominal: Bancos, Ventas, Sueldos, Capital.",
+     "r": "Real, nominal, nominal y real."
+    },
+    {
+     "nv": "I",
+     "q": "Jornaliza el pago de sueldos por Q3,000.",
+     "r": "Cargo a Sueldos (gasto) Q3,000; abono a Bancos Q3,000."
+    },
+    {
+     "nv": "I",
+     "q": "Jornaliza el cobro de Q5,600 al cliente del ejercicio 3.",
+     "r": "Cargo a Bancos Q5,600; abono a Clientes Q5,600."
+    },
+    {
+     "nv": "A",
+     "q": "Una venta de mercadería de Q2,240 con IVA incluido se cobra en efectivo. Jornaliza solo la venta.",
+     "r": "Cargo a Caja Q2,240; abono a Ventas Q2,000 e IVA por pagar Q240."
+    }
+   ]
+  },
+  {
+   "titulo": "Hoja de trabajo, ajustes y reclasificaciones",
+   "intro": "Tema 4 del programa: hoja de trabajo, ajustes y reclasificaciones y balance de saldos ajustado.",
+   "conceptos": [
+    {
+     "n": "Ajustes",
+     "e": [
+      "Al cierre se corrigen saldos para cumplir el devengado: depreciaciones, consumo de gastos anticipados, gastos devengados no pagados (sueldos por pagar), ingresos devengados no cobrados y estimación de cuentas incobrables. Cada ajuste afecta una cuenta de balance y una de resultados."
+     ],
+     "u": [
+      "Cierre mensual en sistemas contables.",
+      "Sin ajustes los resultados están mal medidos.",
+      "Al final de cada periodo.",
+      "Revisa cuentas que cambian con el tiempo y registra su efecto."
+     ],
+     "f": "\\text{Depreciación anual}=\\frac{\\text{Costo}-\\text{Valor residual}}{\\text{Vida útil}}"
+    },
+    {
+     "n": "Reclasificaciones",
+     "e": [
+      "Mueven saldos a la cuenta correcta sin cambiar el resultado: por ejemplo, la parte de un préstamo a largo plazo que vence en los próximos 12 meses pasa a pasivo corriente."
+     ],
+     "u": [
+      "Presentación correcta del balance general.",
+      "Muestra la situación de liquidez real.",
+      "Al preparar los estados financieros.",
+      "Identifica saldos mal clasificados y trasládalos."
+     ]
+    },
+    {
+     "n": "Hoja de trabajo",
+     "e": [
+      "Columnas típicas: balance de comprobación, ajustes, balance ajustado, estado de resultados y balance general. Las cuentas nominales pasan al estado de resultados y las reales al balance; la utilidad iguala ambas partes."
+     ],
+     "u": [
+      "Papel de trabajo del contador antes de emitir estados.",
+      "Organiza el cierre y detecta errores antes de publicar.",
+      "Al cierre del periodo.",
+      "Suma columnas, aplica ajustes y traslada saldos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un equipo costó Q10,000, vida útil 5 años y sin valor residual. Registra la depreciación anual.",
+     "pasos": [
+      "<b>Cálculo.</b> \\(\\tfrac{10000-0}{5}=2000\\).",
+      "<b>Ajuste.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Gasto por depreciación</td><td>Q2,000.00</td><td></td></tr><tr><td>Depreciación acumulada de equipo</td><td></td><td>Q2,000.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Q2,000 por año.",
+     "fin": "Aplicar el ajuste más frecuente."
+    },
+    {
+     "nv": "I",
+     "q": "Del alquiler pagado por anticipado (Q4,500 por 3 meses) ya pasó un mes. Ajusta.",
+     "pasos": [
+      "<b>Consumido.</b> \\(\\tfrac{4500}{3}=1500\\).",
+      "<b>Ajuste.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Gasto por alquiler</td><td>Q1,500.00</td><td></td></tr><tr><td>Alquiler pagado por anticipado</td><td></td><td>Q1,500.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Gasto de Q1,500; quedan Q3,000 anticipados.",
+     "fin": "Convertir un anticipo en gasto según su uso."
+    },
+    {
+     "nv": "I",
+     "q": "Al cierre se deben Q2,000 de sueldos del mes que se pagarán el día 5. Ajusta.",
+     "pasos": [
+      "<b>Principio.</b> El gasto ocurrió este mes (devengado).",
+      "<b>Ajuste.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Sueldos</td><td>Q2,000.00</td><td></td></tr><tr><td>Sueldos por pagar</td><td></td><td>Q2,000.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Gasto Q2,000 y pasivo Q2,000.",
+     "fin": "Registrar gastos devengados no pagados."
+    },
+    {
+     "nv": "I",
+     "q": "Clientes suma Q20,000 y se estima 3 % incobrable. Ajusta.",
+     "pasos": [
+      "<b>Cálculo.</b> \\(0.03(20000)=600\\).",
+      "<b>Ajuste.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Gasto por cuentas incobrables</td><td>Q600.00</td><td></td></tr><tr><td>Estimación para cuentas incobrables</td><td></td><td>Q600.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Q600",
+     "fin": "Aplicar la prudencia."
+    },
+    {
+     "nv": "A",
+     "q": "Un préstamo de Q60,000 a 5 años se paga en cuotas iguales de capital anuales. Al cierre, ¿cómo se reclasifica?",
+     "pasos": [
+      "<b>Cuota anual.</b> \\(\\tfrac{60000}{5}=12000\\).",
+      "<b>Corriente.</b> Q12,000 vencen en los próximos 12 meses.",
+      "<b>Reclasificación.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Préstamo bancario a largo plazo</td><td>Q12,000.00</td><td></td></tr><tr><td>Porción corriente del préstamo</td><td></td><td>Q12,000.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Q12,000 a pasivo corriente; Q48,000 siguen a largo plazo.",
+     "fin": "Presentar correctamente la liquidez."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es la depreciación mensual de un equipo de Q18,000 con 3 años de vida y sin residual?",
+     "r": "Q500"
+    },
+    {
+     "nv": "I",
+     "q": "Un seguro anual de Q2,400 se pagó el 1 de octubre. Ajuste al 31 de diciembre.",
+     "r": "Gasto por seguro Q600; seguro pagado por anticipado queda en Q1,800."
+    },
+    {
+     "nv": "I",
+     "q": "Se prestaron servicios por Q3,000 que se facturarán el próximo mes. Ajuste.",
+     "r": "Cargo a Ingresos por cobrar Q3,000; abono a Ingresos por servicios Q3,000."
+    },
+    {
+     "nv": "I",
+     "q": "¿Un ajuste de reclasificación cambia la utilidad?",
+     "r": "No: solo mueve saldos entre cuentas de balance."
+    },
+    {
+     "nv": "A",
+     "q": "Un vehículo costó Q150,000, vida 5 años y valor residual Q30,000. ¿Valor en libros al final del año 2?",
+     "r": "Depreciación anual Q24,000; valor en libros Q102,000."
+    }
+   ]
+  },
+  {
+   "titulo": "Estados financieros y cierre",
+   "intro": "Tema 5 del programa: estado de resultados, balance general, flujo de efectivo, notas, cierre y reapertura.",
+   "conceptos": [
+    {
+     "n": "Estado de resultados",
+     "e": [
+      "Muestra el desempeño de un periodo. Ventas − costo de ventas = utilidad bruta; − gastos de operación = utilidad de operación; ± otros = utilidad antes de impuestos; − ISR = utilidad neta."
+     ],
+     "u": [
+      "Reportes de rentabilidad, tableros gerenciales.",
+      "Dice si la empresa gana o pierde.",
+      "Al cierre de cada periodo.",
+      "Ordena ingresos y gastos en el formato escalonado."
+     ]
+    },
+    {
+     "n": "Balance general",
+     "e": [
+      "Muestra la situación financiera a una fecha: activos = pasivos + capital, ordenados de corriente a no corriente. La utilidad del ejercicio aparece dentro del capital."
+     ],
+     "u": [
+      "Solicitudes de crédito, análisis de liquidez y solvencia.",
+      "Muestra qué tiene la empresa, qué debe y cuánto es de los dueños.",
+      "Al cierre o cuando lo pide un tercero.",
+      "Agrupa cuentas reales y verifica la igualdad."
+     ]
+    },
+    {
+     "n": "Flujo de efectivo, notas, cierre y reapertura",
+     "e": [
+      "El <b>flujo de efectivo</b> separa entradas y salidas en operación, inversión y financiamiento. Las <b>notas</b> explican políticas y detalles. El <b>cierre</b> lleva ingresos y gastos a Pérdidas y Ganancias y el resultado al capital; la <b>reapertura</b> inicia el nuevo periodo con los saldos reales."
+     ],
+     "u": [
+      "Planeación de caja, auditorías, cierre anual en el sistema.",
+      "Una empresa con utilidad puede quedarse sin efectivo.",
+      "Al final del año contable.",
+      "Clasifica cada movimiento de efectivo y cierra las cuentas nominales."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ventas Q200,000 y costo de ventas Q120,000. ¿Utilidad bruta y margen bruto?",
+     "pasos": [
+      "<b>Utilidad bruta.</b> \\(200000-120000=80000\\).",
+      "<b>Margen.</b> \\(\\tfrac{80000}{200000}=40\\%\\)."
+     ],
+     "r": "Q80,000 y 40 %.",
+     "fin": "Iniciar el estado de resultados."
+    },
+    {
+     "nv": "I",
+     "q": "Con lo anterior, gastos de sueldos 30,000, alquiler 12,000, depreciación 2,000 y otros 6,000, e ISR de 25 %. Completa el estado de resultados.",
+     "pasos": [
+      "<b>Gastos de operación.</b> 50,000.",
+      "<b>Utilidad de operación.</b> \\(80000-50000=30000\\).",
+      "<b>ISR.</b> \\(0.25(30000)=7500\\).",
+      "<b>Utilidad neta.</b> 22,500."
+     ],
+     "r": "Utilidad neta Q22,500.",
+     "fin": "Construir el estado de resultados completo."
+    },
+    {
+     "nv": "I",
+     "q": "Con bancos 40,000, clientes 25,000, inventario 35,000, equipo 30,000 y depreciación acumulada 6,000, ¿cuánto suma el activo?",
+     "pasos": [
+      "<b>Corriente.</b> \\(40000+25000+35000=100000\\).",
+      "<b>No corriente.</b> \\(30000-6000=24000\\).",
+      "<b>Total.</b> 124,000."
+     ],
+     "r": "Activo total Q124,000.",
+     "fin": "Presentar el activo neto de depreciación."
+    },
+    {
+     "nv": "A",
+     "q": "Con proveedores 20,000, ISR por pagar 7,500, préstamo a largo plazo 24,000, capital social 50,000 y la utilidad del ejercicio, verifica el balance.",
+     "pasos": [
+      "<b>Pasivo.</b> \\(20000+7500+24000=51500\\).",
+      "<b>Capital.</b> \\(50000+22500=72500\\).",
+      "<b>Suma.</b> \\(51500+72500=124000\\) = activo."
+     ],
+     "r": "Pasivo + capital = Q124,000: el balance cuadra.",
+     "fin": "Comprobar la ecuación en el balance."
+    },
+    {
+     "nv": "A",
+     "q": "Haz las partidas de cierre de Ventas (200,000), Costo de ventas (120,000) y gastos (57,500 incluido ISR).",
+     "pasos": [
+      "<b>Ingresos.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Ventas</td><td>Q200,000.00</td><td></td></tr><tr><td>Pérdidas y ganancias</td><td></td><td>Q200,000.00</td></tr></tbody></table></div>",
+      "<b>Costos y gastos.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Pérdidas y ganancias</td><td>Q177,500.00</td><td></td></tr><tr><td>Costo de ventas</td><td></td><td>Q120,000.00</td></tr><tr><td>Gastos varios</td><td></td><td>Q57,500.00</td></tr></tbody></table></div>",
+      "<b>Resultado.</b><div class='tabla'><table><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody><tr><td>Pérdidas y ganancias</td><td>Q22,500.00</td><td></td></tr><tr><td>Utilidad del ejercicio</td><td></td><td>Q22,500.00</td></tr></tbody></table></div>"
+     ],
+     "r": "Las nominales quedan en cero y la utilidad pasa al capital.",
+     "fin": "Cerrar el periodo correctamente."
+    },
+    {
+     "nv": "B",
+     "q": "¿El balance general es de un periodo o de una fecha?",
+     "r": "De una fecha; el estado de resultados es de un periodo."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica en el flujo de efectivo: compra de servidor, pago a proveedores, préstamo bancario recibido.",
+     "r": "Inversión, operación y financiamiento."
+    },
+    {
+     "nv": "I",
+     "q": "Utilidad de operación Q40,000 y otros gastos financieros Q4,000; ISR 25 %. ¿Utilidad neta?",
+     "r": "Q27,000"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué cuentas se reabren al inicio del nuevo periodo?",
+     "r": "Solo las reales (activo, pasivo y capital)."
+    },
+    {
+     "nv": "A",
+     "q": "Una empresa muestra utilidad pero no tiene efectivo para pagar sueldos. ¿Cómo es posible?",
+     "r": "Vendió al crédito, invirtió en inventario o equipo, o pagó deudas: la utilidad no es igual al efectivo."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

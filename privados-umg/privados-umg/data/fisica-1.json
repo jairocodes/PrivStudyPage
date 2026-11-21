@@ -1,0 +1,909 @@
+{
+ "slug": "fisica-1",
+ "titulo": "Física I",
+ "meta": "Ciclo 3, código 090011, bloque Física del seminario",
+ "firma": "\\sum\\vec F=m\\vec a",
+ "firma_nota": "La segunda ley de Newton: el hilo conductor de toda la mecánica.",
+ "lead": "Mecánica clásica: cómo se mueven los cuerpos y por qué. Movimiento, fuerzas, energía, choques, rotación, equilibrio y gravitación. Los 12 temas del programa están agrupados en 7 secciones. Se usa g = 9.8 m/s².",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3FisicaI.pdf",
+ "temas": [
+  {
+   "titulo": "Unidades, cantidades físicas y vectores",
+   "intro": "Tema 1 del programa: estándares y unidades, consistencia y conversiones, incertidumbre y cifras significativas, estimaciones, vectores, componentes, vectores unitarios y productos.",
+   "conceptos": [
+    {
+     "n": "Unidades y conversiones",
+     "e": [
+      "El Sistema Internacional usa metro, kilogramo y segundo como base. Una ecuación debe ser dimensionalmente consistente: no se suman metros con segundos. Para convertir se multiplica por factores iguales a 1, como \\(\\tfrac{1000\\text{ m}}{1\\text{ km}}\\)."
+     ],
+     "u": [
+      "Especificaciones técnicas, cálculos de ancho de banda y almacenamiento, ingeniería.",
+      "Un error de unidades puede arruinar un proyecto (la sonda Mars Climate Orbiter se perdió por eso).",
+      "En todo cálculo con magnitudes físicas.",
+      "Escribe las unidades en cada paso y cancélalas."
+     ]
+    },
+    {
+     "n": "Cifras significativas y estimaciones",
+     "e": [
+      "En multiplicaciones y divisiones el resultado lleva tantas cifras significativas como el dato que menos tenga; en sumas y restas, tantos decimales como el dato con menos decimales. Un orden de magnitud es la potencia de 10 más cercana."
+     ],
+     "u": [
+      "Reportes de mediciones, estimaciones rápidas de capacidad.",
+      "Indican la precisión real del resultado.",
+      "Al reportar cualquier resultado medido.",
+      "Redondea al final según la regla correspondiente."
+     ]
+    },
+    {
+     "n": "Vectores y componentes",
+     "e": [
+      "Un vector tiene magnitud y dirección. Componentes: \\(A_x=A\\cos\\theta\\), \\(A_y=A\\sin\\theta\\). Se suman componente a componente. Vector unitario: \\(\\hat A=\\tfrac{\\vec A}{A}\\); los canónicos son \\(\\hat i,\\hat j,\\hat k\\)."
+     ],
+     "u": [
+      "Fuerzas, velocidades, desplazamientos, navegación.",
+      "Permiten sumar efectos con dirección.",
+      "Con cantidades que tienen dirección.",
+      "Descompón, suma componentes y recompón magnitud y ángulo."
+     ],
+     "f": "R=\\sqrt{R_x^2+R_y^2}\\qquad \\theta=\\arctan\\frac{R_y}{R_x}"
+    },
+    {
+     "n": "Productos de vectores",
+     "e": [
+      "Producto escalar \\(\\vec A\\cdot\\vec B=AB\\cos\\phi\\) (un número; da el trabajo). Producto vectorial \\(\\vec A\\times\\vec B\\), de magnitud \\(AB\\sin\\phi\\) y perpendicular a ambos (da el torque)."
+     ],
+     "u": [
+      "Trabajo y torque en mecánica, gráficos 3D.",
+      "Combinan vectores de dos formas con significado físico.",
+      "Al calcular trabajo, ángulos o torques.",
+      "Usa componentes: suma de productos o determinante."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Convierte 90 km/h a m/s.",
+     "pasos": [
+      "<b>Factores.</b> \\(90\\,\\tfrac{\\text{km}}{\\text{h}}\\cdot\\tfrac{1000\\text{ m}}{1\\text{ km}}\\cdot\\tfrac{1\\text{ h}}{3600\\text{ s}}\\).",
+      "<b>Calcula.</b> \\(\\tfrac{90000}{3600}=25\\)."
+     ],
+     "r": "25 m/s",
+     "fin": "Convertir unidades sin errores."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula 3.24 × 2.1 con las cifras significativas correctas.",
+     "pasos": [
+      "<b>Producto.</b> 6.804.",
+      "<b>Regla.</b> 2.1 tiene 2 cifras: el resultado lleva 2."
+     ],
+     "r": "6.8",
+     "fin": "Reportar con la precisión correcta."
+    },
+    {
+     "nv": "I",
+     "q": "Halla las componentes de una fuerza de 50 N a 37° sobre la horizontal.",
+     "pasos": [
+      "<b>Horizontal.</b> \\(50\\cos37^\\circ\\approx39.9\\) N.",
+      "<b>Vertical.</b> \\(50\\sin37^\\circ\\approx30.1\\) N."
+     ],
+     "r": "≈ (39.9, 30.1) N",
+     "fin": "Descomponer vectores, paso previo a casi todo problema de fuerzas."
+    },
+    {
+     "nv": "I",
+     "q": "Suma A = 30 N hacia el este y B = 40 N hacia el norte.",
+     "pasos": [
+      "<b>Componentes.</b> \\(R_x=30\\), \\(R_y=40\\).",
+      "<b>Magnitud.</b> \\(\\sqrt{900+1600}=50\\) N.",
+      "<b>Dirección.</b> \\(\\arctan\\tfrac{40}{30}\\approx53.13^\\circ\\) al norte del este."
+     ],
+     "r": "50 N a 53.13° al norte del este.",
+     "fin": "Sumar vectores perpendiculares."
+    },
+    {
+     "nv": "A",
+     "q": "Con \\(\\vec A=(2,3,-1)\\) y \\(\\vec B=(1,-2,4)\\), halla \\(\\vec A\\cdot\\vec B\\), \\(\\vec A\\times\\vec B\\) y el ángulo entre ellos.",
+     "pasos": [
+      "<b>Escalar.</b> \\(2-6-4=-8\\).",
+      "<b>Vectorial.</b> \\((3\\cdot4-(-1)(-2),\\ (-1)(1)-2\\cdot4,\\ 2(-2)-3\\cdot1)=(10,-9,-7)\\).",
+      "<b>Ángulo.</b> \\(\\cos\\phi=\\tfrac{-8}{\\sqrt{14}\\sqrt{21}}\\approx-0.467\\Rightarrow\\phi\\approx117.8^\\circ\\)."
+     ],
+     "r": "\\(-8\\); \\((10,-9,-7)\\); \\(\\approx117.8^\\circ\\).",
+     "fin": "Dominar los dos productos con componentes."
+    },
+    {
+     "nv": "B",
+     "q": "Convierte 60 mi/h a km/h y a m/s (1 mi = 1.609 km).",
+     "r": "96.5 km/h y 26.8 m/s."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe 0.000452 en notación científica. ¿Cuántas cifras significativas tiene?",
+     "r": "\\(4.52\\times10^{-4}\\); 3 cifras."
+    },
+    {
+     "nv": "I",
+     "q": "Estima el orden de magnitud de los latidos de una persona en 80 años.",
+     "r": "Unos \\(3\\times10^9\\): orden \\(10^9\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el vector unitario de \\((3,4)\\).",
+     "r": "\\((0.6,\\ 0.8)\\)"
+    },
+    {
+     "nv": "A",
+     "q": "Caminas 3 km al norte, 4 km al este y 2 km al sur. ¿Cuál es tu desplazamiento?",
+     "r": "4.12 km a 14.0° al norte del este."
+    }
+   ]
+  },
+  {
+   "titulo": "Cinemática en una, dos y tres dimensiones",
+   "intro": "Temas 2 y 3 del programa: velocidad media e instantánea, aceleración, movimiento con aceleración constante, caída libre, posición y velocidad por integración, proyectiles, movimiento circular y velocidad relativa.",
+   "conceptos": [
+    {
+     "n": "Movimiento rectilíneo uniformemente variado",
+     "e": [
+      "Velocidad es la derivada de la posición y aceleración la derivada de la velocidad. Con aceleración constante se usan tres ecuaciones. En caída libre \\(a=-g\\)."
+     ],
+     "u": [
+      "Frenado de vehículos, ascensores, animaciones con física realista.",
+      "Predicen dónde y cuándo estará un objeto.",
+      "Con aceleración constante.",
+      "Lista datos conocidos, elige la ecuación que contiene la incógnita."
+     ],
+     "f": "v=v_0+at\\qquad x=x_0+v_0t+\\tfrac12at^2\\qquad v^2=v_0^2+2a\\Delta x"
+    },
+    {
+     "n": "Posición y velocidad por integración",
+     "e": [
+      "Si la aceleración varía, \\(v(t)=v_0+\\int_0^ta\\,dt\\) y \\(x(t)=x_0+\\int_0^tv\\,dt\\)."
+     ],
+     "u": [
+      "Navegación inercial con acelerómetros (celulares, drones).",
+      "Reconstruye el movimiento a partir de la aceleración medida.",
+      "Con aceleración que cambia con el tiempo.",
+      "Integra dos veces usando las condiciones iniciales."
+     ]
+    },
+    {
+     "n": "Proyectiles",
+     "e": [
+      "Sin fricción, el movimiento horizontal es uniforme y el vertical tiene aceleración \\(-g\\), de forma independiente. El alcance máximo en terreno plano se logra a 45°."
+     ],
+     "u": [
+      "Balística, deportes, videojuegos, riego por aspersión.",
+      "Separa un movimiento 2D en dos 1D sencillos.",
+      "Con objetos lanzados con ángulo.",
+      "Descompón v₀, usa el tiempo como enlace entre ejes."
+     ],
+     "f": "R=\\frac{v_0^2\\sin2\\theta}{g}\\qquad H=\\frac{v_0^2\\sin^2\\theta}{2g}"
+    },
+    {
+     "n": "Movimiento circular y velocidad relativa",
+     "e": [
+      "En movimiento circular uniforme la aceleración apunta al centro: \\(a_c=\\tfrac{v^2}{r}\\). Velocidad relativa: \\(\\vec v_{A/C}=\\vec v_{A/B}+\\vec v_{B/C}\\) (la velocidad depende del observador)."
+     ],
+     "u": [
+      "Curvas en carreteras, centrifugadoras, discos duros; navegación con viento o corriente.",
+      "Explican fuerzas en giros y movimientos vistos desde otro marco.",
+      "En giros o con medios en movimiento.",
+      "Suma velocidades como vectores."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un auto pasa de 0 a 25 m/s en 10 s con aceleración constante. Halla a y la distancia recorrida.",
+     "pasos": [
+      "<b>Aceleración.</b> \\(\\tfrac{25-0}{10}=2.5\\) m/s².",
+      "<b>Distancia.</b> \\(\\tfrac12(2.5)(10)^2=125\\) m."
+     ],
+     "r": "2.5 m/s² y 125 m.",
+     "fin": "Aplicar las ecuaciones básicas."
+    },
+    {
+     "nv": "I",
+     "q": "Un auto a 30 m/s frena a 6 m/s². ¿En qué distancia y tiempo se detiene?",
+     "pasos": [
+      "<b>Distancia.</b> \\(0=900-12\\Delta x\\Rightarrow\\Delta x=75\\) m.",
+      "<b>Tiempo.</b> \\(0=30-6t\\Rightarrow t=5\\) s."
+     ],
+     "r": "75 m en 5 s.",
+     "fin": "Calcular distancias de frenado."
+    },
+    {
+     "nv": "I",
+     "q": "Se suelta un objeto desde 45 m. ¿Cuánto tarda en caer y con qué rapidez llega?",
+     "pasos": [
+      "<b>Tiempo.</b> \\(45=\\tfrac12(9.8)t^2\\Rightarrow t\\approx3.03\\) s.",
+      "<b>Rapidez.</b> \\(v=gt\\approx29.7\\) m/s."
+     ],
+     "r": "3.03 s y 29.7 m/s.",
+     "fin": "Resolver caída libre."
+    },
+    {
+     "nv": "A",
+     "q": "Se lanza un proyectil a 20 m/s con 30°. Halla tiempo de vuelo, alcance y altura máxima.",
+     "pasos": [
+      "<b>Componentes.</b> \\(v_x=17.32\\), \\(v_{0y}=10\\) m/s.",
+      "<b>Tiempo.</b> \\(\\tfrac{2(10)}{9.8}\\approx2.04\\) s.",
+      "<b>Alcance.</b> \\(17.32(2.04)\\approx35.3\\) m.",
+      "<b>Altura.</b> \\(\\tfrac{10^2}{2(9.8)}\\approx5.10\\) m."
+     ],
+     "r": "2.04 s, 35.3 m, 5.10 m.",
+     "fin": "Resolver un tiro parabólico completo."
+    },
+    {
+     "nv": "A",
+     "q": "Una lancha va a 4 m/s perpendicular a un río de 80 m de ancho que corre a 3 m/s. Halla su rapidez respecto a la orilla, el tiempo de cruce y cuánto la arrastra la corriente.",
+     "pasos": [
+      "<b>Suma vectorial.</b> \\(\\sqrt{4^2+3^2}=5\\) m/s.",
+      "<b>Tiempo.</b> Solo cuenta la componente perpendicular: \\(\\tfrac{80}{4}=20\\) s.",
+      "<b>Arrastre.</b> \\(3(20)=60\\) m río abajo."
+     ],
+     "r": "5 m/s, 20 s y 60 m.",
+     "fin": "Aplicar velocidad relativa."
+    },
+    {
+     "nv": "B",
+     "q": "Un bus recorre 120 km en 1.5 h. ¿Cuál es su rapidez media?",
+     "r": "80 km/h"
+    },
+    {
+     "nv": "I",
+     "q": "Con \\(a(t)=6t\\) m/s², \\(v_0=2\\) m/s y \\(x_0=0\\), halla v y x en t = 2 s.",
+     "r": "\\(v=3t^2+2=14\\) m/s; \\(x=t^3+2t=12\\) m."
+    },
+    {
+     "nv": "I",
+     "q": "Se lanza una piedra hacia arriba a 15 m/s. ¿Altura máxima y tiempo de subida?",
+     "r": "11.5 m y 1.53 s."
+    },
+    {
+     "nv": "I",
+     "q": "Un auto toma una curva de 50 m de radio a 15 m/s. ¿Aceleración centrípeta?",
+     "r": "4.5 m/s²"
+    },
+    {
+     "nv": "A",
+     "q": "Se lanza horizontalmente a 10 m/s desde 20 m de altura. ¿Cuánto tarda y qué tan lejos cae?",
+     "r": "2.02 s y 20.2 m."
+    }
+   ]
+  },
+  {
+   "titulo": "Leyes de Newton y sus aplicaciones",
+   "intro": "Temas 4 y 5 del programa: fuerza, masa y peso, leyes de Newton, diagramas de cuerpo libre, equilibrio de partículas, dinámica, fricción y dinámica del movimiento circular.",
+   "conceptos": [
+    {
+     "n": "Las tres leyes",
+     "e": [
+      "<b>Primera:</b> sin fuerza neta, un cuerpo mantiene su velocidad (inercia). <b>Segunda:</b> \\(\\sum\\vec F=m\\vec a\\). <b>Tercera:</b> a cada acción corresponde una reacción igual y opuesta, aplicada sobre <b>otro</b> cuerpo. El peso es \\(W=mg\\)."
+     ],
+     "u": [
+      "Diseño de vehículos, ascensores, cinturones de seguridad, motores de física en juegos.",
+      "Explican y predicen el movimiento desde sus causas.",
+      "En cualquier problema con fuerzas.",
+      "Dibuja el diagrama de cuerpo libre y aplica ΣF = ma por eje."
+     ]
+    },
+    {
+     "n": "Diagrama de cuerpo libre",
+     "e": [
+      "Se aísla el cuerpo y se dibujan solo las fuerzas que actúan <b>sobre</b> él: peso, normal, tensión, fricción, fuerzas aplicadas. Se eligen ejes convenientes (en un plano inclinado, uno paralelo a la superficie)."
+     ],
+     "u": [
+      "Análisis estructural, robótica, biomecánica.",
+      "Evita olvidar o duplicar fuerzas.",
+      "Antes de escribir cualquier ecuación.",
+      "Una flecha por fuerza, con su origen físico identificado."
+     ]
+    },
+    {
+     "n": "Fricción",
+     "e": [
+      "Estática: \\(f_s\\le\\mu_sN\\) (impide que empiece el movimiento). Cinética: \\(f_k=\\mu_kN\\), opuesta al deslizamiento. Normalmente \\(\\mu_k\\lt\\mu_s\\)."
+     ],
+     "u": [
+      "Frenos, llantas, bandas transportadoras.",
+      "Determina si algo se desliza y cuánto se frena.",
+      "Con superficies en contacto.",
+      "Calcula N primero y luego la fricción."
+     ]
+    },
+    {
+     "n": "Dinámica circular",
+     "e": [
+      "En un giro la fuerza neta hacia el centro es \\(\\sum F_c=\\tfrac{mv^2}{r}\\). No es una fuerza nueva: la aportan la fricción, la tensión, la normal o la gravedad."
+     ],
+     "u": [
+      "Curvas de carreteras, satélites, juegos mecánicos.",
+      "Indica qué fuerza mantiene el giro y su límite.",
+      "En cualquier trayectoria curva.",
+      "Identifica la fuerza que apunta al centro e iguálala a mv²/r."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una fuerza de 20 N empuja un bloque de 5 kg sin fricción. Halla su aceleración y su peso.",
+     "pasos": [
+      "<b>Segunda ley.</b> \\(a=\\tfrac{20}5=4\\) m/s².",
+      "<b>Peso.</b> \\(5(9.8)=49\\) N."
+     ],
+     "r": "4 m/s² y 49 N.",
+     "fin": "Aplicar la segunda ley."
+    },
+    {
+     "nv": "I",
+     "q": "Un bloque de 10 kg baja por un plano de 30° sin fricción. Halla su aceleración y la normal.",
+     "pasos": [
+      "<b>Eje paralelo.</b> \\(mg\\sin30^\\circ=ma\\Rightarrow a=4.9\\) m/s².",
+      "<b>Eje perpendicular.</b> \\(N=mg\\cos30^\\circ\\approx84.9\\) N."
+     ],
+     "r": "4.9 m/s² y 84.9 N.",
+     "fin": "Elegir ejes convenientes."
+    },
+    {
+     "nv": "I",
+     "q": "Se empuja con 50 N horizontales un bloque de 10 kg con μₖ = 0.2. ¿Aceleración?",
+     "pasos": [
+      "<b>Normal.</b> \\(N=98\\) N.",
+      "<b>Fricción.</b> \\(0.2(98)=19.6\\) N.",
+      "<b>Neta.</b> \\(\\tfrac{50-19.6}{10}=3.04\\) m/s²."
+     ],
+     "r": "3.04 m/s²",
+     "fin": "Incluir la fricción en la dinámica."
+    },
+    {
+     "nv": "A",
+     "q": "Un bloque de 4 kg sobre una mesa (μₖ = 0.25) se une por una cuerda y polea a otro de 6 kg que cuelga. Halla la aceleración y la tensión.",
+     "pasos": [
+      "<b>Sistema.</b> \\(m_2g-\\mu_km_1g=(m_1+m_2)a\\).",
+      "<b>Sustituye.</b> \\(58.8-9.8=10a\\Rightarrow a=4.9\\) m/s².",
+      "<b>Tensión (bloque colgante).</b> \\(T=m_2(g-a)=6(4.9)=29.4\\) N."
+     ],
+     "r": "4.9 m/s² y 29.4 N.",
+     "fin": "Resolver sistemas de cuerpos unidos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la rapidez máxima en una curva plana de 50 m de radio si μₛ = 0.6?",
+     "pasos": [
+      "<b>Fuerza centrípeta.</b> La aporta la fricción estática.",
+      "<b>Iguala.</b> \\(\\mu_smg=\\tfrac{mv^2}{r}\\Rightarrow v=\\sqrt{\\mu_sgr}\\).",
+      "<b>Calcula.</b> \\(\\sqrt{0.6(9.8)(50)}\\approx17.1\\) m/s."
+     ],
+     "r": "≈ 17.1 m/s (61.7 km/h)",
+     "fin": "Diseñar límites de velocidad en curvas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué fuerza neta acelera un auto de 1200 kg a 3 m/s²?",
+     "r": "3600 N"
+    },
+    {
+     "nv": "B",
+     "q": "Da un ejemplo de par acción-reacción al caminar.",
+     "r": "El pie empuja el piso hacia atrás y el piso empuja el pie hacia adelante."
+    },
+    {
+     "nv": "I",
+     "q": "Una persona de 70 kg está en un elevador que acelera hacia arriba a 2 m/s². ¿Qué marca la báscula?",
+     "r": "826 N"
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué μₛ mínimo evita que un bloque se deslice en un plano de 25°?",
+     "r": "\\(\\tan25^\\circ\\approx0.466\\)"
+    },
+    {
+     "nv": "A",
+     "q": "En una máquina de Atwood con 3 kg y 5 kg, halla la aceleración y la tensión.",
+     "r": "2.45 m/s² y 36.75 N."
+    }
+   ]
+  },
+  {
+   "titulo": "Trabajo, energía y su conservación",
+   "intro": "Temas 6 y 7 del programa: trabajo, energía cinética, teorema trabajo-energía, fuerza variable, potencia, energía potencial gravitacional y elástica, fuerzas conservativas y no conservativas.",
+   "conceptos": [
+    {
+     "n": "Trabajo y energía cinética",
+     "e": [
+      "\\(W=Fd\\cos\\theta\\). Con fuerza variable, \\(W=\\int F\\,dx\\). Teorema trabajo-energía: el trabajo neto es igual al cambio de energía cinética."
+     ],
+     "u": [
+      "Consumo de energía de motores, diseño de frenos.",
+      "Relaciona fuerzas con cambios de rapidez sin usar el tiempo.",
+      "Cuando conoces fuerzas y distancias.",
+      "Calcula el trabajo de cada fuerza y súmalos."
+     ],
+     "f": "W=Fd\\cos\\theta\\qquad K=\\tfrac12mv^2\\qquad W_{neto}=\\Delta K"
+    },
+    {
+     "n": "Energía potencial y conservación",
+     "e": [
+      "\\(U_g=mgh\\), \\(U_e=\\tfrac12kx^2\\). Si solo actúan fuerzas conservativas, \\(K+U\\) se mantiene. Con fricción: \\(K_1+U_1+W_{otras}=K_2+U_2\\), donde \\(W_{otras}\\) es negativo."
+     ],
+     "u": [
+      "Montañas rusas, represas hidroeléctricas, resortes y amortiguadores.",
+      "Resuelve problemas sin conocer la trayectoria.",
+      "Con alturas, resortes y rapideces.",
+      "Iguala la energía en dos puntos y descuenta las pérdidas."
+     ],
+     "f": "K_1+U_1+W_{otras}=K_2+U_2"
+    },
+    {
+     "n": "Potencia",
+     "e": [
+      "\\(P=\\tfrac{W}{t}=Fv\\). Se mide en watts; 1 hp = 746 W."
+     ],
+     "u": [
+      "Dimensionar motores, fuentes de poder de servidores, UPS.",
+      "Mide qué tan rápido se transfiere energía.",
+      "Cuando importa el tiempo en que se hace un trabajo.",
+      "Divide trabajo entre tiempo o multiplica fuerza por velocidad."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Se tira de una caja con 50 N a 30° sobre la horizontal a lo largo de 10 m. ¿Qué trabajo se hace?",
+     "pasos": [
+      "<b>Fórmula.</b> \\(W=50(10)\\cos30^\\circ\\).",
+      "<b>Calcula.</b> \\(\\approx433\\) J."
+     ],
+     "r": "433 J",
+     "fin": "Considerar solo la componente en la dirección del movimiento."
+    },
+    {
+     "nv": "I",
+     "q": "Un objeto de 2 kg pasa de 3 a 7 m/s. ¿Cuál fue el trabajo neto?",
+     "pasos": [
+      "<b>Energías.</b> \\(K_1=9\\) J, \\(K_2=49\\) J.",
+      "<b>Teorema.</b> \\(W=49-9\\)."
+     ],
+     "r": "40 J",
+     "fin": "Usar el teorema trabajo-energía."
+    },
+    {
+     "nv": "I",
+     "q": "Un bloque se desliza sin fricción desde 5 m de altura. ¿Con qué rapidez llega abajo?",
+     "pasos": [
+      "<b>Conservación.</b> \\(mgh=\\tfrac12mv^2\\).",
+      "<b>Despeja.</b> \\(v=\\sqrt{2(9.8)(5)}\\approx9.90\\) m/s."
+     ],
+     "r": "9.90 m/s",
+     "fin": "Resolver con energía sin conocer la forma de la rampa."
+    },
+    {
+     "nv": "A",
+     "q": "Un resorte (k = 200 N/m) comprimido 0.3 m lanza un bloque de 0.5 kg sobre una superficie con μₖ = 0.2. ¿Qué distancia recorre?",
+     "pasos": [
+      "<b>Energía del resorte.</b> \\(\\tfrac12(200)(0.3)^2=9\\) J.",
+      "<b>Trabajo de la fricción.</b> \\(\\mu_kmgd=0.98d\\).",
+      "<b>Iguala.</b> \\(9=0.98d\\Rightarrow d\\approx9.18\\) m."
+     ],
+     "r": "≈ 9.18 m",
+     "fin": "Combinar energía elástica y pérdidas por fricción."
+    },
+    {
+     "nv": "A",
+     "q": "Un motor eleva 500 kg a 20 m en 25 s. ¿Qué potencia desarrolla?",
+     "pasos": [
+      "<b>Trabajo.</b> \\(500(9.8)(20)=98\\,000\\) J.",
+      "<b>Potencia.</b> \\(\\tfrac{98000}{25}=3920\\) W.",
+      "<b>En hp.</b> \\(\\tfrac{3920}{746}\\approx5.25\\)."
+     ],
+     "r": "3920 W (≈ 5.25 hp)",
+     "fin": "Dimensionar un motor."
+    },
+    {
+     "nv": "B",
+     "q": "Halla la energía cinética de un auto de 1000 kg a 20 m/s.",
+     "r": "200 kJ"
+    },
+    {
+     "nv": "B",
+     "q": "Halla la energía potencial de 2 kg a 10 m de altura.",
+     "r": "196 J"
+    },
+    {
+     "nv": "I",
+     "q": "Calcula el trabajo de \\(F=3x^2\\) N entre \\(x=0\\) y \\(x=2\\) m.",
+     "r": "8 J"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánta energía guarda un resorte de k = 400 N/m comprimido 0.1 m?",
+     "r": "2 J"
+    },
+    {
+     "nv": "A",
+     "q": "Un péndulo se suelta desde 0.5 m de altura sobre su punto más bajo. ¿Rapidez abajo?",
+     "r": "3.13 m/s"
+    }
+   ]
+  },
+  {
+   "titulo": "Momento lineal, impulso y choques",
+   "intro": "Tema 8 del programa: momento lineal, impulso, conservación, choques elásticos e inelásticos, centro de masa y propulsión.",
+   "conceptos": [
+    {
+     "n": "Momento lineal e impulso",
+     "e": [
+      "\\(\\vec p=m\\vec v\\). El impulso es \\(\\vec J=\\vec F\\Delta t=\\Delta\\vec p\\): una fuerza grande en poco tiempo o una pequeña en mucho tiempo producen el mismo cambio."
+     ],
+     "u": [
+      "Bolsas de aire y cascos (alargan el tiempo para reducir la fuerza), deportes.",
+      "Relaciona fuerzas de impacto con cambios de velocidad.",
+      "En golpes y colisiones de corta duración.",
+      "Calcula Δp y divide entre el tiempo de contacto."
+     ],
+     "f": "\\vec J=\\vec F_{prom}\\,\\Delta t=\\Delta\\vec p"
+    },
+    {
+     "n": "Conservación y choques",
+     "e": [
+      "Sin fuerza externa neta, el momento total se conserva. <b>Elástico:</b> también se conserva la energía cinética. <b>Inelástico:</b> se pierde energía. <b>Totalmente inelástico:</b> los cuerpos quedan unidos."
+     ],
+     "u": [
+      "Reconstrucción de accidentes, billar, simulaciones de colisiones.",
+      "Permite predecir el resultado de un choque.",
+      "En colisiones y explosiones.",
+      "Plantea la conservación del momento y, si es elástico, la de energía."
+     ],
+     "f": "m_1v_{1i}+m_2v_{2i}=m_1v_{1f}+m_2v_{2f}"
+    },
+    {
+     "n": "Centro de masa y propulsión",
+     "e": [
+      "\\(x_{cm}=\\tfrac{\\sum m_ix_i}{\\sum m_i}\\); se mueve como si toda la masa y la fuerza externa estuvieran en él. Un cohete avanza expulsando masa: su empuje es la tasa de masa expulsada por la velocidad de escape del gas."
+     ],
+     "u": [
+      "Estabilidad de vehículos y drones, cohetes, retroceso de armas.",
+      "Simplifica sistemas de muchas partes.",
+      "Con sistemas de varias masas o masa variable.",
+      "Promedia posiciones ponderadas por masa."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Halla el momento de una pelota de 0.15 kg a 40 m/s.",
+     "pasos": [
+      "<b>Fórmula.</b> \\(p=mv=0.15(40)\\).",
+      "<b>Dirección.</b> El momento es un vector con la misma dirección que la velocidad."
+     ],
+     "r": "6 kg·m/s",
+     "fin": "Calcular el momento lineal."
+    },
+    {
+     "nv": "I",
+     "q": "La pelota rebota a −30 m/s con un contacto de 0.01 s. Halla el impulso y la fuerza media.",
+     "pasos": [
+      "<b>Impulso.</b> \\(0.15(-30-40)=-10.5\\) N·s.",
+      "<b>Fuerza.</b> \\(\\tfrac{-10.5}{0.01}=-1050\\) N."
+     ],
+     "r": "−10.5 N·s y −1050 N.",
+     "fin": "Ver por qué un rebote produce fuerzas tan grandes."
+    },
+    {
+     "nv": "I",
+     "q": "Un auto de 1500 kg a 20 m/s choca y queda unido a otro de 1000 kg en reposo. Halla la velocidad final y la energía perdida.",
+     "pasos": [
+      "<b>Momento.</b> \\(1500(20)=2500v\\Rightarrow v=12\\) m/s.",
+      "<b>Energías.</b> \\(300\\) kJ antes y \\(180\\) kJ después.",
+      "<b>Pérdida.</b> 120 kJ (40 %)."
+     ],
+     "r": "12 m/s; se pierden 120 kJ.",
+     "fin": "Analizar un choque totalmente inelástico."
+    },
+    {
+     "nv": "A",
+     "q": "Una esfera de 2 kg a 3 m/s choca elásticamente con otra de 1 kg en reposo. Halla las velocidades finales.",
+     "pasos": [
+      "<b>Fórmulas 1D.</b> \\(v_1'=\\tfrac{m_1-m_2}{m_1+m_2}v_1=1\\) m/s; \\(v_2'=\\tfrac{2m_1}{m_1+m_2}v_1=4\\) m/s.",
+      "<b>Verifica momento.</b> \\(6=2(1)+1(4)\\).",
+      "<b>Verifica energía.</b> \\(9=1+8\\)."
+     ],
+     "r": "1 m/s y 4 m/s.",
+     "fin": "Resolver choques elásticos y verificar con ambas leyes."
+    },
+    {
+     "nv": "A",
+     "q": "Halla el centro de masa de 2 kg en x = 0, 3 kg en x = 4 m y 5 kg en x = 10 m.",
+     "pasos": [
+      "<b>Suma ponderada.</b> \\(0+12+50=62\\).",
+      "<b>Divide.</b> \\(\\tfrac{62}{10}\\)."
+     ],
+     "r": "6.2 m",
+     "fin": "Ubicar el punto de equilibrio de un sistema."
+    },
+    {
+     "nv": "B",
+     "q": "Un rifle de 4 kg dispara una bala de 0.01 kg a 400 m/s. ¿Velocidad de retroceso?",
+     "r": "−1 m/s"
+    },
+    {
+     "nv": "I",
+     "q": "Un impulso de 20 N·s actúa durante 0.05 s. ¿Fuerza media?",
+     "r": "400 N"
+    },
+    {
+     "nv": "I",
+     "q": "Un carro de 2 kg a 5 m/s choca y se une con otro de 3 kg que va a −2 m/s. ¿Velocidad final?",
+     "r": "0.8 m/s"
+    },
+    {
+     "nv": "I",
+     "q": "¿Por qué una bolsa de aire reduce lesiones si el cambio de momento es el mismo?",
+     "r": "Alarga el tiempo de contacto y reduce la fuerza media."
+    },
+    {
+     "nv": "A",
+     "q": "Un cohete expulsa 50 kg/s de gas a 2000 m/s. ¿Qué empuje genera?",
+     "r": "100 000 N"
+    }
+   ]
+  },
+  {
+   "titulo": "Rotación de cuerpos rígidos",
+   "intro": "Temas 9 y 10 del programa: cinemática rotacional, energía en rotación, momento de inercia, ejes paralelos, torca, dinámica rotacional, momento angular y su conservación, giróscopos.",
+   "conceptos": [
+    {
+     "n": "Cinemática rotacional",
+     "e": [
+      "Análoga a la lineal: \\(\\theta\\leftrightarrow x\\), \\(\\omega\\leftrightarrow v\\), \\(\\alpha\\leftrightarrow a\\), con \\(v=r\\omega\\) y \\(a_t=r\\alpha\\). Con \\(\\alpha\\) constante: \\(\\omega=\\omega_0+\\alpha t\\), \\(\\theta=\\omega_0t+\\tfrac12\\alpha t^2\\). 1 rev = \\(2\\pi\\) rad."
+     ],
+     "u": [
+      "Discos duros, ventiladores, motores, ruedas.",
+      "Describe cualquier objeto que gira.",
+      "Con giros y velocidades angulares.",
+      "Convierte rpm a rad/s y usa las ecuaciones análogas."
+     ]
+    },
+    {
+     "n": "Momento de inercia y energía rotacional",
+     "e": [
+      "\\(I=\\sum mr^2\\) mide la resistencia a cambiar el giro y depende de cómo se reparte la masa. Disco sólido \\(\\tfrac12MR^2\\), aro \\(MR^2\\), esfera sólida \\(\\tfrac25MR^2\\), varilla por el centro \\(\\tfrac1{12}ML^2\\). Ejes paralelos: \\(I=I_{cm}+Md^2\\)."
+     ],
+     "u": [
+      "Volantes de inercia para almacenar energía, diseño de ruedas y rotores.",
+      "La forma, no solo la masa, determina qué tan fácil gira algo.",
+      "Al calcular energía o aceleración angular.",
+      "Usa la tabla de momentos y el teorema de ejes paralelos."
+     ],
+     "f": "K_{rot}=\\tfrac12I\\omega^2\\qquad I=I_{cm}+Md^2"
+    },
+    {
+     "n": "Torca y momento angular",
+     "e": [
+      "\\(\\tau=rF\\sin\\phi\\) y \\(\\sum\\tau=I\\alpha\\). \\(L=I\\omega\\); sin torca externa, \\(L\\) se conserva. El giróscopo mantiene su orientación por esa conservación."
+     ],
+     "u": [
+      "Llaves y palancas, estabilización de satélites y celulares (giroscopios), patinaje.",
+      "Explican cómo se inicia y conserva un giro.",
+      "Con fuerzas que hacen girar o sistemas que cambian su forma al girar.",
+      "Calcula τ con el brazo de palanca y aplica τ = Iα o L constante."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un disco gira a 300 rpm. Halla ω y la rapidez de un punto a 0.2 m del eje.",
+     "pasos": [
+      "<b>Conversión.</b> \\(300\\cdot\\tfrac{2\\pi}{60}\\approx31.4\\) rad/s.",
+      "<b>Rapidez lineal.</b> \\(v=r\\omega\\approx6.28\\) m/s."
+     ],
+     "r": "31.4 rad/s y 6.28 m/s.",
+     "fin": "Pasar de rpm a unidades del SI."
+    },
+    {
+     "nv": "I",
+     "q": "Un rotor pasa de 0 a 120 rad/s en 6 s. Halla α y cuántas vueltas da.",
+     "pasos": [
+      "<b>α.</b> \\(\\tfrac{120}{6}=20\\) rad/s².",
+      "<b>Ángulo.</b> \\(\\tfrac12(20)(36)=360\\) rad.",
+      "<b>Vueltas.</b> \\(\\tfrac{360}{2\\pi}\\approx57.3\\)."
+     ],
+     "r": "20 rad/s² y 57.3 vueltas.",
+     "fin": "Usar cinemática rotacional."
+    },
+    {
+     "nv": "I",
+     "q": "Un disco sólido de 2 kg y 0.3 m de radio gira a 10 rad/s. ¿Energía cinética rotacional?",
+     "pasos": [
+      "<b>Inercia.</b> \\(\\tfrac12(2)(0.09)=0.09\\) kg·m².",
+      "<b>Energía.</b> \\(\\tfrac12(0.09)(100)=4.5\\) J."
+     ],
+     "r": "4.5 J",
+     "fin": "Calcular energía en rotación."
+    },
+    {
+     "nv": "A",
+     "q": "Se aplican 20 N perpendiculares a 0.25 m del eje de una rueda con I = 0.5 kg·m². Halla la torca y α.",
+     "pasos": [
+      "<b>Torca.</b> \\(0.25(20)=5\\) N·m.",
+      "<b>α.</b> \\(\\tfrac{5}{0.5}=10\\) rad/s²."
+     ],
+     "r": "5 N·m y 10 rad/s².",
+     "fin": "Aplicar la segunda ley rotacional."
+    },
+    {
+     "nv": "A",
+     "q": "Un patinador gira a 2 rad/s con I = 4 kg·m² y recoge los brazos hasta I = 1.6 kg·m². Halla ω final y explica el cambio de energía.",
+     "pasos": [
+      "<b>Conservación.</b> \\(4(2)=1.6\\,\\omega\\Rightarrow\\omega=5\\) rad/s.",
+      "<b>Energía.</b> Sube de 8 J a 20 J.",
+      "<b>Origen.</b> El patinador hace trabajo al jalar los brazos."
+     ],
+     "r": "5 rad/s; la energía aumenta por el trabajo muscular.",
+     "fin": "Aplicar la conservación del momento angular."
+    },
+    {
+     "nv": "B",
+     "q": "Halla el momento de inercia de una varilla de 1 kg y 1 m respecto a un extremo.",
+     "r": "\\(\\tfrac1{12}+\\tfrac14=\\tfrac13\\) kg·m²"
+    },
+    {
+     "nv": "I",
+     "q": "Una esfera sólida rueda sin deslizar desde 2 m de altura. ¿Rapidez abajo?",
+     "r": "\\(\\sqrt{10gh/7}\\approx5.29\\) m/s"
+    },
+    {
+     "nv": "I",
+     "q": "Con una llave de 30 cm se aplican 50 N a 60° respecto a la llave. ¿Torca?",
+     "r": "13.0 N·m"
+    },
+    {
+     "nv": "I",
+     "q": "Halla el momento angular del disco del ejercicio 3.",
+     "r": "0.9 kg·m²/s"
+    },
+    {
+     "nv": "A",
+     "q": "Un cilindro sólido y un aro de igual masa y radio ruedan por la misma rampa. ¿Cuál llega primero y por qué?",
+     "r": "El cilindro: su menor I relativo deja más energía para la traslación."
+    }
+   ]
+  },
+  {
+   "titulo": "Equilibrio, elasticidad y gravitación",
+   "intro": "Temas 11 y 12 del programa: condiciones de equilibrio, centro de gravedad, esfuerzo, deformación y módulos elásticos; ley de gravitación, energía potencial gravitacional, satélites y leyes de Kepler.",
+   "conceptos": [
+    {
+     "n": "Equilibrio de cuerpos rígidos",
+     "e": [
+      "Un cuerpo está en equilibrio si \\(\\sum\\vec F=0\\) y \\(\\sum\\vec\\tau=0\\) respecto a cualquier punto. Conviene tomar torcas respecto al punto donde actúan más fuerzas desconocidas. El peso actúa en el centro de gravedad."
+     ],
+     "u": [
+      "Puentes, vigas, soportes de racks de servidores, grúas.",
+      "Garantiza que una estructura no se mueva ni gire.",
+      "Con estructuras en reposo.",
+      "Plantea fuerzas y torcas; elige un punto de giro inteligente."
+     ]
+    },
+    {
+     "n": "Elasticidad",
+     "e": [
+      "Esfuerzo \\(=\\tfrac FA\\), deformación \\(=\\tfrac{\\Delta L}{L_0}\\). En la zona elástica son proporcionales: el módulo de Young es \\(Y=\\tfrac{F/A}{\\Delta L/L_0}\\). También hay módulo volumétrico y de corte."
+     ],
+     "u": [
+      "Cables de elevadores, diseño de materiales, tensores de antenas.",
+      "Predice cuánto se estira o deforma un material.",
+      "Al diseñar piezas sometidas a carga.",
+      "Calcula esfuerzo y despeja ΔL con Y."
+     ],
+     "f": "\\Delta L=\\frac{FL_0}{AY}"
+    },
+    {
+     "n": "Gravitación y satélites",
+     "e": [
+      "\\(F=G\\tfrac{m_1m_2}{r^2}\\), con \\(G=6.67\\times10^{-11}\\) N·m²/kg². Para una órbita circular \\(v=\\sqrt{GM/r}\\). Kepler: órbitas elípticas, áreas iguales en tiempos iguales y \\(T^2\\propto r^3\\). Velocidad de escape \\(\\sqrt{2GM/R}\\)."
+     ],
+     "u": [
+      "Satélites de comunicación y GPS, órbitas geoestacionarias para internet satelital.",
+      "Permite diseñar órbitas y calcular periodos.",
+      "Con planetas y satélites.",
+      "Usa r medido desde el centro de la Tierra."
+     ],
+     "f": "v=\\sqrt{\\frac{GM}{r}}\\qquad T=\\frac{2\\pi r}{v}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Un niño de 30 kg se sienta a 2 m del pivote de un balancín. ¿Dónde debe sentarse uno de 40 kg para equilibrarlo?",
+     "pasos": [
+      "<b>Torcas iguales.</b> \\(30(2)=40x\\).",
+      "<b>Despeja.</b> \\(x=1.5\\) m."
+     ],
+     "r": "1.5 m del pivote, del otro lado.",
+     "fin": "Aplicar el equilibrio de torcas."
+    },
+    {
+     "nv": "I",
+     "q": "Una viga uniforme de 4 m y 200 N descansa en dos apoyos en sus extremos y lleva 600 N a 1 m del apoyo izquierdo. Halla las reacciones.",
+     "pasos": [
+      "<b>Torcas respecto al apoyo izquierdo.</b> \\(4R_B=200(2)+600(1)\\Rightarrow R_B=250\\) N.",
+      "<b>Fuerzas.</b> \\(R_A=800-250=550\\) N."
+     ],
+     "r": "550 N (izquierda) y 250 N (derecha).",
+     "fin": "Calcular cargas en apoyos."
+    },
+    {
+     "nv": "I",
+     "q": "Un cable de acero de 2 m y \\(1\\times10^{-4}\\) m² soporta \\(10^4\\) N, con \\(Y=2\\times10^{11}\\) Pa. ¿Cuánto se estira?",
+     "pasos": [
+      "<b>Esfuerzo.</b> \\(10^8\\) Pa.",
+      "<b>Deformación.</b> \\(\\tfrac{10^8}{2\\times10^{11}}=5\\times10^{-4}\\).",
+      "<b>Alargamiento.</b> \\(2(5\\times10^{-4})=10^{-3}\\) m."
+     ],
+     "r": "1 mm",
+     "fin": "Verificar que un cable soporte su carga."
+    },
+    {
+     "nv": "A",
+     "q": "Una escalera de 5 m y 200 N se apoya en una pared lisa con la base a 3 m de la pared. ¿Qué μₛ mínimo necesita el piso?",
+     "pasos": [
+      "<b>Geometría.</b> Altura en la pared 4 m.",
+      "<b>Torcas respecto a la base.</b> \\(N_p(4)=200(1.5)\\Rightarrow N_p=75\\) N.",
+      "<b>Fuerzas.</b> Fricción 75 N; normal del piso 200 N.",
+      "<b>μₛ.</b> \\(\\tfrac{75}{200}=0.375\\)."
+     ],
+     "r": "μₛ ≥ 0.375",
+     "fin": "Resolver un problema clásico de equilibrio."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la rapidez y el periodo de un satélite a 300 km de altura (\\(GM=3.986\\times10^{14}\\), \\(R_T=6371\\) km).",
+     "pasos": [
+      "<b>Radio orbital.</b> \\(6.671\\times10^6\\) m.",
+      "<b>Rapidez.</b> \\(\\sqrt{\\tfrac{3.986\\times10^{14}}{6.671\\times10^6}}\\approx7730\\) m/s.",
+      "<b>Periodo.</b> \\(\\tfrac{2\\pi r}{v}\\approx5422\\) s ≈ 90 min."
+     ],
+     "r": "≈ 7.73 km/s y 90 minutos.",
+     "fin": "Calcular órbitas como las de la Estación Espacial."
+    },
+    {
+     "nv": "B",
+     "q": "Halla la fuerza gravitatoria entre dos masas de 100 kg a 1 m.",
+     "r": "\\(6.67\\times10^{-7}\\) N"
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuánto vale g a una altura igual al radio terrestre?",
+     "r": "g/4 ≈ 2.45 m/s²"
+    },
+    {
+     "nv": "I",
+     "q": "¿Dónde está el centro de gravedad de una barra uniforme?",
+     "r": "En su punto medio."
+    },
+    {
+     "nv": "I",
+     "q": "Si el radio de una órbita se duplica, ¿qué pasa con el periodo?",
+     "r": "Se multiplica por \\(2^{3/2}\\approx2.83\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Calcula la velocidad de escape de la Tierra.",
+     "r": "≈ 11.2 km/s"
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

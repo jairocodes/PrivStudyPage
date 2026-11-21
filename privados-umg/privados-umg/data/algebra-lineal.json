@@ -1,0 +1,1024 @@
+{
+ "slug": "algebra-lineal",
+ "titulo": "Álgebra Lineal",
+ "meta": "Ciclo 2, código 007, bloque Matemática del seminario",
+ "firma": "A\\mathbf{x}=\\mathbf{b}",
+ "firma_nota": "Todo el curso gira alrededor de esta ecuación: cuándo tiene solución, cuántas y cómo encontrarlas.",
+ "lead": "Sistemas de ecuaciones, matrices, vectores y transformaciones: la matemática detrás de los gráficos 3D, el aprendizaje automático, los buscadores y la criptografía. Los 5 temas del programa están organizados en 7 secciones para que ningún subtema quede sin práctica.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Segundo%20Ciclo/2014-2AlgebraLineal.pdf",
+ "temas": [
+  {
+   "titulo": "Sistemas de ecuaciones lineales",
+   "intro": "Tema 1 del programa, primera parte: sistemas m × n, eliminación gaussiana, Gauss-Jordan y sistemas homogéneos.",
+   "conceptos": [
+    {
+     "n": "Sistema lineal y tipos de solución",
+     "e": [
+      "Un sistema lineal es un conjunto de ecuaciones de primer grado con las mismas incógnitas. Solo puede tener <b>una solución</b>, <b>infinitas</b> o <b>ninguna</b>.",
+      "En dos variables cada ecuación es una recta: se cortan en un punto (única), coinciden (infinitas) o son paralelas (ninguna). En tres variables son planos."
+     ],
+     "u": [
+      "Balance de cargas en redes, mezclas de materiales, flujos de tráfico, circuitos eléctricos.",
+      "Muchos problemas reales son varias condiciones lineales que deben cumplirse a la vez.",
+      "Cuando hay varias incógnitas relacionadas por varias restricciones.",
+      "Escribe una ecuación por condición y resuelve el sistema completo."
+     ]
+    },
+    {
+     "n": "Matriz aumentada y operaciones elementales de fila",
+     "e": "La matriz aumentada \\([A\\,|\\,\\mathbf b]\\) guarda solo los coeficientes. Hay tres operaciones que no cambian las soluciones: intercambiar filas, multiplicar una fila por un número distinto de cero y sumar a una fila un múltiplo de otra.",
+     "f": "\\left[\\begin{array}{ccc|c}a_{11}&a_{12}&a_{13}&b_1\\\\a_{21}&a_{22}&a_{23}&b_2\\\\a_{31}&a_{32}&a_{33}&b_3\\end{array}\\right]",
+     "u": [
+      "Es exactamente como resuelven sistemas MATLAB, NumPy y Excel por dentro.",
+      "Trabajar con números en tabla es más rápido y menos propenso a errores que con letras.",
+      "Siempre que el sistema tenga más de dos incógnitas.",
+      "Copia coeficientes ordenados por variable y aplica operaciones de fila."
+     ]
+    },
+    {
+     "n": "Eliminación gaussiana y Gauss-Jordan",
+     "e": [
+      "<b>Gauss</b> lleva la matriz a forma escalonada (ceros debajo de cada pivote) y resuelve por sustitución hacia atrás.",
+      "<b>Gauss-Jordan</b> continúa hasta la forma escalonada reducida: pivotes iguales a 1 y ceros arriba y abajo, de modo que las soluciones se leen directamente."
+     ],
+     "u": [
+      "Solución numérica de sistemas grandes en ingeniería estructural, simulaciones, gráficos.",
+      "Es un algoritmo sistemático que siempre termina y detecta si no hay solución.",
+      "Con sistemas de 3 o más ecuaciones.",
+      "Haz ceros columna por columna usando el pivote de cada fila."
+     ]
+    },
+    {
+     "n": "Pivotes, variables libres e interpretación",
+     "e": [
+      "Una fila \\(\\left[\\begin{array}{cccc|c}0&0&\\cdots&0&c\\end{array}\\right]\\) con \\(c\\neq0\\) indica sistema <b>inconsistente</b>. Si hay menos pivotes que incógnitas, las columnas sin pivote son <b>variables libres</b> y hay infinitas soluciones, escritas con un parámetro \\(t\\).",
+      "El <b>rango</b> es el número de pivotes; el sistema es consistente si el rango de \\(A\\) es igual al de \\([A|\\mathbf b]\\)."
+     ],
+     "u": [
+      "Diseño con grados de libertad: mezclas, redes de distribución con varias rutas posibles.",
+      "Indica cuántas decisiones quedan libres después de cumplir todas las condiciones.",
+      "Cuando la eliminación produce filas de ceros.",
+      "Despeja las variables pivote en función de las libres."
+     ]
+    },
+    {
+     "n": "Sistemas homogéneos",
+     "e": "Son de la forma \\(A\\mathbf x=\\mathbf 0\\). Siempre tienen la solución trivial \\(\\mathbf x=\\mathbf 0\\). Tienen soluciones no triviales si hay variables libres; en particular, siempre que haya más incógnitas que ecuaciones.",
+     "u": [
+      "Balanceo de ecuaciones químicas, modos de vibración, búsqueda de vectores propios.",
+      "Las soluciones no triviales revelan dependencias o equilibrios ocultos.",
+      "Cuando todas las ecuaciones están igualadas a cero.",
+      "Reduce la matriz de coeficientes y expresa la solución con parámetros."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Resuelve por eliminación: \\(x+2y=5\\), \\(3x-y=1\\).",
+     "pasos": [
+      "<b>Matriz aumentada.</b> \\(\\left[\\begin{array}{cc|c}1&2&5\\\\3&-1&1\\end{array}\\right]\\).",
+      "<b>Haz cero bajo el pivote.</b> \\(R_2-3R_1\\): \\(\\left[\\begin{array}{cc|c}1&2&5\\\\0&-7&-14\\end{array}\\right]\\).",
+      "<b>Sustitución hacia atrás.</b> \\(-7y=-14\\Rightarrow y=2\\); \\(x=5-2(2)=1\\).",
+      "<b>Verifica.</b> \\(3(1)-2=1\\)."
+     ],
+     "r": "\\((x,y)=(1,2)\\)",
+     "fin": "Practicar el algoritmo en su versión más corta antes de aplicarlo a 3 × 3."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve: \\(x+y+z=6\\), \\(2x-y+z=3\\), \\(x+2y-z=2\\).",
+     "pasos": [
+      "<b>Ceros en la columna 1.</b> \\(R_2-2R_1\\) y \\(R_3-R_1\\): \\(\\left[\\begin{array}{ccc|c}1&1&1&6\\\\0&-3&-1&-9\\\\0&1&-2&-4\\end{array}\\right]\\).",
+      "<b>Intercambia R2 y R3</b> para tener pivote 1: \\(\\left[\\begin{array}{ccc|c}1&1&1&6\\\\0&1&-2&-4\\\\0&-3&-1&-9\\end{array}\\right]\\).",
+      "<b>Cero en la columna 2.</b> \\(R_3+3R_2\\): \\(\\left[\\begin{array}{ccc|c}0&0&-7&-21\\end{array}\\right]\\Rightarrow z=3\\).",
+      "<b>Sube.</b> \\(y-2(3)=-4\\Rightarrow y=2\\); \\(x=6-2-3=1\\)."
+     ],
+     "r": "\\((x,y,z)=(1,2,3)\\)",
+     "fin": "Dominar la eliminación completa 3 × 3, el ejercicio más típico del privado."
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve: \\(x+2y-z=3\\), \\(2x+4y-2z=6\\), \\(x-y+z=0\\).",
+     "pasos": [
+      "<b>Elimina.</b> \\(R_2-2R_1\\) da \\(\\left[\\begin{array}{ccc|c}0&0&0&0\\end{array}\\right]\\): la ecuación 2 sobraba. \\(R_3-R_1\\) da \\(\\left[\\begin{array}{ccc|c}0&-3&2&-3\\end{array}\\right]\\).",
+      "<b>Identifica la libre.</b> Pivotes en \\(x\\) y \\(y\\); \\(z=t\\) es libre.",
+      "<b>Despeja.</b> \\(-3y+2t=-3\\Rightarrow y=1+\\tfrac23t\\); \\(x=3-2y+t=1-\\tfrac13t\\).",
+      "<b>Comprueba con \\(t=3\\).</b> \\((0,3,3)\\): \\(0+6-3=3\\) y \\(0-3+3=0\\)."
+     ],
+     "r": "Infinitas soluciones: \\((1-\\tfrac t3,\\ 1+\\tfrac{2t}3,\\ t)\\), \\(t\\in\\mathbb R\\).",
+     "fin": "Expresar soluciones infinitas con un parámetro en lugar de decir solo “infinitas”."
+    },
+    {
+     "nv": "A",
+     "q": "¿Para qué valores de \\(k\\) el sistema \\(x+y=2\\), \\(2x+ky=5\\) tiene solución única, infinitas o ninguna?",
+     "pasos": [
+      "<b>Elimina.</b> \\(R_2-2R_1\\): \\((k-2)y=1\\).",
+      "<b>Caso \\(k\\neq2\\).</b> \\(y=\\tfrac{1}{k-2}\\), \\(x=2-y\\): solución única.",
+      "<b>Caso \\(k=2\\).</b> Queda \\(0=1\\): inconsistente.",
+      "<b>Concluye.</b> Nunca hay infinitas soluciones, porque el lado derecho 1 nunca se anula."
+     ],
+     "r": "Única si \\(k\\neq2\\); ninguna si \\(k=2\\); nunca infinitas.",
+     "fin": "Analizar sistemas con parámetros, una pregunta de razonamiento frecuente."
+    },
+    {
+     "nv": "A",
+     "q": "Halla las soluciones de \\(x+2y-z=0\\), \\(2x-y+3z=0\\), \\(3x+y+2z=0\\).",
+     "pasos": [
+      "<b>Observa.</b> La tercera ecuación es la suma de las dos primeras: hay a lo sumo dos pivotes.",
+      "<b>Elimina.</b> \\(R_2-2R_1\\): \\(-5y+5z=0\\Rightarrow y=z\\).",
+      "<b>Parametriza.</b> \\(z=t\\), \\(y=t\\), \\(x=-2t+t=-t\\).",
+      "<b>Verifica con \\(t=1\\).</b> \\((-1,1,1)\\): \\(-1+2-1=0\\), \\(-2-1+3=0\\), \\(-3+1+2=0\\)."
+     ],
+     "r": "\\(\\mathbf x=t(-1,1,1)\\): una recta de soluciones por el origen.",
+     "fin": "Reconocer cuándo un sistema homogéneo tiene soluciones no triviales."
+    },
+    {
+     "nv": "B",
+     "q": "Sin resolver, clasifica el sistema \\(x-y=1\\), \\(2x-2y=5\\).",
+     "r": "Inconsistente: son rectas paralelas (misma pendiente, distinto término independiente)."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe la matriz aumentada de \\(2x-3z=4\\), \\(y+z=-1\\), \\(x+y=0\\).",
+     "r": "\\(\\left[\\begin{array}{ccc|c}2&0&-3&4\\\\0&1&1&-1\\\\1&1&0&0\\end{array}\\right]\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve: \\(2x+y-z=3\\), \\(x-y+2z=1\\), \\(3x+2y+z=8\\).",
+     "r": "\\((x,y,z)=(1,2,1)\\)"
+    },
+    {
+     "nv": "I",
+     "q": "La forma escalonada reducida de un sistema es \\(\\left[\\begin{array}{ccc|c}1&0&2&4\\\\0&1&-1&1\\\\0&0&0&0\\end{array}\\right]\\). Escribe la solución general.",
+     "r": "\\(x=4-2t,\\ y=1+t,\\ z=t\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Analiza \\(x+y+z=1\\), \\(x+2y+3z=2\\), \\(x+3y+az=b\\) según los valores de \\(a\\) y \\(b\\).",
+     "r": "Se llega a \\((a-5)z=b-3\\). Única si \\(a\\neq5\\); infinitas si \\(a=5,\\ b=3\\); ninguna si \\(a=5,\\ b\\neq3\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Matrices: operaciones, inversa y transpuesta",
+   "intro": "Tema 1 del programa, segunda parte: vectores y matrices, inversa de una matriz cuadrada y transpuesta.",
+   "conceptos": [
+    {
+     "n": "Matrices y tipos especiales",
+     "e": "Una matriz \\(m\\times n\\) tiene \\(m\\) filas y \\(n\\) columnas. Tipos: cuadrada, identidad \\(I\\) (unos en la diagonal), diagonal, triangular superior o inferior, simétrica (\\(A^T=A\\)) y matriz cero.",
+     "u": [
+      "Imágenes digitales (cada píxel es una entrada), hojas de cálculo, tablas de datos en ciencia de datos.",
+      "Organizan muchos números relacionados en una sola estructura operable.",
+      "Cuando los datos tienen filas y columnas naturales.",
+      "Identifica sus dimensiones antes de operar."
+     ]
+    },
+    {
+     "n": "Suma, producto por escalar y producto de matrices",
+     "e": [
+      "Suma y escalar se hacen entrada por entrada, con matrices del mismo tamaño.",
+      "El producto \\(AB\\) existe si las columnas de \\(A\\) son tantas como las filas de \\(B\\); el resultado es \\(m\\times p\\). La entrada \\((i,j)\\) es la fila \\(i\\) de \\(A\\) por la columna \\(j\\) de \\(B\\). En general \\(AB\\neq BA\\)."
+     ],
+     "f": "(AB)_{ij}=\\sum_{k=1}^{n}a_{ik}b_{kj}\\qquad (m\\times n)(n\\times p)=m\\times p",
+     "u": [
+      "Transformaciones en gráficos 3D, redes neuronales (cada capa es un producto de matrices), cadenas de Markov.",
+      "El producto encadena transformaciones y procesa muchos datos a la vez.",
+      "Cuando una salida de un proceso lineal es entrada del siguiente.",
+      "Comprueba dimensiones, luego fila por columna."
+     ]
+    },
+    {
+     "n": "Transpuesta",
+     "e": "\\(A^T\\) intercambia filas y columnas. Propiedades: \\((A^T)^T=A\\), \\((A+B)^T=A^T+B^T\\) y \\((AB)^T=B^TA^T\\) (el orden se invierte).",
+     "u": [
+      "Bases de datos (pivotear tablas), estadística (matriz de covarianza XᵀX), mínimos cuadrados.",
+      "Permite multiplicar datos consigo mismos para medir relaciones.",
+      "Cuando necesitas cambiar la orientación de los datos o ajustar dimensiones.",
+      "La fila i pasa a ser la columna i."
+     ]
+    },
+    {
+     "n": "Matriz inversa",
+     "e": [
+      "\\(A^{-1}\\) cumple \\(AA^{-1}=A^{-1}A=I\\). Solo existe para matrices cuadradas con determinante distinto de cero. Se calcula reduciendo \\([A\\,|\\,I]\\) hasta \\([I\\,|\\,A^{-1}]\\).",
+      "Si \\(A\\) es invertible, \\(A\\mathbf x=\\mathbf b\\) tiene solución única \\(\\mathbf x=A^{-1}\\mathbf b\\). Además \\((AB)^{-1}=B^{-1}A^{-1}\\)."
+     ],
+     "f": "\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}^{-1}=\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}",
+     "u": [
+      "Criptografía (cifrado de Hill), deshacer transformaciones gráficas, resolver muchos sistemas con la misma matriz.",
+      "Una vez calculada, resuelve el sistema para cualquier lado derecho con una multiplicación.",
+      "Cuando el mismo modelo se evalúa con distintos datos de entrada.",
+      "Gauss-Jordan sobre [A | I] o la fórmula 2 × 2."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con \\(A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\) y \\(B=\\begin{pmatrix}0&1\\\\-1&2\\end{pmatrix}\\), calcula \\(2A-B\\).",
+     "pasos": [
+      "<b>Escalar.</b> \\(2A=\\begin{pmatrix}2&4\\\\6&8\\end{pmatrix}\\).",
+      "<b>Resta entrada por entrada.</b> \\(\\begin{pmatrix}2-0&4-1\\\\6+1&8-2\\end{pmatrix}\\)."
+     ],
+     "r": "\\(\\begin{pmatrix}2&3\\\\7&6\\end{pmatrix}\\)",
+     "fin": "Fijar las operaciones básicas que se usan en todo lo demás."
+    },
+    {
+     "nv": "I",
+     "q": "Con las mismas \\(A\\) y \\(B\\), calcula \\(AB\\) y \\(BA\\) y compáralos.",
+     "pasos": [
+      "<b>Fila 1 de A por columnas de B.</b> \\((1)(0)+(2)(-1)=-2\\); \\((1)(1)+(2)(2)=5\\).",
+      "<b>Fila 2 de A.</b> \\((3)(0)+(4)(-1)=-4\\); \\((3)(1)+(4)(2)=11\\). Así \\(AB=\\begin{pmatrix}-2&5\\\\-4&11\\end{pmatrix}\\).",
+      "<b>Ahora BA.</b> \\(\\begin{pmatrix}0+3&0+4\\\\-1+6&-2+8\\end{pmatrix}=\\begin{pmatrix}3&4\\\\5&6\\end{pmatrix}\\).",
+      "<b>Compara.</b> Son distintas."
+     ],
+     "r": "\\(AB=\\begin{pmatrix}-2&5\\\\-4&11\\end{pmatrix}\\neq BA=\\begin{pmatrix}3&4\\\\5&6\\end{pmatrix}\\)",
+     "fin": "Comprobar que el orden importa: en gráficos, rotar y luego trasladar no es lo mismo que al revés."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula la inversa de \\(\\begin{pmatrix}4&7\\\\2&6\\end{pmatrix}\\) y verifícala.",
+     "pasos": [
+      "<b>Determinante.</b> \\(4(6)-7(2)=10\\neq0\\): es invertible.",
+      "<b>Fórmula 2 × 2.</b> \\(\\tfrac{1}{10}\\begin{pmatrix}6&-7\\\\-2&4\\end{pmatrix}=\\begin{pmatrix}0.6&-0.7\\\\-0.2&0.4\\end{pmatrix}\\).",
+      "<b>Verifica la primera fila del producto.</b> \\(4(0.6)+7(-0.2)=1\\) y \\(4(-0.7)+7(0.4)=0\\)."
+     ],
+     "r": "\\(\\begin{pmatrix}0.6&-0.7\\\\-0.2&0.4\\end{pmatrix}\\)",
+     "fin": "Tener a mano la fórmula rápida 2 × 2."
+    },
+    {
+     "nv": "A",
+     "q": "Calcula \\(A^{-1}\\) por Gauss-Jordan si \\(A=\\begin{pmatrix}1&0&2\\\\2&1&3\\\\0&1&1\\end{pmatrix}\\).",
+     "pasos": [
+      "<b>Arma \\([A|I]\\).</b> \\(\\left[\\begin{array}{ccc|ccc}1&0&2&1&0&0\\\\2&1&3&0&1&0\\\\0&1&1&0&0&1\\end{array}\\right]\\).",
+      "<b>\\(R_2-2R_1\\).</b> Fila 2: \\(\\left[\\begin{array}{ccc|ccc}0&1&-1&-2&1&0\\end{array}\\right]\\).",
+      "<b>\\(R_3-R_2\\) y luego \\(\\tfrac12R_3\\).</b> Fila 3: \\(\\left[\\begin{array}{ccc|ccc}0&0&1&1&-\\tfrac12&\\tfrac12\\end{array}\\right]\\).",
+      "<b>Ceros arriba.</b> \\(R_2+R_3\\): \\(\\left[\\begin{array}{ccc|ccc}0&1&0&-1&\\tfrac12&\\tfrac12\\end{array}\\right]\\). \\(R_1-2R_3\\): \\(\\left[\\begin{array}{ccc|ccc}1&0&0&-1&1&-1\\end{array}\\right]\\).",
+      "<b>Lee la derecha.</b> La parte derecha es la inversa."
+     ],
+     "r": "\\(A^{-1}=\\begin{pmatrix}-1&1&-1\\\\-1&\\tfrac12&\\tfrac12\\\\1&-\\tfrac12&\\tfrac12\\end{pmatrix}\\)",
+     "fin": "Aplicar el método general que funciona para cualquier tamaño."
+    },
+    {
+     "nv": "A",
+     "q": "Con la \\(A\\) anterior, resuelve \\(A\\mathbf x=(3,7,2)^T\\) usando \\(A^{-1}\\).",
+     "pasos": [
+      "<b>Plantea.</b> \\(\\mathbf x=A^{-1}\\mathbf b\\).",
+      "<b>Fila 1.</b> \\(-3+7-2=2\\).",
+      "<b>Fila 2.</b> \\(-3+\\tfrac72+1=\\tfrac32\\).",
+      "<b>Fila 3.</b> \\(3-\\tfrac72+1=\\tfrac12\\).",
+      "<b>Verifica en A.</b> \\(2+0+1=3\\), \\(4+\\tfrac32+\\tfrac32=7\\), \\(0+\\tfrac32+\\tfrac12=2\\)."
+     ],
+     "r": "\\(\\mathbf x=(2,\\ \\tfrac32,\\ \\tfrac12)\\)",
+     "fin": "Ver la ventaja de la inversa: con otro b basta otra multiplicación."
+    },
+    {
+     "nv": "B",
+     "q": "Halla la transpuesta de \\(\\begin{pmatrix}1&2&3\\\\4&5&6\\end{pmatrix}\\) y sus dimensiones.",
+     "r": "\\(\\begin{pmatrix}1&4\\\\2&5\\\\3&6\\end{pmatrix}\\), de \\(3\\times2\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Si \\(A\\) es \\(2\\times3\\) y \\(B\\) es \\(3\\times4\\), ¿existen \\(AB\\) y \\(BA\\)?",
+     "r": "\\(AB\\) existe y es \\(2\\times4\\); \\(BA\\) no existe (4 ≠ 2)."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\begin{pmatrix}2&-1\\\\0&3\\end{pmatrix}\\begin{pmatrix}1&4\\\\2&-2\\end{pmatrix}\\).",
+     "r": "\\(\\begin{pmatrix}0&10\\\\6&-6\\end{pmatrix}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "¿Es invertible \\(\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}\\)? Justifica.",
+     "r": "No: su determinante es 4 − 4 = 0 (la fila 2 es el doble de la fila 1)."
+    },
+    {
+     "nv": "A",
+     "q": "Si \\(A^{-1}=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}\\), encuentra \\(A\\).",
+     "r": "\\(A=(A^{-1})^{-1}=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}\\)"
+    }
+   ]
+  },
+  {
+   "titulo": "Determinantes",
+   "intro": "Tema 2 del programa: definición, propiedades, inversa por la adjunta y regla de Cramer.",
+   "conceptos": [
+    {
+     "n": "Definición y cálculo",
+     "e": [
+      "El determinante es un número asociado a una matriz cuadrada. En 2 × 2 es \\(ad-bc\\). En 3 × 3 se usa la regla de Sarrus o la expansión por cofactores.",
+      "El cofactor es \\(C_{ij}=(-1)^{i+j}M_{ij}\\), donde \\(M_{ij}\\) es el determinante que queda al borrar la fila \\(i\\) y la columna \\(j\\). Conviene expandir por la fila o columna con más ceros."
+     ],
+     "f": "\\det A=\\sum_{j=1}^{n}a_{1j}C_{1j}",
+     "u": [
+      "Prueba rápida de si un sistema tiene solución única, cálculo de áreas y volúmenes, gráficos 3D.",
+      "Resume en un número si la matriz es invertible y cuánto escala áreas o volúmenes.",
+      "Antes de invertir una matriz o al aplicar Cramer.",
+      "Expande por la fila o columna con más ceros."
+     ]
+    },
+    {
+     "n": "Propiedades",
+     "e": "Intercambiar dos filas cambia el signo. Multiplicar una fila por \\(k\\) multiplica el determinante por \\(k\\). Sumar a una fila un múltiplo de otra no lo cambia. Una fila de ceros o dos filas proporcionales dan 0. En una triangular es el producto de la diagonal. \\(\\det(AB)=\\det A\\det B\\), \\(\\det A^T=\\det A\\), \\(\\det(kA)=k^n\\det A\\).",
+     "u": [
+      "Cálculo eficiente de determinantes grandes en software (reducción a triangular).",
+      "Evitan expandir cofactores, que crece muy rápido con el tamaño.",
+      "Con matrices de 4 × 4 o más.",
+      "Reduce a triangular registrando cada intercambio y cada factor."
+     ]
+    },
+    {
+     "n": "Determinante e inversa: la adjunta",
+     "e": "\\(A\\) es invertible si y solo si \\(\\det A\\neq0\\). La adjunta es la transpuesta de la matriz de cofactores, y \\(A^{-1}=\\tfrac{1}{\\det A}\\operatorname{adj}A\\). Además \\(\\det(A^{-1})=\\tfrac{1}{\\det A}\\).",
+     "f": "A^{-1}=\\frac{1}{\\det A}\\,\\operatorname{adj}(A)",
+     "u": [
+      "Fórmulas cerradas de inversas en programas pequeños, análisis teórico.",
+      "Da la inversa como fórmula, útil para matrices simbólicas.",
+      "Con matrices 2 × 2 o 3 × 3, o con parámetros.",
+      "Calcula los 9 cofactores, transpón y divide entre el determinante."
+     ]
+    },
+    {
+     "n": "Regla de Cramer",
+     "e": "Si \\(\\det A\\neq0\\), cada incógnita es \\(x_i=\\tfrac{\\det A_i}{\\det A}\\), donde \\(A_i\\) es \\(A\\) con la columna \\(i\\) reemplazada por \\(\\mathbf b\\).",
+     "f": "x_i=\\frac{\\det A_i}{\\det A}",
+     "u": [
+      "Circuitos con pocas mallas, sistemas pequeños con parámetros.",
+      "Da cada incógnita por separado sin resolver todo el sistema.",
+      "Con sistemas 2 × 2 o 3 × 3 de solución única.",
+      "Calcula det A y un determinante por cada incógnita."
+     ]
+    },
+    {
+     "n": "Interpretación geométrica",
+     "e": "\\(|\\det A|\\) es el área (2D) o volumen (3D) del paralelogramo o paralelepípedo formado por los vectores columna. El área de un triángulo con lados \\(\\mathbf u\\) y \\(\\mathbf v\\) en el plano es \\(\\tfrac12|\\det[\\mathbf u\\ \\mathbf v]|\\).",
+     "u": [
+      "Áreas de terrenos con coordenadas GPS, detección de orientación en gráficos y geometría computacional.",
+      "Convierte coordenadas en áreas sin medir ángulos.",
+      "Cuando tienes vértices con coordenadas.",
+      "Forma los vectores desde un vértice y calcula el determinante."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\det\\begin{pmatrix}3&5\\\\-2&4\\end{pmatrix}\\).",
+     "pasos": [
+      "<b>Diagonal principal.</b> \\(3\\cdot4=12\\).",
+      "<b>Diagonal secundaria.</b> \\(5\\cdot(-2)=-10\\).",
+      "<b>Resta.</b> \\(12-(-10)=22\\)."
+     ],
+     "r": "22",
+     "fin": "Automatizar el caso 2 × 2, que aparece dentro de todos los cofactores."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\det\\begin{pmatrix}2&1&3\\\\0&-1&4\\\\1&2&0\\end{pmatrix}\\) por cofactores y verifica con Sarrus.",
+     "pasos": [
+      "<b>Expande por la fila 1.</b> \\(2\\begin{vmatrix}-1&4\\\\2&0\\end{vmatrix}-1\\begin{vmatrix}0&4\\\\1&0\\end{vmatrix}+3\\begin{vmatrix}0&-1\\\\1&2\\end{vmatrix}\\).",
+      "<b>Calcula los menores.</b> \\(2(-8)-1(-4)+3(1)=-16+4+3=-9\\).",
+      "<b>Sarrus.</b> Diagonales hacia abajo: \\(0+4+0=4\\). Hacia arriba: \\(-3+16+0=13\\). \\(4-13=-9\\)."
+     ],
+     "r": "−9",
+     "fin": "Tener dos métodos para comprobar el resultado en el examen."
+    },
+    {
+     "nv": "I",
+     "q": "Usa propiedades para calcular \\(\\det\\begin{pmatrix}1&2&3&4\\\\0&1&2&3\\\\2&4&7&9\\\\0&0&1&5\\end{pmatrix}\\).",
+     "pasos": [
+      "<b>\\(R_3-2R_1\\).</b> La fila 3 queda \\([0\\ 0\\ 1\\ 1]\\); el determinante no cambia.",
+      "<b>\\(R_4-R_3\\).</b> La fila 4 queda \\([0\\ 0\\ 0\\ 4]\\).",
+      "<b>Triangular.</b> Producto de la diagonal: \\(1\\cdot1\\cdot1\\cdot4\\)."
+     ],
+     "r": "4",
+     "fin": "Ver cómo las propiedades evitan expandir 4 × 4 por cofactores."
+    },
+    {
+     "nv": "A",
+     "q": "Resuelve por Cramer: \\(x+y+z=6\\), \\(2x-y+z=3\\), \\(x+2y-z=2\\).",
+     "pasos": [
+      "<b>Determinante del sistema.</b> \\(\\det A=1(1-2)-1(-2-1)+1(4+1)=7\\).",
+      "<b>\\(\\det A_x\\)</b> (columna 1 por \\(\\mathbf b\\)): \\(6(1-2)-1(-3-2)+1(6+2)=7\\Rightarrow x=1\\).",
+      "<b>\\(\\det A_y\\).</b> \\(1(-3-2)-6(-2-1)+1(4-3)=14\\Rightarrow y=2\\).",
+      "<b>\\(\\det A_z\\).</b> \\(1(-2-6)-1(4-3)+6(4+1)=21\\Rightarrow z=3\\)."
+     ],
+     "r": "\\((1,2,3)\\), igual que por Gauss.",
+     "fin": "Comparar métodos: Cramer da cada incógnita por separado."
+    },
+    {
+     "nv": "A",
+     "q": "¿Para qué valores de \\(k\\) no es invertible \\(\\begin{pmatrix}1&2&k\\\\0&1&1\\\\k&0&1\\end{pmatrix}\\)?",
+     "pasos": [
+      "<b>Expande por la fila 1.</b> \\(1(1-0)-2(0-k)+k(0-k)\\).",
+      "<b>Simplifica.</b> \\(1+2k-k^2\\).",
+      "<b>Iguala a cero.</b> \\(k^2-2k-1=0\\Rightarrow k=1\\pm\\sqrt2\\)."
+     ],
+     "r": "\\(k=1+\\sqrt2\\) o \\(k=1-\\sqrt2\\)",
+     "fin": "Usar el determinante como prueba de invertibilidad con parámetros."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\det\\begin{pmatrix}5&-2\\\\3&1\\end{pmatrix}\\).",
+     "r": "11"
+    },
+    {
+     "nv": "B",
+     "q": "Si \\(A\\) es \\(3\\times3\\) y \\(\\det A=4\\), halla \\(\\det(2A)\\), \\(\\det A^T\\) y \\(\\det A^{-1}\\).",
+     "r": "\\(32,\\ 4,\\ \\tfrac14\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Calcula \\(\\det\\begin{pmatrix}1&0&2\\\\-1&3&1\\\\2&1&0\\end{pmatrix}\\).",
+     "r": "−15"
+    },
+    {
+     "nv": "I",
+     "q": "Resuelve por Cramer: \\(3x-2y=4\\), \\(x+y=3\\).",
+     "r": "\\(\\det A=5\\); \\(x=\\tfrac{10}{5}=2\\), \\(y=\\tfrac55=1\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Halla el área del triángulo con vértices \\((1,1)\\), \\((4,2)\\) y \\((2,5)\\).",
+     "r": "\\(\\tfrac12\\left|\\det\\begin{pmatrix}3&1\\\\1&4\\end{pmatrix}\\right|=\\tfrac{11}{2}=5.5\\) u²."
+    }
+   ]
+  },
+  {
+   "titulo": "Vectores en R² y R³ y producto escalar",
+   "intro": "Tema 3 del programa, primera parte: componentes, magnitud, dirección, operaciones, vectores unitarios, producto escalar, proyecciones y cosenos directores.",
+   "conceptos": [
+    {
+     "n": "Vector, componentes, magnitud y dirección",
+     "e": "Un vector tiene magnitud y dirección. Con origen en \\(P\\) y extremo en \\(Q\\), sus componentes son \\(Q-P\\). En R² su dirección es el ángulo \\(\\theta\\) con \\(\\tan\\theta=\\tfrac{v_2}{v_1}\\), ajustado al cuadrante.",
+     "f": "\\|\\mathbf v\\|=\\sqrt{v_1^2+v_2^2+v_3^2}",
+     "u": [
+      "Velocidades y fuerzas en física, movimiento de personajes en videojuegos, navegación.",
+      "Describen cantidades donde importa hacia dónde, no solo cuánto.",
+      "Con desplazamientos, fuerzas, velocidades.",
+      "Resta coordenadas para obtener componentes y aplica Pitágoras."
+     ]
+    },
+    {
+     "n": "Operaciones y vector unitario",
+     "e": "Suma y producto por escalar se hacen componente a componente. Un vector unitario tiene magnitud 1: \\(\\hat{\\mathbf u}=\\tfrac{\\mathbf v}{\\|\\mathbf v\\|}\\). Los canónicos son \\(\\mathbf i=(1,0,0)\\), \\(\\mathbf j=(0,1,0)\\), \\(\\mathbf k=(0,0,1)\\), y todo vector es \\(v_1\\mathbf i+v_2\\mathbf j+v_3\\mathbf k\\).",
+     "u": [
+      "Normalización de direcciones en gráficos 3D (iluminación), sensores de orientación de celulares.",
+      "Separa la dirección de la magnitud.",
+      "Cuando solo importa hacia dónde apunta algo.",
+      "Divide el vector entre su magnitud."
+     ]
+    },
+    {
+     "n": "Producto escalar (punto) y ángulo",
+     "e": "\\(\\mathbf u\\cdot\\mathbf v=u_1v_1+u_2v_2+u_3v_3\\), un número. Se relaciona con el ángulo entre vectores; si es 0, los vectores son <b>ortogonales</b>. Propiedades: conmutativo, distributivo y \\(\\mathbf v\\cdot\\mathbf v=\\|\\mathbf v\\|^2\\).",
+     "f": "\\cos\\theta=\\frac{\\mathbf u\\cdot\\mathbf v}{\\|\\mathbf u\\|\\,\\|\\mathbf v\\|}",
+     "u": [
+      "Similitud de documentos en buscadores (similitud coseno), recomendaciones, trabajo mecánico W = F·d.",
+      "Mide qué tanto apuntan dos vectores en la misma dirección.",
+      "Cuando quieres comparar direcciones o calcular trabajo.",
+      "Multiplica componentes, suma y divide entre las magnitudes."
+     ]
+    },
+    {
+     "n": "Proyecciones",
+     "e": "La proyección de \\(\\mathbf u\\) sobre \\(\\mathbf v\\) es la “sombra” de \\(\\mathbf u\\) en la dirección de \\(\\mathbf v\\). La componente escalar es \\(\\tfrac{\\mathbf u\\cdot\\mathbf v}{\\|\\mathbf v\\|}\\). Lo que sobra, \\(\\mathbf u-\\operatorname{proy}_{\\mathbf v}\\mathbf u\\), es ortogonal a \\(\\mathbf v\\).",
+     "f": "\\operatorname{proy}_{\\mathbf v}\\mathbf u=\\frac{\\mathbf u\\cdot\\mathbf v}{\\|\\mathbf v\\|^2}\\,\\mathbf v",
+     "u": [
+      "Descomponer fuerzas en planos inclinados, sombras en gráficos, mínimos cuadrados.",
+      "Separa un vector en la parte que va en una dirección y la que es perpendicular.",
+      "Cuando importa solo la parte de un efecto en cierta dirección.",
+      "Calcula el escalar u·v/|v|² y multiplícalo por v."
+     ]
+    },
+    {
+     "n": "Coordenadas en el espacio y cosenos directores",
+     "e": "En R³ se usan tres ejes perpendiculares (regla de la mano derecha). Los ángulos \\(\\alpha,\\beta,\\gamma\\) que forma \\(\\mathbf v\\) con los ejes cumplen \\(\\cos\\alpha=\\tfrac{v_1}{\\|\\mathbf v\\|}\\), etc., y \\(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1\\).",
+     "u": [
+      "Orientación de antenas, drones y brazos robóticos; modelado 3D.",
+      "Describen la dirección en el espacio con tres ángulos.",
+      "Cuando necesitas los ángulos respecto a cada eje.",
+      "Divide cada componente entre la magnitud y aplica arccos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Para \\(\\mathbf u=(3,-4)\\), halla magnitud, vector unitario y ángulo de dirección.",
+     "pasos": [
+      "<b>Magnitud.</b> \\(\\sqrt{9+16}=5\\).",
+      "<b>Unitario.</b> \\(\\tfrac15(3,-4)=(\\tfrac35,-\\tfrac45)\\).",
+      "<b>Dirección.</b> \\(\\arctan\\tfrac{-4}{3}\\approx-53.13^\\circ\\); está en el cuadrante IV, es decir \\(306.87^\\circ\\)."
+     ],
+     "r": "\\(5\\); \\((\\tfrac35,-\\tfrac45)\\); \\(\\approx306.87^\\circ\\).",
+     "fin": "Pasar de componentes a magnitud y dirección, como en navegación."
+    },
+    {
+     "nv": "B",
+     "q": "Con \\(\\mathbf u=(2,-1,3)\\) y \\(\\mathbf v=(-1,4,0)\\), calcula \\(2\\mathbf u-3\\mathbf v\\) y su magnitud.",
+     "pasos": [
+      "<b>Escala.</b> \\(2\\mathbf u=(4,-2,6)\\), \\(3\\mathbf v=(-3,12,0)\\).",
+      "<b>Resta.</b> \\((7,-14,6)\\).",
+      "<b>Magnitud.</b> \\(\\sqrt{49+196+36}=\\sqrt{281}\\approx16.76\\)."
+     ],
+     "r": "\\((7,-14,6)\\), magnitud \\(\\approx16.76\\).",
+     "fin": "Operar componente a componente sin confundir signos."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el ángulo entre \\(\\mathbf u=(1,2,2)\\) y \\(\\mathbf v=(3,0,4)\\).",
+     "pasos": [
+      "<b>Producto punto.</b> \\(3+0+8=11\\).",
+      "<b>Magnitudes.</b> \\(\\|\\mathbf u\\|=3\\), \\(\\|\\mathbf v\\|=5\\).",
+      "<b>Coseno.</b> \\(\\tfrac{11}{15}\\approx0.7333\\Rightarrow\\theta\\approx42.83^\\circ\\)."
+     ],
+     "r": "\\(\\theta\\approx42.83^\\circ\\)",
+     "fin": "Es la misma cuenta que la similitud coseno entre dos documentos."
+    },
+    {
+     "nv": "I",
+     "q": "Descompón \\(\\mathbf u=(4,2)\\) en una parte paralela y otra perpendicular a \\(\\mathbf v=(3,1)\\).",
+     "pasos": [
+      "<b>Escalar de proyección.</b> \\(\\tfrac{\\mathbf u\\cdot\\mathbf v}{\\|\\mathbf v\\|^2}=\\tfrac{14}{10}=1.4\\).",
+      "<b>Parte paralela.</b> \\(1.4(3,1)=(4.2,1.4)\\).",
+      "<b>Parte perpendicular.</b> \\((4,2)-(4.2,1.4)=(-0.2,0.6)\\).",
+      "<b>Verifica.</b> \\((-0.2)(3)+(0.6)(1)=0\\): es ortogonal a \\(\\mathbf v\\)."
+     ],
+     "r": "\\((4.2,1.4)+(-0.2,0.6)\\)",
+     "fin": "Descomponer una fuerza o una señal en componentes útiles."
+    },
+    {
+     "nv": "A",
+     "q": "Halla los cosenos y ángulos directores de \\(\\mathbf v=(2,-3,6)\\).",
+     "pasos": [
+      "<b>Magnitud.</b> \\(\\sqrt{4+9+36}=7\\).",
+      "<b>Cosenos.</b> \\(\\cos\\alpha=\\tfrac27,\\ \\cos\\beta=-\\tfrac37,\\ \\cos\\gamma=\\tfrac67\\).",
+      "<b>Ángulos.</b> \\(\\alpha\\approx73.40^\\circ,\\ \\beta\\approx115.38^\\circ,\\ \\gamma\\approx31.00^\\circ\\).",
+      "<b>Comprueba.</b> \\(\\tfrac{4+9+36}{49}=1\\)."
+     ],
+     "r": "\\(\\alpha\\approx73.40^\\circ,\\ \\beta\\approx115.38^\\circ,\\ \\gamma\\approx31.00^\\circ\\)",
+     "fin": "Describir la orientación de algo en 3D respecto a los tres ejes."
+    },
+    {
+     "nv": "B",
+     "q": "Halla el vector unitario en la dirección de \\((1,1,1)\\).",
+     "r": "\\(\\left(\\tfrac1{\\sqrt3},\\tfrac1{\\sqrt3},\\tfrac1{\\sqrt3}\\right)\\)"
+    },
+    {
+     "nv": "B",
+     "q": "¿Son ortogonales \\((2,-1,3)\\) y \\((1,5,1)\\)?",
+     "r": "Sí: \\(2-5+3=0\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla \\(k\\) para que \\((k,2,-1)\\) y \\((3,k,4)\\) sean ortogonales.",
+     "r": "\\(3k+2k-4=0\\Rightarrow k=\\tfrac45\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Una fuerza \\(\\mathbf F=(10,5)\\) N mueve un objeto según \\(\\mathbf d=(8,0)\\) m. ¿Qué trabajo realiza?",
+     "r": "\\(W=\\mathbf F\\cdot\\mathbf d=80\\) J."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la componente escalar y la proyección vectorial de \\(\\mathbf u=(1,2,3)\\) sobre \\(\\mathbf v=(2,-2,1)\\).",
+     "r": "Componente \\(\\tfrac13\\); proyección \\((\\tfrac29,-\\tfrac29,\\tfrac19)\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Producto cruz, rectas y planos en R³",
+   "intro": "Tema 3 del programa, segunda parte: producto cruz y su interpretación geométrica, rectas y planos en el espacio.",
+   "conceptos": [
+    {
+     "n": "Producto cruz",
+     "e": [
+      "\\(\\mathbf u\\times\\mathbf v\\) es un vector perpendicular a ambos, con dirección dada por la regla de la mano derecha. Solo existe en R³.",
+      "Propiedades: \\(\\mathbf u\\times\\mathbf v=-(\\mathbf v\\times\\mathbf u)\\), \\(\\mathbf u\\times\\mathbf u=\\mathbf 0\\), \\(\\mathbf i\\times\\mathbf j=\\mathbf k\\), \\(\\mathbf j\\times\\mathbf k=\\mathbf i\\), \\(\\mathbf k\\times\\mathbf i=\\mathbf j\\). Dos vectores son paralelos si su producto cruz es cero."
+     ],
+     "f": "\\mathbf u\\times\\mathbf v=\\begin{vmatrix}\\mathbf i&\\mathbf j&\\mathbf k\\\\u_1&u_2&u_3\\\\v_1&v_2&v_3\\end{vmatrix}",
+     "u": [
+      "Normales de superficies para iluminación en 3D, torque en mecánica, orientación de polígonos.",
+      "Produce automáticamente una dirección perpendicular a dos dadas.",
+      "Cuando necesitas una normal a un plano o un momento de fuerza.",
+      "Desarrolla el determinante por la primera fila."
+     ]
+    },
+    {
+     "n": "Interpretación geométrica: áreas y volúmenes",
+     "e": "\\(\\|\\mathbf u\\times\\mathbf v\\|=\\|\\mathbf u\\|\\|\\mathbf v\\|\\sin\\theta\\) es el área del paralelogramo formado por \\(\\mathbf u\\) y \\(\\mathbf v\\); la mitad es el área del triángulo. El triple producto \\(|\\mathbf u\\cdot(\\mathbf v\\times\\mathbf w)|\\) es el volumen del paralelepípedo.",
+     "u": [
+      "Áreas de mallas de triángulos en modelado 3D, volúmenes en CAD.",
+      "Mide áreas y volúmenes en el espacio sin conocer ángulos.",
+      "Con vértices en coordenadas 3D.",
+      "Forma vectores desde un vértice y calcula la norma del producto cruz."
+     ]
+    },
+    {
+     "n": "Rectas en R³",
+     "e": "Una recta queda definida por un punto \\(P_0\\) y un vector director \\(\\mathbf d=(a,b,c)\\). Forma vectorial \\(\\mathbf r=P_0+t\\mathbf d\\); paramétricas \\(x=x_0+at,\\ y=y_0+bt,\\ z=z_0+ct\\); simétricas \\(\\tfrac{x-x_0}{a}=\\tfrac{y-y_0}{b}=\\tfrac{z-z_0}{c}\\).",
+     "u": [
+      "Trayectorias de proyectiles y drones, trazado de rayos (ray tracing) en gráficos.",
+      "Describen movimiento rectilíneo en el espacio con un parámetro de tiempo.",
+      "Cuando tienes dos puntos o un punto y una dirección.",
+      "Toma d = Q − P y escribe las paramétricas."
+     ]
+    },
+    {
+     "n": "Planos en R³",
+     "e": [
+      "Un plano queda definido por un punto \\(P_0\\) y un vector normal \\(\\mathbf n=(a,b,c)\\): \\(a(x-x_0)+b(y-y_0)+c(z-z_0)=0\\), o en forma general \\(ax+by+cz=d\\).",
+      "Con tres puntos, la normal es el producto cruz de dos vectores formados con ellos. La distancia de un punto a un plano es \\(\\tfrac{|ax_0+by_0+cz_0-d|}{\\|\\mathbf n\\|}\\)."
+     ],
+     "f": "\\mathbf n\\cdot(\\mathbf r-\\mathbf r_0)=0",
+     "u": [
+      "Superficies en modelado 3D, detección de colisiones, planos de corte en tomografía.",
+      "Son la superficie más simple y la base de toda geometría poligonal.",
+      "Con tres puntos no alineados o un punto y una normal.",
+      "Calcula la normal con producto cruz y sustituye un punto."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula \\((1,2,3)\\times(4,5,6)\\) y verifica que es perpendicular al primero.",
+     "pasos": [
+      "<b>Componente i.</b> \\(2\\cdot6-3\\cdot5=-3\\).",
+      "<b>Componente j.</b> \\(3\\cdot4-1\\cdot6=6\\).",
+      "<b>Componente k.</b> \\(1\\cdot5-2\\cdot4=-3\\).",
+      "<b>Verifica.</b> \\((1,2,3)\\cdot(-3,6,-3)=-3+12-9=0\\)."
+     ],
+     "r": "\\((-3,6,-3)\\)",
+     "fin": "Automatizar el cálculo del producto cruz y su comprobación."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el área del triángulo con vértices \\(P(1,0,0)\\), \\(Q(0,2,0)\\), \\(R(0,0,3)\\).",
+     "pasos": [
+      "<b>Vectores desde P.</b> \\(\\overrightarrow{PQ}=(-1,2,0)\\), \\(\\overrightarrow{PR}=(-1,0,3)\\).",
+      "<b>Producto cruz.</b> \\((2\\cdot3-0,\\ 0\\cdot(-1)-(-1)\\cdot3,\\ 0-2\\cdot(-1))=(6,3,2)\\).",
+      "<b>Norma.</b> \\(\\sqrt{36+9+4}=7\\).",
+      "<b>Mitad.</b> Área \\(=\\tfrac72\\)."
+     ],
+     "r": "3.5 u²",
+     "fin": "Calcular el área de un triángulo de una malla 3D."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe la recta que pasa por \\(A(1,-2,3)\\) y \\(B(4,0,-1)\\) en forma paramétrica y simétrica.",
+     "pasos": [
+      "<b>Vector director.</b> \\(\\mathbf d=B-A=(3,2,-4)\\).",
+      "<b>Paramétricas.</b> \\(x=1+3t,\\ y=-2+2t,\\ z=3-4t\\).",
+      "<b>Simétricas.</b> \\(\\tfrac{x-1}{3}=\\tfrac{y+2}{2}=\\tfrac{z-3}{-4}\\).",
+      "<b>Verifica.</b> Con \\(t=1\\) se llega a \\(B\\)."
+     ],
+     "r": "\\(x=1+3t,\\ y=-2+2t,\\ z=3-4t\\)",
+     "fin": "Describir una trayectoria rectilínea en el espacio."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la ecuación del plano que pasa por \\(P(1,0,0)\\), \\(Q(0,2,0)\\) y \\(R(0,0,3)\\).",
+     "pasos": [
+      "<b>Normal.</b> Del ejercicio anterior de área, \\(\\mathbf n=(6,3,2)\\).",
+      "<b>Punto-normal con P.</b> \\(6(x-1)+3y+2z=0\\).",
+      "<b>Forma general.</b> \\(6x+3y+2z=6\\).",
+      "<b>Verifica.</b> Q: \\(6=6\\). R: \\(6=6\\)."
+     ],
+     "r": "\\(6x+3y+2z=6\\), equivalente a \\(\\tfrac x1+\\tfrac y2+\\tfrac z3=1\\).",
+     "fin": "Combinar producto cruz y ecuación del plano, problema clásico del privado."
+    },
+    {
+     "nv": "A",
+     "q": "Halla la intersección de la recta \\(x=1+t,\\ y=2t,\\ z=3-t\\) con el plano \\(2x-y+z=7\\).",
+     "pasos": [
+      "<b>Sustituye las paramétricas.</b> \\(2(1+t)-2t+(3-t)=7\\).",
+      "<b>Simplifica.</b> \\(5-t=7\\Rightarrow t=-2\\).",
+      "<b>Punto.</b> \\((1-2,\\ -4,\\ 3+2)=(-1,-4,5)\\).",
+      "<b>Verifica.</b> \\(-2+4+5=7\\)."
+     ],
+     "r": "\\((-1,-4,5)\\)",
+     "fin": "Es el cálculo base del trazado de rayos: dónde choca un rayo con una superficie."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula \\(\\mathbf i\\times\\mathbf j\\) y \\(\\mathbf j\\times\\mathbf i\\).",
+     "r": "\\(\\mathbf k\\) y \\(-\\mathbf k\\)."
+    },
+    {
+     "nv": "B",
+     "q": "Da un vector normal al plano \\(3x-y+2z=5\\) y decide si \\((1,0,1)\\) está en él.",
+     "r": "\\(\\mathbf n=(3,-1,2)\\); sí está: \\(3+2=5\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el área del paralelogramo formado por \\((2,1,0)\\) y \\((1,3,0)\\).",
+     "r": "Producto cruz \\((0,0,5)\\): área 5."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la distancia del punto \\((1,2,3)\\) al plano \\(2x-y+2z=3\\).",
+     "r": "\\(\\tfrac{|2-2+6-3|}{3}=1\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Halla el volumen del paralelepípedo formado por \\((1,0,1)\\), \\((0,2,1)\\) y \\((1,1,3)\\).",
+     "r": "\\(\\mathbf v\\times\\mathbf w=(5,1,-2)\\); \\(|\\mathbf u\\cdot(5,1,-2)|=3\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Espacios vectoriales",
+   "intro": "Tema 4 del programa: definición, subespacios, combinación lineal, espacio generado, independencia, bases, dimensión, cambio de base y bases ortonormales.",
+   "conceptos": [
+    {
+     "n": "Espacio vectorial",
+     "e": "Es un conjunto con suma y producto por escalar que cumple diez axiomas: cerradura bajo ambas operaciones, conmutatividad, asociatividad, existencia del cero y de inversos, y propiedades distributivas. Ejemplos: \\(\\mathbb R^n\\), los polinomios de grado \\(\\le n\\) (\\(P_n\\)) y las matrices \\(m\\times n\\).",
+     "u": [
+      "Representación de datos en aprendizaje automático (cada dato es un vector de características), señales, imágenes.",
+      "Permite aplicar las mismas herramientas a objetos muy distintos: polinomios, funciones, señales.",
+      "Cuando los objetos se pueden sumar y escalar con sentido.",
+      "Verifica que suma y escalar se mantengan dentro del conjunto."
+     ]
+    },
+    {
+     "n": "Subespacios",
+     "e": "\\(W\\subseteq V\\) es subespacio si contiene al vector cero y es cerrado bajo suma y producto por escalar. En R³ los subespacios son: el origen, rectas por el origen, planos por el origen y todo R³.",
+     "u": [
+      "Compresión de datos (proyectar en un subespacio de menor dimensión), filtros de señales.",
+      "Identifica conjuntos que se comportan como espacios por sí mismos.",
+      "Cuando un conjunto está definido por ecuaciones lineales homogéneas.",
+      "Prueba las tres condiciones; si no contiene el cero, no es subespacio."
+     ]
+    },
+    {
+     "n": "Combinación lineal y espacio generado",
+     "e": "Una combinación lineal es \\(c_1\\mathbf v_1+\\cdots+c_k\\mathbf v_k\\). El espacio generado \\(\\operatorname{gen}\\{\\mathbf v_1,\\dots,\\mathbf v_k\\}\\) es el conjunto de todas sus combinaciones lineales. Preguntar si \\(\\mathbf w\\) es combinación lineal es resolver un sistema.",
+     "u": [
+      "Mezcla de colores RGB, combinación de recursos, generación de señales a partir de ondas básicas.",
+      "Indica qué se puede construir con ciertos ingredientes básicos.",
+      "Cuando quieres saber si un objetivo se alcanza con los recursos disponibles.",
+      "Plantea c₁v₁ + … = w y resuelve el sistema."
+     ]
+    },
+    {
+     "n": "Independencia lineal, base y dimensión",
+     "e": [
+      "Los vectores son <b>linealmente independientes</b> si \\(c_1\\mathbf v_1+\\cdots+c_k\\mathbf v_k=\\mathbf 0\\) solo se cumple con todos los \\(c_i=0\\). Con \\(n\\) vectores en \\(\\mathbb R^n\\), son independientes si y solo si el determinante de la matriz que forman es distinto de 0.",
+      "Una <b>base</b> es un conjunto independiente que genera el espacio. La <b>dimensión</b> es el número de vectores de cualquier base: \\(\\dim\\mathbb R^n=n\\), \\(\\dim P_n=n+1\\), \\(\\dim M_{m\\times n}=mn\\)."
+     ],
+     "u": [
+      "Selección de variables sin redundancia en estadística y ML, diseño de sistemas de coordenadas.",
+      "Elimina información redundante: una base es la descripción mínima.",
+      "Cuando sospechas que un vector se puede obtener de los otros.",
+      "Arma la matriz con los vectores como columnas y calcula su determinante o rango."
+     ]
+    },
+    {
+     "n": "Cambio de base",
+     "e": "Las coordenadas de \\(\\mathbf v\\) en una base \\(B=\\{\\mathbf b_1,\\dots,\\mathbf b_n\\}\\) son los coeficientes \\([\\mathbf v]_B\\) tales que \\(\\mathbf v=c_1\\mathbf b_1+\\cdots+c_n\\mathbf b_n\\). Si \\(P\\) tiene a los \\(\\mathbf b_i\\) como columnas, \\(\\mathbf v=P[\\mathbf v]_B\\) y \\([\\mathbf v]_B=P^{-1}\\mathbf v\\).",
+     "f": "[\\mathbf v]_B=P^{-1}\\mathbf v",
+     "u": [
+      "Compresión JPEG (cambio a base de cosenos), cambio de sistema de coordenadas en robótica y GPS.",
+      "Una buena base vuelve simples problemas complicados.",
+      "Cuando el problema es más natural en otro sistema de ejes.",
+      "Resuelve P·c = v para obtener las nuevas coordenadas."
+     ]
+    },
+    {
+     "n": "Bases ortonormales, Gram-Schmidt y proyecciones",
+     "e": "Una base es ortonormal si sus vectores son unitarios y ortogonales entre sí; las coordenadas se obtienen con productos punto. Gram-Schmidt convierte cualquier base en ortonormal restando proyecciones. La proyección de \\(\\mathbf v\\) sobre un subespacio con base ortonormal \\(\\{\\mathbf e_i\\}\\) es \\(\\sum(\\mathbf v\\cdot\\mathbf e_i)\\mathbf e_i\\).",
+     "f": "\\mathbf w_k=\\mathbf v_k-\\sum_{i\\lt k}(\\mathbf v_k\\cdot\\mathbf e_i)\\,\\mathbf e_i,\\qquad \\mathbf e_k=\\frac{\\mathbf w_k}{\\|\\mathbf w_k\\|}",
+     "u": [
+      "Descomposición QR en software numérico, mínimos cuadrados, procesamiento de señales.",
+      "Las bases ortonormales hacen los cálculos estables y simples.",
+      "Cuando necesitas proyectar o aproximar en un subespacio.",
+      "Aplica Gram-Schmidt y luego suma las proyecciones sobre cada vector."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Es \\(W=\\{(x,y):y=2x\\}\\) un subespacio de \\(\\mathbb R^2\\)? ¿Y \\(\\{(x,y):y=2x+1\\}\\)?",
+     "pasos": [
+      "<b>Cero.</b> \\((0,0)\\) cumple \\(y=2x\\).",
+      "<b>Suma.</b> \\((a,2a)+(b,2b)=(a+b,2(a+b))\\in W\\).",
+      "<b>Escalar.</b> \\(c(a,2a)=(ca,2ca)\\in W\\).",
+      "<b>Segundo conjunto.</b> \\((0,0)\\) no cumple \\(0=1\\): no es subespacio."
+     ],
+     "r": "El primero sí (recta por el origen); el segundo no.",
+     "fin": "Aplicar la prueba de tres condiciones y el atajo del vector cero."
+    },
+    {
+     "nv": "I",
+     "q": "¿Es \\(\\mathbf w=(5,5)\\) combinación lineal de \\(\\mathbf v_1=(1,2)\\) y \\(\\mathbf v_2=(3,1)\\)?",
+     "pasos": [
+      "<b>Plantea.</b> \\(c_1(1,2)+c_2(3,1)=(5,5)\\): \\(c_1+3c_2=5\\), \\(2c_1+c_2=5\\).",
+      "<b>Resuelve.</b> De la segunda, \\(c_2=5-2c_1\\); sustituyendo, \\(c_1+15-6c_1=5\\Rightarrow c_1=2\\), \\(c_2=1\\).",
+      "<b>Verifica.</b> \\(2(1,2)+1(3,1)=(5,5)\\)."
+     ],
+     "r": "Sí: \\(\\mathbf w=2\\mathbf v_1+\\mathbf v_2\\).",
+     "fin": "Ver que “¿se puede construir?” es siempre un sistema de ecuaciones."
+    },
+    {
+     "nv": "I",
+     "q": "¿Son linealmente independientes \\((1,2,3)\\), \\((0,1,4)\\) y \\((5,6,0)\\)? ¿Forman base de \\(\\mathbb R^3\\)?",
+     "pasos": [
+      "<b>Matriz con los vectores como columnas.</b> \\(\\begin{pmatrix}1&0&5\\\\2&1&6\\\\3&4&0\\end{pmatrix}\\).",
+      "<b>Determinante.</b> \\(1(0-24)-0+5(8-3)=-24+25=1\\).",
+      "<b>Concluye.</b> \\(\\det\\neq0\\): independientes, y tres vectores independientes en \\(\\mathbb R^3\\) son base."
+     ],
+     "r": "Sí, son independientes y forman base de R³.",
+     "fin": "Usar el determinante como prueba rápida de independencia."
+    },
+    {
+     "nv": "A",
+     "q": "Halla las coordenadas de \\(\\mathbf v=(3,5)\\) en la base \\(B=\\{(1,1),(1,-1)\\}\\).",
+     "pasos": [
+      "<b>Plantea.</b> \\(c_1(1,1)+c_2(1,-1)=(3,5)\\): \\(c_1+c_2=3\\), \\(c_1-c_2=5\\).",
+      "<b>Suma las ecuaciones.</b> \\(2c_1=8\\Rightarrow c_1=4\\); \\(c_2=-1\\).",
+      "<b>Verifica.</b> \\(4(1,1)-1(1,-1)=(3,5)\\)."
+     ],
+     "r": "\\([\\mathbf v]_B=(4,-1)\\)",
+     "fin": "Cambiar de sistema de coordenadas, idea central de la compresión de imágenes."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica Gram-Schmidt a \\(\\mathbf v_1=(1,1,0)\\) y \\(\\mathbf v_2=(1,0,1)\\).",
+     "pasos": [
+      "<b>Primer vector.</b> \\(\\mathbf e_1=\\tfrac{1}{\\sqrt2}(1,1,0)\\).",
+      "<b>Quita a \\(\\mathbf v_2\\) su parte en \\(\\mathbf v_1\\).</b> \\(\\mathbf w_2=(1,0,1)-\\tfrac{1}{2}(1,1,0)=(\\tfrac12,-\\tfrac12,1)\\).",
+      "<b>Normaliza.</b> \\(\\|\\mathbf w_2\\|=\\sqrt{\\tfrac32}\\); \\(\\mathbf e_2=\\tfrac{1}{\\sqrt6}(1,-1,2)\\).",
+      "<b>Verifica.</b> \\(\\mathbf e_1\\cdot\\mathbf e_2=\\tfrac{1-1+0}{\\sqrt{12}}=0\\)."
+     ],
+     "r": "\\(\\mathbf e_1=\\tfrac1{\\sqrt2}(1,1,0)\\), \\(\\mathbf e_2=\\tfrac1{\\sqrt6}(1,-1,2)\\)",
+     "fin": "Construir bases ortonormales, base de la descomposición QR."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es \\(\\{(x,y,z):z=0\\}\\) un subespacio de \\(\\mathbb R^3\\)? ¿Qué dimensión tiene?",
+     "r": "Sí, es el plano xy; dimensión 2."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué dimensión tienen \\(P_2\\) y las matrices \\(2\\times2\\)?",
+     "r": "\\(\\dim P_2=3\\) (base \\(1,x,x^2\\)); \\(\\dim M_{2\\times2}=4\\)."
+    },
+    {
+     "nv": "I",
+     "q": "¿Son independientes \\((1,2)\\) y \\((2,4)\\)? ¿Qué generan?",
+     "r": "No: (2, 4) = 2(1, 2). Generan solo una recta por el origen."
+    },
+    {
+     "nv": "I",
+     "q": "¿Generan \\(\\mathbb R^3\\) los vectores \\((1,0,1)\\), \\((0,1,1)\\) y \\((1,1,2)\\)?",
+     "r": "No: el determinante es 0 y el tercero es la suma de los dos primeros; generan un plano."
+    },
+    {
+     "nv": "A",
+     "q": "Proyecta \\(\\mathbf v=(1,2,3)\\) sobre el plano generado por \\(\\mathbf e_1\\) y \\(\\mathbf e_2\\) del ejercicio de Gram-Schmidt.",
+     "r": "\\(\\tfrac32(1,1,0)+\\tfrac56(1,-1,2)=(\\tfrac73,\\tfrac23,\\tfrac53)\\)."
+    }
+   ]
+  },
+  {
+   "titulo": "Transformaciones lineales",
+   "intro": "Tema 5 del programa: definición, propiedades, representación matricial, isomorfismo e isometría.",
+   "conceptos": [
+    {
+     "n": "Definición y propiedades",
+     "e": "\\(T:V\\to W\\) es lineal si \\(T(\\mathbf u+\\mathbf v)=T(\\mathbf u)+T(\\mathbf v)\\) y \\(T(c\\mathbf u)=cT(\\mathbf u)\\). Consecuencia: \\(T(\\mathbf 0)=\\mathbf 0\\). Si \\(T(\\mathbf 0)\\neq\\mathbf 0\\), no es lineal. Ejemplos: rotaciones, reflexiones, proyecciones, escalamientos, la derivada.",
+     "u": [
+      "Transformaciones de imágenes (rotar, escalar, reflejar), capas de redes neuronales, filtros.",
+      "Las transformaciones lineales se pueden calcular con matrices de forma muy eficiente.",
+      "Cuando una operación respeta sumas y escalamientos.",
+      "Prueba las dos propiedades o busca un contraejemplo como T(0) ≠ 0."
+     ]
+    },
+    {
+     "n": "Representación matricial",
+     "e": "Toda transformación lineal de \\(\\mathbb R^n\\) a \\(\\mathbb R^m\\) es \\(T(\\mathbf x)=A\\mathbf x\\), donde las columnas de \\(A\\) son las imágenes de los vectores canónicos: \\(A=[\\,T(\\mathbf e_1)\\ \\cdots\\ T(\\mathbf e_n)\\,]\\). Componer transformaciones es multiplicar sus matrices, en orden inverso a su aplicación.",
+     "f": "R_\\theta=\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}",
+     "u": [
+      "Motores gráficos (OpenGL, Unity), visión por computadora, robótica.",
+      "Reduce cualquier transformación lineal a una multiplicación de matrices.",
+      "Cuando necesitas aplicar la misma transformación a miles de puntos.",
+      "Calcula T de cada vector canónico y ponlo como columna."
+     ]
+    },
+    {
+     "n": "Núcleo, imagen y teorema de la dimensión",
+     "e": "El núcleo \\(\\ker T\\) son los vectores que van a \\(\\mathbf 0\\); la imagen son todos los posibles resultados. Teorema: \\(\\dim\\ker T+\\dim\\operatorname{Im}T=\\dim V\\). \\(T\\) es inyectiva si y solo si \\(\\ker T=\\{\\mathbf 0\\}\\).",
+     "f": "\\dim\\ker T+\\operatorname{rango}T=n",
+     "u": [
+      "Análisis de pérdida de información en compresión, sistemas de control.",
+      "El núcleo indica qué información se pierde al transformar.",
+      "Cuando quieres saber si una transformación se puede deshacer.",
+      "Resuelve A x = 0 para el núcleo; cuenta pivotes para el rango."
+     ]
+    },
+    {
+     "n": "Isomorfismo e isometría",
+     "e": [
+      "Un <b>isomorfismo</b> es una transformación lineal biyectiva: tiene inversa lineal. En \\(\\mathbb R^n\\) ocurre si y solo si \\(\\det A\\neq0\\). Dos espacios de la misma dimensión finita son isomorfos.",
+      "Una <b>isometría</b> conserva distancias: \\(\\|T\\mathbf x\\|=\\|\\mathbf x\\|\\). Su matriz es ortogonal (\\(Q^TQ=I\\)): rotaciones y reflexiones."
+     ],
+     "u": [
+      "Cifrado reversible, rotaciones de cámara sin deformar la escena, codificación de datos.",
+      "Garantizan que no se pierde información (isomorfismo) ni se deforma la forma (isometría).",
+      "Cuando la transformación debe poder deshacerse o conservar medidas.",
+      "Revisa det ≠ 0 para isomorfismo y QᵀQ = I para isometría."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Es lineal \\(T(x,y)=(x+y,\\,2x)\\)? ¿Y \\(S(x,y)=(x+1,\\,y)\\)?",
+     "pasos": [
+      "<b>Suma en T.</b> \\(T(\\mathbf u+\\mathbf v)=(u_1+v_1+u_2+v_2,\\,2u_1+2v_1)=T(\\mathbf u)+T(\\mathbf v)\\).",
+      "<b>Escalar en T.</b> \\(T(c\\mathbf u)=(cu_1+cu_2,\\,2cu_1)=cT(\\mathbf u)\\). T es lineal.",
+      "<b>Prueba rápida en S.</b> \\(S(0,0)=(1,0)\\neq(0,0)\\): S no es lineal."
+     ],
+     "r": "T es lineal; S no.",
+     "fin": "Distinguir transformaciones lineales de traslaciones."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la matriz de la rotación de 90° en sentido antihorario y aplícala a \\((3,2)\\).",
+     "pasos": [
+      "<b>Imágenes de los canónicos.</b> \\((1,0)\\to(0,1)\\) y \\((0,1)\\to(-1,0)\\).",
+      "<b>Matriz.</b> \\(\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}\\).",
+      "<b>Aplica.</b> \\((0\\cdot3-1\\cdot2,\\ 1\\cdot3+0\\cdot2)=(-2,3)\\)."
+     ],
+     "r": "\\(\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}\\); imagen \\((-2,3)\\).",
+     "fin": "Construir la matriz desde las imágenes de los canónicos, como en un motor gráfico."
+    },
+    {
+     "nv": "I",
+     "q": "Halla la matriz, el núcleo y la imagen de \\(T(x,y,z)=(x-y,\\ 2y+z)\\).",
+     "pasos": [
+      "<b>Columnas.</b> \\(T(1,0,0)=(1,0)\\), \\(T(0,1,0)=(-1,2)\\), \\(T(0,0,1)=(0,1)\\).",
+      "<b>Matriz.</b> \\(\\begin{pmatrix}1&-1&0\\\\0&2&1\\end{pmatrix}\\).",
+      "<b>Núcleo.</b> \\(x=y\\), \\(z=-2y\\): \\(\\ker T=\\operatorname{gen}\\{(1,1,-2)\\}\\), dimensión 1.",
+      "<b>Teorema de la dimensión.</b> \\(3-1=2\\): la imagen es todo \\(\\mathbb R^2\\)."
+     ],
+     "r": "\\(\\ker T=\\operatorname{gen}\\{(1,1,-2)\\}\\); imagen \\(\\mathbb R^2\\).",
+     "fin": "Relacionar núcleo, rango y dimensión del dominio."
+    },
+    {
+     "nv": "A",
+     "q": "Primero se rota 90° antihorario y luego se refleja en el eje \\(x\\). Halla la matriz compuesta e identifica la transformación.",
+     "pasos": [
+      "<b>Matrices.</b> \\(R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}\\), \\(F=\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}\\).",
+      "<b>Orden.</b> Se aplica primero \\(R\\), así que la compuesta es \\(FR\\).",
+      "<b>Producto.</b> \\(FR=\\begin{pmatrix}0&-1\\\\-1&0\\end{pmatrix}\\).",
+      "<b>Interpreta.</b> \\((x,y)\\to(-y,-x)\\): reflexión respecto a la recta \\(y=-x\\)."
+     ],
+     "r": "\\(\\begin{pmatrix}0&-1\\\\-1&0\\end{pmatrix}\\): reflexión en \\(y=-x\\).",
+     "fin": "Ver que componer es multiplicar en orden inverso, regla clave en gráficos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Es \\(T(x,y)=(2x+y,\\ x+y)\\) un isomorfismo? Si lo es, halla \\(T^{-1}\\). ¿Es una isometría?",
+     "pasos": [
+      "<b>Matriz.</b> \\(A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}\\), \\(\\det A=1\\neq0\\): es isomorfismo.",
+      "<b>Inversa.</b> \\(A^{-1}=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}\\Rightarrow T^{-1}(x,y)=(x-y,\\ -x+2y)\\).",
+      "<b>Isometría.</b> \\(T(1,0)=(2,1)\\) tiene norma \\(\\sqrt5\\neq1\\): no conserva longitudes."
+     ],
+     "r": "Isomorfismo con \\(T^{-1}(x,y)=(x-y,\\,-x+2y)\\); no es isometría.",
+     "fin": "Distinguir “reversible” de “conserva medidas”."
+    },
+    {
+     "nv": "B",
+     "q": "Escribe la matriz de la reflexión en el eje \\(x\\) y aplícala a \\((4,5)\\).",
+     "r": "\\(\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}\\); \\((4,-5)\\)."
+    },
+    {
+     "nv": "B",
+     "q": "¿Es lineal \\(T(x)=x^2\\) de \\(\\mathbb R\\) en \\(\\mathbb R\\)?",
+     "r": "No: \\(T(2\\cdot1)=4\\neq2T(1)=2\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe la matriz de rotación de 60° y aplícala a \\((2,0)\\).",
+     "r": "\\(\\begin{pmatrix}\\tfrac12&-\\tfrac{\\sqrt3}2\\\\\\tfrac{\\sqrt3}2&\\tfrac12\\end{pmatrix}\\); \\((1,\\sqrt3)\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Halla el núcleo de la transformación con matriz \\(\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}\\). ¿Es invertible?",
+     "r": "\\(\\ker T=\\operatorname{gen}\\{(-2,1)\\}\\), rango 1; no es invertible."
+    },
+    {
+     "nv": "A",
+     "q": "Demuestra que la rotación \\(R_\\theta\\) es una isometría.",
+     "r": "\\(R_\\theta^TR_\\theta=\\begin{pmatrix}\\cos^2\\theta+\\sin^2\\theta&0\\\\0&\\sin^2\\theta+\\cos^2\\theta\\end{pmatrix}=I\\), así que \\(\\|R_\\theta\\mathbf x\\|=\\|\\mathbf x\\|\\)."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}

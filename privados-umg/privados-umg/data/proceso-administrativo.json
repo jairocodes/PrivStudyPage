@@ -1,0 +1,798 @@
+{
+ "slug": "proceso-administrativo",
+ "titulo": "Proceso Administrativo",
+ "meta": "Ciclo 3, código 090014, área de Ciencias (sin semana propia en el seminario)",
+ "firma": "\\text{Planear}\\to\\text{Organizar}\\to\\text{Dirigir}\\to\\text{Controlar}",
+ "firma_nota": "Las cuatro funciones del proceso administrativo, que se repiten en todo proyecto.",
+ "lead": "Teorías de la administración, la empresa y su estrategia, organización, dirección, talento humano, control y creación de empresas en Guatemala. Los 10 temas del programa están organizados en 5 secciones, cada una con un cuestionario de 10 preguntas.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3ProcesoAdmo.pdf",
+ "como": "Cada sección trae conceptos con su aplicación real y un cuestionario de 10 preguntas de opción múltiple de dificultad variada. Al elegir una respuesta verás al instante si acertaste y la explicación; las correctas se marcan como dominadas.",
+ "temas": [
+  {
+   "titulo": "La administración y su evolución",
+   "intro": "Tema 1 del programa: concepto de administración, historia de la teoría administrativa y estructura organizacional.",
+   "conceptos": [
+    {
+     "n": "Concepto de administración",
+     "e": [
+      "Administrar es planear, organizar, dirigir y controlar recursos para lograr objetivos con <b>eficiencia</b> (usar bien los recursos) y <b>eficacia</b> (lograr el objetivo). La efectividad combina ambas."
+     ],
+     "u": [
+      "Gestión de proyectos de TI, departamentos de sistemas, startups.",
+      "Sin administración, los recursos se desperdician.",
+      "En cualquier organización o proyecto.",
+      "Aplica las cuatro funciones de forma cíclica."
+     ]
+    },
+    {
+     "n": "Escuelas de la administración",
+     "e": [
+      "Cada escuela aportó una idea que sigue vigente."
+     ],
+     "u": [
+      "Entender el origen de prácticas actuales: métricas, procesos, motivación.",
+      "Permite elegir el enfoque adecuado.",
+      "Al analizar cómo se dirige una organización.",
+      "Relaciona cada práctica con su escuela."
+     ],
+     "tabla": "<table><thead><tr><th>Escuela</th><th>Autor</th><th>Idea central</th></tr></thead><tbody><tr><td>Administración científica</td><td>Taylor</td><td>Estudio de tiempos y movimientos, productividad</td></tr><tr><td>Clásica</td><td>Fayol</td><td>14 principios y funciones administrativas</td></tr><tr><td>Burocrática</td><td>Weber</td><td>Autoridad racional-legal, reglas y jerarquía</td></tr><tr><td>Relaciones humanas</td><td>Mayo</td><td>El factor social influye en la productividad</td></tr><tr><td>Sistemas</td><td>Von Bertalanffy</td><td>La empresa como sistema abierto</td></tr><tr><td>Contingencia</td><td>Burns, Woodward</td><td>No hay una sola forma óptima: depende del entorno</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Lograr el objetivo planteado, sin importar los recursos usados, es…",
+     "ops": [
+      "Eficiencia",
+      "Eficacia",
+      "Productividad",
+      "Rentabilidad"
+     ],
+     "ok": 1,
+     "r": "Eficacia es alcanzar la meta; eficiencia, usar bien los recursos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Quién propuso el estudio de tiempos y movimientos?",
+     "ops": [
+      "Fayol",
+      "Taylor",
+      "Weber",
+      "Mayo"
+     ],
+     "ok": 1,
+     "r": "Frederick Taylor, padre de la administración científica."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuáles son las cuatro funciones del proceso administrativo?",
+     "ops": [
+      "Vender, producir, cobrar y pagar",
+      "Contratar, capacitar, evaluar y despedir",
+      "Investigar, diseñar, programar y probar",
+      "Planear, organizar, dirigir y controlar"
+     ],
+     "ok": 3,
+     "r": "Es el ciclo básico de la administración."
+    },
+    {
+     "nv": "I",
+     "q": "Los experimentos de Hawthorne mostraron que…",
+     "ops": [
+      "La iluminación es lo único que importa",
+      "Los salarios no influyen",
+      "La burocracia es ineficiente",
+      "El factor social y la atención influyen en la productividad"
+     ],
+     "ok": 3,
+     "r": "Dieron origen a la escuela de relaciones humanas (Mayo)."
+    },
+    {
+     "nv": "I",
+     "q": "La escuela que propone 14 principios como unidad de mando y división del trabajo es la de…",
+     "ops": [
+      "Taylor",
+      "Weber",
+      "Fayol",
+      "Maslow"
+     ],
+     "ok": 2,
+     "r": "Henri Fayol, teoría clásica."
+    },
+    {
+     "nv": "I",
+     "q": "Un sistema de tickets con procedimientos y jerarquía de escalamiento refleja ideas de…",
+     "ops": [
+      "Mayo",
+      "Herzberg",
+      "Weber",
+      "Ouchi"
+     ],
+     "ok": 2,
+     "r": "La burocracia de Weber: reglas formales y jerarquía."
+    },
+    {
+     "nv": "I",
+     "q": "Terminar un proyecto a tiempo pero gastando el doble del presupuesto fue…",
+     "ops": [
+      "Eficiente pero no eficaz",
+      "Eficaz y eficiente",
+      "Ni eficaz ni eficiente",
+      "Eficaz pero no eficiente"
+     ],
+     "ok": 3,
+     "r": "Logró el objetivo, pero con desperdicio de recursos."
+    },
+    {
+     "nv": "A",
+     "q": "La teoría de sistemas ve a la empresa como un sistema abierto porque…",
+     "ops": [
+      "Intercambia entradas y salidas con su entorno",
+      "No tiene paredes",
+      "No tiene jefes",
+      "Usa computadoras"
+     ],
+     "ok": 0,
+     "r": "Recibe insumos, los transforma y entrega productos al entorno, que la afecta."
+    },
+    {
+     "nv": "A",
+     "q": "Según la teoría de la contingencia, la mejor estructura para una startup en un mercado cambiante es…",
+     "ops": [
+      "Una flexible y adaptable al entorno",
+      "Siempre la burocrática",
+      "La misma que la de un banco",
+      "La que diga Taylor"
+     ],
+     "ok": 0,
+     "r": "No hay una forma única: depende del entorno."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué escuela aporta más a la práctica de medir la productividad por tarea con métricas?",
+     "ops": [
+      "Relaciones humanas",
+      "Contingencia",
+      "Administración científica",
+      "Sistemas"
+     ],
+     "ok": 2,
+     "r": "Taylor buscaba la mejor forma medible de hacer cada tarea."
+    }
+   ]
+  },
+  {
+   "titulo": "La empresa y la estrategia",
+   "intro": "Temas 2 y 3 del programa: las empresas como organizaciones sociales, tipos de sistemas, visión, objetivos, recursos, papel del administrador, eficiencia y eficacia, proceso administrativo y diagrama de Gantt.",
+   "conceptos": [
+    {
+     "n": "La empresa y sus recursos",
+     "e": [
+      "Una empresa combina recursos <b>humanos</b>, <b>materiales</b>, <b>financieros</b>, <b>tecnológicos</b> y de información para producir bienes o servicios. Su misión dice qué hace; su visión, a dónde va; sus objetivos, qué resultados medibles busca."
+     ],
+     "u": [
+      "Planeación de una empresa de software o de un departamento de TI.",
+      "Orienta las decisiones y el uso de recursos.",
+      "Al fundar o reorganizar una empresa.",
+      "Define misión, visión y objetivos y asigna recursos."
+     ]
+    },
+    {
+     "n": "Proceso administrativo y planeación",
+     "e": [
+      "Fase mecánica: <b>planeación</b> (qué hacer: objetivos, estrategias, políticas, procedimientos, presupuestos) y <b>organización</b> (cómo y con quién). Fase dinámica: <b>integración</b>, <b>dirección</b> y <b>control</b> (hacerlo y verificarlo). El diagrama de Gantt muestra tareas en barras sobre una línea de tiempo."
+     ],
+     "u": [
+      "Planificar proyectos de software y su calendario.",
+      "Ordena el trabajo y permite medir avances.",
+      "Al iniciar cualquier proyecto.",
+      "Divide en tareas, estima duración y ubícalas en el tiempo."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de recurso es un servidor de base de datos?",
+     "ops": [
+      "Tecnológico",
+      "Humano",
+      "Financiero",
+      "Natural"
+     ],
+     "ok": 0,
+     "r": "La infraestructura informática es un recurso tecnológico."
+    },
+    {
+     "nv": "B",
+     "q": "El diagrama de Gantt representa…",
+     "ops": [
+      "El organigrama",
+      "Los estados financieros",
+      "Las tareas de un proyecto en barras sobre el tiempo",
+      "Las ventas por región"
+     ],
+     "ok": 2,
+     "r": "Muestra duración, inicio y fin de cada actividad."
+    },
+    {
+     "nv": "B",
+     "q": "La misión de una empresa responde…",
+     "ops": [
+      "¿A dónde quiere llegar?",
+      "¿Qué hace, para quién y cómo?",
+      "¿Cuánto gana?",
+      "¿Quién es el dueño?"
+     ],
+     "ok": 1,
+     "r": "La visión es la que mira al futuro."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué etapas forman la fase mecánica del proceso administrativo?",
+     "ops": [
+      "Dirección y control",
+      "Planeación y organización",
+      "Integración y dirección",
+      "Control y planeación"
+     ],
+     "ok": 1,
+     "r": "Definen qué y cómo hacer; la dinámica lo ejecuta."
+    },
+    {
+     "nv": "I",
+     "q": "“Responder todo ticket crítico en menos de 2 horas” es un ejemplo de…",
+     "ops": [
+      "Política o estándar operativo",
+      "Misión",
+      "Visión",
+      "Valor"
+     ],
+     "ok": 0,
+     "r": "Es una regla que guía la acción diaria."
+    },
+    {
+     "nv": "I",
+     "q": "En un Gantt, la tarea B (3 días) empieza al terminar A (2 días, desde el día 1). ¿Cuándo termina B?",
+     "ops": [
+      "Día 3",
+      "Día 6",
+      "Día 4",
+      "Día 5"
+     ],
+     "ok": 3,
+     "r": "A ocupa los días 1 y 2; B los días 3, 4 y 5."
+    },
+    {
+     "nv": "I",
+     "q": "La integración, dentro del proceso administrativo, consiste en…",
+     "ops": [
+      "Elaborar el presupuesto",
+      "Obtener y combinar los recursos necesarios, en especial el personal",
+      "Despedir empleados",
+      "Auditar las cuentas"
+     ],
+     "ok": 1,
+     "r": "Reúne los recursos para ejecutar lo planeado."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué limitación tiene el diagrama de Gantt frente a una red CPM?",
+     "ops": [
+      "No muestra con claridad las dependencias ni la ruta crítica",
+      "No muestra fechas",
+      "No sirve para proyectos",
+      "Solo muestra costos"
+     ],
+     "ok": 0,
+     "r": "La red CPM hace explícitas las dependencias y holguras."
+    },
+    {
+     "nv": "A",
+     "q": "Una empresa con objetivos claros pero sin asignar recursos ni responsables falla en…",
+     "ops": [
+      "Organización e integración",
+      "Planeación de la visión",
+      "La misión",
+      "Los valores"
+     ],
+     "ok": 0,
+     "r": "Sin estructura ni recursos, el plan no se ejecuta."
+    },
+    {
+     "nv": "A",
+     "q": "El papel del administrador según Mintzberg incluye roles interpersonales, informativos y…",
+     "ops": [
+      "Técnicos",
+      "Financieros",
+      "Legales",
+      "Decisorios"
+     ],
+     "ok": 3,
+     "r": "Toma decisiones: emprendedor, gestor de conflictos, asignador de recursos y negociador."
+    }
+   ]
+  },
+  {
+   "titulo": "Organización y departamentalización",
+   "intro": "Temas 4 y 5 del programa: centralización, amplitud de control, organización lineal y línea-staff; departamentalización funcional, por producto, territorial, por clientela y por proceso; organigramas.",
+   "conceptos": [
+    {
+     "n": "Estructuras organizacionales",
+     "e": [
+      "<b>Lineal:</b> una sola línea de mando, simple pero rígida. <b>Línea-staff:</b> agrega asesores que recomiendan sin mandar (legal, TI, auditoría). <b>Centralización</b> concentra las decisiones arriba; descentralización las delega. <b>Amplitud de control:</b> cuántos subordinados supervisa un jefe."
+     ],
+     "u": [
+      "Diseñar la estructura de un departamento de sistemas.",
+      "La estructura define quién decide y quién responde.",
+      "Al crecer o reorganizar.",
+      "Elige la estructura según tamaño y complejidad."
+     ]
+    },
+    {
+     "n": "Departamentalización y organigramas",
+     "e": [
+      "Agrupar actividades por <b>función</b> (desarrollo, infraestructura, soporte), <b>producto</b>, <b>territorio</b>, <b>clientela</b> o <b>proceso</b>. El organigrama representa gráficamente la estructura: puestos, niveles y líneas de autoridad."
+     ],
+     "u": [
+      "Organización de equipos por producto o por función en empresas de software.",
+      "Agrupa a quienes deben coordinarse.",
+      "Al diseñar o documentar la estructura.",
+      "Elige el criterio que mejor coordine el trabajo."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "En una estructura lineal, cada empleado…",
+     "ops": [
+      "Tiene varios jefes",
+      "No tiene jefe",
+      "Decide solo",
+      "Recibe órdenes de un solo jefe"
+     ],
+     "ok": 3,
+     "r": "Unidad de mando: una sola línea de autoridad."
+    },
+    {
+     "nv": "B",
+     "q": "El organigrama sirve para…",
+     "ops": [
+      "Calcular sueldos",
+      "Programar tareas",
+      "Mostrar gráficamente la estructura y la autoridad",
+      "Hacer el presupuesto"
+     ],
+     "ok": 2,
+     "r": "Representa puestos y relaciones jerárquicas."
+    },
+    {
+     "nv": "B",
+     "q": "Organizar un departamento de TI en desarrollo, infraestructura y soporte es departamentalización…",
+     "ops": [
+      "Funcional",
+      "Territorial",
+      "Por clientela",
+      "Por producto"
+     ],
+     "ok": 0,
+     "r": "Agrupa por la función que se realiza."
+    },
+    {
+     "nv": "I",
+     "q": "Un área legal que asesora a la gerencia sin mandar a otras áreas es un ejemplo de…",
+     "ops": [
+      "Línea",
+      "Staff",
+      "Matriz",
+      "Comité"
+     ],
+     "ok": 1,
+     "r": "El staff aconseja; la línea manda."
+    },
+    {
+     "nv": "I",
+     "q": "Una empresa con oficinas en Guatemala, Jutiapa y Quetzaltenango que agrupa por sede usa departamentalización…",
+     "ops": [
+      "Territorial",
+      "Por proceso",
+      "Funcional",
+      "Por clientela"
+     ],
+     "ok": 0,
+     "r": "Agrupa por zona geográfica."
+    },
+    {
+     "nv": "I",
+     "q": "Un jefe con 25 subordinados directos tiene una amplitud de control…",
+     "ops": [
+      "Estrecha",
+      "Nula",
+      "Centralizada",
+      "Amplia"
+     ],
+     "ok": 3,
+     "r": "Muchos subordinados por supervisor."
+    },
+    {
+     "nv": "I",
+     "q": "Separar la atención a gobierno, empresas y personas es departamentalización…",
+     "ops": [
+      "Por producto",
+      "Por proceso",
+      "Funcional",
+      "Por clientela"
+     ],
+     "ok": 3,
+     "r": "Agrupa según el tipo de cliente."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué riesgo tiene una estructura muy centralizada en una empresa de software que crece rápido?",
+     "ops": [
+      "Demasiada autonomía",
+      "Cuellos de botella y decisiones lentas",
+      "Exceso de innovación",
+      "Ninguno"
+     ],
+     "ok": 1,
+     "r": "Todo depende de pocas personas."
+    },
+    {
+     "nv": "A",
+     "q": "Una empresa con tres productos de software muy distintos, cada uno con su equipo completo, usa departamentalización…",
+     "ops": [
+      "Funcional",
+      "Territorial",
+      "Lineal",
+      "Por producto"
+     ],
+     "ok": 3,
+     "r": "Cada producto agrupa sus propias funciones."
+    },
+    {
+     "nv": "A",
+     "q": "Una amplitud de control amplia suele producir una estructura…",
+     "ops": [
+      "Plana con pocos niveles",
+      "Alta con muchos niveles",
+      "Sin jefes",
+      "Matricial obligatoriamente"
+     ],
+     "ok": 0,
+     "r": "Menos jefes para el mismo personal: menos niveles."
+    }
+   ]
+  },
+  {
+   "titulo": "Dirección y talento humano",
+   "intro": "Temas 6 y 8 del programa: autoridad, estilos de dirección, teorías X, Y y Z, motivación, Maslow, Herzberg, liderazgo y comunicación; solicitud de empleo, entrevista, capacitación, contrato y evaluación del desempeño.",
+   "conceptos": [
+    {
+     "n": "Dirección y motivación",
+     "e": [
+      "Teoría X (McGregor): el trabajador evita el trabajo y necesita control. Teoría Y: busca responsabilidad y se compromete. Teoría Z (Ouchi): empleo estable, consenso y confianza. Maslow: necesidades fisiológicas, seguridad, sociales, estima y autorrealización. Herzberg: factores higiénicos (salario, condiciones: su ausencia desmotiva) y motivadores (logro, reconocimiento, responsabilidad)."
+     ],
+     "u": [
+      "Retener talento de TI, diseñar planes de carrera y beneficios.",
+      "Equipos motivados rinden más y rotan menos.",
+      "Al dirigir personas.",
+      "Identifica qué necesidad o factor está fallando."
+     ]
+    },
+    {
+     "n": "Liderazgo y comunicación",
+     "e": [
+      "Estilos: autocrático (decide solo), democrático (consulta), liberal o laissez-faire (delega casi todo). La comunicación efectiva es clara, oportuna, bidireccional y con retroalimentación."
+     ],
+     "u": [
+      "Reuniones diarias de equipos ágiles, gestión de crisis.",
+      "La mayoría de problemas de proyectos son de comunicación.",
+      "En toda interacción de dirección.",
+      "Elige el estilo según la situación y confirma que el mensaje se entendió."
+     ]
+    },
+    {
+     "n": "Talento humano",
+     "e": [
+      "Proceso: requisición del puesto, reclutamiento, solicitud de empleo, entrevista y pruebas, selección, contrato, inducción, capacitación y evaluación del desempeño. En Guatemala la relación laboral se rige por el Código de Trabajo."
+     ],
+     "u": [
+      "Contratar desarrolladores y técnicos, evaluar su desempeño.",
+      "Las personas son el recurso clave de una empresa de tecnología.",
+      "Al incorporar o evaluar personal.",
+      "Define el perfil del puesto antes de reclutar."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Según Maslow, ¿cuál es la necesidad más alta?",
+     "ops": [
+      "Seguridad",
+      "Estima",
+      "Autorrealización",
+      "Fisiológica"
+     ],
+     "ok": 2,
+     "r": "Desarrollar el propio potencial."
+    },
+    {
+     "nv": "B",
+     "q": "Un jefe que decide todo sin consultar tiene un estilo…",
+     "ops": [
+      "Democrático",
+      "Autocrático",
+      "Liberal",
+      "Participativo"
+     ],
+     "ok": 1,
+     "r": "Concentra todas las decisiones."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué etapa sigue a la selección de un candidato?",
+     "ops": [
+      "Reclutamiento",
+      "Requisición del puesto",
+      "Contratación e inducción",
+      "Despido"
+     ],
+     "ok": 2,
+     "r": "Se formaliza el contrato y se integra a la persona."
+    },
+    {
+     "nv": "I",
+     "q": "Según Herzberg, un buen salario…",
+     "ops": [
+      "Motiva por sí solo de forma permanente",
+      "No importa",
+      "Es un motivador intrínseco",
+      "Es un factor higiénico: su falta desmotiva, pero no motiva por sí mismo"
+     ],
+     "ok": 3,
+     "r": "Los motivadores son logro, reconocimiento y responsabilidad."
+    },
+    {
+     "nv": "I",
+     "q": "Un gerente cree que sus programadores son responsables y les da autonomía. Aplica la teoría…",
+     "ops": [
+      "X",
+      "Y",
+      "Z",
+      "Clásica"
+     ],
+     "ok": 1,
+     "r": "McGregor: el trabajador se compromete y busca responsabilidad."
+    },
+    {
+     "nv": "I",
+     "q": "La teoría Z de Ouchi se caracteriza por…",
+     "ops": [
+      "Control estricto",
+      "Pago por pieza",
+      "Ausencia de jefes",
+      "Empleo de largo plazo, decisiones por consenso y confianza"
+     ],
+     "ok": 3,
+     "r": "Inspirada en la administración japonesa."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace que una comunicación sea efectiva?",
+     "ops": [
+      "Que sea larga",
+      "Que tenga retroalimentación que confirme que se entendió",
+      "Que sea solo escrita",
+      "Que la dé el jefe"
+     ],
+     "ok": 1,
+     "r": "La retroalimentación cierra el ciclo."
+    },
+    {
+     "nv": "A",
+     "q": "Un desarrollador con buen salario renuncia porque no le asignan proyectos retadores. Según Herzberg, falló un factor…",
+     "ops": [
+      "Higiénico",
+      "Fisiológico",
+      "Legal",
+      "Motivador"
+     ],
+     "ok": 3,
+     "r": "Falta logro y crecimiento, que son motivadores."
+    },
+    {
+     "nv": "A",
+     "q": "En una crisis de seguridad que exige decisiones inmediatas, el estilo más adecuado es…",
+     "ops": [
+      "Laissez-faire",
+      "Democrático con votación larga",
+      "Ninguno",
+      "Autocrático o directivo, por la urgencia"
+     ],
+     "ok": 3,
+     "r": "El estilo depende de la situación; la emergencia exige rapidez."
+    },
+    {
+     "nv": "A",
+     "q": "Una evaluación del desempeño útil debe…",
+     "ops": [
+      "Hacerse solo al despedir",
+      "Basarse en criterios conocidos de antemano y dar retroalimentación para mejorar",
+      "Ser secreta",
+      "Medir solo la puntualidad"
+     ],
+     "ok": 1,
+     "r": "Criterios claros y orientados al desarrollo."
+    }
+   ]
+  },
+  {
+   "titulo": "Control, herramientas de tiempo y creación de empresas",
+   "intro": "Temas 7, 9 y 10 del programa: supervisión, fases del control, estándares, control estratégico y táctico, presupuesto y nómina; cronogramas, WBS, CPM-PERT y Gantt; Registro Mercantil, SAT y ética profesional.",
+   "conceptos": [
+    {
+     "n": "El control",
+     "e": [
+      "Fases: establecer estándares, medir el desempeño, comparar contra el estándar y tomar acciones correctivas. Puede ser preventivo (antes), concurrente (durante) o de retroalimentación (después). El control estratégico mira toda la organización; el táctico, cada área. El presupuesto y la nómina son herramientas de control."
+     ],
+     "u": [
+      "Indicadores de disponibilidad de servicios, seguimiento de presupuestos de proyectos.",
+      "Sin control, los planes no se cumplen.",
+      "Durante y después de ejecutar.",
+      "Define métricas, mide y corrige desviaciones."
+     ]
+    },
+    {
+     "n": "Herramientas de control del tiempo",
+     "e": [
+      "La <b>WBS</b> (estructura de desglose del trabajo) divide el proyecto en entregables y tareas. El cronograma y el Gantt ubican tareas en el tiempo. CPM-PERT calcula la ruta crítica y las holguras."
+     ],
+     "u": [
+      "Planificación de desarrollos e implementaciones.",
+      "Permiten estimar y vigilar plazos.",
+      "Al planificar y dar seguimiento.",
+      "Descompón con WBS, secuencia con CPM y comunica con Gantt."
+     ]
+    },
+    {
+     "n": "Creación de una empresa en Guatemala",
+     "e": [
+      "Comerciante individual o sociedad (escritura constitutiva ante notario). Se inscribe en el <b>Registro Mercantil</b> y se obtiene la patente de comercio; luego se inscribe en la <b>SAT</b> (NIT, régimen de ISR, habilitación de libros y facturación) y en el <b>IGSS</b> si hay empleados. La ética profesional exige honestidad, cumplimiento legal y responsabilidad social."
+     ],
+     "u": [
+      "Formalizar un emprendimiento de servicios de TI.",
+      "La formalidad permite facturar, contratar y acceder a crédito.",
+      "Al iniciar un negocio.",
+      "Sigue el orden: constitución, Registro Mercantil, SAT, IGSS."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Cuál es la primera fase del control?",
+     "ops": [
+      "Tomar acciones correctivas",
+      "Medir",
+      "Establecer estándares",
+      "Comparar"
+     ],
+     "ok": 2,
+     "r": "Sin estándar no hay contra qué comparar."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué entidad emite la patente de comercio en Guatemala?",
+     "ops": [
+      "SAT",
+      "IGSS",
+      "Registro Mercantil",
+      "Ministerio de Trabajo"
+     ],
+     "ok": 2,
+     "r": "La inscripción mercantil precede a la patente."
+    },
+    {
+     "nv": "B",
+     "q": "La WBS sirve para…",
+     "ops": [
+      "Calcular impuestos",
+      "Contratar personal",
+      "Descomponer un proyecto en entregables y tareas",
+      "Hacer el organigrama"
+     ],
+     "ok": 2,
+     "r": "Es la base para estimar y asignar trabajo."
+    },
+    {
+     "nv": "I",
+     "q": "Revisar un código antes de pasarlo a producción es un control…",
+     "ops": [
+      "De retroalimentación",
+      "Estratégico",
+      "Preventivo",
+      "Financiero"
+     ],
+     "ok": 2,
+     "r": "Se aplica antes de que ocurra el problema."
+    },
+    {
+     "nv": "I",
+     "q": "¿Dónde se obtiene el NIT de una empresa?",
+     "ops": [
+      "Registro Mercantil",
+      "Municipalidad",
+      "Banguat",
+      "SAT"
+     ],
+     "ok": 3,
+     "r": "La SAT administra el registro tributario."
+    },
+    {
+     "nv": "I",
+     "q": "En CPM, las actividades con holgura cero forman…",
+     "ops": [
+      "La ruta crítica",
+      "El presupuesto",
+      "La WBS",
+      "El organigrama"
+     ],
+     "ok": 0,
+     "r": "Cualquier retraso en ellas retrasa el proyecto."
+    },
+    {
+     "nv": "I",
+     "q": "Un empleador con trabajadores debe inscribirse como patrono en…",
+     "ops": [
+      "El INAB",
+      "El Banguat",
+      "El TSE",
+      "El IGSS"
+     ],
+     "ok": 3,
+     "r": "Para la seguridad social de los trabajadores."
+    },
+    {
+     "nv": "A",
+     "q": "Un tablero que muestra en tiempo real el uso de CPU y alerta al superar 90 % es un control…",
+     "ops": [
+      "Concurrente",
+      "Preventivo puro",
+      "Solo de retroalimentación",
+      "Estratégico"
+     ],
+     "ok": 0,
+     "r": "Mide y permite actuar mientras ocurre."
+    },
+    {
+     "nv": "A",
+     "q": "Si una tarea de la ruta crítica se atrasa 3 días y no hay compresión posible, el proyecto…",
+     "ops": [
+      "No se afecta",
+      "Se adelanta",
+      "Se atrasa 3 días",
+      "Se cancela"
+     ],
+     "ok": 2,
+     "r": "La ruta crítica no tiene holgura."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es el orden correcto para formalizar una sociedad anónima?",
+     "ops": [
+      "SAT, notario, Registro Mercantil",
+      "IGSS, SAT, notario",
+      "Escritura ante notario, Registro Mercantil, SAT",
+      "Municipalidad, IGSS, SAT"
+     ],
+     "ok": 2,
+     "r": "Primero existe la sociedad, luego se registra y después se inscribe en la SAT."
+    }
+   ]
+  }
+ ],
+ "area": "Ciencias de la Ingeniería"
+}
