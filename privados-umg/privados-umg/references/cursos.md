@@ -33,7 +33,7 @@ Fuente: portal de contenidos de la carrera (http://umgcontenidos.50webs.com/). L
 | Ciclo | Curso | Bloque del seminario | Programa (PDF) | Guía publicada |
 | --- | --- | --- | --- | --- |
 | 3 | Derecho Informático | Auditoría y Seguridad de Sistemas | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3DerechoInformatico.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/derecho-informatico) |
-| 6 | Autómatas y Lenguajes Formales | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6Automatas.pdf) | pendiente |
+| 6 | Autómatas y Lenguajes Formales | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6Automatas.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/automatas-lenguajes-formales) |
 | 6 | Sistemas Operativos I | Sistemas operativos | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6SOI.pdf) | [guía](https://claude.ai/artifact/M4Qp1QcxxQGfwfAXPsh4fu) |
 | 7 | Arquitectura de Computadoras I | Arquitectura de computadoras | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7ArquitecturaComputadorasI.pdf) | [guía](https://claude.ai/artifact/CeAnBfZgbQeRC6iwGmZdCT) |
 | 7 | Compiladores | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7Compiladores.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/compiladores) |
