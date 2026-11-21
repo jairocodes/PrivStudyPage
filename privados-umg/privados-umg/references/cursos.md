@@ -36,7 +36,7 @@ Fuente: portal de contenidos de la carrera (http://umgcontenidos.50webs.com/). L
 | 6 | Autómatas y Lenguajes Formales | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6Automatas.pdf) | pendiente |
 | 6 | Sistemas Operativos I | Sistemas operativos | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Sexto%20Ciclo/2014-6SOI.pdf) | [guía](https://claude.ai/artifact/M4Qp1QcxxQGfwfAXPsh4fu) |
 | 7 | Arquitectura de Computadoras I | Arquitectura de computadoras | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7ArquitecturaComputadorasI.pdf) | [guía](https://claude.ai/artifact/CeAnBfZgbQeRC6iwGmZdCT) |
-| 7 | Compiladores | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7Compiladores.pdf) | pendiente |
+| 7 | Compiladores | Sin semana propia | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7Compiladores.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/compiladores) |
 | 7 | Sistemas Operativos II | Sistemas operativos | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Septimo%20Ciclo/2014-7SOII.pdf) | [guía](https://claude.ai/artifact/GE1N8u29V8UDj7o1vA2b4U) |
 | 8 | Arquitectura de Computadoras II | Arquitectura de computadoras | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8ArquitecturaComputadorasII.pdf) | [guía](https://claude.ai/artifact/HgLTw6smwrYJy2aF2gH5KD) |
 | 8 | Redes de Computadoras I | Redes | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Octavo%20Ciclo/2014-8RedesI.pdf) | [guía](https://claude.ai/artifact/NyC1a4yygS8Uvu7pgGzAYN) |
