@@ -1,0 +1,1126 @@
+{
+ "slug": "introduccion-sistemas-computo",
+ "titulo": "Introducción a los Sistemas de Cómputo",
+ "area": "Análisis, Diseño y Desarrollo",
+ "meta": "Ciclo 1, código 090004, bloque Programación del seminario",
+ "firma": "\\text{datos}\\xrightarrow{\\text{hardware}\\,+\\,\\text{software}}\\text{información}",
+ "firma_nota": "Una computadora recibe datos, los procesa con su hardware siguiendo las instrucciones del software y entrega información; el curso recorre cada pieza de esa transformación, desde los bits hasta la base de datos, la red, la Web y el algoritmo.",
+ "lead": "El primer curso de la carrera: de dónde viene la computadora y cómo se clasifica, cómo representa la información en bits y bytes, qué hardware y software la forman y qué hace el sistema operativo; después, los fundamentos de bases de datos, redes, la Web y la resolución de problemas con pseudocódigo. Abre el bloque Programación del seminario y prepara el terreno de Lógica de Sistemas, Algoritmos y Programación I. Las 7 unidades del programa están organizadas en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Sistemas.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 más. En las secciones de numeración y datos, bases de datos, redes y pseudocódigo son ejercicios con la respuesta oculta (conversiones, cálculos de capacidad y tiempo, consultas SQL, pruebas de escritorio); en las de generalidades, hardware y software, y la Web son preguntas de opción múltiple que te dicen al instante si acertaste. Haz las conversiones, los cálculos y las pruebas de escritorio a mano antes de ver la respuesta: así se evalúan en el privado. Los ejemplos usan quetzales, el IVA de 12 %, municipalidades y empresas guatemaltecas, servidores Linux, PHP y MySQL.",
+ "temas": [
+  {
+   "titulo": "Generalidades: historia, clasificación y arquitectura de la computadora",
+   "intro": "Unidad 1 del programa (semanas 1 y 2): introducción a los sistemas de cómputo, historia de la computadora, clasificación de las computadoras, surgimiento de la computadora personal (PC), arquitectura de la computadora y conceptos básicos: software, hardware, firmware, middleware y conectividad. El manejo de bases numéricas y la cuantificación de bits y bytes, también de la semana 2, está en la sección siguiente.",
+   "conceptos": [
+    {
+     "n": "Historia y generaciones de la computadora",
+     "e": [
+      "Los precursores mecánicos resolvieron el cálculo y la programación por separado: el ábaco; la <b>Pascalina</b> de Blaise Pascal (1642), que sumaba y restaba; la calculadora de Leibniz, que también multiplicaba; el <b>telar de Jacquard</b> (1801), que se programaba con tarjetas perforadas; las máquinas <b>diferencial</b> y <b>analítica</b> de Charles Babbage, con Ada Lovelace como autora del primer algoritmo pensado para una máquina; y las tabuladoras de Herman Hollerith para el censo de Estados Unidos de 1890.",
+      "Con la electrónica llegaron las <b>generaciones</b>, que se distinguen por el componente básico. Las fechas son aproximadas y varían según el autor:"
+     ],
+     "u": [
+      "En el examen de la historia del curso y al leer documentación técnica que menciona tubos, transistores o microprocesadores.",
+      "Cada generación redujo tamaño, consumo y costo y aumentó la velocidad; eso explica por qué hoy una laptop supera a las primeras macrocomputadoras.",
+      "Cuando hay que ubicar un equipo o una tecnología en su época o explicar de dónde viene una idea, como las tarjetas perforadas o el programa almacenado.",
+      "Asocia cada generación con su componente y un equipo representativo; ordena los hitos por fecha antes de memorizar nombres."
+     ],
+     "tabla": "<table><thead><tr><th>Generación</th><th>Componente</th><th>Ejemplos</th></tr></thead><tbody><tr><td>1.ª (≈1946-1958)</td><td>Tubos de vacío</td><td>ENIAC, UNIVAC I</td></tr><tr><td>2.ª (≈1959-1964)</td><td>Transistores</td><td>IBM 1401</td></tr><tr><td>3.ª (≈1964-1971)</td><td>Circuitos integrados</td><td>IBM System/360</td></tr><tr><td>4.ª (1971-)</td><td>Microprocesador</td><td>Intel 4004, computadoras personales</td></tr><tr><td>5.ª</td><td>Procesamiento paralelo, inteligencia artificial, redes</td><td>Supercomputadoras y sistemas actuales</td></tr></tbody></table>"
+    },
+    {
+     "n": "Clasificación de las computadoras y surgimiento de la PC",
+     "e": [
+      "Se clasifican por <b>tamaño y capacidad</b> (tabla), por el <b>tipo de señal</b> que procesan (analógicas, digitales e híbridas) y por su <b>propósito</b> (general, como una PC, o específico, como el controlador de una bomba de combustible).",
+      "La <b>computadora personal</b> nació con el microprocesador: Altair 8800 (1975), Apple II (1977) y el <b>IBM PC</b> (1981), con procesador Intel 8088 y el sistema DOS de Microsoft. Su arquitectura abierta, con piezas de terceros y documentación publicada, permitió fabricar equipos compatibles; por eso la combinación x86 más Windows se volvió el estándar de oficina."
+     ],
+     "u": [
+      "En inventarios de hardware de empresas e instituciones y al escoger el equipo para un sistema.",
+      "Cada clase responde a una carga distinta: un mainframe prioriza miles de transacciones confiables; una supercomputadora, el cálculo científico.",
+      "Al analizar qué equipos tiene una empresa, como pide el proyecto final del curso, o al dimensionar un servidor.",
+      "Ubica el equipo por su capacidad, el número de usuarios que atiende y su propósito; luego nombra la clase."
+     ],
+     "tabla": "<table><thead><tr><th>Clase</th><th>Uso típico</th><th>Ejemplo de entorno</th></tr></thead><tbody><tr><td>Supercomputadora</td><td>Cálculo científico masivo</td><td>Pronóstico del clima, simulaciones</td></tr><tr><td>Macrocomputadora (mainframe)</td><td>Miles de transacciones simultáneas</td><td>Núcleo bancario, aseguradoras</td></tr><tr><td>Servidor de rango medio</td><td>Servicios para una organización</td><td>Servidor Linux con PHP y PostgreSQL</td></tr><tr><td>Microcomputadora</td><td>Un usuario</td><td>PC de escritorio, laptop, tableta</td></tr><tr><td>Embebida</td><td>Una tarea específica dentro de otro aparato</td><td>Cajero automático, router, lavadora</td></tr></tbody></table>"
+    },
+    {
+     "n": "Arquitectura de la computadora (modelo de von Neumann)",
+     "e": [
+      "Casi todas las computadoras siguen el modelo descrito por John von Neumann en 1945: una <b>CPU</b> con unidad de control (UC), unidad aritmético-lógica (ALU) y registros; una <b>memoria principal</b> que guarda juntos datos e instrucciones (<i>programa almacenado</i>); <b>dispositivos de entrada y salida</b>; y <b>buses</b> de datos, direcciones y control que los comunican.",
+      "La CPU repite el <b>ciclo de instrucción</b>: busca la instrucción a la que apunta el contador de programa (PC), la decodifica y la ejecuta. El detalle de buses, interrupciones y la arquitectura Harvard se estudia en Arquitectura de Computadoras."
+     ],
+     "u": [
+      "En cualquier PC, servidor o teléfono: todos ejecutan programas almacenados en memoria.",
+      "Explica por qué un programa debe cargarse en RAM para ejecutarse y por qué la velocidad de la memoria limita a la CPU.",
+      "Al leer especificaciones de un equipo (núcleos, GHz, RAM) o seguir lo que hace un programa paso a paso.",
+      "Sigue el ciclo búsqueda, decodificación y ejecución con un acumulador y unas pocas celdas de memoria."
+     ],
+     "f": "\\text{búsqueda}\\to\\text{decodificación}\\to\\text{ejecución}"
+    },
+    {
+     "n": "Conceptos básicos: hardware, software, firmware, middleware y conectividad",
+     "e": [
+      "Son el vocabulario del curso. La diferencia entre firmware y software está en dónde vive y quién lo cambia; el middleware se reconoce porque conecta dos programas, no a una persona con un programa."
+     ],
+     "u": [
+      "En el análisis de la infraestructura de una empresa, que es la primera parte del proyecto final.",
+      "Separar las capas evita errores de diagnóstico: una impresora que no imprime puede fallar por hardware, controlador, firmware o red.",
+      "Al describir un sistema, levantar un inventario o redactar los requerimientos de un proyecto.",
+      "Recorre el sistema de abajo hacia arriba: equipo físico, firmware, sistema operativo, middleware, aplicación y conexiones."
+     ],
+     "tabla": "<table><thead><tr><th>Término</th><th>Definición</th><th>Ejemplos</th></tr></thead><tbody><tr><td>Hardware</td><td>Parte física</td><td>CPU, RAM, disco, monitor</td></tr><tr><td>Software</td><td>Programas y datos que dirigen al hardware</td><td>Windows, Linux, LibreOffice, un sistema en PHP</td></tr><tr><td>Firmware</td><td>Software grabado en memoria no volátil del propio dispositivo</td><td>BIOS/UEFI, firmware de un router o de una impresora</td></tr><tr><td>Middleware</td><td>Capa que comunica aplicaciones entre sí o con servicios</td><td>Controladores JDBC u ODBC, colas de mensajes, servidores de aplicaciones</td></tr><tr><td>Conectividad</td><td>Capacidad de comunicarse con otros equipos</td><td>Ethernet, Wi-Fi, Bluetooth, USB</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ordena cronológicamente: IBM PC, Pascalina, ENIAC, máquina analítica de Babbage e Intel 4004.",
+     "pasos": [
+      "Ubica las fechas: Pascalina 1642, máquina analítica diseñada desde 1834, ENIAC 1946, Intel 4004 1971 e IBM PC 1981.",
+      "Agrupa por etapa: dos precursores mecánicos, una computadora de primera generación (tubos de vacío), el primer microprocesador comercial y la PC que se volvió estándar."
+     ],
+     "r": "Pascalina → máquina analítica → ENIAC → Intel 4004 → IBM PC.",
+     "fin": "Ordenar hitos es la pregunta de historia más frecuente; agruparlos por etapa evita memorizar fechas sueltas."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica estos equipos: (a) el que procesa las transacciones de todos los cajeros y agencias de un banco; (b) la laptop de un cajero; (c) el equipo de un centro de investigación que corre modelos del clima; (d) la tarjeta que controla un cajero automático.",
+     "pasos": [
+      "(a) Miles de transacciones simultáneas con alta disponibilidad: macrocomputadora (mainframe) o servidores de gran capacidad.",
+      "(b) Un usuario, propósito general: microcomputadora.",
+      "(c) Cálculo científico masivo: supercomputadora.",
+      "(d) Una tarea específica dentro de otro aparato: computadora embebida de propósito específico."
+     ],
+     "r": "(a) Mainframe, (b) microcomputadora, (c) supercomputadora, (d) embebida.",
+     "fin": "Clasificar por carga de trabajo, no por tamaño físico, es lo que se pide al analizar el hardware de una empresa."
+    },
+    {
+     "nv": "I",
+     "q": "Una ferretería emite facturas electrónicas (FEL) desde un sistema en PHP con MySQL, en una PC con Windows, una impresora térmica e Internet por fibra. Identifica hardware, software, firmware, middleware y conectividad.",
+     "pasos": [
+      "<b>Hardware:</b> PC, impresora térmica, router o módem de fibra.",
+      "<b>Firmware:</b> UEFI de la PC, firmware de la impresora y del router.",
+      "<b>Software:</b> Windows (sistema), el sistema de facturación en PHP (aplicación) y el servidor MySQL.",
+      "<b>Middleware:</b> la extensión PDO que conecta PHP con MySQL y el servicio web por el que el sistema envía cada factura al certificador.",
+      "<b>Conectividad:</b> Ethernet o Wi-Fi hacia el router, la fibra hacia el proveedor de Internet y el puerto USB de la impresora."
+     ],
+     "r": "Cada componente queda en su capa; el middleware es lo que une el sistema con la base de datos y con el certificador.",
+     "fin": "Es el ejercicio base del proyecto final: describir la infraestructura de una empresa por capas."
+    },
+    {
+     "nv": "A",
+     "q": "Una CPU de acumulador tiene en memoria: celda 0 <code>LOAD 20</code>, 1 <code>ADD 21</code>, 2 <code>SUB 22</code>, 3 <code>STORE 23</code>, 4 <code>HALT</code>; y los datos 20 = 15, 21 = 27, 22 = 12, 23 = 0. Sigue el ciclo de instrucción.",
+     "pasos": [
+      "PC = 0: busca <code>LOAD 20</code>, decodifica y ejecuta: ACC = 15; PC pasa a 1.",
+      "PC = 1: <code>ADD 21</code>: ACC = 15 + 27 = 42; PC = 2.",
+      "PC = 2: <code>SUB 22</code>: ACC = 42 − 12 = 30; PC = 3.",
+      "PC = 3: <code>STORE 23</code>: la celda 23 recibe 30; PC = 4.",
+      "PC = 4: <code>HALT</code> detiene la máquina. Hubo 5 ciclos de búsqueda, decodificación y ejecución."
+     ],
+     "r": "Celda 23 = 30, después de 5 ciclos de instrucción.",
+     "fin": "Muestra el programa almacenado: instrucciones y datos en la misma memoria, recorridos por el contador de programa."
+    },
+    {
+     "nv": "A",
+     "q": "Explica por qué el IBM PC de 1981 convirtió a la PC compatible en el estándar de oficina, a diferencia de otras computadoras personales de la época.",
+     "pasos": [
+      "IBM armó el equipo con piezas de terceros: procesador Intel 8088 y sistema operativo DOS licenciado a Microsoft.",
+      "Publicó la documentación técnica y usó ranuras de expansión abiertas, así que otras empresas fabricaron tarjetas y programas para él.",
+      "Otros fabricantes produjeron equipos compatibles reproduciendo el BIOS por medios legales; Microsoft podía licenciar su DOS a todos ellos.",
+      "La competencia bajó los precios y multiplicó el software disponible; el estándar dejó de depender de un solo fabricante."
+     ],
+     "r": "La arquitectura abierta y el sistema operativo licenciable crearon un mercado de compatibles; de ahí viene el estándar x86 con Windows.",
+     "fin": "Relaciona historia y arquitectura: los estándares abiertos explican por qué hoy se puede armar o ampliar una PC con piezas de distintas marcas."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué componente electrónico caracteriza a la segunda generación de computadoras?",
+     "ops": [
+      "El tubo de vacío",
+      "El circuito integrado",
+      "El transistor",
+      "El microprocesador"
+     ],
+     "ok": 2,
+     "r": "La 2.ª generación sustituyó los tubos de vacío (1.ª) por transistores; los circuitos integrados son de la 3.ª y el microprocesador, de la 4.ª."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué es el firmware?",
+     "ops": [
+      "El controlador que el usuario instala en Windows para usar una impresora",
+      "Software grabado en memoria no volátil de un dispositivo que controla su funcionamiento básico",
+      "La capa de software que conecta una aplicación con la base de datos",
+      "Un componente de hardware programable que se conecta por USB"
+     ],
+     "ok": 1,
+     "r": "El firmware vive en el propio dispositivo (BIOS/UEFI, router, impresora). El controlador se instala en el sistema operativo y la capa que conecta con la base de datos es middleware."
+    },
+    {
+     "nv": "I",
+     "q": "La idea de guardar el programa en la misma memoria que los datos se atribuye a:",
+     "ops": [
+      "John von Neumann",
+      "Charles Babbage",
+      "Herman Hollerith",
+      "Blaise Pascal"
+     ],
+     "ok": 0,
+     "r": "Von Neumann la describió en 1945 para el EDVAC. Babbage concibió una máquina programable con tarjetas, pero no con el programa guardado en memoria; Hollerith hizo tabuladoras y Pascal una sumadora."
+    },
+    {
+     "nv": "I",
+     "q": "Un banco necesita procesar millones de transacciones diarias de cajeros, agencias y banca en línea con muy alta disponibilidad. ¿Qué clase de computadora es la tradicional para ese núcleo?",
+     "ops": [
+      "Supercomputadora",
+      "Macrocomputadora (mainframe)",
+      "Estación de trabajo",
+      "Computadora embebida"
+     ],
+     "ok": 1,
+     "r": "El mainframe está diseñado para muchas transacciones confiables a la vez. La supercomputadora se orienta al cálculo científico; la estación de trabajo y la embebida atienden a un usuario o una tarea."
+    },
+    {
+     "nv": "A",
+     "q": "Durante el ciclo de instrucción, ¿qué registro guarda la dirección de la siguiente instrucción a buscar?",
+     "ops": [
+      "El acumulador",
+      "El registro de instrucción (IR)",
+      "El contador de programa (PC)",
+      "El registro de datos de memoria (MDR)"
+     ],
+     "ok": 2,
+     "r": "El PC apunta a la siguiente instrucción y se incrementa en cada búsqueda. El IR guarda la instrucción que se está ejecutando, el acumulador los resultados y el MDR el dato que viaja desde o hacia la memoria."
+    }
+   ]
+  },
+  {
+   "titulo": "Bases numéricas, bits, bytes y representación digital de datos",
+   "intro": "Unidad 1, semana 2: manejo de bases numéricas en la computadora y cuantificación de bits y bytes; y unidad 2, semana 3: dimensiones y unidades de medida, y representación digital de datos. Se trata al nivel introductorio que pide el programa; la aritmética modular y la lógica se profundizan en Matemática Discreta y Lógica de Sistemas.",
+   "conceptos": [
+    {
+     "n": "Sistemas de numeración posicionales",
+     "e": [
+      "En un sistema posicional de base \\(b\\) cada dígito vale \\(d_i\\cdot b^{i}\\) según su posición \\(i\\), contando desde 0 a la derecha. La computadora trabaja en <b>binario</b>; el <b>hexadecimal</b> y el <b>octal</b> son abreviaturas cómodas del binario.",
+      "De decimal a otra base se divide sucesivamente entre la base y se leen los residuos de abajo hacia arriba. De binario a hexadecimal se agrupan 4 bits desde la derecha; a octal, grupos de 3. Con \\(n\\) bits se representan \\(2^{n}\\) valores distintos."
+     ],
+     "u": [
+      "En direcciones de memoria, direcciones MAC, colores web (<code>#1E90FF</code>), permisos de Linux en octal (<code>chmod 755</code>) y volcados de archivos.",
+      "Sin dominar las bases no se entienden los errores de desbordamiento, las máscaras de red ni los códigos de caracteres.",
+      "Al leer un valor en hexadecimal, calcular cuántos bits necesita un campo o depurar datos binarios.",
+      "Aplica la suma de potencias para pasar a decimal y las divisiones sucesivas o la agrupación de bits para el camino inverso."
+     ],
+     "f": "N=\\sum_{i=0}^{n-1} d_i\\, b^{i}",
+     "tabla": "<table><thead><tr><th>Base</th><th>Dígitos</th><th>Ejemplo (45 decimal)</th><th>Uso</th></tr></thead><tbody><tr><td>2 (binario)</td><td>0 y 1</td><td>101101</td><td>Lo que guarda el hardware</td></tr><tr><td>8 (octal)</td><td>0 a 7</td><td>55</td><td>Permisos de Unix</td></tr><tr><td>10 (decimal)</td><td>0 a 9</td><td>45</td><td>Uso humano</td></tr><tr><td>16 (hexadecimal)</td><td>0 a 9 y A a F</td><td>2D</td><td>Memoria, colores, MAC</td></tr></tbody></table>"
+    },
+    {
+     "n": "Bits, bytes y unidades de medida",
+     "e": [
+      "El <b>bit</b> es un 0 o un 1; 4 bits forman un <i>nibble</i> y 8 bits un <b>byte</b>. Hay dos familias de prefijos: los del SI (kB = 10<sup>3</sup> bytes, MB = 10<sup>6</sup>, GB = 10<sup>9</sup>, TB = 10<sup>12</sup>), que usan los fabricantes de discos y los proveedores de Internet, y los binarios de la IEC (KiB = 2<sup>10</sup>, MiB = 2<sup>20</sup>, GiB = 2<sup>30</sup>), que usan muchos sistemas operativos aunque los rotulen como KB, MB o GB.",
+      "El <b>almacenamiento</b> se mide en bytes (B); la <b>velocidad de transmisión</b>, en bits por segundo (b/s, Mbps). Otras dimensiones del equipo: frecuencia del procesador en GHz, resolución de pantalla en píxeles y tamaño de pantalla en pulgadas."
+     ],
+     "u": [
+      "En la compra de discos y memorias, en planes de Internet y en el dimensionamiento de servidores y respaldos.",
+      "Confundir bits con bytes da errores de 8 veces; confundir GB con GiB explica por qué un disco «de 1 TB» muestra 931 GB.",
+      "Al estimar tiempos de descarga o de respaldo, o al calcular cuánto ocupa una base de datos.",
+      "Pasa todo a bits o a bytes con la misma familia de prefijos y luego divide tamaño entre velocidad."
+     ],
+     "f": "t=\\frac{\\text{tamaño en bits}}{\\text{velocidad en bit/s}}",
+     "tabla": "<table><thead><tr><th>Unidad SI</th><th>Bytes</th><th>Unidad IEC</th><th>Bytes</th></tr></thead><tbody><tr><td>kB</td><td>10<sup>3</sup> = 1 000</td><td>KiB</td><td>2<sup>10</sup> = 1 024</td></tr><tr><td>MB</td><td>10<sup>6</sup></td><td>MiB</td><td>2<sup>20</sup> = 1 048 576</td></tr><tr><td>GB</td><td>10<sup>9</sup></td><td>GiB</td><td>2<sup>30</sup> = 1 073 741 824</td></tr><tr><td>TB</td><td>10<sup>12</sup></td><td>TiB</td><td>2<sup>40</sup></td></tr></tbody></table>"
+    },
+    {
+     "n": "Representación digital de datos",
+     "e": [
+      "<b>Texto:</b> ASCII asigna 7 bits a 128 caracteres (A = 65, a = 97, 0 = 48); Unicode cubre todos los alfabetos y UTF-8 lo codifica con 1 a 4 bytes, por lo que la <i>ñ</i> ocupa 2 bytes (C3 B1).",
+      "<b>Enteros:</b> sin signo, \\(n\\) bits van de 0 a \\(2^{n}-1\\); con signo se usa <b>complemento a 2</b> (invertir los bits del positivo y sumar 1), con el rango de la fórmula. Los reales usan punto flotante IEEE 754. <b>Imágenes:</b> píxeles × bits por píxel (24 bits = 3 bytes en RGB). <b>Sonido:</b> muestras por segundo × bits por muestra × canales."
+     ],
+     "u": [
+      "En bases de datos (tipos <code>INT</code>, <code>VARCHAR</code>), archivos de imagen y audio, y en la codificación de páginas web.",
+      "Un tipo mal elegido desborda (un <code>TINYINT</code> con signo no guarda 200) o corrompe acentos si se mezclan codificaciones.",
+      "Al diseñar tablas, estimar el tamaño de archivos multimedia o resolver problemas de tildes y eñes.",
+      "Identifica el tipo de dato, el número de bits y la codificación; multiplica para obtener el tamaño."
+     ],
+     "f": "-2^{n-1}\\le x\\le 2^{n-1}-1"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Convierte 45 (decimal) a binario, octal y hexadecimal.",
+     "pasos": [
+      "Divisiones entre 2: 45/2 = 22 r 1; 22/2 = 11 r 0; 11/2 = 5 r 1; 5/2 = 2 r 1; 2/2 = 1 r 0; 1/2 = 0 r 1. De abajo hacia arriba: 101101.",
+      "Octal, grupos de 3 desde la derecha: 101 101 = 5 5 → 55.",
+      "Hexadecimal, grupos de 4: 0010 1101 = 2 y D (13) → 2D. Comprobación: 2·16 + 13 = 45."
+     ],
+     "r": "\\(45_{10}=101101_2=55_8=2\\text{D}_{16}\\)",
+     "fin": "Es la conversión base de todo el curso; la agrupación de bits evita repetir divisiones."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte el byte <code>11010110</code> a decimal, hexadecimal y octal.",
+     "pasos": [
+      "Pesos de los unos: 128 + 64 + 16 + 4 + 2 = 214.",
+      "Hexadecimal: 1101 0110 = D 6 → D6.",
+      "Octal, completando con un cero a la izquierda: 011 010 110 = 3 2 6 → 326."
+     ],
+     "r": "\\(11010110_2=214_{10}=\\text{D6}_{16}=326_8\\)",
+     "fin": "Leer bytes en hexadecimal es lo que se hace al revisar colores, códigos de caracteres o volcados de memoria."
+    },
+    {
+     "nv": "I",
+     "q": "Compras un disco anunciado de 1 TB y Windows lo muestra con unos 931 GB. ¿Hay un error?",
+     "pasos": [
+      "El fabricante usa el SI: 1 TB = 10<sup>12</sup> bytes.",
+      "Windows divide entre \\(2^{30}\\) aunque escriba GB: \\(10^{12}/2^{30}=931.32\\) GiB.",
+      "La diferencia no es espacio perdido: es la misma cantidad de bytes en dos unidades distintas."
+     ],
+     "r": "No hay error: 1 TB = 10<sup>12</sup> B = 931.32 GiB.",
+     "fin": "Evita reclamos y errores de dimensionamiento al comprar discos o planificar respaldos."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuánto tarda en descargarse un instalador de 750 MB con un plan de Internet de 20 Mbps? ¿Y si el enlace rinde solo al 80 %?",
+     "pasos": [
+      "Tamaño en bits: 750 × 10<sup>6</sup> × 8 = 6 × 10<sup>9</sup> bits.",
+      "Tiempo ideal: \\(6\\times10^{9}/(20\\times10^{6})=300\\) s = 5 min.",
+      "Con 80 % de rendimiento: \\(300/0.8=375\\) s, es decir 6 min 15 s."
+     ],
+     "r": "300 s (5 min) en condiciones ideales; 375 s con un rendimiento real del 80 %.",
+     "fin": "Convertir bytes a bits es el paso que más se olvida al estimar descargas, respaldos o sincronizaciones."
+    },
+    {
+     "nv": "A",
+     "q": "Una cámara de vigilancia de una municipalidad graba en 1920 × 1080 píxeles con color de 24 bits a 30 cuadros por segundo. ¿Cuánto ocupa un cuadro y cuánto un minuto sin comprimir?",
+     "pasos": [
+      "Un cuadro: 1920 × 1080 × 3 bytes = 6 220 800 B ≈ 5.93 MiB.",
+      "Un minuto: 6 220 800 × 30 × 60 = 11 197 440 000 B ≈ 11.2 GB (10.43 GiB).",
+      "Un día completo serían unos 16 TB por cámara; por eso se graba con compresión de video (H.264 o H.265)."
+     ],
+     "r": "6 220 800 B por cuadro y unos 11.2 GB por minuto sin compresión.",
+     "fin": "Calcular el tamaño de los datos multimedia justifica la compresión y el dimensionamiento del almacenamiento."
+    },
+    {
+     "nv": "B",
+     "q": "Convierte 156 (decimal) a binario, octal y hexadecimal.",
+     "r": "\\(156_{10}=10011100_2=234_8=9\\text{C}_{16}\\)"
+    },
+    {
+     "nv": "I",
+     "q": "Suma en binario <code>10110110</code> + <code>01011011</code>. ¿Cabe el resultado en un byte sin signo?",
+     "r": "182 + 91 = 273 = <code>100010001</code>. Necesita 9 bits: en un byte quedaría <code>00010001</code> (17) con acarreo de salida, es decir, hay desbordamiento."
+    },
+    {
+     "nv": "I",
+     "q": "Codifica la palabra <code>SAT</code> en ASCII, en decimal, binario y hexadecimal.",
+     "r": "S = 83 = <code>01010011</code> = 53h; A = 65 = <code>01000001</code> = 41h; T = 84 = <code>01010100</code> = 54h."
+    },
+    {
+     "nv": "A",
+     "q": "El CUI del DPI tiene 13 dígitos. ¿Cuántos bits y bytes necesita guardado como entero y cuántos como texto ASCII? ¿Cuánto se ahorra en una tabla de 18 millones de registros (cifra redondeada para el ejemplo)?",
+     "r": "El mayor valor es \\(10^{13}-1\\); como \\(2^{43}\\lt 10^{13}\\le 2^{44}\\), hacen falta 44 bits, es decir 6 bytes. Como texto ocupa 13 bytes. Ahorro: 7 B × 18 000 000 = 126 000 000 B ≈ 126 MB."
+    },
+    {
+     "nv": "A",
+     "q": "Representa −45 en complemento a 2 con 8 bits. ¿Cuál es el rango de un entero con signo de 8 bits y se puede guardar 200?",
+     "r": "45 = <code>00101101</code>; invertido <code>11010010</code>; más 1: <code>11010011</code>. Rango: −128 a 127, así que 200 no cabe con signo (sí en un byte sin signo, de 0 a 255)."
+    }
+   ]
+  },
+  {
+   "titulo": "Hardware y software de la computadora; sistemas operativos",
+   "intro": "Unidad 2 (semanas 3 y 4): dispositivos y periféricos, clasificación de los periféricos, ranuras de expansión, tarjetas y puertos, software; qué es un sistema operativo, su arquitectura básica y funciones, administración de recursos, sistemas operativos abiertos, configuración del sistema operativo, software de aplicación y software para la administración de dispositivos. La planificación de procesos y la memoria en detalle corresponden a Sistemas Operativos I.",
+   "conceptos": [
+    {
+     "n": "Dispositivos periféricos y su clasificación",
+     "e": [
+      "Un <b>periférico</b> es todo dispositivo que se conecta a la unidad central para meter, sacar o guardar datos. Se clasifica por la dirección en que viajan los datos; un mismo aparato puede ser mixto."
+     ],
+     "u": [
+      "En el inventario de hardware de una empresa, una de las tareas evaluadas del curso.",
+      "La clasificación define qué puertos, controladores y repuestos necesita cada equipo.",
+      "Al cotizar equipo para una oficina o diagnosticar por qué un dispositivo no responde.",
+      "Pregunta si el dispositivo envía datos a la computadora, los recibe, hace ambas cosas o los conserva."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Función</th><th>Ejemplos</th></tr></thead><tbody><tr><td>Entrada</td><td>Envía datos a la computadora</td><td>Teclado, ratón, escáner, lector de código de barras, micrófono, cámara</td></tr><tr><td>Salida</td><td>Presenta resultados</td><td>Monitor, impresora, bocinas, proyector</td></tr><tr><td>Entrada/salida</td><td>Ambas direcciones</td><td>Pantalla táctil, multifuncional, tarjeta de red</td></tr><tr><td>Almacenamiento</td><td>Conserva datos</td><td>HDD, SSD, memoria USB, tarjeta SD</td></tr></tbody></table>"
+    },
+    {
+     "n": "Ranuras de expansión, tarjetas y puertos",
+     "e": [
+      "Las <b>ranuras</b> de la tarjeta madre reciben componentes internos: <b>PCI Express</b> (x1, x4, x16) para tarjetas de video, red o captura; <b>M.2</b> para unidades SSD NVMe o Wi-Fi; <b>DIMM</b> (SO-DIMM en laptops) para la RAM.",
+      "Los <b>puertos</b> conectan periféricos externos. Las velocidades de la tabla son máximos teóricos; el conector USB-C no garantiza una velocidad, depende del estándar que implemente."
+     ],
+     "u": [
+      "En la ampliación de equipos, la compra de cables y adaptadores y la instalación de salas de reuniones.",
+      "Un puerto o una ranura equivocados limitan el rendimiento: un disco rápido conectado por USB 2.0 copia a la velocidad de USB 2.0.",
+      "Al ampliar RAM, agregar un SSD o una tarjeta de video, o conectar proyectores y redes.",
+      "Identifica qué viaja (video, datos, red, energía) y qué velocidad se necesita; luego elige la ranura o el puerto."
+     ],
+     "tabla": "<table><thead><tr><th>Puerto</th><th>Uso</th><th>Velocidad máxima</th></tr></thead><tbody><tr><td>USB 2.0</td><td>Teclado, ratón, impresora</td><td>480 Mb/s</td></tr><tr><td>USB 3.2 Gen 1</td><td>Discos y memorias externas</td><td>5 Gb/s</td></tr><tr><td>USB 3.2 Gen 2</td><td>SSD externos</td><td>10 Gb/s</td></tr><tr><td>HDMI / DisplayPort</td><td>Video y audio digital</td><td>Según versión</td></tr><tr><td>RJ-45</td><td>Red Ethernet</td><td>Según la tarjeta: 100 Mb/s, 1 Gb/s o más</td></tr><tr><td>VGA</td><td>Video analógico (equipos antiguos)</td><td>No aplica</td></tr></tbody></table>"
+    },
+    {
+     "n": "Software: clasificación y licencias",
+     "e": [
+      "<b>Software de sistema:</b> sistema operativo, controladores (<i>drivers</i>) y utilerías. Los controladores son el <b>software para la administración de dispositivos</b>: traducen las órdenes del sistema operativo al lenguaje de cada aparato; se revisan con el Administrador de dispositivos de Windows o con <code>lsusb</code> y <code>lspci</code> en Linux.",
+      "<b>Software de aplicación:</b> resuelve tareas del usuario (ofimática, navegador, sistema de planillas, sistema a la medida en PHP o Java). <b>Software de programación:</b> compiladores, intérpretes, editores e IDE. Por su <b>licencia</b> puede ser propietario, libre o de código abierto (se puede estudiar, modificar y redistribuir), gratuito sin código (<i>freeware</i>) o de prueba (<i>shareware</i>)."
+     ],
+     "u": [
+      "En el análisis del software de una empresa, otra de las tareas evaluadas del curso.",
+      "La licencia define costos, obligaciones legales y si la empresa puede adaptar el programa; usar software sin licencia expone a sanciones por derechos de autor.",
+      "Al levantar un inventario, comprar programas o decidir entre una solución propietaria y una libre.",
+      "Clasifica cada programa por su función (sistema, aplicación, programación) y luego por su licencia."
+     ]
+    },
+    {
+     "n": "Sistema operativo: arquitectura, funciones y configuración",
+     "e": [
+      "El <b>sistema operativo</b> (SO) administra el hardware y ofrece servicios a los programas y una interfaz al usuario. Su arquitectura básica es por capas: hardware → <b>núcleo</b> (<i>kernel</i>) → llamadas al sistema y bibliotecas → intérprete de comandos o interfaz gráfica → aplicaciones.",
+      "<b>Funciones:</b> administrar procesos (reparte la CPU), memoria, archivos, entrada y salida, red, y la protección y seguridad (usuarios y permisos). Los <b>SO abiertos</b> publican su código fuente, como GNU/Linux (Debian, Ubuntu) o FreeBSD. La <b>configuración</b> incluye usuarios, red, actualizaciones, servicios que arrancan, región e idioma."
+     ],
+     "u": [
+      "En cada PC, servidor, teléfono y router; en servidores de instituciones predomina Linux.",
+      "Todo programa depende del SO para usar el hardware; un SO mal configurado es la puerta de entrada de la mayoría de incidentes.",
+      "Al instalar un equipo, preparar un servidor para un sistema PHP o diagnosticar lentitud.",
+      "Revisa qué recurso se agota (CPU, memoria, disco, red) y qué función del SO lo administra."
+     ],
+     "tabla": "<table><thead><tr><th>Función</th><th>Recurso</th><th>Herramienta para observarla</th></tr></thead><tbody><tr><td>Procesos</td><td>CPU</td><td>Administrador de tareas, <code>top</code></td></tr><tr><td>Memoria</td><td>RAM y memoria virtual</td><td><code>free -h</code></td></tr><tr><td>Archivos</td><td>Discos</td><td>Explorador, <code>df -h</code></td></tr><tr><td>Entrada y salida</td><td>Dispositivos</td><td>Administrador de dispositivos, <code>lsusb</code></td></tr><tr><td>Seguridad</td><td>Usuarios y permisos</td><td>Cuentas de usuario, <code>ls -l</code></td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica: teclado, monitor táctil, impresora multifuncional, lector de código de barras, SSD externo y bocinas.",
+     "pasos": [
+      "Entrada: teclado y lector de código de barras (solo envían datos).",
+      "Salida: bocinas.",
+      "Entrada/salida: monitor táctil (muestra y recibe toques) e impresora multifuncional (escanea e imprime).",
+      "Almacenamiento: SSD externo."
+     ],
+     "r": "E: teclado, lector; S: bocinas; E/S: monitor táctil, multifuncional; almacenamiento: SSD externo.",
+     "fin": "Es la clasificación que se usa en el inventario de hardware de una empresa."
+    },
+    {
+     "nv": "I",
+     "q": "En la sala de reuniones de una municipalidad hay que: conectar un proyector moderno, dar red cableada, conectar un disco externo rápido, agregar una tarjeta de video a una PC de escritorio y ampliarle la RAM. ¿Qué puerto o ranura usa cada caso?",
+     "pasos": [
+      "Proyector: HDMI (video y audio digital). Si la laptop solo trae USB-C, un adaptador USB-C a HDMI, siempre que ese puerto admita salida de video.",
+      "Red cableada: RJ-45 Ethernet.",
+      "Disco externo: USB 3.2 (5 o 10 Gb/s); en USB 2.0 quedaría limitado a 480 Mb/s.",
+      "Tarjeta de video: ranura PCI Express x16. RAM: ranuras DIMM del mismo tipo que la memoria instalada."
+     ],
+     "r": "HDMI, RJ-45, USB 3.2, PCIe x16 y DIMM.",
+     "fin": "Elegir bien puertos y ranuras evita compras inútiles y cuellos de botella."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica el software de una PC de la municipalidad: Windows 11, controlador de la impresora, LibreOffice, sistema de catastro en PHP, antivirus y JDK de Java.",
+     "pasos": [
+      "Sistema: Windows 11 (sistema operativo), controlador de la impresora (administración de dispositivos) y antivirus (utilería de seguridad).",
+      "Aplicación: LibreOffice (ofimática, software libre) y el sistema de catastro (aplicación a la medida).",
+      "Programación: JDK (compilador y herramientas para Java)."
+     ],
+     "r": "Sistema: Windows, controlador, antivirus; aplicación: LibreOffice, catastro; programación: JDK.",
+     "fin": "Clasificar el software es la base del análisis de software que pide el proyecto final."
+    },
+    {
+     "nv": "A",
+     "q": "Hay que copiar 32 GB de respaldos a un disco externo. Calcula el tiempo teórico por USB 2.0 y por USB 3.2 Gen 1, y estima el real si USB 2.0 rinde unos 35 MB/s.",
+     "pasos": [
+      "Tamaño en bits: 32 × 10<sup>9</sup> × 8 = 2.56 × 10<sup>11</sup> bits.",
+      "USB 2.0: \\(2.56\\times10^{11}/480\\times10^{6}=533.3\\) s ≈ 8.9 min.",
+      "USB 3.2 Gen 1: \\(2.56\\times10^{11}/5\\times10^{9}=51.2\\) s.",
+      "Real en USB 2.0: \\(32\\times10^{9}/35\\times10^{6}\\approx 914\\) s ≈ 15.2 min, porque el protocolo consume parte del ancho de banda."
+     ],
+     "r": "Teórico: 533.3 s (USB 2.0) contra 51.2 s (USB 3.2 Gen 1); real en USB 2.0, unos 15 minutos.",
+     "fin": "Justifica con números la elección del puerto y del disco para los respaldos."
+    },
+    {
+     "nv": "A",
+     "q": "Un servidor Linux con 4 núcleos y 8 GB de RAM corre Apache, PHP y MySQL para el sistema de una municipalidad. Explica cómo el SO administra cada recurso y cómo lo revisarías.",
+     "pasos": [
+      "<b>CPU:</b> el planificador del núcleo reparte el tiempo de los 4 núcleos entre los procesos de Apache, PHP y MySQL; se observa con <code>top</code>.",
+      "<b>Memoria:</b> asigna RAM a cada proceso y usa memoria virtual (swap) si se agota; <code>free -h</code> muestra el uso.",
+      "<b>Disco:</b> el sistema de archivos guarda los datos de MySQL y los registros; <code>df -h</code> muestra el espacio libre.",
+      "<b>Red:</b> la pila TCP/IP entrega a Apache las conexiones de los puertos 80 y 443.",
+      "<b>Seguridad:</b> cada servicio corre con su propio usuario sin privilegios (por ejemplo <code>www-data</code> y <code>mysql</code>), y los permisos de archivos limitan lo que puede tocar."
+     ],
+     "r": "El núcleo reparte CPU, memoria, disco y red, y aísla los servicios con usuarios y permisos.",
+     "fin": "Muestra la administración de recursos en un servidor real, el escenario más común de los sistemas en PHP."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué tipo de software es el controlador (driver) de una impresora?",
+     "ops": [
+      "Software de aplicación",
+      "Software de sistema para administrar dispositivos",
+      "Firmware",
+      "Middleware"
+     ],
+     "ok": 1,
+     "r": "El controlador se instala en el SO y traduce sus órdenes al lenguaje de la impresora. El firmware vive dentro de la impresora; el middleware conecta aplicaciones."
+    },
+    {
+     "nv": "B",
+     "q": "Una pantalla táctil se clasifica como dispositivo de:",
+     "ops": [
+      "Solo entrada",
+      "Entrada y salida",
+      "Solo salida",
+      "Almacenamiento"
+     ],
+     "ok": 1,
+     "r": "Muestra información (salida) y recibe toques (entrada)."
+    },
+    {
+     "nv": "I",
+     "q": "¿En qué ranura se instala normalmente una tarjeta de video dedicada en una PC de escritorio?",
+     "ops": [
+      "PCI Express x1",
+      "PCI Express x16",
+      "M.2",
+      "DIMM"
+     ],
+     "ok": 1,
+     "r": "La x16 ofrece el mayor ancho de banda. La x1 sirve para tarjetas de red o sonido, M.2 para SSD y DIMM para la RAM."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué distingue a un sistema operativo abierto como GNU/Linux?",
+     "ops": [
+      "Es gratuito, aunque su código fuente no se publica",
+      "Solo puede instalarse en servidores",
+      "No tiene núcleo: cada aplicación maneja el hardware",
+      "Su código fuente está disponible con una licencia que permite estudiarlo, modificarlo y redistribuirlo"
+     ],
+     "ok": 3,
+     "r": "Abierto se refiere al código y a la licencia, no al precio. Gratis sin código es freeware; Linux corre en PC, servidores y teléfonos (Android usa su núcleo)."
+    },
+    {
+     "nv": "A",
+     "q": "Un usuario sin privilegios intenta modificar un archivo de configuración del sistema y recibe «permiso denegado». ¿Qué función del SO actuó?",
+     "ops": [
+      "Protección y seguridad",
+      "Administración de memoria",
+      "Planificación del procesador",
+      "Administración de entrada y salida"
+     ],
+     "ok": 0,
+     "r": "El SO comprobó los permisos del archivo contra el usuario y bloqueó la escritura; las otras funciones reparten recursos, no deciden quién puede usarlos."
+    }
+   ]
+  },
+  {
+   "titulo": "Introducción a las bases de datos",
+   "intro": "Unidad 3 (semanas 5, 6 y 8): qué es una base de datos, PK, FK y relaciones, esquema de un manejador de bases de datos, lenguajes para la manipulación de datos, normalización, diagramas E-R y casos; creación de tablas, informes, formularios, consultas, filtros y ordenación. El SQL se probó en SQLite; la sintaxis usada es la estándar que aceptan MySQL y PostgreSQL. El diseño a fondo corresponde a Bases de Datos I.",
+   "conceptos": [
+    {
+     "n": "Base de datos y sistema manejador (SGBD)",
+     "e": [
+      "Una <b>base de datos</b> es un conjunto organizado de datos relacionados. En el modelo relacional se guarda en <b>tablas</b>: cada fila es un <b>registro</b> y cada columna un <b>campo</b> con su tipo de dato.",
+      "El <b>sistema manejador</b> (SGBD: MySQL, PostgreSQL, SQL Server, SQLite; Access o LibreOffice Base en escritorio) controla el acceso. Su esquema se describe en tres niveles: <b>externo</b> (lo que ve cada usuario o vista), <b>conceptual</b> (tablas y relaciones) e <b>interno</b> (cómo se guarda en disco). Sus componentes: procesador de consultas, gestor de transacciones, motor de almacenamiento, diccionario de datos y seguridad."
+     ],
+     "u": [
+      "En todo sistema de información: planillas, inventarios, expedientes, facturación.",
+      "Centralizar los datos evita duplicados e inconsistencias que aparecen al llevar todo en hojas de cálculo sueltas.",
+      "Cuando hay que sistematizar un proceso de una empresa, como pide el proyecto final.",
+      "Identifica las cosas de interés (entidades), sus datos (campos) y quién debe ver qué (vistas y permisos)."
+     ]
+    },
+    {
+     "n": "Llaves y relaciones",
+     "e": [
+      "La <b>llave primaria</b> (PK) identifica cada registro: única y no nula (NIT de un cliente, número de factura). La <b>llave foránea</b> (FK) es un campo que guarda la PK de otra tabla y crea la relación; el SGBD impide referencias a registros que no existen (<b>integridad referencial</b>).",
+      "Cardinalidades: <b>1:1</b> (persona ── DPI), <b>1:N</b> (Cliente 1 ── N Factura: la FK va en el lado N) y <b>N:M</b> (Estudiante N ── M Curso), que se resuelve con una tabla intermedia cuya PK combina las dos FK."
+     ],
+     "u": [
+      "En cualquier esquema relacional: facturas y clientes, empleados y departamentos, estudiantes y cursos.",
+      "Las llaves evitan duplicados y registros huérfanos, como una factura de un cliente inexistente.",
+      "Al diseñar tablas nuevas o al unir tablas en una consulta.",
+      "Elige una PK estable, coloca la FK en el lado N y crea una tabla intermedia para cada N:M."
+     ]
+    },
+    {
+     "n": "Lenguajes de manipulación y objetos de la base de datos",
+     "e": [
+      "SQL agrupa varios sublenguajes: <b>DDL</b> define estructuras (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>); <b>DML</b> manipula datos (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>); <b>DCL</b> controla permisos (<code>GRANT</code>, <code>REVOKE</code>).",
+      "Las herramientas de escritorio ofrecen objetos visuales que equivalen a SQL:"
+     ],
+     "u": [
+      "En el laboratorio del curso (tablas, formularios e informes) y en todo sistema web que consulta MySQL o PostgreSQL.",
+      "Saber qué hace cada objeto permite pasar de una base de escritorio a un sistema web sin perder la lógica.",
+      "Al crear la base del proyecto final, sus pantallas de captura y sus reportes.",
+      "Define tablas con DDL, captura con formularios o INSERT y obtén reportes con SELECT, WHERE, ORDER BY y GROUP BY."
+     ],
+     "tabla": "<table><thead><tr><th>Objeto</th><th>Para qué sirve</th><th>Equivalente en SQL</th></tr></thead><tbody><tr><td>Tabla</td><td>Guardar los datos</td><td><code>CREATE TABLE</code></td></tr><tr><td>Formulario</td><td>Capturar y editar registros</td><td><code>INSERT</code>, <code>UPDATE</code></td></tr><tr><td>Consulta</td><td>Combinar y calcular datos</td><td><code>SELECT … JOIN</code></td></tr><tr><td>Filtro</td><td>Mostrar solo ciertos registros</td><td><code>WHERE</code></td></tr><tr><td>Ordenación</td><td>Ordenar resultados</td><td><code>ORDER BY</code></td></tr><tr><td>Informe</td><td>Presentar e imprimir con totales</td><td><code>GROUP BY</code> con <code>SUM</code>, <code>COUNT</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Normalización y diagramas E-R",
+     "e": [
+      "El <b>diagrama entidad-relación</b> (E-R) modela el problema antes de crear tablas: entidades (rectángulos), atributos (óvalos), relaciones (rombos) y cardinalidades. Sin imágenes se escribe así: <code>Cliente 1 ── N Factura N ── M Producto</code>.",
+      "La <b>normalización</b> elimina redundancia por etapas:"
+     ],
+     "u": [
+      "Al pasar de una hoja de cálculo «plana» a un diseño de tablas.",
+      "Una tabla sin normalizar repite datos; al cambiar uno hay que cambiar todas sus copias y aparecen contradicciones.",
+      "Antes de crear las tablas del proyecto final y cada vez que una tabla repite información.",
+      "Dibuja el E-R, conviértelo en tablas y revísalas con 1FN, 2FN y 3FN."
+     ],
+     "tabla": "<table><thead><tr><th>Forma</th><th>Regla</th><th>Se corrige</th></tr></thead><tbody><tr><td>1FN</td><td>Valores atómicos, sin grupos repetidos</td><td>Una fila por cada valor</td></tr><tr><td>2FN</td><td>1FN y ningún campo depende solo de parte de una PK compuesta</td><td>Separando esos campos en otra tabla</td></tr><tr><td>3FN</td><td>2FN y ningún campo depende de otro campo que no es llave</td><td>Separando la dependencia transitiva</td></tr></tbody></table>"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Las tablas <code>Cliente(nit, nombre, departamento)</code> y <code>Factura(numero, fecha, nit, total)</code> registran ventas. Indica las PK, la FK y el tipo de relación.",
+     "pasos": [
+      "PK de Cliente: <code>nit</code>, porque identifica a cada cliente. PK de Factura: <code>numero</code>.",
+      "<code>Factura.nit</code> guarda la PK de Cliente: es la FK.",
+      "Un cliente tiene muchas facturas y cada factura es de un cliente: Cliente 1 ── N Factura; la FK queda en el lado N."
+     ],
+     "r": "PK: <code>Cliente.nit</code> y <code>Factura.numero</code>; FK: <code>Factura.nit</code>; relación 1:N.",
+     "fin": "Identificar llaves es el primer paso de cualquier diseño o consulta con JOIN."
+    },
+    {
+     "nv": "I",
+     "q": "Normaliza hasta 3FN: <code>Inscripcion(carnet, nombre, cod_carrera, nombre_carrera, cursos)</code>, donde <code>cursos</code> contiene textos como «MAT1 Matemática I, LOG1 Lógica».",
+     "pasos": [
+      "<b>1FN:</b> <code>cursos</code> no es atómico. Una fila por curso: <code>(carnet, nombre, cod_carrera, nombre_carrera, cod_curso, nombre_curso)</code> con PK (<code>carnet</code>, <code>cod_curso</code>).",
+      "<b>2FN:</b> <code>nombre</code> y la carrera dependen solo de <code>carnet</code>, y <code>nombre_curso</code> solo de <code>cod_curso</code>: se separan en Estudiante y Curso; queda Asignacion(<code>carnet</code>, <code>cod_curso</code>).",
+      "<b>3FN:</b> en Estudiante, <code>nombre_carrera</code> depende de <code>cod_carrera</code>, que no es llave: se crea Carrera."
+     ],
+     "r": "Carrera(<u>cod_carrera</u>, nombre); Estudiante(<u>carnet</u>, nombre, cod_carrera FK); Curso(<u>cod_curso</u>, nombre); Asignacion(<u>carnet</u> FK, <u>cod_curso</u> FK).",
+     "fin": "Es el ejercicio de normalización que se califica en el curso y la base del diseño de cualquier sistema."
+    },
+    {
+     "nv": "I",
+     "q": "Diseña el E-R de una biblioteca municipal: los socios se llevan libros prestados y cada libro puede tener varios autores. Conviértelo en tablas.",
+     "pasos": [
+      "Entidades: Socio, Libro, Autor, Préstamo.",
+      "Relaciones: <code>Socio 1 ── N Prestamo N ── 1 Libro</code> y <code>Libro N ── M Autor</code>.",
+      "La N:M se resuelve con LibroAutor; las FK quedan en el lado N."
+     ],
+     "r": "Socio(<u>id_socio</u>, nombre, dpi); Libro(<u>isbn</u>, titulo); Autor(<u>id_autor</u>, nombre); LibroAutor(<u>isbn</u> FK, <u>id_autor</u> FK); Prestamo(<u>id_prestamo</u>, id_socio FK, isbn FK, fecha_salida, fecha_devolucion).",
+     "fin": "Pasar del E-R a tablas es el procedimiento que se repite en todos los casos de base de datos."
+    },
+    {
+     "nv": "A",
+     "q": "Con las tablas siguientes y los datos de abajo, muestra las facturas de Q 500 o más con el nombre del cliente, de mayor a menor. ¿Qué pasa si se inserta una factura con NIT 1111111?<br><code>CREATE TABLE cliente (<br>  nit TEXT PRIMARY KEY, nombre TEXT NOT NULL,<br>  departamento TEXT NOT NULL);<br>CREATE TABLE factura (<br>  numero INTEGER PRIMARY KEY, fecha TEXT NOT NULL,<br>  nit TEXT NOT NULL REFERENCES cliente(nit),<br>  total REAL NOT NULL);</code><table><thead><tr><th>nit</th><th>nombre</th><th>departamento</th></tr></thead><tbody><tr><td>4521873</td><td>Ferretería El Martillo</td><td>Guatemala</td></tr><tr><td>7765412</td><td>Librería San Pablo</td><td>Quetzaltenango</td></tr><tr><td>3398021</td><td>Farmacia La Salud</td><td>Escuintla</td></tr><tr><td>9012345</td><td>Panadería Doña Tere</td><td>Guatemala</td></tr></tbody></table><table><thead><tr><th>numero</th><th>fecha</th><th>nit</th><th>total</th></tr></thead><tbody><tr><td>101</td><td>2026-03-02</td><td>4521873</td><td>1120.00</td></tr><tr><td>102</td><td>2026-03-05</td><td>7765412</td><td>560.00</td></tr><tr><td>103</td><td>2026-03-09</td><td>4521873</td><td>2240.00</td></tr><tr><td>104</td><td>2026-03-12</td><td>3398021</td><td>336.00</td></tr><tr><td>105</td><td>2026-03-15</td><td>7765412</td><td>1680.00</td></tr><tr><td>106</td><td>2026-03-20</td><td>4521873</td><td>448.00</td></tr></tbody></table>",
+     "pasos": [
+      "Se unen las tablas por la llave y se filtra y ordena:<br><code>SELECT f.numero, c.nombre, f.total<br>FROM factura f JOIN cliente c ON c.nit = f.nit<br>WHERE f.total &gt;= 500<br>ORDER BY f.total DESC;</code>",
+      "Pasan el filtro 101, 102, 103 y 105; quedan fuera 104 (Q 336) y 106 (Q 448).",
+      "El NIT 1111111 no existe en <code>cliente</code>: con la FK activa (en SQLite, <code>PRAGMA foreign_keys = ON</code>) el SGBD rechaza la fila por integridad referencial."
+     ],
+     "r": "<table><thead><tr><th>numero</th><th>nombre</th><th>total</th></tr></thead><tbody><tr><td>103</td><td>Ferretería El Martillo</td><td>2240.00</td></tr><tr><td>105</td><td>Librería San Pablo</td><td>1680.00</td></tr><tr><td>101</td><td>Ferretería El Martillo</td><td>1120.00</td></tr><tr><td>102</td><td>Librería San Pablo</td><td>560.00</td></tr></tbody></table>La inserción con NIT 1111111 falla: <code>FOREIGN KEY constraint failed</code>.",
+     "fin": "Une consulta, filtro, ordenación e integridad referencial, los cuatro temas prácticos de la unidad."
+    },
+    {
+     "nv": "A",
+     "q": "Con los mismos datos, elabora un informe por departamento con el número de facturas, el total vendido y el IVA incluido (los totales ya traen el 12 %).",
+     "pasos": [
+      "El IVA incluido en un total es \\(\\text{total}/1.12\\times0.12\\).",
+      "Consulta:<br><code>SELECT c.departamento,<br>  COUNT(f.numero) AS facturas,<br>  ROUND(COALESCE(SUM(f.total),0),2) AS total,<br>  ROUND(COALESCE(SUM(f.total),0)/1.12*0.12,2) AS iva<br>FROM cliente c LEFT JOIN factura f ON f.nit = c.nit<br>GROUP BY c.departamento<br>ORDER BY total DESC;</code>",
+      "El <code>LEFT JOIN</code> conserva a los clientes sin facturas (Panadería Doña Tere), que suman 0; <code>COUNT(f.numero)</code> no los cuenta.",
+      "Guatemala: 1120 + 2240 + 448 = 3808, IVA 408. Quetzaltenango: 560 + 1680 = 2240, IVA 240. Escuintla: 336, IVA 36."
+     ],
+     "r": "<table><thead><tr><th>departamento</th><th>facturas</th><th>total</th><th>iva</th></tr></thead><tbody><tr><td>Guatemala</td><td>3</td><td>3808.00</td><td>408.00</td></tr><tr><td>Quetzaltenango</td><td>2</td><td>2240.00</td><td>240.00</td></tr><tr><td>Escuintla</td><td>1</td><td>336.00</td><td>36.00</td></tr></tbody></table>",
+     "fin": "Un informe es una consulta agrupada; así se arman los reportes de ventas y de IVA que pide cualquier empresa."
+    },
+    {
+     "nv": "B",
+     "q": "Indica la cardinalidad: (a) persona y DPI; (b) departamento y municipio; (c) estudiante y curso; (d) cliente y factura.",
+     "r": "(a) 1:1; (b) 1:N (un departamento tiene muchos municipios); (c) N:M, con tabla intermedia de asignación; (d) 1:N."
+    },
+    {
+     "nv": "I",
+     "q": "Con la tabla siguiente, escribe la consulta que muestra nombre y salario de los empleados de Informática con salario de Q 6000 o más, de mayor a menor, y su resultado.<table><thead><tr><th>codigo</th><th>nombre</th><th>depto</th><th>salario</th></tr></thead><tbody><tr><td>1</td><td>Ana López</td><td>Informática</td><td>7500</td></tr><tr><td>2</td><td>Luis Pérez</td><td>Contabilidad</td><td>6200</td></tr><tr><td>3</td><td>María Chen</td><td>Informática</td><td>5800</td></tr><tr><td>4</td><td>Carlos Ajú</td><td>Informática</td><td>9100</td></tr><tr><td>5</td><td>Rosa Xol</td><td>Informática</td><td>6000</td></tr><tr><td>6</td><td>Pedro Gómez</td><td>Recursos Humanos</td><td>6500</td></tr></tbody></table>",
+     "r": "<code>SELECT nombre, salario FROM empleado<br>WHERE depto = 'Informática' AND salario &gt;= 6000<br>ORDER BY salario DESC;</code><br>Resultado: Carlos Ajú 9100, Ana López 7500, Rosa Xol 6000. María Chen queda fuera (5800) y Rosa entra porque la condición es «mayor o igual»."
+    },
+    {
+     "nv": "I",
+     "q": "Normaliza hasta 3FN la tabla plana <code>Venta(no_factura, fecha, nit, nombre_cliente, cod_producto, descripcion, precio, cantidad)</code>, con una fila por producto vendido.",
+     "r": "Cliente(<u>nit</u>, nombre); Producto(<u>codigo</u>, descripcion, precio); Factura(<u>numero</u>, fecha, nit FK); Detalle(<u>numero</u> FK, <u>codigo</u> FK, cantidad, precio_venta). Se guarda el precio de venta en el detalle porque el precio del catálogo puede cambiar después."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué devuelve esta consulta con los datos de clientes y facturas del ejercicio resuelto?<br><code>SELECT c.nombre, COUNT(*) AS n, SUM(f.total) AS total<br>FROM cliente c JOIN factura f ON f.nit = c.nit<br>GROUP BY c.nombre<br>HAVING COUNT(*) &gt;= 2<br>ORDER BY total DESC;</code>",
+     "r": "Dos filas: Ferretería El Martillo, 3, 3808; Librería San Pablo, 2, 2240. Farmacia La Salud tiene una sola factura y no pasa el <code>HAVING</code>; la Panadería no tiene facturas y el <code>JOIN</code> interno la excluye."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe las tablas para registrar qué estudiantes se asignan a qué cursos en cada ciclo, con su nota de 0 a 100, sin permitir que un estudiante se asigne dos veces al mismo curso en el mismo ciclo.",
+     "r": "<code>CREATE TABLE estudiante (carnet TEXT PRIMARY KEY, nombre TEXT NOT NULL);<br>CREATE TABLE curso (codigo TEXT PRIMARY KEY, nombre TEXT NOT NULL);<br>CREATE TABLE asignacion (<br>  carnet TEXT REFERENCES estudiante(carnet),<br>  codigo TEXT REFERENCES curso(codigo),<br>  ciclo TEXT NOT NULL,<br>  nota INTEGER CHECK (nota BETWEEN 0 AND 100),<br>  PRIMARY KEY (carnet, codigo, ciclo));</code><br>La PK compuesta rechaza la asignación repetida y el <code>CHECK</code> rechaza una nota de 120. En MySQL el <code>CHECK</code> se aplica desde la versión 8.0.16."
+    }
+   ]
+  },
+  {
+   "titulo": "Introducción a las redes",
+   "intro": "Unidad 4 (semanas 9 y 10): qué es una red, ventajas de la implementación de redes en las empresas, tipos de redes, principales topologías, redes inalámbricas, dispositivos conmutadores, protocolos fundamentales, redes de telecomunicaciones, seguridad LAN (malware, antispam, políticas del SO) y práctica de implementación de redes. El direccionamiento y el subneteo a fondo corresponden a Redes I.",
+   "conceptos": [
+    {
+     "n": "Qué es una red, ventajas y tipos",
+     "e": [
+      "Una <b>red</b> son dos o más dispositivos conectados para compartir información y recursos. En una empresa permite compartir impresoras, archivos e Internet, centralizar la base de datos y los respaldos, comunicarse y administrar los equipos desde un solo punto.",
+      "Por relación entre equipos puede ser <b>cliente-servidor</b> (un servidor ofrece servicios) o <b>punto a punto</b> (todos comparten por igual). Por alcance:"
+     ],
+     "u": [
+      "En cualquier oficina, agencia bancaria o municipalidad, y entre sedes de una misma empresa.",
+      "Sin red cada equipo es una isla: datos duplicados, impresoras por escritorio y respaldos dispersos.",
+      "Al proponer la infraestructura de una empresa o justificar la inversión en cableado y equipo.",
+      "Define el alcance (PAN, LAN, MAN, WAN) y el modelo (cliente-servidor o punto a punto) antes de elegir equipo."
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Alcance</th><th>Ejemplo</th></tr></thead><tbody><tr><td>PAN</td><td>Unos metros</td><td>Audífonos Bluetooth con el teléfono</td></tr><tr><td>LAN</td><td>Un edificio o campus</td><td>Red de oficinas de una municipalidad</td></tr><tr><td>MAN</td><td>Una ciudad</td><td>Fibra que une sedes dentro de la ciudad</td></tr><tr><td>WAN</td><td>Países o el mundo</td><td>Red de agencias de un banco; Internet</td></tr></tbody></table>"
+    },
+    {
+     "n": "Topologías y redes inalámbricas",
+     "e": [
+      "La <b>topología</b> es la forma de conectar los nodos. En una malla completa cada par de nodos tiene su propio enlace, de ahí la fórmula. Hoy las LAN cableadas son estrellas (o árboles de estrellas) alrededor de switches.",
+      "<b>Redes inalámbricas:</b> Wi-Fi (familia IEEE 802.11, en 2.4 y 5 GHz), Bluetooth para PAN, redes celulares (4G, 5G) y enlaces de microondas. En Wi-Fi el ancho de banda de un punto de acceso se comparte entre todos los usuarios conectados."
+     ],
+     "u": [
+      "En el diseño del cableado de un edificio y en enlaces entre sedes.",
+      "La topología define el costo de cableado y qué pasa cuando falla un enlace.",
+      "Al planificar una red nueva o ampliar una existente.",
+      "Cuenta los nodos y los enlaces necesarios, y compara costo contra tolerancia a fallas."
+     ],
+     "f": "L_{\\text{malla}}=\\frac{n(n-1)}{2}",
+     "tabla": "<table><thead><tr><th>Topología</th><th>Enlaces con n nodos</th><th>Ventaja</th><th>Desventaja</th></tr></thead><tbody><tr><td>Bus</td><td>Un cable compartido</td><td>Barata</td><td>Un corte detiene todo</td></tr><tr><td>Estrella</td><td>n (hacia el switch)</td><td>Fácil de administrar</td><td>Depende del nodo central</td></tr><tr><td>Anillo</td><td>n</td><td>Orden de acceso predecible</td><td>Un corte afecta el anillo</td></tr><tr><td>Malla completa</td><td>n(n−1)/2</td><td>Muy tolerante a fallas</td><td>Costosa</td></tr><tr><td>Árbol</td><td>Estrellas jerárquicas</td><td>Escala por pisos o edificios</td><td>Depende de los niveles superiores</td></tr></tbody></table>"
+    },
+    {
+     "n": "Dispositivos conmutadores y protocolos fundamentales",
+     "e": [
+      "<b>Hub:</b> repite cada trama a todos los puertos (obsoleto). <b>Switch:</b> conmuta dentro de la LAN según la dirección MAC, enviando cada trama solo a su destino. <b>Router:</b> une redes distintas según la dirección IP; conecta la LAN con Internet. <b>Punto de acceso:</b> integra los equipos inalámbricos a la LAN. El módem u ONT del proveedor convierte la señal de la línea (cobre, cable, fibra).",
+      "<b>Protocolos</b> de la familia TCP/IP: IP (direcciones y rutas), TCP (entrega confiable y ordenada), UDP (rápido, sin confirmación), DHCP (asigna la IP automáticamente), DNS (traduce nombres a IP), ARP (IP a MAC). Las <b>redes de telecomunicaciones</b> de los operadores (telefonía, fibra hasta el hogar, cable, celular, satélite) dan el acceso a Internet y los enlaces WAN."
+     ],
+     "u": [
+      "En cada rack de comunicaciones: switch para los equipos, router hacia Internet, puntos de acceso para Wi-Fi.",
+      "Confundir switch con router lleva a diseños que no salen a Internet o no separan redes.",
+      "Al comprar equipo de red o diagnosticar por qué un equipo no tiene conexión.",
+      "Ubica el problema por capa: cable y switch, dirección IP (DHCP), nombres (DNS), servicio."
+     ]
+    },
+    {
+     "n": "Seguridad LAN",
+     "e": [
+      "<b>Malware:</b> virus (se adhiere a archivos), gusano (se propaga solo por la red), troyano (se disfraza de programa útil), ransomware (cifra los datos y pide rescate) y spyware (espía). El <b>spam</b> y el <i>phishing</i> llegan por correo; se filtran con <b>antispam</b> en el servidor de correo.",
+      "<b>Políticas del SO y de red:</b> contraseñas robustas, cuentas sin privilegios de administrador, actualizaciones automáticas, antivirus, bloqueo de memorias USB, respaldos fuera de línea y separación de la red en segmentos (por ejemplo, VLAN para invitados)."
+     ],
+     "u": [
+      "En toda red de oficina, en especial donde se manejan datos de contribuyentes, pacientes o clientes bancarios.",
+      "La mayoría de incidentes empieza en un equipo de usuario: un adjunto o una memoria USB infectada.",
+      "Al configurar equipos nuevos, al redactar las políticas de TI y después de un incidente.",
+      "Combina medidas técnicas (antivirus, filtros, segmentación, respaldos) y políticas de uso aplicadas desde el SO."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Clasifica por alcance: (a) audífonos Bluetooth del teléfono; (b) red de las oficinas de una municipalidad en un edificio; (c) fibra que une tres sedes de la municipalidad dentro de la ciudad; (d) red que une las agencias de un banco en todo el país.",
+     "pasos": [
+      "(a) Unos metros, una persona: PAN.",
+      "(b) Un edificio: LAN.",
+      "(c) Varias sedes en una ciudad: MAN.",
+      "(d) Todo el país: WAN."
+     ],
+     "r": "(a) PAN, (b) LAN, (c) MAN, (d) WAN.",
+     "fin": "Ubicar el alcance define la tecnología y el proveedor que se necesitan."
+    },
+    {
+     "nv": "I",
+     "q": "Una empresa quiere unir 6 sedes. ¿Cuántos enlaces requiere una malla completa y cuántos una estrella con una sede central?",
+     "pasos": [
+      "Malla: \\(L=6\\cdot5/2=15\\) enlaces.",
+      "Estrella con una de las sedes como centro: las otras 5 se conectan a ella, 5 enlaces.",
+      "La malla triplica los enlaces a cambio de tolerar fallas; la estrella depende de la sede central."
+     ],
+     "r": "15 enlaces en malla contra 5 en estrella.",
+     "fin": "Cuantifica el costo de la redundancia antes de contratar enlaces WAN."
+    },
+    {
+     "nv": "I",
+     "q": "Una oficina tiene 18 PCs, 2 impresoras de red, 1 servidor y 1 punto de acceso Wi-Fi, y el router del proveedor. ¿Qué equipo y cuántos puertos de switch se necesitan?",
+     "pasos": [
+      "Equipos cableados al switch: 18 + 2 + 1 + 1 (punto de acceso) = 22 puertos.",
+      "Más 1 puerto de enlace hacia el router: 23 puertos.",
+      "Un switch de 24 puertos cubre la necesidad con 1 puerto libre; conviene uno de 48 o un segundo switch si se prevé crecimiento.",
+      "Topología resultante: estrella alrededor del switch; el router conecta la LAN con Internet."
+     ],
+     "r": "Switch de 24 puertos (23 ocupados), router hacia Internet y un punto de acceso para Wi-Fi.",
+     "fin": "Es la práctica de implementación de redes de la unidad: contar puertos antes de comprar."
+    },
+    {
+     "nv": "A",
+     "q": "20 PCs deben descargar una actualización de 4.5 GB por un enlace de Internet de 50 Mbps. Compara descargarla en cada PC contra descargarla una vez a un servidor local y distribuirla por la LAN de 1 Gbps.",
+     "pasos": [
+      "Una descarga: \\(4.5\\times10^{9}\\times8/50\\times10^{6}=720\\) s = 12 min.",
+      "Cada PC por Internet: 20 × 12 min = 240 min = 4 h de enlace saturado.",
+      "Servidor local: 12 min de descarga más \\(20\\times4.5\\times10^{9}\\times8/10^{9}=720\\) s = 12 min de distribución por la LAN (si el puerto del servidor es el límite).",
+      "Total con servidor local: 24 min, y el enlace de Internet queda libre el resto del tiempo."
+     ],
+     "r": "4 h contra 24 min: el servidor local de actualizaciones es 10 veces más rápido.",
+     "fin": "Muestra con números la ventaja de una red local bien aprovechada, un argumento típico al justificar un servidor."
+    },
+    {
+     "nv": "A",
+     "q": "Un equipo de contabilidad abrió un adjunto y sus archivos aparecen cifrados con una nota de rescate. Describe la respuesta y las políticas para evitar que se repita.",
+     "pasos": [
+      "<b>Contener:</b> desconectar el equipo de la red (cable y Wi-Fi) para que el ransomware no cifre carpetas compartidas.",
+      "<b>Evaluar:</b> revisar qué carpetas compartidas y equipos se afectaron.",
+      "<b>Recuperar:</b> reinstalar el equipo y restaurar desde respaldos fuera de línea; no pagar el rescate.",
+      "<b>Prevenir:</b> antispam y bloqueo de adjuntos ejecutables, cuentas sin privilegios de administrador, actualizaciones automáticas, antivirus, respaldos periódicos desconectados y capacitación contra phishing."
+     ],
+     "r": "Aislar, evaluar, restaurar desde respaldos y reforzar políticas de correo, cuentas, parches y respaldos.",
+     "fin": "Aplica la seguridad LAN a un caso real; el ransomware es hoy la amenaza más costosa para empresas e instituciones."
+    },
+    {
+     "nv": "B",
+     "q": "Con 8 nodos, ¿cuántos enlaces requiere una estrella (con switch central), un anillo y una malla completa?",
+     "r": "Estrella: 8 cables al switch; anillo: 8 enlaces; malla completa: 8 · 7 / 2 = 28 enlaces."
+    },
+    {
+     "nv": "I",
+     "q": "Un punto de acceso entrega en la práctica 300 Mbps compartidos entre 30 usuarios activos. ¿Cuánto le toca a cada uno y cuánto tarda cada uno en bajar un archivo de 25 MB?",
+     "r": "300 / 30 = 10 Mbps por usuario; 25 × 10<sup>6</sup> × 8 / 10 × 10<sup>6</sup> = 20 s."
+    },
+    {
+     "nv": "I",
+     "q": "Elige el dispositivo: (a) conectar 30 PCs de un mismo piso; (b) conectar la LAN con el proveedor de Internet; (c) dar cobertura Wi-Fi a una sala; (d) unir de forma segura dos sedes a través de Internet.",
+     "r": "(a) Switch; (b) router; (c) punto de acceso; (d) routers o firewalls en cada sede con una VPN entre ellos."
+    },
+    {
+     "nv": "A",
+     "q": "La LAN usa la red 192.168.50.0/24. ¿Cuántas direcciones útiles hay, cuál es la de difusión y, si se reservan de la .1 (puerta de enlace) a la .20 para servidores e impresoras, cuántas quedan para el DHCP?",
+     "r": "Útiles: 2<sup>8</sup> − 2 = 254 (de .1 a .254); difusión: 192.168.50.255. Reservadas .1 a .20; el DHCP reparte de .21 a .254: 234 direcciones."
+    },
+    {
+     "nv": "A",
+     "q": "Una PC muestra la dirección 169.254.23.7 y no navega, mientras las demás sí. Indica el diagnóstico y los pasos.",
+     "r": "La dirección 169.254.x.x es autoasignada: la PC no obtuvo respuesta del DHCP. Pasos: revisar cable y luz del puerto del switch (o la conexión Wi-Fi), renovar la dirección (<code>ipconfig /renew</code> en Windows), comprobar que el servidor DHCP tenga direcciones libres y, con IP válida, probar la puerta de enlace con <code>ping</code> y la resolución de nombres (DNS)."
+    }
+   ]
+  },
+  {
+   "titulo": "Páginas web, Internet y seguridad en la WAN",
+   "intro": "Unidad 5 (semanas 12 y 13): Web, Internet e hipertexto, navegadores web, servidores web, seguridad en la WAN (proxies, firewall), protocolos y manejo de puertos, y desarrollo de software para crear un sitio web. El desarrollo web completo corresponde al curso Desarrollo Web; aquí se ve la base que pide el programa.",
+   "conceptos": [
+    {
+     "n": "Internet, Web e hipertexto",
+     "e": [
+      "<b>Internet</b> es la red mundial de redes que se comunican con TCP/IP; nació de ARPANET (1969). La <b>World Wide Web</b> es uno de sus servicios: documentos enlazados que propuso Tim Berners-Lee en el CERN en 1989. Otros servicios de Internet son el correo, la transferencia de archivos y la voz sobre IP.",
+      "El <b>hipertexto</b> es texto con enlaces a otros documentos. La Web se apoya en tres piezas: <b>HTML</b> (lenguaje de marcado de las páginas), <b>URL</b> (dirección de cada recurso: protocolo, dominio, puerto, ruta y parámetros) y <b>HTTP/HTTPS</b> (protocolo de solicitud y respuesta)."
+     ],
+     "u": [
+      "En todo portal institucional, banca en línea y sistema web interno.",
+      "Distinguir Internet de la Web evita confusiones al diagnosticar: el correo puede funcionar aunque un sitio web no.",
+      "Al leer o construir una URL, enlazar páginas o explicar un fallo de acceso.",
+      "Descompón la URL en sus partes y ubica qué servicio y qué protocolo intervienen."
+     ]
+    },
+    {
+     "n": "Navegadores y servidores web",
+     "e": [
+      "El <b>navegador</b> (Chrome, Firefox, Edge, Safari) solicita recursos, interpreta HTML, CSS y JavaScript y dibuja la página. El <b>servidor web</b> (Apache, Nginx, IIS) atiende las solicitudes: entrega archivos <b>estáticos</b> o pasa la solicitud a un programa (por ejemplo PHP) que genera la página <b>dinámica</b> consultando MySQL o PostgreSQL.",
+      "Cada respuesta HTTP trae un código de estado:"
+     ],
+     "u": [
+      "En cada visita a un sitio: el navegador es el cliente y el servidor web responde.",
+      "Los códigos de estado indican si el problema está en la solicitud (4xx) o en el servidor (5xx).",
+      "Al publicar un sitio o diagnosticar por qué una página no carga.",
+      "Revisa el código de estado en las herramientas de desarrollador del navegador (F12, pestaña Red)."
+     ],
+     "tabla": "<table><thead><tr><th>Código</th><th>Significado</th></tr></thead><tbody><tr><td>200</td><td>Correcto</td></tr><tr><td>301</td><td>Recurso movido de forma permanente (redirección)</td></tr><tr><td>403</td><td>Prohibido</td></tr><tr><td>404</td><td>No encontrado</td></tr><tr><td>500</td><td>Error interno del servidor</td></tr></tbody></table>"
+    },
+    {
+     "n": "Protocolos, puertos y seguridad en la WAN",
+     "e": [
+      "Un <b>puerto</b> identifica el servicio dentro de un equipo: la IP lleva el paquete al servidor y el puerto, al programa.",
+      "El <b>firewall</b> filtra el tráfico entre redes con reglas por dirección, puerto y protocolo. El <b>proxy</b> es un intermediario que recibe las solicitudes de los clientes y las reenvía: filtra sitios, guarda en caché y registra; un <i>proxy inverso</i> se pone delante de los servidores web. Completan la defensa la <b>DMZ</b> (red aparte para los servidores públicos), las <b>VPN</b> (túneles cifrados entre sedes o para teletrabajo) y <b>HTTPS</b> con certificados TLS."
+     ],
+     "u": [
+      "En el borde de toda red conectada a Internet y en la configuración de cada servidor.",
+      "Cada puerto abierto es una puerta: un servidor MySQL expuesto a Internet es un blanco frecuente de ataques.",
+      "Al publicar un sistema web, abrir acceso remoto o revisar un incidente.",
+      "Abre solo los puertos de los servicios públicos y limita los administrativos a redes de confianza."
+     ],
+     "tabla": "<table><thead><tr><th>Puerto</th><th>Protocolo o servicio</th></tr></thead><tbody><tr><td>20/21</td><td>FTP</td></tr><tr><td>22</td><td>SSH y SFTP</td></tr><tr><td>25</td><td>SMTP (correo)</td></tr><tr><td>53</td><td>DNS</td></tr><tr><td>80</td><td>HTTP</td></tr><tr><td>443</td><td>HTTPS</td></tr><tr><td>3306</td><td>MySQL</td></tr><tr><td>5432</td><td>PostgreSQL</td></tr><tr><td>3389</td><td>Escritorio remoto (RDP)</td></tr></tbody></table>"
+    },
+    {
+     "n": "Desarrollo de un sitio web",
+     "e": [
+      "Un sitio combina <b>HTML</b> (estructura y contenido), <b>CSS</b> (presentación) y <b>JavaScript</b> (comportamiento en el navegador); si es dinámico, agrega un lenguaje del servidor (PHP, Java) y una base de datos.",
+      "Etapas: definir objetivo y público, mapa del sitio, diseño, desarrollo con un editor (por ejemplo Visual Studio Code) y un servidor local (por ejemplo XAMPP), pruebas en varios navegadores y en teléfono, publicación en un hospedaje con dominio propio, y mantenimiento. Las etiquetas HTML se abren y se cierran en orden, como paréntesis."
+     ],
+     "u": [
+      "En el portal del proyecto final del curso y en sitios de empresas e instituciones.",
+      "Una estructura HTML correcta se ve bien en todos los navegadores y es accesible para lectores de pantalla.",
+      "Al crear o actualizar un sitio y al publicar formularios que alimentan una base de datos.",
+      "Escribe primero el HTML con su estructura, luego el CSS y por último la lógica del servidor."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Descompón la URL <code>https://www.ejemplo.gob.gt:443/tramites/consulta.php?nit=4521873</code>.",
+     "pasos": [
+      "Protocolo: <code>https</code> (HTTP cifrado con TLS).",
+      "Dominio: <code>www.ejemplo.gob.gt</code>; el DNS lo traduce a una dirección IP.",
+      "Puerto: <code>443</code>, el de HTTPS; como es el predeterminado, el navegador no lo muestra.",
+      "Ruta: <code>/tramites/consulta.php</code>; parámetros: <code>nit=4521873</code>, que recibe el programa PHP."
+     ],
+     "r": "Protocolo https, dominio www.ejemplo.gob.gt, puerto 443, ruta /tramites/consulta.php y parámetro nit = 4521873.",
+     "fin": "Leer URL es la base para enlazar páginas, depurar formularios y reconocer enlaces sospechosos."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe una página HTML mínima para la biblioteca municipal con título, encabezado, horario y una lista de enlaces al catálogo y al correo de contacto.",
+     "pasos": [
+      "Estructura obligatoria: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code> con <code>&lt;head&gt;</code> (codificación y título) y <code>&lt;body&gt;</code> (contenido).",
+      "Contenido: <code>&lt;h1&gt;</code> para el encabezado, <code>&lt;p&gt;</code> para el horario y una lista <code>&lt;ul&gt;</code> con enlaces <code>&lt;a href&gt;</code>.",
+      "Código (15 líneas):<br><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;es&quot;&gt;<br>&lt;head&gt;<br>  &lt;meta charset=&quot;utf-8&quot;&gt;<br>  &lt;title&gt;Biblioteca Municipal&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>  &lt;h1&gt;Biblioteca Municipal&lt;/h1&gt;<br>  &lt;p&gt;Horario: lunes a viernes de 8:00 a 16:00.&lt;/p&gt;<br>  &lt;ul&gt;<br>    &lt;li&gt;&lt;a href=&quot;catalogo.html&quot;&gt;Catálogo&lt;/a&gt;&lt;/li&gt;<br>    &lt;li&gt;&lt;a href=&quot;mailto:biblioteca@ejemplo.gob.gt&quot;&gt;Contacto&lt;/a&gt;&lt;/li&gt;<br>  &lt;/ul&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code>"
+     ],
+     "r": "Página válida de 15 líneas; cada etiqueta abierta se cierra en orden inverso (<code>meta</code> no lleva cierre).",
+     "fin": "Es la tarea de creación de página web en clase y el punto de partida del portal del proyecto final."
+    },
+    {
+     "nv": "I",
+     "q": "Define las reglas de firewall para un servidor Linux que publica un sistema en PHP con MySQL en el mismo equipo y se administra por SSH desde la red de TI (10.10.5.0/24).",
+     "pasos": [
+      "Público: permitir 80 y 443 desde cualquier origen (80 solo para redirigir a 443).",
+      "Administración: permitir 22 solo desde 10.10.5.0/24.",
+      "Base de datos: no abrir 3306 hacia fuera; PHP se conecta por <code>localhost</code>.",
+      "Todo lo demás: denegar por defecto el tráfico entrante."
+     ],
+     "r": "<table><thead><tr><th>Puerto</th><th>Origen</th><th>Acción</th></tr></thead><tbody><tr><td>80, 443</td><td>Cualquiera</td><td>Permitir</td></tr><tr><td>22</td><td>10.10.5.0/24</td><td>Permitir</td></tr><tr><td>3306</td><td>Cualquiera externo</td><td>Denegar</td></tr><tr><td>Resto</td><td>Cualquiera</td><td>Denegar</td></tr></tbody></table>",
+     "fin": "Aplica el principio de mínimo privilegio a los puertos, la base de la seguridad en la WAN."
+    },
+    {
+     "nv": "A",
+     "q": "Describe lo que ocurre desde que un usuario escribe la URL del ejercicio anterior hasta que ve la página con su consulta.",
+     "pasos": [
+      "<b>DNS:</b> el equipo pregunta la IP de <code>www.ejemplo.gob.gt</code> (puerto 53).",
+      "<b>TCP:</b> abre una conexión con esa IP en el puerto 443 (saludo de tres vías).",
+      "<b>TLS:</b> el servidor presenta su certificado, el navegador lo valida y acuerdan claves de cifrado.",
+      "<b>HTTP:</b> el navegador envía <code>GET /tramites/consulta.php?nit=4521873</code>; el servidor web pasa la solicitud a PHP, que consulta MySQL y genera HTML.",
+      "<b>Respuesta:</b> código 200 con el HTML; el navegador lo interpreta y pide aparte las hojas CSS, imágenes y scripts."
+     ],
+     "r": "DNS → TCP 443 → TLS → solicitud HTTP → PHP y MySQL → respuesta 200 → dibujo de la página.",
+     "fin": "Integra protocolos, puertos, navegador y servidor en un solo recorrido, la pregunta de síntesis de la unidad."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe un formulario que envíe un NIT a <code>consulta.php</code> y el PHP que lo valide (solo dígitos y una K final opcional) antes de usarlo. Indica la salida para «1234567», « 4521873k » y «&lt;script&gt;».",
+     "pasos": [
+      "Formulario (método GET):<br><code>&lt;form action=&quot;consulta.php&quot; method=&quot;get&quot;&gt;<br>  &lt;label&gt;NIT: &lt;input type=&quot;text&quot; name=&quot;nit&quot;&gt;&lt;/label&gt;<br>  &lt;button type=&quot;submit&quot;&gt;Consultar&lt;/button&gt;<br>&lt;/form&gt;</code>",
+      "PHP: limpia espacios, pasa a mayúsculas, valida con una expresión regular y escapa la salida con <code>htmlspecialchars</code>:<br><code>&lt;?php<br>$nit = $_GET['nit'] ?? '';<br>$nit = strtoupper(trim($nit));<br>if (!preg_match('/^[0-9]+K?$/', $nit)) {<br>    http_response_code(400);<br>    echo 'NIT no válido';<br>} else {<br>    echo 'Consultando NIT ' . htmlspecialchars($nit);<br>}</code>",
+      "«1234567» → <code>Consultando NIT 1234567</code>. « 4521873k » → <code>Consultando NIT 4521873K</code>. «&lt;script&gt;» no pasa la validación → código 400 y <code>NIT no válido</code>."
+     ],
+     "r": "El formulario envía el dato y el PHP solo acepta NIT con formato válido; lo demás se rechaza con código 400.",
+     "fin": "Muestra el ciclo formulario-servidor y la regla básica de seguridad web: validar la entrada y escapar la salida."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál es la relación entre Internet y la Web?",
+     "ops": [
+      "Son sinónimos: ambos nombran la red mundial",
+      "La Web es un servicio de documentos enlazados que funciona sobre Internet",
+      "Internet es un servicio que funciona sobre la Web",
+      "La Web es la red física de cables y routers; Internet son las páginas"
+     ],
+     "ok": 1,
+     "r": "Internet es la red de redes; la Web es uno de sus servicios, junto con el correo o la transferencia de archivos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué puerto usa HTTPS por defecto?",
+     "ops": [
+      "80",
+      "443",
+      "21",
+      "3306"
+     ],
+     "ok": 1,
+     "r": "80 es HTTP sin cifrar, 21 es FTP y 3306 es MySQL."
+    },
+    {
+     "nv": "I",
+     "q": "Un usuario recibe el código de estado 404 al abrir un enlace. ¿Qué significa?",
+     "ops": [
+      "El servidor tuvo un error interno",
+      "El usuario no tiene permiso",
+      "El recurso se movió de forma permanente",
+      "El recurso solicitado no existe en el servidor"
+     ],
+     "ok": 3,
+     "r": "404 es «no encontrado» (error del lado de la solicitud). 500 es error interno, 403 prohibido y 301 movido permanentemente."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué hace un servidor proxy en la red de una empresa?",
+     "ops": [
+      "Asigna direcciones IP automáticamente a los equipos",
+      "Recibe las solicitudes de los usuarios y las reenvía a Internet, con la posibilidad de filtrar, guardar en caché y registrar",
+      "Traduce nombres de dominio a direcciones IP",
+      "Cifra el disco de los servidores"
+     ],
+     "ok": 1,
+     "r": "Asignar IP es tarea del DHCP y traducir nombres, del DNS; el proxy actúa como intermediario de las conexiones."
+    },
+    {
+     "nv": "A",
+     "q": "Un servidor tiene el sistema PHP y MySQL en el mismo equipo. ¿Qué regla es la adecuada para el puerto 3306?",
+     "ops": [
+      "Abrirlo a todos para que PHP pueda conectarse",
+      "Cambiar MySQL al puerto 80 para que el firewall lo deje pasar",
+      "Abrirlo solo en horario laboral",
+      "Bloquearlo desde Internet; PHP se conecta por localhost"
+     ],
+     "ok": 3,
+     "r": "PHP se conecta dentro del mismo equipo; exponer 3306 solo agrega riesgo. Mover MySQL al 80 choca con el servidor web y abrir por horario sigue exponiendo el servicio."
+    }
+   ]
+  },
+  {
+   "titulo": "Resolución de problemas y pseudocódigo",
+   "intro": "Unidades 6 y 7 (semanas 15 a 17): resolución de problemas (introducción, planteamiento, análisis básico, diseño de la solución, validación del diseño, prueba y depuración, documentación interna y externa) y pseudocódigo (expresiones aritméticas, operaciones DIV y MOD, expresiones lógicas, precedencia de operadores, herramientas de resolución, tipos de datos y de operadores, encabezado, secciones de declaraciones de módulos, tipos, constantes y variables, cuerpo del algoritmo, instrucciones de entrada, salida y asignación, e instrucciones selectivas simples, dobles, anidadas y múltiples). Los ciclos, módulos y arreglos se desarrollan en Algoritmos; aquí se llega hasta las selectivas, como indica el programa.",
+   "conceptos": [
+    {
+     "n": "Etapas de la resolución de problemas",
+     "e": [
+      "<b>Planteamiento:</b> entender qué se pide. <b>Análisis:</b> identificar entradas, proceso y salidas (E-P-S) y restricciones. <b>Diseño:</b> escribir el algoritmo. <b>Validación del diseño:</b> <i>prueba de escritorio</i>, que es ejecutar el algoritmo a mano con datos de prueba, incluidos los casos límite. <b>Prueba y depuración:</b> ya programado, buscar y corregir errores con un depurador (puntos de interrupción, ejecución paso a paso, inspección de variables). <b>Documentación:</b> interna (comentarios en el código) y externa (manual técnico y de usuario)."
+     ],
+     "u": [
+      "En cada ejercicio de programación y en el análisis de cualquier proceso de una empresa.",
+      "Saltarse el análisis produce programas que resuelven otro problema; saltarse la prueba de escritorio deja errores en los casos límite.",
+      "Antes de escribir código y cada vez que un resultado no coincide con lo esperado.",
+      "Escribe la tabla E-P-S, el algoritmo y una tabla de prueba con un caso normal, uno límite y uno inválido."
+     ]
+    },
+    {
+     "n": "Herramientas y tipos de datos",
+     "e": [
+      "Un <b>algoritmo</b> es una secuencia finita y ordenada de pasos que resuelve un problema. Se expresa con un <b>diagrama de flujo</b> (símbolos gráficos), con <b>pseudocódigo</b> (lenguaje natural estructurado) o directamente en un <b>lenguaje de programación</b>. El programa dice «diagrama de flujo de datos»; en este contexto se refiere al diagrama de flujo del algoritmo.",
+      "<b>Tipos de datos</b> simples: entero, real, carácter, cadena y lógico (verdadero o falso)."
+     ],
+     "u": [
+      "En el diseño de cualquier programa antes de pasarlo a Java, C++ o PHP.",
+      "El pseudocódigo separa la lógica del lenguaje: el mismo algoritmo sirve para cualquier lenguaje.",
+      "Al plantear la solución en papel o comunicarla a otros programadores.",
+      "Dibuja el flujo con los símbolos de la tabla o escríbelo en pseudocódigo con tipos declarados."
+     ],
+     "tabla": "<table><thead><tr><th>Símbolo del diagrama</th><th>Significado</th></tr></thead><tbody><tr><td>Óvalo</td><td>Inicio o fin</td></tr><tr><td>Paralelogramo</td><td>Entrada o salida de datos</td></tr><tr><td>Rectángulo</td><td>Proceso o asignación</td></tr><tr><td>Rombo</td><td>Decisión (condición verdadera o falsa)</td></tr><tr><td>Flechas</td><td>Sentido del flujo</td></tr><tr><td>Círculo</td><td>Conector</td></tr></tbody></table>"
+    },
+    {
+     "n": "Expresiones, DIV, MOD y precedencia",
+     "e": [
+      "<b>Aritméticas:</b> <code>+ - * / ^</code>, más <b>DIV</b> (cociente entero: 17 DIV 5 = 3) y <b>MOD</b> (residuo: 17 MOD 5 = 2). Se cumple la igualdad de la fórmula. <b>Relacionales:</b> <code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code>, dan un valor lógico. <b>Lógicas:</b> NO, Y, O.",
+      "La <b>precedencia</b> decide el orden; a igual nivel se evalúa de izquierda a derecha, y los paréntesis mandan sobre todo:"
+     ],
+     "u": [
+      "En cálculos de cambio de moneda, conversión de tiempos, años bisiestos, dígitos verificadores y validaciones.",
+      "Un error de precedencia no da error de sintaxis: da un resultado equivocado que pasa desapercibido.",
+      "Al escribir cualquier fórmula o condición dentro de un algoritmo.",
+      "Aplica la tabla nivel por nivel y usa paréntesis cuando la intención no sea evidente."
+     ],
+     "f": "a=b\\cdot(a\\ \\text{DIV}\\ b)+(a\\ \\text{MOD}\\ b)",
+     "tabla": "<table><thead><tr><th>Nivel</th><th>Operadores</th></tr></thead><tbody><tr><td>1</td><td>( )</td></tr><tr><td>2</td><td>^</td></tr><tr><td>3</td><td>* / DIV MOD</td></tr><tr><td>4</td><td>+ -</td></tr><tr><td>5</td><td>= &lt;&gt; &lt; &gt; &lt;= &gt;=</td></tr><tr><td>6</td><td>NO</td></tr><tr><td>7</td><td>Y</td></tr><tr><td>8</td><td>O</td></tr></tbody></table>"
+    },
+    {
+     "n": "Estructura del algoritmo e instrucciones",
+     "e": [
+      "<b>Encabezado:</b> <code>Algoritmo Nombre</code>. <b>Sección de declaraciones:</b> módulos (subalgoritmos que se usarán), tipos definidos por el usuario, <b>constantes</b> (valores que no cambian, como la tasa de IVA) y <b>variables</b> con su tipo. <b>Cuerpo:</b> entre <code>Inicio</code> y <code>Fin</code>.",
+      "<b>Instrucciones:</b> entrada (<code>Leer</code>), salida (<code>Escribir</code>), asignación directa (<code>total ← precio * cantidad</code>) y selectivas: <b>simple</b> (<code>Si … Entonces … FinSi</code>), <b>doble</b> (con <code>Sino</code>), <b>anidada</b> (un <code>Si</code> dentro de otro) y <b>múltiple</b> (<code>Según opcion Hacer 1: … 2: … De otro modo: … FinSegún</code>), que elige entre varios valores de una variable."
+     ],
+     "u": [
+      "En todo algoritmo de la carrera y, traducido, en cualquier programa en Java, C++ o PHP.",
+      "Declarar constantes y variables obliga a pensar en los datos antes que en las instrucciones y facilita los cambios (un nuevo valor del IVA se cambia en un solo lugar).",
+      "Siempre que el resultado dependa de condiciones: tarifas por rango, descuentos, menús de opciones.",
+      "Usa selectiva doble para dos caminos, anidada para rangos y múltiple cuando una variable toma valores puntuales."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Analiza el problema: «dado el total de una venta con IVA incluido, mostrar la base y el IVA». Resuélvelo para Q 560.00.",
+     "pasos": [
+      "<b>Entrada:</b> total (real). <b>Salidas:</b> base e IVA (reales). <b>Constante:</b> IVA = 0.12.",
+      "<b>Proceso:</b> <code>base ← total / (1 + IVA)</code> y <code>iva ← total - base</code>.",
+      "<b>Prueba de escritorio:</b> 560 / 1.12 = 500.00; 560 − 500 = 60.00."
+     ],
+     "r": "Base Q 500.00 e IVA Q 60.00.",
+     "fin": "La tabla E-P-S es el paso de análisis que pide el programa y evita el error de calcular el 12 % sobre el total."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa <code>7 + 3 * 4 DIV 5 MOD 3 - 2 ^ 2</code> y <code>(5 &gt; 3) Y NO (2 = 2) O (10 MOD 4 = 2)</code>.",
+     "pasos": [
+      "Primero la potencia: 2 ^ 2 = 4.",
+      "Nivel 3, de izquierda a derecha: 3 * 4 = 12; 12 DIV 5 = 2; 2 MOD 3 = 2.",
+      "Nivel 4: 7 + 2 − 4 = 5.",
+      "Lógica: 5 &gt; 3 es V; NO (2 = 2) es F; V Y F = F; 10 MOD 4 = 2 es V; F O V = V."
+     ],
+     "r": "La expresión aritmética vale 5 y la lógica es Verdadera.",
+     "fin": "Dominar la precedencia evita fórmulas que compilan pero calculan mal."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte 7385 segundos a horas, minutos y segundos con DIV y MOD.",
+     "pasos": [
+      "<code>horas ← s DIV 3600</code> = 7385 DIV 3600 = 2; el resto es 7385 MOD 3600 = 185.",
+      "<code>minutos ← (s MOD 3600) DIV 60</code> = 185 DIV 60 = 3.",
+      "<code>segundos ← s MOD 60</code> = 7385 MOD 60 = 5."
+     ],
+     "r": "2 h 3 min 5 s.",
+     "fin": "Es el patrón de DIV y MOD para descomponer cantidades: tiempo, billetes, dígitos de un número."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe el algoritmo del cobro de agua con esta tarifa de ejemplo: hasta 20 m³ a Q 2.50 el m³; de 21 a 40, Q 4.00 por cada m³ sobre 20; más de 40, Q 6.00 por cada m³ sobre 40; más un cargo fijo de Q 15. Prueba con 47 m³.",
+     "pasos": [
+      "Encabezado y declaraciones:<br><code>Algoritmo CobroAgua<br>Const<br>  CARGO_FIJO = 15<br>Var<br>  m3, total: Real</code>",
+      "Cuerpo con selectiva anidada (50 = 20 × 2.50 y 130 = 50 + 20 × 4.00):<br><code>Inicio<br>  Leer m3<br>  Si m3 &lt;= 20 Entonces<br>    total ← m3 * 2.50<br>  Sino<br>    Si m3 &lt;= 40 Entonces<br>      total ← 50 + (m3 - 20) * 4.00<br>    Sino<br>      total ← 130 + (m3 - 40) * 6.00<br>    FinSi<br>  FinSi<br>  total ← total + CARGO_FIJO<br>  Escribir &quot;Total: Q&quot;, total<br>Fin</code>",
+      "Prueba con 47: no es ≤ 20 ni ≤ 40; total ← 130 + 7 × 6.00 = 172; más 15 = 187.",
+      "Otros casos: 12 m³ → Q 45.00; 20 m³ → Q 65.00 (límite); 35 m³ → Q 125.00."
+     ],
+     "r": "Para 47 m³ el cobro es Q 187.00.",
+     "fin": "Integra encabezado, constantes, variables, entrada, asignación, selectiva anidada y salida en un solo algoritmo."
+    },
+    {
+     "nv": "A",
+     "q": "Haz la prueba de escritorio del algoritmo de año bisiesto con 1900, 2000, 2024 y 2026.<br><code>Algoritmo Bisiesto<br>Var a: Entero<br>Inicio<br>  Leer a<br>  Si (a MOD 4 = 0 Y a MOD 100 &lt;&gt; 0) O a MOD 400 = 0 Entonces<br>    Escribir &quot;Bisiesto&quot;<br>  Sino<br>    Escribir &quot;No bisiesto&quot;<br>  FinSi<br>Fin</code>",
+     "pasos": [
+      "Regla: divisible entre 4 y no entre 100, o divisible entre 400. Por precedencia, Y se evalúa antes que O; los paréntesis lo dejan explícito.",
+      "1900: MOD 4 = 0 pero MOD 100 = 0 → F; MOD 400 = 300 → F. No bisiesto.",
+      "2000: MOD 100 = 0 → F; MOD 400 = 0 → V. Bisiesto.",
+      "2024: MOD 4 = 0 y MOD 100 = 24 → V. Bisiesto. 2026: MOD 4 = 2 → F; MOD 400 = 26 → F. No bisiesto."
+     ],
+     "r": "<table><thead><tr><th>a</th><th>a MOD 4</th><th>a MOD 100</th><th>a MOD 400</th><th>Salida</th></tr></thead><tbody><tr><td>1900</td><td>0</td><td>0</td><td>300</td><td>No bisiesto</td></tr><tr><td>2000</td><td>0</td><td>0</td><td>0</td><td>Bisiesto</td></tr><tr><td>2024</td><td>0</td><td>24</td><td>24</td><td>Bisiesto</td></tr><tr><td>2026</td><td>2</td><td>26</td><td>26</td><td>No bisiesto</td></tr></tbody></table>",
+     "fin": "La prueba de escritorio con casos límite (1900 y 2000) es la validación del diseño que pide el programa."
+    },
+    {
+     "nv": "B",
+     "q": "Calcula 47 DIV 6, 47 MOD 6, 6 DIV 47, 6 MOD 47 y 100 MOD 10.",
+     "r": "47 DIV 6 = 7; 47 MOD 6 = 5 (7 · 6 + 5 = 47); 6 DIV 47 = 0; 6 MOD 47 = 6; 100 MOD 10 = 0."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa <code>15 - 4 * 3 MOD 5 + 2 ^ 3 DIV 3</code> y <code>NO (8 &lt; 5) Y (7 MOD 2 = 1) O (3 &gt; 4)</code>.",
+     "r": "2 ^ 3 = 8; 4 * 3 = 12; 12 MOD 5 = 2; 8 DIV 3 = 2; 15 − 2 + 2 = <b>15</b>. Lógica: NO F = V; 7 MOD 2 = 1 es V; V Y V = V; 3 &gt; 4 es F; V O F = <b>Verdadero</b>."
+    },
+    {
+     "nv": "I",
+     "q": "Con DIV y MOD, desglosa Q 387 en el menor número de billetes y monedas de Q 100, 50, 20, 10, 5 y 1.",
+     "r": "<code>c100 ← 387 DIV 100</code> = 3, resto 87; 87 DIV 50 = 1, resto 37; 37 DIV 20 = 1, resto 17; 17 DIV 10 = 1, resto 7; 7 DIV 5 = 1, resto 2; 2 de Q 1. Resultado: 3 × Q 100, 1 × Q 50, 1 × Q 20, 1 × Q 10, 1 × Q 5 y 2 × Q 1."
+    },
+    {
+     "nv": "A",
+     "q": "Haz la prueba de escritorio con (1500, 'A'), (1500, 'B'), (800, 'A') y (1000, 'A'):<br><code>Leer monto, tipo<br>Si monto &gt; 1000 Entonces<br>  Si tipo = 'A' Entonces<br>    desc ← 0.10<br>  Sino<br>    desc ← 0.05<br>  FinSi<br>Sino<br>  desc ← 0<br>FinSi<br>Escribir monto * (1 - desc)</code>",
+     "r": "(1500, 'A'): desc 0.10 → 1350. (1500, 'B'): desc 0.05 → 1425. (800, 'A'): desc 0 → 800. (1000, 'A'): 1000 &gt; 1000 es falso → desc 0 → 1000. El último es el caso límite: si la política dice «desde Q 1000», la condición debe ser <code>&gt;=</code>."
+    },
+    {
+     "nv": "A",
+     "q": "Depura el algoritmo si la nota mínima para aprobar en este ejemplo es 61. Pruébalo con (70, 80, 90) y con (60, 61, 62).<br><code>Algoritmo Promedio<br>Var n1, n2, n3, prom: Real<br>Inicio<br>  Leer n1, n2, n3<br>  prom ← n1 + n2 + n3 / 3<br>  Si prom &gt; 61 Entonces<br>    Escribir &quot;Aprobado&quot;<br>  Sino<br>    Escribir &quot;Reprobado&quot;<br>  FinSi<br>Fin</code>",
+     "r": "Error 1 (precedencia): calcula n1 + n2 + (n3 / 3); con 70, 80, 90 da 180 en vez de 80. Corrección: <code>prom ← (n1 + n2 + n3) / 3</code>. Error 2 (caso límite): con 60, 61, 62 el promedio es 61 y <code>prom &gt; 61</code> da «Reprobado»; debe ser <code>prom &gt;= 61</code>. Documenta la corrección con un comentario interno y agrega ambos casos a la tabla de pruebas."
+    }
+   ]
+  }
+ ]
+}
