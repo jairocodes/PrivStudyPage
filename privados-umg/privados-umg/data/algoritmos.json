@@ -1,0 +1,1114 @@
+{
+ "slug": "algoritmos",
+ "titulo": "Algoritmos",
+ "area": "Análisis, Diseño y Desarrollo",
+ "meta": "Ciclo 2, código 090008, bloque Programación del seminario",
+ "firma": "\\text{problema}\\to\\text{análisis}\\to\\text{algoritmo}\\to\\text{prueba de escritorio}\\to\\text{programa en C++}",
+ "firma_nota": "El camino del curso: entender el problema, diseñar el algoritmo, validarlo a mano y solo entonces escribirlo en C++ con estructuras de control, subprogramas, arreglos, cadenas, registros y archivos.",
+ "lead": "Primer curso de programación de la carrera: cómo pasar de un problema a un algoritmo y de un algoritmo a un programa estructurado en C++. Recorre las etapas de resolución de problemas, expresiones y tipos, estructuras selectivas y repetitivas, diseño descendente con funciones y recursividad, arreglos, cadenas, registros y archivos, con trazas de escritorio y conteo de operaciones para analizar lo que hace cada algoritmo. Es la base de Programación I, II y III. Los 9 temas del programa están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Segundo%20Ciclo/2014-2Algoritmos.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 para practicar, que mezclan ejercicios con la respuesta oculta (trazas, salidas de programas, conteo de operaciones y código por completar) y preguntas de opción múltiple que te dicen al instante si acertaste. Antes de ver una respuesta, haz la prueba de escritorio en papel con una tabla de variables: así se evalúan los algoritmos en el privado. El código está en C++ estándar; si tienes un compilador a mano (g++, Code::Blocks o Visual Studio), ejecútalo después para confirmar.",
+ "temas": [
+  {
+   "titulo": "Resolución de problemas y estructura de un algoritmo",
+   "intro": "Semanas 1 y 2 del programa: etapas de la resolución de un problema (planteamiento, análisis básico, diseño de la solución, validación del diseño, prueba y depuración, documentación interna y externa) y elementos básicos del pseudocódigo (encabezado, sección de declaraciones de módulos, tipos, constantes y variables, tipos de datos y cuerpo del algoritmo), con su traducción a C++. La notación de pseudocódigo y diagramas se ve con más detalle en Lógica de Sistemas; aquí el foco es llevar el diseño a un programa que funciona.",
+   "conceptos": [
+    {
+     "n": "Etapas de la resolución de un problema",
+     "e": [
+      "Un algoritmo es una secuencia finita, ordenada y precisa de pasos que resuelve un problema. Antes de escribir código se recorren estas etapas; cada una produce algo que la siguiente usa.",
+      "La <b>validación del diseño</b> se hace con una <b>prueba de escritorio</b>: se ejecuta el algoritmo a mano con datos conocidos y se anota en una tabla el valor de cada variable después de cada paso. Es más barato encontrar el error aquí que después de codificar."
+     ],
+     "u": [
+      "En cualquier sistema: un módulo de facturación en PHP, un cálculo de planilla en Java o una práctica de laboratorio en C++.",
+      "La mayoría de errores de un programa vienen de un problema mal entendido, no de la sintaxis.",
+      "Siempre, antes de abrir el editor; en el privado se pide plantear entradas, proceso y salidas antes del código.",
+      "Escribe las entradas, salidas y restricciones; diseña el algoritmo; pruébalo a mano; luego codifica, prueba y documenta."
+     ],
+     "tabla": "<table><thead><tr><th>Etapa</th><th>Pregunta que responde</th><th>Producto</th></tr></thead><tbody><tr><td>Planteamiento</td><td>¿Qué se pide?</td><td>Enunciado claro y sin ambigüedad</td></tr><tr><td>Análisis</td><td>¿Qué datos entran, qué sale y qué reglas aplican?</td><td>Entradas, salidas, proceso y restricciones</td></tr><tr><td>Diseño</td><td>¿Cómo se resuelve paso a paso?</td><td>Pseudocódigo o diagrama de flujo</td></tr><tr><td>Validación del diseño</td><td>¿El algoritmo da el resultado correcto?</td><td>Prueba de escritorio</td></tr><tr><td>Codificación</td><td>¿Cómo se escribe en el lenguaje?</td><td>Programa en C++</td></tr><tr><td>Prueba y depuración</td><td>¿Funciona con casos normales, límite e inválidos?</td><td>Errores corregidos</td></tr><tr><td>Documentación</td><td>¿Cómo lo entiende otro programador o el usuario?</td><td>Comentarios, manual técnico y de usuario</td></tr></tbody></table>"
+    },
+    {
+     "n": "Estructura de un algoritmo y su traducción a C++",
+     "e": [
+      "El pseudocódigo del curso tiene tres partes: <b>encabezado</b> (nombre del algoritmo), <b>sección de declaraciones</b> (módulos, tipos, constantes y variables) y <b>cuerpo</b> (las instrucciones entre <i>inicio</i> y <i>fin</i>). En C++ la misma estructura se ve así: las directivas <code>#include</code>, las declaraciones y la función <code>main</code>, donde empieza la ejecución.",
+      "En C++ toda variable se declara con su tipo antes de usarse y cada instrucción termina en punto y coma."
+     ],
+     "u": [
+      "En todo programa C++ de laboratorio y, con otra sintaxis, en Java y PHP.",
+      "Declarar primero obliga a pensar qué datos necesita el algoritmo y con qué tipo.",
+      "Al pasar el pseudocódigo aprobado en la prueba de escritorio a código.",
+      "Traduce cada parte con la tabla: constantes con <code>const</code>, variables con su tipo, lectura con <code>cin</code> y escritura con <code>cout</code>."
+     ],
+     "tabla": "<table><thead><tr><th>Pseudocódigo</th><th>C++</th></tr></thead><tbody><tr><td>Algoritmo Factura</td><td><code>int main() { ... }</code> (el nombre va en un comentario)</td></tr><tr><td>const IVA = 0.12</td><td><code>const double IVA = 0.12;</code></td></tr><tr><td>var entero: cantidad</td><td><code>int cantidad;</code></td></tr><tr><td>var real: precio</td><td><code>double precio;</code></td></tr><tr><td>var caracter: tipo</td><td><code>char tipo;</code></td></tr><tr><td>var cadena: nombre</td><td><code>string nombre;</code> (con <code>#include &lt;string&gt;</code>)</td></tr><tr><td>var logico: pagado</td><td><code>bool pagado;</code></td></tr><tr><td>leer(precio)</td><td><code>cin &gt;&gt; precio;</code></td></tr><tr><td>escribir(total)</td><td><code>cout &lt;&lt; total &lt;&lt; endl;</code></td></tr><tr><td>total ← precio * cantidad</td><td><code>total = precio * cantidad;</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Tipos de datos simples",
+     "e": [
+      "El tipo define qué valores puede guardar una variable, cuánta memoria ocupa y qué operaciones admite. Los tamaños de la tabla son los usuales en compiladores de 32 y 64 bits (gcc, MinGW, Visual C++); el estándar solo fija mínimos y se consultan con <code>sizeof</code>.",
+      "Un <code>double</code> no guarda exactamente todos los decimales: 0.1 se representa con un error muy pequeño. Para mostrar quetzales se fija la precisión con <code>fixed</code> y <code>setprecision(2)</code> de <code>&lt;iomanip&gt;</code>."
+     ],
+     "u": [
+      "En cada declaración de variable de un programa.",
+      "Elegir mal el tipo produce resultados truncados (división entera) o fuera de rango.",
+      "Al hacer el análisis: contadores y cantidades en <code>int</code>, montos en <code>double</code>, respuestas sí/no en <code>bool</code>.",
+      "Pregunta para cada dato: ¿tiene decimales?, ¿es un carácter o un texto?, ¿solo puede ser verdadero o falso?"
+     ],
+     "tabla": "<table><thead><tr><th>Tipo</th><th>Tamaño usual</th><th>Ejemplo</th><th>Uso</th></tr></thead><tbody><tr><td><code>int</code></td><td>4 bytes (−2 147 483 648 a 2 147 483 647)</td><td><code>int existencia = 40;</code></td><td>Contadores, cantidades, códigos</td></tr><tr><td><code>double</code></td><td>8 bytes (unas 15 cifras significativas)</td><td><code>double precio = 85.50;</code></td><td>Montos, promedios, medidas</td></tr><tr><td><code>char</code></td><td>1 byte</td><td><code>char categoria = 'A';</code></td><td>Un carácter (código ASCII)</td></tr><tr><td><code>bool</code></td><td>1 byte</td><td><code>bool activo = true;</code></td><td>Condiciones</td></tr><tr><td><code>string</code></td><td>variable</td><td><code>string nit = \"576937-K\";</code></td><td>Textos</td></tr></tbody></table>"
+    },
+    {
+     "n": "Prueba, depuración y documentación",
+     "e": [
+      "<b>Tipos de error.</b> De <b>sintaxis</b>: el compilador lo rechaza (falta un punto y coma o una llave). De <b>ejecución</b>: el programa se detiene o falla al correr (división entre cero, índice fuera del arreglo). <b>Lógico</b>: el programa corre pero da un resultado equivocado; solo se descubre probando.",
+      "<b>Estrategias de prueba:</b> casos normales, valores límite (justo en la frontera de cada condición) y datos inválidos. <b>Depurador</b> (gdb, el de Code::Blocks o Visual Studio): puntos de interrupción, ejecución paso a paso y observación de variables. <b>Documentación interna:</b> comentarios y nombres claros dentro del código; <b>externa:</b> manual técnico y manual de usuario."
+     ],
+     "u": [
+      "En el laboratorio, en el control de calidad de un sistema de la SAT o de una municipalidad y en cualquier cambio a un programa en producción.",
+      "Un error lógico no lo detecta el compilador; si no se prueba, llega al usuario.",
+      "Después de codificar y cada vez que se modifica el programa.",
+      "Diseña una tabla de casos con el resultado esperado, ejecuta, compara y usa el depurador para ver en qué línea cambia el valor equivocado."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Analiza el problema: <i>“Una ferretería de Mixco cobra precios que ya incluyen IVA. Dado el total de una factura, mostrar la base imponible y el IVA (12 %)”.</i> Indica entradas, salidas, proceso y restricciones.",
+     "pasos": [
+      "<b>Entrada:</b> total de la factura (real, en quetzales).",
+      "<b>Salidas:</b> base imponible e IVA (reales, con dos decimales).",
+      "<b>Proceso:</b> como el total incluye el impuesto, total = base × 1.12; entonces \\(\\text{base}=\\dfrac{\\text{total}}{1.12}\\) y \\(\\text{IVA}=\\text{total}-\\text{base}\\).",
+      "<b>Restricción:</b> el total debe ser mayor que 0. Error común: calcular el IVA como total × 0.12, que da el 12 % del total y no el impuesto incluido."
+     ],
+     "r": "Entrada: total. Salidas: base = total / 1.12 e IVA = total − base. Con Q 560.00: base Q 500.00 e IVA Q 60.00.",
+     "fin": "Plantear un problema antes de codificarlo, que es lo primero que pide un examinador."
+    },
+    {
+     "nv": "I",
+     "q": "Escribe en C++ el algoritmo del ejercicio anterior y di qué muestra con un total de 1000.<code>#include &lt;iostream&gt;<br>#include &lt;iomanip&gt;<br>using namespace std;<br>int main() {<br>    const double IVA = 0.12;<br>    double total, base, impuesto;<br>    cout &lt;&lt; \"Total con IVA: \";<br>    cin &gt;&gt; total;<br>    base = total / (1 + IVA);<br>    impuesto = total - base;<br>    cout &lt;&lt; fixed &lt;&lt; setprecision(2);<br>    cout &lt;&lt; \"Base: Q \" &lt;&lt; base &lt;&lt; endl;<br>    cout &lt;&lt; \"IVA: Q \" &lt;&lt; impuesto &lt;&lt; endl;<br>    return 0;<br>}</code>",
+     "pasos": [
+      "<b>Declaraciones.</b> La constante <code>IVA</code> evita escribir 0.12 en varios lugares; las tres variables son <code>double</code> porque son montos.",
+      "<b>Cálculo.</b> base = 1000 / 1.12 = 892.857…; impuesto = 1000 − 892.857… = 107.142…",
+      "<b>Salida.</b> <code>fixed</code> y <code>setprecision(2)</code> redondean a dos decimales al mostrar."
+     ],
+     "r": "<code>Base: Q 892.86</code> e <code>IVA: Q 107.14</code>. Con 560 muestra 500.00 y 60.00.",
+     "fin": "Traducir un análisis a un programa completo con entrada, proceso y salida."
+    },
+    {
+     "nv": "I",
+     "q": "Haz la prueba de escritorio de <code>int a = 5, b = 3;<br>a = a + b;<br>b = a - b;<br>a = a - b;</code> ¿Qué hace el algoritmo?",
+     "pasos": [
+      "Tabla de la traza:<table><thead><tr><th>Instrucción</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>inicio</td><td>5</td><td>3</td></tr><tr><td><code>a = a + b</code></td><td>8</td><td>3</td></tr><tr><td><code>b = a - b</code></td><td>8</td><td>5</td></tr><tr><td><code>a = a - b</code></td><td>3</td><td>5</td></tr></tbody></table>",
+      "Al final <code>a</code> tiene el valor original de <code>b</code> y viceversa."
+     ],
+     "r": "a = 3 y b = 5: intercambia dos enteros sin variable auxiliar.",
+     "fin": "Validar un diseño a mano, que es la técnica de la etapa de validación."
+    },
+    {
+     "nv": "A",
+     "q": "Un programa clasifica notas de 0 a 100 (aprueba con 61 o más) así: <code>if (nota &lt; 0 || nota &gt; 100) cout &lt;&lt; \"Nota invalida\";<br>else if (nota &gt; 61) cout &lt;&lt; \"Aprobado\";<br>else cout &lt;&lt; \"Reprobado\";</code> Diseña los casos de prueba de valores límite y di cuál detecta el error.",
+     "pasos": [
+      "<b>Fronteras:</b> 0 y 100 (rango válido) y 61 (aprobación). Se prueba cada frontera y el valor de cada lado: −1, 0, 60, 61, 100 y 101.",
+      "<b>Resultados esperados:</b> −1 inválida, 0 reprobado, 60 reprobado, 61 aprobado, 100 aprobado, 101 inválida.",
+      "<b>Ejecución:</b> con 61 el programa muestra <i>Reprobado</i>, porque 61 &gt; 61 es falso. Los demás casos coinciden.",
+      "<b>Corrección:</b> cambiar la condición a <code>nota &gt;= 61</code>."
+     ],
+     "r": "El caso 61 detecta el error lógico; la condición correcta es <code>nota &gt;= 61</code>.",
+     "fin": "Ver que los errores lógicos se esconden en las fronteras y que un caso bien elegido los encuentra."
+    },
+    {
+     "nv": "A",
+     "q": "Depura: con a = 70, b = 85 y c = 90 el programa debería mostrar el promedio 81.67, pero muestra 81. <code>int a = 70, b = 85, c = 90;<br>int promedio = (a + b + c) / 3;<br>cout &lt;&lt; promedio;</code>",
+     "pasos": [
+      "<b>Tipo de error:</b> lógico; compila y corre, pero el resultado es incorrecto.",
+      "<b>Causa:</b> 245 / 3 es una división entre enteros y da 81; además <code>promedio</code> es <code>int</code> y no podría guardar decimales.",
+      "<b>Corrección:</b> <code>double promedio = (a + b + c) / 3.0;</code>; ahora <code>cout</code> muestra 81.6667 (6 cifras significativas por defecto) o 81.67 con <code>setprecision(2)</code> y <code>fixed</code>.",
+      "<b>Otro error típico:</b> quitar los paréntesis, <code>a + b + c / 3</code>, calcula 70 + 85 + 30 = 185, porque la división va antes que la suma."
+     ],
+     "r": "Declarar <code>promedio</code> como <code>double</code> y dividir entre 3.0.",
+     "fin": "Reconocer el error lógico más frecuente en los primeros programas en C++."
+    },
+    {
+     "nv": "B",
+     "q": "Analiza: <i>“Calcular el pago semanal de un empleado por horas; las horas arriba de 40 se pagan a 1.5 veces la tarifa”.</i> Indica entradas, salidas, proceso y una restricción.",
+     "r": "Entradas: horas trabajadas y tarifa por hora. Salida: pago semanal. Proceso: si horas ≤ 40, pago = horas × tarifa; si no, pago = 40 × tarifa + (horas − 40) × tarifa × 1.5. Restricciones: horas ≥ 0 y tarifa &gt; 0."
+    },
+    {
+     "nv": "B",
+     "q": "¿En qué etapa se ejecuta el algoritmo a mano con datos conocidos para comprobar que da el resultado correcto antes de codificarlo?",
+     "ops": [
+      "Validación del diseño (prueba de escritorio)",
+      "Análisis del problema",
+      "Depuración con el depurador",
+      "Documentación externa"
+     ],
+     "ok": 0,
+     "r": "La prueba de escritorio valida el diseño antes de escribir código. El análisis define entradas y salidas; la depuración ocurre con el programa ya escrito."
+    },
+    {
+     "nv": "I",
+     "q": "Haz la prueba de escritorio y da los valores finales: <code>int x = 4;<br>int y = x * 2;<br>x = y - x;<br>y = y + x;<br>x = y % x + y / x;</code>",
+     "r": "y = 8; x = 8 − 4 = 4; y = 8 + 4 = 12; x = 12 % 4 + 12 / 4 = 0 + 3 = 3. Valores finales: <b>x = 3, y = 12</b>."
+    },
+    {
+     "nv": "I",
+     "q": "Un programa compila y corre sin detenerse, pero el total de la planilla sale diez veces menor que el correcto. ¿Qué tipo de error es y cómo se localiza mejor?",
+     "ops": [
+      "Error lógico; con casos de prueba de resultado conocido y el depurador (puntos de interrupción y observación de variables)",
+      "Error de sintaxis; leyendo los mensajes del compilador",
+      "Error de ejecución; el sistema operativo indica la línea que falló",
+      "No es un error del programa sino de la documentación externa"
+     ],
+     "ok": 0,
+     "r": "Si compila y termina pero el resultado es incorrecto, el error es lógico. El compilador no lo detecta; se encuentra comparando con resultados esperados y siguiendo las variables en el depurador."
+    },
+    {
+     "nv": "A",
+     "q": "Traduce a declaraciones de C++: <code>Algoritmo Planilla<br>const<br>  BONO = 250<br>  EMPRESA = \"Ferreteria El Martillo\"<br>var<br>  entero: horas<br>  real: tarifa, sueldo<br>  caracter: categoria<br>  logico: activo</code>",
+     "r": "<code>#include &lt;iostream&gt;<br>#include &lt;string&gt;<br>using namespace std;<br>// Algoritmo Planilla<br>const int BONO = 250;<br>const string EMPRESA = \"Ferreteria El Martillo\";<br>int main() {<br>    int horas;<br>    double tarifa, sueldo;<br>    char categoria;<br>    bool activo;<br>    // cuerpo del algoritmo<br>    return 0;<br>}</code><br>Si el bono puede llevar centavos, conviene <code>const double BONO = 250.0;</code>."
+    }
+   ]
+  },
+  {
+   "titulo": "Expresiones, operadores y tipos",
+   "intro": "Semana 5 del programa: expresiones aritméticas, operaciones DIV y MOD, expresiones lógicas, precedencia de operadores, tipos de datos enumerados, operaciones con valores ordinales, subrango y compatibilidad y conversión de tipos, todo con la sintaxis y las reglas de C++.",
+   "conceptos": [
+    {
+     "n": "Expresiones aritméticas, DIV y MOD",
+     "e": [
+      "En C++ no hay operadores <code>div</code> y <code>mod</code>: cuando los dos operandos son enteros, <code>/</code> es la división entera (DIV) y <code>%</code> el residuo (MOD). Si al menos uno es real, <code>/</code> da el cociente con decimales: <code>17 / 5</code> es 3, pero <code>17 / 5.0</code> es 3.4.",
+      "Con negativos, C++ (desde C++11) trunca el cociente hacia cero y el residuo toma el signo del dividendo: <code>-17 / 5</code> es −3 y <code>-17 % 5</code> es −2. El operador <code>%</code> solo se aplica a enteros. Siempre se cumple la identidad de abajo."
+     ],
+     "u": [
+      "Separar los dígitos de un número, convertir segundos a horas y minutos, saber si un número es par, calcular dígitos verificadores como el del NIT.",
+      "Son la base de muchos algoritmos con enteros y una fuente frecuente de errores (división entera sin querer).",
+      "Cuando el problema habla de residuos, ciclos que se repiten (días de la semana), cifras o agrupaciones.",
+      "Usa <code>n % 10</code> para la última cifra, <code>n / 10</code> para quitarla y <code>n % 2 == 0</code> para saber si es par."
+     ],
+     "f": "a = (a\\ \\text{div}\\ b)\\cdot b + (a\\ \\text{mod}\\ b)\\qquad 17=3\\cdot 5+2"
+    },
+    {
+     "n": "Expresiones lógicas y precedencia",
+     "e": [
+      "Una expresión lógica da <code>true</code> o <code>false</code>. Se forma con operadores relacionales (<code>&lt; &lt;= &gt; &gt;= == !=</code>) y lógicos (<code>!</code> negación, <code>&amp;&amp;</code> y, <code>||</code> o). Al mostrar un <code>bool</code>, <code>cout</code> escribe 1 o 0 (o <code>true</code>/<code>false</code> con <code>boolalpha</code>).",
+      "<b>Evaluación en cortocircuito:</b> en <code>A &amp;&amp; B</code>, si A es falso ya no se evalúa B; en <code>A || B</code>, si A es verdadero ya no se evalúa B. Los paréntesis siempre cambian el orden y aclaran la intención."
+     ],
+     "u": [
+      "En toda condición de un <code>if</code> o de un ciclo.",
+      "Un error de precedencia cambia la condición sin que el compilador avise.",
+      "Al escribir condiciones compuestas: rangos, validaciones de datos, reglas de negocio.",
+      "Evalúa de mayor a menor precedencia según la tabla y, ante la duda, pon paréntesis."
+     ],
+     "tabla": "<table><thead><tr><th>Precedencia (de mayor a menor)</th><th>Operadores</th><th>Asociatividad</th></tr></thead><tbody><tr><td>1</td><td><code>()</code></td><td>—</td></tr><tr><td>2</td><td><code>! - (unario) ++ --</code></td><td>derecha a izquierda</td></tr><tr><td>3</td><td><code>* / %</code></td><td>izquierda a derecha</td></tr><tr><td>4</td><td><code>+ -</code></td><td>izquierda a derecha</td></tr><tr><td>5</td><td><code>&lt; &lt;= &gt; &gt;=</code></td><td>izquierda a derecha</td></tr><tr><td>6</td><td><code>== !=</code></td><td>izquierda a derecha</td></tr><tr><td>7</td><td><code>&amp;&amp;</code></td><td>izquierda a derecha</td></tr><tr><td>8</td><td><code>||</code></td><td>izquierda a derecha</td></tr><tr><td>9</td><td><code>= += -= *= /=</code></td><td>derecha a izquierda</td></tr></tbody></table>"
+    },
+    {
+     "n": "Tipos enumerados, ordinales y subrango",
+     "e": [
+      "Un <b>tipo ordinal</b> tiene valores con un orden y un número de posición: <code>int</code>, <code>char</code>, <code>bool</code> y los enumerados. Un <b>enumerado</b> da nombres a esos valores: <code>enum Dia {LUN, MAR, MIE, JUE, VIE, SAB, DOM};</code> asigna LUN = 0, MAR = 1, …, DOM = 6.",
+      "Operaciones ordinales: posición (<code>static_cast&lt;int&gt;(d)</code>), sucesor y predecesor (sumar o restar 1 y convertir de nuevo con <code>static_cast&lt;Dia&gt;</code>) y comparación. Con <code>char</code>, la posición es el código ASCII: <code>'A' + 2</code> es <code>'C'</code>.",
+      "Un <b>subrango</b> (por ejemplo 1..12 para meses, como en Pascal) no existe como tipo en C++: se declara la variable entera y se valida el rango en el programa."
+     ],
+     "u": [
+      "En estados de un trámite (RECIBIDO, EN_REVISION, APROBADO), días de la semana, meses, categorías de empleado.",
+      "Un nombre como <code>APROBADO</code> es más claro que el número 2 y el compilador ayuda a no mezclar valores.",
+      "Cuando una variable solo puede tomar un conjunto pequeño y fijo de valores.",
+      "Declara el <code>enum</code>, usa sus nombres en <code>switch</code> e <code>if</code>, y para avanzar en forma circular usa <code>(d + k) % n</code>."
+     ]
+    },
+    {
+     "n": "Compatibilidad y conversión de tipos",
+     "e": [
+      "<b>Conversión implícita:</b> en una expresión mixta el operando de menor rango se promueve (<code>char</code> → <code>int</code> → <code>double</code>), así <code>7 / 2.0</code> es 3.5. Al asignar un real a un entero se <b>trunca</b> la parte decimal hacia cero: <code>int n = 2.99;</code> guarda 2 (el compilador puede advertir pérdida de datos).",
+      "<b>Conversión explícita:</b> <code>static_cast&lt;double&gt;(suma) / n</code> evita la división entera; <code>static_cast&lt;int&gt;(-7.8)</code> da −7. Entre texto y número se usan funciones: <code>stoi</code>, <code>stod</code> y <code>to_string</code> (sección de cadenas)."
+     ],
+     "u": [
+      "En promedios, porcentajes, conversión de monedas y lectura de datos numéricos desde texto.",
+      "Las conversiones silenciosas producen resultados truncados difíciles de detectar.",
+      "Cada vez que en una expresión se mezclan enteros y reales o se asigna un real a un entero.",
+      "Decide el tipo del resultado y convierte de forma explícita uno de los operandos antes de operar."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Evalúa en C++: <code>17 / 5</code>, <code>17 % 5</code>, <code>17 / 5.0</code>, <code>-17 / 5</code> y <code>-17 % 5</code>.",
+     "pasos": [
+      "Entre enteros, <code>/</code> es DIV: 17 / 5 = 3 y 17 % 5 = 2 (3 × 5 + 2 = 17).",
+      "Con un operando real la división es real: 17 / 5.0 = 3.4.",
+      "Con negativos el cociente se trunca hacia cero: −17 / 5 = −3; el residuo cumple −17 = (−3)(5) + r, así r = −2."
+     ],
+     "r": "3, 2, 3.4, −3 y −2.",
+     "fin": "Dominar DIV y MOD, que aparecen en casi todos los algoritmos con enteros."
+    },
+    {
+     "nv": "I",
+     "q": "Convierte 7384 segundos a horas, minutos y segundos con DIV y MOD. <code>int total = 7384;<br>int horas = total / 3600;<br>int resto = total % 3600;<br>int minutos = resto / 60;<br>int segundos = resto % 60;<br>cout &lt;&lt; horas &lt;&lt; \":\" &lt;&lt; minutos &lt;&lt; \":\" &lt;&lt; segundos;</code>",
+     "pasos": [
+      "horas = 7384 / 3600 = 2; resto = 7384 % 3600 = 184.",
+      "minutos = 184 / 60 = 3; segundos = 184 % 60 = 4.",
+      "La salida es <code>2:3:4</code>; para verla como 2:03:04 se usa <code>setw(2)</code> y <code>setfill('0')</code> de <code>&lt;iomanip&gt;</code> antes de minutos y segundos."
+     ],
+     "r": "2 h, 3 min y 4 s; el programa muestra <code>2:3:4</code>.",
+     "fin": "Descomponer una cantidad en unidades mayores, patrón que sirve para dinero, tiempo y medidas."
+    },
+    {
+     "nv": "I",
+     "q": "Con <code>int a = 5, b = 3, c = 8;</code> ¿qué muestra <code>cout &lt;&lt; (a + b &gt; c || a * 2 == c + 2 &amp;&amp; !(b &gt; a));</code>?",
+     "pasos": [
+      "Primero la aritmética: a + b = 8, a * 2 = 10 y c + 2 = 10.",
+      "Relacionales: 8 &gt; 8 es falso; 10 == 10 es verdadero; b &gt; a es falso, así <code>!(b &gt; a)</code> es verdadero.",
+      "<code>&amp;&amp;</code> tiene más precedencia que <code>||</code>: verdadero &amp;&amp; verdadero = verdadero; luego falso || verdadero = verdadero.",
+      "<code>cout</code> muestra un <code>bool</code> verdadero como 1."
+     ],
+     "r": "Muestra <code>1</code> (verdadero).",
+     "fin": "Evaluar condiciones compuestas en el orden en que lo hace el compilador."
+    },
+    {
+     "nv": "A",
+     "q": "Con <code>enum Dia {LUN, MAR, MIE, JUE, VIE, SAB, DOM};</code> y <code>Dia hoy = JUE;</code>, calcula qué día será dentro de 10 días y cuál es el predecesor circular de LUN. <code>Dia futuro = static_cast&lt;Dia&gt;((hoy + 10) % 7);<br>Dia antes = static_cast&lt;Dia&gt;((LUN + 6) % 7);<br>cout &lt;&lt; hoy &lt;&lt; \" \" &lt;&lt; futuro &lt;&lt; \" \" &lt;&lt; antes;</code>",
+     "pasos": [
+      "Valores ordinales: LUN = 0, …, JUE = 3, …, DOM = 6.",
+      "(3 + 10) % 7 = 13 % 7 = 6, que es DOM. El <code>static_cast</code> es necesario porque el resultado de la suma es <code>int</code> y C++ no lo convierte solo a <code>Dia</code>.",
+      "Predecesor circular: restar 1 en un ciclo de 7 equivale a sumar 6; (0 + 6) % 7 = 6, DOM. Sumar 6 evita el residuo negativo que daría (0 − 1) % 7 = −1.",
+      "<code>cout</code> muestra los enumerados como su número."
+     ],
+     "r": "Salida <code>3 6 6</code>: dentro de 10 días es domingo y el día anterior al lunes es domingo.",
+     "fin": "Combinar valores ordinales con MOD para recorrer ciclos (días, turnos, meses)."
+    },
+    {
+     "nv": "A",
+     "q": "El dígito verificador del NIT se calcula con módulo 11: se multiplica cada dígito, de derecha a izquierda, por 2, 3, 4, …; se suma; el verificador es (11 − suma mod 11) mod 11, y si da 10 se escribe K. Calcula el verificador de 576937 y completa la función. <code>char digitoNIT(int numero) {<br>    int suma = 0, peso = 2;<br>    while (numero &gt; 0) {<br>        suma += (numero % 10) * peso;<br>        numero /= 10;<br>        peso++;<br>    }<br>    int d = (11 - suma % 11) % 11;<br>    if (d == 10) return 'K';<br>    return static_cast&lt;char&gt;('0' + d);<br>}</code>",
+     "pasos": [
+      "Dígitos de derecha a izquierda con su peso: 7×2 = 14, 3×3 = 9, 9×4 = 36, 6×5 = 30, 7×6 = 42, 5×7 = 35.",
+      "Suma = 166; 166 % 11 = 1 (11 × 15 = 165).",
+      "d = (11 − 1) % 11 = 10, así que el verificador es <b>K</b>.",
+      "<code>numero % 10</code> toma la última cifra y <code>numero /= 10</code> la elimina; <code>'0' + d</code> convierte el dígito en su carácter."
+     ],
+     "r": "576937-K. Con 1234567 la suma es 112 y el verificador es 9.",
+     "fin": "Aplicar MOD en una validación real que usan los sistemas de facturación en Guatemala."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué valor guarda <code>int x = 7 + 3 * 4 % 5 - 10 / 4;</code>?",
+     "r": "<code>*</code>, <code>%</code> y <code>/</code> van antes y de izquierda a derecha: 3 * 4 = 12, 12 % 5 = 2, 10 / 4 = 2. Luego 7 + 2 − 2 = <b>7</b>."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué muestra <code>double p = 7 / 2; cout &lt;&lt; p;</code>?",
+     "ops": [
+      "3.5",
+      "4",
+      "3",
+      "Error de compilación"
+     ],
+     "ok": 2,
+     "r": "7 / 2 se evalúa entre enteros antes de asignar y da 3; luego se convierte a 3.0 y <code>cout</code> lo muestra como 3. Para obtener 3.5 hay que escribir <code>7 / 2.0</code> o <code>static_cast&lt;double&gt;(7) / 2</code>."
+    },
+    {
+     "nv": "I",
+     "q": "Con <code>int n = 5093;</code> escribe las expresiones que obtienen cada dígito y calcula la suma de dígitos.",
+     "r": "Millares <code>n / 1000</code> = 5; centenas <code>n / 100 % 10</code> = 0; decenas <code>n / 10 % 10</code> = 9; unidades <code>n % 10</code> = 3. Suma = <b>17</b>."
+    },
+    {
+     "nv": "A",
+     "q": "Con <code>int n = 0;</code> se evalúa <code>if (n != 0 &amp;&amp; total / n &gt; 100)</code>. ¿Qué ocurre?",
+     "ops": [
+      "La condición es falsa y no se divide entre cero, porque <code>&amp;&amp;</code> no evalúa la segunda parte si la primera es falsa",
+      "El programa falla por división entre cero",
+      "La condición es verdadera porque total / 0 es infinito",
+      "El compilador rechaza la expresión"
+     ],
+     "ok": 0,
+     "r": "Por la evaluación en cortocircuito, <code>n != 0</code> es falso y la división nunca se ejecuta. Por eso la validación va a la izquierda del <code>&amp;&amp;</code>."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué muestra <code>cout &lt;&lt; static_cast&lt;int&gt;(-7.8) &lt;&lt; \" \" &lt;&lt; -7 / 2 &lt;&lt; \" \" &lt;&lt; -7 % 2 &lt;&lt; \" \" &lt;&lt; 7 % -2;</code>?",
+     "r": "<code>-7 -3 -1 1</code>. La conversión trunca hacia cero (−7.8 → −7), el cociente entero también (−3.5 → −3) y el residuo lleva el signo del dividendo: −7 % 2 = −1 y 7 % −2 = 1."
+    }
+   ]
+  },
+  {
+   "titulo": "Estructuras selectivas y repetitivas",
+   "intro": "Semana 7 del programa: estructuras básicas, selectiva simple, doble, anidada y múltiple, y estructuras repetitivas (ciclos Mientras, Desde, Repetir y Para), con conteo de iteraciones para analizar cuánto trabajo hace un algoritmo.",
+   "conceptos": [
+    {
+     "n": "Selectivas simple, doble y anidada",
+     "e": [
+      "La <b>simple</b> ejecuta un bloque solo si la condición es verdadera (<code>if</code>). La <b>doble</b> elige entre dos bloques (<code>if … else</code>). La <b>anidada</b> pone una selectiva dentro de otra; la forma <code>else if</code> revisa condiciones en orden y ejecuta solo la primera verdadera.",
+      "Con varias llaves, cada <code>else</code> pertenece al <code>if</code> más cercano que no tenga <code>else</code>; usar llaves en todos los bloques evita confusiones. Un error clásico es escribir <code>if (x = 5)</code> (asignación, siempre verdadera) en lugar de <code>if (x == 5)</code>."
+     ],
+     "u": [
+      "En tablas de descuentos, clasificación de notas, cálculo por rangos de consumo de agua o energía.",
+      "Permiten que el algoritmo tome decisiones según los datos.",
+      "Cuando el resultado depende de una o más condiciones.",
+      "Ordena las condiciones de rango de mayor a menor (o al revés) para que cada <code>else if</code> solo revise lo que falta."
+     ],
+     "tabla": "<table><thead><tr><th>Pseudocódigo</th><th>C++</th></tr></thead><tbody><tr><td>si C entonces … fin_si</td><td><code>if (C) { ... }</code></td></tr><tr><td>si C entonces … sino … fin_si</td><td><code>if (C) { ... } else { ... }</code></td></tr><tr><td>si C1 … sino si C2 … sino …</td><td><code>if (C1) { ... } else if (C2) { ... } else { ... }</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Selectiva múltiple",
+     "e": [
+      "<code>switch</code> compara una expresión entera, <code>char</code> o enumerada con constantes (<code>case</code>). Se ejecuta desde el <code>case</code> que coincide <b>hasta encontrar un <code>break</code></b>; si falta, la ejecución “cae” al siguiente caso. <code>default</code> se ejecuta si ningún caso coincide.",
+      "No sirve para rangos ni para <code>double</code> o <code>string</code>; en esos casos se usa <code>else if</code>."
+     ],
+     "u": [
+      "En menús de opciones de un programa de consola, códigos de departamento, días de la semana.",
+      "Es más legible que una cadena larga de <code>else if</code> cuando se compara un solo valor.",
+      "Cuando la decisión depende de un valor discreto con pocas opciones fijas.",
+      "Escribe un <code>case</code> por valor, termina cada uno con <code>break</code> y agrega <code>default</code> para valores no válidos."
+     ]
+    },
+    {
+     "n": "Ciclos Mientras, Repetir, Desde y Para",
+     "e": [
+      "<b>Mientras</b> (<code>while</code>) evalúa la condición antes de cada vuelta: puede ejecutarse 0 veces. <b>Repetir … hasta que C</b> evalúa al final y se ejecuta al menos una vez; en C++ es <code>do { … } while (!C);</code> porque <code>do-while</code> repite <i>mientras</i> la condición sea verdadera. <b>Desde</b> y <b>Para</b> son el mismo ciclo controlado por contador (los autores usan uno u otro nombre) y en C++ se escriben con <code>for</code>.",
+      "Partes de un ciclo: inicialización, condición, cuerpo y actualización. Si la actualización no acerca la condición a falso, el ciclo es infinito. <b>Contador:</b> variable que aumenta en una cantidad fija; <b>acumulador:</b> variable que suma valores variables."
+     ],
+     "u": [
+      "En lectura de datos hasta un centinela, recorrido de arreglos, cálculo de totales de planilla, menús que se repiten.",
+      "Casi todo algoritmo útil repite pasos; elegir bien el ciclo simplifica el código.",
+      "<code>for</code> si se conoce el número de vueltas; <code>while</code> si depende de una condición; <code>do-while</code> si debe ejecutarse al menos una vez (validar una entrada, mostrar un menú).",
+      "Identifica las cuatro partes del ciclo y haz la prueba de escritorio de las primeras y la última vuelta."
+     ],
+     "tabla": "<table><thead><tr><th>Ciclo</th><th>Evalúa</th><th>Mínimo de vueltas</th><th>C++</th></tr></thead><tbody><tr><td>Mientras</td><td>Antes</td><td>0</td><td><code>while (C) { ... }</code></td></tr><tr><td>Repetir … hasta que C</td><td>Después</td><td>1</td><td><code>do { ... } while (!C);</code></td></tr><tr><td>Desde / Para</td><td>Antes</td><td>0</td><td><code>for (i = a; i &lt;= b; i++) { ... }</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Conteo de iteraciones y operaciones",
+     "e": [
+      "Para analizar un algoritmo se cuenta cuántas veces se ejecuta la instrucción principal. Un <code>for (i = a; i &lt;= b; i += p)</code> con a ≤ b da las vueltas de la fórmula. Dos ciclos anidados independientes de n vueltas ejecutan el cuerpo n·n veces; si el interno empieza en i, el total es la suma 1 + 2 + … + n.",
+      "Así se compara el costo de dos soluciones al mismo problema sin ejecutarlas: un algoritmo con n² operaciones crece mucho más rápido que uno con n."
+     ],
+     "u": [
+      "En la comparación de algoritmos de búsqueda y ordenamiento, y al estimar el tiempo de un proceso por lotes.",
+      "Un ciclo anidado de más sobre 100 000 registros puede volver lento un sistema que funcionaba con 100.",
+      "Al diseñar el algoritmo y al responder en el privado cuántas veces se ejecuta una línea.",
+      "Cuenta vueltas del ciclo interno para cada valor del externo y suma."
+     ],
+     "f": "\\text{vueltas}=\\left\\lfloor\\frac{b-a}{p}\\right\\rfloor+1\\qquad\\sum_{i=1}^{n} i=\\frac{n(n+1)}{2}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Una tienda da 10 % de descuento en compras de Q 1000 o más y 5 % desde Q 500. Traza el programa con monto = 750. <code>double monto = 750, desc;<br>if (monto &gt;= 1000)<br>    desc = monto * 0.10;<br>else if (monto &gt;= 500)<br>    desc = monto * 0.05;<br>else<br>    desc = 0;<br>cout &lt;&lt; desc &lt;&lt; \" \" &lt;&lt; monto - desc;</code>",
+     "pasos": [
+      "750 &gt;= 1000 es falso: pasa al <code>else if</code>.",
+      "750 &gt;= 500 es verdadero: desc = 750 × 0.05 = 37.5; el último <code>else</code> ya no se revisa.",
+      "Se muestra el descuento y el total a pagar: 750 − 37.5 = 712.5."
+     ],
+     "r": "<code>37.5 712.5</code>. Con 1000 muestra <code>100 900</code> y con 499.99 muestra <code>0 499.99</code>.",
+     "fin": "Implementar una tabla de rangos con selectivas anidadas en el orden correcto."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué muestra este <code>switch</code> para opcion = 1, 2, 3 y 7? <code>switch (opcion) {<br>    case 1: cout &lt;&lt; \"A\";<br>    case 2: cout &lt;&lt; \"B\"; break;<br>    case 3: cout &lt;&lt; \"C\";<br>    default: cout &lt;&lt; \"D\";<br>}</code>",
+     "pasos": [
+      "<b>opcion = 1:</b> muestra A y, como no hay <code>break</code>, cae al caso 2: muestra B y se detiene en su <code>break</code>.",
+      "<b>opcion = 2:</b> muestra B y sale.",
+      "<b>opcion = 3:</b> muestra C y cae al <code>default</code>: muestra D.",
+      "<b>opcion = 7:</b> ningún caso coincide; se ejecuta <code>default</code>: D."
+     ],
+     "r": "1 → AB, 2 → B, 3 → CD, 7 → D.",
+     "fin": "Detectar el error de omitir <code>break</code>, uno de los más preguntados."
+    },
+    {
+     "nv": "I",
+     "q": "Haz la prueba de escritorio del algoritmo que suma los dígitos de 4721. <code>int n = 4721, suma = 0, d;<br>while (n &gt; 0) {<br>    d = n % 10;<br>    suma = suma + d;<br>    n = n / 10;<br>}<br>cout &lt;&lt; suma;</code>",
+     "pasos": [
+      "Traza:<table><thead><tr><th>Vuelta</th><th>d</th><th>suma</th><th>n</th></tr></thead><tbody><tr><td>inicio</td><td>—</td><td>0</td><td>4721</td></tr><tr><td>1</td><td>1</td><td>1</td><td>472</td></tr><tr><td>2</td><td>2</td><td>3</td><td>47</td></tr><tr><td>3</td><td>7</td><td>10</td><td>4</td></tr><tr><td>4</td><td>4</td><td>14</td><td>0</td></tr></tbody></table>",
+      "Después de la vuelta 4, n = 0 y la condición <code>n &gt; 0</code> es falsa: el ciclo termina.",
+      "El número de vueltas es igual al número de dígitos."
+     ],
+     "r": "Muestra 14 después de 4 vueltas.",
+     "fin": "Trazar un ciclo <code>while</code> con contador implícito y acumulador."
+    },
+    {
+     "nv": "A",
+     "q": "Aplica el algoritmo de Euclides para el MCD de 1071 y 462, cuenta las iteraciones y obtén el MCM. <code>int a = 1071, b = 462, r;<br>while (b != 0) {<br>    r = a % b;<br>    a = b;<br>    b = r;<br>}<br>cout &lt;&lt; a;</code>",
+     "pasos": [
+      "Traza:<table><thead><tr><th>Vuelta</th><th>r = a % b</th><th>a</th><th>b</th></tr></thead><tbody><tr><td>inicio</td><td>—</td><td>1071</td><td>462</td></tr><tr><td>1</td><td>147</td><td>462</td><td>147</td></tr><tr><td>2</td><td>21</td><td>147</td><td>21</td></tr><tr><td>3</td><td>0</td><td>21</td><td>0</td></tr></tbody></table>",
+      "Con b = 0 el ciclo termina y <code>a</code> contiene el MCD: 21, en 3 iteraciones.",
+      "MCM: \\(\\dfrac{1071\\cdot 462}{21}=23\\,562\\).",
+      "La resta repetida necesitaría muchas más vueltas; usar MOD reduce el trabajo de forma drástica."
+     ],
+     "r": "MCD = 21 en 3 iteraciones; MCM = 23 562.",
+     "fin": "Ver un algoritmo clásico cuyo diseño (residuo en lugar de resta) reduce el número de operaciones."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuántas veces se ejecuta <code>cont++</code> con n = 5? ¿Y con n = 100? <code>int cont = 0;<br>for (int i = 1; i &lt;= n; i++)<br>    for (int j = i; j &lt;= n; j++)<br>        cont++;</code>",
+     "pasos": [
+      "Para cada i, el ciclo interno da n − i + 1 vueltas: con n = 5 son 5, 4, 3, 2 y 1.",
+      "Total: \\(5+4+3+2+1=15=\\dfrac{5\\cdot 6}{2}\\).",
+      "En general \\(\\dfrac{n(n+1)}{2}\\); con n = 100 son 5050 ejecuciones."
+     ],
+     "r": "15 con n = 5 y 5050 con n = 100: el costo crece en proporción a n².",
+     "fin": "Contar operaciones de ciclos anidados, la base del análisis de algoritmos."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué muestra <code>for (int i = 10; i &gt; 0; i -= 3) cout &lt;&lt; i &lt;&lt; \" \";</code> y cuántas vueltas da?",
+     "r": "<code>10 7 4 1</code> en 4 vueltas; al llegar a −2 la condición es falsa."
+    },
+    {
+     "nv": "B",
+     "q": "Para mostrar un menú y leer la opción del usuario al menos una vez, repitiendo mientras la opción no sea válida, el ciclo más adecuado es:",
+     "ops": [
+      "while",
+      "for",
+      "do-while",
+      "switch"
+     ],
+     "ok": 2,
+     "r": "<code>do-while</code> evalúa la condición al final, así el cuerpo se ejecuta al menos una vez. <code>while</code> y <code>for</code> pueden ejecutarse cero veces y <code>switch</code> no es un ciclo."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuántas vueltas da <code>int k = 1; while (k &lt; 100) k = k * 3;</code> y cuánto vale k al final?",
+     "r": "5 vueltas: k pasa por 3, 9, 27, 81 y 243; con 243 la condición es falsa. Valor final <b>k = 243</b>."
+    },
+    {
+     "nv": "A",
+     "q": "Completa la condición para contar cuántos números de 1 a n son múltiplos de 3 o de 5 y da el resultado con n = 20. <code>int cuenta = 0;<br>for (int i = 1; i &lt;= n; i++)<br>    if ( ________ )<br>        cuenta++;</code>",
+     "r": "<code>i % 3 == 0 || i % 5 == 0</code>. Con n = 20 los múltiplos son 3, 5, 6, 9, 10, 12, 15, 18 y 20: <b>cuenta = 9</b>."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la traducción correcta a C++ del pseudocódigo <i>repetir … hasta que x &gt; 10</i>?",
+     "ops": [
+      "<code>do { ... } while (x &gt; 10);</code>",
+      "<code>while (x &gt; 10) { ... }</code>",
+      "<code>for (; x &gt; 10; ) { ... }</code>",
+      "<code>do { ... } while (x &lt;= 10);</code>"
+     ],
+     "ok": 3,
+     "r": "<i>Repetir hasta que</i> termina cuando la condición se vuelve verdadera; <code>do-while</code> continúa mientras su condición sea verdadera, por eso se niega: x ≤ 10. Las opciones con <code>while</code> o <code>for</code> evalúan al inicio."
+    }
+   ]
+  },
+  {
+   "titulo": "Diseño descendente, subprogramas y recursividad",
+   "intro": "Semana 8 del programa: diseño descendente y modularización, refinamiento de soluciones, algoritmo principal y subalgoritmos, ámbito de validez, procedimientos y funciones con sus llamadas, parámetros y tipos de parámetros, y recursividad (que el indicador de logro de la semana 5 ya anuncia).",
+   "conceptos": [
+    {
+     "n": "Diseño descendente y refinamiento sucesivo",
+     "e": [
+      "El <b>diseño descendente</b> (top-down) divide un problema grande en subproblemas más simples, y estos en otros, hasta que cada uno se resuelve con pocas instrucciones. Cada refinamiento agrega detalle sin perder la visión general. El resultado es un <b>algoritmo principal</b> que llama a <b>subalgoritmos</b> (módulos).",
+      "Ejemplo de refinamiento para una planilla:<ul><li>Nivel 1: procesar planilla.</li><li>Nivel 2: leer empleados → calcular sueldos → imprimir reporte.</li><li>Nivel 3 (calcular sueldo): sueldo base + horas extra + bono − descuentos.</li></ul>"
+     ],
+     "u": [
+      "En el diseño de cualquier sistema: módulos de facturación, inventario y reportes.",
+      "Los módulos se prueban por separado, se reutilizan y los puede escribir otra persona.",
+      "Cuando el algoritmo pasa de unas 20 o 30 líneas o cuando una tarea se repite en varios lugares.",
+      "Escribe el algoritmo principal con llamadas a módulos aún no escritos y luego refina cada módulo."
+     ]
+    },
+    {
+     "n": "Procedimientos, funciones y ámbito",
+     "e": [
+      "Una <b>función</b> devuelve un valor con <code>return</code> y se usa dentro de una expresión. Un <b>procedimiento</b> realiza una acción y no devuelve valor; en C++ es una función <code>void</code>. Si la función se define después de <code>main</code>, se declara antes su <b>prototipo</b>: <code>double conIva(double p);</code>.",
+      "<b>Ámbito:</b> una variable <b>local</b> existe solo dentro del bloque donde se declara y se crea de nuevo en cada llamada; una <b>global</b> se declara fuera de toda función y la ven todas. Si una local tiene el mismo nombre que una global, la oculta dentro de su bloque. Se prefieren locales y parámetros: las globales hacen difícil saber quién cambió un valor."
+     ],
+     "u": [
+      "En bibliotecas de cálculo (IVA, intereses), validaciones reutilizables y cada módulo del diseño descendente.",
+      "Separar el cálculo de la entrada y salida permite probar el cálculo solo.",
+      "Función si el módulo produce un único resultado; procedimiento si imprime, lee o modifica varios datos.",
+      "Define la firma (tipo de retorno, nombre y parámetros), escribe el cuerpo y llama la función con argumentos del tipo correcto."
+     ]
+    },
+    {
+     "n": "Parámetros por valor y por referencia",
+     "e": [
+      "<b>Por valor</b> (<code>int a</code>): la función recibe una copia; los cambios no afectan al argumento. <b>Por referencia</b> (<code>int &amp;a</code>): la función trabaja sobre la variable original; sirve para devolver varios resultados. <b>Referencia constante</b> (<code>const string &amp;s</code>): evita copiar datos grandes sin permitir cambiarlos.",
+      "Los arreglos se pasan siempre sin copiarse (se pasa su dirección), así que la función puede modificarlos; por eso se acompaña con su tamaño: <code>void llenar(int v[], int n)</code>."
+     ],
+     "u": [
+      "En funciones como <code>intercambiar(a, b)</code>, <code>dividir(a, b, cociente, residuo)</code> o una función que lee los datos de un empleado.",
+      "Elegir mal el tipo de parámetro hace que los cambios se pierdan o que se modifiquen datos que no debían cambiar.",
+      "Por valor para entradas simples; por referencia cuando la función debe modificar o devolver varios datos.",
+      "Pregunta: ¿la función necesita cambiar la variable del que llama? Si sí, usa <code>&amp;</code>."
+     ]
+    },
+    {
+     "n": "Recursividad",
+     "e": [
+      "Una función es <b>recursiva</b> si se llama a sí misma. Necesita un <b>caso base</b>, que se resuelve sin recursión, y un <b>caso recursivo</b>, que acerca el problema al caso base. Cada llamada ocupa un espacio en la <b>pila de llamadas</b> con sus variables locales; sin caso base la pila se desborda.",
+      "Fibonacci recursivo sin memoria repite cálculos: el número de llamadas C(n) crece casi tan rápido como el propio Fibonacci. La versión con ciclo hace solo n vueltas. Diseñar recursivamente es natural; analizar el costo evita sorpresas."
+     ],
+     "u": [
+      "En recorridos de carpetas, árboles de menús, el algoritmo de Euclides, potencias y algoritmos de ordenamiento como quicksort.",
+      "Algunos problemas se describen de forma recursiva y su código queda corto y claro.",
+      "Cuando el problema se puede expresar con una versión más pequeña de sí mismo.",
+      "Escribe primero el caso base, luego el recursivo, y haz la traza de las llamadas en forma de pila."
+     ],
+     "f": "C(0)=C(1)=1,\\qquad C(n)=C(n-1)+C(n-2)+1"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué muestra el programa? <code>double conIva(double p) {<br>    return p * 1.12;<br>}<br>int main() {<br>    cout &lt;&lt; conIva(250);<br>    return 0;<br>}</code>",
+     "pasos": [
+      "La llamada <code>conIva(250)</code> copia 250 en el parámetro <code>p</code>.",
+      "La función calcula 250 × 1.12 = 280 y lo devuelve con <code>return</code>.",
+      "El valor devuelto sustituye a la llamada dentro de <code>cout</code>."
+     ],
+     "r": "Muestra <code>280</code>.",
+     "fin": "Entender el flujo de una llamada a función: argumento, cálculo y valor devuelto."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué muestra? <code>void f(int a, int &amp;b) {<br>    a = a + 10;<br>    b = b + 10;<br>}<br>int main() {<br>    int x = 1, y = 2;<br>    f(x, y);<br>    cout &lt;&lt; x &lt;&lt; \" \" &lt;&lt; y;<br>}</code>",
+     "pasos": [
+      "<code>a</code> es por valor: recibe una copia de x (1) y la cambia a 11, pero x sigue en 1.",
+      "<code>b</code> es por referencia: es otro nombre de y; b = 2 + 10 cambia y a 12.",
+      "Al volver a <code>main</code> la copia <code>a</code> desaparece."
+     ],
+     "r": "<code>1 12</code>.",
+     "fin": "Distinguir paso por valor y por referencia, pregunta segura en el privado."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué muestra? <code>int n = 5;<br>void g() {<br>    int n = 2;<br>    n++;<br>    cout &lt;&lt; n &lt;&lt; \" \";<br>}<br>int main() {<br>    g();<br>    cout &lt;&lt; n &lt;&lt; \" \";<br>    n++;<br>    g();<br>    cout &lt;&lt; n;<br>}</code>",
+     "pasos": [
+      "Dentro de <code>g</code>, la local <code>n</code> oculta a la global; vale 2, sube a 3 y se muestra 3.",
+      "En <code>main</code> se usa la global: muestra 5 y luego la sube a 6.",
+      "La segunda llamada crea una local nueva: otra vez 2 → 3. Al final se muestra la global, 6."
+     ],
+     "r": "<code>3 5 3 6</code>.",
+     "fin": "Aplicar las reglas de ámbito y ver por qué las globales confunden."
+    },
+    {
+     "nv": "A",
+     "q": "Traza la función recursiva con n = 3527 y cuenta las llamadas. <code>int sumaDig(int n) {<br>    if (n &lt; 10) return n;<br>    return n % 10 + sumaDig(n / 10);<br>}</code>",
+     "pasos": [
+      "Llamadas (bajando por la pila): sumaDig(3527) → sumaDig(352) → sumaDig(35) → sumaDig(3).",
+      "Caso base: sumaDig(3) devuelve 3.",
+      "Retornos (subiendo): sumaDig(35) = 5 + 3 = 8; sumaDig(352) = 2 + 8 = 10; sumaDig(3527) = 7 + 10 = 17.",
+      "Hay una llamada por dígito: 4 llamadas."
+     ],
+     "r": "Devuelve 17 con 4 llamadas.",
+     "fin": "Seguir la pila de llamadas de una recursión, primero bajando y luego subiendo."
+    },
+    {
+     "nv": "A",
+     "q": "Con <code>int fib(int n) { if (n &lt; 2) return n; return fib(n - 1) + fib(n - 2); }</code> ¿cuánto vale fib(6) y cuántas llamadas se hacen?",
+     "pasos": [
+      "Llamadas: C(0) = C(1) = 1 y C(n) = C(n − 1) + C(n − 2) + 1.",
+      "C(2) = 3, C(3) = 5, C(4) = 9, C(5) = 15, C(6) = 25.",
+      "Valores: fib(2) = 1, fib(3) = 2, fib(4) = 3, fib(5) = 5, fib(6) = 8.",
+      "fib(10) ya necesita 177 llamadas; un ciclo con dos variables calcula lo mismo en n vueltas."
+     ],
+     "r": "fib(6) = 8 con 25 llamadas.",
+     "fin": "Analizar el costo de un diseño recursivo y saber cuándo conviene un ciclo."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué muestra? <code>int doble(int n) {<br>    n = n * 2;<br>    return n;<br>}<br>int main() {<br>    int a = 4;<br>    int b = doble(a);<br>    cout &lt;&lt; a &lt;&lt; \" \" &lt;&lt; b;<br>}</code>",
+     "r": "<code>4 8</code>: <code>n</code> es una copia; la función devuelve 8 pero <code>a</code> sigue en 4."
+    },
+    {
+     "nv": "I",
+     "q": "Necesitas un subprograma que reciba dos enteros y entregue al que llama el cociente y el residuo. ¿Qué firma es la adecuada?",
+     "ops": [
+      "<code>int dividir(int a, int b, int c, int r)</code>",
+      "<code>void dividir(int &amp;a, int &amp;b, int c, int r)</code>",
+      "<code>void dividir(int a, int b, int &amp;c, int &amp;r)</code>",
+      "<code>int dividir(int a, int b)</code>"
+     ],
+     "ok": 2,
+     "r": "Para devolver dos resultados se pasan por referencia los parámetros de salida (<code>c</code> y <code>r</code>); los datos de entrada van por valor. Con <code>return</code> solo se devuelve un valor."
+    },
+    {
+     "nv": "I",
+     "q": "Con <code>int f(int n) { if (n == 0) return 0; return n + f(n - 1); }</code> ¿cuánto vale f(6) y cuántas llamadas se hacen?",
+     "r": "f(6) = 6 + 5 + 4 + 3 + 2 + 1 + 0 = <b>21</b>, con <b>7 llamadas</b> (de f(6) a f(0))."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué le pasa a <code>int fact(int n) { return n * fact(n - 1); }</code> al llamar fact(4)?",
+     "ops": [
+      "Devuelve 24",
+      "Devuelve 0 porque llega a multiplicar por 0",
+      "Error de sintaxis",
+      "Se llama sin fin porque no tiene caso base, hasta desbordar la pila"
+     ],
+     "ok": 3,
+     "r": "Sin <code>if (n &lt;= 1) return 1;</code> no hay condición de parada: las llamadas siguen con n negativos y la pila de llamadas se agota. Compila sin error; falla al ejecutar."
+    },
+    {
+     "nv": "A",
+     "q": "Traza <code>int mcd(int a, int b) { if (b == 0) return a; return mcd(b, a % b); }</code> con mcd(252, 105).",
+     "r": "mcd(252, 105) → mcd(105, 42) → mcd(42, 21) → mcd(21, 0) = 21. Son <b>4 llamadas</b> y el resultado es <b>21</b>."
+    }
+   ]
+  },
+  {
+   "titulo": "Arreglos: vectores y matrices",
+   "intro": "Semana 9 del programa: arreglos estáticos, vectores, matrices, arreglos de múltiples dimensiones, arreglos paralelos, arreglos dinámicos e inicialización de arreglos. Se agregan la búsqueda secuencial y binaria y el ordenamiento por burbuja como aplicación clásica de los arreglos, con su conteo de comparaciones. El manejo de memoria dinámica con punteros corresponde a Programación I y las estructuras de datos a Programación III.",
+   "conceptos": [
+    {
+     "n": "Vectores estáticos",
+     "e": [
+      "Un arreglo guarda n elementos del mismo tipo en posiciones contiguas de memoria; se accede con un índice de 0 a n − 1. El tamaño de un arreglo estático debe ser una constante: <code>const int N = 12; double ventas[N];</code>.",
+      "<b>Inicialización:</b> <code>int v[5] = {3, 1};</code> deja 3, 1, 0, 0, 0 (los no indicados quedan en 0); sin inicializador, un arreglo local contiene basura. C++ no revisa los índices: <code>v[5]</code> en un arreglo de 5 escribe fuera de él sin avisar (error de ejecución o dato corrupto)."
+     ],
+     "u": [
+      "En ventas por mes, notas de un curso, lecturas de un sensor.",
+      "Un solo nombre y un índice reemplazan decenas de variables sueltas y permiten usar ciclos.",
+      "Cuando se procesa un conjunto de datos del mismo tipo de tamaño conocido.",
+      "Declara el tamaño con una constante, recorre con <code>for (int i = 0; i &lt; N; i++)</code> y nunca uses <code>&lt;=</code> N."
+     ],
+     "f": "\\text{dir}(v[i])=\\text{base}+i\\cdot t"
+    },
+    {
+     "n": "Matrices y arreglos de varias dimensiones",
+     "e": [
+      "Una matriz <code>int m[F][C]</code> tiene F filas y C columnas; <code>m[i][j]</code> es la fila i, columna j. C++ la guarda <b>por filas</b>: primero toda la fila 0, luego la fila 1, etc. De ahí la fórmula de dirección, donde t es el tamaño del tipo en bytes.",
+      "Se recorre con dos ciclos anidados: el externo por filas y el interno por columnas. Un arreglo de tres dimensiones, como <code>ventas[sucursal][mes][producto]</code>, agrega un tercer índice y otro ciclo."
+     ],
+     "u": [
+      "En tablas de ventas por sucursal y trimestre, horarios, tableros de juegos, imágenes.",
+      "Representan datos que naturalmente tienen dos o más índices.",
+      "Cuando cada dato depende de dos o más claves (fila y columna).",
+      "Totales por fila: ciclo externo por filas y acumulador que se reinicia en cada fila; totales por columna: ciclo externo por columnas."
+     ],
+     "f": "\\text{dir}(m[i][j])=\\text{base}+(i\\cdot C+j)\\cdot t"
+    },
+    {
+     "n": "Arreglos paralelos y dinámicos",
+     "e": [
+      "<b>Arreglos paralelos:</b> varios arreglos del mismo tamaño donde el mismo índice describe a la misma entidad: <code>nombres[i]</code> y <code>notas[i]</code> son del alumno i. Al ordenar uno hay que mover los demás igual (en la sección 7 se reemplazan por un arreglo de registros).",
+      "<b>Arreglos dinámicos:</b> su tamaño se decide al ejecutar. En C++ moderno se usa <code>vector</code> (<code>#include &lt;vector&gt;</code>): <code>vector&lt;double&gt; montos;</code>, <code>montos.push_back(125.50);</code>, <code>montos.size()</code>. Crece solo y libera su memoria al terminar."
+     ],
+     "u": [
+      "En listas de alumnos con nombre y nota, facturas que se leen hasta fin de archivo.",
+      "Los paralelos son sencillos; <code>vector</code> evita fijar un tamaño máximo arbitrario.",
+      "Paralelos con pocos campos en programas pequeños; <code>vector</code> cuando no se sabe cuántos datos llegarán.",
+      "Usa el mismo índice para todos los paralelos y recorre un <code>vector</code> hasta <code>size()</code>."
+     ]
+    },
+    {
+     "n": "Búsqueda y ordenamiento con conteo de comparaciones",
+     "e": [
+      "<b>Búsqueda secuencial:</b> revisa uno por uno; en el peor caso hace n comparaciones. <b>Búsqueda binaria:</b> exige el arreglo ordenado; compara con el elemento central y descarta la mitad; hace como máximo ⌊log₂ n⌋ + 1 comparaciones.",
+      "<b>Burbuja:</b> compara pares vecinos e intercambia si están en desorden; en cada pasada el mayor queda al final. La versión básica hace siempre n(n − 1)/2 comparaciones; con una bandera que detecta una pasada sin intercambios termina antes si el arreglo ya está ordenado (n − 1 comparaciones en el mejor caso)."
+     ],
+     "u": [
+      "En la búsqueda de un NIT en una lista de contribuyentes o en el ordenamiento de un reporte por monto.",
+      "Con 1000 datos la binaria hace a lo sumo 10 comparaciones; la secuencial, hasta 1000.",
+      "Binaria cuando los datos ya están ordenados y se buscan muchas veces; burbuja solo para pocos datos o para aprender.",
+      "Cuenta las comparaciones en una prueba de escritorio y compáralas con las fórmulas."
+     ],
+     "f": "\\text{burbuja}=\\frac{n(n-1)}{2}\\qquad\\text{binaria}\\le\\lfloor\\log_2 n\\rfloor+1"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "¿Qué muestra? <code>int v[6] = {4, 8, 15};<br>v[3] = v[0] + v[2];<br>v[5] = v[1] * 2;<br>for (int i = 0; i &lt; 6; i++)<br>    cout &lt;&lt; v[i] &lt;&lt; \" \";</code>",
+     "pasos": [
+      "Inicialización: 4, 8, 15 y el resto en 0 → 4 8 15 0 0 0.",
+      "v[3] = 4 + 15 = 19; v[5] = 8 × 2 = 16; v[4] sigue en 0.",
+      "El ciclo recorre los índices 0 a 5."
+     ],
+     "r": "<code>4 8 15 19 0 16</code> (suma 62).",
+     "fin": "Recordar la inicialización parcial y el acceso por índice."
+    },
+    {
+     "nv": "I",
+     "q": "Una empresa tiene 3 sucursales y registra ventas trimestrales en miles de quetzales: <code>int ventas[3][4] = {{12, 15, 9, 20}, {8, 10, 14, 11}, {20, 18, 25, 22}};</code> Calcula el total por sucursal y por trimestre, y la dirección de <code>ventas[2][1]</code> si la base es 1000 y cada <code>int</code> ocupa 4 bytes.",
+     "pasos": [
+      "Total por fila (sucursal): <code>for (int i = 0; i &lt; 3; i++) {<br>    int tf = 0;<br>    for (int j = 0; j &lt; 4; j++)<br>        tf += ventas[i][j];<br>    cout &lt;&lt; tf &lt;&lt; \" \";<br>}</code> → 56, 43, 85.",
+      "Total por columna (trimestre), intercambiando el orden de los ciclos: 40, 43, 48, 53. Total general 184.",
+      "Dirección: 1000 + (2 · 4 + 1) · 4 = 1000 + 36 = 1036."
+     ],
+     "r": "Sucursales: 56, 43 y 85 (la mejor es la 2, índice desde 0). Trimestres: 40, 43, 48 y 53. Dirección 1036.",
+     "fin": "Recorrer una matriz por filas y por columnas y entender cómo se almacena."
+    },
+    {
+     "nv": "I",
+     "q": "Con los arreglos paralelos <code>string nom[4] = {\"Ana\", \"Luis\", \"Marta\", \"Pedro\"};</code> y <code>int nota[4] = {78, 92, 65, 88};</code> encuentra al alumno con mayor nota y el promedio. <code>int pos = 0, suma = nota[0];<br>for (int i = 1; i &lt; 4; i++) {<br>    suma += nota[i];<br>    if (nota[i] &gt; nota[pos]) pos = i;<br>}<br>cout &lt;&lt; nom[pos] &lt;&lt; \" \" &lt;&lt; nota[pos] &lt;&lt; \" \" &lt;&lt; suma / 4.0;</code>",
+     "pasos": [
+      "Se guarda la <b>posición</b> del mayor, no solo su valor, para poder consultar el otro arreglo.",
+      "i = 1: 92 &gt; 78 → pos = 1. i = 2: 65 no. i = 3: 88 no. pos queda en 1.",
+      "suma = 78 + 92 + 65 + 88 = 323; 323 / 4.0 = 80.75."
+     ],
+     "r": "<code>Luis 92 80.75</code>.",
+     "fin": "Relacionar arreglos paralelos por el índice."
+    },
+    {
+     "nv": "A",
+     "q": "Ordena {5, 1, 4, 2, 8} con burbuja básica; muestra cada pasada y cuenta comparaciones e intercambios. <code>for (int i = 0; i &lt; n - 1; i++)<br>    for (int j = 0; j &lt; n - 1 - i; j++)<br>        if (v[j] &gt; v[j + 1]) {<br>            int aux = v[j];<br>            v[j] = v[j + 1];<br>            v[j + 1] = aux;<br>        }</code>",
+     "pasos": [
+      "Pasada 1 (4 comparaciones): 5↔1, 5↔4, 5↔2, 5 y 8 no → 1 4 2 5 8 (3 intercambios).",
+      "Pasada 2 (3 comparaciones): 1 y 4 no, 4↔2, 4 y 5 no → 1 2 4 5 8 (1 intercambio).",
+      "Pasadas 3 y 4 (2 y 1 comparaciones): sin cambios.",
+      "Comparaciones: \\(4+3+2+1=10=\\dfrac{5\\cdot 4}{2}\\); intercambios: 4. Con bandera, se detiene tras la pasada 3 (sin intercambios): 9 comparaciones."
+     ],
+     "r": "Queda 1 2 4 5 8 con 10 comparaciones y 4 intercambios.",
+     "fin": "Trazar un ordenamiento y relacionar el conteo con la fórmula n(n − 1)/2."
+    },
+    {
+     "nv": "A",
+     "q": "En el arreglo ordenado de 15 códigos {3, 8, 12, 17, 21, 25, 30, 34, 40, 45, 51, 58, 63, 70, 77} busca 45 con búsqueda binaria. Compara con la secuencial.",
+     "pasos": [
+      "Con <code>inf</code> = 0, <code>sup</code> = 14: medio = 7, v[7] = 34 &lt; 45 → inf = 8.",
+      "medio = (8 + 14) / 2 = 11, v[11] = 58 &gt; 45 → sup = 10.",
+      "medio = (8 + 10) / 2 = 9, v[9] = 45: encontrado en la posición 9.",
+      "Fueron 3 comparaciones; la secuencial necesita 10 (posiciones 0 a 9). El máximo de la binaria con n = 15 es ⌊log₂ 15⌋ + 1 = 4."
+     ],
+     "r": "Posición 9 en 3 comparaciones (la secuencial usa 10).",
+     "fin": "Ver con números por qué ordenar los datos permite buscar mucho más rápido."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué muestra <code>int a[5] = {2, 4, 6, 8, 10};</code> seguido de <code>for (int i = 4; i &gt;= 0; i -= 2) cout &lt;&lt; a[i] &lt;&lt; \" \";</code>?",
+     "r": "<code>10 6 2</code>: los índices recorridos son 4, 2 y 0."
+    },
+    {
+     "nv": "B",
+     "q": "Con <code>double sueldos[12];</code> ¿cuáles son los índices válidos?",
+     "ops": [
+      "De 1 a 12",
+      "De 0 a 11",
+      "De 0 a 12",
+      "De 1 a 11"
+     ],
+     "ok": 1,
+     "r": "En C++ los índices empiezan en 0, así que el último es 12 − 1 = 11. Usar <code>sueldos[12]</code> accede fuera del arreglo y C++ no lo detecta."
+    },
+    {
+     "nv": "I",
+     "q": "Con <code>int m[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};</code> calcula la suma de la diagonal principal y la suma de los elementos debajo de ella (i &gt; j).",
+     "r": "Diagonal principal: 1 + 5 + 9 = <b>15</b>. Debajo de la diagonal: m[1][0] + m[2][0] + m[2][1] = 4 + 7 + 8 = <b>19</b>."
+    },
+    {
+     "nv": "A",
+     "q": "Con <code>double m[5][6];</code> almacenada por filas desde la dirección 2000 (cada <code>double</code> ocupa 8 bytes), ¿en qué dirección empieza <code>m[4][2]</code> y cuántos bytes ocupa la matriz?",
+     "r": "2000 + (4 · 6 + 2) · 8 = 2000 + 208 = <b>2208</b>. La matriz ocupa 5 · 6 · 8 = <b>240 bytes</b>."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuántas comparaciones hace la burbuja básica (sin bandera) para ordenar 8 elementos?",
+     "ops": [
+      "64",
+      "56",
+      "28",
+      "7"
+     ],
+     "ok": 2,
+     "r": "n(n − 1)/2 = 8 · 7 / 2 = 28, sin importar el orden inicial. 64 sería n², 56 es n(n − 1) sin dividir y 7 es el mejor caso de la versión con bandera."
+    }
+   ]
+  },
+  {
+   "titulo": "Cadenas de caracteres",
+   "intro": "Semana 10 del programa: introducción, declaración, asignación, comparación y concatenación de cadenas; rutinas de manipulación (largo, subcadena, posición, insertar, borrar, cambiar, recortar y mayúsculas) y conversiones. Se trabaja con la clase <code>string</code> de C++.",
+   "conceptos": [
+    {
+     "n": "Declaración, asignación, comparación y concatenación",
+     "e": [
+      "En C++ moderno una cadena es un objeto <code>string</code> (<code>#include &lt;string&gt;</code>): <code>string nombre = \"Ana\";</code>. Se asigna con <code>=</code>, se concatena con <code>+</code> o <code>+=</code> y se compara con <code>== != &lt; &gt;</code>. Cada carácter se accede con <code>s[i]</code>, de 0 a <code>s.length() - 1</code>.",
+      "La comparación es <b>lexicográfica por código ASCII</b>: las mayúsculas (A = 65 … Z = 90) van antes que las minúsculas (a = 97 … z = 122), así que \"Zacapa\" &lt; \"antigua\". La herencia de C son los arreglos <code>char s[20]</code> terminados en <code>'\\0'</code>, con <code>strlen</code>, <code>strcpy</code> y <code>strcmp</code>.",
+      "<code>cin &gt;&gt; s</code> lee hasta el primer espacio; para una línea completa se usa <code>getline(cin, s)</code>."
+     ],
+     "u": [
+      "En nombres, direcciones, NIT, correos y cualquier dato de texto de un sistema.",
+      "La comparación por ASCII explica por qué un listado sale “mal ordenado” si mezcla mayúsculas y minúsculas.",
+      "Siempre que el dato no se usa para hacer aritmética (un NIT o un teléfono son texto).",
+      "Para comparar sin importar mayúsculas, convierte ambas cadenas a mayúsculas antes."
+     ]
+    },
+    {
+     "n": "Rutinas de manipulación",
+     "e": [
+      "Los nombres del programa corresponden a métodos de <code>string</code>. Las posiciones empiezan en 0. <code>find</code> devuelve <code>string::npos</code> si no encuentra el texto. No hay método para recortar: se combina <code>find_first_not_of</code> y <code>find_last_not_of</code> con <code>substr</code>. Para mayúsculas se aplica <code>toupper</code> (de <code>&lt;cctype&gt;</code>) a cada carácter.",
+      "En C++ con UTF-8, las letras con tilde y la ñ ocupan 2 bytes: <code>length()</code> cuenta bytes, no letras."
+     ],
+     "u": [
+      "En limpieza de datos capturados, formato de códigos, validación de correos y separación de nombres y apellidos.",
+      "Son la base del procesamiento de texto y de la lectura de archivos.",
+      "Cada vez que hay que extraer, buscar o modificar parte de un texto.",
+      "Busca primero la posición con <code>find</code>, verifica que no sea <code>npos</code> y luego usa <code>substr</code>, <code>erase</code> o <code>replace</code>."
+     ],
+     "tabla": "<table><thead><tr><th>Rutina del programa</th><th>C++</th><th>Ejemplo con s = \"Guatemala\"</th></tr></thead><tbody><tr><td>Largo</td><td><code>s.length()</code></td><td>9</td></tr><tr><td>Subcadena</td><td><code>s.substr(pos, n)</code></td><td><code>s.substr(0, 4)</code> → \"Guat\"</td></tr><tr><td>Posición</td><td><code>s.find(t)</code></td><td><code>s.find(\"mala\")</code> → 5</td></tr><tr><td>Insertar</td><td><code>s.insert(pos, t)</code></td><td><code>s.insert(0, \"La \")</code> → \"La Guatemala\"</td></tr><tr><td>Borrar</td><td><code>s.erase(pos, n)</code></td><td><code>s.erase(4, 5)</code> → \"Guat\"</td></tr><tr><td>Cambiar</td><td><code>s.replace(pos, n, t)</code></td><td><code>s.replace(0, 4, \"X\")</code> → \"Xemala\"</td></tr><tr><td>Recortar</td><td><code>find_first_not_of</code> / <code>find_last_not_of</code> + <code>substr</code></td><td>\"  Q 50 \" → \"Q 50\"</td></tr><tr><td>Mayúsculas</td><td><code>toupper(s[i])</code> en un ciclo</td><td>\"GUATEMALA\"</td></tr></tbody></table>"
+    },
+    {
+     "n": "Conversiones",
+     "e": [
+      "De texto a número: <code>stoi(\"42\")</code> → 42, <code>stod(\"85.50\")</code> → 85.5 (lanzan un error si el texto no empieza con un número). De número a texto: <code>to_string(2025)</code> → \"2025\".",
+      "Entre carácter y número: un dígito como carácter se convierte con <code>c - '0'</code> (<code>'7' - '0'</code> es 7) y al revés con <code>'0' + d</code>. Entre mayúscula y minúscula la distancia ASCII es 32, pero es mejor usar <code>toupper</code> y <code>tolower</code>."
+     ],
+     "u": [
+      "Al leer datos de un archivo de texto o de un formulario, que siempre llegan como texto, y al armar códigos como FAC-2025-0043.",
+      "Sin conversión no se puede sumar un monto leído como texto.",
+      "Justo después de leer y limpiar el dato, antes de operar.",
+      "Recorta, valida que solo tenga dígitos y luego convierte."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Con <code>string s = \"Universidad Mariano Galvez\";</code> calcula <code>s.length()</code>, <code>s.substr(12, 7)</code> y <code>s.find(\"Galvez\")</code>.",
+     "pasos": [
+      "Largo: \"Universidad\" (11) + espacio (1) + \"Mariano\" (7) + espacio (1) + \"Galvez\" (6) = 26.",
+      "\"Mariano\" empieza en la posición 12 (11 letras + 1 espacio); <code>substr(12, 7)</code> toma 7 caracteres: \"Mariano\".",
+      "\"Galvez\" empieza en 12 + 7 + 1 = 20.",
+      "Si se escribe \"Gálvez\" con tilde en un archivo UTF-8, <code>length()</code> da 27, porque la á ocupa 2 bytes."
+     ],
+     "r": "26, \"Mariano\" y 20.",
+     "fin": "Contar posiciones desde 0, base de todas las rutinas de cadenas."
+    },
+    {
+     "nv": "I",
+     "q": "Traza el valor de <code>s</code> después de cada instrucción. <code>string s = \"Guatemala\";<br>s.insert(0, \"Ciudad de \");<br>s.replace(0, 6, \"Depto\");<br>s.erase(5, 3);<br>cout &lt;&lt; s &lt;&lt; \" \" &lt;&lt; s.length();</code>",
+     "pasos": [
+      "<code>insert(0, \"Ciudad de \")</code>: \"Ciudad de Guatemala\".",
+      "<code>replace(0, 6, \"Depto\")</code> cambia los 6 caracteres de \"Ciudad\" por \"Depto\": \"Depto de Guatemala\".",
+      "<code>erase(5, 3)</code> borra desde la posición 5 tres caracteres (\" de\"): \"Depto Guatemala\".",
+      "Largo: 5 + 1 + 9 = 15."
+     ],
+     "r": "<code>Depto Guatemala 15</code>.",
+     "fin": "Encadenar rutinas de manipulación cuidando cómo cambian las posiciones."
+    },
+    {
+     "nv": "I",
+     "q": "Ordena de menor a mayor, como lo hace C++, las cadenas \"zacapa\", \"Zacapa\", \"Antigua\" y \"antigua\". ¿Cómo se logra un orden sin distinguir mayúsculas?",
+     "pasos": [
+      "Se compara carácter por carácter con su código ASCII: A = 65, Z = 90, a = 97, z = 122.",
+      "Por la primera letra: \"Antigua\" (65) &lt; \"Zacapa\" (90) &lt; \"antigua\" (97) &lt; \"zacapa\" (122).",
+      "Para ignorar mayúsculas se compara una copia de cada cadena convertida a mayúsculas; así \"Antigua\" y \"antigua\" quedan iguales y ambas antes que las de Zacapa."
+     ],
+     "r": "Antigua, Zacapa, antigua, zacapa.",
+     "fin": "Explicar ordenamientos de nombres que parecen incorrectos."
+    },
+    {
+     "nv": "A",
+     "q": "Diseña una función que diga si una frase es palíndromo sin tomar en cuenta espacios ni mayúsculas, y trázala con \"Anita lava la tina\". <code>bool esPalindromo(string s) {<br>    string t = \"\";<br>    for (char c : s)<br>        if (c != ' ') t += static_cast&lt;char&gt;(tolower(c));<br>    int i = 0, j = t.length() - 1;<br>    while (i &lt; j) {<br>        if (t[i] != t[j]) return false;<br>        i++;<br>        j--;<br>    }<br>    return true;<br>}</code>",
+     "pasos": [
+      "<b>Limpieza:</b> se quitan espacios y se pasa a minúsculas: t = \"anitalavalatina\" (15 caracteres).",
+      "<b>Comparación desde los extremos:</b> i avanza desde 0 y j retrocede desde 14; se compara t[i] con t[j] mientras i &lt; j.",
+      "Se hacen 7 comparaciones (pares 0–14, 1–13, …, 6–8) y todas coinciden; el carácter central (posición 7) no se compara.",
+      "Con \"Guatemala\" la primera comparación ('g' con 'a') ya falla y devuelve <code>false</code>."
+     ],
+     "r": "Devuelve <code>true</code> después de 7 comparaciones: n/2 comparaciones en el peor caso.",
+     "fin": "Diseñar un algoritmo de cadenas en dos fases (limpiar y comparar) y contar su trabajo."
+    },
+    {
+     "nv": "A",
+     "q": "Un dato llega de un archivo como <code>\"   2024  \"</code>. Recórtalo y conviértelo a entero. <code>string s = \"   2024  \";<br>size_t ini = s.find_first_not_of(' ');<br>size_t fin = s.find_last_not_of(' ');<br>string limpio = s.substr(ini, fin - ini + 1);<br>int anio = stoi(limpio);<br>cout &lt;&lt; \"[\" &lt;&lt; limpio &lt;&lt; \"] \" &lt;&lt; anio + 1;</code>",
+     "pasos": [
+      "<code>find_first_not_of(' ')</code> da 3, la posición del '2'.",
+      "<code>find_last_not_of(' ')</code> da 6, la posición del '4'.",
+      "Se toman fin − ini + 1 = 4 caracteres desde la 3: \"2024\". <code>stoi</code> lo convierte a 2024 y se suma 1.",
+      "Si la cadena fuera solo espacios, <code>find_first_not_of</code> devolvería <code>string::npos</code>; hay que validarlo antes de llamar a <code>substr</code>."
+     ],
+     "r": "<code>[2024] 2025</code>.",
+     "fin": "Implementar la rutina de recortar que el programa pide y que <code>string</code> no trae."
+    },
+    {
+     "nv": "B",
+     "q": "Con <code>string c = \"Quetzaltenango\";</code> ¿qué dan <code>c.length()</code>, <code>c.substr(0, 7)</code> y <code>c.find(\"tenango\")</code>?",
+     "r": "14, \"Quetzal\" y 7."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué da la comparación <code>\"Mazatenango\" == \"mazatenango\"</code> con dos <code>string</code>?",
+     "ops": [
+      "true, porque son la misma palabra",
+      "true, porque solo se compara el largo",
+      "false, porque la comparación distingue mayúsculas de minúsculas",
+      "Error de compilación"
+     ],
+     "ok": 2,
+     "r": "'M' (77) y 'm' (109) son caracteres distintos. Para compararlas sin distinguir mayúsculas hay que convertirlas antes."
+    },
+    {
+     "nv": "I",
+     "q": "Completa el ciclo que convierte <code>s</code> a mayúsculas y di qué muestra con <code>string s = \"umg 2017 c++\";</code><code>for (int i = 0; i &lt; s.length(); i++)<br>    ________ ;<br>cout &lt;&lt; s;</code>",
+     "r": "<code>s[i] = toupper(s[i])</code> (con <code>#include &lt;cctype&gt;</code>). Muestra <code>UMG 2017 C++</code>: los dígitos, espacios y signos no cambian."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe un algoritmo que cuente vocales y consonantes de una cadena y aplícalo a \"Ingenieria en Sistemas\".",
+     "r": "<code>int voc = 0, cons = 0;<br>for (char c : s) {<br>    char m = tolower(c);<br>    if (m == 'a' || m == 'e' || m == 'i' || m == 'o' || m == 'u') voc++;<br>    else if (isalpha(c)) cons++;<br>}</code><br>Resultado: <b>10 vocales y 10 consonantes</b> (el largo es 22 con los 2 espacios)."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la forma correcta de verificar que el texto \"@\" aparece en el correo <code>c</code>?",
+     "ops": [
+      "<code>if (c.find(\"@\") != string::npos)</code>",
+      "<code>if (c.find(\"@\") &gt; 0)</code>",
+      "<code>if (c.find(\"@\") != -1 &amp;&amp; c.find(\"@\") != 0)</code>",
+      "<code>if (c.find(\"@\"))</code>"
+     ],
+     "ok": 0,
+     "r": "<code>find</code> devuelve la posición (que puede ser 0) o <code>string::npos</code> si no lo encuentra. Comparar con 0 o usar el resultado como condición falla cuando el texto está al inicio o no está."
+    }
+   ]
+  },
+  {
+   "titulo": "Registros y archivos",
+   "intro": "Semanas 11 y 13 del programa: registros (introducción, referencia a campos, registros anidados, arreglos de registros y registros variantes) e introducción a archivos (declaración, asociación, apertura, operación, clausura, archivos como parámetros, archivos de texto, archivos de registros y rutinas de manipulación). La organización de archivos secuenciales, directos e indexados se estudia a fondo en Programación I.",
+   "conceptos": [
+    {
+     "n": "Registros, campos y registros anidados",
+     "e": [
+      "Un <b>registro</b> agrupa datos de distinto tipo que describen una misma entidad; en C++ se declara con <code>struct</code>. Cada dato es un <b>campo</b> y se accede con el punto: <code>p.precio</code>. Un registro se puede asignar completo (<code>q = p;</code> copia todos los campos).",
+      "Un registro <b>anidado</b> tiene un campo que es otro registro: <code>e.ingreso.anio</code>. Un <b>arreglo de registros</b> (<code>Producto inv[100];</code>) reemplaza a varios arreglos paralelos: <code>inv[i].nombre</code>, <code>inv[i].precio</code>."
+     ],
+     "u": [
+      "En expedientes de empleados, productos de inventario, facturas con su fecha, contribuyentes con NIT y dirección.",
+      "Mantienen juntos los datos de una entidad; al ordenar un arreglo de registros todos los campos se mueven juntos.",
+      "Cuando cada elemento tiene varios atributos de tipos distintos.",
+      "Declara el <code>struct</code> antes de <code>main</code>, crea variables o arreglos de ese tipo y accede a cada campo con el punto."
+     ],
+     "tabla": "<table><thead><tr><th>Pseudocódigo</th><th>C++</th></tr></thead><tbody><tr><td>tipo registro: Fecha … fin_registro</td><td><code>struct Fecha { int dia, mes, anio; };</code></td></tr><tr><td>campo de tipo Fecha</td><td><code>struct Empleado { string nombre; Fecha ingreso; double sueldo; };</code></td></tr><tr><td>var Empleado: e</td><td><code>Empleado e;</code></td></tr><tr><td>e.ingreso.anio ← 2018</td><td><code>e.ingreso.anio = 2018;</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Registros variantes",
+     "e": [
+      "Un <b>registro variante</b> tiene una parte fija y una parte que cambia según un <b>campo discriminante</b> (etiqueta). En C++ la parte variable se hace con <code>union</code>, cuyos miembros comparten la misma memoria: solo uno es válido a la vez y el programa consulta la etiqueta para saber cuál. El tamaño de la unión es el de su miembro más grande.",
+      "Ejemplo: un pago con <code>char forma</code> ('E' efectivo, 'T' tarjeta, 'C' cheque) y una unión con <code>double vuelto</code>, <code>int autorizacion</code> o <code>int numCheque</code>. En C++17, <code>std::variant</code> hace lo mismo con más seguridad."
+     ],
+     "u": [
+      "En pagos con distintas formas, figuras geométricas con medidas distintas, mensajes de varios tipos.",
+      "Ahorran memoria y modelan datos cuya forma depende de un tipo.",
+      "Cuando cada registro usa solo uno de varios grupos de campos excluyentes.",
+      "Agrega el campo discriminante, revisa su valor con <code>switch</code> y lee solo el miembro de la unión que corresponde."
+     ]
+    },
+    {
+     "n": "Archivos de texto",
+     "e": [
+      "Un archivo guarda datos de forma permanente. En C++ (<code>#include &lt;fstream&gt;</code>): <b>declaración</b> de la variable de archivo (<code>ifstream</code> para leer, <code>ofstream</code> para escribir, <code>fstream</code> para ambos); <b>asociación</b> con el nombre físico y <b>apertura</b> (en el constructor o con <code>open</code>); <b>operación</b> con <code>&lt;&lt;</code>, <code>&gt;&gt;</code> y <code>getline</code>; <b>clausura</b> con <code>close()</code>.",
+      "<code>ofstream</code> abre por defecto en modo <code>ios::out</code>, que <b>borra</b> el contenido anterior; <code>ios::app</code> agrega al final. Se verifica la apertura con <code>is_open()</code>. Para leer todo: <code>while (ent &gt;&gt; a &gt;&gt; b)</code> repite mientras la lectura tenga éxito.",
+      "<b>Archivos como parámetros:</b> siempre por referencia (<code>void guardar(ofstream &amp;f)</code>), porque un flujo no se puede copiar."
+     ],
+     "u": [
+      "En bitácoras de un sistema, exportación de reportes en CSV, archivos de configuración y datos de laboratorio.",
+      "Sin archivos, los datos se pierden al terminar el programa.",
+      "Cuando los datos deben sobrevivir a la ejecución o venir de otro sistema.",
+      "Abre, verifica, opera dentro de un ciclo y cierra; elige <code>ios::app</code> si no quieres perder lo anterior."
+     ],
+     "tabla": "<table><thead><tr><th>Paso</th><th>C++</th></tr></thead><tbody><tr><td>Declarar y asociar</td><td><code>ofstream sal(\"ventas.txt\");</code> o <code>sal.open(\"ventas.txt\", ios::app);</code></td></tr><tr><td>Verificar apertura</td><td><code>if (!sal.is_open()) { cout &lt;&lt; \"Error\"; }</code></td></tr><tr><td>Escribir</td><td><code>sal &lt;&lt; codigo &lt;&lt; \" \" &lt;&lt; monto &lt;&lt; endl;</code></td></tr><tr><td>Leer</td><td><code>while (ent &gt;&gt; codigo &gt;&gt; monto) { ... }</code> o <code>getline(ent, linea)</code></td></tr><tr><td>Cerrar</td><td><code>sal.close();</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Archivos de registros",
+     "e": [
+      "Un <b>archivo de registros</b> (binario) guarda cada registro con un tamaño fijo, copiando sus bytes: <code>f.write(reinterpret_cast&lt;char*&gt;(&amp;r), sizeof(r));</code> y <code>f.read(…)</code>, abriendo con <code>ios::binary</code>. Por eso los campos de texto se declaran como <code>char nombre[30]</code> y no como <code>string</code> (un <code>string</code> guarda internamente una dirección de memoria que no sirve en el archivo).",
+      "Como todos los registros miden lo mismo, el registro k (desde 0) empieza en el byte k · sizeof(R) y el número de registros es el tamaño del archivo entre sizeof(R)."
+     ],
+     "u": [
+      "En archivos de clientes o productos de programas de escritorio y en la base de los manejadores de bases de datos.",
+      "Permite leer o actualizar un registro sin recorrer los anteriores.",
+      "Cuando se guardan muchos registros del mismo tipo y se necesita acceso por posición.",
+      "Usa campos de tamaño fijo, escribe con <code>write</code> y calcula la posición con la fórmula; el acceso directo se profundiza en Programación I."
+     ],
+     "f": "\\text{posición}_k=k\\cdot\\text{sizeof}(R)\\qquad\\text{registros}=\\frac{\\text{tamaño del archivo}}{\\text{sizeof}(R)}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Calcula el valor del inventario de una ferretería. <code>struct Producto {<br>    string nombre;<br>    double precio;<br>    int existencia;<br>};<br>Producto inv[3] = {{\"Cemento\", 85.50, 40},<br>                   {\"Varilla\", 42.75, 120},<br>                   {\"Block\", 4.25, 600}};<br>double total = 0;<br>for (int i = 0; i &lt; 3; i++)<br>    total += inv[i].precio * inv[i].existencia;<br>cout &lt;&lt; total;</code>",
+     "pasos": [
+      "Cada elemento del arreglo es un registro; <code>inv[i].precio</code> accede al campo precio del producto i.",
+      "Cemento: 85.50 × 40 = 3420; Varilla: 42.75 × 120 = 5130; Block: 4.25 × 600 = 2550.",
+      "Total: 3420 + 5130 + 2550 = 11 100."
+     ],
+     "r": "Muestra <code>11100</code> (Q 11 100.00).",
+     "fin": "Recorrer un arreglo de registros accediendo a sus campos."
+    },
+    {
+     "nv": "I",
+     "q": "Con <code>struct Fecha { int dia, mes, anio; };</code> y <code>struct Empleado { string nombre; Fecha ingreso; double sueldo; };</code>, un empleado ingresó el 15/03/2018. Calcula sus años completos de antigüedad al 10/02/2026. <code>int antiguedad(Empleado e, Fecha corte) {<br>    int a = corte.anio - e.ingreso.anio;<br>    if (corte.mes &lt; e.ingreso.mes ||<br>        (corte.mes == e.ingreso.mes &amp;&amp; corte.dia &lt; e.ingreso.dia))<br>        a--;<br>    return a;<br>}</code>",
+     "pasos": [
+      "Diferencia de años: 2026 − 2018 = 8.",
+      "Ajuste: al 10 de febrero aún no se cumple el aniversario de marzo (2 &lt; 3), así que se resta 1.",
+      "<code>e.ingreso.mes</code> muestra el acceso a un campo de un registro anidado."
+     ],
+     "r": "7 años completos. Al 20/03/2026 serían 8.",
+     "fin": "Usar registros anidados en un cálculo con condiciones."
+    },
+    {
+     "nv": "I",
+     "q": "¿Qué contiene el archivo y qué muestra el programa? <code>ofstream sal(\"ventas.txt\");<br>sal &lt;&lt; \"F001 250.00\" &lt;&lt; endl;<br>sal &lt;&lt; \"F002 1120.50\" &lt;&lt; endl;<br>sal &lt;&lt; \"F003 89.90\" &lt;&lt; endl;<br>sal.close();<br>ifstream ent(\"ventas.txt\");<br>string factura;<br>double monto, total = 0;<br>while (ent &gt;&gt; factura &gt;&gt; monto)<br>    total += monto;<br>ent.close();<br>cout &lt;&lt; total;</code>",
+     "pasos": [
+      "<b>Escritura:</b> el archivo queda con tres líneas: F001 250.00, F002 1120.50 y F003 89.90.",
+      "<b>Lectura:</b> cada vuelta lee una palabra en <code>factura</code> y un número en <code>monto</code>; al llegar al final la lectura falla y el ciclo termina.",
+      "total = 250 + 1120.50 + 89.90 = 1460.40; <code>cout</code> muestra 1460.4 (sin ceros a la derecha)."
+     ],
+     "r": "Muestra <code>1460.4</code>.",
+     "fin": "Recorrer las cinco operaciones de un archivo de texto: declarar, asociar, abrir, operar y cerrar."
+    },
+    {
+     "nv": "A",
+     "q": "¿Qué contiene <code>log.txt</code> al final? <code>ofstream a(\"log.txt\");               a &lt;&lt; \"uno\" &lt;&lt; endl;    a.close();<br>ofstream b(\"log.txt\", ios::app);     b &lt;&lt; \"dos\" &lt;&lt; endl;    b.close();<br>ofstream c(\"log.txt\");               c &lt;&lt; \"tres\" &lt;&lt; endl;   c.close();<br>ofstream d(\"log.txt\", ios::app);     d &lt;&lt; \"cuatro\" &lt;&lt; endl; d.close();</code>",
+     "pasos": [
+      "<code>a</code> abre en modo <code>out</code>: crea el archivo vacío y escribe <i>uno</i>.",
+      "<code>b</code> abre en <code>app</code>: agrega <i>dos</i> (contenido: uno, dos).",
+      "<code>c</code> abre en <code>out</code> otra vez: <b>borra</b> todo y escribe <i>tres</i>.",
+      "<code>d</code> agrega <i>cuatro</i> al final."
+     ],
+     "r": "Dos líneas: <i>tres</i> y <i>cuatro</i>.",
+     "fin": "Evitar la pérdida de datos por abrir una bitácora en el modo equivocado."
+    },
+    {
+     "nv": "A",
+     "q": "Un archivo binario de clientes tiene registros de <code>struct Cliente { char nombre[30]; int codigo; double saldo; };</code>. Si <code>sizeof(Cliente)</code> es 48 y el archivo mide 4800 bytes, ¿cuántos registros tiene, en qué byte empieza el registro 25 (desde 0) y por qué el nombre no es <code>string</code>?",
+     "pasos": [
+      "Registros: \\(4800/48=100\\).",
+      "Posición del registro 25: \\(25\\cdot 48=1200\\); el último (99) empieza en 4752.",
+      "Los campos suman 30 + 4 + 8 = 42 bytes; el compilador agrega relleno para alinear el <code>int</code> y el <code>double</code>, por eso se usa <code>sizeof</code> y no la suma a mano.",
+      "Un <code>string</code> guarda dentro una dirección de memoria; escribir sus bytes no guarda el texto. Con <code>char[30]</code> el texto queda dentro del registro y el tamaño es fijo."
+     ],
+     "r": "100 registros; el registro 25 empieza en el byte 1200.",
+     "fin": "Entender por qué los archivos de registros usan tamaño fijo y cómo se calcula la posición de cada uno."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué muestra? <code>struct Punto { int x, y; };<br>Punto p = {3, 4};<br>Punto q = p;<br>q.x = 10;<br>cout &lt;&lt; p.x &lt;&lt; \" \" &lt;&lt; q.x &lt;&lt; \" \" &lt;&lt; q.y;</code>",
+     "r": "<code>3 10 4</code>: la asignación <code>q = p</code> copia los campos; cambiar <code>q.x</code> no modifica a <code>p</code>."
+    },
+    {
+     "nv": "I",
+     "q": "¿Para qué sirve el campo discriminante (etiqueta) en un registro variante implementado con <code>union</code>?",
+     "ops": [
+      "Para saber cuál de los miembros de la unión tiene un valor válido en ese momento",
+      "Para que la unión ocupe la suma del tamaño de sus miembros",
+      "Para poder usar todos los miembros de la unión a la vez",
+      "Para convertir automáticamente un miembro en otro"
+     ],
+     "ok": 0,
+     "r": "Los miembros de una <code>union</code> comparten memoria y solo uno es válido a la vez; la etiqueta registra cuál. La unión ocupa el tamaño del miembro más grande, no la suma."
+    },
+    {
+     "nv": "I",
+     "q": "Con un arreglo de registros de alumnos {Ana 78, Luis 55, Marta 92, Pedro 60, Sofía 61}, escribe el ciclo que cuenta los aprobados (61 o más) y calcula el promedio.",
+     "r": "<code>int aprob = 0, suma = 0;<br>for (int i = 0; i &lt; 5; i++) {<br>    suma += al[i].nota;<br>    if (al[i].nota &gt;= 61) aprob++;<br>}<br>double prom = suma / 5.0;</code><br><b>3 aprobados</b> (Ana, Marta y Sofía) y promedio 346 / 5 = <b>69.2</b>."
+    },
+    {
+     "nv": "A",
+     "q": "Un archivo de registros de 36 bytes mide 3600 bytes. ¿Cuántos registros tiene, en qué byte empieza el registro 40 (desde 0) y en cuál el último?",
+     "r": "3600 / 36 = <b>100 registros</b>; el registro 40 empieza en 40 · 36 = <b>1440</b>; el último (99) en 99 · 36 = <b>3564</b>."
+    },
+    {
+     "nv": "A",
+     "q": "¿Cuál es la forma correcta de pasar un archivo abierto a un procedimiento que escribe el encabezado de un reporte?",
+     "ops": [
+      "<code>void encabezado(ofstream &amp;f)</code>",
+      "<code>void encabezado(ofstream f)</code>",
+      "<code>void encabezado(string f)</code>",
+      "<code>ofstream encabezado()</code>"
+     ],
+     "ok": 0,
+     "r": "Los flujos de archivo no se pueden copiar, así que se pasan por referencia; además, así la función escribe en el mismo archivo abierto. Pasar el nombre como <code>string</code> obligaría a abrirlo de nuevo dentro."
+    }
+   ]
+  }
+ ]
+}

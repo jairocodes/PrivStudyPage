@@ -53,7 +53,7 @@ Fuente: portal de contenidos de la carrera (http://umgcontenidos.50webs.com/). L
 | --- | --- | --- | --- | --- |
 | 1 | Introducción a los Sistemas de Cómputo | Programación | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Sistemas.pdf) | pendiente |
 | 1 | Lógica de Sistemas | Programación | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Logica.pdf) | pendiente |
-| 2 | Algoritmos | Programación | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Segundo%20Ciclo/2014-2Algoritmos.pdf) | pendiente |
+| 2 | Algoritmos | Programación | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Segundo%20Ciclo/2014-2Algoritmos.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/algoritmos) |
 | 3 | Programación I | Programación | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Tercer%20Ciclo/2014-3ProgramacionI.pdf) | [guía](https://jairocodes.github.io/PrivStudyPage/#/curso/programacion-1) |
 | 4 | Programación II | Programación | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Cuarto%20Ciclo/2014-4ProgramacionII.pdf) | pendiente |
 | 5 | Programación III | Programación avanzada | [PDF](http://umgcontenidos.50webs.com/Contenidos/Ciclos/Quinto%20Ciclo/2014-5ProgramacionIII.pdf) | pendiente |
