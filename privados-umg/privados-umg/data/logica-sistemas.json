@@ -1,0 +1,1147 @@
+{
+ "slug": "logica-sistemas",
+ "titulo": "Lógica de Sistemas",
+ "area": "Análisis, Diseño y Desarrollo",
+ "meta": "Ciclo 1, código 090005, bloque Programación del seminario",
+ "firma": "\\text{concepto}\\to\\text{proposición}\\to\\text{razonamiento}\\to\\text{algoritmo}",
+ "firma_nota": "El recorrido del curso: de las ideas bien definidas a las proposiciones, de ellas a los razonamientos válidos y de ahí a soluciones que se diseñan, se prueban y se modelan.",
+ "lead": "El primer curso de lógica de la carrera: qué es la lógica y por qué importa en los sistemas, la lógica del concepto y los árboles lógicos, las proposiciones y sus conectivos, el razonamiento, la inferencia y las falacias, la creatividad y los bloqueos mentales, el álgebra de Boole con compuertas y circuitos, la lógica de la resolución de un problema (análisis, algoritmo, prueba de escritorio y depuración) y el modelo conceptual con UML y casos de uso. En cada tema se hace la analogía con las instrucciones de los lenguajes de programación, como pide el programa. Los 8 temas del programa están organizados en 7 secciones.",
+ "fuente": "http://umgcontenidos.50webs.com/Contenidos/Ciclos/Primer%20Ciclo/2014-1Logica.pdf",
+ "como": "Cada sección trae conceptos con su uso real y 10 ejercicios: 5 resueltos paso a paso y 5 más, con la respuesta oculta en los de cálculo (tablas de verdad, validez, simplificación booleana y pruebas de escritorio) o como cuestionario de opción múltiple que te dice al instante si acertaste en los conceptuales (concepto, falacias, creatividad y UML). Haz las tablas de verdad y las pruebas de escritorio en papel, fila por fila, antes de ver la respuesta: así se evalúan en el privado. Los algoritmos van en pseudocódigo en español y los diagramas de flujo y UML en tablas o notación textual.",
+ "temas": [
+  {
+   "titulo": "La lógica y el concepto",
+   "intro": "Temas 1 y 2 del programa (semanas 1 y 2): nociones preliminares de lógica, la lógica y su importancia en los sistemas; lógica del concepto: el concepto, los objetos, la tríada del concepto y los árboles lógicos.",
+   "conceptos": [
+    {
+     "n": "La lógica: objeto, verdad y validez",
+     "e": [
+      "La <b>lógica</b> estudia los métodos y principios para distinguir el razonamiento correcto del incorrecto. Se ocupa de la <b>forma</b> del pensamiento (cómo se enlazan las ideas), no de su contenido: el mismo esquema sirve para hablar de impuestos, de redes o de notas.",
+      "<b>Verdad</b> y <b>validez</b> son cosas distintas: una proposición es verdadera o falsa según coincida con los hechos; un razonamiento es válido o inválido según su conclusión se siga o no de las premisas. Un razonamiento válido puede tener premisas falsas, y uno inválido puede tener conclusión verdadera.",
+      "Los principios lógicos clásicos sostienen todo lo demás y tienen su eco directo en el código:"
+     ],
+     "u": [
+      "En la escritura de condiciones (<code>if</code>, <code>while</code>, <code>WHERE</code>), en la especificación de requisitos y en el diseño de circuitos.",
+      "Un sistema solo es confiable si sus reglas no se contradicen y cubren todos los casos.",
+      "Al plantear un problema, antes de escribir una sola línea de código.",
+      "Separa lo que dice cada enunciado (contenido) de cómo se relacionan (forma) y revisa la forma con los principios lógicos."
+     ],
+     "tabla": "<table><thead><tr><th>Principio</th><th>Forma</th><th>En programación</th></tr></thead><tbody><tr><td>Identidad</td><td>\\(p\\to p\\)</td><td>Una variable conserva su valor mientras nada la modifique.</td></tr><tr><td>No contradicción</td><td>\\(\\neg(p\\wedge\\neg p)\\)</td><td><code>x &gt; 0 &amp;&amp; !(x &gt; 0)</code> nunca es verdadera: esa rama es código muerto.</td></tr><tr><td>Tercero excluido</td><td>\\(p\\vee\\neg p\\)</td><td>Un <code>if</code> con su <code>else</code> cubre todos los casos posibles.</td></tr><tr><td>Razón suficiente</td><td>Todo tiene una razón de ser</td><td>Cada resultado del programa debe poder explicarse con sus datos y reglas.</td></tr></tbody></table>"
+    },
+    {
+     "n": "El concepto: comprensión y extensión",
+     "e": [
+      "El <b>concepto</b> es la representación mental de un objeto; no afirma ni niega nada (eso lo hace la proposición). Tiene dos propiedades:",
+      "<ul><li><b>Comprensión</b> (connotación o intensión): el conjunto de notas o características que lo forman.</li><li><b>Extensión</b> (denotación): el conjunto de objetos a los que se aplica.</li></ul>",
+      "<b>Ley de relación inversa:</b> al aumentar la comprensión disminuye (o se mantiene) la extensión, y viceversa. En una base de datos es literal: cada condición que se agrega al <code>WHERE</code> aumenta la comprensión y reduce las filas que cumplen.",
+      "Los <b>objetos</b> a los que se refieren los conceptos pueden ser reales (un servidor, una persona), ideales (un número, un triángulo) o ficticios; en un sistema, todos se modelan con datos."
+     ],
+     "u": [
+      "En la definición de clases (atributos = comprensión, instancias = extensión) y en las consultas SQL.",
+      "Un concepto mal delimitado produce requisitos ambiguos y reportes que no cuadran.",
+      "Al definir qué es un “cliente activo” o un “contribuyente moroso” antes de programar la consulta.",
+      "Escribe las notas del concepto como condiciones y cuenta cuántos objetos cumplen cada una."
+     ],
+     "f": "\\text{comprensión}\\uparrow\\;\\Longrightarrow\\;\\text{extensión}\\downarrow"
+    },
+    {
+     "n": "La tríada del concepto",
+     "e": [
+      "Todo concepto se analiza en tres elementos relacionados (el triángulo semiótico): el <b>término</b> (la palabra o signo, oral o escrito), el <b>concepto</b> (la idea, lo que se entiende) y el <b>objeto</b> (la cosa a la que se refiere). El término expresa el concepto y el concepto se refiere al objeto.",
+      "Un mismo término puede expresar conceptos distintos (homonimia): “servidor” es una computadora que atiende peticiones o un empleado público. Ese doble sentido es la raíz de las falacias de ambigüedad."
+     ],
+     "u": [
+      "En el modelado: el nombre de la clase es el término, su definición el concepto y cada instancia un objeto.",
+      "Distinguir los tres elementos evita discutir por palabras cuando el desacuerdo es de ideas.",
+      "Al redactar un glosario del proyecto o al nombrar variables y tablas.",
+      "Para cada palabra clave del sistema anota el término, su definición acordada y un ejemplo concreto."
+     ],
+     "tabla": "<table><thead><tr><th>Elemento</th><th>Qué es</th><th>Ejemplo en un sistema de la SAT</th></tr></thead><tbody><tr><td>Término</td><td>Palabra o signo</td><td><code>Contribuyente</code> (nombre de la clase o de la tabla)</td></tr><tr><td>Concepto</td><td>Idea o definición</td><td>Persona individual o jurídica inscrita con NIT y obligaciones tributarias</td></tr><tr><td>Objeto</td><td>Cosa concreta</td><td>La Ferretería El Martillo, NIT 1234567-8</td></tr></tbody></table>"
+    },
+    {
+     "n": "Árboles lógicos: división y definición",
+     "e": [
+      "Un <b>árbol lógico</b> representa la <b>división</b> de un concepto (el género) en sus especies según un <b>fundamento</b> o criterio, y cada especie puede volver a dividirse. Reglas de una buena división:",
+      "<ul><li><b>Un solo fundamento</b> por nivel.</li><li><b>Completa:</b> las especies juntas agotan el género.</li><li><b>Excluyente:</b> ningún objeto cae en dos especies.</li><li><b>Progresiva:</b> de lo próximo a lo remoto, sin saltar niveles.</li></ul>",
+      "El árbol da también la <b>definición por género próximo y diferencia específica</b>: cada nodo se define por su padre más lo que lo distingue de sus hermanos."
+     ],
+     "u": [
+      "En jerarquías de clases y herencia, catálogos de productos, menús, planes de cuentas contables y árboles de decisión.",
+      "Una división con dos criterios mezclados genera casos duplicados u olvidados en el sistema.",
+      "Al clasificar los tipos de usuario, de documento o de cuenta antes de diseñar tablas y clases.",
+      "Elige el fundamento, enumera las especies y verifica que sean completas y excluyentes; luego desciende un nivel."
+     ],
+     "f": "\\text{definición}=\\text{género próximo}+\\text{diferencia específica}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Ordena de menor a mayor comprensión los conceptos <i>unidad SSD NVMe</i>, <i>dispositivo de almacenamiento</i>, <i>unidad de estado sólido (SSD)</i> y <i>dispositivo de almacenamiento secundario</i>, y explica qué pasa con la extensión.",
+     "pasos": [
+      "<b>Comprensión.</b> Cada concepto agrega una nota al anterior: dispositivo de almacenamiento → + secundario (conserva datos sin energía) → + sin partes móviles, con memoria flash (SSD) → + conectado por el bus PCIe con el protocolo NVMe.",
+      "<b>Extensión.</b> Cada nota deja fuera objetos: los dispositivos de almacenamiento incluyen la RAM; los secundarios ya no; los SSD excluyen discos duros y cintas; los NVMe excluyen los SSD SATA."
+     ],
+     "r": "Dispositivo de almacenamiento → secundario → SSD → SSD NVMe: la comprensión crece y la extensión disminuye (ley de relación inversa).",
+     "fin": "Reconocer la ley de relación inversa, que reaparece en clases, subclases y filtros."
+    },
+    {
+     "nv": "I",
+     "q": "En la tabla <code>contribuyente</code> <table><thead><tr><th>NIT</th><th>Nombre</th><th>Departamento</th><th>Régimen</th><th>Activo</th></tr></thead><tbody><tr><td>1234567-8</td><td>Ferretería El Martillo</td><td>Guatemala</td><td>General</td><td>Sí</td></tr><tr><td>2345678-9</td><td>Comedor Doña Lupe</td><td>Guatemala</td><td>Pequeño contribuyente</td><td>Sí</td></tr><tr><td>3456789-0</td><td>Tecnología Xela, S. A.</td><td>Quetzaltenango</td><td>General</td><td>Sí</td></tr><tr><td>4567890-1</td><td>Distribuidora Cobán</td><td>Alta Verapaz</td><td>General</td><td>No</td></tr><tr><td>5678901-2</td><td>Librería Central</td><td>Guatemala</td><td>General</td><td>Sí</td></tr><tr><td>6789012-3</td><td>Farmacia La Salud</td><td>Guatemala</td><td>General</td><td>No</td></tr><tr><td>7890123-4</td><td>Panadería San José</td><td>Escuintla</td><td>Pequeño contribuyente</td><td>Sí</td></tr><tr><td>8901234-5</td><td>Taller Mecánico Ruiz</td><td>Guatemala</td><td>Pequeño contribuyente</td><td>No</td></tr></tbody></table>agrega una a una las notas <i>del departamento de Guatemala</i>, <i>del régimen General</i> y <i>activo</i>. ¿Cuántas filas forman la extensión en cada paso?",
+     "pasos": [
+      "<b>Sin condiciones.</b> <code>SELECT COUNT(*) FROM contribuyente;</code> devuelve 8.",
+      "<b>+ departamento.</b> <code>... WHERE departamento = 'Guatemala';</code> devuelve 5.",
+      "<b>+ régimen.</b> <code>... AND regimen = 'General';</code> devuelve 3.",
+      "<b>+ activo.</b> <code>... AND activo = 1;</code> devuelve 2: Ferretería El Martillo y Librería Central."
+     ],
+     "r": "8 → 5 → 3 → 2 filas: cada nota de comprensión reduce la extensión.",
+     "fin": "Ver la lógica del concepto funcionando en una consulta real."
+    },
+    {
+     "nv": "I",
+     "q": "Un analista divide los <i>usuarios del sistema de citas del IGSS</i> en: afiliados, médicos, mujeres y administradores. Evalúa la división y corrígela.",
+     "pasos": [
+      "<b>Fundamento.</b> Afiliado, médico y administrador responden al <i>rol</i> en el sistema; mujer responde al <i>sexo</i>. Hay dos fundamentos en un mismo nivel.",
+      "<b>Consecuencia.</b> La división no es excluyente: una afiliada cae en dos especies; un reporte por tipo de usuario la contaría dos veces.",
+      "<b>Completa.</b> Falta el personal de ventanilla que agenda citas; si existe en el sistema, la división tampoco es completa.",
+      "<b>Corrección.</b> Primer nivel por rol: afiliado, médico, personal de ventanilla, administrador. Si interesa el sexo, va como atributo o como división en un nivel inferior."
+     ],
+     "r": "La división viola la regla del fundamento único y no es excluyente; se corrige dividiendo solo por rol.",
+     "fin": "Detectar clasificaciones mal hechas antes de convertirlas en tablas o clases."
+    },
+    {
+     "nv": "I",
+     "q": "Analiza la tríada del término <i>servidor</i> en las frases “El servidor de correo se reinició a las 2:00” y “El servidor público firmó la resolución”.",
+     "pasos": [
+      "<b>Término.</b> En ambas frases es la misma palabra: “servidor”.",
+      "<b>Concepto.</b> En la primera, programa o equipo que atiende peticiones de otros en una red; en la segunda, persona que trabaja para el Estado.",
+      "<b>Objeto.</b> En la primera, por ejemplo, el equipo Linux que corre el servicio de correo de la municipalidad; en la segunda, un funcionario concreto."
+     ],
+     "r": "Un término, dos conceptos y dos objetos distintos: es un caso de homonimia.",
+     "fin": "Prevenir la ambigüedad en requisitos y entender la falacia de equívoco."
+    },
+    {
+     "nv": "A",
+     "q": "Construye el árbol lógico de <i>cuenta bancaria</i> por el fundamento <i>disponibilidad del dinero</i> (monetaria, de ahorro, a plazo fijo) y divide <i>de ahorro</i> por moneda. Cuenta las especies finales, define una por género próximo y diferencia específica y relaciona el árbol con una jerarquía de clases.",
+     "pasos": [
+      "<b>Árbol.</b><ul><li>Cuenta bancaria<ul><li>Monetaria</li><li>De ahorro<ul><li>En quetzales</li><li>En dólares</li></ul></li><li>A plazo fijo</li></ul></li></ul>",
+      "<b>Conteo.</b> 5 nodos bajo la raíz y 4 especies finales (hojas): monetaria, ahorro en quetzales, ahorro en dólares y plazo fijo.",
+      "<b>Definición.</b> <i>Cuenta de ahorro en dólares</i>: cuenta de ahorro (género próximo) cuyo saldo se lleva en dólares estadounidenses (diferencia específica).",
+      "<b>Clases.</b> Cada nodo es una clase y cada arista una herencia: <code>class Cuenta { saldo }<br>class CuentaAhorro extends Cuenta { tasa }<br>class AhorroDolares extends CuentaAhorro { }</code>Lo común va arriba (género) y lo propio abajo (diferencia)."
+     ],
+     "r": "4 especies finales; la definición sale del árbol y el árbol es la jerarquía de herencia.",
+     "fin": "Pasar de clasificar conceptos a diseñar clases, puente con el tema de UML."
+    },
+    {
+     "nv": "B",
+     "q": "Un razonamiento tiene premisas verdaderas y su conclusión no se sigue de ellas. ¿Cómo se califica?",
+     "ops": [
+      "Válido, porque sus premisas son verdaderas",
+      "Verdadero, porque no tiene premisas falsas",
+      "Válido solo si la conclusión también es verdadera",
+      "Inválido, aunque sus premisas sean verdaderas"
+     ],
+     "ok": 3,
+     "r": "La validez depende de la forma (que la conclusión se siga de las premisas), no de la verdad de las premisas."
+    },
+    {
+     "nv": "I",
+     "q": "Al concepto <i>empleado</i> se le agrega la nota <i>con más de 10 años de servicio</i>. ¿Qué ocurre?",
+     "ops": [
+      "Aumentan la comprensión y la extensión",
+      "Disminuye la comprensión y aumenta la extensión",
+      "La extensión no cambia nunca, porque solo cambió la comprensión",
+      "Aumenta la comprensión y la extensión disminuye o se mantiene"
+     ],
+     "ok": 3,
+     "r": "Ley de relación inversa: cada nota nueva deja fuera a los empleados que no la cumplen."
+    },
+    {
+     "nv": "I",
+     "q": "Se clasifican los equipos del centro de datos en: servidores, equipos de red, equipos con Linux y equipos de almacenamiento. ¿Qué regla de la división se viola?",
+     "ops": [
+      "Fundamento único: “con Linux” usa el sistema operativo y no la función",
+      "Progresividad: faltan niveles intermedios",
+      "Completitud: la división tiene demasiadas especies",
+      "Ninguna: la división es correcta"
+     ],
+     "ok": 0,
+     "r": "Un servidor con Linux cae en dos especies; la división deja de ser excluyente."
+    },
+    {
+     "nv": "A",
+     "q": "Un programador escribe <code>if (saldo &gt; 0 &amp;&amp; saldo &lt;= 0) { bloquear(); }</code> ¿Qué principio lógico explica que <code>bloquear()</code> nunca se ejecute?",
+     "ops": [
+      "Tercero excluido",
+      "Identidad",
+      "Razón suficiente",
+      "No contradicción"
+     ],
+     "ok": 3,
+     "r": "La condición tiene la forma \\(p\\wedge\\neg p\\); ningún valor de saldo la hace verdadera, así que la rama es código muerto."
+    },
+    {
+     "nv": "B",
+     "q": "En la tríada del concepto, ¿qué es la factura número 1520 que la ferretería emitió ayer?",
+     "ops": [
+      "El objeto",
+      "El término",
+      "El concepto",
+      "La extensión vacía"
+     ],
+     "ok": 0,
+     "r": "Es una cosa concreta a la que se refiere el concepto “factura”; el término es la palabra y el concepto, la idea."
+    }
+   ]
+  },
+  {
+   "titulo": "El lenguaje y la lógica de las proposiciones",
+   "intro": "Tema 3 del programa (semana 3): el lenguaje y la lógica de las proposiciones, lógica matemática y funciones del lenguaje; incluye la analogía entre los conectivos y los operadores de los lenguajes de programación que pide la justificación del curso. Las equivalencias y demostraciones formales se desarrollan en Matemática Discreta.",
+   "conceptos": [
+    {
+     "n": "Funciones del lenguaje",
+     "e": [
+      "El lenguaje cumple varias funciones; las tres básicas son:",
+      "<ul><li><b>Informativa:</b> describe hechos; lo que dice puede ser verdadero o falso.</li><li><b>Expresiva:</b> manifiesta emociones o actitudes.</li><li><b>Directiva:</b> busca provocar o impedir una acción (órdenes, peticiones, preguntas).</li></ul>",
+      "Solo el lenguaje informativo forma <b>proposiciones</b>, porque solo él admite un valor de verdad. Un mismo texto puede mezclar funciones: “¡El servidor otra vez caído! Reinícielo ya” es expresivo y directivo."
+     ],
+     "u": [
+      "En la redacción de requisitos, mensajes de error y manuales de usuario.",
+      "Un requisito expresivo (“el sistema debe ser bonito”) no se puede verificar; uno informativo sí.",
+      "Al convertir lo que pide un usuario en condiciones que el programa pueda evaluar.",
+      "Identifica la función dominante de cada oración y reescribe lo que deba comprobarse como enunciado informativo."
+     ]
+    },
+    {
+     "n": "Proposiciones y conectivos lógicos",
+     "e": [
+      "Una <b>proposición</b> es un enunciado del que tiene sentido decir que es verdadero (V) o falso (F). Es <b>simple</b> si no contiene otra proposición y <b>compuesta</b> si se forma con conectivos. Los conectivos tienen equivalente directo en los lenguajes de programación:"
+     ],
+     "u": [
+      "En toda condición de un programa, en filtros SQL y en reglas de negocio.",
+      "Traducir bien el “y”, el “o” y el “si… entonces” del usuario evita los errores lógicos más comunes.",
+      "Al escribir validaciones, permisos y cálculos con casos.",
+      "Asigna una letra a cada proposición simple, identifica el conectivo y escoge el operador del lenguaje."
+     ],
+     "tabla": "<table><thead><tr><th>Conectivo</th><th>Símbolo</th><th>Se lee</th><th>Java / PHP</th><th>Python</th><th>Es V cuando</th></tr></thead><tbody><tr><td>Negación</td><td>\\(\\neg p\\)</td><td>no p</td><td><code>!p</code></td><td><code>not p</code></td><td>p es F</td></tr><tr><td>Conjunción</td><td>\\(p\\wedge q\\)</td><td>p y q</td><td><code>p &amp;&amp; q</code></td><td><code>p and q</code></td><td>ambas son V</td></tr><tr><td>Disyunción</td><td>\\(p\\vee q\\)</td><td>p o q</td><td><code>p || q</code></td><td><code>p or q</code></td><td>al menos una es V</td></tr><tr><td>Disyunción exclusiva</td><td>\\(p\\oplus q\\)</td><td>o p o q</td><td><code>p ^ q</code>, <code>p != q</code></td><td><code>p != q</code></td><td>exactamente una es V</td></tr><tr><td>Condicional</td><td>\\(p\\to q\\)</td><td>si p, entonces q</td><td><code>!p || q</code></td><td><code>not p or q</code></td><td>no ocurre p V y q F</td></tr><tr><td>Bicondicional</td><td>\\(p\\leftrightarrow q\\)</td><td>p si y solo si q</td><td><code>p == q</code></td><td><code>p == q</code></td><td>ambas tienen el mismo valor</td></tr></tbody></table>"
+    },
+    {
+     "n": "Formalización y tablas de verdad",
+     "e": [
+      "<b>Formalizar</b> es pasar del lenguaje natural a símbolos: (1) identificar las proposiciones simples y asignarles letras, en afirmativo; (2) identificar los conectivos y el conectivo principal; (3) agrupar con paréntesis.",
+      "La <b>tabla de verdad</b> lista todas las combinaciones de valores: con \\(n\\) proposiciones simples hay \\(2^n\\) filas. Según su última columna, la fórmula es <b>tautología</b> (siempre V), <b>contradicción</b> (siempre F) o <b>contingencia</b> (a veces V y a veces F)."
+     ],
+     "u": [
+      "En el diseño de casos de prueba: cada fila de la tabla es un caso que el programa debe resolver bien.",
+      "Revela condiciones que siempre son verdaderas o nunca se cumplen antes de que lleguen a producción.",
+      "Cuando una regla de negocio tiene varias condiciones combinadas.",
+      "Formaliza, construye las \\(2^n\\) filas y compara la última columna con lo que el usuario espera."
+     ],
+     "f": "\\text{filas}=2^{n}"
+    },
+    {
+     "n": "Evaluación en los lenguajes: cortocircuito y precedencia",
+     "e": [
+      "Java, PHP, Python, C y JavaScript evalúan <code>&amp;&amp;</code> y <code>||</code> en <b>cortocircuito</b>: en <code>p &amp;&amp; q</code>, si <code>p</code> es falsa ya no evalúan <code>q</code>; en <code>p || q</code>, si <code>p</code> es verdadera tampoco. Por eso <code>n != 0 &amp;&amp; total / n &gt; 100</code> nunca divide entre cero.",
+      "La <b>precedencia</b> usual es: negación, luego conjunción, luego disyunción. <code>a || b &amp;&amp; c</code> significa <code>a || (b &amp;&amp; c)</code>. Ante la duda, paréntesis."
+     ],
+     "u": [
+      "En validaciones que protegen una operación peligrosa (división, acceso a un objeto nulo, consulta costosa).",
+      "Cambiar el orden de los operandos puede cambiar el resultado o provocar una excepción.",
+      "Al escribir condiciones con llamadas a funciones o con efectos secundarios.",
+      "Pon primero la condición que protege y la más barata de evaluar; usa paréntesis explícitos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Indica la función del lenguaje de cada enunciado y cuáles son proposiciones: (a) “El IVA en Guatemala es de 12 %.” (b) “¡Qué lento está el sistema!” (c) “Ingrese su NIT.” (d) “¿Ya se pagó la planilla del IGSS?” (e) “El servidor tiene 64 GB de RAM.”",
+     "pasos": [
+      "<b>(a)</b> Informativa: describe un hecho y puede ser V o F. Es proposición.",
+      "<b>(b)</b> Expresiva: manifiesta molestia. No es proposición.",
+      "<b>(c)</b> Directiva: es una orden. No es proposición.",
+      "<b>(d)</b> Directiva: una pregunta pide una respuesta. No es proposición.",
+      "<b>(e)</b> Informativa: se puede comprobar. Es proposición."
+     ],
+     "r": "Son proposiciones (a) y (e); (b) es expresiva y (c) y (d) directivas.",
+     "fin": "Saber qué partes de un requisito pueden convertirse en condiciones verificables."
+    },
+    {
+     "nv": "I",
+     "q": "Formaliza la regla “Un estudiante aprueba si su nota final es al menos 61 y tiene al menos 80 % de asistencia”, construye la tabla de verdad y escríbela en Java.",
+     "pasos": [
+      "<b>Proposiciones.</b> \\(p\\): la nota es al menos 61. \\(q\\): la asistencia es al menos 80 %. La regla es \\(p\\wedge q\\).",
+      "<b>Tabla.</b> <table><thead><tr><th>p</th><th>q</th><th>\\(p\\wedge q\\)</th></tr></thead><tbody><tr><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td></tr></tbody></table>",
+      "<b>Código.</b> <code>boolean aprueba = nota &gt;= 61 &amp;&amp; asistencia &gt;= 80;</code>",
+      "<b>Casos de prueba.</b> Cada fila es un caso: (75, 90) aprueba; (75, 70), (50, 90) y (50, 70) no."
+     ],
+     "r": "\\(p\\wedge q\\): solo la fila V-V aprueba; en Java <code>nota &gt;= 61 &amp;&amp; asistencia &gt;= 80</code>.",
+     "fin": "Traducir una regla escrita a condición y obtener de la tabla los casos de prueba."
+    },
+    {
+     "nv": "I",
+     "q": "La regla de facturación dice: “Si el cliente es exento, entonces no se le cobra IVA.” Formalízala, construye su tabla y escribe una validación que detecte facturas que la violan.",
+     "pasos": [
+      "<b>Formalización.</b> \\(p\\): el cliente es exento. \\(q\\): se cobra IVA. La regla es \\(p\\to\\neg q\\).",
+      "<b>Tabla.</b> <table><thead><tr><th>p</th><th>q</th><th>\\(\\neg q\\)</th><th>\\(p\\to\\neg q\\)</th></tr></thead><tbody><tr><td>V</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>F</td><td>V</td><td>F</td><td>V</td></tr><tr><td>F</td><td>F</td><td>V</td><td>V</td></tr></tbody></table>",
+      "<b>Única violación.</b> La fila \\(p\\)=V, \\(q\\)=V: cliente exento al que se cobró IVA. Si el cliente no es exento, la regla no dice nada y se cumple.",
+      "<b>Validación.</b> La regla en código es <code>!p || !q</code>; la factura con error es la que la hace falsa: <code>if (cliente.esExento() &amp;&amp; factura.cobraIva()) {<br>    errores.add(\"Cliente exento con IVA\");<br>}</code>"
+     ],
+     "r": "\\(p\\to\\neg q\\) solo es falsa con exento y con IVA; esa es la condición del error.",
+     "fin": "Entender el condicional como regla de negocio y saber cuándo se viola."
+    },
+    {
+     "nv": "A",
+     "q": "Determina qué imprime este programa en Python (Java y PHP se comportan igual con <code>&amp;&amp;</code> y <code>||</code>): <code>def hay_saldo():<br>    print('consulta saldo'); return False<br>def autorizado():<br>    print('consulta permiso'); return True<br>if hay_saldo() and autorizado():<br>    print('retiro aprobado')<br>else:<br>    print('retiro rechazado')<br>if autorizado() or hay_saldo():<br>    print('acceso concedido')</code>",
+     "pasos": [
+      "<b>Primer if.</b> <code>hay_saldo()</code> imprime y devuelve False; con <code>and</code> el resultado ya es falso y <code>autorizado()</code> no se llama. Se ejecuta el <code>else</code>.",
+      "<b>Segundo if.</b> <code>autorizado()</code> imprime y devuelve True; con <code>or</code> el resultado ya es verdadero y <code>hay_saldo()</code> no se llama.",
+      "<b>Salida.</b> <code>consulta saldo<br>retiro rechazado<br>consulta permiso<br>acceso concedido</code>"
+     ],
+     "r": "Cuatro líneas: consulta saldo, retiro rechazado, consulta permiso, acceso concedido; cada <code>if</code> llama a una sola función.",
+     "fin": "Predecir efectos secundarios y usar el cortocircuito para proteger operaciones."
+    },
+    {
+     "nv": "A",
+     "q": "Un sistema de becas tiene <code>if (edad &lt; 18 || edad &gt; 17) { ... }<br>if (edad &gt;= 18 &amp;&amp; edad &lt; 18) { ... }</code> Clasifica cada condición y corrige la primera si la intención era “entre 18 y 60 años, inclusive”.",
+     "pasos": [
+      "<b>Primera.</b> Todo entero es menor que 18 o mayor que 17: es una tautología, el bloque se ejecuta siempre. Probado con todas las edades de 0 a 130.",
+      "<b>Segunda.</b> Ninguna edad es a la vez al menos 18 y menor que 18: es una contradicción (\\(p\\wedge\\neg p\\)), el bloque nunca se ejecuta.",
+      "<b>Corrección.</b> “Entre 18 y 60” es una conjunción: <code>if (edad &gt;= 18 &amp;&amp; edad &lt;= 60) { ... }</code> De 0 a 130 la cumplen 43 edades (18 a 60).",
+      "<b>Origen del error.</b> En español “menores de 18 o mayores de 17” suena razonable; formalizar antes de programar lo descubre."
+     ],
+     "r": "La primera es tautología y la segunda contradicción; la correcta es <code>edad &gt;= 18 &amp;&amp; edad &lt;= 60</code>.",
+     "fin": "Detectar condiciones que siempre o nunca se cumplen, errores frecuentes en la revisión de código."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuántas filas tiene la tabla de verdad de una fórmula con 4 proposiciones simples \\(p, q, r, s\\)? ¿En cuántas es verdadera \\(p\\wedge q\\wedge r\\wedge s\\)?",
+     "r": "\\(2^4=16\\) filas; la conjunción solo es verdadera en 1 (todas V)."
+    },
+    {
+     "nv": "I",
+     "q": "Formaliza “Se concede el préstamo si el cliente tiene ingresos de al menos Q5,000 y no está en la central de riesgo, o si presenta un fiador” y evalúala para (a) ingresos suficientes, en la central de riesgo y sin fiador; (b) ingresos insuficientes, fuera de la central y con fiador.",
+     "r": "\\(p\\): ingresos de al menos Q5,000; \\(q\\): está en la central de riesgo; \\(r\\): presenta fiador. Regla: \\((p\\wedge\\neg q)\\vee r\\). (a) \\((V\\wedge F)\\vee F=F\\): se niega. (b) \\((F\\wedge V)\\vee V=V\\): se concede. De las 8 filas, 5 conceden el préstamo."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica \\((p\\to q)\\wedge(p\\wedge\\neg q)\\) como tautología, contradicción o contingencia.",
+     "r": "Contradicción: \\(p\\wedge\\neg q\\) es justo el caso en que \\(p\\to q\\) es falsa, así que ambas nunca son V a la vez. En las 4 filas el resultado es F."
+    },
+    {
+     "nv": "A",
+     "q": "En Python, ¿qué imprime este código con <code>x = 5</code>? <code>if x == 1 or 2:<br>    print('uno o dos')<br>else:<br>    print('otro')</code>",
+     "ops": [
+      "uno o dos",
+      "otro",
+      "Error de sintaxis",
+      "No imprime nada"
+     ],
+     "ok": 0,
+     "r": "Se evalúa como <code>(x == 1) or 2</code>; <code>2</code> es un valor verdadero, así que la condición siempre se cumple. Lo correcto es <code>x == 1 or x == 2</code>. En PHP, <code>$x == 1 || 2</code> produce el mismo error."
+    },
+    {
+     "nv": "B",
+     "q": "¿Cuál de estos enunciados es una proposición?",
+     "ops": [
+      "¿Cuántos núcleos tiene el servidor?",
+      "El servidor de la municipalidad tiene 16 núcleos.",
+      "Instale el sistema operativo hoy.",
+      "¡Excelente rendimiento!"
+     ],
+     "ok": 1,
+     "r": "Solo el enunciado informativo puede ser verdadero o falso; los otros son directivos o expresivos."
+    }
+   ]
+  },
+  {
+   "titulo": "Razonamiento e inferencia",
+   "intro": "Tema 4 del programa, primera parte (semana 4): el razonamiento, clasificación de los razonamientos y la inferencia. Se trabaja con razonamientos en lenguaje natural del ámbito de sistemas; las reglas de inferencia como sistema formal se ven en Matemática Discreta.",
+   "conceptos": [
+    {
+     "n": "El razonamiento: premisas, conclusión e indicadores",
+     "e": [
+      "Un <b>razonamiento</b> (argumento) es un conjunto de proposiciones en el que una, la <b>conclusión</b>, se afirma con base en las otras, las <b>premisas</b>. La <b>inferencia</b> es el proceso mental de pasar de las premisas a la conclusión.",
+      "Los <b>indicadores</b> ayudan a reconocerlas: de conclusión, “por lo tanto”, “luego”, “en consecuencia”, “por eso”; de premisa, “porque”, “ya que”, “dado que”, “puesto que”. La conclusión no siempre va al final."
+     ],
+     "u": [
+      "En informes de incidentes, diagnósticos de fallas y justificaciones de diseño.",
+      "Sin separar premisas y conclusión no se puede evaluar si una decisión técnica está bien fundada.",
+      "Al leer o escribir un análisis de causa raíz o la justificación de una compra.",
+      "Subraya los indicadores, escribe la conclusión y numera las premisas en forma estándar."
+     ]
+    },
+    {
+     "n": "Clasificación de los razonamientos",
+     "e": [
+      "<b>Deductivo:</b> pretende que la conclusión se siga <i>necesariamente</i> de las premisas; se califica de válido o inválido. <b>Inductivo:</b> pretende que la conclusión sea <i>probable</i>; se califica de fuerte o débil. Formas inductivas: por enumeración (generalizar desde casos), por analogía (de un caso parecido) y causal.",
+      "Las pruebas de software son inductivas: que un programa pase 100 casos hace más probable que esté bien, pero no lo demuestra; basta un contraejemplo para mostrar que está mal."
+     ],
+     "u": [
+      "En el diagnóstico (deductivo, desde reglas conocidas) y en la estimación y las pruebas (inductivo, desde casos).",
+      "Exigir certeza a un razonamiento inductivo, o conformarse con probabilidad en uno deductivo, lleva a malas decisiones.",
+      "Al decidir si una conclusión es segura o solo probable.",
+      "Pregúntate: si las premisas fueran verdaderas, ¿podría la conclusión ser falsa? Si no, es deductivo válido."
+     ],
+     "tabla": "<table><thead><tr><th>Rasgo</th><th>Deductivo</th><th>Inductivo</th></tr></thead><tbody><tr><td>Conclusión</td><td>Necesaria</td><td>Probable</td></tr><tr><td>Se califica</td><td>Válido o inválido</td><td>Fuerte o débil</td></tr><tr><td>Información nueva</td><td>Explicita lo que ya estaba en las premisas</td><td>Va más allá de las premisas</td></tr><tr><td>Ejemplo</td><td>Si el disco está lleno, el respaldo falla; está lleno; luego fallará</td><td>Los últimos 30 respaldos terminaron bien; el de hoy terminará bien</td></tr></tbody></table>"
+    },
+    {
+     "n": "Formas de inferencia válidas e inválidas",
+     "e": [
+      "Algunas formas deductivas aparecen una y otra vez. Las dos últimas de la tabla parecen válidas pero no lo son: son <b>falacias formales</b>."
+     ],
+     "u": [
+      "En el razonamiento diario de soporte técnico: “si fuera la red, fallarían todos; no fallan todos; no es la red”.",
+      "Confundir el modus ponens con la afirmación del consecuente lleva a diagnósticos equivocados.",
+      "Al encadenar hipótesis para encontrar la causa de una falla.",
+      "Identifica la forma del razonamiento y compárala con la tabla."
+     ],
+     "tabla": "<table><thead><tr><th>Forma</th><th>Esquema</th><th>¿Válida?</th></tr></thead><tbody><tr><td>Modus ponens</td><td>\\(p\\to q,\\;p\\;\\therefore\\;q\\)</td><td>Sí</td></tr><tr><td>Modus tollens</td><td>\\(p\\to q,\\;\\neg q\\;\\therefore\\;\\neg p\\)</td><td>Sí</td></tr><tr><td>Silogismo hipotético</td><td>\\(p\\to q,\\;q\\to r\\;\\therefore\\;p\\to r\\)</td><td>Sí</td></tr><tr><td>Silogismo disyuntivo</td><td>\\(p\\vee q,\\;\\neg p\\;\\therefore\\;q\\)</td><td>Sí</td></tr><tr><td>Dilema constructivo (por casos)</td><td>\\(p\\vee q,\\;p\\to r,\\;q\\to r\\;\\therefore\\;r\\)</td><td>Sí</td></tr><tr><td>Afirmación del consecuente</td><td>\\(p\\to q,\\;q\\;\\therefore\\;p\\)</td><td>No</td></tr><tr><td>Negación del antecedente</td><td>\\(p\\to q,\\;\\neg p\\;\\therefore\\;\\neg q\\)</td><td>No</td></tr></tbody></table>"
+    },
+    {
+     "n": "Comprobar la validez con la tabla de verdad",
+     "e": [
+      "Un razonamiento deductivo es válido si <b>no existe ninguna fila</b> en la que todas las premisas sean verdaderas y la conclusión falsa. Esa fila, si existe, es un <b>contraejemplo</b>. Equivale a que el condicional de abajo sea tautología.",
+      "El método es mecánico: se puede programar recorriendo las \\(2^n\\) combinaciones, igual que un probador de casos exhaustivo."
+     ],
+     "u": [
+      "En la verificación de reglas de negocio y en herramientas que comprueban especificaciones.",
+      "Da una respuesta segura sin depender de la intuición.",
+      "Cuando el razonamiento tiene pocas proposiciones simples (hasta 4 o 5 se hace a mano).",
+      "Formaliza, construye la tabla, marca las filas con premisas verdaderas y revisa la conclusión en ellas."
+     ],
+     "f": "(P_1\\wedge P_2\\wedge\\cdots\\wedge P_n)\\to C\\ \\text{es tautología}"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Identifica premisas, conclusión e indicadores: “El sitio de la municipalidad no carga, ya que su servidor web está detenido y ningún sitio cuyo servidor está detenido puede cargar.”",
+     "pasos": [
+      "<b>Indicador.</b> “ya que” introduce premisas; lo anterior es la conclusión.",
+      "<b>Forma estándar.</b> Premisa 1: ningún sitio cuyo servidor está detenido puede cargar. Premisa 2: el servidor web del sitio está detenido. Conclusión: el sitio no carga."
+     ],
+     "r": "Dos premisas y una conclusión, que aquí aparece al inicio.",
+     "fin": "Poner un argumento en forma estándar, primer paso para evaluarlo."
+    },
+    {
+     "nv": "I",
+     "q": "Clasifica: (a) “Los últimos 30 respaldos nocturnos terminaron bien; por lo tanto, el de esta noche terminará bien.” (b) “Si el disco está lleno, el respaldo falla. El disco está lleno. Luego, el respaldo fallará.” (c) “El sistema de planillas, hecho en PHP 5 con el mismo framework, tuvo inyección SQL; el de inventarios también; probablemente tenga la misma falla.”",
+     "pasos": [
+      "<b>(a)</b> Inductivo por enumeración: generaliza desde casos pasados; la conclusión es probable.",
+      "<b>(b)</b> Deductivo, modus ponens: si las premisas son verdaderas, la conclusión lo es necesariamente.",
+      "<b>(c)</b> Inductivo por analogía: el parecido hace probable la falla, pero no la asegura; su fuerza depende de qué tan parecidos sean los sistemas."
+     ],
+     "r": "(a) inductivo por enumeración, (b) deductivo válido, (c) inductivo por analogía.",
+     "fin": "Saber cuándo una conclusión es segura y cuándo solo probable."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa: “Si la contraseña es correcta, el sistema permite el ingreso. El sistema permitió el ingreso. Por lo tanto, la contraseña era correcta.”",
+     "pasos": [
+      "<b>Forma.</b> \\(p\\): la contraseña es correcta; \\(q\\): el sistema permite el ingreso. Esquema \\(p\\to q,\\;q\\;\\therefore\\;p\\): afirmación del consecuente.",
+      "<b>Tabla.</b> <table><thead><tr><th>p</th><th>q</th><th>\\(p\\to q\\)</th><th>\\(q\\)</th><th>\\(p\\)</th></tr></thead><tbody><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td></tr><tr><td>F</td><td>V</td><td>V</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr></tbody></table>",
+      "<b>Contraejemplo.</b> La fila \\(p\\)=F, \\(q\\)=V tiene ambas premisas V y la conclusión F. En la práctica: se ingresó con una sesión ya abierta o con un token de recuperación."
+     ],
+     "r": "Inválido: es una afirmación del consecuente, con contraejemplo p = F, q = V.",
+     "fin": "No concluir la causa a partir del efecto, error clásico en auditoría de accesos."
+    },
+    {
+     "nv": "A",
+     "q": "Diagnóstico: “Si hay corte de energía, el servidor se apaga. Si el servidor se apaga, el sistema de citas no responde. El sistema de citas sí responde. Luego, no hubo corte de energía.” Demuéstralo y compruébalo con la tabla.",
+     "pasos": [
+      "<b>Formalización.</b> \\(p\\): hay corte; \\(q\\): el servidor se apaga; \\(r\\): el sistema no responde. Premisas: \\(p\\to q\\), \\(q\\to r\\), \\(\\neg r\\). Conclusión: \\(\\neg p\\).",
+      "<b>Derivación.</b> De \\(p\\to q\\) y \\(q\\to r\\), por silogismo hipotético, \\(p\\to r\\). De \\(p\\to r\\) y \\(\\neg r\\), por modus tollens, \\(\\neg p\\).",
+      "<b>Tabla.</b> De las 8 filas, solo una tiene las tres premisas verdaderas: \\(p\\)=F, \\(q\\)=F, \\(r\\)=F; en ella \\(\\neg p\\) es V. No hay contraejemplo."
+     ],
+     "r": "Válido: silogismo hipotético seguido de modus tollens; la única fila con premisas verdaderas confirma la conclusión.",
+     "fin": "Descartar causas con certeza durante un diagnóstico."
+    },
+    {
+     "nv": "A",
+     "q": "Comprueba con la tabla de verdad que el razonamiento por casos \\(p\\vee q,\\;p\\to r,\\;q\\to r\\;\\therefore\\;r\\) es válido y aplícalo: “La falla está en la red o en la base de datos; si está en la red, hay que escalar a infraestructura; si está en la base de datos, también.”",
+     "pasos": [
+      "<b>Tabla completa.</b> <table><thead><tr><th>p</th><th>q</th><th>r</th><th>\\(p\\vee q\\)</th><th>\\(p\\to r\\)</th><th>\\(q\\to r\\)</th></tr></thead><tbody><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td><td>V</td></tr><tr><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>V</td><td>V</td></tr></tbody></table>",
+      "<b>Filas con las tres premisas V.</b> (V, V, V), (V, F, V), (F, V, V): en las tres \\(r\\) es V.",
+      "<b>Aplicación.</b> \\(p\\): falla en la red; \\(q\\): falla en la base de datos; \\(r\\): se escala a infraestructura. Aunque no se sepa cuál de las dos es, la conclusión es segura: se escala."
+     ],
+     "r": "Válido: en las 3 filas con premisas verdaderas, \\(r\\) es verdadera.",
+     "fin": "Tomar decisiones sin conocer la causa exacta, cuando todas las alternativas llevan al mismo paso."
+    },
+    {
+     "nv": "B",
+     "q": "¿Qué forma tiene y es válido? “Si llueve, se cancela el laboratorio. No se canceló el laboratorio. Luego, no llovió.”",
+     "r": "Modus tollens (\\(p\\to q,\\;\\neg q\\;\\therefore\\;\\neg p\\)); es válido."
+    },
+    {
+     "nv": "I",
+     "q": "Determina si \\(p\\to q,\\;q\\to r,\\;\\neg p\\;\\therefore\\;\\neg r\\) es válido. Si no lo es, da todos los contraejemplos.",
+     "r": "Inválido (es una negación del antecedente encadenada). Contraejemplos (p, q, r): (F, V, V) y (F, F, V): las tres premisas son V y \\(\\neg r\\) es F."
+    },
+    {
+     "nv": "I",
+     "q": "Evalúa: “El error está en la base de datos PostgreSQL o en el código PHP. Los registros de PostgreSQL muestran que no está en la base de datos. Por lo tanto, está en el código PHP.”",
+     "r": "Silogismo disyuntivo (\\(p\\vee q,\\;\\neg p\\;\\therefore\\;q\\)): válido. Su conclusión será verdadera solo si la disyunción también lo es, es decir, si de verdad no hay otra causa posible (por ejemplo, la red)."
+    },
+    {
+     "nv": "A",
+     "q": "¿Es válido \\((p\\wedge q)\\to r,\\;\\neg r\\;\\therefore\\;\\neg p\\)? Ejemplo: “Si el usuario tiene permiso y el servicio está activo, se genera el reporte. No se generó. Luego, el usuario no tiene permiso.”",
+     "r": "Inválido. Contraejemplo: \\(p\\)=V, \\(q\\)=F, \\(r\\)=F (el usuario tiene permiso, pero el servicio estaba caído). Lo que sí se concluye por modus tollens es \\(\\neg(p\\wedge q)\\): falta el permiso o el servicio."
+    },
+    {
+     "nv": "A",
+     "q": "Un equipo afirma: “El módulo pasó 500 casos de prueba; por lo tanto, no tiene errores.” ¿Cómo se califica este razonamiento?",
+     "ops": [
+      "Deductivo válido, porque 500 casos son suficientes",
+      "Deductivo inválido por negación del antecedente",
+      "No es un razonamiento, porque no tiene premisas",
+      "Inductivo: los casos hacen probable la corrección, pero no la demuestran"
+     ],
+     "ok": 3,
+     "r": "Generaliza desde casos observados; un solo caso fallido basta para refutar la conclusión."
+    }
+   ]
+  },
+  {
+   "titulo": "Falacias, creatividad y bloqueos mentales",
+   "intro": "Tema 4 del programa, segunda parte (semana 5: falacias, falacias de atingencia y falacias de ambigüedad) y tema 5 (semana 8: la creatividad, la práctica de la creatividad, bloqueos mentales y sus tipos).",
+   "conceptos": [
+    {
+     "n": "Falacias de atingencia (de relevancia)",
+     "e": [
+      "Una <b>falacia</b> es un razonamiento incorrecto que parece correcto. En las de <b>atingencia</b> (también llamadas de atinencia o de relevancia) las premisas no tienen relación lógica con la conclusión: apelan a la fuerza, a la persona, a la emoción o a la ignorancia."
+     ],
+     "u": [
+      "En reuniones de proyecto, evaluaciones de proveedores, foros técnicos y redes sociales.",
+      "Una decisión técnica tomada por una falacia (popularidad, autoridad ajena al tema) suele salir cara.",
+      "Al evaluar argumentos para elegir una tecnología o aceptar un diagnóstico.",
+      "Pregunta si la premisa, aun siendo verdadera, da alguna razón a favor de la conclusión."
+     ],
+     "tabla": "<table><thead><tr><th>Falacia</th><th>Qué hace</th><th>Ejemplo en sistemas</th></tr></thead><tbody><tr><td><i>Ad baculum</i> (a la fuerza)</td><td>Amenaza en lugar de dar razones</td><td>“Usen este framework o no hay bono a fin de año.”</td></tr><tr><td><i>Ad hominem</i> (contra la persona)</td><td>Ataca a quien argumenta, no al argumento</td><td>“Su propuesta de seguridad no sirve; él ni siquiera es ingeniero.”</td></tr><tr><td><i>Ad ignorantiam</i> (a la ignorancia)</td><td>Algo es verdad porque no se probó lo contrario</td><td>“Nadie ha demostrado que el sistema tenga fallas, así que es seguro.”</td></tr><tr><td><i>Ad misericordiam</i> (a la piedad)</td><td>Apela a la compasión</td><td>“Acepte el módulo así; trabajamos toda la noche.”</td></tr><tr><td><i>Ad populum</i> (al pueblo)</td><td>Apela a la mayoría o al entusiasmo</td><td>“Todos usan ese lenguaje; es el mejor para este proyecto.”</td></tr><tr><td><i>Ad verecundiam</i> (autoridad inapropiada)</td><td>Cita una autoridad fuera de su campo</td><td>“Un futbolista famoso recomienda esta base de datos.”</td></tr><tr><td>Causa falsa (<i>post hoc</i>)</td><td>Toma una sucesión como causa</td><td>“Desde que llegó el practicante, el servidor falla; él es la causa.”</td></tr><tr><td>Generalización apresurada</td><td>Generaliza desde pocos casos</td><td>“Dos usuarios se quejaron; el sistema entero es inservible.”</td></tr><tr><td>Petición de principio</td><td>Supone lo que quiere probar</td><td>“El sistema es confiable porque nunca falla de forma no confiable.”</td></tr><tr><td>Pregunta compleja</td><td>Una pregunta que esconde una afirmación</td><td>“¿Ya dejó de borrar los respaldos?”</td></tr><tr><td>Conclusión inatinente</td><td>Prueba otra cosa distinta de la que debía</td><td>Defender un presupuesto explicando lo importante que es la seguridad, sin justificar el monto.</td></tr></tbody></table>"
+    },
+    {
+     "n": "Falacias de ambigüedad",
+     "e": [
+      "Surgen cuando una palabra o frase cambia de significado a lo largo del razonamiento."
+     ],
+     "u": [
+      "En contratos, requisitos, mensajes de error y especificaciones de software.",
+      "Un requisito ambiguo se programa de una forma y se prueba de otra.",
+      "Al revisar documentos de requisitos o términos de referencia de una licitación.",
+      "Busca palabras con dos sentidos, frases mal construidas y saltos entre el todo y las partes."
+     ],
+     "tabla": "<table><thead><tr><th>Falacia</th><th>Qué hace</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Equívoco</td><td>Usa una palabra con dos sentidos</td><td>“Los servidores públicos atienden al ciudadano; este equipo es un servidor; luego, atiende al ciudadano.”</td></tr><tr><td>Anfibología</td><td>Frase con construcción gramatical ambigua</td><td>“Se venden computadoras para estudiantes con pantalla táctil.” (¿quién tiene la pantalla?)</td></tr><tr><td>Énfasis (acento)</td><td>Cambia el sentido al resaltar una parte</td><td>“El sistema <i>no</i> perdió datos <i>hoy</i>” sugiere que otros días sí.</td></tr><tr><td>Composición</td><td>Atribuye al todo lo que vale para las partes</td><td>“Cada módulo es rápido; luego, el sistema completo es rápido.”</td></tr><tr><td>División</td><td>Atribuye a las partes lo que vale para el todo</td><td>“El equipo de desarrollo es el mejor del país; luego, cada programador es el mejor.”</td></tr></tbody></table>"
+    },
+    {
+     "n": "La creatividad y su práctica",
+     "e": [
+      "La <b>creatividad</b> es la capacidad de producir ideas nuevas y útiles. Combina dos modos de pensar: el <b>divergente</b>, que genera muchas alternativas sin juzgarlas, y el <b>convergente</b>, que las evalúa y elige. El <b>pensamiento lateral</b> (Edward de Bono) busca salir del camino obvio cambiando el punto de partida.",
+      "Técnicas útiles: <b>lluvia de ideas</b> (sin críticas, cantidad antes que calidad, combinar ideas ajenas, ideas libres), <b>SCAMPER</b> (sustituir, combinar, adaptar, modificar, poner otro uso, eliminar, reordenar), <b>seis sombreros</b> (mirar el problema desde un ángulo a la vez), analogías e inversión del problema (“¿cómo lo empeoraría?”). Después se converge con criterios explícitos, por ejemplo una matriz ponderada."
+     ],
+     "u": [
+      "En el diseño de soluciones, la mejora de procesos y la experiencia de usuario.",
+      "La primera idea casi nunca es la mejor; sin alternativas no hay comparación.",
+      "En la etapa de diseño de la solución, antes de comprometerse con una.",
+      "Separa en el tiempo la generación (divergente) de la evaluación (convergente) y evalúa con criterios y pesos."
+     ],
+     "f": "\\text{puntaje}=\\sum_{i}w_i\\,c_i,\\qquad \\sum_i w_i=1"
+    },
+    {
+     "n": "Bloqueos mentales",
+     "e": [
+      "Un <b>bloqueo mental</b> es una barrera que impide ver o aceptar soluciones. Tipos más citados:",
+      "<ul><li><b>Perceptuales:</b> no ver el problema real, delimitarlo de más, no verlo desde otros ángulos.</li><li><b>Emocionales:</b> miedo a equivocarse o al ridículo, preferir juzgar a generar ideas, prisa por la primera solución.</li><li><b>Culturales:</b> “siempre se ha hecho así”, tabúes, creer que jugar o fantasear es perder el tiempo.</li><li><b>Ambientales:</b> jefes que no escuchan, interrupciones, falta de apoyo.</li><li><b>Intelectuales y expresivos:</b> falta de información, usar un lenguaje o herramienta inadecuados para el problema.</li></ul>"
+     ],
+     "u": [
+      "En equipos de desarrollo, mesas de servicio y proyectos de mejora institucional.",
+      "Reconocer el bloqueo es el primer paso para superarlo.",
+      "Cuando un problema lleva tiempo sin solución o todas las ideas se parecen.",
+      "Nombra el bloqueo y aplica la técnica opuesta: cambiar la representación, posponer el juicio, consultar a alguien externo."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Identifica la falacia: (a) “Si no aprueban mi diseño, hablaré con el gerente para que los cambien de proyecto.” (b) “No hay pruebas de que el proveedor haya filtrado datos; por lo tanto, es confiable.” (c) “Desde que instalamos la actualización, bajaron las ventas; la actualización las bajó.”",
+     "pasos": [
+      "<b>(a)</b> Amenaza en lugar de argumento: <i>ad baculum</i>.",
+      "<b>(b)</b> La falta de pruebas en contra no prueba nada a favor: <i>ad ignorantiam</i>.",
+      "<b>(c)</b> Que algo ocurra después no lo hace causa: causa falsa (<i>post hoc</i>)."
+     ],
+     "r": "(a) ad baculum, (b) ad ignorantiam, (c) causa falsa.",
+     "fin": "Reconocer las falacias más comunes en el trabajo diario."
+    },
+    {
+     "nv": "I",
+     "q": "Identifica la falacia de ambigüedad: (a) “Cada consulta del reporte tarda menos de un segundo; luego, el reporte completo tarda menos de un segundo.” (b) “El requisito dice: el usuario registra la venta del cliente con tarjeta.” (c) “La red es un conjunto de nodos; Pedro es un nodo de la red de contactos; luego, Pedro es parte de la infraestructura.”",
+     "pasos": [
+      "<b>(a)</b> Lo que vale para cada parte se atribuye al todo; si son 50 consultas, pueden sumar casi 50 segundos: composición.",
+      "<b>(b)</b> No se sabe si “con tarjeta” se refiere al pago o al cliente: anfibología. El requisito debe reescribirse.",
+      "<b>(c)</b> “Red” y “nodo” cambian de sentido (red de computadoras y red social): equívoco."
+     ],
+     "r": "(a) composición, (b) anfibología, (c) equívoco.",
+     "fin": "Detectar ambigüedades en requisitos antes de programarlos."
+    },
+    {
+     "nv": "I",
+     "q": "¿Cuál de estas apelaciones a la autoridad es legítima? (a) “Según la documentación oficial de PostgreSQL, un índice B-tree acelera las búsquedas por igualdad y por rango.” (b) “Un cantante famoso dice que Linux es inseguro.” (c) “Mi tío, que es contador, dice que este algoritmo de cifrado es débil.”",
+     "pasos": [
+      "<b>Criterio.</b> La apelación es legítima si la autoridad es experta en el tema, su opinión es verificable y no hay desacuerdo serio entre expertos.",
+      "<b>(a)</b> La documentación oficial es la fuente experta en el tema: legítima.",
+      "<b>(b)</b> y <b>(c)</b> Autoridades fuera de su campo: <i>ad verecundiam</i>."
+     ],
+     "r": "Solo (a) es legítima; (b) y (c) son falacias de autoridad inapropiada.",
+     "fin": "No rechazar toda cita a expertos, sino distinguir cuándo es pertinente."
+    },
+    {
+     "nv": "I",
+     "q": "En una lluvia de ideas para reducir las colas de pago en una municipalidad salen cuatro ideas. Evalúalas con los criterios y pesos dados (puntajes de 1 a 5, más es mejor).",
+     "pasos": [
+      "<b>Divergencia.</b> Primero se generan ideas sin criticarlas; luego se converge con criterios acordados: Costo (5 = más barato) (0.3), Reducción de la espera (0.4), Facilidad de implementación (0.3).",
+      "<b>Matriz.</b> <table><thead><tr><th>Idea</th><th>Costo (5 = más barato)</th><th>Reducción de la espera</th><th>Facilidad de implementación</th><th>Puntaje</th></tr></thead><tbody><tr><td>Pago en línea</td><td>3</td><td>5</td><td>3</td><td>3.8</td></tr><tr><td>Más ventanillas</td><td>2</td><td>3</td><td>5</td><td>3.3</td></tr><tr><td>Citas por mensaje de texto</td><td>4</td><td>3</td><td>4</td><td>3.6</td></tr><tr><td>Kiosco de autoservicio</td><td>2</td><td>4</td><td>2</td><td>2.8</td></tr></tbody></table>",
+      "<b>Cálculo.</b> Pago en línea: \\(0.3(3)+0.4(5)+0.3(3)=3.8\\). Igual para las demás.",
+      "<b>Decisión.</b> Gana el pago en línea (3.8), seguido de las citas por mensaje de texto (3.6)."
+     ],
+     "r": "Pago en línea, con 3.8 puntos.",
+     "fin": "Pasar de muchas ideas a una decisión justificada, sin que gane la de quien habla más fuerte."
+    },
+    {
+     "nv": "A",
+     "q": "Problema de los nueve puntos: une los nueve puntos de una cuadrícula de 3 × 3 con 4 segmentos rectos sin levantar el lápiz. ¿Qué bloqueo lo hace difícil y cuál es la solución?",
+     "pasos": [
+      "<b>Bloqueo.</b> Perceptual: se supone que los trazos no pueden salir del cuadrado que forman los puntos, aunque nadie lo prohibió.",
+      "<b>Solución.</b> Con coordenadas de (0, 0) a (2, 2), recorre los vértices (0, 0) → (0, 3) → (3, 0) → (0, 0) → (2, 2).",
+      "<b>Comprobación.</b> El primer trazo cubre la columna x = 0; el segundo, (1, 2) y (2, 1); el tercero, la fila y = 0; el cuarto, la diagonal (1, 1) y (2, 2). Son 4 trazos y cubren los 9 puntos (verificado por programa)."
+     ],
+     "r": "Se sale del cuadrado: 4 trazos (0,0)→(0,3)→(3,0)→(0,0)→(2,2).",
+     "fin": "Reconocer restricciones que uno mismo se impone al resolver un problema."
+    },
+    {
+     "nv": "B",
+     "q": "“Todos los bancos del país usan ese sistema; por eso debemos comprarlo.” ¿Qué falacia es?",
+     "ops": [
+      "<i>Ad hominem</i>",
+      "Petición de principio",
+      "Anfibología",
+      "<i>Ad populum</i>"
+     ],
+     "ok": 3,
+     "r": "Apela a lo que hace la mayoría en lugar de evaluar si el sistema conviene."
+    },
+    {
+     "nv": "I",
+     "q": "“No le crean el análisis de riesgos; trabajó para la competencia.” ¿Qué falacia es?",
+     "ops": [
+      "<i>Ad hominem</i> circunstancial",
+      "<i>Ad verecundiam</i>",
+      "Composición",
+      "<i>Ad misericordiam</i>"
+     ],
+     "ok": 0,
+     "r": "Descalifica el argumento por las circunstancias de la persona y no por su contenido."
+    },
+    {
+     "nv": "I",
+     "q": "“Cada servidor del clúster consume poca energía; por lo tanto, el centro de datos consume poca energía.” ¿Qué falacia es?",
+     "ops": [
+      "Composición",
+      "División",
+      "Equívoco",
+      "Generalización apresurada"
+     ],
+     "ok": 0,
+     "r": "Atribuye al todo una propiedad de las partes; la suma de muchos consumos pequeños puede ser grande."
+    },
+    {
+     "nv": "A",
+     "q": "Un equipo rechaza cualquier propuesta nueva con “aquí siempre se ha hecho en hojas de cálculo”. ¿Qué tipo de bloqueo mental es?",
+     "ops": [
+      "Perceptual",
+      "Expresivo",
+      "Cultural",
+      "Ambiental"
+     ],
+     "ok": 2,
+     "r": "Apegarse a la tradición o costumbre es el ejemplo típico de bloqueo cultural."
+    },
+    {
+     "nv": "A",
+     "q": "En una sesión de lluvia de ideas, ¿qué regla se rompe si el coordinador descarta en voz alta cada idea poco práctica?",
+     "ops": [
+      "Buscar cantidad antes que calidad",
+      "Posponer el juicio: no criticar mientras se generan ideas",
+      "Combinar y mejorar ideas ajenas",
+      "Registrar todas las ideas a la vista"
+     ],
+     "ok": 1,
+     "r": "Criticar durante la generación mezcla el pensamiento convergente con el divergente y activa el bloqueo emocional del miedo al ridículo."
+    }
+   ]
+  },
+  {
+   "titulo": "Álgebra de Boole, compuertas y circuitos",
+   "intro": "Tema 6 del programa (semanas 9, 10 y 12): compuertas lógicas OR, AND, NOT, NOR y NAND; circuitos; álgebra de Boole: conceptos, definiciones y teoremas; simplificación de circuitos lógicos. Los mapas de Karnaugh, la lógica secuencial y los circuitos integrados se desarrollan en Electrónica Digital.",
+   "conceptos": [
+    {
+     "n": "Compuertas lógicas",
+     "e": [
+      "El álgebra de Boole trabaja con dos valores, 0 y 1, que en lógica corresponden a F y V. Una <b>compuerta</b> es un circuito que calcula una operación booleana; sus entradas y salida son señales de 0 o 1. Notación: \\(A\\cdot B\\) o \\(AB\\) es AND, \\(A+B\\) es OR y \\(A'\\) (o \\(\\overline{A}\\)) es NOT."
+     ],
+     "u": [
+      "En los procesadores, memorias y controladores; y, con el mismo álgebra, en las condiciones de los programas.",
+      "Todo lo que hace una computadora se reduce a combinaciones de estas compuertas.",
+      "Al leer o diseñar un circuito, y al simplificar una condición compleja de un programa.",
+      "Identifica cada compuerta por su expresión y su tabla."
+     ],
+     "tabla": "<table><thead><tr><th>Compuerta</th><th>Expresión</th><th>Salida 1 cuando</th><th>En código</th></tr></thead><tbody><tr><td>AND</td><td>\\(F=A\\cdot B\\)</td><td>todas las entradas son 1</td><td><code>a &amp;&amp; b</code></td></tr><tr><td>OR</td><td>\\(F=A+B\\)</td><td>al menos una entrada es 1</td><td><code>a || b</code></td></tr><tr><td>NOT</td><td>\\(F=A'\\)</td><td>la entrada es 0</td><td><code>!a</code></td></tr><tr><td>NAND</td><td>\\(F=(A\\cdot B)'\\)</td><td>alguna entrada es 0</td><td><code>!(a &amp;&amp; b)</code></td></tr><tr><td>NOR</td><td>\\(F=(A+B)'\\)</td><td>todas las entradas son 0</td><td><code>!(a || b)</code></td></tr><tr><td>XOR (complementaria)</td><td>\\(F=A\\oplus B\\)</td><td>las entradas son distintas</td><td><code>a != b</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Del circuito a la expresión y a la tabla",
+     "e": [
+      "Un <b>circuito combinacional</b> conecta compuertas; su salida depende solo de las entradas actuales. Se analiza de las entradas hacia la salida: se escribe la expresión de cada compuerta y se sustituye. Sin dibujos, un circuito se describe como lista de compuertas: <code>G1 = AND(A, B)</code>, <code>G2 = NOT(C)</code>…",
+      "De una tabla de verdad se obtiene la <b>suma de productos</b>: un término producto (minitérmino \\(m_i\\)) por cada fila con salida 1, donde la variable va sin negar si vale 1 y negada si vale 0. Con 3 variables, la fila \\(i\\) se numera con \\(ABC\\) en binario (\\(A\\) es el bit más significativo)."
+     ],
+     "u": [
+      "En el análisis de circuitos y en la obtención de una condición a partir de una tabla de casos.",
+      "Permite pasar de una especificación por casos a un circuito o a una condición de código.",
+      "Cuando se conoce lo que debe pasar en cada combinación pero no la fórmula.",
+      "Marca las filas con 1, escribe un minitérmino por fila y súmalos; después simplifica."
+     ],
+     "f": "F(A,B,C)=\\sum m(\\ldots),\\qquad m_5=A\\,B'\\,C"
+    },
+    {
+     "n": "Postulados y teoremas del álgebra de Boole",
+     "e": [
+      "Las leyes permiten transformar una expresión en otra equivalente. Cada una tiene su <b>dual</b> (cambiando + por · y 0 por 1). Ojo: la segunda distributiva no existe en el álgebra ordinaria."
+     ],
+     "u": [
+      "En la simplificación de circuitos y en la refactorización de condiciones.",
+      "Una expresión más simple usa menos compuertas: menos costo, consumo y retardo; en código, menos errores.",
+      "Siempre antes de implementar un circuito o una condición larga.",
+      "Aplica las leyes de una en una y anota cuál usaste; verifica con la tabla al final."
+     ],
+     "tabla": "<table><thead><tr><th>Ley</th><th>Forma</th><th>Dual</th></tr></thead><tbody><tr><td>Identidad</td><td>\\(A+0=A\\)</td><td>\\(A\\cdot1=A\\)</td></tr><tr><td>Elemento nulo</td><td>\\(A+1=1\\)</td><td>\\(A\\cdot0=0\\)</td></tr><tr><td>Idempotencia</td><td>\\(A+A=A\\)</td><td>\\(A\\cdot A=A\\)</td></tr><tr><td>Complemento</td><td>\\(A+A'=1\\)</td><td>\\(A\\cdot A'=0\\)</td></tr><tr><td>Involución</td><td>\\((A')'=A\\)</td><td>—</td></tr><tr><td>Conmutativa</td><td>\\(A+B=B+A\\)</td><td>\\(AB=BA\\)</td></tr><tr><td>Asociativa</td><td>\\(A+(B+C)=(A+B)+C\\)</td><td>\\(A(BC)=(AB)C\\)</td></tr><tr><td>Distributiva</td><td>\\(A(B+C)=AB+AC\\)</td><td>\\(A+BC=(A+B)(A+C)\\)</td></tr><tr><td>Absorción</td><td>\\(A+AB=A\\)</td><td>\\(A(A+B)=A\\)</td></tr><tr><td>Absorción del complemento</td><td>\\(A+A'B=A+B\\)</td><td>\\(A(A'+B)=AB\\)</td></tr><tr><td>De Morgan</td><td>\\((A+B)'=A'B'\\)</td><td>\\((AB)'=A'+B'\\)</td></tr></tbody></table>"
+    },
+    {
+     "n": "Simplificación y compuertas universales",
+     "e": [
+      "<b>Simplificar</b> es reducir el número de términos y literales: se agrupan términos con factor común (\\(AB+AB'=A\\)), se usa la idempotencia para repetir un término y combinarlo dos veces, y se aplican absorción y De Morgan.",
+      "NAND y NOR son <b>compuertas universales</b>: con una sola de ellas se construyen NOT, AND y OR, y por tanto cualquier circuito. Por eso los fabricantes producen circuitos con un solo tipo de compuerta."
+     ],
+     "u": [
+      "En el diseño de hardware y en la limpieza de condiciones de código heredado.",
+      "Menos compuertas es menos costo; una condición más corta es más fácil de probar.",
+      "Al pasar de la suma de productos al circuito final o al refactorizar un <code>if</code>.",
+      "Simplifica, cuenta compuertas antes y después, y comprueba la equivalencia con la tabla de verdad."
+     ],
+     "f": "A'=(A\\cdot A)',\\quad A\\cdot B=((AB)')',\\quad A+B=(A'\\cdot B')'"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Construye la tabla de verdad de \\(F=(A+B)\\cdot C'\\) y escribe sus minitérminos.",
+     "pasos": [
+      "<b>Lectura.</b> \\(F\\) vale 1 cuando \\(C=0\\) y al menos una de \\(A\\), \\(B\\) es 1.",
+      "<b>Tabla.</b> <table><thead><tr><th>m</th><th>A</th><th>B</th><th>C</th><th>A+B</th><th>C'</th><th>F</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>3</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>4</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>5</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>6</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>7</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody></table>",
+      "<b>Minitérminos.</b> Filas con \\(F=1\\): 2 (010), 4 (100) y 6 (110)."
+     ],
+     "r": "\\(F=\\sum m(2,4,6)\\).",
+     "fin": "Leer una expresión como circuito y como tabla de casos."
+    },
+    {
+     "nv": "I",
+     "q": "Un circuito se describe así: <code>G1 = AND(A, B)</code>, <code>G2 = NOT(C)</code>, <code>G3 = AND(A, G2)</code>, <code>F = OR(G1, G3)</code>. Obtén su expresión, simplifícala y compara el número de compuertas.",
+     "pasos": [
+      "<b>Expresión.</b> \\(G1=AB\\), \\(G3=AC'\\), \\(F=AB+AC'\\).",
+      "<b>Simplificación.</b> Factor común (distributiva): \\(F=A(B+C')\\).",
+      "<b>Compuertas.</b> Original: AND, NOT, AND y OR = 4. Simplificado: NOT (para \\(C'\\)), OR y AND = 3.",
+      "<b>Verificación.</b> Ambas valen 1 en los minitérminos 4, 6 y 7 y 0 en los demás."
+     ],
+     "r": "\\(F=A(B+C')\\), con 3 compuertas en lugar de 4.",
+     "fin": "Analizar un circuito dado como lista de compuertas y ahorrar una compuerta."
+    },
+    {
+     "nv": "I",
+     "q": "Simplifica \\(F=A'B'C+A'BC+AB'C\\).",
+     "pasos": [
+      "<b>Idempotencia.</b> Se repite \\(A'B'C\\) para usarlo dos veces: \\(F=(A'B'C+A'BC)+(A'B'C+AB'C)\\).",
+      "<b>Factor común y complemento.</b> \\(A'C(B'+B)=A'C\\) y \\(B'C(A'+A)=B'C\\). Queda \\(F=A'C+B'C\\).",
+      "<b>Otra forma.</b> \\(F=C(A'+B')=C\\,(AB)'\\) por De Morgan: una NAND y una AND.",
+      "<b>Verificación.</b> Las tres expresiones valen 1 exactamente en los minitérminos 1, 3 y 5."
+     ],
+     "r": "\\(F=A'C+B'C=C\\,(AB)'\\).",
+     "fin": "Practicar la técnica de duplicar un término con la idempotencia."
+    },
+    {
+     "nv": "A",
+     "q": "Construye NOT, AND y OR usando solo compuertas NAND y cuenta cuántas necesita cada una.",
+     "pasos": [
+      "<b>NOT.</b> Se unen las dos entradas: \\((A\\cdot A)'=A'\\). 1 NAND.",
+      "<b>AND.</b> Se niega la salida de una NAND con otra NAND usada como NOT: \\(((AB)')'=AB\\). 2 NAND.",
+      "<b>OR.</b> Por De Morgan, \\(A+B=(A'B')'\\): dos NAND como NOT para \\(A'\\) y \\(B'\\) y una NAND final. 3 NAND.",
+      "<b>Comprobación.</b> Las tres construcciones coinciden con NOT, AND y OR en todas las combinaciones de entrada."
+     ],
+     "r": "NOT = 1 NAND, AND = 2 NAND, OR = 3 NAND.",
+     "fin": "Entender por qué NAND es universal y cómo se fabrica cualquier circuito con ella."
+    },
+    {
+     "nv": "A",
+     "q": "Un clúster de 3 servidores (A, B, C) solo acepta escrituras si al menos 2 están en línea (quórum). Diseña la función, simplifícala y escríbela como condición en Java.",
+     "pasos": [
+      "<b>Tabla.</b> <table><thead><tr><th>m</th><th>A</th><th>B</th><th>C</th><th>F</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>3</td><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>4</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>5</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>6</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>7</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody></table>",
+      "<b>Suma de productos.</b> \\(F=\\sum m(3,5,6,7)=A'BC+AB'C+ABC'+ABC\\).",
+      "<b>Simplificación.</b> Se repite \\(ABC\\) tres veces (idempotencia): \\((A'BC+ABC)+(AB'C+ABC)+(ABC'+ABC)=BC+AC+AB\\).",
+      "<b>Circuito y código.</b> 3 AND y una OR de 3 entradas: <code>boolean quorum = (a &amp;&amp; b) || (a &amp;&amp; c) || (b &amp;&amp; c);</code>"
+     ],
+     "r": "\\(F=AB+AC+BC\\), la función mayoría.",
+     "fin": "Diseñar un circuito desde la especificación hasta la condición de código."
+    },
+    {
+     "nv": "B",
+     "q": "Evalúa \\(F=(A\\cdot B)'+C\\) para \\(A=1\\), \\(B=1\\), \\(C=0\\).",
+     "r": "\\(AB=1\\), \\((AB)'=0\\), \\(0+0=0\\): \\(F=0\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Simplifica (a) \\(AB+AB'\\) y (b) \\(A+A'B\\).",
+     "r": "(a) \\(A(B+B')=A\\cdot1=A\\). (b) Por absorción del complemento, \\(A+B\\)."
+    },
+    {
+     "nv": "I",
+     "q": "Aplica De Morgan para obtener el complemento de \\(F=A+B'C\\).",
+     "r": "\\(F'=A'\\cdot(B'C)'=A'\\,(B+C')\\)."
+    },
+    {
+     "nv": "A",
+     "q": "Simplifica \\(F=\\sum m(0,2,4,6)\\) de tres variables \\(A,B,C\\).",
+     "r": "Los cuatro minitérminos tienen \\(C=0\\) y todas las combinaciones de \\(A\\) y \\(B\\): \\(F=C'\\). Una sola compuerta NOT."
+    },
+    {
+     "nv": "A",
+     "q": "Simplifica la condición de código <code>!(!activo || bloqueado)</code> y explica qué significa.",
+     "r": "Por De Morgan, \\((A'+B)'=A\\,B'\\): <code>activo &amp;&amp; !bloqueado</code>. El usuario pasa si está activo y no está bloqueado."
+    }
+   ]
+  },
+  {
+   "titulo": "Lógica de la resolución de un problema",
+   "intro": "Tema 7 del programa (semana 15): introducción, planteamiento de problemas, análisis básico, diseño de la solución, validación del diseño, prueba y depuración (depuradores y estrategias básicas de prueba y depuración) y documentación interna y externa. Los algoritmos se escriben en pseudocódigo en español y los diagramas de flujo como pasos numerados; la sintaxis completa del pseudocódigo, los tipos de datos y los módulos se desarrollan en Algoritmos y Programación I.",
+   "conceptos": [
+    {
+     "n": "Etapas de la resolución de un problema",
+     "e": [
+      "Resolver un problema con computadora no empieza con el código. Cada etapa produce algo que se revisa antes de pasar a la siguiente:"
+     ],
+     "u": [
+      "En cualquier desarrollo, desde un ejercicio de clase hasta un sistema para una institución.",
+      "La mayoría de errores caros nacen de un problema mal planteado, no de una instrucción mal escrita.",
+      "Siempre, y con más cuidado cuanto más grande es el problema.",
+      "Escribe el producto de cada etapa: el enunciado claro, la tabla de entradas y salidas, el algoritmo, la prueba de escritorio, el código probado y su documentación."
+     ],
+     "tabla": "<table><thead><tr><th>Etapa</th><th>Pregunta</th><th>Producto</th></tr></thead><tbody><tr><td>Planteamiento</td><td>¿Qué se pide exactamente?</td><td>Enunciado sin ambigüedades</td></tr><tr><td>Análisis</td><td>¿Qué entra, qué sale, qué reglas y restricciones hay?</td><td>Entradas, proceso, salidas (E-P-S)</td></tr><tr><td>Diseño</td><td>¿Qué pasos resuelven el problema?</td><td>Algoritmo en pseudocódigo o diagrama de flujo</td></tr><tr><td>Validación del diseño</td><td>¿El algoritmo da lo esperado?</td><td>Prueba de escritorio</td></tr><tr><td>Codificación</td><td>¿Cómo se escribe en el lenguaje?</td><td>Programa fuente</td></tr><tr><td>Prueba y depuración</td><td>¿Funciona con todos los casos?</td><td>Casos de prueba y errores corregidos</td></tr><tr><td>Documentación</td><td>¿Lo entenderá otra persona?</td><td>Comentarios, manual técnico y de usuario</td></tr></tbody></table>"
+    },
+    {
+     "n": "Algoritmo, pseudocódigo y diagrama de flujo",
+     "e": [
+      "Un <b>algoritmo</b> es una secuencia finita de pasos precisos y ordenados que resuelve un problema; debe ser <b>preciso</b> (sin ambigüedad), <b>definido</b> (mismos datos, mismo resultado) y <b>finito</b>. Usa <b>variables</b> (nombres que guardan datos), <b>operadores</b> (aritméticos, relacionales, lógicos) y tres estructuras: <b>secuencia</b>, <b>decisión</b> (<code>Si … Entonces … SiNo</code>) y <b>repetición</b> (<code>Mientras</code>, <code>Para</code>).",
+      "El <b>diagrama de flujo</b> representa lo mismo con símbolos; aquí se escribe como tabla de pasos con el símbolo que corresponde y el paso siguiente."
+     ],
+     "u": [
+      "En el diseño de cualquier programa y en la comunicación con otros desarrolladores.",
+      "Permite razonar la solución sin pelear con la sintaxis de un lenguaje.",
+      "En la etapa de diseño, antes de codificar.",
+      "Escribe el pseudocódigo con una acción por línea y sangría en cada bloque; tradúcelo a diagrama cuando ayude a ver las decisiones."
+     ],
+     "tabla": "<table><thead><tr><th>Símbolo</th><th>Forma</th><th>Uso</th></tr></thead><tbody><tr><td>Terminal</td><td>Óvalo</td><td>Inicio y fin</td></tr><tr><td>Proceso</td><td>Rectángulo</td><td>Asignaciones y cálculos</td></tr><tr><td>Decisión</td><td>Rombo</td><td>Condición con salidas Sí y No</td></tr><tr><td>Entrada/salida</td><td>Paralelogramo</td><td>Leer datos o escribir resultados</td></tr><tr><td>Conector</td><td>Círculo</td><td>Une partes del diagrama</td></tr><tr><td>Línea de flujo</td><td>Flecha</td><td>Indica el paso siguiente</td></tr></tbody></table>"
+    },
+    {
+     "n": "Validación del diseño: prueba de escritorio",
+     "e": [
+      "La <b>prueba de escritorio</b> ejecuta el algoritmo a mano con datos concretos. Se hace una tabla con una columna por variable (y por condición o salida) y una fila por cada cambio. Se eligen datos de tres clases: <b>normales</b>, <b>límite</b> (justo en el borde de una condición) y <b>especiales</b> (cero, empates, listas vacías)."
+     ],
+     "u": [
+      "En exámenes, revisiones de diseño y antes de codificar algoritmos con ciclos o decisiones anidadas.",
+      "Descubre errores de lógica cuando corregirlos cuesta solo un borrón.",
+      "Después de escribir el algoritmo y antes de pasarlo al lenguaje.",
+      "Copia los datos de entrada, sigue cada línea sin saltarte ninguna, anota cada cambio y compara la salida con la esperada."
+     ]
+    },
+    {
+     "n": "Prueba, depuración y documentación",
+     "e": [
+      "<b>Probar</b> es ejecutar para encontrar errores; <b>depurar</b> es localizarlos y corregirlos. Estrategias básicas: <b>caja negra</b> (casos desde la especificación: clases de equivalencia y valores límite) y <b>caja blanca</b> (casos que recorren cada rama y cada ciclo). Un <b>depurador</b> (el de NetBeans, Eclipse, VS Code o Xdebug para PHP) permite poner <b>puntos de interrupción</b>, avanzar <b>paso a paso</b> (entrando o no a las funciones), <b>inspeccionar variables</b> y ver la <b>pila de llamadas</b>.",
+      "<b>Documentación interna:</b> la que va en el código (encabezado, comentarios que explican el porqué, nombres significativos). <b>Externa:</b> fuera del código (manual técnico, manual de usuario, diagramas, casos de uso)."
+     ],
+     "u": [
+      "En todo proyecto: el privado, el trabajo de graduación y los sistemas que se entregan a una institución.",
+      "Sin pruebas sistemáticas los errores llegan al usuario; sin documentación, el sistema muere con quien lo escribió.",
+      "Durante y después de la codificación, y en cada cambio posterior.",
+      "Diseña los casos antes de codificar, depura con puntos de interrupción en lugar de adivinar y documenta mientras programas."
+     ],
+     "f": "\\text{casos límite: }L-\\varepsilon,\\;L,\\;L+\\varepsilon"
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Analiza (E-P-S) y diseña el algoritmo que, dado el total de una factura con IVA incluido (12 %), calcule la base y el IVA. Pruébalo con Q1,120.00 y Q350.00.",
+     "pasos": [
+      "<b>Análisis.</b> Entrada: total. Proceso: \\(\\text{base}=\\text{total}/1.12\\), \\(\\text{IVA}=\\text{total}-\\text{base}\\). Salidas: base e IVA.",
+      "<b>Algoritmo.</b> <code>Inicio<br>  Leer total<br>  base &lt;- total / 1.12<br>  iva &lt;- total - base<br>  Escribir base, iva<br>Fin</code>",
+      "<b>Prueba.</b> Q1,120.00 → base Q1,000.00, IVA Q120.00. Q350.00 → base Q312.50, IVA Q37.50.",
+      "<b>Error típico.</b> Calcular el IVA como 12 % del total (Q134.40 sobre Q1,120) cobra impuesto sobre el impuesto."
+     ],
+     "r": "Q1,120.00 → Q1,000.00 + Q120.00; Q350.00 → Q312.50 + Q37.50.",
+     "fin": "Separar análisis y diseño en un problema cotidiano de facturación."
+    },
+    {
+     "nv": "I",
+     "q": "Haz la prueba de escritorio del algoritmo para una meta de Q3,000, depósito mensual de Q1,000 y 1 % de interés mensual: <code>saldo &lt;- 0<br>meses &lt;- 0<br>Mientras saldo &lt; meta Hacer<br>    saldo &lt;- saldo * (1 + tasa) + deposito<br>    meses &lt;- meses + 1<br>FinMientras<br>Escribir meses, saldo</code>",
+     "pasos": [
+      "<b>Valores iniciales.</b> saldo = 0, meses = 0; la condición 0 &lt; 3,000 es V.",
+      "<b>Tabla de seguimiento.</b> <table><thead><tr><th>Vuelta</th><th>saldo &lt; meta (al entrar)</th><th>saldo</th><th>meses</th></tr></thead><tbody><tr><td>1</td><td>V</td><td>1,000.00</td><td>1</td></tr><tr><td>2</td><td>V</td><td>2,010.00</td><td>2</td></tr><tr><td>3</td><td>V</td><td>3,030.10</td><td>3</td></tr><tr><td>—</td><td>F (3,030.10 &lt; 3,000 es falso)</td><td>3,030.10</td><td>3</td></tr></tbody></table>",
+      "<b>Cálculos.</b> Vuelta 2: 1,000 × 1.01 + 1,000 = 2,010. Vuelta 3: 2,010 × 1.01 + 1,000 = 3,030.10.",
+      "<b>Salida.</b> <code>3 3030.10</code>"
+     ],
+     "r": "3 meses, con saldo final de Q3,030.10.",
+     "fin": "Seguir un ciclo Mientras y ver cuándo y por qué termina."
+    },
+    {
+     "nv": "I",
+     "q": "Valida el diseño del algoritmo que busca el mayor de tres números con los casos de la tabla: <code>Si a &gt; b Y a &gt; c Entonces<br>    mayor &lt;- a<br>SiNo Si b &gt; a Y b &gt; c Entonces<br>    mayor &lt;- b<br>SiNo<br>    mayor &lt;- c<br>FinSi</code>",
+     "pasos": [
+      "<b>Casos.</b> Normales (cada uno de los tres es el mayor) y especiales (empates): <table><thead><tr><th>a</th><th>b</th><th>c</th><th>Esperado</th><th>Algoritmo</th></tr></thead><tbody><tr><td>9</td><td>4</td><td>2</td><td>9</td><td>9</td></tr><tr><td>3</td><td>8</td><td>5</td><td>8</td><td>8</td></tr><tr><td>1</td><td>2</td><td>6</td><td>6</td><td>6</td></tr><tr><td>7</td><td>7</td><td>3</td><td>7</td><td>3 ✗</td></tr><tr><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td></tr></tbody></table>",
+      "<b>Falla.</b> Con a = 7, b = 7, c = 3 ninguna condición estricta se cumple (7 &gt; 7 es F) y el algoritmo devuelve c = 3.",
+      "<b>Corrección.</b> Usar <code>&gt;=</code>: <code>Si a &gt;= b Y a &gt;= c</code> y <code>SiNo Si b &gt;= a Y b &gt;= c</code>. Con el cambio, el caso (7, 7, 3) da 7 y los demás no cambian."
+     ],
+     "r": "El diseño falla con empates en el primer lugar; se corrige con mayor o igual.",
+     "fin": "Mostrar que los casos especiales encuentran errores que los normales no ven."
+    },
+    {
+     "nv": "A",
+     "q": "Representa como tabla de diagrama de flujo y prueba en escritorio el algoritmo que lee 5 notas, cuenta los aprobados (nota ≥ 61) y calcula el promedio. Datos: 72, 55, 61, 90, 48.",
+     "pasos": [
+      "<b>Diagrama de flujo.</b> <table><thead><tr><th>Paso</th><th>Símbolo</th><th>Contenido</th><th>Sigue</th></tr></thead><tbody><tr><td>1</td><td>Terminal</td><td>Inicio</td><td>2</td></tr><tr><td>2</td><td>Proceso</td><td>suma ← 0, aprobados ← 0, i ← 1</td><td>3</td></tr><tr><td>3</td><td>Decisión</td><td>¿i ≤ 5?</td><td>Sí: 4 · No: 8</td></tr><tr><td>4</td><td>Entrada</td><td>Leer nota</td><td>5</td></tr><tr><td>5</td><td>Proceso</td><td>suma ← suma + nota</td><td>6</td></tr><tr><td>6</td><td>Decisión</td><td>¿nota ≥ 61?</td><td>Sí: aprobados ← aprobados + 1, luego 7 · No: 7</td></tr><tr><td>7</td><td>Proceso</td><td>i ← i + 1</td><td>3</td></tr><tr><td>8</td><td>Salida</td><td>Escribir aprobados, suma / 5</td><td>9</td></tr><tr><td>9</td><td>Terminal</td><td>Fin</td><td>—</td></tr></tbody></table>",
+      "<b>Prueba de escritorio.</b> <table><thead><tr><th>i</th><th>nota</th><th>suma</th><th>nota ≥ 61</th><th>aprobados</th></tr></thead><tbody><tr><td>1</td><td>72</td><td>72</td><td>V</td><td>1</td></tr><tr><td>2</td><td>55</td><td>127</td><td>F</td><td>1</td></tr><tr><td>3</td><td>61</td><td>188</td><td>V</td><td>2</td></tr><tr><td>4</td><td>90</td><td>278</td><td>V</td><td>3</td></tr><tr><td>5</td><td>48</td><td>326</td><td>F</td><td>3</td></tr></tbody></table>",
+      "<b>Salida.</b> aprobados = 3; promedio = 326 / 5 = 65.2.",
+      "<b>Caso límite.</b> La nota 61 cuenta como aprobada porque la condición es <code>≥</code>; si se hubiera escrito <code>&gt;</code>, el resultado sería 2."
+     ],
+     "r": "3 aprobados y promedio de 65.2.",
+     "fin": "Combinar ciclo y decisión, y documentar el diseño como diagrama."
+    },
+    {
+     "nv": "A",
+     "q": "Regla: “10 % de descuento si la compra va de Q500 a Q1,000 inclusive; 15 % si es mayor que Q1,000.” Diseña casos de valores límite y úsalos para probar esta implementación: <code>if (total &gt; 1000) desc = 15;<br>else if (total &gt; 500) desc = 10;<br>else desc = 0;</code>",
+     "pasos": [
+      "<b>Clases de equivalencia.</b> Menos de 500 (0 %), de 500 a 1,000 (10 %), más de 1,000 (15 %).",
+      "<b>Casos límite e interiores.</b> <table><thead><tr><th>Total (Q)</th><th>Clase</th><th>Esperado</th><th>Con <code>&gt; 500</code></th></tr></thead><tbody><tr><td>499.99</td><td>límite inferior − 0.01</td><td>0 %</td><td>0 %</td></tr><tr><td>500.00</td><td>límite inferior</td><td>10 %</td><td>0 % ✗</td></tr><tr><td>750.00</td><td>interior</td><td>10 %</td><td>10 %</td></tr><tr><td>1,000.00</td><td>límite superior</td><td>10 %</td><td>10 %</td></tr><tr><td>1,000.01</td><td>límite superior + 0.01</td><td>15 %</td><td>15 %</td></tr><tr><td>1,500.00</td><td>interior</td><td>15 %</td><td>15 %</td></tr></tbody></table>",
+      "<b>Resultado.</b> Falla exactamente en Q500.00: la regla dice “inclusive” y el código usa <code>&gt;</code>. Se corrige con <code>total &gt;= 500</code>.",
+      "<b>Comprobación.</b> Con la corrección, todos los casos coinciden; por ejemplo, Q500 paga Q450.00, Q1,000 paga Q900.00 y Q1,500 paga Q1,275.00."
+     ],
+     "r": "El caso Q500.00 detecta el error; la condición correcta es <code>total &gt;= 500</code>.",
+     "fin": "Diseñar pruebas de caja negra que atrapan los errores de borde, los más frecuentes."
+    },
+    {
+     "nv": "B",
+     "q": "Haz el análisis E-P-S del cálculo del precio de un terreno rectangular y pruébalo con 12 m × 25 m a Q850 por metro cuadrado.",
+     "r": "Entradas: largo, ancho, precio por m². Proceso: área ← largo × ancho; precio ← área × precio_m2. Salidas: área y precio. Prueba: 300 m² y Q255,000.00."
+    },
+    {
+     "nv": "I",
+     "q": "Prueba en escritorio y da la salida: <code>n &lt;- 5<br>f &lt;- 1<br>i &lt;- 1<br>Mientras i &lt;= n Hacer<br>    f &lt;- f * i<br>    i &lt;- i + 1<br>FinMientras<br>Escribir f</code>",
+     "r": "Salida: 120 (factorial de 5). <table><thead><tr><th>i (al entrar)</th><th>f</th><th>i (al salir)</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>2</td></tr><tr><td>2</td><td>2</td><td>3</td></tr><tr><td>3</td><td>6</td><td>4</td></tr><tr><td>4</td><td>24</td><td>5</td></tr><tr><td>5</td><td>120</td><td>6</td></tr></tbody></table>"
+    },
+    {
+     "nv": "I",
+     "q": "Prueba en escritorio con n = 4096: <code>s &lt;- 0<br>Mientras n &gt; 0 Hacer<br>    d &lt;- n MOD 10<br>    s &lt;- s + d<br>    n &lt;- n DIV 10<br>FinMientras<br>Escribir s</code>",
+     "r": "Salida: 19 (suma de los dígitos 4 + 0 + 9 + 6). <table><thead><tr><th>d</th><th>s</th><th>n</th></tr></thead><tbody><tr><td>6</td><td>6</td><td>409</td></tr><tr><td>9</td><td>15</td><td>40</td></tr><tr><td>0</td><td>15</td><td>4</td></tr><tr><td>4</td><td>19</td><td>0</td></tr></tbody></table>"
+    },
+    {
+     "nv": "A",
+     "q": "Encuentra el error con los datos 80, 70, 90, 60: <code>contar &lt;- 1<br>suma &lt;- 0<br>Para i &lt;- 1 Hasta 4 Hacer<br>    Leer x<br>    suma &lt;- suma + x<br>    contar &lt;- contar + 1<br>FinPara<br>Escribir suma / contar</code>",
+     "r": "La prueba de escritorio termina con suma = 300 y contar = 5, y escribe 60. El promedio correcto es 75: <code>contar</code> debe iniciar en 0 (error de “uno de más”)."
+    },
+    {
+     "nv": "I",
+     "q": "Depurando un programa en Java, el desarrollador quiere ejecutar la línea <code>total = calcularIva(base);</code> sin entrar al detalle de <code>calcularIva</code>. ¿Qué comando del depurador usa?",
+     "ops": [
+      "Paso a paso entrando (<i>step into</i>)",
+      "Salir de la función (<i>step out</i>)",
+      "Quitar el punto de interrupción",
+      "Paso por encima (<i>step over</i>)"
+     ],
+     "ok": 3,
+     "r": "<i>Step over</i> ejecuta la llamada completa y se detiene en la línea siguiente; <i>step into</i> entraría a la función."
+    }
+   ]
+  },
+  {
+   "titulo": "Modelo conceptual y UML: clases, relaciones y casos de uso",
+   "intro": "Tema 8 del programa (semanas 16 y 17): modelo conceptual, metodología UML, identificar clases, objetos y atributos, identificar relaciones y casos de uso, con el libro de texto <i>Aprenda UML en 24 horas</i>. Los diagramas se escriben en notación textual; el análisis y diseño completos con UML se profundizan en Análisis de Sistemas e Ingeniería de Software.",
+   "conceptos": [
+    {
+     "n": "Modelo conceptual y UML",
+     "e": [
+      "El <b>modelo conceptual</b> representa los conceptos del problema (el dominio) y cómo se relacionan, sin detalles de programación. Es la lógica del concepto aplicada al software: cada concepto con su comprensión (atributos) y su extensión (objetos).",
+      "<b>UML</b> (Lenguaje Unificado de Modelado), estándar del Object Management Group, ofrece diagramas <b>estructurales</b> (clases, objetos, componentes, despliegue) y de <b>comportamiento</b> (casos de uso, actividades, secuencia, estados). Para encontrar clases se usa el <b>análisis de sustantivos y verbos</b> del texto del problema: los sustantivos importantes son candidatos a clases o atributos y los verbos, a operaciones o relaciones."
+     ],
+     "u": [
+      "En el análisis de cualquier sistema: planillas, citas, facturación, inventarios.",
+      "Un modelo compartido evita que usuarios y programadores entiendan cosas distintas.",
+      "Al inicio del análisis, después de entrevistar a los usuarios.",
+      "Subraya sustantivos y verbos del enunciado, descarta los irrelevantes y agrupa atributos en clases."
+     ]
+    },
+    {
+     "n": "Clases, objetos y atributos",
+     "e": [
+      "Una <b>clase</b> describe un conjunto de objetos con los mismos atributos, operaciones y relaciones; un <b>objeto</b> es una instancia concreta. Un <b>atributo</b> es una propiedad con un valor simple (texto, número, fecha); si algo tiene a su vez atributos propios y se relaciona con otros, probablemente es otra clase.",
+      "Notación textual de una clase (visibilidad: <code>+</code> pública, <code>-</code> privada, <code>#</code> protegida):",
+      "<code>Afiliado<br>-----------------------------<br>- numeroAfiliacion: String<br>- nombre: String<br>- fechaNacimiento: Date<br>-----------------------------<br>+ solicitarCita(fecha: Date): Cita</code>"
+     ],
+     "u": [
+      "En el diagrama de clases, que se convierte en clases Java o PHP y en tablas de la base de datos.",
+      "Elegir bien clases y atributos define la estructura de todo el sistema.",
+      "Al modelar el dominio y antes de diseñar la base de datos.",
+      "Escribe cada clase con nombre en singular, sus atributos con tipo y sus operaciones con parámetros."
+     ]
+    },
+    {
+     "n": "Relaciones y multiplicidad",
+     "e": [
+      "Las clases se relacionan de varias formas; la <b>multiplicidad</b> indica cuántos objetos de un lado se enlazan con uno del otro: <code>1</code>, <code>0..1</code>, <code>*</code> (cero o más), <code>1..*</code> (uno o más) o un rango como <code>2..5</code>. Se lee desde la clase opuesta: en <code>Cliente 1 ── 0..* Factura</code>, un cliente tiene 0 o más facturas y cada factura es de exactamente 1 cliente."
+     ],
+     "u": [
+      "En el diagrama de clases, que luego define llaves foráneas y colecciones en el código.",
+      "Una multiplicidad mal puesta produce tablas que no pueden guardar casos reales o que aceptan datos inválidos.",
+      "Al conectar las clases encontradas y al revisar el modelo con el usuario.",
+      "Para cada par de clases pregunta “¿con cuántos B se relaciona un A?” y al revés; anota mínimo y máximo."
+     ],
+     "tabla": "<table><thead><tr><th>Relación</th><th>Notación textual</th><th>Significado</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Asociación</td><td><code>A ── B</code></td><td>Los objetos se conocen</td><td><code>Cliente 1 ── 0..* Factura</code></td></tr><tr><td>Agregación</td><td><code>Todo ◇── Parte</code></td><td>Todo-parte; la parte puede existir sola</td><td><code>Departamento ◇── 0..* Empleado</code></td></tr><tr><td>Composición</td><td><code>Todo ◆── Parte</code></td><td>Todo-parte; la parte nace y muere con el todo</td><td><code>Factura 1 ◆── 1..* Detalle</code></td></tr><tr><td>Generalización</td><td><code>Hija ──▷ Padre</code></td><td>“Es un”: herencia</td><td><code>CuentaAhorro ──▷ Cuenta</code></td></tr><tr><td>Dependencia</td><td><code>A - - &gt; B</code></td><td>A usa a B temporalmente</td><td><code>Reporte - - &gt; ServicioPDF</code></td></tr></tbody></table>"
+    },
+    {
+     "n": "Casos de uso",
+     "e": [
+      "Un <b>caso de uso</b> describe una secuencia de acciones que el sistema realiza y que produce un resultado de valor para un <b>actor</b>. Un actor es un rol externo (persona, otro sistema, un reloj), no una persona concreta. El diagrama muestra actores, casos de uso y el límite del sistema.",
+      "Relaciones entre casos: <code>&lt;&lt;include&gt;&gt;</code> (el caso base <i>siempre</i> usa al incluido, por ejemplo autenticarse) y <code>&lt;&lt;extend&gt;&gt;</code> (el caso extendido agrega comportamiento <i>opcional</i> o condicional al base). La <b>descripción</b> de cada caso lleva: nombre, actor, precondición, flujo principal, flujos alternos y postcondición."
+     ],
+     "u": [
+      "En la captura de requisitos funcionales y en la planificación de pruebas.",
+      "Los usuarios entienden un caso de uso aunque no lean código; sirve de contrato.",
+      "En el análisis, antes del diagrama de clases, y como base de las pruebas de aceptación.",
+      "Identifica actores, escribe cada caso con verbo + objeto (“Pagar factura”), describe el flujo principal y luego los alternos."
+     ]
+    }
+   ],
+   "ejercicios": [
+    {
+     "nv": "B",
+     "q": "Del enunciado “El afiliado solicita una cita en una clínica del IGSS indicando la especialidad; el sistema asigna un médico disponible y una fecha; el afiliado puede cancelar la cita”, identifica clases, atributos y operaciones.",
+     "pasos": [
+      "<b>Sustantivos.</b> afiliado, cita, clínica, especialidad, médico, fecha. <b>Verbos.</b> solicitar, asignar, cancelar.",
+      "<b>Clases.</b> Afiliado, Cita, Clínica, Médico. Especialidad puede ser atributo del médico o clase propia si tiene datos y se reutiliza; fecha es atributo de Cita.",
+      "<b>Operaciones.</b> <code>Afiliado.solicitarCita(especialidad)</code>, <code>Cita.asignarMedico()</code>, <code>Cita.cancelar()</code>."
+     ],
+     "r": "Clases Afiliado, Cita, Clínica y Médico; fecha y especialidad como atributos (o Especialidad como clase); operaciones solicitar, asignar y cancelar.",
+     "fin": "Aplicar el análisis de sustantivos y verbos, primer paso del modelo conceptual."
+    },
+    {
+     "nv": "I",
+     "q": "Modela con multiplicidades: “Un contribuyente emite muchas facturas (puede no haber emitido ninguna aún); cada factura la emite un solo contribuyente; una factura tiene uno o más detalles, que no existen sin ella; cada detalle se refiere a un producto, y un producto aparece en muchos detalles.”",
+     "pasos": [
+      "<b>Contribuyente–Factura.</b> <code>Contribuyente 1 ── 0..* Factura</code>.",
+      "<b>Factura–Detalle.</b> El detalle nace y muere con la factura: composición, <code>Factura 1 ◆── 1..* Detalle</code>.",
+      "<b>Detalle–Producto.</b> <code>Detalle 0..* ── 1 Producto</code>: el producto existe aunque no se haya vendido.",
+      "<b>En la base de datos.</b> Cada “1” del otro lado se vuelve llave foránea: <code>factura.nit_emisor</code>, <code>detalle.id_factura</code>, <code>detalle.id_producto</code>."
+     ],
+     "r": "Contribuyente 1 ── 0..* Factura; Factura 1 ◆── 1..* Detalle; Detalle 0..* ── 1 Producto.",
+     "fin": "Traducir reglas del negocio a multiplicidades y de ahí a llaves foráneas."
+    },
+    {
+     "nv": "I",
+     "q": "En una planilla hay empleados permanentes, que reciben bono anual, y por contrato, que tienen fecha de fin de contrato; todos tienen DPI, nombre y salario. Modela la generalización.",
+     "pasos": [
+      "<b>Superclase.</b> Lo común (el género próximo): <code>Empleado { dpi, nombre, salario }</code>.",
+      "<b>Subclases.</b> Lo propio (la diferencia específica): <code>EmpleadoPermanente ──▷ Empleado { bonoAnual }</code> y <code>EmpleadoContrato ──▷ Empleado { fechaFin }</code>.",
+      "<b>Revisión lógica.</b> Es una división con un solo fundamento (tipo de vínculo laboral), completa y excluyente: un empleado es de un solo tipo."
+     ],
+     "r": "Empleado como superclase con dpi, nombre y salario; dos subclases con bonoAnual y fechaFin.",
+     "fin": "Ver que la generalización de UML es el árbol lógico del tema 2."
+    },
+    {
+     "nv": "A",
+     "q": "Modela los casos de uso de un cajero automático de un banco local y describe “Retirar efectivo”.",
+     "pasos": [
+      "<b>Actores.</b> Cliente (principal) y Sistema central del banco (secundario).",
+      "<b>Diagrama textual.</b> <code>Cliente ── (Retirar efectivo)<br>Cliente ── (Consultar saldo)<br>Cliente ── (Transferir)<br>(Retirar efectivo) - - &lt;&lt;include&gt;&gt; - -&gt; (Autenticar con PIN)<br>(Consultar saldo)  - - &lt;&lt;include&gt;&gt; - -&gt; (Autenticar con PIN)<br>(Imprimir comprobante) - - &lt;&lt;extend&gt;&gt; - -&gt; (Retirar efectivo)<br>(Retirar efectivo) ── Sistema central</code>",
+      "<b>Descripción.</b> Precondición: el cajero tiene efectivo. Flujo principal: 1) el cliente inserta la tarjeta; 2) se autentica (include); 3) elige monto; 4) el sistema central autoriza y debita; 5) el cajero entrega efectivo y la tarjeta. Postcondición: saldo debitado.",
+      "<b>Flujos alternos.</b> 2a) PIN incorrecto tres veces: se retiene la tarjeta. 4a) saldo insuficiente: se informa y vuelve al paso 3. 5a) el cliente pide comprobante: se ejecuta la extensión."
+     ],
+     "r": "Tres casos para el cliente, Autenticar con PIN como include y Imprimir comprobante como extend de Retirar efectivo.",
+     "fin": "Escribir un caso de uso completo, uno de los entregables evaluados en el curso."
+    },
+    {
+     "nv": "A",
+     "q": "Con el modelo <code>Factura 1 ◆── 1..* Detalle</code> y <code>Detalle 0..* ── 1 Producto</code>, revisa estos objetos: F-001 tiene D1 y D2; F-002 no tiene detalles; D1 → Cable UTP; D2 → Router; D3 no tiene producto ni factura.",
+     "pasos": [
+      "<b>Regla 1.</b> Cada factura debe tener al menos un detalle: F-001 cumple (2); F-002 no.",
+      "<b>Regla 2.</b> Cada detalle debe tener exactamente un producto y pertenecer a exactamente una factura: D1 y D2 cumplen; D3 no cumple ninguna.",
+      "<b>Resultado de la revisión.</b><ul><li>F-002 no tiene detalles (exige 1..*)</li><li>D3 tiene 0 productos (exige 1)</li><li>D3 pertenece a 0 facturas (exige 1)</li></ul>",
+      "<b>En la base de datos.</b> <code>detalle.id_producto NOT NULL</code> y <code>detalle.id_factura NOT NULL</code> impiden D3; que toda factura tenga detalle se valida en la lógica de la aplicación."
+     ],
+     "r": "3 violaciones: F-002 sin detalles y D3 sin producto ni factura.",
+     "fin": "Usar las multiplicidades como reglas verificables de los datos."
+    },
+    {
+     "nv": "B",
+     "q": "“La municipalidad registra vehículos con placa, marca y año; cada vehículo pertenece a un propietario, del que se guardan DPI y nombre; un propietario puede tener varios vehículos.” Identifica las clases, sus atributos y la multiplicidad.",
+     "r": "Clases <code>Vehiculo { placa, marca, anio }</code> y <code>Propietario { dpi, nombre }</code>; relación <code>Propietario 1 ── 1..* Vehiculo</code> (o <code>0..*</code> si se registran propietarios sin vehículo)."
+    },
+    {
+     "nv": "A",
+     "q": "Escribe la descripción del caso de uso “Pagar boleto de ornato en línea” (actor, precondición, flujo principal, un flujo alterno y postcondición).",
+     "r": "Actor: vecino; secundario: pasarela de pago del banco. Precondición: el vecino está registrado en el portal. Flujo principal: 1) ingresa (include Autenticar); 2) consulta el monto que le corresponde; 3) ingresa los datos de la tarjeta; 4) la pasarela autoriza; 5) el sistema registra el pago y genera el boleto. Alterno 4a: pago rechazado, se informa y vuelve al paso 3. Postcondición: pago registrado y boleto disponible para descargar."
+    },
+    {
+     "nv": "I",
+     "q": "En un sistema bancario, “Transferir fondos” siempre requiere “Validar token”; “Enviar notificación por SMS” solo ocurre si el cliente lo activó. ¿Qué relaciones corresponden?",
+     "ops": [
+      "Transferir extiende a Validar token; Enviar SMS incluye a Transferir",
+      "Ambas son <code>&lt;&lt;include&gt;&gt;</code>",
+      "Transferir incluye Validar token; Enviar SMS extiende a Transferir",
+      "Ambas son generalizaciones"
+     ],
+     "ok": 2,
+     "r": "Include para lo obligatorio y reutilizable; extend para el comportamiento opcional o condicional."
+    },
+    {
+     "nv": "I",
+     "q": "Un pedido tiene líneas de pedido que se eliminan si se elimina el pedido; un equipo de proyecto tiene programadores que siguen existiendo si el equipo se disuelve. ¿Qué relaciones son?",
+     "ops": [
+      "Pedido–Línea: agregación; Equipo–Programador: composición",
+      "Ambas son composición",
+      "Pedido–Línea: composición; Equipo–Programador: agregación",
+      "Ambas son generalización"
+     ],
+     "ok": 2,
+     "r": "En la composición la parte depende del todo; en la agregación, no."
+    },
+    {
+     "nv": "B",
+     "q": "En el enunciado “Cada contribuyente tiene NIT, razón social y dirección fiscal, y presenta declaraciones mensuales”, ¿qué elemento debe modelarse como clase y no como atributo?",
+     "ops": [
+      "Declaración",
+      "NIT",
+      "Razón social",
+      "Dirección fiscal"
+     ],
+     "ok": 0,
+     "r": "La declaración tiene datos propios (período, monto, fecha) y hay muchas por contribuyente; NIT, razón social y dirección son valores simples."
+    }
+   ]
+  }
+ ]
+}
